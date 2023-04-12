@@ -1,0 +1,35 @@
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-lenovo-yoga-c630
+pkgdesc="Lenovo Yoga C630"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+# pmb:strict: avoid grub-related install error during build with pmbootstrap
+options="!check !archcheck pmb:strict"
+depends="postmarketos-base
+	linux-postmarketos-qcom-sdm845
+	soc-qcom-sdm845
+	systemd-boot
+	firmware-lenovo-yoga-c630
+	soc-qcom-sdm845-nonfree-firmware
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+	modules-initfs
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+c66907e00af107bb3130c48050e2209eb91213f5598b2ed92a828e678603b00d81fea776480041581f24a1d1c12a5b43bee7fa492068d1f1521440a0fb3aa195  deviceinfo
+490dd21b7775cea13e9dde9cb7568ddd204230fc786dad04dadee9b82b15749317fcf9c89286b4f73e8eeadd4bf19b5451f46d744d23f226d94e5bbbbc1692c3  modules-initfs
+"
