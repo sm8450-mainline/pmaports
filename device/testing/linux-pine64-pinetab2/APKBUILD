@@ -1,0 +1,69 @@
+# Reference: <https://postmarketos.org/vendorkernel>
+# Kernel config based on: arch/arm64/configs/pinetab2_defconfig
+# Maintainer: Danct12 <danct12@disroot.org>
+pkgname=linux-pine64-pinetab2
+pkgver=6.9.3
+pkgrel=0
+pkgdesc="Pine64 PineTab 2 mainline"
+arch="aarch64"
+_carch="arm64"
+_flavor="pine64-pinetab2"
+url="https://kernel.org"
+license="GPL-2.0-only"
+options="!strip !check !tracedeps
+	pmb:cross-native"
+depends="kmod"
+makedepends="
+	bash
+	bison
+	findutils
+	flex
+	linux-headers
+	postmarketos-installkernel
+	openssl-dev
+	perl
+	xz
+	zstd
+"
+
+# Source
+_tags="v6.9.3-danctnix1"
+_config="config-$_flavor.$arch"
+source="
+	$pkgname-$_tags.tar.gz::https://github.com/dreemurrs-embedded/linux-pinetab2/archive/$_tags.tar.gz
+	$_config
+"
+builddir="$srcdir/linux-pinetab2-${_tags:1}"
+_outdir="out"
+
+prepare() {
+	default_prepare
+	cp "$srcdir/config-$_flavor.$CARCH" .config
+}
+
+build() {
+	unset LDFLAGS
+	make ARCH="$_carch" CC="${CC:-gcc}" \
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-$_flavor"
+}
+
+package() {
+	install -Dm644 "$builddir/arch/$_carch/boot/Image" \
+		"$pkgdir/boot/vmlinuz"
+
+	make modules_install dtbs_install \
+		ARCH="$_carch" \
+		INSTALL_PATH="$pkgdir"/boot/ \
+		INSTALL_MOD_PATH="$pkgdir" \
+		INSTALL_MOD_STRIP=1 \
+		INSTALL_DTBS_PATH="$pkgdir"/boot/dtbs
+	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
+
+	install -D "$builddir"/include/config/kernel.release \
+		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
+}
+
+sha512sums="
+53ee3f616430029afe1c3b044821b71829d266a24e71798fc2999e566d661f39856e7c3fd4eba6b48179e041732e5ec59a6d26fc414f63f7d6d9730a6799d36e  linux-pine64-pinetab2-v6.9.3-danctnix1.tar.gz
+b4070f16912ecce2d5f559aac2e9102ab1f430401bf9230e3844ef4e5f3f516b99a555ea07b1a2bf6d3a432aa51c7daccc6ba6776696f52a205fadadf410aa5f  config-pine64-pinetab2.aarch64
+"
