@@ -1,0 +1,64 @@
+# Maintainer: Jens Reidel <adrian@travitia.xyz>
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-xiaomi-cupid
+pkgdesc="Xiaomi 12"
+pkgver=1
+pkgrel=10
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	linux-postmarketos-qcom-sm8450
+	make-dynpart-mappings
+	mesa-dri-gallium
+	mkbootimg
+	postmarketos-base
+	postmarketos-update-kernel
+	qbootctl
+	qbootctl-openrc
+"
+makedepends="
+	devicepkg-dev
+"
+install="$pkgname.post-install $pkgname.post-upgrade"
+source="
+	deviceinfo
+"
+
+subpackages="
+	$pkgname-nonfree-firmware:nonfree_firmware
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+nonfree_firmware() {
+	pkgdesc="Firmware for GPU, Audio, Modem, WiFi, etc."
+	depends="
+		firmware-xiaomi-cupid-adsp
+		firmware-xiaomi-cupid-cdsp
+		firmware-xiaomi-cupid-gpu
+		firmware-xiaomi-cupid-initramfs
+		firmware-xiaomi-cupid-ipa
+		firmware-xiaomi-cupid-modem
+		firmware-xiaomi-cupid-slpi
+		linux-firmware-qca
+		linux-firmware-qcom
+		msm-modem
+		msm-modem-uim-selection
+		pd-mapper
+		tqftpserv
+		"
+	install="$subpkgname.post-install"
+	mkdir "$subpkgdir"
+}
+
+sha512sums="
+843790c57e43147c90a71cff54f816a8a5cbfaa54859d5eec5dfe867e686e3b9aabc1a853b3533ef33f9acc3400fea9785c9f8a09e5849e50417fbdaaa774a84  deviceinfo
+"
