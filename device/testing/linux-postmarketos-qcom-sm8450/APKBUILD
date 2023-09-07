@@ -1,0 +1,58 @@
+# Maintainer: Jens Reidel <adrian@travitia.xyz>
+
+_flavor="postmarketos-qcom-sm8450"
+pkgname=linux-$_flavor
+pkgver=6.5.0
+pkgrel=0
+pkgdesc="Mainline Kernel fork for SM8450 devices"
+arch="aarch64"
+_carch="arm64"
+url="https://github.com/sm8450-mainline/linux"
+license="GPL-2.0-only"
+options="!strip !check !tracedeps
+	pmb:cross-native
+	pmb:kconfigcheck-nftables
+	"
+makedepends="bison findutils flex installkernel openssl-dev perl"
+
+_repo="linux"
+_config="config-$_flavor.$arch"
+_commit="6a206d940546d791db1f98a63618f57ea5b10c00"
+
+# Source
+source="
+	$_repo-$_commit.tar.gz::https://github.com/sm8450-mainline/$_repo/archive/$_commit/$_repo-$_commit.tar.gz
+	$_config
+"
+builddir="$srcdir/$_repo-$_commit"
+
+prepare() {
+	default_prepare
+	cp "$srcdir/config-$_flavor.$arch" .config
+}
+
+build() {
+	unset LDFLAGS
+	make ARCH="$_carch" CC="${CC:-gcc}" \
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-$_flavor"
+}
+
+package() {
+	mkdir -p "$pkgdir"/boot
+	make zinstall modules_install dtbs_install \
+		ARCH="$_carch" \
+		INSTALL_PATH="$pkgdir"/boot/ \
+		INSTALL_MOD_PATH="$pkgdir" \
+		INSTALL_MOD_STRIP=1 \
+		INSTALL_DTBS_PATH="$pkgdir"/boot/dtbs
+	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
+
+	install -D "$builddir"/include/config/kernel.release \
+		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
+}
+
+
+sha512sums="
+5016af3e245c4661b99294e6af84e32388f6319e261b22caf5ace98b224c6a5b71f2ff0a9a964e72b55537444a602dfa307f53875b1cf24974f60b7acbe76ade  linux-6a206d940546d791db1f98a63618f57ea5b10c00.tar.gz
+e86a898a9decfb11a8e3d9bad84cf8dc675066ed9e532be5311ab062f09687a08333886dc77a17a2a7d1677a813eb7a43f8d90b542647300dccd2d17fbf5e87b  config-postmarketos-qcom-sm8450.aarch64
+"
