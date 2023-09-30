@@ -1,5 +1,6 @@
+# Unmaintained: Only used by unmaintained downstream kernel
 # Maintainer: knuxify <knuxify@gmail.com>
-pkgname=firmware-samsung-lt01wifi
+pkgname=firmware-samsung-lt01wifi-downstream
 pkgver=0.1
 pkgrel=0
 _commit="38ea48dbc6a683874aaf3376b63fc97ff3823459"
@@ -21,4 +22,6 @@ package() {
 		"$pkgdir"/lib/firmware/postmarketos/nvram_net.txt
 }
 
-sha512sums="33500dccd81d9f4ee8735f2f91e056913f0abb538248244512405f42156dd663b4337f97226fcadc1ed772c56590380cc7a6a8735a6fed46c62b8ac61424d684  firmware-samsung-lt01wifi-38ea48dbc6a683874aaf3376b63fc97ff3823459.tar.gz"
+sha512sums="
+33500dccd81d9f4ee8735f2f91e056913f0abb538248244512405f42156dd663b4337f97226fcadc1ed772c56590380cc7a6a8735a6fed46c62b8ac61424d684  firmware-samsung-lt01wifi-downstream-38ea48dbc6a683874aaf3376b63fc97ff3823459.tar.gz
+"
