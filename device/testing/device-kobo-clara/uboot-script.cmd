@@ -1,9 +1,5 @@
 setenv bootargs console=ttymxc0,115200
 
-# This must be called first, otherwise bootz does not work correctly.
-# The actual kernel is loaded over this below.
-load_ntxkernel
-
 echo Loading kernel
 load mmc 0:1 0x80800000 vmlinuz
 

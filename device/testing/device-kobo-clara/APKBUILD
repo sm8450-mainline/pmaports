@@ -1,13 +1,15 @@
+# Maintainer: Andreas Kemnade <andreas@kemnade.info>
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-kobo-clara
 pkgdesc="Kobo Clara HD"
 pkgver=0.7
-pkgrel=5
+pkgrel=6
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
 depends="
+	linux-kobo-clara-mainline
 	kobo-epdc-extractor
 	perl
 	postmarketos-base
@@ -15,16 +17,10 @@ depends="
 	u-boot-tools
 "
 makedepends="devicepkg-dev"
-subpackages="
-	$pkgname-kernel-downstream:kernel_downstream
-	$pkgname-kernel-mainline:kernel_mainline
-	$pkgname-nonfree-firmware:nonfree_firmware
-"
 source="
 	deviceinfo
-	modules-initfs.mainline
-	uboot-script-downstream.cmd
-	uboot-script-mainline.cmd
+	modules-initfs
+	uboot-script.cmd
 "
 
 build() {
@@ -33,37 +29,13 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
-}
-
-kernel_downstream() {
-	pkgdesc="Downstream kernel"
-	depends="linux-kobo-clara"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-
 	mkimage -A arm -O linux -T script -n postmarketOS \
-		-d "$srcdir"/uboot-script-downstream.cmd "$srcdir/boot-downstream.scr"
-	install -Dm644 "$srcdir/boot-downstream.scr" "$subpkgdir/boot/boot.scr"
-}
-
-kernel_mainline() {
-	pkgdesc="Close to mainline kernel"
-	depends="linux-kobo-clara-mainline"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-
-	mkimage -A arm -O linux -T script -n postmarketOS \
-		-d "$srcdir/uboot-script-mainline.cmd" "$srcdir/boot-mainline.scr"
-	install -Dm644 "$srcdir/boot-mainline.scr" "$subpkgdir/boot/boot.scr"
-}
-
-nonfree_firmware() {
-	pkgdesc="Kobo Clara HD firmware"
-	depends="firmware-kobo-clara"
-	mkdir "$subpkgdir"
+		-d "$srcdir/uboot-script.cmd" "$srcdir/boot.scr"
+	install -Dm644 "$srcdir/boot.scr" "$pkgdir/boot/boot.scr"
 }
 
 sha512sums="
-bdc2528bd09f164870a368caf0b06a6c816b883536c3033384060bcf480ddf987daf38db4b523406e1e591f9cea86c9bb97276d88ebc3b05e2ae6bb53adb4ba8  deviceinfo
-5d53ee902538e53c4fe79eaef8e3800b9d3f73ec70d2a9887ddb11a6715ca76ce17128e3c02c2b6f2f575fb86f15c2415c24466d4b1a031f7a346d0db186dcb1  modules-initfs.mainline
-4bfc2714a2670efc451860bd97d36ba12559e00aed41afdde1ac3e01b41458390358ac7f6bc96a6dee6be6a34f534da52d845b02df0566b25f4868774ef69b1d  uboot-script-downstream.cmd
-9f624e90df6bc6acbd6db03d4319a778443b270e5756a2bc78002df8da19d23a3ea652f3d8da15257552a7381646b83553f794d24f6ef31479d3a16af9ae5e0b  uboot-script-mainline.cmd
+c1eb7552f3163a6a48b699a6c99010914b75fd84b36b1d1a4ffb83d19cc1bbc3355bbe9b1a568ea2a6c2d0e4a87c4a22b7330c454c215b8f8b1edb2b2bac170d  deviceinfo
+5d53ee902538e53c4fe79eaef8e3800b9d3f73ec70d2a9887ddb11a6715ca76ce17128e3c02c2b6f2f575fb86f15c2415c24466d4b1a031f7a346d0db186dcb1  modules-initfs
+7bd9c0aa73b67520b8563b9d4453acafa29adcfed1575d96aea3b0d2e2023cbe9cd7d252b97786efb920a6f05e17a913079353ba481428f16c97d82b42051a2c  uboot-script.cmd
 "

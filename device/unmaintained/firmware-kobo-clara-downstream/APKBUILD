@@ -1,4 +1,5 @@
-pkgname=firmware-kobo-clara
+# Unmaintained: not needed by mainline kernel, describes only the hardware
+pkgname=firmware-kobo-clara-downstream
 pkgver=4.26.16704
 pkgrel=0
 pkgdesc="Kobo Clara firmware"
