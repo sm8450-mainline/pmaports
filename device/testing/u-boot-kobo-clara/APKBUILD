@@ -15,7 +15,6 @@ _repository="u-boot-fslc"
 _commit="a3816f6b51b5dc9083af4142ca5f3a4e4a235336"
 source="
 	$pkgname-$_commit.tar.gz::https://github.com/akemnade/$_repository/archive/$_commit.tar.gz
-	u-boot-env.txt
 "
 
 builddir="$srcdir/$_repository-$_commit"
@@ -29,15 +28,12 @@ build() {
 	scripts/config --set-str ENV_EXT4_DEVICE_AND_PART "0:1"
 	scripts/config --set-str ENV_EXT4_FILE "/uboot.env"
 	make ARCH="$_carch"
-	tools/mkenvimage -p 0 -s 8192 -o u-boot-env.bin "$srcdir/u-boot-env.txt"
 }
 
 package() {
 	install -D -m644 "$builddir/u-boot-dtb.imx" "$pkgdir/usr/share/u-boot/kobo-clara/u-boot.imx"
-	install -D -m644 "$builddir/u-boot-env.bin" "$pkgdir/usr/share/u-boot/kobo-clara/u-boot-env.bin"
 }
 
 sha512sums="
 d1db014fa889e76aeb83099f7573f5ec89c8e6f69a6273b9528fd485ffcbe34e102ee0c492554807e160a5bd669bf799db2b5a906045fea35b16c0677a377989  u-boot-kobo-clara-a3816f6b51b5dc9083af4142ca5f3a4e4a235336.tar.gz
-ca8237a86da93dfea62355cfbb8dbe4104c2f3aea71b4c36d5418e6aef6ead32e9d23e4731b8ff64b4a73ca563b0323087384de10d4946afd657dce4cc7c6fee  u-boot-env.txt
 "

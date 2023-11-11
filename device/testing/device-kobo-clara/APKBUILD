@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-kobo-clara
 pkgdesc="Kobo Clara HD"
-pkgver=0.7
-pkgrel=6
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -14,13 +14,11 @@ depends="
 	perl
 	postmarketos-base
 	u-boot-kobo-clara
-	u-boot-tools
 "
 makedepends="devicepkg-dev"
 source="
 	deviceinfo
 	modules-initfs
-	uboot-script.cmd
 "
 
 build() {
@@ -29,13 +27,9 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
-	mkimage -A arm -O linux -T script -n postmarketOS \
-		-d "$srcdir/uboot-script.cmd" "$srcdir/boot.scr"
-	install -Dm644 "$srcdir/boot.scr" "$pkgdir/boot/boot.scr"
 }
 
 sha512sums="
-c1eb7552f3163a6a48b699a6c99010914b75fd84b36b1d1a4ffb83d19cc1bbc3355bbe9b1a568ea2a6c2d0e4a87c4a22b7330c454c215b8f8b1edb2b2bac170d  deviceinfo
+b93b62ac7af499e9170dc78329ae6092fb79a3657a62ea1ee5b383a6ccc596e36382c1156f8d168aa1de89dc7bf3e5b9f266a49f56c51233aac8cc598facde68  deviceinfo
 5d53ee902538e53c4fe79eaef8e3800b9d3f73ec70d2a9887ddb11a6715ca76ce17128e3c02c2b6f2f575fb86f15c2415c24466d4b1a031f7a346d0db186dcb1  modules-initfs
-7bd9c0aa73b67520b8563b9d4453acafa29adcfed1575d96aea3b0d2e2023cbe9cd7d252b97786efb920a6f05e17a913079353ba481428f16c97d82b42051a2c  uboot-script.cmd
 "
