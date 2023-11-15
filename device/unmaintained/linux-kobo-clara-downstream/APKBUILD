@@ -38,6 +38,7 @@ prepare() {
 	REPLACE_GCCH=0
 	default_prepare
 	. downstreamkernel_prepare
+	find "$builddir/arch/arm" -name "*.S" -type f -exec sed -i '/^[[:blank:]]*\.section/s/#alloc,[[:blank:]]*#execinstr/"ax"/;/^[[:blank:]]*\.section/s/#alloc/"a"/' \{\} \;
 }
 
 build() {
