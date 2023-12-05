@@ -4,7 +4,7 @@
 pkgname=device-oneplus-enchilada
 pkgdesc="OnePlus 6"
 pkgver=13
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -43,7 +43,6 @@ nonfree_firmware() {
 	pkgdesc="Modem, WiFi and GPU Firmware, also needed for osk-sdl"
 	depends="
 		firmware-oneplus-sdm845>=9
-		firmware-oneplus-sdm845-initramfs
 		hexagonrpcd
 		soc-qcom-sdm845-nonfree-firmware
 		soc-qcom-sdm845-modem
