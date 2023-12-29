@@ -2,13 +2,14 @@
 pkgname=device-samsung-a6lte
 pkgdesc="Samsung Galaxy A6 2018"
 pkgver=0.5
-pkgrel=4
+pkgrel=5
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
 	alsa-utils
+	bootmac
 	mkbootimg
 	postmarketos-base
 	samsungipcd
@@ -17,13 +18,15 @@ depends="
 replaces="
 	lightdm
 	pipewire-media-session
-	udev-init-scripts-openrc
 "
 makedepends="devicepkg-dev"
 install="$pkgname.post-install"
 source="
+	$pkgname.post-install
+	$pkgname-downstream-quirks.post-install
 	deviceinfo
 	etc-conf.d-samsungipcd
+	etc-init.d-hciattach-ttySAC0
 	etc-init.d-udev-settle
 	etc-init.d-wlan0-up
 	etc-lightdm-lightdm.conf
@@ -38,6 +41,7 @@ subpackages="
 	$pkgname-kernel-downstream:kernel_downstream
 	$pkgname-kernel-mainline:kernel_mainline
 	$pkgname-nonfree-firmware:nonfree_firmware
+	$pkgname-downstream-quirks:downstream_quirks
 "
 
 # pulseaudio does not seem to work on this device. Will use pipewire-pulse instead.
@@ -50,7 +54,6 @@ build() {
 package() {
 	devicepkg_package $startdir $pkgname
 	install -Dm644 etc-conf.d-samsungipcd "$pkgdir"/etc/conf.d/samsungipcd
-	install -Dm755 etc-init.d-udev-settle "$pkgdir"/etc/init.d/udev-settle
 	install -Dm755 etc-init.d-wlan0-up "$pkgdir"/etc/init.d/wlan0-up
 	install -Dm644 etc-lightdm-lightdm.conf "$pkgdir"/etc/lightdm/lightdm.conf
 	install -Dm644 etc-NetworkManager-conf.d-swlan0-unmanaged.conf "$pkgdir"/etc/NetworkManager/conf.d/swlan0-unmanaged.conf
@@ -62,13 +65,13 @@ package() {
 }
 
 kernel_downstream() {
-	pkgdesc="Working: display, touchscreen, wifi, audio, cellular"
+	pkgdesc="Working: display, touchscreen, wifi, bluetooth, audio, cellular"
 	depends="linux-samsung-a6lte msm-fb-refresher pipewire pipewire-pulse"
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
 kernel_mainline() {
-	pkgdesc="Close-to-mainline WIP (display and touchscreen works)"
+	pkgdesc="Close-to-mainline WIP. Working: display, touchscreen, wifi, bluetooth"
 	depends="linux-postmarketos-exynos7870 mesa-dri-simpledrm"
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
@@ -79,9 +82,25 @@ nonfree_firmware() {
 	mkdir "$subpkgdir"
 }
 
+downstream_quirks() {
+	pkgdesc="Hacks to make the downstream kernel work"
+	depends="bluez-deprecated"
+	install_if="$pkgname-kernel-downstream"
+	replaces="bootmac udev-init-scripts-openrc"
+	install="$subpkgname.post-install"
+	install -Dm755 etc-init.d-udev-settle "$subpkgdir"/etc/init.d/udev-settle
+	install -Dm755 etc-init.d-hciattach-ttySAC0 "$subpkgdir"/etc/init.d/hciattach-ttySAC0
+	# we run bootmac ourselves and don't want it to trigger from the udev rule
+	# so remove the rule
+	install -Dm755 /dev/null "$subpkgdir"/usr/lib/udev/rules.d/90-bootmac.rules
+}
+
 sha512sums="
+e787dd30a667fd886a46bb0b670bd2771a8fc78fddc39bb86405fdda6024bc1211b82f89664b7cfc622adf2968b9cd09b0eb3d2ed607148bf3549dd783e6f752  device-samsung-a6lte.post-install
+9c0f939c97582d9c03fb62386527569b7f08dd6c8350c8ac6cf9f70d6d5da61d5fc95997b413c4fdb671379ab35caedb631b9af33c7a1e8f3388b3fb56d9b435  device-samsung-a6lte-downstream-quirks.post-install
 d5f9631b0753abc70b83dcba2eba1d7191bba979ab3ad404401abbe4f4326068d610b49d4482d16115ac9d8c36006753caf794aebed06413497f9f3c37bb9ffa  deviceinfo
 3e5bb764529010d2b6b1f2759a7799f665d140aebcee2dd63433e68cd4282e09b5d3b34fb7c21e737595b406501e7f02ece4592651c60e4c2b9419de4aedb438  etc-conf.d-samsungipcd
+5e23fd88baa4694ef48ec9590f948e11101be1e472c626f88011a182534a16520eb00c95a10ea77a773123892036188e2e0783540f3b8f8fe158da5e06568e02  etc-init.d-hciattach-ttySAC0
 203b832a7080d5f1351c5e024e444f9fe509f6e0fd4b376a60c7d73359b7e356863a4f15caf9b2e4e733dc44d2971722083e7c69ca94a012eb004b4b8ded9d09  etc-init.d-udev-settle
 7caddfe4659c969a33adcc27a760bc78d4f70ca4b7a4a5ec28a6411c12f3e6dd6d427b59f75976a737a5fe0f09806f8b6d65798f6358bd1e1954ad2a28fbfdc8  etc-init.d-wlan0-up
 861270c6bc0b2a3e6cd389c21c8c895e62de8cf8bec6fcf23c178f8cbaae855d62b0ee98692671ab4f518d84cb43dd0b2fe46f5a609f65af6a6c06e0fdbb6d0c  etc-lightdm-lightdm.conf

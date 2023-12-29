@@ -1,7 +1,7 @@
 # Kernel config based on defconfig
 
 pkgname=linux-postmarketos-exynos7870
-pkgver=6.3.9
+pkgver=6.6.8
 pkgrel=0
 pkgdesc="Close-to-mainline kernel for Samsung Galaxy A6 2018"
 arch="aarch64"
@@ -20,21 +20,23 @@ makedepends="
 	perl
 "
 
-_patches_repo="https://gitlab.com/sleirsgoevy/a6lte-mainline"
-_patches_repo_commit="a3d286c155a70e8075d611cffe17c579360b5d9b"
+_patches_owner="exynos7870-mainline"
+_patches_repo="mainline-patches"
+_patches_commit="79fdca89077a3798ffde3eabd85c0336dd76194d"
 _config="config-$_flavor.aarch64"
+_dts_list="exynos7870-a6lte"
 # Source
 source="
 	linux-$pkgver.tar.gz::https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.gz
 	$_config
-	patches-$_patches_repo_commit.tar.gz::$_patches_repo/-/archive/master/a6lte-mainline-$_patches_repo_commit.tar.gz
+	patches-$_patches_commit.tar.gz::https://gitlab.com/$_patches_owner/$_patches_repo/-/archive/$_patches_commit/$_patches_repo-$_patches_commit.tar.gz
 "
 builddir="$srcdir/linux-$pkgver"
 _outdir="."
 
 prepare() {
 	default_prepare
-	for i in "$srcdir"/a6lte-mainline-*/patches/*; do
+	for i in "$srcdir"/$_patches_repo-*/patches/*; do
 		patch -p1 < "$i"
 	done
 	cp "$srcdir"/$_config .config
@@ -46,9 +48,9 @@ build() {
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
 
 	# Build out-of-tree devicetrees
-	rm -f "$srcdir/"a6lte-mainline-*/*-minimal-dts.dts
-	for i in "$srcdir/"a6lte-mainline-*/*.dts; do
-		scripts/dtc/dtc "$i" -o "$_outdir/arch/$_carch/boot/dts/$(basename -s .dts "$i").dtb"
+	rm -f "$srcdir/"$_patches_repo-*/*-minimal-dts.dts
+	for i in $_dts_list; do
+		scripts/dtc/dtc "$srcdir/"$_patches_repo-*/$i.dts -o "$_outdir/arch/$_carch/boot/dts/$i.dtb"
 	done
 
 	# Master DTB (deviceinfo_bootimg_qcdt)
@@ -78,7 +80,7 @@ package() {
 }
 
 sha512sums="
-e5f98f9e60b3020f5177585e0c7812932afc06f788d572c122eb1cc3343f876a4cc8d99f06a7834aa8f8821b4340b9c475c15d07f5322e11d25622813306bf50  linux-6.3.9.tar.gz
-867187f7dab4a103b6cf015f7d231a1ea930646e8176c8b9a5f70b95d5fa793fa1321cfdd52d8b19e64a2f91c6d2f2c6e07228b59b454096566b318f17f33959  config-exynos7870.aarch64
-9e50e192402671ac003a4f1725b62cd4f3ad97909fdfb2f60f89498659b5f94850ccec7348d9fb32eee053f5a08657c17d1390229215671d9069107e52cec4cf  patches-a3d286c155a70e8075d611cffe17c579360b5d9b.tar.gz
+ce7ff29dd73f5302a9717c139c308b2c2bfc6d572cad52ff69e041f30d21eec039c59ff6c851bcb37e457daba95505e5a8be983ceb33000349f7ce2283d24bc7  linux-6.6.8.tar.gz
+e108b3516dd9212db0e50821e98f84d7c9dc26f9a012a15afeaa8f3c94e75632a2ef3d1db810756009cd5acfbdb53b24a014962773c82a7165b33c34271b5496  config-exynos7870.aarch64
+04f3a6d5777847915af792d42251a99260d14ae891afeebf45d5427f2f88231875e964814d6def165164fc2e04ad3ca18207820260d135324a4e4b2de1c12afd  patches-79fdca89077a3798ffde3eabd85c0336dd76194d.tar.gz
 "
