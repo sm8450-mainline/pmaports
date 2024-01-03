@@ -6,6 +6,8 @@ import glob
 import pytest
 import sys
 import os
+import re
+from pathlib import Path
 
 import add_pmbootstrap_to_import_path
 import pmb.parse
@@ -40,3 +42,9 @@ def test_aports_kernel(args):
                 if "pmb:kconfigcheck-community" not in apkbuild["options"]:
                     raise RuntimeError(f"{aport_name}: \"pmb:kconfigcheck-community\" missing in"
                                        " options= line, required for all community/main devices.")
+
+        # check for postmarketos-installkernel in makedepends when installing kernel with make
+        if bool(re.search("make z?install", Path(path).read_text(encoding="utf-8"))):
+            if "postmarketos-installkernel" not in apkbuild["makedepends"]:
+                raise RuntimeError(f"{aport_name}: \"postmarketos-installkernel\" missing in"
+                                   " makedepends, required when using make install/zinstall.")
