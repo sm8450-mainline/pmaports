@@ -1,0 +1,88 @@
+pkgname=firmware-xiaomi-diting
+pkgver=1
+pkgrel=0
+pkgdesc="Firmware for Xiaomi 12T Pro / Redmi K50 Ultra"
+subpackages="
+	$pkgname-adsp
+	$pkgname-cdsp
+	$pkgname-gpu
+	$pkgname-initramfs
+	$pkgname-ipa
+	$pkgname-modem
+	$pkgname-slpi
+	"
+url="https://git.mainlining.org/sm8450-mainline/firmware-xiaomi-diting"
+arch="aarch64"
+license="proprietary"
+options="!check !strip !archcheck !tracedeps pmb:cross-native"
+_commit="632ff548c9912875b2fbf1ca2ed615e2c37a8014"
+source="
+	$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz
+	30-initramfs-firmware.files
+"
+builddir="$srcdir/$pkgname"
+
+package() {
+	# parent package is empty
+	mkdir -p "$pkgdir"
+}
+
+adsp() {
+	pkgdesc="Xiaomi 12T Pro / Redmi K50 Ultra adsp firmware"
+
+	install -Dm644 "$builddir"/adsp* -t \
+		"$subpkgdir/lib/firmware/qcom/sm8450/diting"
+}
+
+cdsp() {
+	pkgdesc="Xiaomi 12T Pro / Redmi K50 Ultra cdsp firmware"
+
+	install -Dm644 "$builddir"/cdsp* -t \
+		"$subpkgdir/lib/firmware/qcom/sm8450/diting"
+}
+
+gpu() {
+	pkgdesc="Xiaomi 12T Pro / Redmi K50 Ultra gpu firmware"
+
+	install -Dm644 "$builddir"/a730* -t \
+		"$subpkgdir/lib/firmware/qcom/"
+	install -Dm644 "$builddir"/gmu_gen7* -t \
+		"$subpkgdir/lib/firmware/qcom/"
+}
+
+initramfs() {
+	pkgdesc="Xiaomi 12T Pro / Redmi K50 Ultra firmware to be included in the initramfs"
+
+	install -Dm644 "$srcdir/30-initramfs-firmware.files" -t \
+		"$subpkgdir"/usr/share/mkinitfs/files
+}
+
+ipa() {
+	pkgdesc="Xiaomi 12T Pro / Redmi K50 Ultra ipa firmware"
+
+	install -Dm644 "$builddir"/ipa_fws.* -t \
+		"$subpkgdir/lib/firmware/qcom/sm8450/diting"
+}
+
+modem() {
+	pkgdesc="Xiaomi 12T Pro / Redmi K50 Ultra modem firmware"
+
+	# cp because of the modem_pr directory
+	mkdir -p "$subpkgdir/lib/firmware/qcom/sm8450/diting"
+	cp -r "$builddir"/modem* \
+		"$subpkgdir/lib/firmware/qcom/sm8450/diting"
+	find "$subpkgdir/lib/firmware/qcom/sm8450/diting" \
+		-type f -exec chmod 0644 {} \;
+}
+
+slpi() {
+	pkgdesc="Xiaomi 12T Pro / Redmi K50 Ultra slpi firmware"
+
+	install -Dm644 "$builddir"/slpi* -t \
+		"$subpkgdir/lib/firmware/qcom/sm8450/diting"
+}
+
+sha512sums="
+ded9762900a63e279a7f713cc19d3ba5bda5e958db338c723f4d01d5480ee78cc8d9f75f87fbb3392fa02d0e872570cba981b16c32f0408e1921d0a7fddc9774  firmware-xiaomi-diting-632ff548c9912875b2fbf1ca2ed615e2c37a8014.tar.gz
+60c1d9f60ed66c55b64b035d2b8296c1d090048473d2f4a07136feca52d8b7ef829e02d7c37e58cb7196907c20160061def5fd2109de58b0d7981c9af345c5dc  30-initramfs-firmware.files
+"

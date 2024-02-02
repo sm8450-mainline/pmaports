@@ -1,0 +1,64 @@
+# Maintainer: Jens Reidel <adrian@travitia.xyz>
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-xiaomi-diting
+pkgdesc="Xiaomi 12T Pro / Redmi K50 Ultra"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	linux-postmarketos-qcom-sm8450
+	make-dynpart-mappings
+	mesa-dri-gallium
+	mkbootimg
+	postmarketos-base
+	postmarketos-update-kernel
+	qbootctl
+	qbootctl-openrc
+"
+makedepends="
+	devicepkg-dev
+"
+install="$pkgname.post-install $pkgname.post-upgrade"
+source="
+	deviceinfo
+"
+
+subpackages="
+	$pkgname-nonfree-firmware:nonfree_firmware
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+nonfree_firmware() {
+	pkgdesc="Firmware for GPU, Audio, Modem, WiFi, etc."
+	depends="
+		firmware-xiaomi-diting-adsp
+		firmware-xiaomi-diting-cdsp
+		firmware-xiaomi-diting-gpu
+		firmware-xiaomi-diting-initramfs
+		firmware-xiaomi-diting-ipa
+		firmware-xiaomi-diting-modem
+		firmware-xiaomi-diting-slpi
+		linux-firmware-qca
+		linux-firmware-qcom
+		msm-modem
+		msm-modem-uim-selection
+		pd-mapper
+		tqftpserv
+		"
+	install="$subpkgname.post-install"
+	mkdir "$subpkgdir"
+}
+
+sha512sums="
+8543ec5068b3786f629a9b286fcac5a980d8ed4770b7d9113adf2c60e9c5833434b628bc8e3e1222234d168a5cc811fc9b84725323ac3f3cbf70e47027389d84  deviceinfo
+"
