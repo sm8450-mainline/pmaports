@@ -1,7 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
-pkgname=device-samsung-cprime
-pkgdesc="Samsung Galaxy Core Prime"
-pkgver=4
+# Maintainer: Raymond Hackley <wonderfulShrineMaidenOfParadise@postmarketos.org>
+pkgname=device-samsung-rossa
+pkgdesc="Samsung Galaxy Core Prime LTE"
+pkgver=5
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -22,6 +23,11 @@ source="
 subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
 _pmb_select="soc-qcom-msm8916-rproc"
 
+# Backwards compatibility for old device package name
+_old_pkgname="device-samsung-cprime"
+replaces="$_old_pkgname"
+provides="$_old_pkgname=$pkgver-r$pkgrel"
+
 build() {
 	devicepkg_build $startdir $pkgname
 }
@@ -32,11 +38,13 @@ package() {
 
 nonfree_firmware() {
 	pkgdesc="GPU/WiFi/BT/Modem/Video firmware"
-	depends="firmware-qcom-adreno-a300 msm-firmware-loader firmware-samsung-cprime-wcnss-nv"
+	depends="firmware-qcom-adreno-a300 msm-firmware-loader firmware-samsung-rossa-wcnss-nv"
+	provides="$_old_pkgname-nonfree-firmware=$pkgver-r$pkgrel"
+
 	mkdir "$subpkgdir"
 }
 
 sha512sums="
-47bfdff2d3f8fdbcb01af2b5cc2c9c93ab251857a4f2095bcc370e0e2bccb2ba908aab971847a83bfb69a6e3f5235583c5d85add136e9cf84fcecd1e282eb897  deviceinfo
+3591d9b53a1ac6acef86636c78df246479c8b58d289b0d9c83e3dd91925381a56dae8fff4a5e507889a71c42783943febb9174b3ec50e1e80706f4e5b5e97fa1  deviceinfo
 9ead03b9e3edb69b238b25e5eecd477c99f03223237a549d124903dfb56a8be02df25ea43c8c308998d2250f9e586c8fef594007f43bc426dfb2d074a6270bba  modules-initfs
 "
