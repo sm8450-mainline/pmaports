@@ -1,0 +1,31 @@
+# Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: SeMi2309 <semi2309@gmail.com>
+pkgname=device-lenovo-karatep
+pkgdesc="Lenovo K6 Note"
+pkgver=0.1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	linux-lenovo-karatep
+	mkbootimg
+	postmarketos-base
+	mdss-fb-init-hack
+	msm-fb-refresher
+"
+makedepends="devicepkg-dev"
+source="deviceinfo"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+1b8c65c135a778ea332491599b6886fc5c54ec26ebe14925ccf8385d56f09af1999d1e7c0dec17169cb7f5e1c30c1a6f5a5a9815861b95f6d480a01985cdbdfb  deviceinfo
+"
