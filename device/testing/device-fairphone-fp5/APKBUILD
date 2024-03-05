@@ -3,24 +3,20 @@
 pkgname=device-fairphone-fp5
 pkgdesc="Fairphone 5"
 pkgver=3
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
-	bootmac
 	linux-postmarketos-qcom-sc7280
 	make-dynpart-mappings
-	mesa-vulkan-freedreno
 	mkbootimg
 	postmarketos-base
-	qbootctl
-	qbootctl-openrc
-	swclock-offset
+	soc-qcom-sc7280
+	soc-qcom-sc7280-qbootctl
 "
 makedepends="devicepkg-dev"
-install="$pkgname.post-install $pkgname.post-upgrade"
 source="
 	deviceinfo
 	modules-initfs
@@ -59,13 +55,7 @@ nonfree_firmware() {
 		firmware-fairphone-fp5-venus
 		firmware-fairphone-fp5-wpss
 		firmware-qcom-adreno-a660
-		linux-firmware-ath11k
-		msm-modem
-		msm-modem-uim-selection
-		pd-mapper
-		tqftpserv
 		"
-	install="$subpkgname.post-install"
 	mkdir "$subpkgdir"
 }
 
