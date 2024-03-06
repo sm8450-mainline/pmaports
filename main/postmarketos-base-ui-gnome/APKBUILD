@@ -1,23 +1,17 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=postmarketos-base-ui-gnome
 pkgver=3
-pkgrel=5
+pkgrel=6
 pkgdesc="Meta package for shared configuration for GNOME-based UIs"
 url="https://postmarketos.org"
 arch="noarch"
 license="GPL-3.0-or-later"
 depends="
-	apk-polkit-rs-openrc
 	dnsmasq
-	elogind
-	elogind-openrc
 	gcr-ssh-agent
 	gnome-bluetooth
 	iio-sensor-proxy
-	iio-sensor-proxy-openrc
 	modemmanager
-	modemmanager-openrc
-	polkit-elogind
 	postmarketos-artwork-wallpapers
 	postmarketos-base-ui
 	postmarketos-base-ui-networkmanager
@@ -29,11 +23,11 @@ depends="
 	xdg-user-dirs-gtk
 	xwayland
 	"
-install="$pkgname.post-install $pkgname.post-upgrade"
 source="
 	00_postmarketos-base-ui-gnome.gschema.override
 	"
 options="!check"
+subpackages="$pkgname-openrc $pkgname-systemd"
 
 _pmb_recommends="
 	evince
@@ -57,6 +51,28 @@ _pmb_recommends="
 package() {
 	install -Dm644 -t "$pkgdir"/usr/share/glib-2.0/schemas \
 		"$srcdir"/*.override
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="
+		apk-polkit-rs-openrc
+		elogind
+		elogind-openrc
+		iio-sensor-proxy-openrc
+		modemmanager-openrc
+		polkit-elogind
+	"
+
+	mkdir "$subpkgdir"
+}
+
+systemd() {
+	install_if="$pkgname=$pkgver-r$pkgrel systemd"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+
+	mkdir -p "$subpkgdir"
 }
 
 sha512sums="
