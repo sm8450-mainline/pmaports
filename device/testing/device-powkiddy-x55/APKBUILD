@@ -1,0 +1,47 @@
+# Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: Vitaliy Ognev <vitaliy.ognev@gmail.com>
+pkgname=device-powkiddy-x55
+pkgdesc="Powkiddy X55"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	linux-firmware-rtl_bt
+	linux-firmware-rtw88
+	linux-powkiddy-x55
+	postmarketos-base
+	u-boot-powkiddy-x55
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+	rtw88.conf
+	cage-ui-powkiddy-x55-rotate.sh
+"
+subpackages="$pkgname-cage-ui-addons:cage_ui_addons:noarch"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+
+	install -Dm644 "$srcdir"/rtw88.conf -t "$pkgdir"/etc/modprobe.d/
+}
+
+cage_ui_addons() {
+	pkgdesc="Cage-UI addons for powkiddy x55"
+	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-ui-cage"
+
+	install -Dm644 "$srcdir"/cage-ui-powkiddy-x55-rotate.sh -t "$subpkgdir"/etc/cage-ui/
+}
+
+sha512sums="
+71efac86cba6e1982b0557636b08c050da9adcc98ecfa8d91ad96843994434d0e09a0af8094f103c88314a07a20962cad58f05c38109b887399b84b324cb05f1  deviceinfo
+3765ba8da5c22965dbcbe199665d78af42187873b3dd0314b78f0e389e5703f40277f8b784566badbe21241a06074e3769a263ba5eb6099c01d6cda0bf024a75  rtw88.conf
+a22986cab90dd8641956e19f8139e1cb7f24a349cb2907cadb0001b0f5ff9be67b7fa717502f3b078ea8db62eb0fdb8de20e35495b4e4db69c0940dcac04996d  cage-ui-powkiddy-x55-rotate.sh
+"
