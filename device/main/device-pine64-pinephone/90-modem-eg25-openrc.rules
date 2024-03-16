@@ -1,0 +1,1 @@
+SUBSYSTEM=="usb", ACTION=="remove", ENV{DEVTYPE}=="usb_device", ENV{PRODUCT}="2c7c/125/318", RUN+="/sbin/rc-service eg25-manager restart"
