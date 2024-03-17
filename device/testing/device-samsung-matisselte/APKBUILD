@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-matisselte
 pkgdesc="Samsung Galaxy Tab 4 10.1 LTE"
-pkgver=1
-pkgrel=2
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -21,5 +21,5 @@ package() {
 
 
 sha512sums="
-8da1ac7d40d28d311e8f704f0d12985e593bff98272323e1c5e62744057aa707b7831a1a42aa73fa0d0423ba223a9d2849e8133e883af98ca7ff470f499da90a  deviceinfo
+0a484a9e6db6ae9c4efda71a40671f3f19ecb8ddf77f684126d5d0943b6be626a7e8b8566fd21abf7006b821f8b77ab55be039cd456795fb9e4b19b063288705  deviceinfo
 "

@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lg-lenok
 pkgdesc="LG G Watch R"
-pkgver=3
-pkgrel=3
+pkgver=4
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -68,7 +68,7 @@ nonfree_firmware() {
 
 sha512sums="
 a36ba9017df3b4be233783096c303abafa873dcdf50f6357b82f3c5526fd161a1914dafe143377cb5982955108b987890638b51911d0dd339172554e39a82d9f  90-android-touch-dev.rules
-259ee3aeb023d811aba1cfea23011c683cd7f062ed2bf841a1cf68850b035b49dcc91d846e1ddaaf48eeeeb3ef900ebe426212d3b6c0af349c33bd1cde544fe1  deviceinfo
+eefa3337f1f1f1b6e2e3b22b4321f368736fc3ef4ca38729d400c84d433a5d33b091298e7ac272b9005f5b564f2123448c8b436ed37e1d4be76a3f934818cc92  deviceinfo
 1fc5a7609d8f79f74f29d55ce492dc6b77bb247da1b79abc1361e5e9072b5283816cef02c4cc283300031d708733c5fdbed94f539ae1c16b1dca96bf4d512234  fb_fix.sh
 d29105805adcd79d4f73c2f2c4483a2c627dc7b70acb77f43d085742ef930407c9b1423f7020c34f38e8a09f40cadd991b9acae23e936c90d6a4c0900250da22  initfs-hook.sh
 81cf2c20d2efa0f71f18116efeda11ae4f18fee96ba998dc4d6a36205626dce496cb36711af5c4e3215578b174942e721290cfcff8db6fb1c998b90b7345244d  machine.conf

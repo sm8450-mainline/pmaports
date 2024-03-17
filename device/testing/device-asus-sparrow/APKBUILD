@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-asus-sparrow
 pkgdesc="ASUS ZenWatch 2"
-pkgver=1
-pkgrel=3
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -46,5 +46,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-8ab382e2c83d0d1014f9c77cf580f37c354329da9ec10511ce6db635489037cf62f941ce6ca00814548513fe13c490cdf18cc4731a0afa3ef26135351519ffe0  deviceinfo
+4602de536a4fdf37338302be92a6fbe2c5b7ac7c5a526c953e3d174ec54e276794854e3c1f1cd236f6314cc5fc26da932225d12be32c449ce999aa883a44952d  deviceinfo
 "
