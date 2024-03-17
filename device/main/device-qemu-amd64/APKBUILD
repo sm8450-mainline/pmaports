@@ -1,9 +1,9 @@
 # Reference: <https://postmarketos.org/devicepkg>
 # Maintainer: Minecrell <minecrell@minecrell.net>
-# Co-Maintainer: Daniele Debernardi <drebrez@gmail.com>
+# Co-Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=device-qemu-amd64
 pkgver=6
-pkgrel=1
+pkgrel=2
 pkgdesc="Simulated device in QEMU (x86_64)"
 url="https://postmarketos.org"
 arch="x86_64"
