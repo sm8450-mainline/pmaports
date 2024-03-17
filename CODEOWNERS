@@ -1,4 +1,5 @@
 # https://docs.gitlab.com/ee/user/project/code_owners.html
+# Put groups like @sdm845-mainline into test_device.py:gitlab_groups.
 # Order lines alphabetically!
 
 device/*/*-amlogic-s905*/			@vitali64yt

@@ -1,15 +1,25 @@
 #!/usr/bin/env python3
-# Copyright 2021 Oliver Smith
+# Copyright 2024 Oliver Smith
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+import fnmatch
 import glob
+import os
 import pytest
 import sys
-import os
 
 import add_pmbootstrap_to_import_path
 import pmb.parse
 import pmb.parse._apkbuild
+
+# Cache for codeowners_parse
+codeowners_parsed = {}
+
+# Don't complain if these nicknames are the only maintainers of an APKBUILD,
+# because they are actually a group of people
+gitlab_groups = [
+    "@sdm845-mainline",
+]
 
 
 def device_dependency_check(apkbuild, path):
@@ -100,23 +110,84 @@ def test_aports_device_kernel(args):
                                path)
 
 
+def codeowners_parse(args):
+    global codeowners_parsed
+
+    pattern_prev = None
+
+    with open(f"{args.aports}/CODEOWNERS") as h:
+        for line in h:
+            line = line.rstrip()
+            if not line or line.startswith("#"):
+                continue
+
+            pattern_nicks = line.split()
+            assert len(pattern_nicks) > 1, f"CODEOWNERS line without nicks: {line}"
+
+            pattern = pattern_nicks[0]
+            if pattern.endswith("/"):
+                pattern += "*"
+
+            nicks = []
+            for word in pattern_nicks[1:]:
+                if word.startswith("@"):
+                    nicks += [word]
+            codeowners_parsed[pattern] = nicks
+
+            if pattern_prev:
+                assert pattern_prev <= pattern, "CODEOWNERS: please order entries alphabetically"
+            pattern_prev = pattern
+
+
+def require_enough_codeowners_entries(args, path, maintainers):
+    """
+    :param path: full path to an APKBUILD (e.g. /home/user/…/APKBUILD)
+    :param maintainers: list of one or more maintainers
+    """
+    path = os.path.relpath(path, args.aports)
+
+    nicks = set()
+    for pattern, pattern_nicks in codeowners_parsed.items():
+        if fnmatch.fnmatch(path, pattern):
+            for nick in pattern_nicks:
+                nicks.add(nick)
+
+    print(f"{path}:")
+    print(f"  APKBUILD: {maintainers}")
+    print(f"  CODEOWNERS: {nicks}")
+
+    if len(nicks) < len(maintainers):
+        for nick in nicks:
+            if nick in gitlab_groups:
+                print(f"  -> {nick} is a group")
+                return
+
+    assert len(nicks) >= len(maintainers), \
+        f"{path}: make sure that each maintainer is listed in CODEOWNERS!"
+
+
 def test_aports_maintained(args):
     """
     Ensure that aports in /device/{main,community} have "Maintainer:" and
-    "Co-Maintainer:" (only required for main) listed in their APKBUILDs.
+    "Co-Maintainer:" (only required for main) listed in their APKBUILDs. Also
+    check that at least as many are listed in CODEOWNERS.
     """
+    codeowners_parse(args)
+
     for path in glob.iglob(f"{args.aports}/device/main/*/APKBUILD"):
         if '/firmware-' in path:
             continue
         maintainers = pmb.parse._apkbuild.maintainers(path)
         assert maintainers and len(maintainers) >= 2, \
             f"{path} in main needs at least 1 Maintainer and 1 Co-Maintainer"
+        require_enough_codeowners_entries(args, path, maintainers)
 
     for path in glob.iglob(f"{args.aports}/device/community/*/APKBUILD"):
         if '/firmware-' in path:
             continue
         maintainers = pmb.parse._apkbuild.maintainers(path)
         assert maintainers, f"{path} in community needs at least 1 Maintainer"
+        require_enough_codeowners_entries(args, path, maintainers)
 
 
 def test_aports_unmaintained(args):
