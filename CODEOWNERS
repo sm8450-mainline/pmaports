@@ -2,18 +2,51 @@
 # Order lines alphabetically!
 
 device/*/*-amlogic-s905*/			@vitali64yt
+device/*/*-arrow-db410c/			@Minecrell
+device/*/*-asus-me176c/				@Minecrell
+device/*/*-bq-paella/				@Minecrell
+device/*/*-google-gru/				@jenneron
+device/*/*-google-kukui/			@jenneron @binarycraft
+device/*/*-google-oak/				@jenneron @adamthiede
+device/*/*-google-trogdor/			@jenneron
+device/*/*-google-veyron/			@jenneron
+device/*/*-google-x64cros/			@jenneron @JustSoup321 @alpernebbi
 device/*/*-htc-golfu/				@Newbyte
 device/*/*-htc-m8qlul/				@Newbyte
 device/*/*-lenovo-21bx/				@craftyguy
-device/*/*-lenovo-a6000/			@jenneron
-device/*/*-lenovo-a6010/			@jenneron
-device/*/*-pine64-pinephone/			@craftyguy @milesalan @bshah @proycon @anjandev @StacyHarper @Arnavion
-device/*/*-purism-librem5/			@craftyguy @bshah
+device/*/*-lenovo-a6000/			@jenneron @Minecrell
+device/*/*-lenovo-a6010/			@jenneron @Minecrell
+device/*/*-motorola-harpia/			@Minecrell
+device/*/*-nokia-n900/				@sicelo @Danct12
+device/*/*-pine64-pinebookpro/			@QC8086
+device/*/*-pine64-pinephone/			@craftyguy @milesalan @proycon @anjandev @StacyHarper @Arnavion @PsychoGame
+device/*/*-pine64-pinephonepro/			@PsychoGame
+device/*/*-pine64-rockpro64/			@PureTryOut
+device/*/*-purism-librem5/			@craftyguy @alistair23 @Newbyte
+device/*/*-qcom-msm8916/			@Minecrell @TravMurav
 device/*/*-qcom-sdm845/				@sdm845-mainline
+device/*/*-qcom-sm6350/				@z3ntu
+device/*/*-samsung-a3/				@Mis012 @TravMurav @Minecrell
+device/*/*-samsung-a5/				@Minecrell @minlexx
+device/*/*-samsung-e7/				@wonderfulShrineMaidenOfParadise
+device/*/*-samsung-espresso10/			@MightyM17
+device/*/*-samsung-espresso7/			@MightyM17 @antoni.aloytorrens
+device/*/*-samsung-grandmax/			@wonderfulShrineMaidenOfParadise
+device/*/*-samsung-gt510/			@TravMurav
+device/*/*-samsung-gt58/			@TravMurav
+device/*/*-samsung-serranove/			@Minecrell
 device/*/*-videostrong-kii-pro/			@vitali64yt
+device/*/*-wileyfox-crackling/			@TravMurav @Minecrell
 device/*/*-xiaomi-beryllium/			@joelselvaraj
-device/*/alsa-ucm-conf-google-gru/		@jenneron
-device/*/alsa-ucm-conf-google-kukui/		@jenneron @binarycraft
+device/*/*-xiaomi-daisy/			@joelselvaraj @alikates
+device/*/*-xiaomi-markw/			@vipaoL
+device/*/*-xiaomi-mido/				@barni2000
+device/*/*-xiaomi-scorpio/			@Tooniis
+device/*/*-xiaomi-tissot/			@jiaxyga @barni2000
+device/*/*-xiaomi-vince/			@M0Rf30
+device/*/*-xiaomi-wt88047/			@Minecrell
+device/*/*-xiaomi-ysl/				@barni2000
+device/*/device-fairphone-*/			@z3ntu
 device/*/device-google-nyan-big/		@jenneron
 device/*/device-google-nyan-blaze/		@jenneron
 device/*/device-google-peach-pi/		@jenneron
@@ -23,14 +56,19 @@ device/*/device-huawei-plank/			@gtrxAC
 device/*/device-lg-judyln/			@Newbyte
 device/*/device-lg-judyp/			@jenneron
 device/*/device-microsoft-surface-rt/		@jenneron
+device/*/device-nvidia-tegra-armv7/		@clamor95 @okias @mschwalm @nokun
 device/*/device-odroid-xu4/			@Grimler
 device/*/device-oneplus-enchilada/		@calebccff
 device/*/device-oneplus-fajita/			@calebccff
+device/*/device-qemu-aarch64/			@Minecrell @ollieparanoid
+device/*/device-qemu-amd64/			@Minecrell @ollieparanoid
+device/*/device-qemu-riscv64/			@Minecrell @z3ntu
 device/*/device-samsung-chagallwifi/		@Grimler
 device/*/device-samsung-coreprimevelte/		@legolivesmatter @balejk
 device/*/device-samsung-j5y17lte/	@andrisas
 device/*/device-samsung-klimtlte/		@Grimler
 device/*/device-samsung-m0/			@Newbyte
+device/*/device-samsung-manta/			@jenneron @alexmrqt
 device/*/device-shift-axolotl/			@amartinz @calebccff @dylanvanassche
 device/*/firmware-google-veyron-brcm/		@jenneron
 device/*/firmware-odroid-xu4/			@Grimler
@@ -39,22 +77,36 @@ device/*/firmware-powervr-gx6250/		@jenneron
 device/*/linux-google-nyan/			@jenneron
 device/*/linux-google-veyron/			@jenneron
 device/*/linux-huawei-plank/			@gtrxAC
-device/*/linux-postmarketos-allwinner/		@Arnavion
+device/*/linux-postmarketos-allwinner/		@Arnavion @PsychoGame
 device/*/linux-postmarketos-amlogic/		@vitali64yt @exkc
-device/*/linux-postmarketos-exynos4/		@Newbyte
+device/*/linux-postmarketos-exynos4/		@Newbyte @ThiagaoPlusPlus
 device/*/linux-postmarketos-exynos5/		@jenneron @Grimler
 device/*/linux-postmarketos-grate/		@clamor95 @jenneron
-device/*/linux-postmarketos-mediatek-mt8173/	@jenneron
+device/*/linux-postmarketos-mediatek-mt8173/	@jenneron @adamthiede
 device/*/linux-postmarketos-mediatek-mt8183/	@jenneron @binarycraft
+device/*/linux-postmarketos-omap/		@MightyM17 @Sicelo
 device/*/linux-postmarketos-qcom-msm8939/	@Newbyte
+device/*/linux-postmarketos-qcom-msm8953/	@M0Rf30 @Ultra-azu
+device/*/linux-postmarketos-qcom-msm8996/	@Tooniis
+device/*/linux-postmarketos-qcom-sc7180/	@jenneron
+device/*/linux-postmarketos-rockchip/		@QC8086
 device/*/linux-postmarketos-stericsson/		@Newbyte
 device/*/linux-samsung-chagallwifi/		@Grimler
 device/*/linux-samsung-coreprimevelte/		@legolivesmatter @balejk
 device/*/linux-samsung-j5y17lte/	@andrisas
 device/*/linux-samsung-klimtlte/		@Grimler
+device/*/oem-amd/				@craftyguy
+device/*/oem-intel/				@craftyguy
 device/*/soc-mediatek-mt8183/			@jenneron
-device/*/u-boot-librem5/			@craftyguy @bshah
-device/*/u-boot-pinephone/			@Arnavion
+device/*/soc-qcom-msm8953/			@barni2000
+device/*/soc-qcom-msm8996/			@Tooniis
+device/*/soc-qcom-sc7180/			@jenneron
+device/*/soc-rockchip-rk3399/			@jenneron
+device/*/soc-samsung-exynos4412/		@Newbyte
+device/*/u-boot-librem5/			@craftyguy @alistair23 @Newbyte
+device/*/u-boot-pinebookpro/			@QC8086
+device/*/u-boot-pinephone/			@Arnavion @PsychoGame
+device/*/wl1251-cal/				@Danct12
 main/postmarketos-ui-plasma-mobile/		@bshah
 main/postmarketos-update-depthcharge-kernel/	@jenneron
 main/shutdown-clear-rtc-wakealarm/		@Arnavion
