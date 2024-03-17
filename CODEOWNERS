@@ -1,61 +1,61 @@
 # https://docs.gitlab.com/ee/user/project/code_owners.html
+# Order lines alphabetically!
 
+device/*/*-amlogic-s905*/			@vitali64yt
 device/*/*-htc-golfu/				@Newbyte
-device/*/*-pine64-pinephone/			@craftyguy @milesalan @bshah @proycon @anjandev @StacyHarper @Arnavion
 device/*/*-htc-m8qlul/				@Newbyte
+device/*/*-lenovo-21bx/				@craftyguy
+device/*/*-lenovo-a6000/			@jenneron
+device/*/*-lenovo-a6010/			@jenneron
+device/*/*-pine64-pinephone/			@craftyguy @milesalan @bshah @proycon @anjandev @StacyHarper @Arnavion
 device/*/*-purism-librem5/			@craftyguy @bshah
-device/*/device-lg-judyln/			@Newbyte
-device/*/device-samsung-m0/			@Newbyte
-device/*/linux-postmarketos-exynos4/		@Newbyte
-device/*/linux-postmarketos-qcom-msm8939/	@Newbyte
-device/*/linux-postmarketos-stericsson/		@Newbyte
 device/*/*-qcom-sdm845/				@sdm845-mainline
+device/*/*-videostrong-kii-pro/			@vitali64yt
 device/*/*-xiaomi-beryllium/			@joelselvaraj
+device/*/alsa-ucm-conf-google-gru/		@jenneron
+device/*/alsa-ucm-conf-google-kukui/		@jenneron @binarycraft
+device/*/device-google-nyan-big/		@jenneron
+device/*/device-google-nyan-blaze/		@jenneron
+device/*/device-google-peach-pi/		@jenneron
+device/*/device-google-peach-pit/		@jenneron
+device/*/device-google-snow/			@jenneron
+device/*/device-huawei-plank/			@gtrxAC
+device/*/device-lg-judyln/			@Newbyte
+device/*/device-lg-judyp/			@jenneron
+device/*/device-microsoft-surface-rt/		@jenneron
+device/*/device-odroid-xu4/			@Grimler
 device/*/device-oneplus-enchilada/		@calebccff
 device/*/device-oneplus-fajita/			@calebccff
-device/*/firmware-oneplus-sdm845/		@calebccff
+device/*/device-samsung-chagallwifi/		@Grimler
+device/*/device-samsung-coreprimevelte/		@legolivesmatter @balejk
+device/*/device-samsung-j5y17lte/	@andrisas
+device/*/device-samsung-klimtlte/		@Grimler
+device/*/device-samsung-m0/			@Newbyte
 device/*/device-shift-axolotl/			@amartinz @calebccff @dylanvanassche
-device/*/*-lenovo-21bx/				@craftyguy
-device/*/*-lenovo-a6010/			@jenneron
-device/*/*-lenovo-a6000/			@jenneron
-device/*/device-microsoft-surface-rt/		@jenneron
-device/*/device-google-nyan-big/		@jenneron
-device/*/device-google-peach-pi/		@jenneron
-device/*/linux-google-veyron/			@jenneron
-device/*/linux-postmarketos-exynos5/		@jenneron @Grimler
-device/*/soc-mediatek-mt8183/			@jenneron
+device/*/firmware-google-veyron-brcm/		@jenneron
+device/*/firmware-odroid-xu4/			@Grimler
+device/*/firmware-oneplus-sdm845/		@calebccff
+device/*/firmware-powervr-gx6250/		@jenneron
 device/*/linux-google-nyan/			@jenneron
+device/*/linux-google-veyron/			@jenneron
+device/*/linux-huawei-plank/			@gtrxAC
+device/*/linux-postmarketos-allwinner/		@Arnavion
+device/*/linux-postmarketos-amlogic/		@vitali64yt @exkc
+device/*/linux-postmarketos-exynos4/		@Newbyte
+device/*/linux-postmarketos-exynos5/		@jenneron @Grimler
+device/*/linux-postmarketos-grate/		@clamor95 @jenneron
 device/*/linux-postmarketos-mediatek-mt8173/	@jenneron
 device/*/linux-postmarketos-mediatek-mt8183/	@jenneron @binarycraft
-device/*/device-google-nyan-blaze/		@jenneron
-device/*/firmware-powervr-gx6250/		@jenneron
-device/*/device-google-snow/			@jenneron
-device/*/firmware-google-veyron-brcm/		@jenneron
-device/*/device-google-peach-pit/		@jenneron
-device/*/device-lg-judyp/			@jenneron
-device/*/linux-postmarketos-grate/		@clamor95 @jenneron
-device/*/device-samsung-chagallwifi/		@Grimler
-device/*/device-odroid-xu4/			@Grimler
-device/*/device-samsung-klimtlte/		@Grimler
-device/*/linux-samsung-klimtlte/		@Grimler
-device/*/firmware-odroid-xu4/			@Grimler
+device/*/linux-postmarketos-qcom-msm8939/	@Newbyte
+device/*/linux-postmarketos-stericsson/		@Newbyte
 device/*/linux-samsung-chagallwifi/		@Grimler
-device/*/device-huawei-plank/			@gtrxAC
-device/*/linux-huawei-plank/			@gtrxAC
-device/*/device-samsung-coreprimevelte/		@legolivesmatter @balejk
 device/*/linux-samsung-coreprimevelte/		@legolivesmatter @balejk
-device/*/linux-postmarketos-allwinner/		@Arnavion
-device/*/u-boot-pinephone/			@Arnavion
-device/*/device-samsung-j5y17lte/	@andrisas
 device/*/linux-samsung-j5y17lte/	@andrisas
-
-main/postmarketos-update-depthcharge-kernel/	@jenneron
-main/postmarketos-ui-plasma-mobile/		@bshah
-main/ttyescape/					@calebccff
-main/shutdown-clear-rtc-wakealarm/		@Arnavion
+device/*/linux-samsung-klimtlte/		@Grimler
+device/*/soc-mediatek-mt8183/			@jenneron
 device/*/u-boot-librem5/			@craftyguy @bshah
-device/*/alsa-ucm-conf-google-kukui/		@jenneron @binarycraft
-device/*/alsa-ucm-conf-google-gru/		@jenneron
-device/*/*-videostrong-kii-pro/			@vitali64yt
-device/*/*-amlogic-s905*/			@vitali64yt
-device/*/linux-postmarketos-amlogic/		@vitali64yt @exkc
+device/*/u-boot-pinephone/			@Arnavion
+main/postmarketos-ui-plasma-mobile/		@bshah
+main/postmarketos-update-depthcharge-kernel/	@jenneron
+main/shutdown-clear-rtc-wakealarm/		@Arnavion
+main/ttyescape/					@calebccff
