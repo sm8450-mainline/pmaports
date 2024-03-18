@@ -1,4 +1,5 @@
 # Maintainer: Svyatoslav Ryhel <clamor95@gmail.com>
+# Co-Maintainer: Jenneron <jenneron@protonmail.com>
 
 pkgname=linux-postmarketos-grate
 pkgver=6.6.22
