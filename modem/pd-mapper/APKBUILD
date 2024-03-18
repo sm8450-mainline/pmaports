@@ -1,7 +1,7 @@
-# Maintainer: Dolphin von Chips <DoIphinChips@protonmail.com>
+# Maintainer: Luca Weiss <luca@z3ntu.xyz>
 pkgname=pd-mapper
 pkgver=0_git20201110
-pkgrel=1
+pkgrel=2
 _commit="d7fe25fa6eff2e62cf264544adee9e8ca830dc78"
 pkgdesc="Qualcomm PD mapper"
 url="https://github.com/andersson/pd-mapper"

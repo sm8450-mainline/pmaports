@@ -1,7 +1,7 @@
-# Maintainer: Dolphin von Chips <DoIphinChips@protonmail.com>
+# Maintainer: Luca Weiss <luca@z3ntu.xyz>
 pkgname=tqftpserv
 pkgver=0_git20240122
-pkgrel=0
+pkgrel=1
 _commit="289214a5d152c0f2fcd57fcad274d037480d220b"
 pkgdesc="Trivial File Transfer Protocol server over AF_QIPCRTR"
 url="https://github.com/andersson/tqftpserv"
