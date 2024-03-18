@@ -9,9 +9,10 @@ license="MIT"
 arch="armv7"
 # pmb:strict: avoid grub-related install error during build with pmbootstrap
 options="!check !archcheck pmb:strict"
-depends="postmarketos-base
-	linux-postmarketos-grate
+depends="
 	alsa-ucm-conf
+	linux-postmarketos-grate
+	postmarketos-base
 "
 makedepends="devicepkg-dev grub grub-efi"
 subpackages="
