@@ -17,5 +17,6 @@ nls_iso8859_1
 nls_utf8
 usb_f_rndis
 usb_f_ncm
+usb-storage
 vfat
 xts
