@@ -56,7 +56,7 @@ device/*/device-google-snow/			@jenneron
 device/*/device-huawei-plank/			@gtrxAC
 device/*/device-lg-judyln/			@Newbyte
 device/*/device-lg-judyp/			@jenneron
-device/*/device-microsoft-surface-rt/		@jenneron
+device/*/device-microsoft-surface-rt/		@jenneron @jethrob
 device/*/device-nvidia-tegra-armv7/		@clamor95 @okias @mschwalm @nokun
 device/*/device-odroid-xu4/			@Grimler
 device/*/device-oneplus-enchilada/		@calebccff

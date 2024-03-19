@@ -1,5 +1,6 @@
 # Reference: <https://postmarketos.org/devicepkg>
 # Maintainer: Jenneron <jenneron@protonmail.com>
+# Co-Maintainer: Jethrob <jeybee@hotmail.com>
 pkgname=device-microsoft-surface-rt
 pkgdesc="Microsoft Surface RT"
 pkgver=7
