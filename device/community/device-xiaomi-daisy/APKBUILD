@@ -3,7 +3,7 @@
 pkgname=device-xiaomi-daisy
 pkgdesc="Xiaomi Mi A2 Lite"
 pkgver=9
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -45,6 +45,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-8c5980c1da9e5bc91f11bb8056ac9a225cb84a90a42a964dc0dc2966220c105683081055fdcb1caa8c198019d8373d8c5fe27155429c17814d34075d5f961aa4  deviceinfo
+0982ea07d3a048da27a10dd41efacf638d08be35768b587c31874d21654c4e5ba99096729c0f14d18e6f4447ce277dd1cf986162462654eb01c916cc458503e7  deviceinfo
 7202f0a55dfe43348940412fc38e59c855594b070db8742419feadb2299086d5810107201a228b7137b7cc7a97c94afac95d81c0cd65c52f31dbcb619b0a4279  modules-initfs
 "

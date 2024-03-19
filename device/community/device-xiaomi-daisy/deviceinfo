@@ -20,6 +20,8 @@ deviceinfo_external_storage="true"
 deviceinfo_screen_width="1080"
 deviceinfo_screen_height="2280"
 deviceinfo_swap_size_recommended="1024"
+deviceinfo_dev_touchscreen="/dev/input/event1"
+deviceinfo_dev_touchscreen_calibration="4.00 0.00 0.00 0.00 1.80 0.00"
 
 # Bootloader related
 deviceinfo_flash_method="fastboot"
