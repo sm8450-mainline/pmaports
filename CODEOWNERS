@@ -82,7 +82,7 @@ device/*/linux-postmarketos-allwinner/		@Arnavion @PsychoGame
 device/*/linux-postmarketos-amlogic/		@vitali64yt @exkc
 device/*/linux-postmarketos-exynos4/		@Newbyte @ThiagaoPlusPlus
 device/*/linux-postmarketos-exynos5/		@jenneron @Grimler
-device/*/linux-postmarketos-grate/		@clamor95 @jenneron
+device/*/linux-postmarketos-grate/		@clamor95 @jenneron @jethrob
 device/*/linux-postmarketos-mediatek-mt8173/	@jenneron @adamthiede
 device/*/linux-postmarketos-mediatek-mt8183/	@jenneron @binarycraft
 device/*/linux-postmarketos-omap/		@MightyM17 @Sicelo
