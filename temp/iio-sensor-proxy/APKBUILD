@@ -2,10 +2,10 @@
 
 pkgname=iio-sensor-proxy
 pkgver=9999
-pkgrel=0
+pkgrel=1
 pkgdesc="IIO sensors to D-Bus proxy"
 url="https://gitlab.freedesktop.org/hadess/iio-sensor-proxy"
-arch="all"
+arch="all !armv7"
 license="GPL-2.0-or-later"
 depends="dbus"
 makedepends="
