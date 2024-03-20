@@ -2,8 +2,8 @@
 # Maintainer: Vitaliy Ognev <vitaliy.ognev@gmail.com>
 pkgname=device-powkiddy-x55
 pkgdesc="Powkiddy X55"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -17,9 +17,10 @@ depends="
 "
 makedepends="devicepkg-dev"
 source="
+	00-bt-firmware.files
+	cage-ui-powkiddy-x55-rotate.sh
 	deviceinfo
 	rtw88.conf
-	cage-ui-powkiddy-x55-rotate.sh
 "
 subpackages="$pkgname-cage-ui-addons:cage_ui_addons:noarch"
 _pmb_recommends="powkiddy-x55-mapper"
@@ -32,6 +33,11 @@ package() {
 	devicepkg_package $startdir $pkgname
 
 	install -Dm644 "$srcdir"/rtw88.conf -t "$pkgdir"/etc/modprobe.d/
+	# See https://lore.kernel.org/lkml/CA+fyA4SqT4jgpWeq_ipp7i3ZM7s=gQkSdtsPw6x+zeJdGcXvqw@mail.gmail.com/.
+	# When both BT(UART)/WiFi(SDIO) drivers modprobed simultaneously, seems there's a kind of misbehaviour,
+	# probably related to the fact that both BT/WiFi provided by same chip but accessed via different interfaces.
+	# Making btrtl compiled into kernel and providing firmware in initramfs seems to work around the problem.
+	install -Dm644 "$srcdir"/00-bt-firmware.files -t "$pkgdir"/etc/mkinitfs/files/
 }
 
 cage_ui_addons() {
@@ -42,7 +48,8 @@ cage_ui_addons() {
 }
 
 sha512sums="
+6ef832211ba030b0e4c94699bb0b1594166ef26cc8efc3434ff962b28451dbf9e5717e887f4b6cff07cbff32f4c7b4e282bb70a72f2460a564d22b64c3702aa4  00-bt-firmware.files
+a22986cab90dd8641956e19f8139e1cb7f24a349cb2907cadb0001b0f5ff9be67b7fa717502f3b078ea8db62eb0fdb8de20e35495b4e4db69c0940dcac04996d  cage-ui-powkiddy-x55-rotate.sh
 71efac86cba6e1982b0557636b08c050da9adcc98ecfa8d91ad96843994434d0e09a0af8094f103c88314a07a20962cad58f05c38109b887399b84b324cb05f1  deviceinfo
 3765ba8da5c22965dbcbe199665d78af42187873b3dd0314b78f0e389e5703f40277f8b784566badbe21241a06074e3769a263ba5eb6099c01d6cda0bf024a75  rtw88.conf
-a22986cab90dd8641956e19f8139e1cb7f24a349cb2907cadb0001b0f5ff9be67b7fa717502f3b078ea8db62eb0fdb8de20e35495b4e4db69c0940dcac04996d  cage-ui-powkiddy-x55-rotate.sh
 "

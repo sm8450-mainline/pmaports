@@ -1,0 +1,5 @@
+# bluetooth firmware
+/lib/firmware/rtl_bt/rtl8821cs_fw.bin
+# former is a symlink to latter
+/lib/firmware/rtl_bt/rtl8821cs_config.bin
+/lib/firmware/rtl_bt/rtl8761b_config.bin
