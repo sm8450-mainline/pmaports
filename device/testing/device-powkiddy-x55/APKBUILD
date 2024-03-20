@@ -3,7 +3,7 @@
 pkgname=device-powkiddy-x55
 pkgdesc="Powkiddy X55"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -22,6 +22,7 @@ source="
 	cage-ui-powkiddy-x55-rotate.sh
 "
 subpackages="$pkgname-cage-ui-addons:cage_ui_addons:noarch"
+_pmb_recommends="powkiddy-x55-mapper"
 
 build() {
 	devicepkg_build $startdir $pkgname
