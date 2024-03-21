@@ -1,0 +1,41 @@
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-postmarketos-trailblazer
+pkgdesc="postmarketOS Trailblazer generic ARM64"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	linux-next
+	postmarketos-base
+	soc-qcom-sdm845-qbootctl
+	linux-firmware-qcom
+	linux-firmware-ath10k
+	rmtfs
+	pd-mapper
+	tqftpserv
+	bootmac
+	systemd-boot
+	firmware-siliconlabs-rs9116
+	firmware-brcm43752
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+	modules-initfs
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+3ca2143e948f3070df9270918cd5a27259bd42c1bfe42f98c3406364496acaf878562d5b311856c9a4bb842ed9cdb8620754d092d225397f2b0f22e894c8ddf7  deviceinfo
+fcd0ebe399c2a30d20a66cc8186b29d3cdb9e34346c295a3cdd930b41a2ee586acfcd5cd24b7c6af680b184e8a3bc56b6f04c9e9d9b2343543787fb8fd9a9087  modules-initfs
+"
