@@ -50,14 +50,14 @@ echo_libinput_calibration()
 	# As the "dc" command from "bc" is incompatible to the one provided by busybox,
 	# this calls busybox explicitly.
 	# shellcheck disable=SC2154
-	x_offset=$(busybox dc "$3" "$deviceinfo_screen_width" / p)
+	x_offset=$(busybox dc -e "$3 $deviceinfo_screen_width / p")
 	# shellcheck disable=SC2154
-	y_offset=$(busybox dc "$6" "$deviceinfo_screen_height" / p)
+	y_offset=$(busybox dc -e "$6 $deviceinfo_screen_height / p")
 	# Check if we have got results from dc. If there was an error, dc should have
 	# printed an error message that hopefully gives the user a hint why it failed.
 	if [ -z "$x_offset" ] || [ -z "$y_offset" ]; then
 		echo "WARNING: Calculating the offsets for the calibration matrix for x11/libinput failed." >&2
-		echo "No calibration matrix for x11/libinput will be generated." >&2
+		echo "WARNING: No calibration matrix for x11/libinput will be generated." >&2
 		return
 	fi
 
