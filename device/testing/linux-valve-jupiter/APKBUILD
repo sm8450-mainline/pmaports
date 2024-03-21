@@ -1,6 +1,6 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=linux-valve-jupiter
-pkgver=6.8_rc7
+pkgver=6.8
 pkgrel=0
 pkgdesc="Valve Steam Deck kernel fork"
 arch="x86_64"
@@ -85,8 +85,8 @@ package() {
 }
 
 sha512sums="
-14dfe21da64bd625548f3439a878b46010c7c9c0569ca320dacc2219c297e2c1a8e3cb95c7c497b1177d3e4f6f6ea94b2a622cf75db86fd4a8edeccdfdeed42a  linux-6.8-rc7.tar.gz
-23e8144e337e1ec25ffdd90458e0f55760913ff3489bd4e019df9c5e39fdc80c87c23ee192aef52d3f7301b759a77b383e09fce75cf281149512fc8370fb6faf  config-valve-jupiter.x86_64
+17991b3e0cd69e910416e8b11ba48919a4ee179bf1bb8a66516897218f1bafb297754777ebee77e75f6f844a6ec79a748b10371e33ae5374a4f4accab6c6b8f7  linux-6.8.tar.gz
+cee50091682acbaf1461672ab221a6f629ab03dde7c3fbba448349e1b396e507d776e3a2047998b2fc1775cb81f10545f0053ebb4d9da84b83aa4554aeebdc96  config-valve-jupiter.x86_64
 fe6d4f0b8b86134b62a1f040ef7e8090702b1933b909a095217180160b4dd87d1d2cd7da41b1578f4577dd423e6dbca40d74f8f2d21c274074b19f612de3f343  0001-ACPICA-Limit-error-message-flood-caused-by-firmware-.patch
 ff6e833025d8df063d5de4db08376bc70892a5a07f98cfcec665e75e85862b4a583ad3685b056af9e623cd45458921d102c8fe94d2cad58385129e1f01308da1  0002-drivers-video-backlight-Disable-backlight-notificati.patch
 35fed97f0bae352f2cfb53fe301c24e893c5d04120fdcd8b1390582c489517f8f11d01f98cacbe3f4a51ee7156e8eab6197a1cdd96be3d70d5ad40d5e0992494  0003-iio-light-ltrf216a-Return-floating-point-values.patch
