@@ -92,6 +92,7 @@ device/*/kobo-epdc-extractor/			@akemnade
 device/*/linux-google-nyan/			@jenneron
 device/*/linux-google-veyron/			@jenneron
 device/*/linux-huawei-plank/			@gtrxAC
+device/*/linux-next/				@calebccff
 device/*/linux-postmarketos-allwinner/		@Arnavion @PsychoGame
 device/*/linux-postmarketos-amlogic/		@funderscore @exkc
 device/*/linux-postmarketos-exynos4/		@Newbyte @ThiagaoPlusPlus
