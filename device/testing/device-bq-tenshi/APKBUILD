@@ -1,0 +1,31 @@
+# Maintainer: fossdd <fossdd@pwned.life>
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-bq-tenshi
+pkgdesc="BQ Aquaris U Plus"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="armv7"
+options="!check !archcheck"
+depends="
+	linux-bq-tenshi
+	mkbootimg
+	postmarketos-base
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+f6132a554b5aa0d6191ecd32e8eb61abc6473a6281b1fedb42c8f6668a9893b1cdbbc2e410cfdac9b629f70c082e6d65d1e99f11a95b35e4889d00f4fb4b1ad2  deviceinfo
+"
