@@ -1,0 +1,36 @@
+From 57ae04aa40be1e83e2da2fdf92de749f694ea5f8 Mon Sep 17 00:00:00 2001
+From: Artur Weber <aweber.kernel@gmail.com>
+Date: Sat, 17 Feb 2024 12:34:46 +0100
+Link: https://gitlab.com/exynos4-mainline/linux/-/merge_requests/13
+Subject: [PATCH] ARM: dts: exynos4212-tab3: Limit usable memory range
+
+The stock bootloader on the Samsung Galaxy Tab 3 8.0 provides an
+incorrect available memory range over ATAG_MEM. Limit the usable
+memory in the DTS to prevent it from doing so, without having to
+disable ATAG support.
+
+Signed-off-by: Artur Weber <aweber.kernel@gmail.com>
+---
+ arch/arm/boot/dts/samsung/exynos4212-tab3.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/arch/arm/boot/dts/samsung/exynos4212-tab3.dtsi b/arch/arm/boot/dts/samsung/exynos4212-tab3.dtsi
+index 87a1317f9220..996cd5cb0c07 100644
+--- a/arch/arm/boot/dts/samsung/exynos4212-tab3.dtsi
++++ b/arch/arm/boot/dts/samsung/exynos4212-tab3.dtsi
+@@ -45,6 +45,12 @@ chosen {
+ 		/* Default S-BOOT bootloader loads initramfs here */
+ 		linux,initrd-start = <0x42000000>;
+ 		linux,initrd-end = <0x42800000>;
++
++		/*
++		 * S-BOOT provides incorrect memory size in bootloader;
++		 * override it here
++		 */
++		linux,usable-memory-range = <0x40000000 0x3fc00000>;
+ 	};
+ 
+ 	firmware@204f000 {
+-- 
+2.44.0
+
