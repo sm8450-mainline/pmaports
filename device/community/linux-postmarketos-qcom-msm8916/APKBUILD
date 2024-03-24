@@ -8,7 +8,7 @@ pkgver=6.6
 # When making kernel config changes please also submit a PR to
 # https://github.com/msm8916-mainline/linux/blob/master/kernel/configs/pmos.config
 # since the kernel config is regenerated on upgrades and all changes will be lost!
-pkgrel=2
+pkgrel=3
 pkgdesc="Mainline kernel fork for Qualcomm MSM8909/MSM8916/MSM8939 devices"
 arch="aarch64 armv7"
 url="https://github.com/msm8916-mainline/linux"
@@ -16,6 +16,7 @@ license="GPL-2.0-only"
 options="!strip !check !tracedeps
 	pmb:cross-native
 	pmb:kconfigcheck-community
+	pmb:kconfigcheck-uefi
 "
 makedepends="
 	bison
@@ -58,7 +59,26 @@ build() {
 
 package() {
 	mkdir -p "$pkgdir"/boot
-	make zinstall modules_install dtbs_install \
+
+	_install_targets="modules_install dtbs_install"
+
+	if [ -e "$builddir/arch/$_carch/boot/vmlinuz.efi" ]; then
+		# ZBOOT EFI decompressor for EFI booting
+		install -Dm644 "$builddir/arch/$_carch/boot/vmlinuz.efi" \
+			"$pkgdir/boot/linux.efi"
+
+		# Old GZIP'd kernel image for boot.img compatibility
+		install -Dm644 "$builddir/arch/$_carch/boot/vmlinuz" \
+			"$pkgdir/boot/vmlinuz"
+	elif [ "$_carch" = "arm64" ]; then
+		echo "WARNING: CONFIG_ZBOOT not enabled!"
+		install -Dm644 "$builddir/arch/$_carch/boot/Image.gz" \
+			"$pkgdir/boot/vmlinuz"
+	else
+		_install_targets="zinstall modules_install dtbs_install"
+	fi
+
+	make $_install_targets \
 		ARCH="$_carch" \
 		INSTALL_PATH="$pkgdir"/boot \
 		INSTALL_MOD_PATH="$pkgdir" \
@@ -72,6 +92,6 @@ package() {
 
 sha512sums="
 5fbbdf333412667e0a0e38dcc7e83f640bd5a1e0b07e1c7786ff3e18f17b9cdec088936263d68986b3869ee305cfcecdf22970134ca8fb8d2a2769874a5a4676  linux-postmarketos-qcom-msm8916-v6.6-msm8916.tar.gz
-865abc449620fad2dd522fb4e552aa4c98d1e7adfd9f32702c1194b66355b7adb9f9fd383b435a098ddaafe3f39256e2fa60224bee4a68b823d1d26eb1e06de9  config-postmarketos-qcom-msm8916.aarch64
-f8fd19f9a1e6cf1604b9ea9a2f219b140c4d78b52f937e825177c62a6425e122f02e39f5268b5d0ee2b17a5a862b674d6aa66f749bf53f953ee89865dc08811a  config-postmarketos-qcom-msm8916.armv7
+b3457e63ea4be7b856b2fe1947cbd07ec196dda9d9c99fc2dbda1968161fcdad19e83a3285a735276be8111e22bcef59d59e89322de87cfd8999bc133e64d4cd  config-postmarketos-qcom-msm8916.aarch64
+ab89af02ad93998e2b8388ae0edd6cd1816d4403b57cc05c45b9f23b0efeeeb17a041bcbc00960d77758aab22d4914d1daba21f3607fd676291ca0999b157613  config-postmarketos-qcom-msm8916.armv7
 "
