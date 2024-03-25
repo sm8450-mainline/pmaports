@@ -3,12 +3,12 @@
 _flavor="powkiddy-x55"
 pkgname=linux-powkiddy-x55
 pkgver=6.8.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Kernel for Powkiddy X55"
 arch="aarch64"
 url="https://kernel.org"
 license="GPL-2.0-only"
-options="!strip !check !tracedeps pmb:cross-native"
+options="!strip !check !tracedeps pmb:cross-native pmb:kconfigcheck-community"
 makedepends="
 	bash
 	bison
@@ -67,5 +67,5 @@ package() {
 
 sha512sums="
 255921dd12f1043a4db38b5435b34773267c592f6712815c0851f1e0add71131fb00fd00746200eabdad29ba5b6e38a768da9c048da47fb5aa59d8eaef7d236e  linux-6.8.1.tar.xz
-34a9640e3195dd6fa972e8c9dde841cad51786791f59eae35b52ea8edf9eac189532cd3808c2cd5f627b9b61c1265ce87b868aa5179147a5b5beb10f4c094982  config-powkiddy-x55.aarch64
+d683141bc3eede4af0089ac915b0cf0679f5e0afc2f27db72f10f63934746002bfe73c5f9e57f0cede9b639eee9e42fe1c65b1fcce0661044193704636d67c88  config-powkiddy-x55.aarch64
 "
