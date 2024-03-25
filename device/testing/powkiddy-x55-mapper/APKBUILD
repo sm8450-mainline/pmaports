@@ -1,5 +1,5 @@
 pkgname=powkiddy-x55-mapper
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=0
 pkgdesc="Powkiddy X55 gamepad joiner/mapper"
 url="https://github.com/vognev/x55-mapper"
@@ -17,9 +17,10 @@ build() {
 
 package() {
 	install -Dm755 contrib/postmarketos/powkiddy-x55-mapper.initd "$pkgdir"/etc/init.d/powkiddy-x55-mapper
+	install -Dm644 contrib/postmarketos/99-disable-real-gamepad.rules -t "$pkgdir"/etc/udev/rules.d/
 	install -Dm755 target/release/x55-mapper -t "$pkgdir"/usr/bin/
 }
 
 sha512sums="
-03d8f637d2c3249ee63ce0a63df1571c1a3261afe0ec4fd4505fe4a8cba29880c5a055bf1789da3ba9a6bf6d93fe157fb11c1cf497d80cfada4f649352580f58  powkiddy-x55-mapper-1.0.0.tar.gz
+ebec121a3c7b50c43feffed9082743580a90f0916c4d8e7dd832d8c21ae60b6b23ccd9c36c3b24ec13d17a8f0f50ece53d6b86b2adef8a82d841890394855f9b  powkiddy-x55-mapper-1.0.1.tar.gz
 "
