@@ -2,7 +2,7 @@
 pkgname=device-samsung-a6lte
 pkgdesc="Samsung Galaxy A6 2018"
 pkgver=0.5
-pkgrel=5
+pkgrel=6
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -12,7 +12,6 @@ depends="
 	bootmac
 	mkbootimg
 	postmarketos-base
-	samsungipcd
 	util-linux
 "
 replaces="
@@ -76,9 +75,11 @@ kernel_mainline() {
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
+# samsungipcd is technically not a firmware package, but it does use the firmware stored on the on-device RADIO partition
+# so it makes sense to have it here rather than in the main depends list
 nonfree_firmware() {
-	pkgdesc="Wifi firmware"
-	depends="firmware-samsung-a6lte"
+	pkgdesc="Wifi firmware & kill-switch for the cellular modem"
+	depends="firmware-samsung-a6lte samsungipcd"
 	mkdir "$subpkgdir"
 }
 
