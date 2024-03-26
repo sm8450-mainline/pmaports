@@ -9,6 +9,7 @@ after_script:
 stages:
   - lint
   - build
+  - autoupdate
 
 # This defines the rules for when a pipeline should run.
 workflow:
@@ -18,8 +19,8 @@ workflow:
       when: never
     # Run for merge requests
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run scheduled pipeline for autoupdate
-    - if: $CI_PIPELINE_SOURCE == "schedule"
+    # Run scheduled pipeline for autoupdate or manually triggered pipeline
+    - if: $CI_PIPELINE_SOURCE == "schedule" || $CI_PIPELINE_SOURCE == "web"
 
 # device documentation
 wiki:
@@ -165,3 +166,22 @@ build-riscv64:
   extends: .build
   script:
     - .ci/build-riscv64.sh
+
+auto-update:
+  stage: autoupdate
+  rules:
+    # This variable is set in the scheduled pipeline configuration. It should be a space separated list of
+    # package names to update.
+    - if: $AUTOUPDATE_PACKAGES != null && $CI_PIPELINE_SOURCE == "schedule" || $CI_PIPELINE_SOURCE == "web"
+  before_script:
+    - .ci/lib/gitlab_prepare_ci.sh
+  script:
+    - .ci/autoupdate.sh "$AUTOUPDATE_PACKAGES"
+  after_script:
+    - .ci/lib/move_logs.sh $CI_PROJECT_DIR
+  artifacts:
+    when: on_failure
+    paths:
+      - log.txt
+      - log_testsuite_pmaports.txt
+      - pmbootstrap.cfg
