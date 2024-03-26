@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-mobile
 pkgver=45_git20230908
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch="all !armhf !s390x !riscv64" # gjs / riscv64: mutter-mobile
@@ -10,7 +10,6 @@ license="GPL-2.0-or-later"
 depends="
 	accountsservice
 	adwaita-icon-theme
-	caribou
 	elogind
 	font-adobe-source-code-pro
 	font-cantarell
