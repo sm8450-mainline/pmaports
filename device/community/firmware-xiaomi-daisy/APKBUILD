@@ -1,7 +1,7 @@
 # Maintainer: Alejandro Tafalla <alikates@dnyon.com>
 pkgname=firmware-xiaomi-daisy
 pkgver=2
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware files for Xiaomi Mi A2 Lite"
 url="https://postmarketos.org"
 arch="aarch64"
@@ -12,14 +12,12 @@ source="$pkgname-$_commit.tar.gz::https://github.com/alikates/firmware-xiaomi-da
 options="!strip !check !archcheck !spdx !tracedeps pmb:cross-native"
 builddir="$srcdir/firmware-xiaomi-daisy-$_commit/gpu"
 
-_fwdir="/lib/firmware"
+_fwdir="/lib/firmware/postmarketos"
 
 package() {
 	# GPU firmwares
-	install -Dm644 a506_zap.b02 -t "$pkgdir/$_fwdir/postmarketos"
-	install -Dm644 a506_zap.mdt -t "$pkgdir/$_fwdir/postmarketos"
-	install -Dm644 a530_pfp.fw -t "$pkgdir/$_fwdir/qcom"
-	install -Dm644 a530_pm4.fw -t "$pkgdir/$_fwdir/qcom"
+	install -Dm644 a506_zap.b02 -t "$pkgdir/$_fwdir"
+	install -Dm644 a506_zap.mdt -t "$pkgdir/$_fwdir"
 }
 
 sha512sums="
