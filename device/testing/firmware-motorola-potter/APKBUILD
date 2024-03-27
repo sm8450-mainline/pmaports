@@ -1,7 +1,7 @@
 # Maintainer: Sireesh Kodali <scarface@disroot.org>
 pkgname=firmware-motorola-potter
 pkgver=2
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware for Motorola Moto G5 Plus"
 url="https://github.com/scarface-one/firmware-motorola-potter"
 arch="aarch64"
@@ -10,7 +10,7 @@ options="!check !strip !archcheck !tracedeps"
 _commit="cce83e64585c036facd4cef39f47bc23d18ba2e9"
 builddir="$srcdir/$pkgname-$_commit/lib/firmware/postmarketos"
 install="$pkgname.post-install $pkgname.post-upgrade"
-_fwdir="/lib/firmware"
+_fwdir="/lib/firmware/postmarketos"
 
 source="
 	$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz
@@ -21,10 +21,8 @@ package() {
 	install -Dm755 $srcdir/moto-modem-rfs-setup.openrc "$pkgdir"/etc/init.d/moto-modem-rfs-setup
 
 	# GPU Firmware files
-	install -Dm644 a506_zap.b02 -t "$pkgdir/$_fwdir/postmarketos"
-	install -Dm644 a506_zap.mdt -t "$pkgdir/$_fwdir/postmarketos"
-	install -Dm644 a530_pfp.fw -t "$pkgdir/$_fwdir/qcom"
-	install -Dm644 a530_pm4.fw -t "$pkgdir/$_fwdir/qcom"
+	install -Dm644 a506_zap.b02 -t "$pkgdir/$_fwdir"
+	install -Dm644 a506_zap.mdt -t "$pkgdir/$_fwdir"
 
 	# WLAN Firmware
 	install -Dm644 wlan/prima/WCNSS_qcom_wlan_nv.bin -t "$pkgdir/$_fwdir/wlan/prima"
