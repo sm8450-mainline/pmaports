@@ -1,7 +1,7 @@
 # Maintainer: Barnabas Czeman <trabarni@gmail.com>
 pkgname=firmware-xiaomi-ysl
 pkgver=3
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware files for Xiaomi Redmi S2/Y2"
 url="https://gitlab.com/barni2000/$pkgname"
 arch="aarch64"
@@ -13,14 +13,12 @@ _commit="ccfd274b825aec2d80e834b16499a6d9ba96c3f5"
 source="$pkgname-$_commit.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz"
 builddir="$srcdir/$pkgname-$_commit/lib/firmware/postmarketos"
 
-_fwdir="/lib/firmware"
+_fwdir="/lib/firmware/postmarketos"
 
 package() {
 	# GPU Firmware files
-	install -Dm644 a506_zap.b02 -t "$pkgdir/$_fwdir/postmarketos"
-	install -Dm644 a506_zap.mdt -t "$pkgdir/$_fwdir/postmarketos"
-	install -Dm644 a530_pfp.fw -t "$pkgdir/$_fwdir/qcom"
-	install -Dm644 a530_pm4.fw -t "$pkgdir/$_fwdir/qcom"
+	install -Dm644 a506_zap.b02 -t "$pkgdir/$_fwdir"
+	install -Dm644 a506_zap.mdt -t "$pkgdir/$_fwdir"
 }
 
 sha512sums="
