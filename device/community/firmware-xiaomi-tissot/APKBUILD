@@ -3,7 +3,7 @@
 
 pkgname=firmware-xiaomi-tissot
 pkgver=2
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware files for Xiaomi Mi A1"
 url="https://gitlab.com/jiaxyga/firmware-xiaomi-tissot"
 arch="aarch64"
@@ -14,14 +14,12 @@ _commit="bf686895224cae33c2130932b4a5914fea415287"
 
 source="$pkgname-$_commit.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz"
 builddir="$srcdir/$pkgname-$_commit/lib/firmware/postmarketos"
-_fwdir="/lib/firmware"
+_fwdir="/lib/firmware/postmarketos"
 
 package() {
 	# GPU firmwares
-	install -Dm644 a506_zap.b02 -t "$pkgdir/$_fwdir/postmarketos"
-	install -Dm644 a506_zap.mdt -t "$pkgdir/$_fwdir/postmarketos"
-	install -Dm644 a530_pfp.fw -t "$pkgdir/$_fwdir/qcom"
-	install -Dm644 a530_pm4.fw -t "$pkgdir/$_fwdir/qcom"
+	install -Dm644 a506_zap.b02 -t "$pkgdir/$_fwdir"
+	install -Dm644 a506_zap.mdt -t "$pkgdir/$_fwdir"
 }
 
 sha512sums="
