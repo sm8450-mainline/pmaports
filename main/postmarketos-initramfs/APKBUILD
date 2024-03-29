@@ -1,7 +1,7 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 # Co-Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-initramfs
-pkgver=2.5.5
+pkgver=2.5.6
 pkgrel=0
 pkgdesc="Base files for the postmarketOS initramfs / initramfs-extra"
 url="https://postmarketos.org"
@@ -84,7 +84,7 @@ package() {
 }
 
 sha512sums="
-8ea356aa81b5be431c67ecb6288e43022790fcd7a82eae839ccb55fc88292e48311dafaa3ffcd730d22de25545a442b9a319ae2302cf55a4db66ca34a5993807  00-default.modules
+59be0649ed87a72d93624bd8a2e3f8c99a0f32f7b7a26f99436de782beba55671472c269eeee86440efc87e0d7148a0bb335fa537791092e73878ca21330544a  00-default.modules
 5b364300f31c91fd0591eb0715f67cbf5383f45246a5fb9f34b79f7cb2e3b15768b2130e5f32f816cc169950f988c1beabc879ba31645c58ce131a288dbc071d  00-initramfs-base.dirs
 ab41b45b0613f25a61114ed8c8b92bc53c60838f6e2e0ba18c76e5369b2984e6023a0661887692673aca3f647f268c468a468f6b1ac424cfee609017a89481dd  00-initramfs-base.files
 8a4adad3785af474b36a09a05f6a3b2c4b4f43aac331a53b903abfa51ea12be1e3d1d807b7a6e66a1346815f3b0044daf8cd62e21e2dc75d2db13ee265a72985  00-initramfs-extra-base.files
