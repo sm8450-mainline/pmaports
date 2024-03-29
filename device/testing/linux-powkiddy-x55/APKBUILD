@@ -1,10 +1,8 @@
-# Reference: <https://postmarketos.org/vendorkernel>
 # Maintainer: Vitaliy Ognev <vitaliy.ognev@gmail.com>
-_flavor="powkiddy-x55"
 pkgname=linux-powkiddy-x55
+pkgdesc="The $pkgname kernel and modules"
 pkgver=6.8.1
-pkgrel=1
-pkgdesc="Kernel for Powkiddy X55"
+pkgrel=2
 arch="aarch64"
 url="https://kernel.org"
 license="GPL-2.0-only"
@@ -24,48 +22,51 @@ makedepends="
 	xz
 "
 
+_flavor="powkiddy-x55"
 _config="config-$_flavor.$arch"
 case $pkgver in
 	*.*.*)	_kernver=${pkgver%.0};;
 	*.*)	_kernver=$pkgver;;
 esac
+_version="$_kernver-$pkgrel.$_flavor"
 
+builddir="$srcdir/linux-$_kernver"
 source="
 	https://cdn.kernel.org/pub/linux/kernel/v${_kernver%%.*}.x/linux-$_kernver.tar.xz
+	rtw88_wifi_fix.patch
 	$_config
 "
-builddir="$srcdir/linux-$_kernver"
 
 prepare() {
 	default_prepare
 
 	cp "$srcdir/config-$_flavor.$arch" .config
+	echo "${_version#$_kernver}" > localversion
 
 	make ARCH=arm64 olddefconfig
 }
 
 build() {
 	unset LDFLAGS
-	make ARCH=arm64 \
-		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-$_flavor"
+	make ARCH=arm64 Image modules dtbs
 }
 
 package() {
-	install -Dm644 arch/arm64/boot/Image "$pkgdir/boot/vmlinuz"
+	local _modulesdir="$pkgdir/lib/modules/$_version"
 
-	make modules_install dtbs_install \
-		ARCH=arm64 \
-		INSTALL_MOD_STRIP=1 \
-		INSTALL_MOD_PATH="$pkgdir" \
-		INSTALL_DTBS_PATH="$pkgdir/boot/dtbs"
+	install -Dm644 arch/arm64/boot/Image "$pkgdir"/boot/vmlinuz
+	make ARCH=arm64 \
+		INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH="$pkgdir" modules_install \
+		INSTALL_DTBS_PATH="$pkgdir/boot/dtbs" dtbs_install
 
-	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
+	rm -f "$_modulesdir"/source "$_modulesdir"/build
 
-	install -D "$builddir"/include/config/kernel.release \
+	install -D include/config/kernel.release \
 		-t "$pkgdir"/usr/share/kernel/$_flavor/
 }
 
 sha512sums="
 255921dd12f1043a4db38b5435b34773267c592f6712815c0851f1e0add71131fb00fd00746200eabdad29ba5b6e38a768da9c048da47fb5aa59d8eaef7d236e  linux-6.8.1.tar.xz
-d683141bc3eede4af0089ac915b0cf0679f5e0afc2f27db72f10f63934746002bfe73c5f9e57f0cede9b639eee9e42fe1c65b1fcce0661044193704636d67c88  config-powkiddy-x55.aarch64
+b38ed4cfe0f20b440426c4ba55eb727cfa64f01370f22d7aca486df4f44aceec1c1d0790c29b8984b151bee0d3ef671253d220dc0c7bec9fef6a4ce1b6cf6169  rtw88_wifi_fix.patch
+98e005a5d456a6c42dd8ae6b758737ef8a42f15edd3a418b148bfc2bace8157973dc42155c1c547dfe5ba643934bd25fd41a77bbf4838a0bbb30f7f774582b28  config-powkiddy-x55.aarch64
 "
