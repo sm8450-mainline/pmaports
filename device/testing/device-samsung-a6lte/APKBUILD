@@ -2,7 +2,7 @@
 pkgname=device-samsung-a6lte
 pkgdesc="Samsung Galaxy A6 2018"
 pkgver=0.5
-pkgrel=6
+pkgrel=7
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -71,7 +71,7 @@ kernel_downstream() {
 
 kernel_mainline() {
 	pkgdesc="Close-to-mainline WIP. Working: display, touchscreen, wifi, bluetooth"
-	depends="linux-postmarketos-exynos7870 mesa-dri-simpledrm"
+	depends="dtbtool-exynos linux-postmarketos-exynos7870 mesa-dri-simpledrm"
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
@@ -99,7 +99,7 @@ downstream_quirks() {
 sha512sums="
 e787dd30a667fd886a46bb0b670bd2771a8fc78fddc39bb86405fdda6024bc1211b82f89664b7cfc622adf2968b9cd09b0eb3d2ed607148bf3549dd783e6f752  device-samsung-a6lte.post-install
 9c0f939c97582d9c03fb62386527569b7f08dd6c8350c8ac6cf9f70d6d5da61d5fc95997b413c4fdb671379ab35caedb631b9af33c7a1e8f3388b3fb56d9b435  device-samsung-a6lte-downstream-quirks.post-install
-d5f9631b0753abc70b83dcba2eba1d7191bba979ab3ad404401abbe4f4326068d610b49d4482d16115ac9d8c36006753caf794aebed06413497f9f3c37bb9ffa  deviceinfo
+bfe2b5455084554d9dc8d30ec5ff72564cfe9574618d0ccc6d544f336d2869bd18a8617ddb3d58732eef8470a9831e3b58436cd3bc9fcb4b465ab6e0f2c7a129  deviceinfo
 3e5bb764529010d2b6b1f2759a7799f665d140aebcee2dd63433e68cd4282e09b5d3b34fb7c21e737595b406501e7f02ece4592651c60e4c2b9419de4aedb438  etc-conf.d-samsungipcd
 5e23fd88baa4694ef48ec9590f948e11101be1e472c626f88011a182534a16520eb00c95a10ea77a773123892036188e2e0783540f3b8f8fe158da5e06568e02  etc-init.d-hciattach-ttySAC0
 203b832a7080d5f1351c5e024e444f9fe509f6e0fd4b376a60c7d73359b7e356863a4f15caf9b2e4e733dc44d2971722083e7c69ca94a012eb004b4b8ded9d09  etc-init.d-udev-settle
