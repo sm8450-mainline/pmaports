@@ -10,7 +10,7 @@ function adjust_keypad_bl {
 
 case $cmd in
 	KP_SLIDE_OPEN)
-		adjust_keypad_bl 255
+		adjust_keypad_bl 63
 		;;
 	KP_SLIDE_CLOSE)
 		adjust_keypad_bl 0
@@ -33,18 +33,6 @@ case $cmd in
 	CAM_LID_OPEN)
 		echo "Not implemented yet"
 		;;
-	FRNT_PRXY_OFF)
-		echo "Not implemented yet"
-		;;
-	FRNT_PRXY_ON)
-		echo "Not implemented yet"
-		;;
-	KP_SLIDE_CLOSE)
-		echo "Not implemented yet"
-		;;
-	KP_SLIDE_OPEN)
-		echo "Not implemented yet"
-		;;
 	SCRNLCK_DWN)
 		echo "Not implemented yet"
 		;;
@@ -63,22 +51,10 @@ case $cmd in
 		MICROPHONE_REMOVE)
 				echo "Not implemented yet"
 				;;
-		PWR_BTN_DWN)
-				echo "Not implemented yet"
-				;;
-		PWR_BTN_UP)
-				echo "Not implemented yet"
-				;;
 		VIDEOOUT_INSERT)
 				echo "Not implemented yet"
 				;;
 		VIDEOOUT_REMOVE)
-				echo "Not implemented yet"
-				;;
-		VOL_DWN)
-				echo "Not implemented yet"
-				;;
-		VOL_UP)
 				echo "Not implemented yet"
 				;;
 	*)
@@ -86,5 +62,3 @@ case $cmd in
 		exit 1
 		;;
 esac
-
-
