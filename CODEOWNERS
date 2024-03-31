@@ -2,7 +2,7 @@
 # Put groups like @sdm845-mainline into test_device.py:gitlab_groups.
 # Order lines alphabetically!
 
-device/*/*-amlogic-s905*/			@vitali64yt
+device/*/*-amlogic-s905*/			@funderscore
 device/*/*-arrow-db410c/			@Minecrell
 device/*/*-asus-me176c/				@Minecrell
 device/*/*-bq-paella/				@Minecrell
@@ -18,6 +18,9 @@ device/*/*-htc-m8qlul/				@Newbyte
 device/*/*-lenovo-21bx/				@craftyguy
 device/*/*-lenovo-a6000/			@jenneron @Minecrell
 device/*/*-lenovo-a6010/			@jenneron @Minecrell
+device/*/*-librecomputer-lafrite/		@funderscore
+device/*/*-librecomputer-lepotato/		@funderscore
+device/*/*-librecomputer-solitude/		@Newbyte @funderscore
 device/*/*-motorola-harpia/			@Minecrell
 device/*/*-nokia-n900/				@sicelo @Danct12
 device/*/*-pine64-pinebookpro/			@QC8086
@@ -37,7 +40,7 @@ device/*/*-samsung-grandmax/			@wonderfulShrineMaidenOfParadise
 device/*/*-samsung-gt510/			@TravMurav
 device/*/*-samsung-gt58/			@TravMurav
 device/*/*-samsung-serranove/			@Minecrell
-device/*/*-videostrong-kii-pro/			@vitali64yt
+device/*/*-videostrong-kii-pro/			@funderscore
 device/*/*-wileyfox-crackling/			@TravMurav @Minecrell
 device/*/*-xiaomi-beryllium/			@joelselvaraj
 device/*/*-xiaomi-daisy/			@joelselvaraj @alikates
@@ -81,7 +84,7 @@ device/*/linux-google-nyan/			@jenneron
 device/*/linux-google-veyron/			@jenneron
 device/*/linux-huawei-plank/			@gtrxAC
 device/*/linux-postmarketos-allwinner/		@Arnavion @PsychoGame
-device/*/linux-postmarketos-amlogic/		@vitali64yt @exkc
+device/*/linux-postmarketos-amlogic/		@funderscore @exkc
 device/*/linux-postmarketos-exynos4/		@Newbyte @ThiagaoPlusPlus
 device/*/linux-postmarketos-exynos5/		@jenneron @Grimler
 device/*/linux-postmarketos-grate/		@clamor95 @jenneron @jethrob
