@@ -1,0 +1,74 @@
+# Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: Jenneron <jenneron@protonmail.com>
+pkgname=device-ayn-odin
+pkgdesc="AYN Odin"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	firmware-ayn-odin
+	hexagonrpcd
+	linux-firmware-ath10k
+	linux-firmware-qca
+	linux-firmware-qcom
+	postmarketos-base
+	soc-qcom-sdm845
+	soc-qcom-sdm845-nonfree-firmware
+	systemd-boot
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+	modules-initfs
+	phoc.ini.odin
+	phoc.ini.odin-m2
+"
+subpackages="
+	$pkgname-kernel-odin:kernel_odin
+	$pkgname-kernel-odin-m2:kernel_odin_m2
+	$pkgname-phosh:_phosh
+	$pkgname-phosh-m2:_phosh_m2
+"
+install="$pkgname.post-install"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+kernel_odin() {
+	pkgdesc="AYN Odin"
+	depends="linux-ayn-odin"
+	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
+}
+
+kernel_odin_m2() {
+	pkgdesc="AYN Odin M2"
+	depends="linux-ayn-odin"
+	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
+}
+
+_phosh() {
+	install_if="$pkgname-kernel-odin=$pkgver-r$pkgrel postmarketos-ui-phosh"
+	install -Dm644 "$srcdir"/phoc.ini.odin \
+		"$subpkgdir"/etc/phosh/phoc.ini
+}
+
+_phosh_m2() {
+	install_if="$pkgname-kernel-odin-m2=$pkgver-r$pkgrel postmarketos-ui-phosh"
+	install -Dm644 "$srcdir"/phoc.ini.odin-m2 \
+		"$subpkgdir"/etc/phosh/phoc.ini
+}
+
+sha512sums="
+d49676283f81fe8ae5b99d33f2cf6b81be0555c118a6fb63be3bfede6c5b21c603c390ac65572b8e600f8bb3c772cbc34ed79e59a31d30c7f8a347f313f5922b  deviceinfo
+dc987332abe6d5c7ac511be1045af227d80b9dbe2f907e23e89b62217ca867dd064484caec36f0605dda89a9894da780b75beb23d9b893bd0f9a46593e675393  modules-initfs
+01bec0b7efad2b44920cd9403b1121240ad16a4ee720c457778cd6bb427065bc471aa021e571ce0b88fb213a79b572faaf12ab5428f1dd25c7850471cddc3880  phoc.ini.odin
+455e428ba7d3eb125f9f810f08f36f5b533b7b6490d3fd955822e759b4c0ac846cc25af3056d70a9a163a58f538d5b70d6940a9a1a9441a4ca4357f01fadb8d1  phoc.ini.odin-m2
+"
