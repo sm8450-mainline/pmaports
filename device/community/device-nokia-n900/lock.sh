@@ -1,14 +1,17 @@
 #!/bin/sh
 
-FILE=~/.screenoff
-if [ -f $FILE ]; then
-	xinput set-prop 8 "Device Enabled" 1
-	xset dpms force on
-	rm "$FILE"
-else
-	xinput set-prop 8 "Device Enabled" 0
-	# Turn screen off twice (sometimes it does not work on first run)
-	xset dpms force off
-	xset dpms force off
-	touch "$FILE"
+display=off
+if xset q | grep -iq "monitor is on"; then
+	display=on
 fi
+
+case "$display" in
+	off)
+		xinput enable "TSC2005 touchscreen"
+		xset dpms force on
+		;;
+	on)
+		xinput disable "TSC2005 touchscreen"
+		xset dpms force off
+		;;
+esac
