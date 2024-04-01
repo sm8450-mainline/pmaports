@@ -5,6 +5,7 @@
 device/*/*-amlogic-s905*/			@funderscore
 device/*/*-arrow-db410c/			@Minecrell
 device/*/*-asus-me176c/				@Minecrell
+device/*/*-ayn-odin/				@jenneron
 device/*/*-bq-paella/				@Minecrell
 device/*/*-bq-tenshi/				@fossdd
 device/*/*-google-gru/				@jenneron
