@@ -1,5 +1,6 @@
 #!/bin/ash
 
+user=$( getent passwd 10000 | cut -d: -f1 )
 cmd=$( echo $0 | awk '{i=split($0,a,"/"); print a[i]}' )
 
 function adjust_keypad_bl {
@@ -34,7 +35,7 @@ case $cmd in
 		echo "Not implemented yet"
 		;;
 	SCRNLCK_DWN)
-		echo "Not implemented yet"
+		su $user -c "DISPLAY=:0 /usr/bin/lock.sh"
 		;;
 	SCRNLCK_UP)
 		echo "Not implemented yet"

@@ -2,7 +2,7 @@
 # Maintainer: Sicelo <absicsz@gmail.com>
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-nokia-n900
-pkgver=14
+pkgver=15
 pkgrel=0
 pkgdesc="Nokia N900"
 url="https://postmarketos.org"
@@ -97,13 +97,6 @@ package() {
 	install -Dm644 "$srcdir"/80-feedbackd-twl4030.rules \
 		"$pkgdir"/usr/lib/udev/rules.d/80-feedbackd-twl4030.rules
 
-	# ACPI
-	mkdir "$pkgdir"/etc/acpi
-	install -D -m755 "$srcdir"/acpi_handler.sh \
-		"$pkgdir"/etc/acpi/handler.sh
-	install -D -m644 "$srcdir"/acpi.map \
-		"$pkgdir"/etc/acpi.map
-
 	# Keymap
 	install -D -m644 "$srcdir"/keymaps/rx51_us.bmap.gz \
 		"$pkgdir"/usr/share/bkeymaps/us/rx51_us.bmap.gz
@@ -134,6 +127,11 @@ package() {
 x11() {
 	install_if="$pkgname=$pkgver-r$pkgrel xorg-server"
 	depends="xset xinput"
+	mkdir "$pkgdir"/etc/acpi
+	install -D -m755 "$srcdir"/acpi_handler.sh \
+		"$pkgdir"/etc/acpi/handler.sh
+	install -D -m644 "$srcdir"/acpi.map \
+		"$pkgdir"/etc/acpi.map
 	install -D -m644 "$srcdir"/40-xkb.conf \
 		"$subpkgdir"/etc/X11/xorg.conf.d/40-xkb.conf
 	install -D -m644 "$srcdir"/xorg.conf \
@@ -190,7 +188,7 @@ sha512sums="
 6b475c12eca8563be48c562a1cb4ad8ca6a05d70fc54b21288b2dd7435a80a6f53351aa870db96d5bbecf1b1c5cb00dfe35f5066e6d3fd0ad0369e66aeef5a21  10-initfs-keymap.files
 4656d3b3ced0a86e2d6315c89322899f646a689e9cb64609aa8ad5a676b23d93706d8a37f3be6f6b12c6b1e8501b7d26ecafecf27322333850513a6805c61910  10-initfs-keymap.sh
 2e6c324c2a0627fb37ee2feff249d6c828116a9c1a32d572481dddc12648c98b726eb3a475838398742f76a60e3f2249d7707502360473b8bf2e794bf22f57ce  acpi.map
-3c173374c5a256ecb26d90a003530daa1885546b7022e56ddcc7b3ae14e73dc027a957b9b03b8b73805ace32a56b32d124a9ce5e045ed8a08307cc346c9a1dac  acpi_handler.sh
+6474c31560e0a9272c127f8fb0412749fe5039738774033cde4333c533418c5d3336935e8bb8a26970a20d519513296aac4530487acb34f551a4ad12c08dd91d  acpi_handler.sh
 5b87071834313a389f83d29f86f6e3ea108d0921f17dc918be7a46de7e74c73a4418044ef600a0fbf72c8fad22b7730dcd5bfe3d6d01d76bf01556f8540f0b32  asound.state.headset
 67acc17a33bc75113300393b4a5bba15319014032407e774d079abf310368e75f4f697dbb4856ba2d2d8ea184b056bb33561f42918de3ee91ab6a77df89a133c  asound.state.speakers
 3d55e34b95791636e44a5f41754f3d0de039dbba41f7a556d43a95c9e64afcfa930046b4b96b40020b6f196096ffba93514682927e32fa4488686fdd19c6da5a  backlight-enable.sh
@@ -198,7 +196,7 @@ e6bbac8de1a198ba716f44ade76606e1e0adcc574156b855ac41be5eb5308389d3277fd89cc34b11
 2463008d270ed09342f15b51f24ea455bd884021f95397991b85616b6840a6608d91cd1fc43186094f5c3d1bd25e88c16aa9ead07b018aea3d93cd2359bba0b1  deviceinfo
 f48b8dd7297d03008f73e1ecd55b77ace535ecb03f9bdf021123b96fb5f4fb491ff4c532e226b835c8118fa8d505cc4c635a2b604a3e42a162746021552a551c  modules-initfs
 826a3790b49324c1e61c75b6c0ffc043a2a1d7c13a8c554fb5eae4977af47a1ca93d70ef8c783d712b953b70e18ae58fa4c6a49bf97263398a01a0c4f91ebc8f  i3blocks.conf
-e06ae2ba1c8c8d3fd76c5d2fa6480561d5221c616d7ff50ed590e2cdbbc1dd0cb8232ee5cde43b79ec059876f49c1d1ae182bd016805a4e90b6331ce75bf4426  i3wm.conf
+3a42fad124559ce1a749342850ef21fceaf58344646e5bf4a3a6733fbd77733f98ca32b57bfcc135567b002b0579dd286eaddd4704220f0cbd8c82ecd07d9761  i3wm.conf
 0b80af9fd1f36e6bc06bdfdf48352897234ac7457210649016665da8570a5a64b8a0841b4fbeb64fd7054a5246a64718cf4412f8a53024ce39b28a80984972d8  protip_shell.sh
 6c6a70667f37807089adbb343c09d1f62d47b8e6c9c0a54f44790b822f8bff3dccae73341ef736b799fd6740bbd6e1f48e6e122c2e08520f71f6ad7434a47d2c  battery-bq27200
 d9ef88c714e9fce8822f63b7a9d7fc3e1ed472c8c876b44ba524d44efea322839f13ddd2fa652420608427ecf7279bfaac302c9b67667f32796ca21da332164d  calendar
