@@ -12,6 +12,8 @@ function adjust_keypad_bl {
 case $cmd in
 	KP_SLIDE_OPEN)
 		adjust_keypad_bl 63
+		su $user -c 'DISPLAY=:0.0 /usr/bin/xset dpms force on'
+		su $user -c 'DISPLAY=:0.0 /usr/bin/xinput enable "TSC2005 touchscreen"'
 		;;
 	KP_SLIDE_CLOSE)
 		adjust_keypad_bl 0
