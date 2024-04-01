@@ -42,24 +42,24 @@ case $cmd in
 	SCRNLCK_UP)
 		echo "Not implemented yet"
 		;;
-		HEADPHONE_INSERT)
-				alsactl restore -f /var/lib/alsa/asound.state.headset
-				;;
-		HEADPHONE_REMOVE)
-				alsactl restore -f /var/lib/alsa/asound.state.speakers
-				;;
-		MICROPHONE_INSERT)
-				echo "Not implemented yet"
-				;;
-		MICROPHONE_REMOVE)
-				echo "Not implemented yet"
-				;;
-		VIDEOOUT_INSERT)
-				echo "Not implemented yet"
-				;;
-		VIDEOOUT_REMOVE)
-				echo "Not implemented yet"
-				;;
+	HEADPHONE_INSERT)
+		alsactl restore -f /var/lib/alsa/asound.state.headset
+		;;
+	HEADPHONE_REMOVE)
+		alsactl restore -f /var/lib/alsa/asound.state.speakers
+		;;
+	MICROPHONE_INSERT)
+		echo "Not implemented yet"
+		;;
+	MICROPHONE_REMOVE)
+		echo "Not implemented yet"
+		;;
+	VIDEOOUT_INSERT)
+		echo "Not implemented yet"
+		;;
+	VIDEOOUT_REMOVE)
+		echo "Not implemented yet"
+		;;
 	*)
 		echo "Unknown event"
 		exit 1
