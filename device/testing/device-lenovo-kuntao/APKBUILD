@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lenovo-kuntao
 pkgdesc="Lenovo P2"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -34,5 +34,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-d2be963b0e4a53630c99a60c823914564bec6f5c126d86e5ba27f04721bb509705681a6de1822eb63f3f60bcf002f4b8a88ec9c0cbf1563dc4ae26eb8455c81b  deviceinfo
+0d9ea913136288a9ab0f3743a1cdf1e11288082c7c09b0aa0f73a4f9cf5d5867caaa49366f1551fed77c5367adaf0e6cb65db8c7b7ced8169aed050d61b07824  deviceinfo
 "

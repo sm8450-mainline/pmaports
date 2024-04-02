@@ -1,8 +1,8 @@
 # Maintainer: Barnabas Czeman <trabarni@gmail.com>
 pkgname=device-xiaomi-mido
 pkgdesc="Xiaomi Redmi Note 4X"
-pkgver=6
-pkgrel=1
+pkgver=7
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -31,6 +31,6 @@ package() {
 }
 
 sha512sums="
-cdca8edd4ccb13c0198493dcf14e43a2acf8eaddc1dcfba6eb895485b172c7315ab389011fdf9bb54b68a4fb82c31d9a7b50caa566d1aa992a347facb49758b4  deviceinfo
+815d228250a6783e02fa4107526bc2eae5428c05e48ed77a651980f00917a44e6bcecdac7835ad4a24320d4be2c510e2879a45a2b06accc3217d97d7bbf32e9e  deviceinfo
 9f534c76689728c3fa699ac8c854ca82815d5158a3675a70ef879ddbf140460977187dc3c1a799dadd0ab53d5a08b6275a1594a7b976eda983f3e78b2738a8be  modules-initfs
 "

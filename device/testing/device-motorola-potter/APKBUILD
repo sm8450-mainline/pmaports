@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-motorola-potter
 pkgdesc="Motorola Moto G5 Plus"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -34,6 +34,6 @@ package() {
 }
 
 sha512sums="
-31f181f7115af01efa032e23d11a6e311308d3ba1bb8465e5c17bde00f4f47b3dd49755a2ff41f598275d310dcd7de5a5cd35140ad0482b36b0fe53dcd71cf66  deviceinfo
+c66ac5145e53c245d6c59a6b4c6d205eb2f0fe2e2711a2baeae3df206f8ee9a1bbe2f13c16df9aa15423fdd0e9a5595a41bc033fcb9952b10b85ca2110c5685e  deviceinfo
 93c77bfcde005c021ac9b671f9671923339f855e45d4fce8b2caea4748eccc08c8ec65bdfc85fef4900c974860613e8d62e6fe0ea95741ec1ab08c814148472b  modules-initfs
 "

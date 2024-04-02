@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-daisy
 pkgdesc="Xiaomi Mi A2 Lite"
-pkgver=10
+pkgver=11
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -39,7 +39,7 @@ package() {
 }
 
 sha512sums="
-8c5980c1da9e5bc91f11bb8056ac9a225cb84a90a42a964dc0dc2966220c105683081055fdcb1caa8c198019d8373d8c5fe27155429c17814d34075d5f961aa4  deviceinfo
+493e74847984e51c4f788f1272351571411ba21dea6c3ad1fd2d669271e197bd6f55a8720e97c00480a30dd2803515384fe55362c90c5800fe8ef51f6c7c5521  deviceinfo
 7202f0a55dfe43348940412fc38e59c855594b070db8742419feadb2299086d5810107201a228b7137b7cc7a97c94afac95d81c0cd65c52f31dbcb619b0a4279  modules-initfs
 a2608b01b7b6e2dade694af355ff4f0f26cad49cf54bc332c77eb75d19fdc985f7f996fedb72753de447be0391deabf5fcea52406791d1e6e0d165703b63f145  90-device-xiaomi-daisy.rules
 "
