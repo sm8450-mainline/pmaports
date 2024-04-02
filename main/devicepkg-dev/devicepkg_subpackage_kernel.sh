@@ -15,6 +15,7 @@ subpkgdir="$startdir/pkg/$subpkgname"
 
 rm -fv "$pkgdir/usr/share/deviceinfo/$pkgname"
 rm -fv "$pkgdir/usr/share/deviceinfo/deviceinfo"
+rmdir -v "$pkgdir/usr/share/deviceinfo"
 
 deviceinfo="$subpkgdir/usr/share/deviceinfo/$subpkgname"
 install -Dm644 "$srcdir/deviceinfo" \
