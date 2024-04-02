@@ -25,6 +25,7 @@ subpackages="
 	"
 source="deviceinfo modules-initfs"
 _pmb_recommends="
+	linux-firmware-rtw88
 	oem-intel
 	oem-amd
 "
