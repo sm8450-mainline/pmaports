@@ -2,8 +2,8 @@
 # Maintainer: Newbyte <newbyte@disroot.org>
 pkgname=device-samsung-m0
 pkgdesc="Samsung Galaxy S III"
-pkgver=6.3
-pkgrel=3
+pkgver=7
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"

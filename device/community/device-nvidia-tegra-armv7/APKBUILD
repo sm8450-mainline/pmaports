@@ -6,8 +6,8 @@
 
 pkgname=device-nvidia-tegra-armv7
 pkgdesc="NVIDIA Tegra ARMv7"
-pkgver=1.2
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
