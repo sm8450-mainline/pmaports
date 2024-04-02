@@ -112,6 +112,13 @@ def check_versions(args, packages):
                 print(f"- {package}: {head} (HEAD) (new package)")
             continue
 
+        # Check pkgver follows expected format for device packages
+        pkgver = head.rpartition('-r')[0]
+        if package.startswith('device-') and not pkgver.isdigit():
+            print(f" - {package}: invalid pkgver \"{pkgver}\""
+                  "See: https://wiki.postmarketos.org/wiki/Packaging#device_packages_and_other_packages_without_sources")
+            error = True
+
         # Compare head and upstream versions
         result = pmb.parse.version.compare(head, upstream)
         if result != 1:
