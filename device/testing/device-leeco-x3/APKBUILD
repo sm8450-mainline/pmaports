@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-leeco-x3
 pkgdesc="LeEco Le 1s"
-pkgver=0.1
-pkgrel=4
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

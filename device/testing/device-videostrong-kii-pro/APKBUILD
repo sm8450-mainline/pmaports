@@ -2,8 +2,8 @@
 # Maintainer: Ferass El Hafidi <funderscore@postmarketos.org>
 pkgname=device-videostrong-kii-pro
 pkgdesc="VideoStrong KII Pro"
-pkgver=0.1
-pkgrel=3
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

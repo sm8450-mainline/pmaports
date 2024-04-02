@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lg-e610
 pkgdesc="LG Optimus L5"
-pkgver=0.1
-pkgrel=11
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"

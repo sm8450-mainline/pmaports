@@ -1,8 +1,8 @@
 # Maintainer: Segfault <awarnecke002@hotmail.com>
 pkgname=device-htc-flounder
 pkgdesc="Google Nexus 9"
-pkgver=0.2
-pkgrel=2
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

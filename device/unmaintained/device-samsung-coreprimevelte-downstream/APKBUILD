@@ -3,7 +3,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-coreprimevelte-downstream
 pkgdesc="Samsung Galaxy Core Prime VE LTE downstream"
-pkgver=0.1
+pkgver=1
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"

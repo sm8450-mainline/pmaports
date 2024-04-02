@@ -2,8 +2,8 @@
 # Maintainer: Eli Hersha <elihersha@gmail.com>
 pkgname=device-amazon-sheldon
 pkgdesc="Amazon Fire TV Stick Lite"
-pkgver=0.1
-pkgrel=1
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"

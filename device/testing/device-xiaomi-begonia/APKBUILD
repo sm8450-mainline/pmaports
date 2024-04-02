@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-begonia
 pkgdesc="Xiaomi Redmi Note 8 Pro"
-pkgver=0.1
-pkgrel=5
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

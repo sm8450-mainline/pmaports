@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-motorola-montana
 pkgdesc="Motorola Moto G5s"
-pkgver=0.3
-pkgrel=8
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

@@ -2,8 +2,8 @@
 # Maintainer: omame <me@omame.xyz>
 pkgname=device-samsung-j6primelte
 pkgdesc="Samsung Galaxy J6+"
-pkgver=0.5
-pkgrel=3
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"

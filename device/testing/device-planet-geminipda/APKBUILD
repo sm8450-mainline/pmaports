@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-planet-geminipda
 pkgdesc="Gemini PDA"
-pkgver=0.3.1
-pkgrel=2
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

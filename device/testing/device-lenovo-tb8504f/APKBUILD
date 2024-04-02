@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lenovo-tb8504f
 pkgdesc="Lenovo Tab 4 8"
-pkgver=0.1
-pkgrel=5
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

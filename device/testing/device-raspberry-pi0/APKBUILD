@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-raspberry-pi0
 pkgdesc="Raspberry Pi Zero"
-pkgver=0.2
-pkgrel=3
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armhf"

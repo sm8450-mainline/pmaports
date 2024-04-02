@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-gprimeltecan
 pkgdesc="Samsung Galaxy Grand Prime CAN (G530W)"
-pkgver=2.1
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"

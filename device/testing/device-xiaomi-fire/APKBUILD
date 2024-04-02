@@ -2,7 +2,7 @@
 # Maintainer: Eray Tutmaz <tarkanttmz261@gmail.com>
 pkgname=device-xiaomi-fire
 pkgdesc="Xiaomi Redmi 12"
-pkgver=0.1
+pkgver=1
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"

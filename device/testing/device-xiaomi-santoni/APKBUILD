@@ -3,8 +3,8 @@
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-xiaomi-santoni
 pkgdesc="Xiaomi Redmi 4X"
-pkgver=0.8
-pkgrel=6
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

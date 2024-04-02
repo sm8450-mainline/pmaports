@@ -3,8 +3,8 @@
 # Co-Maintainer: Dylan Van Assche <me@dylanvanassche.be>
 pkgname=device-pine64-pinetab
 pkgdesc="PINE64 PineTab"
-pkgver=0.13
-pkgrel=7
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

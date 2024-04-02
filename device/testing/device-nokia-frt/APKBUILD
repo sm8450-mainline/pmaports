@@ -2,8 +2,8 @@
 # Maintainer: Piotr Halama <skrzynka@halamix2.pl>
 pkgname=device-nokia-frt
 pkgdesc="Nokia 1"
-pkgver=0.1
-pkgrel=11
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"

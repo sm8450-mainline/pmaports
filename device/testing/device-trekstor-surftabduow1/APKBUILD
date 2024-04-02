@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-trekstor-surftabduow1
 pkgdesc="Trekstor Surftab Duo W1"
-pkgver=0.3
-pkgrel=6
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="x86_64"

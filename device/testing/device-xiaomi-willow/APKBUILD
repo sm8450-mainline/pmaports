@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-willow
 pkgdesc="Xiaomi Redmi Note 8T"
-pkgver=0.1
-pkgrel=7
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

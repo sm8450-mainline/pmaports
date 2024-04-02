@@ -2,8 +2,8 @@
 # Maintainer: Henrik Grimler <henrik@grimler.se>
 pkgname=device-samsung-m3
 pkgdesc="Samsung Galaxy S III LTE"
-pkgver=6.2
-pkgrel=3
+pkgver=7
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"

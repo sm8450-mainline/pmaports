@@ -2,8 +2,8 @@
 # Maintainer: Newbyte <newbytee@protonmail.com>
 pkgname=device-htc-golfu
 pkgdesc="HTC Desire C"
-pkgver=0.1
-pkgrel=5
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"

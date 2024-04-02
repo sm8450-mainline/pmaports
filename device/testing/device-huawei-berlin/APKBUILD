@@ -2,8 +2,8 @@
 # Maintainer: markochk <markochk@proton.me>
 pkgname=device-huawei-berlin
 pkgdesc="Huawei Honor 6X"
-pkgver=0.1
-pkgrel=1
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

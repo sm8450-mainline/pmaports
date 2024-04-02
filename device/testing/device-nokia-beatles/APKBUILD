@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-nokia-beatles
 pkgdesc="Nokia 2720 Flip"
-pkgver=0.1
-pkgrel=7
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"

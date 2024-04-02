@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-a6lte
 pkgdesc="Samsung Galaxy A6 2018"
-pkgver=0.5
-pkgrel=8
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

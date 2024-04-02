@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-espresso10-downstream
 pkgdesc="Samsung Galaxy Tab 2 (10.1 inch)"
-pkgver=0.2
-pkgrel=1
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"

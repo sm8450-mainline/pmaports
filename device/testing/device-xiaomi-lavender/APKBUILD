@@ -2,8 +2,8 @@
 # Maintainer: Alexey Min <alexey.min@gmail.com>
 pkgname=device-xiaomi-lavender
 pkgdesc="Xiaomi Redmi Note 7"
-pkgver=0.3
-pkgrel=1
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

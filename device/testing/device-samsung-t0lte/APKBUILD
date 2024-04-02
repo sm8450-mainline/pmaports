@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-t0lte
 pkgdesc="Samsung Galaxy Note II LTE"
-pkgver=0.6
-pkgrel=4
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"

@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-alcatel-pop7lte
 pkgdesc="Alcatel OneTouch Pop 7S"
-pkgver=0.1
-pkgrel=8
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"

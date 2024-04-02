@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-nokia-rm885
 pkgdesc="Lumia 720"
-pkgver=0.1
-pkgrel=13
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armhf"

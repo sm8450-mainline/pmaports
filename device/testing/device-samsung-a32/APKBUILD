@@ -2,7 +2,7 @@
 # Maintainer: Veronika Bušová <paricbat@email.cz>
 pkgname=device-samsung-a32
 pkgdesc="Samsung Galaxy A32 4G"
-pkgver=0.1
+pkgver=1
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"

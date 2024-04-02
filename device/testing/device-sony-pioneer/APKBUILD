@@ -2,8 +2,8 @@
 # Maintainer: Max Buchholz <max.buchholz@gmx.de>
 pkgname=device-sony-pioneer
 pkgdesc="Sony Xperia XA2"
-pkgver=0.1
-pkgrel=4
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

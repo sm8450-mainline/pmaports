@@ -2,8 +2,8 @@
 # Maintainer: Richard Acayan <mailingradian@gmail.com>
 pkgname=device-google-sargo
 pkgdesc="Google Pixel 3a"
-pkgver=0.6
-pkgrel=6
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

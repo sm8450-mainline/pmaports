@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-pine
 pkgdesc="Xiaomi Redmi 7A"
-pkgver=0.2
-pkgrel=2
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

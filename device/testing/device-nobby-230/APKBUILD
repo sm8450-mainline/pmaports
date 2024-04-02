@@ -2,8 +2,8 @@
 # Maintainer: Anri Dellal <anridellal@gmail.com>
 pkgname=device-nobby-230
 pkgdesc="Nobby 230"
-pkgver=0.2
-pkgrel=7
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"

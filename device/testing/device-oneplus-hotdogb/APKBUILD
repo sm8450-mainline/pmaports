@@ -2,8 +2,8 @@
 
 pkgname=device-oneplus-hotdogb
 pkgdesc="OnePlus 7T"
-pkgver=0.1
-pkgrel=1
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

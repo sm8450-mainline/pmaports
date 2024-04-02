@@ -2,8 +2,8 @@
 # Maintainer: Newbyte <newbyte@disroot.org>
 pkgname=device-htc-m8qlul
 pkgdesc="HTC One M8s"
-pkgver=0.1
-pkgrel=5
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

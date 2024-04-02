@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-s3ve3g
 pkgdesc="Samsung Galaxy S III Neo"
-pkgver=0.1
-pkgrel=9
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"

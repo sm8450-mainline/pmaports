@@ -2,8 +2,8 @@
 # Maintainer: xeon zolt <xeon.harsh@gmail.com>
 pkgname=device-yu-tomato
 pkgdesc="YU Yureka"
-pkgver=0.1
-pkgrel=11
+pkgver=1
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
