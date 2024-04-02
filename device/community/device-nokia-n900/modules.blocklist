@@ -7,3 +7,6 @@ blacklist omap3_isp
 blacklist hci_nokia
 blacklist hci_uart
 blacklist ehci_omap
+# do not autoload leds_gpio used by the debug leds, since it is now initialized
+# in ON state, interfering with the keyboard backlight
+blacklist leds_gpio
