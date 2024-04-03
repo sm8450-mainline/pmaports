@@ -11,6 +11,7 @@ url="https://github.com/akemnade/u-boot-fslc"
 makedepends="bash bc dtc bison flex openssl-dev"
 options="!check !tracedeps pmb:cross-native"
 
+install="$pkgname.post-upgrade"
 _repository="u-boot-fslc"
 _commit="a3816f6b51b5dc9083af4142ca5f3a4e4a235336"
 source="
@@ -31,7 +32,7 @@ build() {
 }
 
 package() {
-	install -D -m644 "$builddir/u-boot-dtb.imx" "$pkgdir/usr/share/u-boot/kobo-clara/u-boot.imx"
+	install -Dm644 "$builddir/u-boot-dtb.imx" "$pkgdir/usr/share/u-boot/kobo-clara/u-boot.imx"
 }
 
 sha512sums="
