@@ -1,0 +1,35 @@
+pkgname=firmware-xiaomi-clover
+pkgver=1
+pkgrel=0
+pkgdesc="Firmware files for Xiaomi Mi Pad 4 / 4 Plus"
+url="https://github.com/kubntd/$pkgname"
+arch="aarch64"
+license="proprietary"
+options="!strip !check !archcheck !spdx !tracedeps pmb:cross-native"
+makedepends="qca-swiss-army-knife"
+
+_commit="b9042a06a4e50aec39dd7b6c80493663421668b7"
+_pix106_commit="e5c04c692b31a40df0f6b93b21071f8f650f1580"
+
+source="
+	$pkgname-$_commit.tar.gz::$url/archive/$_commit/$pkgname-$_commit.tar.gz
+	$pkgname-$_pix106_commit.tar.gz::https://github.com/pix106/android_vendor_xiaomi_clover/archive/$_pix106_commit.tar.gz
+"
+
+builddir="src"
+_fwdir="/lib/firmware"
+
+package() {
+	ath10k-fwencoder --create \
+		--features=wowlan,no-nwifi-decap-4addr-padding,allows-mesh-bcast,mgmt-tx-by-ref,non-bmi,single-chan-info-per-channel  \
+		--set-wmi-op-version=tlv --set-htt-op-version=tlv \
+		--set-fw-api=5
+	install -Dm644 firmware-5.bin -t "$pkgdir/$_fwdir/ath10k/WCN3990/hw1.0/"
+	install -Dm644 $pkgname-$_commit/board-2.bin -t "$pkgdir/$_fwdir/ath10k/WCN3990/hw1.0/"
+	install -Dm644 android_vendor_xiaomi_clover-$_pix106_commit/proprietary/vendor/firmware/* -t "$pkgdir/$_fwdir/postmarketos/"
+}
+
+sha512sums="
+437b4db1a2373493b1d980f0d2a7628ad14947b72e1cef49155bb8219af99019179dfa53783b1aeba5c8a7af2f3d1d3f4dc857f123da044bbf8773fd233e4c34  firmware-xiaomi-clover-b9042a06a4e50aec39dd7b6c80493663421668b7.tar.gz
+46245eef4d84ff602e7a9db75165c300700c91cc08b94ec14fe1c49e6ec9c98835c00cf9e3b9ad140542a0b20cf1646be7b04fe68468ba87fe9adb8c383eec52  firmware-xiaomi-clover-e5c04c692b31a40df0f6b93b21071f8f650f1580.tar.gz
+"
