@@ -21,4 +21,6 @@ start_pre()
 				"the fbkeyboard service or built in."
 		fi
 	fi
+	# save energy
+	echo 0 >/sys/class/graphics/fbcon/cursor_blink
 }
