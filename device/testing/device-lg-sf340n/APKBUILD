@@ -1,0 +1,30 @@
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-lg-sf340n
+pkgdesc="LG Stylo 3 Plus"
+pkgver=0.1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	linux-lg-sf340n
+	mkbootimg
+	postmarketos-base
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+26a20ab5618090eeb17f22b87e6568867b1425da9e76a49e7ae1dc13f8c9ce88fe96c195c15d48ab980d3349fab5d6029d95d8b891036cc824a30d59bf47a371  deviceinfo
+"
