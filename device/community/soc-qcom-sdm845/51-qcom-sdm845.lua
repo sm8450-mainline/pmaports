@@ -22,17 +22,17 @@ table.insert(alsa_monitor.rules,
 -- Disable suspend for Voice Call devices
 table.insert(alsa_monitor.rules,
   {
-	matches = {
-	  {
-	    { "node.name", "matches", "alsa_output.*.Voice_Call*__sink" },
-	  },
-	  {
-		{ "node.name", "matches", "alsa_input.*.Voice_Call*__source" },
-	  },
-	},
-	apply_properties = {
-	  ["audio.format"] = "S16LE",
+    matches = {
+      {
+        { "node.name", "matches", "alsa_output.*.Voice_Call*__sink" },
+      },
+      {
+        { "node.name", "matches", "alsa_input.*.Voice_Call*__source" },
+      },
+    },
+    apply_properties = {
+      ["audio.format"] = "S16LE",
       ["session.suspend-timeout-seconds"] = 0,
-	},
+    },
   }
 )
