@@ -1,4 +1,4 @@
-From 999793e3f4f3e807ba478c4585650a1277a7dd16 Mon Sep 17 00:00:00 2001
+From 510eef292daa3ec6ddd5c2ace74051261789fe93 Mon Sep 17 00:00:00 2001
 From: Clayton Craft <clayton@craftyguy.net>
 Date: Wed, 16 Dec 2020 20:16:14 -0800
 Subject: [PATCH] dts: pinephone: drop modem-power node
@@ -11,7 +11,7 @@ Subject: [PATCH] dts: pinephone: drop modem-power node
  4 files changed, 24 insertions(+), 68 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone-1.0.dts b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone-1.0.dts
-index 0530881d84..144f1eca9f 100644
+index 0530881d8401..144f1eca9f8d 100644
 --- a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone-1.0.dts
 +++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone-1.0.dts
 @@ -87,28 +87,6 @@ &reg_drivevbus {
@@ -55,7 +55,7 @@ index 0530881d84..144f1eca9f 100644
  	enable-gpios = <&pio 2 3 GPIO_ACTIVE_HIGH>; /* PC3 */
  	flash-gpios = <&pio 3 24 GPIO_ACTIVE_HIGH>; /* PD24 */
 diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone-1.1.dts b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone-1.1.dts
-index 053e4add99..78982fe051 100644
+index 053e4add9973..78982fe051de 100644
 --- a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone-1.1.dts
 +++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone-1.1.dts
 @@ -101,29 +101,6 @@ &sgm3140 {
@@ -97,7 +97,7 @@ index 053e4add99..78982fe051 100644
 +	gpios = <&pio 1 2 GPIO_ACTIVE_LOW>; /* PB2 */
 +};
 diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone-1.2.dts b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone-1.2.dts
-index ec4927dfe9..57b651d695 100644
+index ec4927dfe9dc..57b651d695af 100644
 --- a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone-1.2.dts
 +++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone-1.2.dts
 @@ -93,29 +93,6 @@ &sgm3140 {
@@ -139,7 +139,7 @@ index ec4927dfe9..57b651d695 100644
 +	gpios = <&r_pio 0 6 GPIO_ACTIVE_LOW>; /* PL6 */
 +};
 diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi
-index 1886a1f9a4..5b0b5a5f97 100644
+index 70a2c4ffb839..862c45e8199b 100644
 --- a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi
 +++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi
 @@ -310,6 +310,17 @@ ec25_codec: ec25-codec {
@@ -169,5 +169,5 @@ index 1886a1f9a4..5b0b5a5f97 100644
  		regulator-max-microvolt = <3500000>;
  		gpio = <&r_pio 0 7 GPIO_ACTIVE_HIGH>; /* PL7 */
 -- 
-2.43.0
+2.44.0
 
