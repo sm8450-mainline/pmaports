@@ -1,5 +1,5 @@
 # Reference: <https://postmarketos.org/devicepkg>
-# Maintainer: exkc <exxxxkc@getgoogleoff.me>
+# Maintainer:
 pkgname=device-xiaomi-once
 pkgdesc="Xiaomi Mi Box 3"
 pkgver=1
