@@ -2,7 +2,7 @@
 # Maintainer: Newbyte <newbyte@postmarketos.org>
 pkgname=postmarketos-ui-gnome-mobile
 pkgver=2
-pkgrel=3
+pkgrel=4
 pkgdesc="(Wayland) Gnome Shell patched to adapt better to phones (Experimental)"
 url="https://gnome.org/"
 arch="noarch !armhf !riscv64" # gnome-shell / riscv64: mutter-mobile
@@ -45,7 +45,6 @@ _pmb_recommends="
 	"
 install="$pkgname.post-install $pkgname.post-upgrade"
 source="
-	20_pmOS-wallpaper-gnome-mobile.gschema.override
 	firefox-wayland.sh
 	"
 options="!check"
@@ -54,9 +53,6 @@ package() {
 	install -Dm755 \
 		"$srcdir"/firefox-wayland.sh \
 		-t "$pkgdir"/etc/profile.d/
-
-	install -Dm644 -t "$pkgdir"/usr/share/glib-2.0/schemas \
-		"$srcdir"/20_pmOS-wallpaper-gnome-mobile.gschema.override
 }
 sha512sums="
 f96f0b57f197d911810e3f3786ffbcc0c6bfae71037e9fc97825f5bb2ea3b7fe149271f991454b240b8d1a596d998dcf410ab6ce9a46c5e2d17cee6d03b867a2  20_pmOS-wallpaper-gnome-mobile.gschema.override
