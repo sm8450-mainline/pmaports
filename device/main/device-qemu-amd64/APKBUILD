@@ -3,7 +3,7 @@
 # Co-Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=device-qemu-amd64
 pkgver=6
-pkgrel=2
+pkgrel=3
 pkgdesc="Simulated device in QEMU (x86_64)"
 url="https://postmarketos.org"
 arch="x86_64"
@@ -53,13 +53,13 @@ kernel_none() {
 }
 
 kernel_virt() {
-	pkgdesc="Alpine Virt kernel (minimal, no audio)"
+	pkgdesc="Alpine Virt kernel (minimal, no audio/mouse/network)"
 	depends="linux-virt"
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
 kernel_lts() {
-	pkgdesc="Alpine LTS kernel"
+	pkgdesc="Alpine LTS kernel (recommended)"
 	depends="linux-lts linux-firmware-none"
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
