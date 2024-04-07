@@ -1,20 +1,28 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=postmarketos-artwork
 pkgver=5
-pkgrel=0
+pkgrel=1
 pkgdesc="Meta package for the postmarketOS artwork"
 url="https://postmarketos.org/"
 arch="noarch"
 license="CC-BY-SA-4.0"
 _hash="f28dd5fef287c970f50ca49bc44814ee1e3b229d"
-source="postmarketos-artwork-$_hash.tar.gz::https://gitlab.com/postmarketOS/artwork/-/archive/$_hash/artwork-$_hash.tar.gz"
+source="postmarketos-artwork-$_hash.tar.gz::https://gitlab.com/postmarketOS/artwork/-/archive/$_hash/artwork-$_hash.tar.gz
+	10_pmOS-wallpaper.gschema.override
+	postmarketos-gnome.xml
+	"
 subpackages="
 	$pkgname-wallpapers
 	$pkgname-wallpapers-extra:wallpapers_extra
+	$pkgname-wallpapers-gnome:wallpapers_gnome
 	$pkgname-icons
 	$pkgname-sounds
 	"
-options="!check"
+makedepends="
+	imagemagick
+	imagemagick-jpeg
+	"
+options="!check pmb:cross-native"
 builddir="$srcdir"/artwork-$_hash
 
 package() {
@@ -23,15 +31,31 @@ package() {
 
 wallpapers() {
 	pkgdesc="Wallpapers for postmarketOS"
+
 	mkdir -p "$subpkgdir"/usr/share/wallpapers
+
+	# To avoid complexity, we only package the most recent wallpaper.
+	# Checklist for changing the wallpaper:
+	# - Add the new wallpaper here: https://postmarketos.org/wallpapers
+	# - Adjust the path in the "cp" line below
+	# - If paths inside the wallpaper dir (e.g. 2024/meadow) are different,
+	#   then adjust them here:
+	#     - postmarketos.jpg symlink/conversion below
+	#     - postmarketos-gnome.xml
+	#     - 10_pmOS-wallpaper.gschema.override
 	cp -r "$builddir"/wallpapers/2024/meadow \
 		"$subpkgdir"/usr/share/wallpapers/postmarketos
-	install -Dm644 "$builddir"/wallpapers/gnome/pmos.xml \
-		"$subpkgdir"/usr/share/gnome-background-properties/postmarketos.xml
+
+	# /usr/share/wallpapers/postmarketos.jpg should always point to the
+	# current wallpaper so we don't break configs
+	convert "$subpkgdir"/usr/share/wallpapers/postmarketos/contents/images/2707x2707.png \
+		-format jpeg \
+		"$subpkgdir"/usr/share/wallpapers/postmarketos.jpg
 }
 
 wallpapers_extra() {
 	pkgdesc="Additional Wallpapers for postmarketOS"
+
 	mkdir -p "$subpkgdir"/usr/share/wallpapers/
 	install -Dm644 "$builddir"/wallpapers/extra/* \
 		"$subpkgdir"/usr/share/wallpapers/
@@ -47,8 +71,19 @@ wallpapers_extra() {
 		"$subpkgdir"/usr/share/wallpapers/pmos.jpg
 }
 
+wallpapers_gnome() {
+	pkgdesc="Wallpaper configuration for GNOME-based UIs"
+	install_if="postmarketos-artwork-wallpapers=$pkgver-r$pkgrel postmarketos-base-ui-gnome"
+
+	install -Dm644 "$srcdir"/postmarketos-gnome.xml \
+		-t "$subpkgdir"/usr/share/gnome-background-properties/
+	install -Dm644 "$srcdir"/10_pmOS-wallpaper.gschema.override \
+		-t "$subpkgdir"/usr/share/glib-2.0/schemas
+}
+
 icons() {
 	pkgdesc="Icons for postmarketOS"
+
 	install -Dm644 "$builddir"/logo/logo.svg \
 		"$subpkgdir"/usr/share/pixmaps/postmarketos-logo.svg
 	install -Dm644 "$builddir"/logo/logo-phone.svg \
@@ -57,6 +92,7 @@ icons() {
 
 sounds() {
 	pkgdesc="Sounds for postmarketOS"
+
 	mkdir -p "$subpkgdir"/usr/share/sounds/postmarketOS/
 	install -Dm644 "$builddir"/tones/battery_low.mid \
 		"$subpkgdir"/usr/share/sounds/postmarketOS/
@@ -68,4 +104,6 @@ sounds() {
 
 sha512sums="
 cef2326a28dbd597f3d679329aaac17031bf1fdc60f634bc25cf20b23e62028961c5f228570df824615b21616a18ab2fd290a770cfd4f3ca1d929ac552a34ea8  postmarketos-artwork-f28dd5fef287c970f50ca49bc44814ee1e3b229d.tar.gz
+6464a9246d1c9cac5cd2f55345f1659e872377f941160132c897c8c08955bb61083fec6daa8993a34bffdcc900a29f7ae6438fe86a476242447ddccf4e937d06  10_pmOS-wallpaper.gschema.override
+0bcdfb41adb02b657ee0f9938d134d551fa8c3ef166e8a7895908d1dd355119143088641196505b3e2018896ae39a5392032de114aa602f4911b3aeadddd7b60  postmarketos-gnome.xml
 "
