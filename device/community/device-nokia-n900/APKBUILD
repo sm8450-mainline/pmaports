@@ -2,7 +2,7 @@
 # Maintainer: Sicelo <absicsz@gmail.com>
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-nokia-n900
-pkgver=20
+pkgver=21
 pkgrel=0
 pkgdesc="Nokia N900"
 url="https://postmarketos.org"
@@ -47,6 +47,7 @@ source="
 	modules.blocklist
 	n900-wlan-data.initd
 	pointercal
+	proxishot.sh
 	uboot-script.cmd
 	udev/10-nokia-modem.rules
 	udev/80-feedbackd-twl4030.rules
@@ -126,7 +127,7 @@ package() {
 
 x11() {
 	install_if="$pkgname=$pkgver-r$pkgrel xorg-server"
-	depends="xset xinput"
+	depends="xset xinput scrot"
 	mkdir "$pkgdir"/etc/acpi
 	install -D -m755 "$srcdir"/acpi_handler.sh \
 		"$pkgdir"/etc/acpi/handler.sh
@@ -138,6 +139,8 @@ x11() {
 		"$subpkgdir"/etc/X11/xorg.conf.d/11-n900.conf
 	install -Dm755 "$srcdir"/lock.sh \
 		"$pkgdir"/usr/bin/lock.sh
+	install -Dm755 "$srcdir"/proxishot.sh \
+		"$pkgdir"/usr/bin/proxishot.sh
 }
 
 xkeyboard_config() {
@@ -188,7 +191,7 @@ sha512sums="
 6b475c12eca8563be48c562a1cb4ad8ca6a05d70fc54b21288b2dd7435a80a6f53351aa870db96d5bbecf1b1c5cb00dfe35f5066e6d3fd0ad0369e66aeef5a21  10-initfs-keymap.files
 4656d3b3ced0a86e2d6315c89322899f646a689e9cb64609aa8ad5a676b23d93706d8a37f3be6f6b12c6b1e8501b7d26ecafecf27322333850513a6805c61910  10-initfs-keymap.sh
 2e6c324c2a0627fb37ee2feff249d6c828116a9c1a32d572481dddc12648c98b726eb3a475838398742f76a60e3f2249d7707502360473b8bf2e794bf22f57ce  acpi.map
-76a9aa439e59706a95dee54648b336a9837fb908eafbe21832ef9c3551bc48e5a3f7bdca8c8458bba7e721c204bea6f528060b9180b09e4ffa3b9cc163168540  acpi_handler.sh
+ff51909873160c2d4c6f0c0119b6d4a02751df29f571b8596b4bc8b04ce2541913c11a583b0e5dabd43f240752a8131da45db0ddff194860f4c11198599686a1  acpi_handler.sh
 5b87071834313a389f83d29f86f6e3ea108d0921f17dc918be7a46de7e74c73a4418044ef600a0fbf72c8fad22b7730dcd5bfe3d6d01d76bf01556f8540f0b32  asound.state.headset
 67acc17a33bc75113300393b4a5bba15319014032407e774d079abf310368e75f4f697dbb4856ba2d2d8ea184b056bb33561f42918de3ee91ab6a77df89a133c  asound.state.speakers
 3d55e34b95791636e44a5f41754f3d0de039dbba41f7a556d43a95c9e64afcfa930046b4b96b40020b6f196096ffba93514682927e32fa4488686fdd19c6da5a  backlight-enable.sh
@@ -214,6 +217,7 @@ e440ed7a3070c17e003b86b72dbe6d8194d01b577ca8dd56dd066f216b6dda32bb965c780950f178
 862ebc7cd2d7a1b3d41b10701b8418308c89eb0732eb99c42ec1091d48e08db9421727f67a3272b7309549798d59afb1b8d7d2fa48d1447b208fcb2329472d4d  modules.blocklist
 b50e7f37ffb1fa0bb782b117a4e8bcfdb722b6127c3e5d643e90cd901a1f4e65e77a0773ed418673c8195595347482be0c8096f5a723e840315ad61ccd043b66  n900-wlan-data.initd
 143c21f0b18a016d37cb44178e9daea09f128a90769b48353c03c3f245cb9b1f7e773b9ccee084973fc78ddd7a18c2642e54888a85bda7c7daecddc9a8c62eff  pointercal
+134f51d20decc0c63ab08010931a0b410b70d2f85bf6899f2ff137b1680f59f706a6287d01f5fbb41fa5309125df75a430d0783149bd1a6a1bca07d22f4f6a21  proxishot.sh
 239a54ae5c5effb53ccf4d658652c0462da57604b16b77a63627a17caa171caf82e3d1769f9c5afea8756415acbbf3b73db9b57715fce6c70ea3f29e5c6ac84a  uboot-script.cmd
 9e72035c88632d12895534e5aa5746f2c130c7dcdafa8702748d62b71ed0e1b5911b6e1f07f9b9e39b6072bbb662f66aead585baa1dcacb7d8c8953ca89b6762  10-nokia-modem.rules
 03079030237440080e833dbfeff80327c1ad6a8129c6c730b401a3052cd00a986783ec3473a526b14ae73ba1f20653b4c7b2a6590839bfe6cc156bbbc3b7bb74  80-feedbackd-twl4030.rules

@@ -19,7 +19,7 @@ case $cmd in
 		adjust_keypad_bl 0
 		;;
 	CAM_BTN_DWN)
-		echo "Not implemented yet"
+		USER_USER="$user" /usr/bin/proxishot.sh
 		;;
 	CAM_BTN_UP)
 		echo "Not implemented yet"
