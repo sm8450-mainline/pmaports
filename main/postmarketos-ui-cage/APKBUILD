@@ -1,7 +1,7 @@
 # Maintainer: Vitaliy Ognev <vitaliy.ognev@gmail.com>
 pkgname=postmarketos-ui-cage
 pkgver=1.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="(Wayland) Kiosk WM"
 arch="all"
 url="https://postmarketos.org/"
@@ -31,6 +31,7 @@ depends="
 	elogind-openrc
 	psmisc
 	tinydm
+	tinydm-openrc
 "
 
 package() {
