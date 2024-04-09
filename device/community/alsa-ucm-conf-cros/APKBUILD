@@ -1,0 +1,20 @@
+# Maintainer: WeirdTreeThing <bradyn127@protonmail.com>
+pkgname=alsa-ucm-conf-cros
+pkgver=0.5
+pkgrel=0
+pkgdesc="ALSA UCM configuration for Chrome OS devices"
+url="https://github.com/WeirdTreeThing/alsa-ucm-conf-cros"
+arch="noarch"
+depends="alsa-ucm-conf"
+replaces="alsa-ucm-conf"
+license="BSD-3-Clause"
+options="!check"
+source="$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+
+package() {
+	mkdir -p "$pkgdir"/usr/share/alsa/
+	cp -r ucm2 "$pkgdir"/usr/share/alsa
+}
+sha512sums="
+844f23b640bbdbcef83f9cc11444ee80bfc83095d7917f5c12c2e3b99f120fd014c74c91deae02ec0f2210115270e518977fdef77dca5a3ab5d8df53e5ec62b1  alsa-ucm-conf-cros-0.5.tar.gz
+"

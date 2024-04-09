@@ -52,6 +52,7 @@ device/*/*-xiaomi-tissot/			@jiaxyga @barni2000
 device/*/*-xiaomi-vince/			@M0Rf30
 device/*/*-xiaomi-wt88047/			@Minecrell
 device/*/*-xiaomi-ysl/				@barni2000
+device/*/alsa-ucm-conf-cros/			@WeirdTreeThing
 device/*/device-fairphone-*/			@z3ntu
 device/*/device-google-nyan-big/		@jenneron
 device/*/device-google-nyan-blaze/		@jenneron
