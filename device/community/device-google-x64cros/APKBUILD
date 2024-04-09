@@ -5,12 +5,13 @@
 pkgname=device-google-x64cros
 pkgdesc="Google Chromebooks with x64 CPU"
 pkgver=7
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="x86_64"
 options="!check !archcheck"
 depends="
+	alsa-ucm-conf-cros
 	depthcharge-tools
 	postmarketos-base
 	postmarketos-cros-common
