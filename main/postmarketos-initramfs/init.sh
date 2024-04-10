@@ -46,11 +46,14 @@ if [ "$IN_CI" = "true" ]; then
 	fail_halt_boot
 fi
 
-# Always run dhcp daemon/usb networking for now (later this should only
-# be enabled, when having the debug-shell hook installed for debugging,
-# or get activated after the initramfs is done with an OpenRC service).
 setup_usb_network
 start_unudhcpd
+
+if grep -q "pmos.debug-shell" /proc/cmdline; then
+	debug_shell
+fi
+
+check_keys
 
 mount_subpartitions
 
@@ -91,13 +94,28 @@ setup_bootchart2
 # Switch root
 run_hooks /hooks-cleanup
 
-# Restore stdout and stderr to their original values
-exec 1>&3 2>&4
+echo "Switching root"
+
+# Restore stdout and stderr to their original values if they
+# were stashed
+if [ -e "/proc/1/fd/3" ]; then
+	exec 1>&3 2>&4
+elif ! grep -q "pmos.debug-shell" /proc/cmdline; then
+	echo "$LOG_PREFIX Disabling console output again (use 'pmos.debug-shell' to keep it enabled)"
+	exec >/dev/null 2>&1
+fi
 
 # Re-enable kmsg ratelimiting (might have been disabled for logging)
 echo ratelimit > /proc/sys/kernel/printk_devkmsg
 
 killall mdev udevd syslogd 2>/dev/null
+
+# Kill any getty shells that might be running
+for pid in $(pidof sh); do
+	if ! [ "$pid" = "1" ]; then
+		kill -9 "$pid"
+	fi
+done
 
 # shellcheck disable=SC2093
 exec switch_root /sysroot "$init"
