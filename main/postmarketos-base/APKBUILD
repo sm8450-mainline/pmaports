@@ -32,13 +32,10 @@ subpackages="
 	"
 options="!check"
 
-# alpine-base and busybox-initscripts can be removed from here after 23.01 is out
 replaces="
-	alpine-base
 	alpine-baselayout
 	alpine-baselayout-data
 	alpine-release
-	busybox-initscripts
 	sudo
 	sudo-ldap
 	"
