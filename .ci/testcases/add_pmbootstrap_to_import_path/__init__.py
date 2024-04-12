@@ -15,6 +15,13 @@ def path_pmbootstrap():
         code from there.
         returns: pmbootstrap installation folder
     """
+    
+    if path:= os.environ.get("PMBOOTSTRAP_PATH"):
+        if os.path.exists(path):
+            return path
+        else:
+            print("WARNING: PMBOOTSTRAP_PATH is invalid, trying to detect correct path...")
+
     # This variable is set by pmbootstrap 1.52 and later
     # If it's undefined, try to find 'pmbootstrap' in path
     bin = os.environ.get("PMBOOTSTRAP_CMD") or shutil.which("pmbootstrap")
