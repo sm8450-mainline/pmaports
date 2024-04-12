@@ -16,8 +16,7 @@ import pmb.parse
 import pmb.parse.version
 import pmb.helpers.logging
 
-
-def get_package_version(args, package, revision, check=True):
+def get_package_contents(args, package, revision, check=True):
     # Redirect stderr to /dev/null, so git doesn't complain about files not
     # existing in upstream branch for new packages
     stderr = None
@@ -40,6 +39,11 @@ def get_package_version(args, package, revision, check=True):
             handle.write(apkbuild_content)
         parsed = pmb.parse.apkbuild(tempdir + "/APKBUILD", False, False)
 
+    return parsed
+
+
+def get_package_version(args, package, revision, check=True):
+    parsed = get_package_contents(args, package, revision, check)
     return parsed["pkgver"] + "-r" + parsed["pkgrel"]
 
 
