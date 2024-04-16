@@ -27,6 +27,8 @@ wiki:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_PROTECTED == "false"
       changes:
+        - .ci/**/*
+        - .gitlab-ci.yml
         - device/*/device-*/*
   script:
     - .ci/lib/gitlab_prepare_ci.sh
