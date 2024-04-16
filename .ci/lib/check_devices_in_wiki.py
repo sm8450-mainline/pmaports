@@ -106,7 +106,7 @@ def main():
     # Ask to adjust the wiki
     if error:
         print("*** Wiki check failed!")
-        print("Thank you for porting postmarketOS to a new device! \o/")
+        print("Thank you for porting postmarketOS to a new device! \\o/")
         print("")
         print("Now it's time to add some documentation:")
         print("1) Create a device specific wiki page as described here:")
