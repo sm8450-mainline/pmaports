@@ -43,9 +43,6 @@ ruff:
         - .ci/*
         - .ci/*/*
         - .gitlab-ci.yml
-  before_script:
-    - "echo 'https://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories"
-    - *global_before_scripts
   script:
     - .ci/lib/gitlab_prepare_ci.sh
     - .ci/ruff.sh
