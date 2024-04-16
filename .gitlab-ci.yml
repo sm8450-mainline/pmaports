@@ -2,6 +2,8 @@
 
 # global settings
 image: alpine:edge
+before_script: &global_before_scripts
+  - apk upgrade -U
 after_script:
   - .ci/lib/move_logs.sh $CI_PROJECT_DIR
 stages:
@@ -41,6 +43,7 @@ ruff:
         - .gitlab-ci.yml
   before_script:
     - "echo 'https://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories"
+    - *global_before_scripts
   script:
     - .ci/lib/gitlab_prepare_ci.sh
     - .ci/ruff.sh
@@ -112,6 +115,7 @@ mr-settings:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
   before_script:
+    - *global_before_scripts
     - apk -q add python3
   script:
     - wget -q "https://gitlab.com/postmarketOS/ci-common/-/raw/master/check_mr_settings.py"
@@ -123,6 +127,7 @@ mr-settings:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_PROTECTED == "false"
   before_script:
+    - *global_before_scripts
     - .ci/lib/gitlab_prepare_ci.sh
   after_script:
     - cp -r /home/pmos/.local/var/pmbootstrap/packages/ packages/ || true
