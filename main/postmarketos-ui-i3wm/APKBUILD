@@ -1,7 +1,7 @@
 # Reference: https://postmarketos.org/uipkg
 # Maintainer: Martijn Braam <martijn@brixit.nl>
 pkgname=postmarketos-ui-i3wm
-pkgver=0.5
+pkgver=0.6
 pkgrel=0
 pkgdesc="(X11) Tiling WM (keyboard required)"
 url="https://i3wm.org"
@@ -42,6 +42,6 @@ package() {
 		"$pkgdir"/usr/share/xsessions/i3.desktop
 }
 sha512sums="
-82ecd725d9fb06b44992bc6b6be63c620f61015f4fd0687cf0ab66fbfa632b40ef9c9001bf309ae872aa3ae01db0cd26ee74bcfe2d8249782faae3372ed38a10  i3wm-pmos
+6ced3726dff7138af7739b15433e06b09876e2c8ad7ecb33d4990a0ed15181b79622117c818ce1cce9ae595c1c2766c9623dbd3ec365b081cf348e49f783cc10  i3wm-pmos
 5160619693a52a1e5d62008abb0b756efb072368120dc72a0d598083aa291fd50d39abc40465950193782467d6a7f80be9934cd058f81596038336fa07e90206  i3-exec
 "
