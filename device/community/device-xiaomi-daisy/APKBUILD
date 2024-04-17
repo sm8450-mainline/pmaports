@@ -3,7 +3,7 @@
 pkgname=device-xiaomi-daisy
 pkgdesc="Xiaomi Mi A2 Lite"
 pkgver=11
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -22,6 +22,7 @@ depends="
 	soc-qcom-msm8953-modem
 "
 makedepends="devicepkg-dev"
+subpackages="$pkgname-fake-goodix:fake_goodix"
 
 source="
 	deviceinfo
@@ -35,7 +36,11 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
-	install -Dm644 90-device-xiaomi-daisy.rules -t "$pkgdir/etc/udev/rules.d/"
+}
+
+fake_goodix() {
+	pkgdesc="Calibration data for replacement goodix touch controllers"
+	install -Dm644 90-device-xiaomi-daisy.rules -t "$subpkgdir/etc/udev/rules.d/"
 }
 
 sha512sums="
