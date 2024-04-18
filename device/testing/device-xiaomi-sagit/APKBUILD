@@ -2,7 +2,7 @@
 pkgname=device-xiaomi-sagit
 pkgdesc="Xiaomi Mi 6"
 pkgver=2
-pkgrel=3
+pkgrel=4
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -10,7 +10,6 @@ options="!check !archcheck"
 depends="
 	mkbootimg
 	postmarketos-base
-	postmarketos-update-kernel
 	linux-postmarketos-qcom-msm8998
 	soc-qcom-sdm845
 "

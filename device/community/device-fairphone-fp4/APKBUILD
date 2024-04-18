@@ -3,7 +3,7 @@
 pkgname=device-fairphone-fp4
 pkgdesc="Fairphone 4"
 pkgver=2
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -15,7 +15,6 @@ depends="
 	mesa-vulkan-freedreno
 	mkbootimg
 	postmarketos-base
-	postmarketos-update-kernel
 	qbootctl
 	qbootctl-openrc
 	swclock-offset

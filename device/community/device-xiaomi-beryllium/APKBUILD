@@ -4,7 +4,7 @@
 pkgname=device-xiaomi-beryllium
 pkgdesc="Xiaomi Poco F1"
 pkgver=10
-pkgrel=3
+pkgrel=4
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -14,7 +14,6 @@ depends="
 	mkbootimg
 	soc-qcom-sdm845
 	soc-qcom-sdm845-ucm
-	postmarketos-update-kernel
 "
 makedepends="devicepkg-dev"
 subpackages="

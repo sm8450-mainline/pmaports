@@ -4,7 +4,7 @@
 pkgname=device-oneplus-enchilada
 pkgdesc="OnePlus 6"
 pkgver=13
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -13,7 +13,6 @@ depends="
 	linux-postmarketos-qcom-sdm845
 	mkbootimg
 	postmarketos-base
-	postmarketos-update-kernel
 	soc-qcom-sdm845
 	soc-qcom-sdm845-ucm
 	soc-qcom-sdm845-qbootctl

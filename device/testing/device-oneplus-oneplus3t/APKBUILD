@@ -2,7 +2,7 @@
 pkgname=device-oneplus-oneplus3t
 pkgdesc="OnePlus 3T"
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -15,7 +15,6 @@ subpackages="
 "
 depends="
 	postmarketos-base
-	postmarketos-update-kernel
 	mkbootimg
 	soc-qcom-msm8996
 	reboot-mode

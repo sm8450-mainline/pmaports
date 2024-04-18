@@ -3,7 +3,7 @@
 pkgname=device-google-sargo
 pkgdesc="Google Pixel 3a"
 pkgver=0.6
-pkgrel=5
+pkgrel=6
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -14,7 +14,6 @@ depends="
 	make-dynpart-mappings
 	mkbootimg
 	postmarketos-base
-	postmarketos-update-kernel
 	soc-qcom-sdm845
 	soc-qcom-sdm845-qbootctl
 "

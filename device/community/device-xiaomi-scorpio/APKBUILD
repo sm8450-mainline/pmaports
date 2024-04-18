@@ -4,7 +4,7 @@
 pkgname=device-xiaomi-scorpio
 pkgdesc="Xiaomi Mi Note 2"
 pkgver=3
-pkgrel=10
+pkgrel=11
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -14,7 +14,6 @@ depends="
 	mesa-egl
 	mkbootimg
 	postmarketos-base
-	postmarketos-update-kernel
 	soc-qcom-msm8996
 	soc-qcom-msm8996-ucm
 	"

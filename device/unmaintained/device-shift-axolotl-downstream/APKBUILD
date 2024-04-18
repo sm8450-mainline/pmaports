@@ -4,7 +4,7 @@
 pkgname=device-shift-axolotl-downstream
 pkgdesc="SHIFT6mq downstream"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -14,7 +14,6 @@ depends="
 	mkbootimg
 	msm-fb-refresher
 	postmarketos-base
-	postmarketos-update-kernel
 "
 makedepends="devicepkg-dev"
 source="deviceinfo"

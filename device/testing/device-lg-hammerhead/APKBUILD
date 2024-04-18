@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lg-hammerhead
 pkgver=6
-pkgrel=0
+pkgrel=1
 pkgdesc="Google Nexus 5"
 url="https://postmarketos.org"
 arch="armv7"
@@ -11,7 +11,6 @@ depends="
 	lk2nd-msm8974
 	mkbootimg
 	postmarketos-base
-	postmarketos-update-kernel
 	swclock-offset
 "
 makedepends="devicepkg-dev"

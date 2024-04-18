@@ -4,7 +4,7 @@
 pkgname=device-xiaomi-davinci
 pkgdesc="Xiaomi Mi 9T / Redmi K20"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -14,7 +14,6 @@ depends="
 	make-dynpart-mappings
 	mkbootimg
 	postmarketos-base
-	postmarketos-update-kernel
 	soc-qcom-sm7150
 	soc-qcom-sm7150-unl0kr-quirk
 "

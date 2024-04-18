@@ -4,7 +4,7 @@
 pkgname=device-xiaomi-natrium
 pkgdesc="Xiaomi Mi 5s Plus"
 pkgver=1
-pkgrel=4
+pkgrel=5
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -14,7 +14,6 @@ depends="
 	mesa-egl
 	mkbootimg
 	postmarketos-base
-	postmarketos-update-kernel
 	soc-qcom-msm8996
 	soc-qcom-msm8996-ucm
 "

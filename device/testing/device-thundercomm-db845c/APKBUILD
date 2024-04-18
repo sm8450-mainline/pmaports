@@ -5,7 +5,7 @@
 pkgname=device-thundercomm-db845c
 pkgdesc="Thundercomm Dragonboard 845c"
 pkgver=1
-pkgrel=4
+pkgrel=5
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -14,7 +14,6 @@ depends="
 	linux-postmarketos-qcom-sdm845
 	mkbootimg
 	postmarketos-base
-	postmarketos-update-kernel
 	soc-qcom-sdm845
 	soc-qcom-sdm845-ucm
 	soc-qcom-sdm845-qbootctl

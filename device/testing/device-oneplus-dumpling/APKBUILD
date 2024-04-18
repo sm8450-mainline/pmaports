@@ -3,7 +3,7 @@
 pkgname=device-oneplus-dumpling
 pkgdesc="OnePlus 5T"
 pkgver=4
-pkgrel=4
+pkgrel=5
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -11,7 +11,6 @@ options="!check !archcheck"
 depends="
 	mkbootimg
 	postmarketos-base
-	postmarketos-update-kernel
 "
 makedepends="devicepkg-dev"
 source="
