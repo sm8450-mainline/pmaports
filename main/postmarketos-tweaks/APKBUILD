@@ -1,6 +1,6 @@
 # Maintainer: Martijn Braam <martijn@brixit.nl>
 pkgname=postmarketos-tweaks
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=0
 pkgdesc="Tweak tool for phone UIs"
 url="https://gitlab.com/postmarketOS/postmarketos-tweaks"
@@ -41,5 +41,5 @@ sxmo() {
 }
 
 sha512sums="
-eacfe552bc1a6719b93718c4cc47de56c49c3d975cc2b2b14cfdabac9c6d3f63561e28b5e8e8fcff1906da2a74f004353d7844ac6d6daaafc5c488cc167d4c84  postmarketos-tweaks-0.13.1.tar.gz
+9dee339609712b14970d15ad4c1bfccd246c3cea132b0a6a825262ae7bb7d04e9b03761e5f7832d36d5bfa5a9c20d893b713c0433316338ff0ad50d7b80ee6c0  postmarketos-tweaks-0.13.2.tar.gz
 "
