@@ -23,7 +23,6 @@ sh_files="
 	./main/postmarketos-mkinitfs-hook-debug-shell/20-debug-shell.sh
 	./main/postmarketos-mkinitfs-hook-debug-shell/setup_usb_storage.sh
 	./main/postmarketos-mkinitfs-hook-netboot/netboot.sh
-	./main/postmarketos-update-kernel/update-kernel.sh
 	./main/ttyescape/*.post-install
 	./main/unl0kr/unlock.sh
 	./main/msm-firmware-loader/*.post-install
