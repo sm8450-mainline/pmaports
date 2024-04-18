@@ -3,7 +3,7 @@
 pkgname=device-google-trogdor
 pkgdesc="Google Trogdor Chromebooks"
 pkgver=1
-pkgrel=4
+pkgrel=5
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -15,7 +15,6 @@ depends="
 	linux-postmarketos-qcom-sc7180
 	postmarketos-base
 	postmarketos-cros-common
-	postmarketos-update-depthcharge-kernel
 	soc-qcom-sc7180
 "
 makedepends="devicepkg-dev"

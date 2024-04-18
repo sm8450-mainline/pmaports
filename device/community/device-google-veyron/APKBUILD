@@ -3,7 +3,7 @@
 pkgname=device-google-veyron
 pkgdesc="Google Veyron Chromebooks"
 pkgver=5
-pkgrel=5
+pkgrel=6
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -14,7 +14,6 @@ depends="
 	linux-google-veyron
 	postmarketos-base
 	postmarketos-cros-common
-	postmarketos-update-depthcharge-kernel
 "
 subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
 makedepends="devicepkg-dev"

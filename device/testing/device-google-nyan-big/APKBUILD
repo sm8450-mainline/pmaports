@@ -4,7 +4,7 @@
 pkgname=device-google-nyan-big
 pkgdesc="Acer Chromebook 13 CB5-311 / Acer Chromebook C810"
 pkgver=3
-pkgrel=4
+pkgrel=5
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -14,7 +14,6 @@ depends="
 	depthcharge-tools
 	postmarketos-base
 	postmarketos-cros-common
-	postmarketos-update-depthcharge-kernel
 "
 subpackages="
 	$pkgname-kernel-nyan-big:kernel_nyan_big

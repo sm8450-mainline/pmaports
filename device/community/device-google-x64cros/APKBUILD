@@ -5,7 +5,7 @@
 pkgname=device-google-x64cros
 pkgdesc="Google Chromebooks with x64 CPU"
 pkgver=7
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="x86_64"
@@ -15,7 +15,6 @@ depends="
 	depthcharge-tools
 	postmarketos-base
 	postmarketos-cros-common
-	postmarketos-update-depthcharge-kernel
 	systemd-boot
 	"
 makedepends="devicepkg-dev"

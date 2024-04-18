@@ -4,7 +4,7 @@
 pkgname=device-google-oak
 pkgdesc="Google Oak Chromebooks"
 pkgver=4
-pkgrel=5
+pkgrel=6
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -15,7 +15,6 @@ depends="
 	linux-postmarketos-mediatek-mt8173
 	postmarketos-base
 	postmarketos-cros-common
-	postmarketos-update-depthcharge-kernel
 "
 makedepends="devicepkg-dev"
 source="deviceinfo modules-initfs"
