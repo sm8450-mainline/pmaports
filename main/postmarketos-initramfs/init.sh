@@ -103,6 +103,9 @@ elif ! grep -q "pmos.debug-shell" /proc/cmdline; then
 	exec >/dev/null 2>&1
 fi
 
+# Make it clear that we're at the end of the initramfs
+show_splash "Starting..."
+
 # Re-enable kmsg ratelimiting (might have been disabled for logging)
 echo ratelimit > /proc/sys/kernel/printk_devkmsg
 
