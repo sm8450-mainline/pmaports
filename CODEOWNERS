@@ -116,6 +116,5 @@ device/*/u-boot-pinebookpro/			@QC8086
 device/*/u-boot-pinephone/			@Arnavion @PsychoGame
 device/*/wl1251-cal/				@Danct12
 main/postmarketos-ui-plasma-mobile/		@bshah
-main/postmarketos-update-depthcharge-kernel/	@jenneron
 main/shutdown-clear-rtc-wakealarm/		@Arnavion
 main/ttyescape/					@calebccff
