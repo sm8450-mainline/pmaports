@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+description="Update wl1251 calibration data"
+
+depend()
+{
+	before modules
+	after localmount
+}
+
+start()
+{
+	calibrate-wl1251
+	eend $?
+}

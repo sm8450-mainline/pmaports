@@ -1,14 +1,17 @@
 # Maintainer: Dang Huynh <danct12@disroot.org>
 pkgname=wl1251-cal
 pkgver=1.2
-pkgrel=0
-pkgdesc="Retrieve WiFi data from CAL on the Nokia N900 and feed it to the driver"
+pkgrel=1
+pkgdesc="Retrieve wl1251 calibration data from a CAL partition and feed it to the driver"
 url="https://github.com/maemo-leste/wl1251-cal"
 arch="armv7"
 license="LGPL-2.1-only"
 makedepends="linux-headers"
+subpackages="$pkgname-openrc"
+triggers="$pkgname.trigger=/lib/firmware/ti-connectivity"
 source="$pkgname-$pkgver.tar.gz::https://github.com/maemo-leste/wl1251-cal/archive/refs/tags/$pkgver.tar.gz
-	n900-update-wl1251"
+	wl1251-cal.initd
+	calibrate-wl1251"
 options="!check" # No tests
 
 build() {
@@ -17,9 +20,17 @@ build() {
 
 package() {
 	make install DESTDIR="$pkgdir"
-	install -Dm755 "$srcdir/n900-update-wl1251" "$pkgdir/usr/bin/n900-update-wl1251"
+	install -Dm755 "$srcdir/calibrate-wl1251" "$pkgdir/usr/bin/calibrate-wl1251"
+	install -Dm755 "$srcdir"/wl1251-cal.initd "$pkgdir"/etc/init.d/wl1251-cal
 }
+
+openrc() {
+	default_openrc
+	install="$subpkgname.post-install"
+}
+
 sha512sums="
 1a402553fc98fa8f2d81d34a548f96be91d13bdcb77ec8e9d8373732b27a6e908895f6044aef8e88dbcd9fa6fa04f0a3d62bed877be91ba6207f68440c3ce758  wl1251-cal-1.2.tar.gz
-2cb484d8ab64198c97c61691151a19d26d57f340f85c70d39293e9428b5ac790bc1a6de5894a2a9a3886487f450fd09b21513add3f5fa776ac5289985e43c63a  n900-update-wl1251
+1793a4d09ce3c4f2af7b7b4e171ed04e4d5e70d3e40f365ef169879d2431bd1f7abe8702a422efb4d86449a2800b53c531af7353d4e4c2563985c97030cbd99b  wl1251-cal.initd
+0d843727da4d2f3e2fe76ff80c68e67b85fa1e4797ba822d323f3b005df853ec5206c812a9e0caed96aff2bf5f353df79b20f1970c6382d90e02dc664411d0b4  calibrate-wl1251
 "

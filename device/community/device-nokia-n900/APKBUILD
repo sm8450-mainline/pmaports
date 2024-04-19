@@ -2,7 +2,7 @@
 # Maintainer: Sicelo <absicsz@gmail.com>
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-nokia-n900
-pkgver=21
+pkgver=23
 pkgrel=0
 pkgdesc="Nokia N900"
 url="https://postmarketos.org"
@@ -45,7 +45,6 @@ source="
 	modem-load.conf
 	modem-opts.conf
 	modules.blocklist
-	n900-wlan-data.initd
 	pointercal
 	proxishot.sh
 	uboot-script.cmd
@@ -181,10 +180,7 @@ upower() {
 nonfree_firmware() {
 	pkgdesc="Wifi firmware"
 	depends="linux-firmware-ti-connectivity wl1251-cal"
-	install="$subpkgname.post-install"
-	triggers="$subpkgname.trigger=/lib/firmware/ti-connectivity"
-
-	install -Dm755 "$srcdir/n900-wlan-data.initd" "$subpkgdir/etc/init.d/n900-wlan-data"
+	mkdir "$subpkgdir"
 }
 
 sha512sums="
@@ -215,7 +211,6 @@ e440ed7a3070c17e003b86b72dbe6d8194d01b577ca8dd56dd066f216b6dda32bb965c780950f178
 157b27feebcfddf800a1ffd8c6e369d2b58e5db25b1a44b4443dada8d9fe74abb91d036b9f0e97769bbafbdc72020b5637313682c6932fe7b0bddb9ebebbad42  modem-load.conf
 695feac7f69a0ec8c5e007cdb651adcc3492f1c6236e7fd183edec2a5e25cb957d3ace630ea5fdb87fd703e35ac368f1d097c2f881ecb52c9cfd433564db2a6c  modem-opts.conf
 862ebc7cd2d7a1b3d41b10701b8418308c89eb0732eb99c42ec1091d48e08db9421727f67a3272b7309549798d59afb1b8d7d2fa48d1447b208fcb2329472d4d  modules.blocklist
-b50e7f37ffb1fa0bb782b117a4e8bcfdb722b6127c3e5d643e90cd901a1f4e65e77a0773ed418673c8195595347482be0c8096f5a723e840315ad61ccd043b66  n900-wlan-data.initd
 143c21f0b18a016d37cb44178e9daea09f128a90769b48353c03c3f245cb9b1f7e773b9ccee084973fc78ddd7a18c2642e54888a85bda7c7daecddc9a8c62eff  pointercal
 134f51d20decc0c63ab08010931a0b410b70d2f85bf6899f2ff137b1680f59f706a6287d01f5fbb41fa5309125df75a430d0783149bd1a6a1bca07d22f4f6a21  proxishot.sh
 239a54ae5c5effb53ccf4d658652c0462da57604b16b77a63627a17caa171caf82e3d1769f9c5afea8756415acbbf3b73db9b57715fce6c70ea3f29e5c6ac84a  uboot-script.cmd
