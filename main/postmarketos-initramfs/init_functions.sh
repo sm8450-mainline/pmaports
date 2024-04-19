@@ -947,6 +947,13 @@ debug_shell() {
 
 	# Getty on the display
 	hide_splash
+	# Spawn buffyboard if the device might not have a physical keyboard
+	if echo "handset tablet convertible" | grep "${deviceinfo_chassis:-handset}" >/dev/null; then
+		modprobe uinput
+		# Set a large font for the framebuffer
+		setfont "/usr/share/consolefonts/ter-128n.psf.gz" -C "/dev/$active_console"
+		buffyboard &
+	fi
 	run_getty "$active_console"
 
 	# And on the usb acm port (if it exists)
@@ -980,7 +987,7 @@ debug_shell() {
 
 	show_splash "Loading..."
 
-	pkill -f fbkeyboard || true
+	pkill -f buffyboard || true
 }
 
 # Check if the user is pressing a key and either drop to a shell or halt boot as applicable

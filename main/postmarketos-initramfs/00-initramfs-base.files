@@ -12,6 +12,8 @@
 /usr/share/initramfs/init.sh:/init
 /usr/share/initramfs/init_functions.sh:/init_functions.sh
 /usr/share/misc/source_deviceinfo
+/usr/bin/buffyboard
+/usr/share/consolefonts/ter-128n.psf.gz
 /usr/share/libinput/*.quirks
 /bin/udevadm
 /sbin/udevd
