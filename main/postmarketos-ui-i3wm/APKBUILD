@@ -5,7 +5,8 @@ pkgver=0.6
 pkgrel=0
 pkgdesc="(X11) Tiling WM (keyboard required)"
 url="https://i3wm.org"
-arch="noarch"
+# riscv64 has very unstable builders
+arch="noarch !riscv64"
 license="GPL-3.0-or-later"
 source="i3wm-pmos i3-exec"
 depends="
