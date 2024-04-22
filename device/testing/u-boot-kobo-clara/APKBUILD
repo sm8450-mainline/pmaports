@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=u-boot-kobo-clara
 pkgver=2023.10
-pkgrel=0
+pkgrel=1
 pkgdesc="U-Boot for Kobo Clara HD"
 arch="armv7"
 _carch="arm"
@@ -13,7 +13,7 @@ options="!check !tracedeps pmb:cross-native"
 
 install="$pkgname.post-upgrade"
 _repository="u-boot-fslc"
-_commit="a3816f6b51b5dc9083af4142ca5f3a4e4a235336"
+_commit="3247fa27aed27bb5ac24bd9966fd7dadd9c4c373"
 source="
 	$pkgname-$_commit.tar.gz::https://github.com/akemnade/$_repository/archive/$_commit.tar.gz
 "
@@ -36,5 +36,5 @@ package() {
 }
 
 sha512sums="
-d1db014fa889e76aeb83099f7573f5ec89c8e6f69a6273b9528fd485ffcbe34e102ee0c492554807e160a5bd669bf799db2b5a906045fea35b16c0677a377989  u-boot-kobo-clara-a3816f6b51b5dc9083af4142ca5f3a4e4a235336.tar.gz
+725f689bd5bd00f3b484830e5db9be51af6ed6f5644463e646db2c412f5878361e887ed4f3b3083a3e16f0915c909af22081cb52fd8541ac2953e1f77ffc5940  u-boot-kobo-clara-3247fa27aed27bb5ac24bd9966fd7dadd9c4c373.tar.gz
 "
