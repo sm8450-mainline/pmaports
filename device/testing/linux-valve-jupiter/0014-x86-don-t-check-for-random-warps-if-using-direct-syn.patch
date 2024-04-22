@@ -1,4 +1,4 @@
-From 609d68f2225d5e394a573ffe9c77c82b30ea8e9d Mon Sep 17 00:00:00 2001
+From dc7ee68b96518fa01deead155b2ba2ce8cd87634 Mon Sep 17 00:00:00 2001
 From: Steven Noonan <steven@uplinklabs.net>
 Date: Wed, 17 Nov 2021 19:42:32 -0800
 Subject: [PATCH 14/21] x86: don't check for random warps if using direct sync

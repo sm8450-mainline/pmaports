@@ -1,4 +1,4 @@
-From 4cc7f39b393b2a9531951bb6ac544a72ae2a3edf Mon Sep 17 00:00:00 2001
+From f8409dacc69c563e92bf4aa71c3b75516c7251b5 Mon Sep 17 00:00:00 2001
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 Date: Sat, 19 Feb 2022 16:08:36 -0800
 Subject: [PATCH 04/21] mfd: Add MFD core driver for Steam Deck
@@ -17,10 +17,10 @@ Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
  create mode 100644 drivers/mfd/steamdeck.c
 
 diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
-index e7a6e45b9fac..31e2c95eca02 100644
+index 4b023ee229cf..0fa6921e5a9e 100644
 --- a/drivers/mfd/Kconfig
 +++ b/drivers/mfd/Kconfig
-@@ -2333,5 +2333,16 @@ config MFD_RSMU_SPI
+@@ -2334,5 +2334,16 @@ config MFD_RSMU_SPI
  	  Additional drivers must be enabled in order to use the functionality
  	  of the device.
  

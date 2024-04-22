@@ -1,4 +1,4 @@
-From d29a5ac61f85c4dbdb553b0aae6c0700ccb46872 Mon Sep 17 00:00:00 2001
+From ef64d0cede1c3cbc780118f2d2694bd4ebbb7485 Mon Sep 17 00:00:00 2001
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 Date: Sun, 27 Feb 2022 14:46:08 -0800
 Subject: [PATCH 07/21] extcon: Add driver for Steam Deck

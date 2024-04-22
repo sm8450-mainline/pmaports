@@ -1,4 +1,4 @@
-From 6122171153699e140375a99ad2b0cca7668617aa Mon Sep 17 00:00:00 2001
+From 8b12a04e9b7ceaa5026ced58e6dcd957cc55faa1 Mon Sep 17 00:00:00 2001
 From: "Pierre-Loup A. Griffais" <pgriffais@valvesoftware.com>
 Date: Tue, 14 Jun 2022 14:31:18 -0700
 Subject: [PATCH 02/21] drivers: video: backlight: Disable backlight

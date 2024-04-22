@@ -1,4 +1,4 @@
-From 1fba949e975caea1a568124ad9f417daa989dc80 Mon Sep 17 00:00:00 2001
+From a92d1fa3a5ad8514aa350bbc9625bb0456262eb0 Mon Sep 17 00:00:00 2001
 From: Steven Noonan <steven@uplinklabs.net>
 Date: Wed, 17 Nov 2021 00:25:26 -0800
 Subject: [PATCH 10/21] x86: implement tsc=directsync for systems without
@@ -15,23 +15,23 @@ Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
  4 files changed, 44 insertions(+), 10 deletions(-)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index 31b3a25680d0..8243a9c96031 100644
+index 902ecd92a29f..b963dc738ca0 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -6727,6 +6727,8 @@
+@@ -6788,6 +6788,8 @@
  			This will be suppressed by an earlier tsc=nowatchdog and
  			can be overridden by a later tsc=nowatchdog.  A console
  			message will flag any such suppression or overriding.
 +			[x86] directsync: attempt to sync the tsc via direct
 +			writes if MSR_IA32_TSC_ADJUST isn't available
  
- 	tsc_early_khz=  [X86] Skip early TSC calibration and use the given
+ 	tsc_early_khz=  [X86,EARLY] Skip early TSC calibration and use the given
  			value instead. Useful when the early TSC frequency discovery
 diff --git a/arch/x86/include/asm/tsc.h b/arch/x86/include/asm/tsc.h
-index 594fce0ca744..529dc6d4a426 100644
+index 405efb3e4996..eda44749b34c 100644
 --- a/arch/x86/include/asm/tsc.h
 +++ b/arch/x86/include/asm/tsc.h
-@@ -41,6 +41,7 @@ extern unsigned long native_calibrate_tsc(void);
+@@ -42,6 +42,7 @@ extern unsigned long native_calibrate_tsc(void);
  extern unsigned long long native_sched_clock_from_tsc(u64 tsc);
  
  extern int tsc_clocksource_reliable;
@@ -40,7 +40,7 @@ index 594fce0ca744..529dc6d4a426 100644
  extern bool tsc_async_resets;
  #else
 diff --git a/arch/x86/kernel/tsc.c b/arch/x86/kernel/tsc.c
-index 15f97c0abc9d..9cf8f85c5638 100644
+index 5a69a49acc96..61faedcdbdc9 100644
 --- a/arch/x86/kernel/tsc.c
 +++ b/arch/x86/kernel/tsc.c
 @@ -47,6 +47,7 @@ static unsigned int __initdata tsc_early_khz;

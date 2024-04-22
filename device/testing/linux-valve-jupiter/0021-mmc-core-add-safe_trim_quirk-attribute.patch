@@ -1,4 +1,4 @@
-From 1ae0920b6e301eb38879d865f6feb3aac49ae76b Mon Sep 17 00:00:00 2001
+From b25ad295b8b28721d404b32e4b850ab93c7a47cb Mon Sep 17 00:00:00 2001
 From: Andres Rodriguez <andresx7@gmail.com>
 Date: Tue, 8 Nov 2022 17:32:25 -0500
 Subject: [PATCH 21/21] mmc: core: add safe_trim_quirk attribute
@@ -20,7 +20,7 @@ Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
  4 files changed, 7 insertions(+)
 
 diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-index f410bee50132..aee1e0cbbd11 100644
+index 5b2f7c285461..46b7971d0a33 100644
 --- a/drivers/mmc/core/mmc.c
 +++ b/drivers/mmc/core/mmc.c
 @@ -820,6 +820,7 @@ MMC_DEV_ATTR(rel_sectors, "%#x\n", card->ext_csd.rel_sectors);
@@ -51,7 +51,7 @@ index cca71867bc4a..6418bfdf849e 100644
 +	card->safe_trim_quirk_version = 1;
  }
 diff --git a/drivers/mmc/core/sd.c b/drivers/mmc/core/sd.c
-index c3e554344c99..b64b8462bb66 100644
+index 1c8148cdda50..e8b99bbb4b0b 100644
 --- a/drivers/mmc/core/sd.c
 +++ b/drivers/mmc/core/sd.c
 @@ -714,6 +714,7 @@ MMC_DEV_ATTR(oemid, "0x%04x\n", card->cid.oemid);

@@ -1,4 +1,4 @@
-From 666399155bd11608017e09f0bbda0181119d6206 Mon Sep 17 00:00:00 2001
+From 25cdd9691d7d455b9fe2b2ac600ad2eba47851d0 Mon Sep 17 00:00:00 2001
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 Date: Sat, 15 Jul 2023 12:58:54 -0700
 Subject: [PATCH 08/21] hwmon: steamdeck-hwmon: Add support for max battery

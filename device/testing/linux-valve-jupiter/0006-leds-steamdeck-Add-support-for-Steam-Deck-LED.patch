@@ -1,4 +1,4 @@
-From 497ad3272c2d94687d1300517aff7da599d98232 Mon Sep 17 00:00:00 2001
+From 5649180090a647fa91fff540f4b6a87b70a66449 Mon Sep 17 00:00:00 2001
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 Date: Sun, 27 Feb 2022 12:58:05 -0800
 Subject: [PATCH 06/21] leds: steamdeck: Add support for Steam Deck LED
@@ -13,10 +13,10 @@ Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
  create mode 100644 drivers/leds/leds-steamdeck.c
 
 diff --git a/drivers/leds/Kconfig b/drivers/leds/Kconfig
-index d721b254e1e4..673b751f625b 100644
+index 05e6af88b88c..f1967a88ebeb 100644
 --- a/drivers/leds/Kconfig
 +++ b/drivers/leds/Kconfig
-@@ -917,6 +917,13 @@ config LEDS_ACER_A500
+@@ -927,6 +927,13 @@ config LEDS_ACER_A500
  	  This option enables support for the Power Button LED of
  	  Acer Iconia Tab A500.
  
@@ -31,7 +31,7 @@ index d721b254e1e4..673b751f625b 100644
  
  comment "Flash and Torch LED drivers"
 diff --git a/drivers/leds/Makefile b/drivers/leds/Makefile
-index ce07dc295ff0..8b1be8945a57 100644
+index effdfc6f1e95..f2929021afeb 100644
 --- a/drivers/leds/Makefile
 +++ b/drivers/leds/Makefile
 @@ -79,6 +79,7 @@ obj-$(CONFIG_LEDS_POWERNV)		+= leds-powernv.o

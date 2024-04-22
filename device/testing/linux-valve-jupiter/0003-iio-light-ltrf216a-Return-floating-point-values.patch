@@ -1,4 +1,4 @@
-From 046bbbde9257dd08a4433ebce76132a71b397294 Mon Sep 17 00:00:00 2001
+From dcb1c1bd9f85caa78b5cb62ea42ab344acb520d0 Mon Sep 17 00:00:00 2001
 From: Shreeya Patel <shreeya.patel@collabora.com>
 Date: Mon, 17 Jul 2023 14:02:21 +0530
 Subject: [PATCH 03/21] iio: light: ltrf216a: Return floating point values

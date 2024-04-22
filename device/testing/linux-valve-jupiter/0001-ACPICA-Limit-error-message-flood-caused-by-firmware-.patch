@@ -1,4 +1,4 @@
-From 103895dd0c1106595c46e8cd61f5edea349e6f4c Mon Sep 17 00:00:00 2001
+From 5a57e80db401b841cc6f57832cf95d2830fc3350 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Fri, 4 Mar 2022 21:20:39 +0000
 Subject: [PATCH 01/21] ACPICA: Limit error message flood caused by firmware

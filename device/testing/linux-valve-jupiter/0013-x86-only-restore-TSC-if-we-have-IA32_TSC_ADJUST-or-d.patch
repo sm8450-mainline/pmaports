@@ -1,4 +1,4 @@
-From 2673c6532e52380e8fd7b1ebff966bc7b07755fa Mon Sep 17 00:00:00 2001
+From f500fbfa381961bfa36b63b48f5537fea4ed0f21 Mon Sep 17 00:00:00 2001
 From: Steven Noonan <steven@uplinklabs.net>
 Date: Wed, 17 Nov 2021 11:58:46 -0800
 Subject: [PATCH 13/21] x86: only restore TSC if we have IA32_TSC_ADJUST or

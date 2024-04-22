@@ -1,4 +1,4 @@
-From 770e26e1816b0a1a3013c26d1dc1b1da7cff9dbc Mon Sep 17 00:00:00 2001
+From a9aef03f01f86629bcd429e28e20124461af2f04 Mon Sep 17 00:00:00 2001
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 Date: Tue, 18 Jan 2022 08:44:34 -0800
 Subject: [PATCH 17/21] usb: dwc3: Bump USB gadget wakeup timeout
@@ -13,10 +13,10 @@ Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/usb/dwc3/gadget.c b/drivers/usb/dwc3/gadget.c
-index 28f49400f3e8..93f7d0290037 100644
+index 4df2661f6675..b45de01d33b6 100644
 --- a/drivers/usb/dwc3/gadget.c
 +++ b/drivers/usb/dwc3/gadget.c
-@@ -2382,7 +2382,7 @@ static int __dwc3_gadget_wakeup(struct dwc3 *dwc, bool async)
+@@ -2363,7 +2363,7 @@ static int __dwc3_gadget_wakeup(struct dwc3 *dwc, bool async)
  		return 0;
  
  	/* poll until Link State changes to ON */
