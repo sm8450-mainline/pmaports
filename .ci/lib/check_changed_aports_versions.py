@@ -140,7 +140,7 @@ def check_versions(args, packages):
             # checksums changed
             else:
                 # Check that pkgrel was reset to 0
-                if head_parsed["pkgrel"] != 0:
+                if head_parsed["pkgrel"] != "0":
                     print(f" - {package}: pkgrel should be 0 when package source checksums change."
                           "See: https://wiki.postmarketos.org/wiki/Packaging#device_packages_and_other_packages_without_sources")
                     error = True
