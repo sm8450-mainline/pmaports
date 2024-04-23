@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lg-hammerhead
-pkgver=6
-pkgrel=1
+pkgver=7
+pkgrel=0
 pkgdesc="Google Nexus 5"
 url="https://postmarketos.org"
 arch="armv7"
@@ -21,6 +21,7 @@ subpackages="
 	$pkgname-nonfree-firmware:nonfree_firmware"
 source="
 	10-unl0kr.conf
+	20-gsk-gpu-workaround.sh
 	bt-module-deps.conf
 	deviceinfo
 	modules-initfs
@@ -35,6 +36,8 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
+	install -Dm755 "$srcdir"/20-gsk-gpu-workaround.sh \
+		"$pkgdir"/etc/profile.d/20-gsk-gpu-workaround.sh
 }
 
 unl0kr() {
@@ -81,6 +84,7 @@ nonfree_firmware() {
 
 sha512sums="
 f700af3145b79d1ef9edfb22982899b25cabfb212f9620dcbd3a2e6f44b5ad591e0a66056c6fcd66c3fde89a2b5f551e8a8fe2e65cf0e2a48adec57c027d7825  10-unl0kr.conf
+b0ff3cf868380481638cce975688eb622e50d4a45a877892e087789ad7f292f8723de1fbf3da2af445adad31df99d7976c31dcf4f685a046b644b38aa109067d  20-gsk-gpu-workaround.sh
 6cef5f8ae1785ac16e6fe84bfc861ac50cdfb94db35d764f44a25c960e123cb82f6e56f45362a5340c62a3d5ac225f2689afd4f6964cb88305a0892ba44214f0  bt-module-deps.conf
 e08c892a358d99296208f98ba07813eb82c192269cdcaa727d988a3fa8ffb01f3489d9ae5b4074d96578706c7882f52ea8abc6fc4aabdf384bcb7fdc5670b519  deviceinfo
 fd639faebbee2c0c2c227710678376e0d039b7d96a62103f7ba7e6304d7060023f09064918e93a125465d20d125c0334225680521a7aeae5a43d77d7360c180c  modules-initfs
