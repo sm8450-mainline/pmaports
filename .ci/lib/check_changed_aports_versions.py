@@ -43,7 +43,11 @@ def get_package_contents(args, package, revision, check=True):
 
 
 def get_package_version(args, package, revision, check=True):
+    """ returns version in the format "{pkgver}-r{pkgrel}", or None if no 
+        matching package is found """
     parsed = get_package_contents(args, package, revision, check)
+    if parsed is None:
+        return None
     return parsed["pkgver"] + "-r" + parsed["pkgrel"]
 
 
