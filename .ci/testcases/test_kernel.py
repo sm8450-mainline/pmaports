@@ -23,6 +23,9 @@ def test_aports_kernel():
         apkbuild = pmb.parse.apkbuild(path)
         aport_name = os.path.basename(os.path.dirname(path))
 
+        if aport_name == "linux-pam":
+            continue  # This package isn't a linux kernel!
+
         if "pmb:cross-native" not in apkbuild["options"]:
             raise RuntimeError(f"{aport_name}: \"pmb:cross-native\" missing in"
                                " options= line")
