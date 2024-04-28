@@ -5,7 +5,7 @@ ROOT_PARTITION_RESIZED=0
 PMOS_BOOT=""
 PMOS_ROOT=""
 
-CONFIGFS=/config/usb_gadget
+CONFIGFS="/config/usb_gadget"
 CONFIGFS_ACM_FUNCTION="acm.usb0"
 HOST_IP="${unudhcpd_host_ip:-172.16.42.1}"
 
@@ -100,31 +100,19 @@ setup_firmware_path() {
 	echo -n /lib/firmware/postmarketos >$SYS
 }
 
-# shellcheck disable=SC3043
-load_modules() {
-	local file="$1"
-	local modules="$2"
-	[ -f "$file" ] && modules="$modules $(grep -v ^\# "$file")"
-	# shellcheck disable=SC2086
-	modprobe -a $modules
-}
-
-setup_mdev() {
-	# Start mdev daemon
-	mdev -d
-}
-
 setup_udev() {
-	# Use udev to coldplug all devices so that they can be used via libinput (e.g.
-	# by unl0kr). This is the same series of steps performed by the udev,
+	if ! command -v udevd > /dev/null || ! command -v udevadm > /dev/null; then
+		echo "ERROR: udev not found!"
+		return
+	fi
+
+	# This is the same series of steps performed by the udev,
 	# udev-trigger and udev-settle RC services. See also:
 	# - https://git.alpinelinux.org/aports/tree/main/eudev/setup-udev
 	# - https://git.alpinelinux.org/aports/tree/main/udev-init-scripts/APKBUILD
-	if command -v udevd > /dev/null && command -v udevadm > /dev/null; then
-		udevd -d
-		udevadm trigger --type=devices --action=add
-		udevadm settle
-	fi
+	udevd -d --resolve-names=never
+	udevadm trigger --type=devices --action=add
+	udevadm settle
 }
 
 get_uptime_seconds() {
@@ -663,11 +651,11 @@ setup_usb_configfs_udc() {
 
 	# Remove any existing UDC to avoid "write error: Resource busy" when setting UDC again
 	if [ "$(wc -w <$CONFIGFS/g1/UDC)" -gt 0 ]; then
-		echo "" > /config/usb_gadget/g1/UDC || echo "  Couldn't write to clear UDC"
+		echo "" > "$CONFIGFS"/g1/UDC || echo "  Couldn't write to clear UDC"
 	fi
 	# Link the gadget instance to an USB Device Controller. This activates the gadget.
 	# See also: https://gitlab.com/postmarketOS/pmbootstrap/issues/338
-	echo "$_udc_dev" > /config/usb_gadget/g1/UDC || echo "  Couldn't write new UDC"
+	echo "$_udc_dev" > "$CONFIGFS"/g1/UDC || echo "  Couldn't write new UDC"
 }
 
 # $1: if set, skip writing to the UDC
@@ -676,7 +664,7 @@ setup_usb_network_configfs() {
 	local skip_udc="$1"
 
 	if ! [ -e "$CONFIGFS" ]; then
-		echo "  /config/usb_gadget does not exist, skipping configfs usb gadget"
+		echo "$CONFIGFS does not exist, skipping configfs usb gadget"
 		return
 	fi
 
@@ -760,10 +748,10 @@ start_unudhcpd() {
 	# Get usb interface
 	usb_network_function="${deviceinfo_usb_network_function:-ncm.usb0}"
 	usb_network_function_fallback="rndis.usb0"
-	if [ -n "$(cat /config/usb_gadget/g1/UDC)" ]; then
+	if [ -n "$(cat $CONFIGFS/g1/UDC)" ]; then
 		INTERFACE="$(
-			cat "/config/usb_gadget/g1/functions/$usb_network_function/ifname" 2>/dev/null ||
-			cat "/config/usb_gadget/g1/functions/$usb_network_function_fallback/ifname" 2>/dev/null ||
+			cat "$CONFIGFS/g1/functions/$usb_network_function/ifname" 2>/dev/null ||
+			cat "$CONFIGFS/g1/functions/$usb_network_function_fallback/ifname" 2>/dev/null ||
 			echo ''
 		)"
 	else
@@ -797,12 +785,12 @@ setup_usb_acm_configfs() {
 	active_udc="$(cat $CONFIGFS/g1/UDC)"
 
 	if ! [ -e "$CONFIGFS" ]; then
-		echo "  /config/usb_gadget does not exist, can't set up serial gadget"
+		echo "  $CONFIGFS does not exist, can't set up serial gadget"
 		return 1
 	fi
 
 	# unset UDC
-	echo "" > /config/usb_gadget/g1/UDC
+	echo "" > $CONFIGFS/g1/UDC
 
 	# Create acm function
 	mkdir "$CONFIGFS/g1/functions/$CONFIGFS_ACM_FUNCTION" \
@@ -1142,7 +1130,7 @@ create_logs_disk() {
 export_logs() {
 	local loop_dev=""
 	usb_mass_storage_function="mass_storage.0"
-	active_udc="$(cat /config/usb_gadget/g1/UDC)"
+	active_udc="$(cat $CONFIGFS/g1/UDC)"
 
 	loop_dev="$(losetup -f)"
 
@@ -1155,7 +1143,7 @@ export_logs() {
 		setup_usb_network_configfs "skip_udc"
 	else
 		# Unset UDC
-		echo "" > /config/usb_gadget/g1/UDC
+		echo "" > $CONFIGFS/g1/UDC
 	fi
 
 	mkdir "$CONFIGFS"/g1/functions/"$usb_mass_storage_function" || return
