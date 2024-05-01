@@ -347,7 +347,7 @@ mount_boot_partition() {
 		vfat)
 			echo "Detected vfat filesystem"
 			modprobe vfat
-			mount_opts="-t vfat $mount_opts,umask=0077,nosymfollow"
+			mount_opts="-t vfat $mount_opts,umask=0077,nosymfollow,codepage=437,iocharset=ascii"
 			;;
 		*)	echo "WARNING: Detected unsupported '$type' filesystem ($partition)." ;;
 	esac
