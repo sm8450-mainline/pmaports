@@ -16,6 +16,17 @@
                                 algo = "sha1";
                         };
                 };
+                prebootscript {
+                        description = "Boot script";
+                        data = /incbin/("bootscript.sh");
+                        type = "script";
+                        compression = "none";
+                        load = <0x90000000>;
+                        entry = <0x90000000>;
+                        hash {
+                                algo = "sha1";
+                        };
+                };
                 kernel {
                         description = "Kernel";
                         data = /incbin/("vmlinuz");
