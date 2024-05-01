@@ -35,8 +35,8 @@
                         type = "flat_dt";
                         arch = "arm64";
                         compression = "none";
-                        load = <0x81a80000>;
-                        entry = <0x81a80000>;
+                        load = <0x82700000>;
+                        entry = <0x82700000>;
                         hash {
                                 algo = "sha1";
                         };
@@ -47,7 +47,7 @@
                         data = /incbin/("initramfs");
                         type = "ramdisk";
                         arch = "arm64";
-                        load = <0x81000000>;
+                        load = <0x82800000>;
                         os = "linux";
                         hash {
                                 algo = "sha1";
