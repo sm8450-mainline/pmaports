@@ -8,7 +8,7 @@ fi
 
 pkgname=busybox-static-armv7
 pkgver=1.36.1
-pkgrel=25
+pkgrel=26
 
 _arch="armv7"
 _mirror="http://dl-4.alpinelinux.org/alpine/"
@@ -32,5 +32,5 @@ package() {
 }
 
 sha512sums="
-3849eb28d7f1a5d397c6e20c3871184a4d842d0c04e45a3bc17baa7b8ae45888017761213d69af7fdecefca5bab3e0ddf7ba7c7f007946bb089c6dfc47a8bdab  busybox-static-1.36.1-r25-armv7-edge.apk
+f6664d29ecb22e396133116210d792e101fa552b4f4d2295de19af460830bbb151a2d3c4a7b7bbe1596d7b3ed85042f10dae49d78ae4e6ac053ed565f9043c01  busybox-static-1.36.1-r26-armv7-edge.apk
 "
