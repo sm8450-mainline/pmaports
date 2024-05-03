@@ -2,7 +2,7 @@
 # pmbootstrap installs this, if systemd is selected in "pmbootstrap init".
 pkgname=postmarketos-base-systemd
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Meta package for running postmarketOS with systemd"
 url="https://postmarketos.org"
 arch="noarch"
@@ -13,7 +13,7 @@ depends="
 	polkit
 	systemd
 	tzdata
-	linux-pam=1.5.3-r8
+	linux-pam=1.6.0-r0
 	systemd-services
 	"
 replaces="alpine-baselayout postmarketos-base systemd"

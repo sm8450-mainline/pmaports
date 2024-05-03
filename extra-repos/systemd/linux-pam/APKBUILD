@@ -5,8 +5,8 @@ pkgname=linux-pam
 # MUST be kept in sync to avoid accidentally pulling in the alpine version
 # we hard depend on this exact version in postmarketos-base-systemd. When updating
 # the package here it must also be updated in postmarketos-base-systemd.
-pkgver=1.5.3
-pkgrel=8
+pkgver=1.6.0
+pkgrel=0
 pkgdesc="Linux PAM (Pluggable Authentication Modules for Linux)"
 url="https://www.kernel.org/pub/linux/libs/pam"
 arch="all"
@@ -27,7 +27,7 @@ provider_priority=100
 subpackages="$pkgname-dev $pkgname-doc $pkgname-service"
 source="
 	https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver.tar.xz
-	no-examples.patch
+	pam_namespace.patch
 
 	base-auth.pamd
 	base-account.pamd
@@ -80,8 +80,8 @@ package() {
 }
 
 sha512sums="
-af88e8c1b6a9b737ffaffff7dd9ed8eec996d1fbb5804fb76f590bed66d8a1c2c6024a534d7a7b6d18496b300f3d6571a08874cf406cd2e8cea1d5eff49c136a  Linux-PAM-1.5.3.tar.xz
-9407f38d0dc0f24eb3e1c74ecc3ac78ddbe9f9882a4738fa82bfb387be30f5bff5599b11cb2d70705a299587697d967ddf57923b9bd0270d05f71cc5140f8d62  no-examples.patch
+7af07edb71a79275ad7f7f3bd82a4619b12a23a10f5fb2e5d810c6aadb718fd739ed17ca336c3420945d48d326e91874d8e45cfc5a4bf01a0cc5f9663bd2a0ad  Linux-PAM-1.6.0.tar.xz
+e9593ffb9bc29368c8e12fef770562bffd84001053bee5c4b0b859d4b39c675a13c1f9b689c619b78f61eee23a152e5a64ece4cca81d4306049a9108167cc708  pam_namespace.patch
 988e4ba32fe6b7adeb4898c784eb40d6f88f3fca78ead82b61686f0e1597f306abb3ee338aa2e4cf2db0191b8c1a7e319332e7f6d6aed3ab381f71c0a3355de9  base-auth.pamd
 5d3e960ead44dcb2b3f732825482eefab9a9ffa4d4d5fc1d30cbf2fe8c5c896f1114a0ad3a6c606fa9fbf5c43400388f4ee8d7fca8110721eabfc9691004756b  base-account.pamd
 b3a900d6067ba04faa8016d9408da75917e8c0502020a4048bba1de2ca54c705c4d5f8307e759080fd5a9d5f3522f52a708803f1f01627eac56d9d7c6d363d13  base-password.pamd
