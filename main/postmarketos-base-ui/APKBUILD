@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-base-ui
 pkgver=22
-pkgrel=0
+pkgrel=1
 pkgdesc="Meta package for minimal postmarketOS UI base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -89,10 +89,10 @@ source="$(flatpath $_source644 $_source600 $_source755)"
 
 _pmb_select="postmarketos-base-ui-wifi"
 package() {
-	# wifi-backend is provided by a subpackage in this APKBUILD, and it won't
-	# exist when this is evaluated at the top level. It's moved into this
-	# function to work around this.
-	depends="$depends postmarketos-base-ui-wifi"
+	# wifi and audio backends are provided by a subpackage in this APKBUILD,
+	# and it won't exist when this is evaluated at the top level. It's moved
+	# into this function to work around it.
+	depends="$depends postmarketos-base-ui-wifi postmarketos-base-ui-audio"
 
 	local i
 	for i in $_source644; do
@@ -241,7 +241,7 @@ _audio_pipewire() {
 
 _audio_pulseaudio() {
 	pkgdesc="Use pulseaudio as the audio backend."
-	depends="alsa-plugins-pulse pulseaudio pulseaudio-alsa"
+	depends="alsa-plugins-pulse pulseaudio pulseaudio-alsa !pipewire-pulse"
 	provides="postmarketos-base-ui-audio=$pkgver-r$pkgrel"
 	provider_priority=100
 
