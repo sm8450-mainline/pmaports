@@ -1,0 +1,18 @@
+pkgname=firmware-xiaomi-fire
+pkgver=1
+pkgrel=0
+pkgdesc="Proprietary firmware for Xiaomi Redmi 12"
+url="https://github.com/mt6768-mainline/firmware-xiaomi-fire"
+arch="aarch64"
+license="proprietary"
+options="!check !tracedeps pmb:cross-native"
+source="$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/1.tar.gz"
+builddir="$srcdir/firmware-xiaomi-fire-1/lib/firmware"
+
+package() {
+	install -Dm644 * -t "$pkgdir/lib/firmware/postmarketos"
+}
+
+sha512sums="
+86ea073f7fa6da489b671b2b85771bff20138e3b98563eeb70799db4ae0ef7a21af2733afde1c8e8de458a6d25a3ae9bb35dcc15f841bf183d06c03df71b9232  firmware-xiaomi-fire-1.tar.gz
+"
