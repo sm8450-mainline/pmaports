@@ -2,19 +2,19 @@
 # Maintainer: Nikita Travkin <nikita@trvn.ru>
 pkgname=device-acer-aspire1
 pkgdesc="Acer Aspire 1"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
-# pmb:strict: avoid grub-related install error during build with pmbootstrap
-options="!check !archcheck pmb:strict"
+options="!check !archcheck"
 depends="
 	linux-postmarketos-qcom-sc7180
 	postmarketos-base
 	soc-qcom-sc7180
+	systemd-boot
 "
-makedepends="devicepkg-dev grub grub-efi"
+makedepends="devicepkg-dev"
 subpackages="
 	$pkgname-nonfree-firmware:nonfree_firmware
 	$pkgname-ucm
@@ -31,39 +31,10 @@ source="
 
 build() {
 	devicepkg_build $startdir $pkgname
-
-	grub-mkimage \
-		--prefix="/grub" \
-		--output="bootaa64.efi" \
-		--format="arm64-efi" \
-		--compression="xz" \
-		\
-		all_video \
-		cat \
-		configfile \
-		disk \
-		echo \
-		efi_gop \
-		fat \
-		gzio \
-		help \
-		iso9660 \
-		linux \
-		ls \
-		normal \
-		part_gpt \
-		part_msdos \
-		search \
-		search_label \
-		test \
-		true
 }
 
 package() {
 	devicepkg_package $startdir $pkgname
-
-	install -Dm644 "$srcdir"/bootaa64.efi \
-		-t "$pkgdir"/boot/EFI/Boot
 }
 
 ucm() {
@@ -97,7 +68,7 @@ nonfree_firmware() {
 }
 
 sha512sums="
-d1464b00c217c39fc7cfa446de802886114c2bc54b9c6b93fea4d3a139f5e51b605c879541b457dbfe0e3bca226dae216d5ecbd5ede4263533406042ae9615c6  deviceinfo
+9f0aafaea32377cc8a9ed05c82dacf237f3149f325d34cc7784565596cca0ca2f0858dbe37573872c96b3264dbd9e8ceeb3a7af614aa0fccf501880d4ea38083  deviceinfo
 99b3c6fee1e4088ad0246170b6884c5f342893efa4d4846c4e9fa47fbf58f2dc655b8379f465e7d690621630804634533392254fc4305fea6d292a9d5eb4795a  modules-initfs
 0626518d52fb56b80115e333030abe409fb5ca13aa7c13387e3f41e7d34c3b7c7da3ff06dd7062b79b5472f93119100bffa98f32f05f530623ccca7282777302  sc7180.conf
 ee33efa68a091f47ecaf51fc05f43fb7d5c62ec3eeaacb917dc1438edc4636eaba52c336645bf8a555b68b366a7dc40baf55895595ac7ac66cdeaa7ede86a72f  init.conf
