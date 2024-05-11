@@ -1,7 +1,7 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=postmarketos-base-ui-gnome
 pkgver=3
-pkgrel=3
+pkgrel=4
 pkgdesc="Meta package for shared configuration for GNOME-based UIs"
 url="https://postmarketos.org"
 arch="noarch"
@@ -11,6 +11,7 @@ depends="
 	dnsmasq
 	elogind
 	elogind-openrc
+	gcr-ssh-agent
 	gnome-bluetooth
 	iio-sensor-proxy
 	iio-sensor-proxy-openrc
