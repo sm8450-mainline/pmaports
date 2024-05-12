@@ -1,6 +1,6 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=firmware-ayn-odin
-pkgver=1
+pkgver=2
 pkgrel=0
 pkgdesc="Firmware for AYN Odin"
 url="https://gitlab.com/jenneron/firmware-ayn-odin"
@@ -9,7 +9,7 @@ license="proprietary"
 options="!check !strip !archcheck !tracedeps textrels pmb:cross-native"
 
 _repo="firmware-ayn-odin"
-_commit="e4fd22a304e983105ad896227662e5f77491fa10"
+_commit="afdaff716138e8f6caf1fee03a7de94e46cb56d8"
 source="$pkgname-$_commit.tar.gz::$url/-/archive/$_commit/$_repo-$_commit.tar.gz"
 
 builddir="$srcdir/$_repo-$_commit"
@@ -19,5 +19,5 @@ package() {
 }
 
 sha512sums="
-e7f0310449a5c72adf8c2aa4912fc7c09946185b3a168dfc81c527d5fa44117817b55d7f3782386dd1f91b53c07a4fee4bc8ea05f049f9333d3d7d1e1b4f9f95  firmware-ayn-odin-e4fd22a304e983105ad896227662e5f77491fa10.tar.gz
+50ef64def282778152bc25561483473f8421866f293182fa4fcf2b75b99739425f6b8ff27469c4aa7d087eb3f46d8c7c816c3b2eb49024bff5b37d844e973366  firmware-ayn-odin-afdaff716138e8f6caf1fee03a7de94e46cb56d8.tar.gz
 "
