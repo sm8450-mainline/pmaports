@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. /usr/share/cage-ui/cage-ui-autorotate.sh
+
 if [ -d /etc/cage-ui ]; then
 	for script in /etc/cage-ui/*.sh; do
 		# shellcheck source=/dev/null # since we do not control these scripts

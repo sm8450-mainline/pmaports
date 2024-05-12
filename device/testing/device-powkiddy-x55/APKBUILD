@@ -2,8 +2,8 @@
 # Maintainer: Vitaliy Ognev <vitaliy.ognev@gmail.com>
 pkgname=device-powkiddy-x55
 pkgdesc="Powkiddy X55"
-pkgver=3
-pkgrel=1
+pkgver=4
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -16,11 +16,7 @@ depends="
 	u-boot-powkiddy-x55
 "
 makedepends="devicepkg-dev"
-source="
-	cage-ui-powkiddy-x55-rotate.sh
-	deviceinfo
-"
-subpackages="$pkgname-cage-ui-addons:cage_ui_addons:noarch"
+source="deviceinfo"
 _pmb_recommends="powkiddy-x55-mapper"
 
 build() {
@@ -31,14 +27,6 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 
-cage_ui_addons() {
-	pkgdesc="Cage-UI addons for powkiddy x55"
-	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-base-ui-cage"
-
-	install -Dm644 "$srcdir"/cage-ui-powkiddy-x55-rotate.sh -t "$subpkgdir"/etc/cage-ui/
-}
-
 sha512sums="
-a22986cab90dd8641956e19f8139e1cb7f24a349cb2907cadb0001b0f5ff9be67b7fa717502f3b078ea8db62eb0fdb8de20e35495b4e4db69c0940dcac04996d  cage-ui-powkiddy-x55-rotate.sh
 71efac86cba6e1982b0557636b08c050da9adcc98ecfa8d91ad96843994434d0e09a0af8094f103c88314a07a20962cad58f05c38109b887399b84b324cb05f1  deviceinfo
 "

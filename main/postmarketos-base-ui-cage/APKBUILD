@@ -1,7 +1,7 @@
 # Maintainer: Vitaliy Ognev <vitaliy.ognev@gmail.com>
 # Co-Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=postmarketos-base-ui-cage
-pkgver=1
+pkgver=2
 pkgrel=0
 pkgdesc="Meta package for shared configuration for cage UIs"
 arch="all"
@@ -10,11 +10,13 @@ license="GPL-3.0-or-later"
 source="
 	cage-ui.desktop
 	cage-ui-session.sh
+	cage-ui-autorotate.sh
 "
 install="$pkgname.post-install $pkgname.post-upgrade"
 options="!check"
 depends="
 	dnsmasq
+	drm_info
 	postmarketos-base-ui
 	postmarketos-base-ui-networkmanager
 	wpa_supplicant
@@ -30,14 +32,17 @@ depends="
 	psmisc
 	tinydm
 	tinydm-openrc
+	jq
 "
 
 package() {
 	install -Dm755 "$srcdir"/cage-ui-session.sh -t "$pkgdir"/usr/share/cage-ui/
+	install -Dm755 "$srcdir"/cage-ui-autorotate.sh -t "$pkgdir"/usr/share/cage-ui/
 	install -Dm644 "$srcdir"/cage-ui.desktop -t "$pkgdir"/usr/share/wayland-sessions/
 }
 
 sha512sums="
 b556bcff9bb62ca6580da5e1749aa4d6b8244ebb5213292a348075196704cc919f8060bff8da66c6f61a1aa071b7ae4d81fddf1b3747e89809196459bc2595d8  cage-ui.desktop
-15c3dd09cfd36e42c102c0c6065e47a7c67f9cc12fea641758e88b93e146b3b549bf5828191816ceaf35222c417fbb4b31173d6c4e9003fd23c834aa9b9f985e  cage-ui-session.sh
+828ed29db77b759a1a5591a3723544b2d65c1760ec9cecc33542945a6d096667746e5fc65c6bce8dbc38a26066f31f79c8b8f608d2ea9f29741d04a28bfb841d  cage-ui-session.sh
+47f25992c96486bd2840bd5b549a800ab524090e43234765c8ce4e0cc9ff4dc9f07f8f4883f5a378b5e0bbdf845d99da992b6d26fca8fffb5ed860a06cb32788  cage-ui-autorotate.sh
 "
