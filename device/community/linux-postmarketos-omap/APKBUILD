@@ -3,8 +3,8 @@
 # Kernel config based on: arch/arm/configs/omap2plus_defconfig
 
 pkgname=linux-postmarketos-omap
-pkgver=6.8.0
-pkgrel=1
+pkgver=6.9.0
+pkgrel=0
 pkgdesc="Mainline kernel fork for OMAP devices"
 arch="armv7"
 url="https://kernel.org/"
@@ -39,14 +39,12 @@ source="
 	0004-arm-dts-Add-espresso10-support.patch
 	0005-Add-TWL6030-power-driver-with-minimal-support-for-power-off.patch
 	0006-Add-TWL6030-power-button-support-to-twl-pwrbutton.patch
-	0007-power-supply-bq27xxx-Report-charge-full-state-correc.patch
-	0008-hsi-ssi_port-force-pio-path.patch
-	0009-n900-dts-volume-keys.patch
-	0010-ARM-dts-disable-twl-off-idle-configuration-for-N900.patch
-	0011-bq27xxx_battery-map-edv1-to-low-battery-capacity.patch
-	0012-bq27xxx_battery-add-voltage-based-capacity-estimatio.patch
-	0013-power-supply-bq2415x_charger-report-online-status.patch
-	0014-ARM-dts-n900-set-charge-current-limit-to-950mA.patch
+	0007-hsi-ssi_port-force-pio-path.patch
+	0008-n900-dts-volume-keys.patch
+	0009-ARM-dts-disable-twl-off-idle-configuration-for-N900.patch
+	0010-bq27xxx_battery-map-edv1-to-low-battery-capacity.patch
+	0011-bq27xxx_battery-add-voltage-based-capacity-estimatio.patch
+	0012-ARM-dts-n900-set-charge-current-limit-to-950mA.patch
 "
 builddir="$srcdir/linux-$_kernver"
 replaces="linux-samsung-espresso3g linux-nokia-n900"
@@ -76,20 +74,18 @@ package() {
 }
 
 sha512sums="
-5c4eb4aa1d3f7d1ea01c0f7ddeadacdece6e144fd4bdfc16b2b925d3e10dc04de3a6db69320b79a96c3560052616f001d2c09e7a1bb4f7b731e2380a7ecce068  linux-6.8.tar.xz
-f43db080d4a5aabeedec761c2f55cf6530b9fe1338524d520c83d34780e9a4597fa7fe9101d3ba5447aaad81560dbadb6ab8514680eef9013470f1a85ce3e40e  config-postmarketos-omap.armv7
+fed3b4cd1fbfb4d94618587c1934273d2ecc8b6e42a3d586ff8a5f24980be930f2ef803aa2923ca3bfa5e4e619f967f3af315368f24fa76f610b10443624a579  linux-6.9.tar.xz
+c0ab8a8126b78a5c5ba9106adc01b92d4bb9f198ef307362db585a988aee509f6bec43fbd4314b3438b470f8b3c6357e9f16b4952981ed185100b5b7e34f317c  config-postmarketos-omap.armv7
 fe4307a6af41913a7e5d59288b563865116797d3272e0570faff4532e198831e764e0067f53afdd39e57665196ae44f05d554bbd7d55d556d4b2d3c9d2efd41f  0001-Add-TWL6032-dtsi.patch
 2c13c46b4db0d4a75c3aae3a46041fe43f841dc4ab3c7b08cd9db22a73c8355701d85c8c1e979aba93002b96d63ad3f1f8e46c15ecdde4391ea677b71dd17b45  0002-arm-dts-Add-common-dtsi-for-espresso.patch
 4efda42604f5a6d5f9d4ceb9f87aaa5ad81d9299b3cd8ae930aafa895df5041ff5ee2cf441bbf7fdd002a52df378ee08c0bde85657e5d2086404b9f08b3a742d  0003-arm-dts-Add-espresso7-support.patch
 f0bb41630d8e08adcffa433f3c82047e8787c96b7cc7301eb80bf5e5298010c136cd10c756278fb2331d66dde33d6a13128420f5af022b117f9e3ddb23070934  0004-arm-dts-Add-espresso10-support.patch
 9dc84421cbc2ea7c2c37847d8704ff46dd4a485485bfa4a671167fdef4ac6f53a4e8f787aa774f3748299c374e7c7dc5d36fd4ba9b1a1a9697e0526f2bf3ece4  0005-Add-TWL6030-power-driver-with-minimal-support-for-power-off.patch
 fe9ce7ed5757a1e72663c15e80cef47531b80150e8c45fa94c03a291edc39a401c0678894c3f7afbe9b78b5cbe88529982bd6c90ab3f515c31199e6939aa3b96  0006-Add-TWL6030-power-button-support-to-twl-pwrbutton.patch
-be04653f0eb35e6abb5f9a288dbe82da9d9c6f8e7995c49e42436043dc71091b25513add986499abfdb0bb0c4f1e89b95eb95245be2e704dda13dd8093d97bf6  0007-power-supply-bq27xxx-Report-charge-full-state-correc.patch
-c3af9715b3559c2d593f4fcfa078730722c7deeec132c5b83e085ff4d9815d85ef349384097c580efe1bbc37c60f42e18ef559f0abccfe236080670e4403fa77  0008-hsi-ssi_port-force-pio-path.patch
-b98ce806b3d5a0122086e4c9670639174470ff6d29851c60258cc5d699ce9a479dbf4996b24299fc075d25e9fe8f6b1250fafdff742deea0ddeaf53d342a9d72  0009-n900-dts-volume-keys.patch
-66abb5548910ad369608b08200f5835d5a8526c04cc3617221ef546f3e3d22cd944db91dc6727a5c26a102b24d8ef1306ea01254c9c382759afced91b31747ef  0010-ARM-dts-disable-twl-off-idle-configuration-for-N900.patch
-6680b264db0c992826f9da0078256ba20ffae3de26a77978106b94499d96e72ed90d9a35bb42be38bae1e798e7ddf068e3c5e7fe63462b3bbad5031195622192  0011-bq27xxx_battery-map-edv1-to-low-battery-capacity.patch
-cd91f0bb59e466c517b498a549357325be884bb1884986e593fef905a6210872024e0cab179df03833dfc6e8d1221441fa384466ae8227d82f6e70b22fce655c  0012-bq27xxx_battery-add-voltage-based-capacity-estimatio.patch
-0dc58fa43f760b5601e5eace815ef8fb37f38cb6130a7997514dc92c1785ca5ee5eb104042999f7ba026166723981a0d87e37dfef4e9081d2c158fe9f0951a6a  0013-power-supply-bq2415x_charger-report-online-status.patch
-a11493d762b8f1ee90384e1d2baba7c6b7b37f4c11a8e6a876c1476de52b44a8f5a93db2bcd0fe68bb7e91dd54c76396b46727f8e94fc4aad1754feed3822061  0014-ARM-dts-n900-set-charge-current-limit-to-950mA.patch
+c3af9715b3559c2d593f4fcfa078730722c7deeec132c5b83e085ff4d9815d85ef349384097c580efe1bbc37c60f42e18ef559f0abccfe236080670e4403fa77  0007-hsi-ssi_port-force-pio-path.patch
+b98ce806b3d5a0122086e4c9670639174470ff6d29851c60258cc5d699ce9a479dbf4996b24299fc075d25e9fe8f6b1250fafdff742deea0ddeaf53d342a9d72  0008-n900-dts-volume-keys.patch
+66abb5548910ad369608b08200f5835d5a8526c04cc3617221ef546f3e3d22cd944db91dc6727a5c26a102b24d8ef1306ea01254c9c382759afced91b31747ef  0009-ARM-dts-disable-twl-off-idle-configuration-for-N900.patch
+6680b264db0c992826f9da0078256ba20ffae3de26a77978106b94499d96e72ed90d9a35bb42be38bae1e798e7ddf068e3c5e7fe63462b3bbad5031195622192  0010-bq27xxx_battery-map-edv1-to-low-battery-capacity.patch
+cd91f0bb59e466c517b498a549357325be884bb1884986e593fef905a6210872024e0cab179df03833dfc6e8d1221441fa384466ae8227d82f6e70b22fce655c  0011-bq27xxx_battery-add-voltage-based-capacity-estimatio.patch
+a11493d762b8f1ee90384e1d2baba7c6b7b37f4c11a8e6a876c1476de52b44a8f5a93db2bcd0fe68bb7e91dd54c76396b46727f8e94fc4aad1754feed3822061  0012-ARM-dts-n900-set-charge-current-limit-to-950mA.patch
 "
