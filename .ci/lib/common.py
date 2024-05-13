@@ -148,8 +148,8 @@ a) If you *did not* modify everything listed above, then rebase
    branch. Feel free to ask in the chat for help if you need any.
 b) If you *did* modify all these packages, and you assume that
    they will build within one hour: skip this sanity check by
-   adding '[ci:ignore-count]' to the commit message (then force
-   push).
+   adding '[ci:ignore-count]' to the commit message of the last
+   commit in the merge request (then force push).
 c) If you *did* modify all these packages, and you are sure that
    they won't build in time, please add '[ci:skip-build]' to the
    commit message (then force push). Make sure that all packages
