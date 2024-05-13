@@ -1,4 +1,4 @@
-From d5ff25062e6167413fa221efa7496e482435ef72 Mon Sep 17 00:00:00 2001
+From 125b782564a7dac6e6d1137e8103e2613b12600e Mon Sep 17 00:00:00 2001
 From: Jernej Skrabec <jernej.skrabec@siol.net>
 Date: Sat, 24 Aug 2019 01:36:44 +0200
 Subject: [PATCH] eMMC workaround
@@ -9,7 +9,7 @@ Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
  1 file changed, 5 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/mmc/host/sunxi-mmc.c b/drivers/mmc/host/sunxi-mmc.c
-index e9370c7364..a4abd589e9 100644
+index e9370c736497..a4abd589e95d 100644
 --- a/drivers/mmc/host/sunxi-mmc.c
 +++ b/drivers/mmc/host/sunxi-mmc.c
 @@ -1436,15 +1436,17 @@ static int sunxi_mmc_probe(struct platform_device *pdev)
@@ -34,5 +34,5 @@ index e9370c7364..a4abd589e9 100644
  
  	ret = mmc_of_parse(mmc);
 -- 
-2.43.0
+2.45.0
 
