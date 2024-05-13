@@ -135,27 +135,28 @@ def get_changed_packages_sanity_check(count):
         return
 
     branch = get_upstream_branch()
-    print()
-    print("ERROR: Too many packages have changed!")
-    print()
-    print("This is a sanity check, so we don't end up building packages that")
-    print("have not been modified. CI won't run for more than three hours")
-    print("anyway.")
-    print()
-    print("Your options:")
-    print("a) If you *did not* modify everything listed above, then rebase")
-    print(f"   your branch on the official postmarketOS/pmaports.git {branch}")
-    print("   branch. Feel free to ask in the chat for help if you need any.")
-    print("b) If you *did* modify all these packages, and you assume that")
-    print("   they will build within one hour: skip this sanity check by")
-    print("   adding '[ci:ignore-count]' to the commit message (then force")
-    print("   push).")
-    print("c) If you *did* modify all these packages, and you are sure that")
-    print("   they won't build in time, please add '[ci:skip-build]' to the")
-    print("   commit message (then force push). Make sure that all packages")
-    print("   build with 'pmbootstrap build --strict'!")
-    print()
-    print("Thank you and sorry for the inconvenience.")
+    print(f"""
+ERROR: Too many packages have changed!
+
+This is a sanity check, so we don't end up building packages that
+have not been modified. CI won't run for more than three hours
+anyway.
+
+Your options:
+a) If you *did not* modify everything listed above, then rebase
+   your branch on the official postmarketOS/pmaports.git {branch}
+   branch. Feel free to ask in the chat for help if you need any.
+b) If you *did* modify all these packages, and you assume that
+   they will build within one hour: skip this sanity check by
+   adding '[ci:ignore-count]' to the commit message (then force
+   push).
+c) If you *did* modify all these packages, and you are sure that
+   they won't build in time, please add '[ci:skip-build]' to the
+   commit message (then force push). Make sure that all packages
+   build with 'pmbootstrap build --strict'!
+
+Thank you and sorry for the inconvenience.
+    """)
 
     sys.exit(1)
 
