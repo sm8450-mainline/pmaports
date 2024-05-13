@@ -11,4 +11,4 @@ fi
 set -x
 
 # shellcheck disable=SC2046
-ruff --ignore E501,F401,E722,W605 $(find .ci -name '*.py')
+ruff check --ignore E501,F401,E722,W605 $(find .ci -name '*.py')
