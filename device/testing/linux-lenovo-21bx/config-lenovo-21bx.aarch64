@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.9.0-rc6 Kernel Configuration
+# Linux/arm64 6.9.0-rc7 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309"
 CONFIG_CC_IS_GCC=y
@@ -3204,6 +3204,7 @@ CONFIG_BCMA_POSSIBLE=y
 #
 # Multifunction device drivers
 #
+CONFIG_MFD_CORE=y
 # CONFIG_MFD_ACT8945A is not set
 # CONFIG_MFD_AS3711 is not set
 # CONFIG_MFD_SMPRO is not set
@@ -4483,7 +4484,7 @@ CONFIG_USB_HID=y
 
 CONFIG_I2C_HID=y
 CONFIG_I2C_HID_OF=y
-# CONFIG_I2C_HID_OF_ELAN is not set
+CONFIG_I2C_HID_OF_ELAN=y
 # CONFIG_I2C_HID_OF_GOODIX is not set
 CONFIG_I2C_HID_CORE=y
 CONFIG_USB_OHCI_LITTLE_ENDIAN=y
