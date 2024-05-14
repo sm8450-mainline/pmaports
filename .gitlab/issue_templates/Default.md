@@ -1,6 +1,12 @@
 <!--
 	Thank you for using postmarketOS! In order to speed up process of resolving your issue,
-	we would like you to fill in the following :
+	we would like you to fill in the following form.
+
+	*** NOTE FOR CONFIDENTIAL ISSUES: ***
+	A lot of people can read confidential pmaports issues! If you want to
+	submit something that only the postmarketOS Core Team can see, write to
+		team@postmarketos.org
+	instead of opening an issue here!
 -->
 ### Describe your issue
 #### What's the expected behaviour?
