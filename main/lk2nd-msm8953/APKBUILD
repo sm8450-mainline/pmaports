@@ -1,6 +1,6 @@
 # Maintainer: Alejandro Tafalla <atafalla@dnyon.com>
 pkgname=lk2nd-msm8953
-pkgver=0.3.7
+pkgver=0.3.9
 pkgrel=0
 pkgdesc="Secondary little kernel (lk) bootloader for msm8953 based devices"
 arch="aarch64"
@@ -8,8 +8,11 @@ url="https://github.com/msm8953-mainline/lk2nd"
 license="MIT AND GPL-2.0-only"
 makedepends="dtc dtc-dev gcc-arm-none-eabi python3 py3-libfdt"
 builddir="$srcdir"/lk2nd-$pkgver
-source="lk2nd-$pkgver.tar.gz::https://github.com/msm8953-mainline/lk2nd/archive/refs/tags/$pkgver.tar.gz
-	o2.patch"
+subpackages="$pkgname-motorola-ali:motorola_ali"
+source="
+	lk2nd-$pkgver.tar.gz::https://github.com/msm8953-mainline/lk2nd/archive/refs/tags/$pkgver.tar.gz
+	o2.patch
+"
 options="!check !archcheck !tracedeps !strip pmb:cross-native"
 # This APKBUILD builds bare metal executable; options are very specific!
 # * there are no tests (how do you even test the bootloader?);
@@ -18,7 +21,7 @@ options="!check !archcheck !tracedeps !strip pmb:cross-native"
 # * there are no depends for bootloader, it's a kernel and OS in one binary;
 # * stripping of unused sections is done in lk2nd's own ld script.
 
-build() {
+_build() {
 	# This builds baremetal executable; distro-specific compiler flags
 	#   and optimizations can't be set by build system.
 	unset CFLAGS
@@ -34,7 +37,13 @@ build() {
 	unset PATH
 	export PATH=/usr/sbin:/usr/bin:/sbin:/bin
 
-	make TOOLCHAIN_PREFIX=arm-none-eabi- msm8953-secondary
+	local project="$1"; shift
+	make TOOLCHAIN_PREFIX=arm-none-eabi- "$@" "$project"
+}
+
+build() {
+	_build msm8953-secondary
+	_build motorola-ali-secondary
 }
 
 package() {
@@ -43,7 +52,12 @@ package() {
 		"$pkgdir"/boot
 }
 
+motorola_ali() {
+	install -Dm644 "$builddir"/build-motorola-ali-secondary/lk2nd.img -t \
+		"$subpkgdir"/boot
+}
+
 sha512sums="
-072608efb1adc98c3fa2281f3b25733228676290797f93a974519af0cc6375eaf5c4c7d72f32384f49ce418cb95d22aed9833fe6bf76ef96db438fc5790ead73  lk2nd-0.3.7.tar.gz
+ee0c48094d35cf18a0d9bc7f8eb36d503e43b86a9814ff74eb2bdddcd3493393045c89d98c513d7362b7666de8b8684616455d3a8532a9bb6ecbf64ab43dc5b8  lk2nd-0.3.9.tar.gz
 e4d2e116966485aca746bec5bf6ab9855514dc70dfb94ce3cdc9def01c5b36eeddc33e77bdbcfb8f6bb89bb0277fd6dd3e6f8066475dcfc5b5fcdec567af754b  o2.patch
 "
