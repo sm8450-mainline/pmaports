@@ -1,19 +1,23 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-motorola-ali
 pkgdesc="Motorola Moto G6"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
-depends="postmarketos-base linux-postmarketos-qcom-msm8953 mkbootimg"
+depends="
+	firmware-motorola-ali
+	firmware-qcom-adreno-a530
+	linux-postmarketos-qcom-msm8953
+	lk2nd-msm8953-motorola-ali
+	mkbootimg
+	msm-firmware-loader
+	postmarketos-base
+"
 makedepends="devicepkg-dev"
 source="deviceinfo modules-initfs"
-
-subpackages="
-	$pkgname-nonfree-firmware:nonfree_firmware
-"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -23,14 +27,7 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 
-nonfree_firmware() {
-	pkgdesc="GPU/Wi-Fi/Bluetooth/Audio/Video/Modem firmware"
-	depends="firmware-motorola-ali msm-firmware-loader"
-	mkdir "$subpkgdir"
-}
-
-
 sha512sums="
 3d4c2cbf443c03de418cc4d072b84053d64d324bc8b2c5a88c88b137fccc647c676f7a2e33bbf8d403dc1b6f6fa8e4d3b22aa0200f3d5680fc426b0f7e4c321b  deviceinfo
-43b1376323cdc7d3cd626731f940679af0de27d7bdba92dfc6a9b0fc1a8fe59b6917f94f524061c1c7ca127ce5019da1a77c40cc4aeb89fa545e61e4adc4c142  modules-initfs
+097ac4b7c82a984d3e71309b015ba161ab5d851cc3a7bac11afced39d762112d1ad1df64a26c9128a4d3f8338ecbd75820170f873ac28a4684c2d6b83562a8a7  modules-initfs
 "
