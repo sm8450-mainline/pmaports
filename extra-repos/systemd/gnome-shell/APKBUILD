@@ -74,7 +74,9 @@ subpackages="
 source="https://download.gnome.org/sources/gnome-shell/${_pkgver%.*}/gnome-shell-$_pkgver.tar.xz
 	gsh.patch
 	"
-options="!check" # Tests have circular dependency 'gnome-shell <-> gdm'
+# TODO: crossdirect disabled due to armv7 crosscompile failure on x86_64, see
+# https://gitlab.com/postmarketOS/pmaports/-/merge_requests/5115#note_1899890119
+options="!check !pmb:crossdirect" # Tests have circular dependency 'gnome-shell <-> gdm'
 builddir="$srcdir/$pkgname-$_pkgver"
 
 # secfixes:

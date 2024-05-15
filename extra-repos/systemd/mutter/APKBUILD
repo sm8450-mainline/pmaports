@@ -63,7 +63,9 @@ makedepends="
 	xkeyboard-config-dev
 	xwayland-dev
 	"
-options="!check" # Can't be run with release builds
+# TODO: crossdirect disabled due to armv7 crosscompile failure on x86_64, see
+# https://gitlab.com/postmarketOS/pmaports/-/merge_requests/5115#note_1899890119
+options="!check !pmb:crossdirect" # Can't be run with release builds
 subpackages="$pkgname-dbg $pkgname-dev $pkgname-doc $pkgname-lang $pkgname-schemas::noarch"
 source="https://download.gnome.org/sources/mutter/${_pkgver%.*}/mutter-$_pkgver.tar.xz
 	fixudev-req.patch
