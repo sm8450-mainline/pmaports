@@ -1,7 +1,7 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=postmarketos-base-ui-gnome
 pkgver=3
-pkgrel=4
+pkgrel=5
 pkgdesc="Meta package for shared configuration for GNOME-based UIs"
 url="https://postmarketos.org"
 arch="noarch"
@@ -26,6 +26,7 @@ depends="
 	xdg-desktop-portal-gnome
 	xdg-desktop-portal-gtk
 	xdg-user-dirs
+	xdg-user-dirs-gtk
 	xwayland
 	"
 install="$pkgname.post-install $pkgname.post-upgrade"
@@ -51,8 +52,6 @@ _pmb_recommends="
 	gnome-text-editor
 	lollypop
 	loupe
-	xdg-user-dirs
-	xdg-user-dirs-gtk
 "
 
 package() {
