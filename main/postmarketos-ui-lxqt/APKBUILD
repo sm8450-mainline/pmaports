@@ -2,7 +2,7 @@
 # Maintainer: Antoni Aloy <aaloytorrens@gmail.com>
 pkgname=postmarketos-ui-lxqt
 pkgver=0.3
-pkgrel=0
+pkgrel=1
 pkgdesc="(X11) Lightweight Qt Desktop Environment (stylus recommended)"
 url="https://lxqt-project.org/"
 # armhf: lxqt-desktop not available
@@ -41,8 +41,6 @@ _pmb_recommends="
 	pavucontrol-qt
 	pm-utils
 	postmarketos-artwork-wallpapers
-	pulseaudio
-	pulseaudio-utils
 	qps
 	screengrab
 	unclutter-xfixes
