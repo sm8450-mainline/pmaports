@@ -2,7 +2,7 @@
 
 pkgname=iio-sensor-proxy
 pkgver=9999
-pkgrel=1
+pkgrel=2
 pkgdesc="IIO sensors to D-Bus proxy"
 url="https://gitlab.freedesktop.org/hadess/iio-sensor-proxy"
 arch="aarch64"
@@ -55,7 +55,7 @@ package() {
 
 sha512sums="
 f899058ba346b272c5174de0f2c0870bf6a13782f0c0c248163bc6cec7fbebca689ed97a0fbebd770a8857212cfc760849ad97034eaaec7fef40b7e58d811f31  iio-sensor-proxy-48cb957c41b8d51d882219866e1366c45e21c352.tar.gz
-b25df94e249ca46fe96926e5a866c20dc913fa52a2d9259fb7a3594861c6b2f246fc7fef8a21f5b021f3a71401f734ae27210137b0b1917a7daaffb5e3221f2e  iio-sensor-proxy.initd
+f695c3f6c7cad50a5da8b8df28172b4a8c0be750e3bfc93a1b80a7fe1e5a05f24fd0e5af3e0af727c05dfe3a98b3067a6ebd7617c13243b60e1e495b2b3d6987  iio-sensor-proxy.initd
 43bf2ce5928c996ef56939a5ff232160f6af5a40cc673753763facbcb18511b1f551fa1a91f55ac9d0d4cbe544de7326208617ffc032cfeb9e39a5ab6538e825  0001-iio-sensor-proxy-depend-on-libssc.patch
 c6eb40824d5f4fe8b46d26f3ed4773502c9ff3ed58ec82df4a4f570bdcba81c39ff41f6d400bcece13fc46486272d13238d58afc34982b0972894b4d01a81309  0002-proximity-support-SSC-proximity-sensor.patch
 2e909a9a2a8c95d5255e14f6e0280f329e83e02dce8c16555df77c818a3cda658a7ebfb4c27d3e251e6830de2374f5f1bf2735be09af09ff0255c902125601ea  0003-light-support-SSC-light-sensor.patch
