@@ -3,7 +3,7 @@
 pkgname=gnome-shell
 pkgver=99946.1
 _pkgver=46.1
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME shell"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
 # gjs -> mozjs
@@ -86,7 +86,6 @@ builddir="$srcdir/$pkgname-$_pkgver"
 build() {
 	abuild-meson \
 		-Db_lto=true \
-		-Dsystemd=false \
 		-Dtests=false \
 		. output
 	meson compile -C output
