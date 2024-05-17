@@ -2,12 +2,12 @@
 
 _flavor="postmarketos-qcom-sm6350"
 pkgname=linux-$_flavor
-pkgver=6.8.1
-pkgrel=1
+pkgver=6.9.0
+pkgrel=0
 pkgdesc="Mainline Kernel fork for SM6350/SM7225 devices"
 arch="aarch64"
 _carch="arm64"
-url="https://github.com/z3ntu/linux"
+url="https://github.com/sm6350-mainline/linux"
 license="GPL-2.0-only"
 options="!strip !check !tracedeps
 	pmb:cross-native
@@ -21,7 +21,7 @@ _tag="v$pkgver-sm6350"
 
 # Source
 source="
-	https://github.com/z3ntu/$_repo/archive/$_tag/$_repo-$_tag.tar.gz
+	https://github.com/sm6350-mainline/$_repo/archive/$_tag/$_repo-$_tag.tar.gz
 	$_config
 "
 builddir="$srcdir/$_repo-$pkgver-sm6350"
@@ -54,6 +54,6 @@ package() {
 }
 
 sha512sums="
-d1ad03e14f6968550ee13cc96b546ff20edb8bbbb81701ef117f3a64429f591fc90131fcde5b241b82159d409d9819a2d7eff0ceaf90a22eed65d9a39e9955f6  linux-v6.8.1-sm6350.tar.gz
-7fe6364177be5a9f4004f7695c59fb337d16bdd4f9c212e947932571947b06995adadebf21fafe46917966fe4943e68b1906a0e6c730d9680bdb36efea67684a  config-postmarketos-qcom-sm6350.aarch64
+f7c4ce6385ee1f57551cd370ed48d89d138b442daf4934f10273fa86ac25f4ee743be606254c139c19fd5b74cc6739de89e49ff7568ad310c483cad2042adecc  linux-v6.9.0-sm6350.tar.gz
+0e3e1ff83a8064a8371c45b36be66a4773a70955df702f948e0426d596c805de585a972ba206f483a956bf40eafe3d409181b9eecd76a3170216186bb57a8cff  config-postmarketos-qcom-sm6350.aarch64
 "
