@@ -2,7 +2,7 @@
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=postmarketos-ui-weston
 pkgver=6
-pkgrel=7
+pkgrel=8
 pkgdesc="(Wayland) Reference compositor (demo, not a phone interface)"
 url="https://postmarketos.org"
 arch="noarch"
@@ -15,7 +15,6 @@ depends="
 	postmarketos-base-ui-networkmanager
 	tinydm
 	tinydm-openrc
-	weston-clients
 	weston
 	weston-shell-desktop
 	weston-backend-drm
