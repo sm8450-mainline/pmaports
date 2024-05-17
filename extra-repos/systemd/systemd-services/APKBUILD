@@ -6,7 +6,7 @@
 # How to add a new service file (4 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=6
+pkgver=7
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -36,7 +36,7 @@ subpackages="
 	q6voiced-service:_service
 	qbootctl-service:_service
 	rmtfs-service:_service
-	rtkit-daemon-service:_service
+	rtkit-service:_service
 	sleep-inhibitor-service:_service
 	tqftpserv-service:_service
 	wpa_supplicant-service:_service
@@ -63,7 +63,7 @@ _pulseaudio_sources="user/pulseaudio.service user/pulseaudio.socket"
 _q6voiced_sources="system/q6voiced.service"
 _qbootctl_sources="system/qbootctl.service"
 _rmtfs_sources="system/rmtfs.service"
-_rtkit_daemon_sources="system/rtkit-daemon.service"
+_rtkit_sources="system/rtkit-daemon.service"
 _sleep_inhibitor_sources="system/sleep-inhibitor.service"
 _tqftpserv_sources="system/tqftpserv.service"
 _wpa_supplicant_sources="system/wpa_supplicant.service"
@@ -102,7 +102,7 @@ source="$(flatpath \
 	$_q6voiced_sources \
 	$_qbootctl_sources \
 	$_rmtfs_sources \
-	$_rtkit_daemon_sources \
+	$_rtkit_sources \
 	$_sleep_inhibitor_sources \
 	$_tqftpserv_sources \
 	$_wpa_supplicant_sources \
