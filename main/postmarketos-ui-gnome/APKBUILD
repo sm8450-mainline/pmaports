@@ -23,6 +23,7 @@ _pmb_recommends="
 	gnome-extensions-app
 	gnome-system-monitor
 	nautilus
+	snapshot
 	"
 install="$pkgname.post-install $pkgname.post-upgrade"
 source="firefox-wayland.sh"
