@@ -1,13 +1,15 @@
 # Maintainer: Andreas Kemnade <andreas@kemnade.info>
 # Kernel config based on: arch/arm/configs/kobo_defconfig
 
-pkgname=linux-kobo-clara-mainline
+pkgname=linux-postmarketos-imx-ereader
 pkgver=6.8.8
 pkgrel=0
-pkgdesc="Kobo Clara HD kernel fork, close to mainline"
+pkgdesc="i.MX E-Book reader kernel fork, close to mainline"
+replaces="linux-kobo-clara-mainline"
+provides="linux-kobo-clara-mainline=$pkgver-r$pkgrel"
 arch="armv7"
 _carch="arm"
-_flavor="kobo-clara-mainline"
+_flavor="postmarketos-imx-ereader"
 url="https://kernel.org"
 license="GPL-2.0-only"
 options="!strip !check !tracedeps pmb:cross-native pmb:kconfigcheck-nftables"
@@ -68,7 +70,7 @@ package() {
 }
 
 sha512sums="
-f036c72807965c403bcbc8fc29b6b2ae782927bac8c3cebf126accf8ad70abf2daf0dafd04553992402ecd6ec8e144ee6b361258f6a033a235393c9eec49bd79  linux-kobo-clara-mainline-170464e5eb77c63c77ee7c81002a37ac033097ab.tar.gz
+f036c72807965c403bcbc8fc29b6b2ae782927bac8c3cebf126accf8ad70abf2daf0dafd04553992402ecd6ec8e144ee6b361258f6a033a235393c9eec49bd79  linux-postmarketos-imx-ereader-170464e5eb77c63c77ee7c81002a37ac033097ab.tar.gz
 8356d9b0c31de0914248f8e0531c0e3de0c9893fc6e0fdac013771b4f916a10f16cee69c354dc4f0fa8341d16155da5d710569e52f738073a5d3e436bec10334  rtl8189ES_linux-5d523593f41c0b8d723c6aa86b217ee1d0965786.tar.gz
-5c9cd531ea45bda2232b5e72fa7b9e9ae7b25a4782b412ba5216b85d12dc11fca8c8903dee592bfe35aec3c954c742f156b1bf1796ef06877b31f0e0ece43a04  config-kobo-clara-mainline.armv7
+5c9cd531ea45bda2232b5e72fa7b9e9ae7b25a4782b412ba5216b85d12dc11fca8c8903dee592bfe35aec3c954c742f156b1bf1796ef06877b31f0e0ece43a04  config-postmarketos-imx-ereader.armv7
 "

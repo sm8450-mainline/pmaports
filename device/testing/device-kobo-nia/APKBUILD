@@ -2,13 +2,13 @@
 pkgname=device-kobo-nia
 pkgdesc="Kobo Nia"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
 depends="
-	linux-kobo-clara-mainline
+	linux-postmarketos-imx-ereader
 	kobo-epdc-extractor
 	postmarketos-base
 	u-boot-kobo-nia
