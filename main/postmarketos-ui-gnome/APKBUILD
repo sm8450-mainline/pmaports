@@ -20,6 +20,7 @@ depends="
 _pmb_recommends="
 	gnome-calendar
 	gnome-disk-utility
+	gnome-extensions-app
 	gnome-system-monitor
 	nautilus
 	"
