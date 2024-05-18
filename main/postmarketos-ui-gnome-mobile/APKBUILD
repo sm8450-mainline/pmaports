@@ -34,6 +34,7 @@ depends="
 _pmb_recommends="
 	calls
 	chatty
+	gnome-extensions-app
 	mobile-config-firefox
 	portfolio
 	postmarketos-default-camera
