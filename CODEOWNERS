@@ -66,7 +66,7 @@ device/*/device-huawei-plank/			@gtrxAC
 device/*/device-lg-judyln/			@Newbyte
 device/*/device-lg-judyp/			@jenneron
 device/*/device-microsoft-surface-rt/		@jenneron @jethrob
-device/*/device-nvidia-tegra-armv7/		@clamor95 @okias @mschwalm @nokun
+device/*/device-nvidia-tegra-armv7/		@clamor-s @okias @mschwalm @nokun
 device/*/device-odroid-xu4/			@Grimler
 device/*/device-oneplus-enchilada/		@calebccff
 device/*/device-oneplus-fajita/			@calebccff
@@ -93,7 +93,7 @@ device/*/linux-postmarketos-allwinner/		@Arnavion @PsychoGame
 device/*/linux-postmarketos-amlogic/		@funderscore @exkc
 device/*/linux-postmarketos-exynos4/		@Newbyte @ThiagaoPlusPlus
 device/*/linux-postmarketos-exynos5/		@jenneron @Grimler
-device/*/linux-postmarketos-grate/		@clamor95 @jenneron @jethrob
+device/*/linux-postmarketos-grate/		@clamor-s @jenneron @jethrob
 device/*/linux-postmarketos-mediatek-mt8173/	@jenneron @adamthiede
 device/*/linux-postmarketos-mediatek-mt8183/	@jenneron @binarycraft
 device/*/linux-postmarketos-omap/		@MightyM17 @Sicelo
