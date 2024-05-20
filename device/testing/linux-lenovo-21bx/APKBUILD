@@ -1,4 +1,5 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
+# Co-Maintainer: jane400 <jane400@postmarketos.org>
 # Contributor: Konrad Dybcio <konradybcio@kernel.org>
 pkgname=linux-lenovo-21bx
 pkgver=6.9

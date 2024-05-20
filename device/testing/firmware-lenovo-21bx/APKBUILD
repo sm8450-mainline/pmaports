@@ -1,5 +1,6 @@
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
+# Co-Maintainer: jane400 <jane400@postmarketos.org>
 pkgname=firmware-lenovo-21bx
 pkgver=1
 pkgrel=0

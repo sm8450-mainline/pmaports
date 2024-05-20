@@ -17,7 +17,7 @@ device/*/*-google-x64cros/			@jenneron @JustSoup321 @alpernebbi
 device/*/*-htc-golfu/				@Newbyte
 device/*/*-htc-m8qlul/				@Newbyte
 device/*/*-kobo-clara/				@akemnade
-device/*/*-lenovo-21bx/				@craftyguy
+device/*/*-lenovo-21bx/				@craftyguy @jane400
 device/*/*-lenovo-a6000/			@jenneron @Minecrell
 device/*/*-lenovo-a6010/			@jenneron @Minecrell
 device/*/*-librecomputer-lafrite/		@funderscore
