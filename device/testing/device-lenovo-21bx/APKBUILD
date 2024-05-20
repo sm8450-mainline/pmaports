@@ -1,5 +1,5 @@
-# Maintainer: Konrad Dybcio <konradybcio@kernel.org>
-# Co-Maintainer: Clayton Craft <clayton@craftyguy.net>
+# Maintainer: Clayton Craft <clayton@craftyguy.net>
+# Contributor: Konrad Dybcio <konradybcio@kernel.org>
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lenovo-21bx
 pkgdesc="Lenovo ThinkPad X13s"
