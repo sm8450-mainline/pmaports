@@ -1,0 +1,157 @@
+# Forked from Alpine for temporary downstream patches
+
+pkgname=libcamera
+pkgver=9999
+_pkgver=0.3.0
+pkgrel=0
+pkgdesc="Linux camera framework"
+url="https://libcamera.org/"
+arch="all"
+license="LGPL-2.1-or-later AND GPL-2.0-or-later"
+depends_dev="
+	eudev-dev
+	glib-dev
+	gnutls-dev
+	gst-plugins-bad-dev
+	qt5-qtbase-dev
+	"
+# upstream calls 'date' with a non-POSIX option so we pull in coreutils
+makedepends="$depends_dev
+	coreutils
+	doxygen
+	graphviz
+	gtest-dev
+	libevent-dev
+	libunwind-dev
+	linux-headers
+	meson
+	py3-jinja2
+	py3-ply
+	py3-sphinx
+	py3-yaml
+	qt5-qttools-dev
+	yaml-dev
+	"
+subpackages="
+	$pkgname-dbg
+	$pkgname-dev
+	$pkgname-doc
+	qcam
+	$pkgname-gstreamer
+	$pkgname-v4l2
+	$pkgname-tools
+	"
+source="https://gitlab.freedesktop.org/camera/libcamera/-/archive/v$_pkgver/libcamera-v$_pkgver.tar.gz
+	0001-qcam-Decrease-minimum-width-of-selector-dialog.patch
+	0001-libcamera-simple-Enable-softwareISP-for-the-librem5.patch
+	0002-libcamera-simple-Force-disable-softwareISP-for-milli.patch
+	0003-libcamera-simple-Enable-softISP-for-the-Pinephone.patch
+	0004-libcamera-simple-Skip-hwISP-formats-if-swISP-is-acti.patch
+	qcam.desktop
+	90-libcamera.rules
+	"
+builddir="$srcdir/$pkgname-v$_pkgver"
+# gstreamer tests fail
+# manual strip because ipa .sign files depend on the file contents- have to re-sign after strip
+options="!strip !check"
+
+case "$CARCH" in
+arm*|aarch64)
+	subpackages="$subpackages $pkgname-raspberrypi"
+	;;
+esac
+
+case "$CARCH" in
+ppc64le|s390x|riscv64|loongarch64)
+	# doesn't install any ipa
+	;;
+*)
+	depends="$pkgname-ipa=$pkgver-r$pkgrel"
+	subpackages="$subpackages $pkgname-ipa"
+	;;
+esac
+
+build() {
+	abuild-meson \
+		-Dv4l2=true \
+		-Dwerror=false \
+		. output
+	meson compile -C output
+}
+
+check() {
+	meson test --no-rebuild -C output --print-errorlogs
+}
+
+package() {
+	DESTDIR="$pkgdir" meson install --no-rebuild -C output
+	install -Dm644 -t "$pkgdir"/usr/share/applications "$srcdir"/qcam.desktop
+
+	# manual strip first..
+	scanelf --recursive \
+		--nobanner \
+		--etype "ET_DYN,ET_EXEC" \
+		--format "%F" \
+		"$pkgdir" \
+		| while read -r file; do
+			strip "$file"
+	done
+
+	install -Dm644 "$srcdir"/90-libcamera.rules \
+		-t "$pkgdir"/lib/udev/rules.d/
+}
+
+ipa() {
+	depends=""
+	amove usr/lib/libcamera
+	# then sign ipa's
+	local ipa
+	for ipa in "$subpkgdir"/usr/lib/libcamera/ipa*.so; do
+		msg "signing $ipa"
+		"$builddir"/src/ipa/ipa-sign.sh \
+			"$(find "$builddir"/output -type f -iname "*ipa-priv-key.pem")" \
+			"$ipa" \
+			"$ipa".sign
+	done
+}
+
+qcam() {
+	depends=""
+	amove usr/bin/qcam
+
+	amove usr/share/applications/qcam.desktop
+}
+
+gstreamer() {
+	depends=""
+	amove usr/lib/gstreamer-1.0
+}
+
+v4l2() {
+	depends=""
+	amove usr/libexec/libcamera/v4l2-compat.so
+}
+
+raspberrypi() {
+	depends=""
+	amove usr/share/libcamera/ipa/rpi
+	amove usr/libexec/libcamera/raspberrypi_ipa_proxy
+	amove usr/share/libcamera/pipeline/rpi/vc4
+}
+
+tools() {
+	depends=""
+	amove usr/bin/cam
+	amove usr/bin/lc-compliance
+}
+
+sha512sums="
+d232593b6cc7f2b772e8cd0b6751fee00ddbde256328c4cf7162726d4766149afca36411075e2b55a8a009d52758f01874ff08b947b508dbe5e3059fa4a92c86  libcamera-v0.3.0.tar.gz
+69d6e29d764f752feed453b9c0f61c81cdb506eb14893d0d99d0d6834f369f1e816c2381dfab5ad1a744a3d11211af02d75dc041ecc87c7e4f73e2bd34c666c2  0001-qcam-Decrease-minimum-width-of-selector-dialog.patch
+495bc434fe188d0b83c88325657946e57b0a31d34d5249d8ea02fbfb4025ff15080a5da6bf61866eeffa63dad9b2b9a7b8abb456a306da8925c39775eda339bb  0001-libcamera-simple-Enable-softwareISP-for-the-librem5.patch
+26b274c32c9fc0d8220f58c7e37f6c0c9e590b2ff07adbc908b4c38ae4b7104639bb8ecf57b2faa15d2fae932d0021b51ad6a31a8762a05d3f876d55f0fef242  0002-libcamera-simple-Force-disable-softwareISP-for-milli.patch
+68b66432d3e60adc7329713b1362d023244516b697fbcb67112d9aad1367d2c65a100470b1ab6747074ca2717ec18e848b3888b382f75be1646e182894c6a37c  0003-libcamera-simple-Enable-softISP-for-the-Pinephone.patch
+4bfc5c35cf6bc8f1695744486a43695efa7bef5ce1c3bc93bda227832d08394f3bb0115863f7a30a8adfc4c93af293cdd5063fdb78f8d850f4d0c2ac7b1ff123  0004-libcamera-simple-Skip-hwISP-formats-if-swISP-is-acti.patch
+22167a4eceb6d1b40b0b7c45fdf116c71684f5340de7f767535cb8e160ad9d2ae0f00cb3d461f73a344520a48a4641cf46226841d78bee06bfbfd2a91337f754  qcam.desktop
+444a0a52b374751c388f807b6adcc63b36488547adaa5fb70b606dc5646132b1a893a76254236b5c80f3a6d041a4597d413e050af0323cd05626d758190838e2  90-libcamera.rules
+"
