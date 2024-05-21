@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.9.0 Kernel Configuration
+# Linux/arm64 6.9.1 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="aarch64-alpine-linux-musl-gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309"
 CONFIG_CC_IS_GCC=y
@@ -5795,7 +5795,7 @@ CONFIG_LTRF216A=m
 # CONFIG_PA12203001 is not set
 # CONFIG_SI1133 is not set
 # CONFIG_SI1145 is not set
-# CONFIG_STK3310 is not set
+CONFIG_STK3310=m
 # CONFIG_ST_UVIS25 is not set
 # CONFIG_TCS3414 is not set
 # CONFIG_TCS3472 is not set
