@@ -16,6 +16,7 @@ device/*/*-google-veyron/			@jenneron
 device/*/*-google-x64cros/			@jenneron @JustSoup321 @alpernebbi
 device/*/*-htc-golfu/				@Newbyte
 device/*/*-htc-m8qlul/				@Newbyte
+device/*/*-kobo-clara/				@akemnade
 device/*/*-lenovo-21bx/				@craftyguy
 device/*/*-lenovo-a6000/			@jenneron @Minecrell
 device/*/*-lenovo-a6010/			@jenneron @Minecrell
@@ -43,6 +44,7 @@ device/*/*-samsung-gt58/			@TravMurav
 device/*/*-samsung-j5/				@wonderfulShrineMaidenOfParadise
 device/*/*-samsung-j5x/				@wonderfulShrineMaidenOfParadise
 device/*/*-samsung-serranove/			@Minecrell
+device/*/*-tolino-shine2hd/			@akemnade
 device/*/*-videostrong-kii-pro/			@funderscore
 device/*/*-wileyfox-crackling/			@TravMurav @Minecrell
 device/*/*-xiaomi-beryllium/			@joelselvaraj
@@ -86,6 +88,7 @@ device/*/firmware-google-veyron-brcm/		@jenneron
 device/*/firmware-odroid-xu4/			@Grimler
 device/*/firmware-oneplus-sdm845/		@calebccff
 device/*/firmware-powervr-gx6250/		@jenneron
+device/*/kobo-epdc-extractor/			@akemnade
 device/*/linux-google-nyan/			@jenneron
 device/*/linux-google-veyron/			@jenneron
 device/*/linux-huawei-plank/			@gtrxAC
@@ -94,6 +97,7 @@ device/*/linux-postmarketos-amlogic/		@funderscore @exkc
 device/*/linux-postmarketos-exynos4/		@Newbyte @ThiagaoPlusPlus
 device/*/linux-postmarketos-exynos5/		@jenneron @Grimler
 device/*/linux-postmarketos-grate/		@clamor-s @jenneron @jethrob
+device/*/linux-postmarketos-imx-ereader/	@akemnade
 device/*/linux-postmarketos-mediatek-mt8173/	@jenneron @adamthiede
 device/*/linux-postmarketos-mediatek-mt8183/	@jenneron @binarycraft
 device/*/linux-postmarketos-omap/		@MightyM17 @Sicelo
