@@ -19,4 +19,4 @@ if [ -z "$CAGE_UI_COMMAND" ]; then
 	fi
 fi
 
-exec "$CAGE_UI_COMMAND"
+exec $CAGE_UI_COMMAND
