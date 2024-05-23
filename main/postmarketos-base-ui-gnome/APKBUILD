@@ -44,6 +44,7 @@ _pmb_recommends="
 	gnome-software
 	gnome-software-plugin-apk
 	gnome-text-editor
+	gnome-weather
 	lollypop
 	loupe
 "
