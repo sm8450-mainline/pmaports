@@ -1,5 +1,5 @@
 pkgname=firmware-fairphone-fp4
-pkgver=20231122
+pkgver=20240313
 pkgrel=0
 pkgdesc="Firmware for Fairphone 4"
 subpackages="
@@ -17,7 +17,7 @@ arch="aarch64"
 license="proprietary"
 makedepends="pil-squasher"
 options="!check !strip !archcheck !tracedeps pmb:cross-native"
-_commit="9bcb18012b18756e5f7adc4fcd41396e7f28199b"
+_commit="d95bd920afa9084cefe0f69be931a5421e544154"
 source="https://github.com/FairBlobs/FP4-firmware/archive/$_commit/FP4-firmware-$_commit.tar.gz"
 builddir="$srcdir/FP4-firmware-$_commit"
 
@@ -39,8 +39,6 @@ adreno() {
 		"$subpkgdir/lib/firmware/qcom/"
 	install -Dm644 "$builddir"/a615_zap.mbn -t \
 		"$subpkgdir/lib/firmware/qcom/sm7225/fairphone4/"
-	ln -s a615_zap.mbn "$subpkgdir/lib/firmware/qcom/sm7225/fairphone4/a615_zap.mdt"
-	ln -s sm7225/fairphone4/a615_zap.mbn "$subpkgdir/lib/firmware/qcom/a615_zap.mdt"
 }
 
 adsp() {
@@ -48,7 +46,6 @@ adsp() {
 
 	install -Dm644 "$builddir"/adsp.mbn -t \
 		"$subpkgdir/lib/firmware/qcom/sm7225/fairphone4/"
-	ln -s adsp.mbn "$subpkgdir/lib/firmware/qcom/sm7225/fairphone4/adsp.mdt"
 	install -Dm644 "$builddir"/adsp*.jsn -t \
 		"$subpkgdir/lib/firmware/qcom/sm7225/fairphone4/"
 }
@@ -67,7 +64,6 @@ cdsp() {
 
 	install -Dm644 "$builddir"/cdsp.mbn -t \
 		"$subpkgdir/lib/firmware/qcom/sm7225/fairphone4/"
-	ln -s cdsp.mbn "$subpkgdir/lib/firmware/qcom/sm7225/fairphone4/cdsp.mdt"
 	install -Dm644 "$builddir"/cdsp*.jsn -t \
 		"$subpkgdir/lib/firmware/qcom/sm7225/fairphone4/"
 }
@@ -78,7 +74,6 @@ ipa() {
 	cd "$builddir"
 	install -Dm644 "$builddir"/lagoon_ipa_fws.mbn \
 		"$subpkgdir/lib/firmware/qcom/sm7225/fairphone4/ipa_fws.mbn"
-	ln -s ipa_fws.mbn "$subpkgdir/lib/firmware/qcom/sm7225/fairphone4/ipa_fws.mdt"
 }
 
 modem() {
@@ -86,7 +81,6 @@ modem() {
 
 	install -Dm644 "$builddir"/modem.mbn -t \
 		"$subpkgdir/lib/firmware/qcom/sm7225/fairphone4/"
-	ln -s modem.mbn "$subpkgdir/lib/firmware/qcom/sm7225/fairphone4/modem.mdt"
 	install -Dm644 "$builddir"/modem*.jsn -t \
 		"$subpkgdir/lib/firmware/qcom/sm7225/fairphone4/"
 
@@ -111,5 +105,5 @@ wlan() {
 }
 
 sha512sums="
-c579b1893a61e09f532e0858ddb90b83e663bf1489707ba8b0e524771504db73764233c2dfe3a4b97b40eab4ef88d50adbea33ab25c28c289d1890d7b0addd70  FP4-firmware-9bcb18012b18756e5f7adc4fcd41396e7f28199b.tar.gz
+3839431922c6250fa76c563183387edbc1370f34d833d5d7c6c08f0d921c0498c93ff376af5d43fecf78d4ac6aff3b90e41345310181826b0a21507dbfba778c  FP4-firmware-d95bd920afa9084cefe0f69be931a5421e544154.tar.gz
 "
