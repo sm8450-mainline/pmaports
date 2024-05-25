@@ -2,14 +2,16 @@
 
 pkgname=gnome-shell-mobile
 pkgver=45_git20240426
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
-arch="all !armhf !s390x !riscv64" # gjs / riscv64: mutter-mobile
+# gjs / riscv64: mutter-mobile
+arch="all !armhf !s390x !riscv64"
 license="GPL-2.0-or-later"
 depends="
 	accountsservice
 	adwaita-icon-theme
+	desktop-file-utils
 	elogind
 	font-adobe-source-code-pro
 	font-cantarell
@@ -23,6 +25,7 @@ depends="
 	ibus
 	librsvg
 	networkmanager-common
+	tecla
 	unzip
 	upower
 	"
@@ -53,6 +56,7 @@ makedepends="
 	python3
 	sassc
 	startup-notification-dev
+	tecla-dev
 	"
 checkdepends="
 	xvfb-run
@@ -60,7 +64,13 @@ checkdepends="
 	"
 	# gdm is also needed but introduces circular dep
 provides="gnome-shell=$pkgver-r$pkgrel"
-subpackages="$pkgname-dbg $pkgname-doc $pkgname-lang $pkgname-schemas::noarch"
+subpackages="
+	$pkgname-dbg
+	$pkgname-doc
+	$pkgname-lang
+	$pkgname-schemas::noarch
+	gnome-extensions-app:extensions_app:noarch
+	"
 _commit="3a352e95bf540d663f35554ee2de5dcd1ff408bc"
 _gvc_commit="8e7a5a4c3e51007ce6579292642517e3d3eb9c50"
 source="mobile-shell-$_commit.tar.gz::https://gitlab.gnome.org/verdre/mobile-shell/-/archive/$_commit/mobile-shell-$_commit.tar.gz
@@ -92,6 +102,19 @@ build() {
 
 check() {
 	xvfb-run meson test --no-rebuild -v -C output
+}
+
+extensions_app() {
+	provides="gnome-extensions-app=$pkgver-r$pkgrel"
+	pkgdesc="Manage GNOME Shell extensions"
+	depends="gnome-shell-mobile libadwaita"
+	replaces="gnome-shell-mobile"
+
+	amove usr/bin/gnome-extensions-app
+	amove usr/share/applications/org.gnome.Shell.Extensions.desktop
+	amove usr/share/gnome-shell/org.gnome.Extensions
+	amove usr/share/gnome-shell/org.gnome.Extensions.data.gresource
+	amove usr/share/gnome-shell/org.gnome.Extensions.src.gresource
 }
 
 schemas() {
