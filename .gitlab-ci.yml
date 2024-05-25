@@ -1,7 +1,7 @@
 ---
 
 # global settings
-image: alpine:edge
+image: alpine:latest
 before_script: &global_before_scripts
   - apk upgrade -U
 after_script:
