@@ -1,30 +1,25 @@
-# Maintainer: Leandro Friedrich <email@leandrofriedrich.de>
-# Co-Maintainer: map220v <map220v300@gmail.com>
+# Maintainer: David Wronek <david@mainlining.org>
+
 _flavor="postmarketos-qcom-sm7125"
 pkgname=linux-$_flavor
-pkgver=5.19.0
+pkgver=6.9.2
 pkgrel=0
 pkgdesc="Mainline Kernel fork for SM7125 devices"
 arch="aarch64"
 _carch="arm64"
-url="https://github.com/map220v/sm7125-mainline"
+url="https://kernel.org"
 license="GPL-2.0-only"
 options="!strip !check !tracedeps
 	pmb:cross-native
 	pmb:kconfigcheck-nftables
 	"
-makedepends="bison findutils flex installkernel openssl-dev perl bash"
+makedepends="bison findutils flex installkernel openssl-dev perl"
 
-_repo="sm7125-mainline"
-_config="config-$_flavor.$arch"
-_commit="97744a6d9de46fe47f780de7213573201df15c69"
-
-# Source
 source="
-	$_repo-$_commit.tar.gz::https://github.com/map220v/$_repo/archive/$_commit/$_repo-$_commit.tar.gz
-	$_config
+	https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/linux-$pkgver.tar.xz
+	config-$_flavor.$arch
 "
-builddir="$srcdir/$_repo-$_commit"
+builddir="$srcdir/linux-$pkgver"
 
 prepare() {
 	default_prepare
@@ -39,11 +34,7 @@ build() {
 
 package() {
 	mkdir -p "$pkgdir"/boot
-
-	install -Dm644 "$builddir/arch/$_carch/boot/Image.gz" \
-		"$pkgdir/boot/vmlinuz"
-
-	make modules_install dtbs_install \
+	make zinstall modules_install dtbs_install \
 		ARCH="$_carch" \
 		INSTALL_PATH="$pkgdir"/boot/ \
 		INSTALL_MOD_PATH="$pkgdir" \
@@ -55,7 +46,8 @@ package() {
 		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
 }
 
+
 sha512sums="
-626f17fd4f1fbd5851e875e3e1548af49a29aa1ec7882ae07c9ac0d83479ef7c2df02b95cbe2753275fb78fb6c1dd643b9792c488d3efefcc2378473161ec3b9  sm7125-mainline-97744a6d9de46fe47f780de7213573201df15c69.tar.gz
-221eb6409b1747f2503d0374d4656eab546932ad2b702183b3d6503ef20e93e07ebdf65b198250917fa7a61afe68059938543396ca066f3c25872de69f65339c  config-postmarketos-qcom-sm7125.aarch64
+a168f5b3e7ee7451d5bb1c7f6c090d6002330a4529ef74b2e47f6902ba3d6feaa8dc89f7b5a072d52f6933fd08354a0ff1e12f22240ce53c758c144d4ad132cd  linux-6.9.2.tar.xz
+fe18f3efd0c4d9d37244f2727e93650132328de4c8db4d4128134064623f5e2c4318b9d61aea62286ac6f58735c9e7c7d3ede0b9c3c6fa2513212ac7f3badba6  config-postmarketos-qcom-sm7125.aarch64
 "
