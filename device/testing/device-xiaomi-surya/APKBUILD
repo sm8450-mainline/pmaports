@@ -1,5 +1,5 @@
 # Maintainer: Danila Tikhonov <danila@jiaxyga.com>
-# Co-Maintainer: David Wronek <davidwronek@gmail.com>
+# Co-Maintainer: David Wronek <david@mainlining.org>
 # Reference: <https://postmarketos.org/devicepkg>
 
 pkgname=device-xiaomi-surya
