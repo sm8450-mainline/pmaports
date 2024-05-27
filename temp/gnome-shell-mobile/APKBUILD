@@ -69,7 +69,7 @@ subpackages="
 	$pkgname-doc
 	$pkgname-lang
 	$pkgname-schemas::noarch
-	gnome-extensions-app:extensions_app:noarch
+	gnome-mobile-extensions-app:extensions_app:noarch
 	"
 _commit="3a352e95bf540d663f35554ee2de5dcd1ff408bc"
 _gvc_commit="8e7a5a4c3e51007ce6579292642517e3d3eb9c50"
@@ -79,6 +79,8 @@ source="mobile-shell-$_commit.tar.gz::https://gitlab.gnome.org/verdre/mobile-she
 	gsh.patch"
 builddir="$srcdir/mobile-shell-$_commit"
 options="!check" # Tests have circular dependency 'gnome-shell <-> gdm'
+# To make sure pmb_recommends installs the correct one
+_pmb_recommends="gnome-mobile-extensions-app"
 
 # secfixes:
 #   0:
