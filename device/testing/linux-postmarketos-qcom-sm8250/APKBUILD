@@ -1,10 +1,11 @@
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on: arch/arm64/configs/defconfig
+# Maintainer: Jianhua Lu <lujianhua000@gmail.com>
 
 _flavor="postmarketos-qcom-sm8250"
 pkgname=linux-$_flavor
-pkgver=6.9.0
-pkgrel=2
+pkgver=6.10.0
+pkgrel=0
 pkgdesc="Mainline kernel fork for SM8250"
 arch="aarch64"
 _carch="arm64"
@@ -23,6 +24,7 @@ makedepends="
 	openssl-dev
 	perl
 	postmarketos-installkernel
+	python3
 "
 
 # Source
@@ -61,6 +63,6 @@ package() {
 }
 
 sha512sums="
-ebc5b88e52d8b64d51caacd74fe0e32c5fb59e5f47ed28b715ca5857e876306835734fe8067cdacecc86e4d89f9f01127e4ede723d9ecd623ce0e188ddbb863b  linux-postmarketos-qcom-sm8250-sm8250-6.9.0.tar.gz
-e7267ce492bdb04151e61ec323ca68f4ded4e6579808ae8d25e266624b62884bc3f0960d86d5010c813ddf9b1fb8c8bab066b33c752e1ecaea75df98d7bb8efb  config-postmarketos-qcom-sm8250.aarch64
+2fdaa13c25c573a1b41dec1c6ad71bdbb4bb18f81c41aea1d114e631215371d7970e5a6a407d977366cacfcfe66229788668942c774fddb56037a493e87b2402  linux-postmarketos-qcom-sm8250-sm8250-6.10.0.tar.gz
+3aa721156e423ad6252a2321ce4819640b2cb8675783009a92c972d2b6abf9a080c4c8a8bcd9a78dee90c7807827937ffb8c8131bf1d06f79548d2710886d2fa  config-postmarketos-qcom-sm8250.aarch64
 "
