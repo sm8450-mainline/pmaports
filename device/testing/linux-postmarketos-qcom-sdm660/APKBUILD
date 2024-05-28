@@ -1,9 +1,9 @@
 # Maintainer: Alexey Minnekhanov <alexeymin@postmarketos.org>
-# Kernel config based on: arch/arm64/configs/defconfig
+# Kernel config based on: arch/arm64/configs/sdm660_defconfig
 
 _flavor="postmarketos-qcom-sdm660"
 pkgname=linux-$_flavor
-pkgver=6.7.0
+pkgver=6.9.3
 pkgrel=0
 pkgdesc="Close to mainline linux kernel for Qualcomm Snapdragon 660 SoC"
 arch="aarch64"
@@ -63,6 +63,6 @@ package() {
 }
 
 sha512sums="
-e5c4e0478a5e1e0dbddbfca35bd280bfd1a372d671f21e673b6f6377d1861a59fdde19949f0bd62cf05eb133ad91f6d6e887565e26ad5ace5dee0408a6cd76f4  linux-v6.7.0-sdm660.tar.gz
-8da0fccc8cabcd5c2b8a37a7d870213f5190d84e916ddba9b6b5fd282f82a316a06f0ae2e3295bc3a4f5a2c3877333b5ddccf773b151eb4d389bedeae71226cd  config-postmarketos-qcom-sdm660.aarch64
+ebe70e1364efa99f70e4a3725c42ea94e1c3834ffdec416a5eac8081c02489768d52525dfedaa0f65524d8082b910e647efae30d0795ea683284fcb20d532016  linux-v6.9.3-sdm660.tar.gz
+a297e724072ccc2651e509726bfbd67fc833c205fff6aee0a9d150b6ac5bd5d4615d28586aa8dd14b075d31ea6056213347a46e9b04c53a2fdecabff1f3501bf  config-postmarketos-qcom-sdm660.aarch64
 "
