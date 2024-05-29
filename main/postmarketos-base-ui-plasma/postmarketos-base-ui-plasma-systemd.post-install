@@ -2,6 +2,5 @@
 
 systemctl enable bluetooth
 #systemctl enable hfd-service
-systemctl enable iio-sensor-proxy
-systemctl enable networkmanager
+systemctl enable NetworkManager
 #systemctl enable urfkill
