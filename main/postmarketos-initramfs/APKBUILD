@@ -20,6 +20,7 @@ depends="
 	e2fsprogs-extra
 	f2fs-tools
 	lz4
+	mdevd
 	mdev-conf
 	multipath-tools
 	parted
