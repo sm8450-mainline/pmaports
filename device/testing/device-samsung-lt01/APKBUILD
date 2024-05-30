@@ -3,7 +3,7 @@
 pkgname=device-samsung-lt01
 pkgdesc="Samsung Galaxy Tab 3 8.0"
 pkgver=1
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -46,8 +46,8 @@ package() {
 nonfree_firmware() {
 	pkgdesc="WiFi, Bluetooth, MFC firmware"
 	depends="
-		firmware-samsung-midas-bluetooth
-		firmware-samsung-midas-wifi
+		firmware-samsung-lt01-bluetooth
+		firmware-samsung-lt01-wifi
 		linux-firmware-s5p-mfc
 		"
 	mkdir "$subpkgdir"
