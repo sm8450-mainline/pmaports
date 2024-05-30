@@ -1,6 +1,5 @@
 #!/bin/sh
 
 systemctl enable bluetooth
-systemctl enable iio-sensor-proxy
-systemctl enable modemmanager
-systemctl enable networkmanager
+systemctl enable ModemManager
+systemctl enable NetworkManager
