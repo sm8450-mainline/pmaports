@@ -1,5 +1,5 @@
 pkgname=firmware-samsung-midas
-pkgver=6.1
+pkgver=6.2
 pkgrel=0
 pkgdesc="Samsung Galaxy Midas board firmware (m0, m3, t0lte, ...)"
 _commit="fdd8c44568a148c22fbf008de822ff4e27992da1"
@@ -10,8 +10,6 @@ _androguide_commit="d5a8735a6ad1fff3091f100383ac004f411d7528"
 _androguide_url="https://raw.githubusercontent.com/Androguide/android_vendor_samsung"
 _vendor_bsp_uboot_commit="246091921433dd11c211a306f042d949ada38924"
 _vendor_bsp_uboot_url="https://github.com/dmarszk/exynos4_uboot"
-_gr8nole_url="https://raw.githubusercontent.com/gr8nole/proprietary_vendor_samsung"
-_gr8nole_commit="38ea48dbc6a683874aaf3376b63fc97ff3823459"
 arch="armv7"
 license="proprietary"
 replaces="firmware-samsung-m0"
@@ -25,9 +23,6 @@ source="
 	bcm4334.hcd-$_commit::$url/raw/$_commit/smdk4412-common/proprietary/bin/bcm4334.hcd
 	brcmfmac4334-sdio.samsung,i9300-$_armbian_commit.txt::$_armbian_url/raw/$_armbian_commit/brcm/brcmfmac4334-sdio.rockchip%2Crk3318-box.txt
 	brcmfmac4334-sdio.samsung,i9305-$_androguide_commit.txt::$_androguide_url/$_androguide_commit/smdk4412-common/proprietary/system/etc/wifi/nvram_net.txt
-	brcmfmac4334-sdio.samsung,t310-$_gr8nole_commit.txt::$_gr8nole_url/$_gr8nole_commit/lt01wifi/proprietary/system/etc/wifi/nvram_net.txt
-	brcmfmac4334-sdio.samsung,t311-$_gr8nole_commit.txt::$_gr8nole_url/$_gr8nole_commit/lt013g/proprietary/system/etc/wifi/nvram_net.txt
-	brcmfmac4334-sdio.samsung,t315-$_gr8nole_commit.txt::$_gr8nole_url/$_gr8nole_commit/lt01lte/proprietary/system/etc/wifi/nvram_net.txt
 	"
 options="!check !strip !archcheck !spdx !tracedeps pmb:cross-native"
 
@@ -59,21 +54,10 @@ wifi() {
 		"$subpkgdir"/lib/firmware/brcm/brcmfmac4334-sdio.samsung,i9300.txt
 	install -Dm644 "$srcdir"/brcmfmac4334-sdio.samsung,i9305-$_androguide_commit.txt \
 		"$subpkgdir"/lib/firmware/brcm/brcmfmac4334-sdio.samsung,i9305.txt
-	install -Dm644 "$srcdir"/brcmfmac4334-sdio.samsung,t310-$_gr8nole_commit.txt \
-		"$subpkgdir"/lib/firmware/brcm/brcmfmac4334-sdio.samsung,t310.txt
-	install -Dm644 "$srcdir"/brcmfmac4334-sdio.samsung,t311-$_gr8nole_commit.txt \
-		"$subpkgdir"/lib/firmware/brcm/brcmfmac4334-sdio.samsung,t311.txt
-	install -Dm644 "$srcdir"/brcmfmac4334-sdio.samsung,t315-$_gr8nole_commit.txt \
-		"$subpkgdir"/lib/firmware/brcm/brcmfmac4334-sdio.samsung,t315.txt
 	ln -s /lib/firmware/brcm/brcmfmac4334-sdio.samsung,i9305.txt \
 		"$subpkgdir"/lib/firmware/brcm/brcmfmac4334-sdio.samsung,n710x.txt
 	ln -s /lib/firmware/brcm/brcmfmac4334-sdio.samsung,i9300.txt \
 		"$subpkgdir"/lib/firmware/brcm/brcmfmac4334-sdio.samsung,n8010.txt
-
-	for _device in "samsung,t310" "samsung,t311" "samsung,t315"; do
-		ln -s /lib/firmware/brcm/brcmfmac4334-sdio.bin \
-			"$subpkgdir"/lib/firmware/brcm/brcmfmac4334-sdio.$_device.bin
-	done
 }
 
 sha512sums="
@@ -81,7 +65,4 @@ sha512sums="
 cbed1dc60829161c7ac9649dcae67fc45204c1a25e8de320ad3bc4e9d5cae573fb8a4745f91355fa96d2d3d4124a9e707341fc5bd1b22705cb2efb16831e029f  bcm4334.hcd-fdd8c44568a148c22fbf008de822ff4e27992da1
 d5c83e1dcd67630e186ab484d150ca5c0af12810de62a46ec6e525b50dabf64a75f1231ef8d7c1d102fb76389210fdb952975460179ca767acd0ffdd869907d7  brcmfmac4334-sdio.samsung,i9300-5ff122ef309a1ddabb4bf7f37c8347c43b314a61.txt
 146aefcccd23d63e434bd7f7d0ac6d5975ad25e44362da10bc583ab9e38b18c53f6ce18890c9790ee88fbb8f6358085bb615d0595388ca43a322f7c819614049  brcmfmac4334-sdio.samsung,i9305-d5a8735a6ad1fff3091f100383ac004f411d7528.txt
-1359b10a0cd043f02fa939e827e24aaa35cf03eee5e5a78f83437899c86e78d5b973b36a61535211bab5dd7e6d210065c1f81addd716caaac147fbfc6c70bac2  brcmfmac4334-sdio.samsung,t310-38ea48dbc6a683874aaf3376b63fc97ff3823459.txt
-81b722b2d5eb3446606a7b10001aeed7af8a8139379c8525d5ddd990a5b10dd3e2103c498d65c0e31cbda7bafc0988dc25b2d227b20dcdf88c5dc57eaa771956  brcmfmac4334-sdio.samsung,t311-38ea48dbc6a683874aaf3376b63fc97ff3823459.txt
-547780ac164b4a7a989965b1561fb318ae30187d2ad45ec0add001c037f2a732abcc73acf8be6f0aee55d28eccb89b992f7d30acd9872d1998682d9110eec09e  brcmfmac4334-sdio.samsung,t315-38ea48dbc6a683874aaf3376b63fc97ff3823459.txt
 "
