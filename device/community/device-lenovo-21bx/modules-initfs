@@ -25,3 +25,12 @@ dispcc_sc8280xp
 panel_edp
 phy_qcom_edp
 msm
+
+# USB boot
+phy_qcom_qmp_usb
+phy_qcom_snps_femto_v2
+## Need to load remoteproc modules in the initramfs, if they are loaded later
+## then it can cause a power cycle that breaks USB
+qcom_common
+qcom_q6v5_pas
+qrtr-smd
