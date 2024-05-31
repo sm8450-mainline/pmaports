@@ -6,7 +6,7 @@
 _flavor="postmarketos-qcom-sdm845"
 pkgname=linux-$_flavor
 pkgver=6.9.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline Kernel fork for SDM845 devices"
 arch="aarch64"
 _carch="arm64"
@@ -15,7 +15,7 @@ license="GPL-2.0-only"
 options="!check !tracedeps
 	pmb:cross-native
 	pmb:kconfigcheck-community"
-makedepends="bash bison findutils flex installkernel openssl-dev perl zstd"
+makedepends="bash bison findutils flex installkernel openssl-dev perl zstd python3"
 
 _config="config-$_flavor.$arch"
 _tag="sdm845-6.9.0"
