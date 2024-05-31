@@ -4,7 +4,7 @@
 
 _flavor="postmarketos-qcom-sdm670"
 pkgname=linux-$_flavor
-pkgver=6.8.2
+pkgver=6.9.3
 pkgrel=0
 pkgdesc="Mainline Kernel fork for SDM670 devices"
 arch="aarch64"
@@ -55,6 +55,6 @@ package() {
 }
 
 sha512sums="
-c979621a2d65f5d8c1c028329f743ade1af7403774627435cb30fdfe5784a5910ee0e66a5cf2f29d84b5193373f33214b69ab1e89e0447b7a2c7ccbdfcaf78cc  linux-sdm670-v6.8.2.tar.gz
-8e5f19d3aa709e9559c42effef9169b74a1fb5a94830df70bd56f9bd5f9ca8c33af0ac54fb859e77d52b464de61d0e1b6afcc44b869a0231efc88328329236ea  config-postmarketos-qcom-sdm670.aarch64
+026d62a7ca42da018927b697434bff6b48d945c4d71c193670a796861466398b5db234d5c92483eb9a1cdb765cf6c3379b56276ffcf0e8781ff0d3ae205f4ccc  linux-sdm670-v6.9.3.tar.gz
+5b3fed1d7c1d9be5d4ebdfadd30b6c8595d17c840b52d5da5de6a1a31d9a583771f4460c00197cf8a45733f56350db0d4abbffc1157dc287be030e32ff817c43  config-postmarketos-qcom-sdm670.aarch64
 "
