@@ -16,7 +16,6 @@ echo "Create 'pmos_continue_boot' script"
 	echo "if [ -d /config/usb_gadget/g1/functions/mass_storage.0 ]; then setup_usb_storage; fi"
 	echo "pkill -9 -f pmos_shell"
 	echo "pkill -f pmos_fail_halt_boot"
-	echo "pkill -f telnetd.*:${TELNET_PORT}"
 } >/usr/bin/pmos_continue_boot
 chmod +x /usr/bin/pmos_continue_boot
 
@@ -35,6 +34,14 @@ echo "Create 'pmos_fail_halt_boot' script"
 } >/usr/bin/pmos_fail_halt_boot
 chmod +x /usr/bin/pmos_fail_halt_boot
 
+echo "Create debug-shell cleanup script"
+{
+	echo "#!/bin/sh"
+	# shellcheck disable=SC2016
+	echo 'kill `cat /run/debug-shell-telnet.pid`'
+} > /hooks-cleanup/debug-shell-cleanup.sh
+chmod +x /hooks-cleanup/debug-shell-cleanup.sh
+
 echo "Start the telnet daemon"
 {
 	echo "#!/bin/sh"
@@ -44,7 +51,9 @@ echo "Start the telnet daemon"
 chmod +x /telnet_connect.sh
 
 host_ip="${unudhcpd_host_ip:-172.16.42.1}"
-telnetd -b "${host_ip}:${TELNET_PORT}" -l /telnet_connect.sh
+# Run telnetd with -F (foreground) instead of as a daemon so we can get it's PID
+telnetd -F -b "${host_ip}:${TELNET_PORT}" -l /telnet_connect.sh &
+echo "$!" > /run/debug-shell-telnet.pid
 
 # mount pstore, if possible
 if [ -d /sys/fs/pstore ]; then

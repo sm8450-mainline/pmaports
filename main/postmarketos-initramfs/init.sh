@@ -88,7 +88,7 @@ setup_bootchart2
 
 # Switch root
 run_hooks /hooks-cleanup
-killall telnetd mdev udevd msm-fb-refresher 2>/dev/null
+killall mdev udevd msm-fb-refresher 2>/dev/null
 
 # shellcheck disable=SC2093
 exec switch_root /sysroot "$init"
