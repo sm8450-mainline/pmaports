@@ -1,6 +1,6 @@
 # Maintainer: Oliver Smith <ollieparaoid@postmarketos.org>
 pkgname=postmarketos-release-upgrade
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=0
 pkgdesc="Upgrade from one pmOS release to the next one"
 url="https://gitlab.com/postmarketOS/postmarketos-release-upgrade/"
@@ -16,5 +16,5 @@ package() {
 }
 
 sha512sums="
-2fa1a2a8089a822b4fbbec5a4fce78c7f02205113dac1e78b9803b0a50cd2d96f5ad303de75869e07c4660d7eadebc46f55cb57b4a6cd915c5cec5743f81fbc8  postmarketos-release-upgrade-1.6.1.tar.bz2
+489c0db5cceba40cf68debc9fa366f07424a6fa90540ca67d40b5d21ddc3c6eb93bc9c9897b22c848f38d0455dfb6321f20726088b1ea0328d8677a166486cc7  postmarketos-release-upgrade-1.7.0.tar.bz2
 "
