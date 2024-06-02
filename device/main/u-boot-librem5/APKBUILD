@@ -4,7 +4,7 @@
 # Co-Maintainer: Newbyte <newbyte@postmarketos.org>
 pkgname=u-boot-librem5
 pkgver=2022.10
-pkgrel=1
+pkgrel=2
 # 'upstream/librem5' branch in uboot repo
 _commit="c4960dade272da9d6a7f53f6956d4d6747d573e9"
 # 'librem5' branch in atf repo
@@ -34,6 +34,7 @@ source="
 	https://www.nxp.com/lgfiles/NMG/MAD/YOCTO/firmware-imx-$_firmwareversion.bin
 	update-u-boot
 	0001-librem5-enable-console-on-UART4.patch
+	0002-libfdt-Fix-invalid-version-warning.patch
 	"
 install="$pkgname.post-upgrade"
 install="$pkgname.post-upgrade $pkgname-devkit.post-upgrade"
@@ -117,4 +118,5 @@ d35e46b94ebf50a7ffcedf824f19bca5195cbf0bbcee1dd6cea115f090a3a963975e6eaaa33eac62
 1f968558bf158401ee5afe1c67e67bdd8ca2cb5d07029e78c745e751c665b68fa74128fca8b7161501a6445bbb18e8d463b42d787a61132db5c8778703462668  firmware-imx-8.12.bin
 e46a863001872943301f9712e45797553ce52d8b0c3e63dba7beb1a54b857e8f3a715863b84cd7ab784f039f82d29a2b19b581891d11a84c342b1570e5ccfed3  update-u-boot
 f5c8a49bda189639386f2367418ab492f10e0e3c0c3f4ca078c461c0cf4427e113a90f49c37f01ef4db0a6e0f55d4f0a6346777e291918866821e659077e374a  0001-librem5-enable-console-on-UART4.patch
+895a6e7794257a2b13ecd4e10426d1539338b3ed2000df99ec94c7a319154895794a60aeae2946f4ca32d37095e4142ebbdb049bbccf70f257e77e977b1cedf8  0002-libfdt-Fix-invalid-version-warning.patch
 "
