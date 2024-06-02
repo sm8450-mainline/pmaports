@@ -1,0 +1,62 @@
+# Old conky version forked from Alpine for Sxmo until this is fixed:
+# https://github.com/brndnmtthws/conky/issues/1898
+pkgname=conky
+pkgver=1.20.1
+pkgrel=0
+pkgdesc="Advanced, highly configurable system monitor for X based on torsmo"
+url="https://github.com/brndnmtthws/conky"
+arch="all"
+license="GPL-3.0-or-later"
+makedepends="
+	alsa-lib-dev
+	cairo-dev
+	cmake
+	curl-dev
+	gawk
+	glib-dev
+	imlib2-dev
+	libxdamage-dev
+	libxext-dev
+	libxft-dev
+	libxinerama-dev
+	libxml2-dev
+	linux-headers
+	lua5.4-dev
+	ncurses-dev
+	pango-dev
+	samurai
+	tolua++
+	wayland-dev
+	libxi-dev
+	wayland-protocols
+	wireless-tools-dev
+	"
+subpackages="$pkgname-doc"
+source="$pkgname-$pkgver.tar.gz::https://github.com/brndnmtthws/conky/archive/v$pkgver.tar.gz"
+options="!check"
+
+build() {
+	cmake -B build -G Ninja \
+		-DRELEASE=ON \
+		-DCMAKE_BUILD_TYPE=MinSizeRel \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_CURL=ON \
+		-DBUILD_XDBE=ON \
+		-DBUILD_IMLIB2=ON \
+		-DBUILD_RSS=ON \
+		-DBUILD_WLAN=ON \
+		-DBUILD_I18N=OFF \
+		-DBUILD_LUA_CAIRO=ON \
+		-DBUILD_WAYLAND=ON \
+		-DLUA_LIBRARIES="/usr/lib/lua5.4/liblua.so"
+	cmake --build build
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+	install -D -m644 COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
+}
+
+sha512sums="
+60b4da92a42b3ff1a2490c50c7a02eab27a5ce3e91d4e9e0a83d6f0f1089f22c20adec817011afea84bcd99ff19e8f776d852ff4c9249ef47412b58eaa9233da  conky-1.20.1.tar.gz
+"
