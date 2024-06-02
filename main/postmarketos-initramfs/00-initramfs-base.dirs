@@ -10,3 +10,4 @@
 /sysroot
 /tmp
 /usr
+/hooks-cleanup
