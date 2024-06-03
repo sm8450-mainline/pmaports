@@ -2,7 +2,7 @@
 # Maintainer: Richard Acayan <mailingradian@gmail.com>
 pkgname=device-google-sargo
 pkgdesc="Google Pixel 3a"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -19,6 +19,7 @@ depends="
 "
 makedepends="devicepkg-dev"
 source="
+	10-unl0kr-msm.conf
 	90-feedbackd-drv2624.rules
 	deviceinfo
 	modules-initfs
@@ -35,6 +36,8 @@ package() {
 
 	install -Dm644 "$srcdir"/90-feedbackd-drv2624.rules \
 		-t "$pkgdir"/usr/lib/udev/rules.d
+	install -Dm644 "$srcdir"/10-unl0kr-msm.conf \
+		"$pkgdir"/etc/unl0kr.conf.d/10-unl0kr-msm.conf
 }
 
 nonfree_firmware() {
@@ -54,8 +57,9 @@ nonfree_firmware() {
 }
 
 sha512sums="
+f700af3145b79d1ef9edfb22982899b25cabfb212f9620dcbd3a2e6f44b5ad591e0a66056c6fcd66c3fde89a2b5f551e8a8fe2e65cf0e2a48adec57c027d7825  10-unl0kr-msm.conf
 016d398155f2344417f5e5649a361719ba6e53e593c501b5df39114cdd284302b9bf8686a39817aee0c08fec95b3ab613c181d6cc9596299aaf7fd05dbe0c3dd  90-feedbackd-drv2624.rules
 8af19da4e4a4a59c49263722065229fae849c3273af313300b7ea1b8fe008c6e55cfd060b91909306dd600134e2494f740adda245707dbcff84b1ab2f37dbde7  deviceinfo
-1eb5f138619f499fab31ea64f63ee9f8984f195528708ec6a01ddc533c74cfb71d1442b97905ae15db24b8faac259fa3e89db357ca9c747ce3ee598c2d681639  modules-initfs
+9e2bd634e8f0104827991c5ce7b2346187310a6362f47a67d16e2bd93a910e8ec49f6b98608908febb7cecde14687af094bd95b8b3c1f8122d3710333ecf417e  modules-initfs
 7f599f086dba97ac39ce98798969bc8e9c26dd3b062bb8f95852182df52814b70d49b701e27b43abeb3639b16ba053e416c14cf75e0bf4a9f2fe7c01fb0ac41c  q6voiced.conf
 "
