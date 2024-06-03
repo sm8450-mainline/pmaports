@@ -1,13 +1,16 @@
 # Maintainer: Alexey Minnekhanov <alexeymin@postmarketos.org>
 pkgname=lk2nd
-pkgver=0.15.0
-pkgrel=1
+pkgver=0.16.0
+pkgrel=0
 pkgdesc="Secondary little kernel (lk) bootloader for several Qualcomm devices"
 arch="armv7 aarch64"
 url="https://github.com/msm8916-mainline/lk2nd"
 license="MIT AND BSD-3-Clause AND GPL-2.0-only"
 makedepends="dtc dtc-dev gcc-arm-none-eabi python3 py3-libfdt"
-source="$pkgname-$pkgver.tar.gz::https://github.com/msm8916-mainline/lk2nd/archive/refs/tags/$pkgver.tar.gz"
+source="
+	$pkgname-$pkgver.tar.gz::https://github.com/msm8916-mainline/lk2nd/archive/refs/tags/$pkgver.tar.gz
+	0001-build-fixes.patch
+	"
 options="!check !archcheck !tracedeps !strip pmb:cross-native"
 # This APKBUILD builds bare metal executable; options are very specific!
 # * there are no tests (how do you even test the bootloader?);
@@ -103,5 +106,6 @@ msm8226_htc_memul() {
 }
 
 sha512sums="
-60551065ea072257b459629ea2c555933fae97eef08e6bee5904aa3751cb67fa38125f89f8d7e06c6d9438b3783d81da428b3b428e46cf6bd8dae0ee9163c1b5  lk2nd-0.15.0.tar.gz
+e3708b02f7bf677c60b9f09e75d70c05438466c62378294b31109c9085bfaf5e25598c91a841dc2756367b5cb069e10d9df56c1d1b174ba07b8fd2017487c5c2  lk2nd-0.16.0.tar.gz
+e0ff876f69950cd3026d0168edc7e32d1f671a448153ee3c1dcf8906aed3c67b91bdd3e1ea73e789c7d85fbf2bebd42054dd89ae486d1921df456f606a7e82d2  0001-build-fixes.patch
 "
