@@ -1,0 +1,10 @@
+[Unit]
+Description=Multimedia Messaging Service Daemon
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mmsdtng
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
