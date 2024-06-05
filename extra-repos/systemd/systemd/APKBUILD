@@ -3,7 +3,7 @@
 
 pkgname=systemd
 pkgver=255.2
-pkgrel=2
+pkgrel=4
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !armhf !s390x" # blocked by pmboostrap not supporting
@@ -234,8 +234,7 @@ package() {
 
 	# ship default policy to leave services disabled
 	mkdir -p "$pkgdir"/usr/lib/systemd/system-preset
-	echo 'disable *' > "$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
-
+	echo 'disable' > "$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
 }
 
 udevd() {
