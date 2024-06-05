@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-base-ui
 pkgver=25
-pkgrel=1
+pkgrel=2
 pkgdesc="Meta package for minimal postmarketOS UI base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -25,7 +25,7 @@ subpackages="
 	$pkgname-audio-none:_audio_none
 	$pkgname-audio-pipewire:_audio_pipewire
 	$pkgname-audio-pulseaudio:_audio_pulseaudio
-	$pkgname-bluez
+	$pkgname-bluez-openrc:_bluez_openrc
 	$pkgname-bluez-obexd:_obexd
 	$pkgname-elogind
 	$pkgname-flatpak
@@ -37,6 +37,8 @@ subpackages="
 	$pkgname-tinydm
 	$pkgname-wayland
 	$pkgname-wifi-iwd:iwd
+	$pkgname-wifi-iwd-openrc:iwd_openrc
+	$pkgname-wifi-wpa_supplicant-openrc:wpa_supplicant_openrc
 	$pkgname-wifi-wpa_supplicant:wpa_supplicant
 	$pkgname-x11
 	postmarketos-default-camera:_default_camera
@@ -125,7 +127,7 @@ x11() {
 	amove etc/X11/Xwrapper.config
 }
 
-bluez() {
+_bluez_openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel bluez-openrc"
 
 	amove etc/conf.d/bluetooth
@@ -210,25 +212,44 @@ qt_wayland() {
 
 wpa_supplicant() {
 	pkgdesc="Use wpa_supplicant as the WiFi backend."
-	depends="wpa_supplicant"
-	install="$subpkgname.post-install $subpkgname.post-upgrade"
-	replaces="wpa_supplicant-openrc"
 	provides="postmarketos-base-ui-wifi=$pkgver-r$pkgrel"
 	provider_priority=100
+
+	depends="wpa_supplicant"
+
+	mkdir -p "$subpkgdir"
+}
+
+wpa_supplicant_openrc() {
+	install_if="$pkgname-wpa_supplicant=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+
+	depends="wpa_supplicant-openrc openrc"
+	replaces="wpa_supplicant-openrc"
+	replaces_priority=100
 
 	amove etc/conf.d/wpa_supplicant
 }
 
 iwd() {
 	pkgdesc="Use iwd as the WiFi backend (but may not work with all devices)"
-	depends="iwd"
-	install="$subpkgname.post-install $subpkgname.post-upgrade"
 	provides="postmarketos-base-ui-wifi=$pkgver-r$pkgrel"
 	# Lower than wpa_supplicant for now, see:
 	# https://gitlab.com/postmarketOS/pmaports/-/issues/1379
 	provider_priority=90
 
+	depends="iwd"
+
 	amove usr/lib/NetworkManager/conf.d/50-iwd.conf
+}
+
+iwd_openrc() {
+	install_if="$pkgname-iwd=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+
+	depends="iwd-openrc openrc"
+
+	mkdir -p "$subpkgdir"
 }
 
 _audio_none() {
