@@ -123,7 +123,9 @@ device/*/u-boot-librem5/			@craftyguy @alistair23 @Newbyte
 device/*/u-boot-pinebookpro/			@QC8086
 device/*/u-boot-pinephone/			@Arnavion @PsychoGame
 device/*/wl1251-cal/				@Danct12
+main/postmarketos*gnome*/			@pabloyoyoista @Newbyte
 main/postmarketos-initramfs/			@calebccff @craftyguy
+main/postmarketos-ui-phosh/			@pabloyoyoista @Newbyte
 main/postmarketos-ui-plasma-mobile/		@PureTryOut
 main/shutdown-clear-rtc-wakealarm/		@Arnavion
 main/ttyescape/					@calebccff
