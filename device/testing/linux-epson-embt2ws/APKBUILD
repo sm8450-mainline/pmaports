@@ -1,0 +1,63 @@
+# Maintainer: Andreas Kemnade <andreas@kemnade.info>
+# Kernel config based on: arch/arm/configs/embt2_defconfig
+
+pkgname=linux-epson-embt2ws
+pkgver=6.9.0
+pkgrel=0
+pkgdesc="Epson Moverio BT-200 kernel fork, close to mainline"
+arch="armv7"
+_carch="arm"
+_flavor="epson-embt2ws"
+url="https://kernel.org"
+license="GPL-2.0-only"
+options="!strip !check !tracedeps pmb:cross-native pmb:kconfigcheck-nftables"
+makedepends="
+	bash
+	bc
+	bison
+	devicepkg-dev
+	findutils
+	flex
+	gmp-dev
+	lzop
+	mpc1-dev
+	mpfr-dev
+	openssl-dev
+	perl
+"
+
+# Source
+_repository="linux"
+_commit="0b7d50a17ac503c09f1a39ccc67c542184be0f8a"
+_config="config-$_flavor.$arch"
+source="
+	$pkgname-$_commit.tar.gz::https://github.com/akemnade/$_repository/archive/$_commit.tar.gz
+	$_config
+"
+builddir="$srcdir/$_repository-$_commit"
+_outdir="out"
+
+prepare() {
+	REPLACE_GCCH=0
+	default_prepare
+	. downstreamkernel_prepare
+}
+
+build() {
+	unset LDFLAGS
+	make O="$_outdir" ARCH="$_carch" CC="${CC:-gcc}" \
+		KBUILD_BUILD_VERSION="$(( pkgrel + 1 ))-postmarketOS"
+}
+
+package() {
+	downstreamkernel_package "$builddir" "$pkgdir" "$_carch" "$_flavor" "$_outdir"
+	make modules_install dtbs_install \
+		O="$_outdir" ARCH="$_carch" \
+		INSTALL_MOD_PATH="$pkgdir" \
+		INSTALL_DTBS_PATH="$pkgdir/boot/dtbs"
+}
+
+sha512sums="
+9e9372557ed41aa497c9317cc19bd6746fc10366bf0b0e6f298f7a8f867b8b9f5072ae0648ba2f420e24cbae228418ce05e4b2596d7e07b7c6978164369817f3  linux-epson-embt2ws-0b7d50a17ac503c09f1a39ccc67c542184be0f8a.tar.gz
+7b45f1abe52c6a6fc1002c9206600f7994fa55dd028dd1184f16cb784eed069d627df0a50248716ce7526f0e9debbe394fa48670c663de644bf60191d1f583e8  config-epson-embt2ws.armv7
+"
