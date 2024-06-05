@@ -1,0 +1,68 @@
+# Maintainer: Barnabas Czeman <trabarni@gmail.com>
+# Kernel config based on: defconfig, msm8953.config, and device configs
+
+_flavor="postmarketos-qcom-msm8956"
+pkgname=linux-$_flavor
+pkgver=6.14
+pkgrel=0
+pkgdesc="Close to mainline linux kernel for Qualcomm Snapdragon MSM8953"
+arch="aarch64"
+_carch="arm64"
+url="https://github.com/msm8956-mainline/linux"
+license="GPL-2.0-only"
+options="!strip !check !tracedeps
+	pmb:cross-native
+	pmb:kconfigcheck-community
+"
+makedepends="
+	bash
+	bison
+	findutils
+	flex
+	openssl-dev
+	perl
+	postmarketos-installkernel
+	python3
+"
+
+_commit="bfc6136bde36a002d6748795241b62b1299c8fba"
+
+source="
+	$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz
+	config-$_flavor.aarch64
+"
+builddir="$srcdir/linux-$_commit"
+
+prepare() {
+	default_prepare
+	cp "$srcdir/config-$_flavor.$arch" .config
+}
+
+build() {
+	unset LDFLAGS
+	make ARCH="$_carch" CC="${CC:-gcc}" \
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-$_flavor"
+}
+
+package() {
+	mkdir -p "$pkgdir"/boot
+
+	make zinstall modules_install dtbs_install \
+		ARCH="$_carch" \
+		INSTALL_PATH="$pkgdir"/boot \
+		INSTALL_MOD_PATH="$pkgdir" \
+		INSTALL_MOD_STRIP=1 \
+		INSTALL_DTBS_PATH="$pkgdir/boot/dtbs"
+	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
+
+	install -Dm644 "$builddir/arch/$_carch/boot/vmlinuz" \
+		"$pkgdir/boot/vmlinuz"
+
+	install -Dm644 "$builddir/include/config/kernel.release" \
+		"$pkgdir/usr/share/kernel/$_flavor/kernel.release"
+}
+
+sha512sums="
+ae34b637872f5ec6a47934ee267b3a9869814ed6517203ed722e53aa6a85f75152215e2dd9eb605d7d497dc6b548aee3e4e4a3aa18e1e647fea2be9495e18279  linux-postmarketos-qcom-msm8956-bfc6136bde36a002d6748795241b62b1299c8fba.tar.gz
+acd0fc0030e59dda82ecc601c859fbe6a1a19807b9d339b4d47b3d844c2fb90492682121a475a7c8ab61a1e9c5c606bf2be5aa17ec502a0aaacc13c7177d6db8  config-postmarketos-qcom-msm8956.aarch64
+"
