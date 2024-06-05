@@ -248,7 +248,17 @@ find_root_partition() {
 find_boot_partition() {
 	[ -n "$PMOS_BOOT" ] && echo "$PMOS_BOOT" && return
 
-	# First check for pmos_boot_uuid on the cmdline
+	# Before doing anything else check if we are using a stowaway
+	if grep -q "pmos.stowaway" /proc/cmdline; then
+		mount_root_partition
+		PMOS_BOOT="/sysroot/boot"
+		mount --bind /sysroot/boot /boot
+
+		echo "$PMOS_BOOT"
+		return
+	fi
+
+	# Then check for pmos_boot_uuid on the cmdline
 	# this should be set on all new installs.
 	# shellcheck disable=SC2013
 	for x in $(cat /proc/cmdline); do
@@ -295,15 +305,6 @@ find_boot_partition() {
 			PMOS_BOOT="$(blkid --label "$p")"
 			[ -n "$PMOS_BOOT" ] && break
 		done
-	fi
-
-	if grep -q "pmos.stowaway" /proc/cmdline; then
-		mount_root_partition
-		PMOS_BOOT="/sysroot/boot"
-		mount --bind /sysroot/boot /boot
-
-		echo "$PMOS_BOOT"
-		return
 	fi
 
 	PMOS_BOOT=$(pretty_dm_path "$PMOS_BOOT")
