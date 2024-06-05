@@ -1,6 +1,6 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-base-ui
-pkgver=23
+pkgver=24
 pkgrel=0
 pkgdesc="Meta package for minimal postmarketOS UI base"
 url="https://postmarketos.org"
@@ -66,6 +66,7 @@ _source644="
 	usr/lib/NetworkManager/conf.d/50-tethering.conf
 	usr/lib/NetworkManager/conf.d/50-use-dnsmasq.conf
 	usr/share/wireplumber/wireplumber.conf.d/50-pulseaudio.conf
+	usr/share/wireplumber/wireplumber.conf.d/50-bluetooth.conf
 "
 _source600="
 	usr/lib/NetworkManager/system-connections/USB_Networking.nmconnection
@@ -233,11 +234,11 @@ _audio_none() {
 
 _audio_pipewire() {
 	pkgdesc="Use pipewire as the audio backend. (but may not work with all devices)"
-	depends="pipewire-alsa pipewire-pulse"
+	depends="pipewire-alsa pipewire-pulse pipewire-spa-bluez"
 	provides="postmarketos-base-ui-audio=$pkgver-r$pkgrel"
 	provider_priority=90
 
-	mkdir "$subpkgdir"
+	amove usr/share/wireplumber/wireplumber.conf.d/50-bluetooth.conf
 }
 
 _audio_pulseaudio() {
@@ -274,6 +275,7 @@ d4b4c4fed2dee7266f6a87ae266691377593014943e2953e4cd87a59f3110f25bfb5f3f866cc8435
 6507eb31cdd694a7db0280246433118a650bf5d99fbe639f967ae2d95945429a7e03ca6feb5bb6e7b9fb14fcec21e13e51209a79edd0041e77b5bf76b129ed6f  rootfs-usr-lib-NetworkManager-conf.d-50-tethering.conf
 900554534191fa0797064d35350934cdd8af59f30f0ae7d8ec63c2e11c44a16c643d3024b6543940488cd590fec1d392548bcaacc3be88cddff90f69b17ece07  rootfs-usr-lib-NetworkManager-conf.d-50-use-dnsmasq.conf
 ebb7700018cf64fe6dcb747365cd2fb816deb6e06e7368af779284b51b1f0749e24f8e70b0b72fa6bff4178a02af934f728c3b115c8c1f77aa1a3490879af731  rootfs-usr-share-wireplumber-wireplumber.conf.d-50-pulseaudio.conf
+92930f027626825b027f585a9be180f8a6ebae6dc44d2cf8f9d43cce00db8cbb43c33fc341fe382abacb832ea1b6414dc4c8129d265b0258d096599b2e206a93  rootfs-usr-share-wireplumber-wireplumber.conf.d-50-bluetooth.conf
 1b8add60574ec4644197cb93263c0653325c2e88e03673de918be5fb3280c7b81e8e97dce498850a07f2f3307771c44f3c876922e5cbd5207523ede31816296f  rootfs-usr-lib-NetworkManager-system-connections-USB_Networking.nmconnection
 d1ddd43489e6016e3ffd716027ed2bae4a2ab5f213118bdbcb96750e267ab7c0367cd0e0e386300aa5550352653144f5caeddd790621fe0879f83ca1995bb65c  rootfs-etc-tinydm.d-env-wayland.d-50-firefox-wayland.sh
 ecaa57d033a119a53a6574c27636b7c89d659d75ea48a973a6a4ff6f90e5d07202529fd489bfc9dfc7430f5b60f40612f6d5c06f7fab47e681b0a3112a874058  rootfs-etc-tinydm.d-env-wayland.d-50-sdl-wayland.sh
