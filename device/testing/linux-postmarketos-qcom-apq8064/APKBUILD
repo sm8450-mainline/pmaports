@@ -1,12 +1,12 @@
 _flavor=postmarketos-qcom-apq8064
 pkgname=linux-$_flavor
 pkgver=5.10.98
-pkgrel=1
+pkgrel=2
 _commit=217c7ff0a7127d28f024f75fd267752ca4180559
 arch="armv7"
 pkgdesc="Upstream unstable kernel with patches for APQ8064 devices"
 url="https://github.com/apq8064-mainline/linux/tree/qcom-apq8064-next"
-makedepends="bison flex openssl-dev xz perl sed installkernel bash gmp-dev bc linux-headers elfutils-dev"
+makedepends="bison flex openssl-dev xz perl sed postmarketos-installkernel bash gmp-dev bc linux-headers elfutils-dev"
 options="!strip !check !tracedeps pmb:cross-native"
 source="$pkgname-$pkgver.tar.gz::https://github.com/apq8064-mainline/linux/archive/$_commit.tar.gz
 	config-$_flavor.$arch
