@@ -2,7 +2,7 @@
 # Co-Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=linux-postmarketos-mediatek-mt8173
 pkgver=6.9.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline kernel fork for Mediatek MT8173 devices"
 arch="aarch64"
 _carch="arm64"
@@ -18,9 +18,9 @@ makedepends="
 	bison
 	findutils
 	flex
-	installkernel
 	openssl-dev
 	perl
+	postmarketos-installkernel
 	gmp-dev
 	mpc1-dev
 	mpfr-dev
