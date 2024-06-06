@@ -4,7 +4,7 @@
 _flavor="postmarketos-qcom-sm8250"
 pkgname=linux-$_flavor
 pkgver=6.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mainline kernel fork for SM8250"
 arch="aarch64"
 _carch="arm64"
@@ -20,9 +20,9 @@ makedepends="
 	bison
 	findutils
 	flex
-	installkernel
 	openssl-dev
 	perl
+	postmarketos-installkernel
 "
 
 # Source
