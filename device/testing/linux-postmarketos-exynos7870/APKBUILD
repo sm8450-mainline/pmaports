@@ -1,7 +1,7 @@
 # Kernel config based on defconfig and exynos7870.config
 pkgname=linux-postmarketos-exynos7870
 pkgver=6.8.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Close-to-mainline kernel for Samsung Exynos 7870 devices"
 arch="aarch64"
 _carch="arm64"
@@ -16,6 +16,7 @@ makedepends="
 	flex
 	openssl-dev
 	perl
+	postmarketos-installkernel
 "
 
 _owner="exynos7870-mainline"
