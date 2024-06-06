@@ -1,7 +1,7 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=linux-postmarketos-qcom-sc7180
 pkgver=6.1.39
-pkgrel=6
+pkgrel=7
 pkgdesc="Mainline kernel fork for Qualcomm Snapdragon 7c devices"
 arch="aarch64"
 _carch="arm64"
@@ -17,12 +17,12 @@ makedepends="
 	bison
 	findutils
 	flex
-	installkernel
 	openssl-dev
 	perl
 	gmp-dev
 	mpc1-dev
 	mpfr-dev
+	postmarketos-installkernel
 	xz
 "
 
