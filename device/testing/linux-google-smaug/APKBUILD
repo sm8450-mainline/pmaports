@@ -1,6 +1,6 @@
 pkgname=linux-google-smaug
 pkgver=6.3.13
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline kernel fork for Google Pixel C"
 arch="aarch64"
 _flavor="${pkgname#linux-}"
@@ -14,12 +14,12 @@ makedepends="
 	bison
 	findutils
 	flex
-	installkernel
 	openssl-dev
 	perl
 	gmp-dev
 	mpc1-dev
 	mpfr-dev
+	postmarketos-installkernel
 	xz
 "
 
