@@ -2,7 +2,7 @@
 # Co-Maintainer: Segfault <awarnecke002@hotmail.com>
 pkgname=linux-google-nyan
 pkgver=6.6.17
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline kernel fork for Google Nyan Chromebooks"
 arch="armv7"
 _carch="arm"
@@ -17,12 +17,12 @@ makedepends="
 	bison
 	findutils
 	flex
-	installkernel
 	openssl-dev
 	perl
 	gmp-dev
 	mpc1-dev
 	mpfr-dev
+	postmarketos-installkernel
 	xz
 "
 
