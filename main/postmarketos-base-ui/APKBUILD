@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-base-ui
 pkgver=25
-pkgrel=2
+pkgrel=3
 pkgdesc="Meta package for minimal postmarketOS UI base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -28,6 +28,7 @@ subpackages="
 	$pkgname-bluez-openrc:_bluez_openrc
 	$pkgname-bluez-obexd:_obexd
 	$pkgname-elogind
+	$pkgname-openrc:_openrc
 	$pkgname-flatpak
 	$pkgname-networkmanager-usb-tethering:_usb_tethering
 	$pkgname-networkmanager
@@ -43,7 +44,6 @@ subpackages="
 	$pkgname-x11
 	postmarketos-default-camera:_default_camera
 	"
-install="$pkgname.post-install $pkgname.post-upgrade"
 replaces="
 	chrony
 	wpa_supplicant-openrc
@@ -92,10 +92,10 @@ source="$(flatpath $_source644 $_source600 $_source755)"
 
 _pmb_select="postmarketos-base-ui-wifi"
 package() {
-	# wifi and audio backends are provided by a subpackage in this APKBUILD,
-	# and it won't exist when this is evaluated at the top level. It's moved
-	# into this function to work around it.
-	depends="$depends postmarketos-base-ui-wifi postmarketos-base-ui-audio"
+	# wifi, audio and init backends are provided by a subpackage in this
+	# APKBUILD and it won't exist when this is evaluated at the top level.
+	# It's moved into this function to work around it.
+	depends="$depends $pkgname-wifi $pkgname-audio"
 
 	local i
 	for i in $_source644; do
@@ -131,6 +131,19 @@ _bluez_openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel bluez-openrc"
 
 	amove etc/conf.d/bluetooth
+}
+
+_openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="
+		chrony-openrc
+		dbus-openrc
+		haveged-openrc
+		util-linux-openrc
+		"
+
+	mkdir -p "$subpkgdir"
 }
 
 elogind() {
