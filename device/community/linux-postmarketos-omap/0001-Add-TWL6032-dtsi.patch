@@ -3,7 +3,7 @@ new file mode 100644
 index 000000000..f7b371179
 --- /dev/null
 +++ b/arch/arm/boot/dts/ti/omap/twl6032.dtsi
-@@ -0,0 +1,88 @@
+@@ -0,0 +1,93 @@
 +/*
 + * Integrated Power Management Chip
 + * http://www.ti.com/lit/ds/symlink/twl6032.pdf
@@ -79,7 +79,7 @@ index 000000000..f7b371179
 +               regulator-always-on;
 +       };
 +
-+       vusb: regulator-vusb {
++       ldousb: regulator-ldousb {
 +               compatible = "ti,twl6032-ldousb";
 +               regulator-min-microvolt = <3300000>;
 +               regulator-max-microvolt = <3300000>;
@@ -90,5 +90,10 @@ index 000000000..f7b371179
 +               compatible = "ti,twl6032-gpadc";
 +               interrupts = <3>;
 +               #io-channel-cells = <1>;
++       };
++
++       twl_usb_comparator: usb-comparator {
++               compatible = "ti,twl6030-usb";
++               interrupts = <4>, <10>;
 +       };
 +};

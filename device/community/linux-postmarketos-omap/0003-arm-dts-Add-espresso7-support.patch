@@ -35,7 +35,7 @@ index 000000000..9d715bd7e
 +/ {
 +	model = "Samsung Galaxy Tab 2 (7 inch)";
 +	compatible = "samsung,espresso7", "ti,omap4430", "ti,omap4";
-+	
++
 +	backlight: backlight {
 +		compatible = "pwm-backlight";
 +		pinctrl-names = "default";
@@ -80,7 +80,7 @@ index 000000000..9d715bd7e
 +				remote-endpoint = <&bridge_out>;
 +			};
 +		};
-+	};	
++	};
 +};
 +
 +&i2c3 {

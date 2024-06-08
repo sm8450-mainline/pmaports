@@ -13,7 +13,7 @@ new file mode 100644
 index 000000000..b44af61d4
 --- /dev/null
 +++ b/arch/arm/boot/dts/ti/omap/omap4-samsung-espresso-common.dtsi
-@@ -0,0 +1,676 @@
+@@ -0,0 +1,678 @@
 +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
 +/dts-v1/;
 +#include "dt-bindings/gpio/gpio.h"
@@ -274,6 +274,12 @@ index 000000000..b44af61d4
 +		compatible = "gpio-ir-tx";
 +		gpios = <&gpio2 27 GPIO_ACTIVE_HIGH>; /* GPIO_59 */
 +	};
++
++       wlan_pwrseq: wlan-pwrseq {
++               compatible = "mmc-pwrseq-simple";
++               clocks = <&twl 0>; // 0 is ckl32kg, 1 is clk32kaudio
++               clock-names = "ext_clock";
++       };
 +};
 +
 +&omap4_pmx_wkup {
@@ -512,6 +518,7 @@ index 000000000..b44af61d4
 +
 +	twl: twl@48 {
 +		reg = <0x48>;
++		#clock-cells = <1>;
 +
 +		pinctrl-names = "default";
 +		pinctrl-0 = <
@@ -522,11 +529,7 @@ index 000000000..b44af61d4
 +		/* SPI = 0, IRQ# = 7, 4 = active high level-sensitive */
 +		interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>; /* IRQ_SYS_1N cascaded to gic */
 +		interrupt-parent = <&gic>;
-+
-+		twl_power: power {
-+			compatible = "ti,twl6030-power";
-+			ti,system-power-controller;
-+		};
++		system-power-controller;
 +	};
 +};
 +
@@ -610,10 +613,8 @@ index 000000000..b44af61d4
 +	};
 +};
 +
-+#include "twl6030.dtsi"
-+
 +&twl_usb_comparator {
-+	usb-supply = <&vusb>;
++	usb-supply = <&ldousb>;
 +};
 +
 +&usb_otg_hs {
@@ -658,6 +659,7 @@ index 000000000..b44af61d4
 +	non-removable;
 +	bus-width = <4>;
 +	vmmc-supply = <&reg_espresso_wlan>;
++	mmc-pwrseq = <&wlan_pwrseq>;
 +
 +	pinctrl-names = "default";
 +	pinctrl-0 = <&mmc5_pins>;

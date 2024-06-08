@@ -72,17 +72,17 @@ index 000000000..3fa4b18bd
 +
 +		panel-timing {
 +			clock-frequency = <69818000>;
-+			
++
 +			hback-porch = <64>;
 +			hactive = <1280>;
 +			hfront-porch = <16>;
 +			hsync-len = <48>;
-+	
++
 +			vback-porch = <11>;
 +			vactive = <800>;
 +			vfront-porch = <16>;
 +			vsync-len = <3>;
-+	
++
 +			hsync-active = <0>;
 +			vsync-active = <0>;
 +			de-active = <1>;
