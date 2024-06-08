@@ -2,7 +2,7 @@
 
 pkgname=iio-sensor-proxy
 pkgver=9999
-pkgrel=3
+pkgrel=4
 pkgdesc="IIO sensors to D-Bus proxy"
 url="https://gitlab.freedesktop.org/hadess/iio-sensor-proxy"
 arch="aarch64"
@@ -14,10 +14,10 @@ makedepends="
 	libgudev-dev
 	meson
 	polkit-dev
-	libssc-dev
+	libssc-dev>=0.1.6
 	"
 subpackages="$pkgname-openrc"
-_commit="48cb957c41b8d51d882219866e1366c45e21c352"
+_commit="fe56bdba1243cc5f6a652eb75d11ae1d1957ff7e"
 builddir="$srcdir/$pkgname-$_commit"
 source="https://gitlab.freedesktop.org/hadess/iio-sensor-proxy/-/archive/$_commit/iio-sensor-proxy-$_commit.tar.gz
 	iio-sensor-proxy.initd
@@ -26,8 +26,9 @@ source="https://gitlab.freedesktop.org/hadess/iio-sensor-proxy/-/archive/$_commi
 	0003-light-support-SSC-light-sensor.patch
 	0004-accelerometer-support-SSC-accelerometer-sensor.patch
 	0005-compass-support-SSC-compass-sensor.patch
-	0006-accelerometer-apply-accel-attributes.patch
-	0007-data-add-libssc-udev-rules.patch
+	0006-data-add-libssc-udev-rules.patch
+	0007-CI-add-libssc-build.patch
+	0008-data-iio-sensor-proxy.service.in-add-AF_QIPCRTR.patch
 	"
 # tests fail on armv7 and armhf, and it seems to be due to some weird issue
 # with pmaports qemu CI (not reproducible locally with `pmb build --arch
@@ -54,13 +55,14 @@ package() {
 }
 
 sha512sums="
-f899058ba346b272c5174de0f2c0870bf6a13782f0c0c248163bc6cec7fbebca689ed97a0fbebd770a8857212cfc760849ad97034eaaec7fef40b7e58d811f31  iio-sensor-proxy-48cb957c41b8d51d882219866e1366c45e21c352.tar.gz
+49b96fefbcfabb706fc6189d3f40e6e1a1e847ec6e4101398bf639db9e844c5c5057f2267f3e541d302d002d0042a84fdd56191207ed0e911f80342cd1d416c4  iio-sensor-proxy-fe56bdba1243cc5f6a652eb75d11ae1d1957ff7e.tar.gz
 f695c3f6c7cad50a5da8b8df28172b4a8c0be750e3bfc93a1b80a7fe1e5a05f24fd0e5af3e0af727c05dfe3a98b3067a6ebd7617c13243b60e1e495b2b3d6987  iio-sensor-proxy.initd
-43bf2ce5928c996ef56939a5ff232160f6af5a40cc673753763facbcb18511b1f551fa1a91f55ac9d0d4cbe544de7326208617ffc032cfeb9e39a5ab6538e825  0001-iio-sensor-proxy-depend-on-libssc.patch
-c6eb40824d5f4fe8b46d26f3ed4773502c9ff3ed58ec82df4a4f570bdcba81c39ff41f6d400bcece13fc46486272d13238d58afc34982b0972894b4d01a81309  0002-proximity-support-SSC-proximity-sensor.patch
-2e909a9a2a8c95d5255e14f6e0280f329e83e02dce8c16555df77c818a3cda658a7ebfb4c27d3e251e6830de2374f5f1bf2735be09af09ff0255c902125601ea  0003-light-support-SSC-light-sensor.patch
-cb627cb4fc40e195683dcf1a7837f2fc902851310f3cee42ab18e42d6243b8fafc92accf699b5805670f9a8c76cf0cc422a201be64836efe9e5b943f6d151d70  0004-accelerometer-support-SSC-accelerometer-sensor.patch
-045d76e0399ea2a5e99955d56a77f4fab9b5bc7d50512c60ae1a6dfd8e56e209690743545582bef35451fbd1a03f67d58e7143c2c91811d402a0e8e908f22bbc  0005-compass-support-SSC-compass-sensor.patch
-17eab0005d6d4989e57ef6f37a7bfbd7541c19c129c9dc481000635884b981a8da0b9f264bc61059ac27882cd653eff7a78ec231ecbd158773f71d55e6ab8e9b  0006-accelerometer-apply-accel-attributes.patch
-5495aa9d9ba3b83c0845556bcc1ef66d72a76d9685b791c15080dece62c00d93c76a2dce0e146ba0f3027ed2c34957d0019def9cee0fd133ec72c554ccfeb2d3  0007-data-add-libssc-udev-rules.patch
+3d1be8e5a932ca6ca0b908caaa7f16dcdbbc6e48a75183c1b7c225689f309203f7008f53ed4276c93790dc7dc0b2cb3c9b3f00cef84305657f279369f1307d89  0001-iio-sensor-proxy-depend-on-libssc.patch
+bb8e1496411c030062eeb1bb919c9680c32d9571587540368c663b6739e3c506d21ab90836a4e83be526019e654af393dc849031ab81bb8aadff623873232d58  0002-proximity-support-SSC-proximity-sensor.patch
+465f4296778b3c0269b00badd11f841c2ea9dbc14b7489b21f2e4d8e45a628fa59327c91692f8e350c926776de05173e2abc9bef54e51bf0378866ace3891152  0003-light-support-SSC-light-sensor.patch
+4f6a3b76fc10eb42a4824cc49b063acc1c54a762637f7ff37a1ac42adb1410fbfe5e17b5277bb8fcb4d232b94971cf96c61925f4c207c9b4b56c78321b1b7d69  0004-accelerometer-support-SSC-accelerometer-sensor.patch
+80d59825dde8ff8bcc92b3d6d659968f88f82c8198e9576e1a77b2d38be074781926c45115e213e4c557a3dc7ba1c1391d67cb6f0c49d23aff2e0cdbfedefc87  0005-compass-support-SSC-compass-sensor.patch
+651d3281fe64fb72780bdfc4f3416af6f221c5c0aebf8b9a87d2cf6b5a31ebd0816199b45c97f24810807286a4a8839b6304a12cfc23b4191261a30efd3fbe2b  0006-data-add-libssc-udev-rules.patch
+bdb8831d89f389badd5de0eb52d9eca5dbdf045dbcfab18165d43798c9e329c3e68e3209b8ad1053916cfac6c54984dd47aa379c419d46f1c25ad6a57c2bd771  0007-CI-add-libssc-build.patch
+c778168de17f86e3d50b62a4905d3940e9d69bb919fe3b9b5fc8962d8fe9b7cdb48a57dd8128ded93ff08493f65a7f602e6e7ad295e6736c74c273a2c6399c35  0008-data-iio-sensor-proxy.service.in-add-AF_QIPCRTR.patch
 "
