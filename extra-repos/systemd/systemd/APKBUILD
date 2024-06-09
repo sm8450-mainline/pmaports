@@ -3,7 +3,7 @@
 
 pkgname=systemd
 pkgver=255.2
-pkgrel=4
+pkgrel=5
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !armhf !s390x" # blocked by pmboostrap not supporting
@@ -253,6 +253,9 @@ udevd() {
 	amove usr/lib/systemd/system/systemd-udev*
 	amove usr/lib/systemd/systemd-udevd
 	amove usr/lib/udev
+
+	# Install a symlink to /usr/bin to be compatible with eudev
+	ln -sf /usr/lib/systemd/systemd-udevd "$subpkgdir"/usr/bin/udevd
 }
 
 udevd_bcomp() {
