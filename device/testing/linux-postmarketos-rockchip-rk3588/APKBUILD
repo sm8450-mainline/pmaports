@@ -1,0 +1,74 @@
+# Maintainer: WeirdTreeThing <bradyn127@protonmail.com>
+pkgname=linux-postmarketos-rockchip-rk3588
+pkgver=6.10_rc1_git20240528
+pkgrel=0
+pkgdesc="Rockchip RK3588 kernel package"
+arch="aarch64"
+url="https://kernel.org"
+license="GPL-2.0-only"
+options="!strip
+	!check
+	!tracedeps
+	pmb:cross-native
+	pmb:kconfigcheck-community
+	"
+makedepends="
+	bash
+	bison
+	findutils
+	flex
+	openssl-dev
+	perl
+	gmp-dev
+	mpc1-dev
+	mpfr-dev
+	xz
+	postmarketos-installkernel
+"
+
+# Source
+_flavor="${pkgname#linux-}"
+_config="config-$_flavor.$arch"
+_repository="linux"
+_carch="arm64"
+_flavor="${pkgname#linux-}"
+_commit="dc492a647595f2866fb2e20ccf576bcaff42a109"
+source="
+	$pkgname-$_commit.tar.gz::https://gitlab.collabora.com/hardware-enablement/rockchip-3588/$_repository/-/archive/$_commit/linux-$_commit.tar.gz
+	orangepi5-plus-dt-fixups.patch
+	$_config
+"
+builddir="$srcdir/$_repository-$_commit"
+
+prepare() {
+	default_prepare
+	cp "$srcdir/$_config" .config
+}
+
+build() {
+	unset LDFLAGS
+	make ARCH="$_carch" \
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-$_flavor"
+}
+
+package() {
+	mkdir -p "$pkgdir"/boot
+
+	make zinstall modules_install dtbs_install \
+		ARCH="$_carch" \
+		INSTALL_PATH="$pkgdir"/boot \
+		INSTALL_MOD_PATH="$pkgdir" \
+		INSTALL_MOD_STRIP=1 \
+		INSTALL_DTBS_PATH="$pkgdir"/boot/dtbs
+	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
+
+	install -D "$builddir"/include/config/kernel.release \
+		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
+}
+
+
+sha512sums="
+85fc0d5fb4761b8a806fcaba796c73ece20bca6eb5db0e75ec909e6ac6f320989c71548890490f93991b0d485908de80bf1d545dd352f55f5b6bc007c25687b6  linux-postmarketos-rockchip-rk3588-dc492a647595f2866fb2e20ccf576bcaff42a109.tar.gz
+86b0a188df8bf90cb04e871319d92303df7c890dca0d4b411bc6ae5fd569ab4562be82703ddf772603632bd8f6a9bcb857239e3b5bc939048eb5a9faba427b88  orangepi5-plus-dt-fixups.patch
+d4897252ff0392af0c44e774aa55622f1f50242559b53fd888e3ec836b74e3db043815f257313691a716e5d10d4d17fd62c419799cab17ecc84f18f3a87def14  config-postmarketos-rockchip-rk3588.aarch64
+"
