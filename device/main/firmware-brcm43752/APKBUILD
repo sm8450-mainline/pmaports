@@ -1,4 +1,6 @@
-# Maintainer: Clayton Craft <clayton@craftyguy.net>
+# Maintainer: Alistair Francis <alistair@alistair23.me>
+# Co-Maintainer: Newbyte <newbyte@postmarketos.org>
+# Contributor: Clayton Craft <clayton@craftyguy.net>
 pkgname=firmware-brcm43752
 pkgver=3_git20230613
 pkgrel=1
