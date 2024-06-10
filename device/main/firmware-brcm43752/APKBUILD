@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=firmware-brcm43752
-pkgver=0.3_git20230613
-pkgrel=0
+pkgver=3_git20230613
+pkgrel=1
 _commit="84b8b00f57a9495c05190477c5895cd66f69b873"
 pkgdesc="Firmware for the Broadcom brcm43752 Wifi/BT adapter"
 url="https://source.puri.sm/Librem5/firmware-brcm43752-nonfree"
@@ -12,10 +12,8 @@ source="https://source.puri.sm/Librem5/firmware-brcm43752-nonfree/-/archive/$_co
 builddir="$srcdir/firmware-brcm43752-nonfree-$_commit"
 
 package() {
-
-	for f in brcmfmac43752-sdio.bin brcmfmac43752-sdio.clm_blob brcmfmac43752-sdio.txt BCM4362A2.hcd; do
-		install -Dm644 firmware/brcm/"$f" "$pkgdir/lib/firmware/postmarketos/brcm/$f"
-	done
+	mkdir -p "$pkgdir/lib/firmware/postmarketos"
+	cp -r "$builddir/firmware/brcm" "$pkgdir/lib/firmware/postmarketos"
 }
 
 sha512sums="
