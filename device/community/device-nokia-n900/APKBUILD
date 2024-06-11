@@ -2,8 +2,8 @@
 # Maintainer: Sicelo <absicsz@gmail.com>
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-nokia-n900
-pkgver=24
-pkgrel=1
+pkgver=25
+pkgrel=0
 pkgdesc="Nokia N900"
 url="https://postmarketos.org"
 arch="armv7"
@@ -27,6 +27,7 @@ subpackages="
 	$pkgname-x11
 	$pkgname-xkeyboard-config:xkeyboard_config
 	$pkgname-i3wm
+	$pkgname-sxmo
 "
 source="
 	10-initfs-keymap.files
@@ -58,6 +59,8 @@ source="
 	modules.blocklist
 	pointercal
 	proxishot.sh
+	sxmo/deviceprofile.sh
+	sxmo/start_hook.sh
 	uboot-script.cmd
 	udev/10-nokia-modem.rules
 	udev/80-feedbackd-twl4030.rules
@@ -181,6 +184,20 @@ i3wm() {
 		"$subpkgdir"/etc/skel/.Xdefaults
 }
 
+sxmo() {
+	install_if="$pkgname=$pkgver-r$pkgrel sxmo-utils"
+	replaces="sxmo-utils"
+	# Set !tracedeps, so abuild doesn't extend provides with e.g.:
+	# "cmd:sxmo_deviceprofile_nokia,omap3-n900.sh=1.16.3-r0"
+	# Otherwise this cannot be installed together with sxmo-utils:
+	# conflicts: sxmo-utils-1.16.3-r0[cmd:sxmo_deviceprofile_nokia,omap3-n900.sh=25-r0]
+	options="!tracedeps"
+	install -Dm755 "$srcdir"/deviceprofile.sh \
+		"$subpkgdir"/usr/bin/sxmo_deviceprofile_nokia,omap3-n900.sh
+	install -Dm755 "$srcdir"/start_hook.sh \
+		"$subpkgdir"/usr/share/sxmo/default_hooks/sxmo_hook_start.sh
+}
+
 upower() {
 	install_if="$pkgname=$pkgver-r$pkgrel upower"
 	replaces="upower"
@@ -218,6 +235,8 @@ e440ed7a3070c17e003b86b72dbe6d8194d01b577ca8dd56dd066f216b6dda32bb965c780950f178
 862ebc7cd2d7a1b3d41b10701b8418308c89eb0732eb99c42ec1091d48e08db9421727f67a3272b7309549798d59afb1b8d7d2fa48d1447b208fcb2329472d4d  modules.blocklist
 143c21f0b18a016d37cb44178e9daea09f128a90769b48353c03c3f245cb9b1f7e773b9ccee084973fc78ddd7a18c2642e54888a85bda7c7daecddc9a8c62eff  pointercal
 134f51d20decc0c63ab08010931a0b410b70d2f85bf6899f2ff137b1680f59f706a6287d01f5fbb41fa5309125df75a430d0783149bd1a6a1bca07d22f4f6a21  proxishot.sh
+fc21e3b7e045055c080a7f7ffb0cd4140b63a02690e92c8370dbccbef506fe271ee9584ac9f14725b8bc9fd6e74e7fafde589d2360f44491c614837472d8ad53  deviceprofile.sh
+c067c9ff982f9405ec8acac764ed900261a96b1039d6a7e1f85bbcf1c69e130f5764b571fbec8c4652a67fc3878071c421b400752bd0c3dd869284f1d992c5b0  start_hook.sh
 239a54ae5c5effb53ccf4d658652c0462da57604b16b77a63627a17caa171caf82e3d1769f9c5afea8756415acbbf3b73db9b57715fce6c70ea3f29e5c6ac84a  uboot-script.cmd
 9e72035c88632d12895534e5aa5746f2c130c7dcdafa8702748d62b71ed0e1b5911b6e1f07f9b9e39b6072bbb662f66aead585baa1dcacb7d8c8953ca89b6762  10-nokia-modem.rules
 03079030237440080e833dbfeff80327c1ad6a8129c6c730b401a3052cd00a986783ec3473a526b14ae73ba1f20653b4c7b2a6590839bfe6cc156bbbc3b7bb74  80-feedbackd-twl4030.rules
