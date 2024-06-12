@@ -2,7 +2,7 @@
 # Maintainer: Sicelo <absicsz@gmail.com>
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-nokia-n900
-pkgver=25
+pkgver=26
 pkgrel=0
 pkgdesc="Nokia N900"
 url="https://postmarketos.org"
@@ -27,6 +27,7 @@ subpackages="
 	$pkgname-x11
 	$pkgname-xkeyboard-config:xkeyboard_config
 	$pkgname-i3wm
+	$pkgname-upower
 	$pkgname-sxmo
 "
 source="
