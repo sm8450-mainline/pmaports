@@ -24,7 +24,11 @@ subpackages="
 	$pkgname-kernel-edge:kernel_edge
 	"
 source="deviceinfo modules-initfs"
+# TODO: package iwlwifi-7265D-29.ucode separetely, so we don't depend
+# on linux-firmware-other
 _pmb_recommends="
+	linux-firmware-other
+	linux-firmware-rtl_nic
 	linux-firmware-rtw88
 	oem-intel
 	oem-amd
