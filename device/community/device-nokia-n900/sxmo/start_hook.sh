@@ -80,6 +80,9 @@ if sxmo_wakelock.sh isenabled; then
 	superctl start sxmo_autosuspend
 fi
 
+# To setup initial unlock state
+sxmo_state.sh set unlock
+
 # Turn on lisgd
 if [ ! -e "$XDG_CACHE_HOME"/sxmo/sxmo.nogesture ]; then
 	superctl start sxmo_hook_lisgd
