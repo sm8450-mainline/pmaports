@@ -9,6 +9,7 @@ deviceinfo_codename="xiaomi-cupid"
 deviceinfo_year="2021"
 deviceinfo_dtb="qcom/sm8450-xiaomi-cupid"
 deviceinfo_arch="aarch64"
+deviceinfo_flash_kernel_on_update="true"
 
 # Device related
 deviceinfo_gpu_accelerated="true"
