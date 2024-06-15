@@ -13,7 +13,6 @@ depends="
 	mesa-dri-gallium
 	mkbootimg
 	postmarketos-base
-	postmarketos-update-kernel
 	qbootctl
 	qbootctl-openrc
 "

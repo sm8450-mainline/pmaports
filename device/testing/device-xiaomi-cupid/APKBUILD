@@ -14,7 +14,6 @@ depends="
 	mesa-dri-gallium
 	mkbootimg
 	postmarketos-base
-	postmarketos-update-kernel
 	qbootctl
 	qbootctl-openrc
 "
@@ -60,5 +59,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-843790c57e43147c90a71cff54f816a8a5cbfaa54859d5eec5dfe867e686e3b9aabc1a853b3533ef33f9acc3400fea9785c9f8a09e5849e50417fbdaaa774a84  deviceinfo
+26344777aef8b8a6699c73cc9b072cf164bc6a6e4d950eea87cb0f3ce2bc48b92a73aedbcb5c7d7f54b9a778e33c1ab1ca70ab3e6578d3db7da5bcf5cac89877  deviceinfo
 "
