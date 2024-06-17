@@ -29,7 +29,6 @@ options="!check"
 subpackages="$pkgname-openrc $pkgname-systemd"
 
 _pmb_recommends="
-	evince
 	firefox-esr
 	flatpak
 	font-noto
@@ -46,6 +45,7 @@ _pmb_recommends="
 	gnome-weather
 	lollypop
 	loupe
+	papers
 "
 
 package() {
