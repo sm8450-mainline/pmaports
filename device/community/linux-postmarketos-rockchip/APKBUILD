@@ -1,17 +1,7 @@
 # Maintainer: Quade Curry <qc8086@qc8086.com>
-
-# This is seperate from linux-edge so we can control the release cycle better.
-# If this kernel is updated and fails to boot it's quite hard to recover the
-# rk3399 devices due to the boot order. This kernel also has a kconfig that has
-# more modules built-in that are required for successfully booting on these
-# devices.
-
-# It's important that CONFIG_ROCKCHIP_CDN_DP is _disabled_ because it causes
-# boot failure
-
 pkgname=linux-postmarketos-rockchip
-pkgver=6.2
-pkgrel=14
+pkgver=6.6.34
+pkgrel=0
 pkgdesc="Mainline kernel for rockchip devices"
 arch="aarch64"
 _carch="arm64"
@@ -28,7 +18,7 @@ makedepends="
 	devicepkg-dev
 	findutils
 	flex
-	installkernel
+	postmarketos-installkernel
 	openssl-dev
 	perl
 	rsync
@@ -81,6 +71,6 @@ package() {
 }
 
 sha512sums="
-a01bee0b968b95183934fe3504516be7ef5811944a061f5aed05ecebaa27b5eb64e33232fd0a8dd622b3c8743bfe462ef7e464d381734d111a0ad6a6d9f66ddd  linux-6.2.tar.xz
-d937ee7e88a6a549398f8ba002590d07386f86bbce67df20325eafd1a0df9e927e8cc6e6a940c021586acb63b3e7c21ea0cbee79820b6059076f7ef3e5f72e41  config-postmarketos-rockchip.aarch64
+eaa792be65c4cdfd37b84d4dadd22086c8507c1f78d538255cff03595e1caee0f88b521c398b6bc9ab3632010133cff5c7b14200413d54cf0a38bea79c2fd29f  linux-6.6.34.tar.xz
+64117d03325b7059ff032dca3d5990cefb3ce1c0f74590e6deba37f53b757cd8e10b273c53b6b7d54e55385b4d891c3e7d2d0ff9976520e81157a323243d0242  config-postmarketos-rockchip.aarch64
 "
