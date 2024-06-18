@@ -124,6 +124,8 @@ mr-settings:
 # build changed aports
 .build:
   stage: build
+  tags:
+    - saas-linux-large-amd64
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_PROTECTED == "false"
   before_script:
@@ -149,6 +151,8 @@ build-x86:
 
 build-aarch64:
   extends: .build
+  tags:
+    - saas-linux-large-arm64
   script:
     - .ci/build-aarch64.sh
 
