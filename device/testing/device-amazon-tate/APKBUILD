@@ -1,0 +1,35 @@
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-amazon-tate
+pkgdesc="Amazon Kindle Fire HD (2nd Generation)"
+pkgver=1
+pkgrel=1
+url="https://postmarketos.org"
+license="MIT"
+arch="armv7"
+options="!check !archcheck"
+depends="
+	postmarketos-base
+	linux-amazon-tate
+	mkbootimg
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+	initfs-hook.sh
+	amazon-omap-boot-hack.sh
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+	install -Dm755 "$srcdir/amazon-omap-boot-hack.sh" "$pkgdir/usr/share/mkinitfs/amazon-omap-boot-hack.sh"
+}
+
+sha512sums="
+2e06c09046be664bbba5d55aafb06aceafbf41777bf116caa508d461190d546cc7ceae5160f0582dee20d88b5998837c00ffc3de928d1e5892bb32485523ce79  deviceinfo
+1aca985770246b9ca140996a498815b5c9ca3458a6cb84db85825344f01deda8b1de7c88e2e0c610df636ad2179faac7fd90d9992add51186a6449f2d43a3f71  initfs-hook.sh
+a5027ac9f113018d55e4c5fc065b0498d0a50df099a348fe38d6b841087aa285a8d67b400b9fe88007f41d0fd79c2fe69d62300af6963ecb40c5fb2353cbabf1  amazon-omap-boot-hack.sh
+"
