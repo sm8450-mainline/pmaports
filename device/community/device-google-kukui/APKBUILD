@@ -3,7 +3,7 @@
 pkgname=device-google-kukui
 pkgdesc="Google Kukui Chromebooks"
 pkgver=6
-pkgrel=6
+pkgrel=7
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -14,6 +14,7 @@ depends="
 	linux-postmarketos-mediatek-mt8183>=6.1.28-r0
 	postmarketos-base
 	postmarketos-cros-common
+	postmarketos-initramfs-minimal
 	soc-mediatek-mt8183
 "
 makedepends="devicepkg-dev"
