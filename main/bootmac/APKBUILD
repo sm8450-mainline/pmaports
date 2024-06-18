@@ -1,6 +1,6 @@
 # Maintainer: Dylan Van Assche <me@dylanvanassche.be>
 pkgname=bootmac
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=0
 pkgdesc="Configure MAC addresses at boot"
 url="https://gitlab.com/postmarketOS/bootmac"
@@ -19,5 +19,5 @@ package() {
 }
 
 sha512sums="
-7d73e348f1ea1ff7a867e54848f754e34e3b2c7bd73f7fd09e2f68f8db0dba4bc7b3ea7cc713d0e2b67b7d67363d58c636656fd3cd336898b731c099fbb49c8b  bootmac-v0.4.0.tar.gz
+32409d0ad978aa92cde061b69071e01bb6de9f7e8d33e4d7f67f2bddc192a8ea710b8c3e01b9618768c3a8b1d297a6fd717fc4dad3c47e7bec508f2d5f198dda  bootmac-v0.5.0.tar.gz
 "
