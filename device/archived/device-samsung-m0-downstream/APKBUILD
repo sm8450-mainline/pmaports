@@ -3,7 +3,7 @@
 pkgname=device-samsung-m0-downstream
 pkgdesc="Samsung Galaxy S III"
 pkgver=3
-pkgrel=3
+pkgrel=4
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -12,6 +12,7 @@ depends="
 	linux-samsung-m0-downstream
 	mkbootimg
 	postmarketos-base
+	postmarketos-initramfs-minimal
 	"
 makedepends="devicepkg-dev"
 install="$pkgname.post-install"
