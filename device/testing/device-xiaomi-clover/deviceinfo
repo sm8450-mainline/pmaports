@@ -22,7 +22,7 @@ deviceinfo_screen_height="1920"
 # Bootloader related
 deviceinfo_flash_method="fastboot"
 deviceinfo_flash_fastboot_partition_vbmeta="vbmeta"
-deviceinfo_kernel_cmdline="ignore_loglevel PMOS_NO_OUTPUT_REDIRECT"
+deviceinfo_kernel_cmdline="ignore_loglevel"
 deviceinfo_generate_bootimg="true"
 deviceinfo_bootimg_qcdt="false"
 deviceinfo_bootimg_mtk_mkimage="false"

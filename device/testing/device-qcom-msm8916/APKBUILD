@@ -3,7 +3,7 @@
 pkgname=device-qcom-msm8916
 pkgdesc="Generic device package for various Qualcomm MSM8916/MSM8939-based devices"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -58,6 +58,6 @@ kernel_efi() {
 }
 
 sha512sums="
-965af8d7c00e4c88883669fa69bd44d340525fa6283cc92f15f2b8c554c432a3e66408b55419a913afe16e317075e0d16d6d19913bddde8394e52adf5e027ef7  deviceinfo
+0894e6a63f69062d4c9e744cdda700b30c68795fdfdc866b8c60c0d0d27b97f3ad915615d87baede2fdaceb5c2773240c649eb95d82b2d58acd5b59f1e5190c0  deviceinfo
 80b037998756dab0c6b2a3bb438fb2d6bf727148c4af29648074b85c3beacdbbbffb2fefd477e68904d4c3bedb76bf0e532719a15a3bb7c8ef5f922be0d73c1d  modules-initfs
 "

@@ -23,8 +23,8 @@ deviceinfo_gpu_accelerated="true"
 
 # Bootloader related
 deviceinfo_flash_method="fastboot"
-deviceinfo_kernel_cmdline_downstream="console=ttyHSL0,115200,n8 PMOS_NO_OUTPUT_REDIRECT androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3b7 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1"
-deviceinfo_kernel_cmdline_mainline="earlycon=msm_serial_dm,0xf991e000 PMOS_NO_OUTPUT_REDIRECT msm.vram=192m msm.allow_vram_carveout=1"
+deviceinfo_kernel_cmdline_downstream="console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3b7 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1"
+deviceinfo_kernel_cmdline_mainline="earlycon=msm_serial_dm,0xf991e000 msm.vram=192m msm.allow_vram_carveout=1"
 deviceinfo_generate_bootimg="true"
 deviceinfo_bootimg_qcdt_downstream="true"
 deviceinfo_flash_offset_base="0x00000000"

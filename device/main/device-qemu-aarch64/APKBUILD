@@ -3,7 +3,7 @@
 # Co-Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=device-qemu-aarch64
 pkgver=5
-pkgrel=0
+pkgrel=1
 pkgdesc="Simulated device in QEMU (aarch64)"
 url="https://postmarketos.org"
 arch="aarch64"
@@ -65,7 +65,7 @@ kernel_edge() {
 }
 
 sha512sums="
-6848a291cb4c13bc4b064e81d72c2d57b9263cccd133251fc58d496204b6136d0dd86b9c8e8ff5aa2adb10d29d2c381d0279cca84e1aa291c8f40d90cb5c7172  deviceinfo
+90527c2be00f97172f8e9b7508aba706c62e9067c50c93cfa69fbe5940462e9a165f35b9c8dd0efe2b690a839c6069b26d0c8706b7c4114219ef3004ea3dda3e  deviceinfo
 8129439ec53e76e714b2d3dac97bbe702822d6f6642ea6b631aa26001fec85ca310fbe9eeb04c2bd849145a1137b7934c21b704524f3a98b96b7c6f71c2ca992  modules-initfs
 99d32eed6c5cda59e91516e982c5bd5165ff718133e2411a0dbba04e2057d1dfad49a75e5cc67140d0e0adcbe1383671bd2892335929b782a5b19f5472e635ad  mce-display-blanking.conf
 "

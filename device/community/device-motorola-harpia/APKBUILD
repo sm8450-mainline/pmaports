@@ -3,7 +3,7 @@
 pkgname=device-motorola-harpia
 pkgdesc="Motorola Moto G4 Play"
 pkgver=9
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -41,6 +41,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-aebe4b604357b068fb8fd2c67ba68db12f0d81a807afddb58fbd92706c29100753656f8a1f7f33bea19540e24fe2a6e0bf47d3e608a6c817d41647c62a8fcca9  deviceinfo
+31eba51ab586af61d0ea0efb2e0f0a8533524254e864d59bc2142ba30c6b5745a46a00314fbf86a8b5bcfeee2d42b218c27d2e8aa5ed19f24e50468860999e56  deviceinfo
 525a3e20672a7dff26b885b99ee157e0ece33efa10db34c90aed45dc47d7f1c2e90d7082dc84f2724892f199b5adaca04d5864f0aa1d1e4b8ea695f840346d60  modules-initfs
 "

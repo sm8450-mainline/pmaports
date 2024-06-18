@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-oneplus-bacon
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc="OnePlus One"
 url="https://postmarketos.org"
 arch="armv7"
@@ -49,7 +49,7 @@ nonfree_firmware() {
 }
 
 sha512sums="
-4daaf93f610cbc1b2a864dcb9b6488b04218f6ca9b14f579afc219e813eb22a8e4c48a2852b217cbae9c165a851a88546c8e2851cb1aa301ed636947e56cf24c  deviceinfo
+28ba572e6e45383e5a55670977195235dab098439987f57aa02fa2bb4865877bf2156f665301e25af051742e828f15cae74ee2de306cfc45d092dedd6a83bac2  deviceinfo
 fd639faebbee2c0c2c227710678376e0d039b7d96a62103f7ba7e6304d7060023f09064918e93a125465d20d125c0334225680521a7aeae5a43d77d7360c180c  modules-initfs.mainline
 65e9ee7352b1dc39d99ea411eb0ed9c56f9975230907db5add3a1b4146cdf6f227c934052dab38a1937ed67d67585f28fb7410f10a1bec9dd5e4eb69d7253515  90-android-touch-dev.rules
 "

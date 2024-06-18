@@ -24,7 +24,6 @@ deviceinfo_swap_size_recommended="1024"
 # Bootloader related
 deviceinfo_flash_method="fastboot"
 deviceinfo_flash_fastboot_partition_vbmeta="vbmeta"
-deviceinfo_kernel_cmdline="PMOS_NO_OUTPUT_REDIRECT"
 deviceinfo_generate_bootimg="true"
 deviceinfo_bootimg_qcdt="false"
 deviceinfo_flash_sparse="true"

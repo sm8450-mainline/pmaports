@@ -4,7 +4,7 @@
 pkgname=device-shift-axolotl-downstream
 pkgdesc="SHIFT6mq downstream"
 pkgver=1
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -27,5 +27,5 @@ package() {
 }
 
 sha512sums="
-3a60faa3024b6a066e5f5319c0e651ffe4980be51cc1b848a946b96cd861be16d651dc2184993eca89f28fe442a39a1a78f67753dc1bb295cab4bdaaa6f2fe49  deviceinfo
+75bc9e4b1225f3988bef27763d5961160e3dbdb25260327c0390290827b8e946a27ed7f8b0a810f89d696112ca9d220652c8789cbc86f898d2292dd0ae2f61e4  deviceinfo
 "

@@ -3,7 +3,7 @@
 pkgname=device-vivo-y21l
 pkgdesc="Vivo Y21L"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -28,5 +28,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-e91cbbb314d1be2a59b65d14a2bbd44458f320a33949742b4c149b32d5eff26fbe8e0157f941def13919bb0cf953d9d653470c3da373191029b7ba9eb096e2ae  deviceinfo
+2b9d2fef344d5bfdaf2459a220aabb5a718b9412806b54dc8397ca8803392faa30c6b9a8fdc3decac3ce5ec3ea7ef7ab5523f8fd675114b929d30ef54c121af6  deviceinfo
 "

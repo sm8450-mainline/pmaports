@@ -3,7 +3,7 @@
 pkgname=device-xiaomi-tulip
 pkgdesc="Xiaomi Redmi Note 6 Pro"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -33,6 +33,6 @@ package() {
 }
 
 sha512sums="
-241f8107b4c45402fb945007e3811d751c9dffdac0a91281a96b2f5ce80f66e7d477ad0319dcefe470d60a2202ad70cf3b6a8685e4222a057d3f3f5a440d9618  deviceinfo
+d8b7dca9cd1dcfd857f47906f9bbf53bc27018413262921923c87a8ecc3de05ec9074660d53095339f025ff64d9dba0f9b68b7547d70ac9764bfd65968b51426  deviceinfo
 2985ce67fe3a5cd4cd03c9c5e7af072174775a97b4d26c40b025a82b33fead69f7cb4ac185db1b7b97d61b02ebdf56c88f77f55d2dd352ac2d7e47394563dbe2  modules-initfs
 "

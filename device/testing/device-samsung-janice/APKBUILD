@@ -2,7 +2,7 @@
 pkgname=device-samsung-janice
 pkgdesc="Samsung Galaxy S Advance"
 pkgver=1
-pkgrel=3
+pkgrel=4
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -31,5 +31,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-b8ec29123c88b62ab25550b71d3c4e0d4d3679bf41f44410b4540e69592f97f59b64dd6bf4d3f8b45419f79d951c5e4bab655f8be4f356c5581b26abecaeb81f  deviceinfo
+203ad10176152d784ad38748e01b33b6f78aad988875d9d3260343cf521f05a017dc239523d3f8e644d7f2cd9734309d5985152507695f4abe145c4ff631662b  deviceinfo
 "

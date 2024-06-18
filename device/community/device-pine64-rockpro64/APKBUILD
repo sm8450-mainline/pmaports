@@ -2,7 +2,7 @@
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=device-pine64-rockpro64
 pkgver=3
-pkgrel=7
+pkgrel=8
 pkgdesc="PINE64 ROCKPro64"
 url="https://postmarketos.org"
 license="MIT"
@@ -28,5 +28,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-75388e8dd877db42b5ffa7148e667487f58785ef1112dda3dd5e34122f24870887de4e38aa9a861ac454e6eaa6b3a3b91583e92548b349c2e7919408565e4a65  deviceinfo
+e215cfae2d0e42ebea9c9425ba50ffdfd96512587b6bd96bbda4f1beca77f22b79b62795818b3635a7d4cdfad120249bf3a04ccfdb4af72d228f0e3c26efee65  deviceinfo
 "

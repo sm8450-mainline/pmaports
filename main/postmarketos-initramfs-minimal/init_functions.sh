@@ -9,12 +9,12 @@ PMOS_ROOT=""
 setup_log() {
 	local log_to_console=""
 
-	grep -q PMOS_NO_OUTPUT_REDIRECT /proc/cmdline && log_to_console="true"
+	grep -q pmos.debug-shell /proc/cmdline && log_to_console="true"
 
 	echo "### postmarketOS initramfs ###"
 
 	if [ -z "$log_to_console" ]; then
-		echo "Add PMOS_NO_OUTPUT_REDIRECT to your kernel command line"
+		echo "Add pmos.debug-shell to your kernel command line"
 		echo "to enable initramfs logging to console (e.g. for serial)."
 	fi
 
@@ -22,12 +22,12 @@ setup_log() {
 	exec >/pmOS_init.log 2>&1
 	echo "### postmarketOS initramfs ###"
 
-	# Pipe logs to console if PMOS_NO_OUTPUT_REDIRECT is set
+	# Pipe logs to console if pmos.debug-shell is set
 	if [ -n "$log_to_console" ]; then
 		tail -f /pmOS_init.log > /dev/console &
 	fi
 
-	# Pipe logs to pmsg if PMOS_NO_OUTPUT_REDIRECT is set and /dev/pmsg0 is available
+	# Pipe logs to pmsg if pmos.debug-shell is set and /dev/pmsg0 is available
 	if [ -n "$log_to_console" ] && [ -e "/dev/pmsg0" ]; then
 		tail -f /pmOS_init.log > /dev/pmsg0 &
 	fi

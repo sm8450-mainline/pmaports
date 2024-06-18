@@ -4,7 +4,7 @@
 pkgname=device-wileyfox-crackling
 pkgdesc="Wileyfox Swift"
 pkgver=8
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -45,7 +45,7 @@ nonfree_firmware() {
 }
 
 sha512sums="
-4b34841808755b704b51997d63bee4c1bba3f7cdc5362767c3078a3824066887b4a9e63c468b89049c8572d912cf4b6bb849f7359727677bcbfebdb9d55cdeaf  deviceinfo
+fb5ff1648128331dff061026e8c783a26f66dea4530de6ad3a27620e1aa0fc516e8c0b2f04fe3f6e9e5ce882b77b415d93981532c546129949caec802cdda883  deviceinfo
 31f926acffed502edca7d6a26c97c197970b842122df42a1ea5c63f2707b4375465eae77a754f5d58f556f55e1f5f421af21a92ca6165a3a4bacf55c5fbf7faf  modules-initfs
 a845e860cf43e58818bbffda62a9514e9a24527e14c485dd10944587b29dbf5864a1d3ec17d219c342512fac4bd6c25f5f0f4efb8883b8f383a79846759318ee  10-crackling-proximity.rules
 "

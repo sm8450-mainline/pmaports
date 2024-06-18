@@ -1,4 +1,4 @@
-setenv bootargs init=/init.sh rw console=ttymxc0,115200 cma=256M PMOS_NO_OUTPUT_REDIRECT PMOS_FORCE_PARTITION_RESIZE
+setenv bootargs init=/init.sh rw console=ttymxc0,115200 cma=256M PMOS_FORCE_PARTITION_RESIZE
 setenv mmcdev 0
 setenv mmcpart 1
 

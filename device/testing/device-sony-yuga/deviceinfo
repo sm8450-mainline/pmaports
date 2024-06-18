@@ -19,7 +19,7 @@ deviceinfo_screen_height="1920"
 # Mainline kernel related
 deviceinfo_dtb_mainline="qcom-apq8064-sony-xperia-yuga"
 deviceinfo_append_dtb_mainline="true"
-deviceinfo_kernel_cmdline_mainline="console=ttyMSM0,115200,n8 fw_devlink=permissive PMOS_NO_OUTPUT_REDIRECT"
+deviceinfo_kernel_cmdline_mainline="console=ttyMSM0,115200,n8 fw_devlink=permissive"
 
 # Boot related
 deviceinfo_generate_bootimg="true"

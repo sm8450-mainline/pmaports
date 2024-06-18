@@ -3,7 +3,7 @@
 pkgname=device-pine64-pinetab2
 pkgdesc="Pine64 PineTab 2"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -41,5 +41,5 @@ kernel_v2() {
 }
 
 sha512sums="
-80ba9d116dfaf3cdc0c3baf6048974160150d3b59d6fcd5188801edb938ca8caa7e0d1581f2fe9340bb0b23635432405fad0ecdd45e94cd82c32adb5eeb8e804  deviceinfo
+f7276063471115fe873b90cd1e21c06e74a167ae278c3a91b1587b6174c8a08daa85a00b8470f0deac896729dfba090d2843d8b31d01e5c56fb69a01001502b6  deviceinfo
 "

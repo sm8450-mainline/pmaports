@@ -2,7 +2,7 @@
 pkgname=device-xiaomi-platina
 pkgdesc="Xiaomi Mi 8 Lite"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -36,6 +36,6 @@ kernel_mainline() {
 }
 
 sha512sums="
-99f3b09882a9b8181e5e5c4163315148a15f75355e2a0c36f4b981554202b8fabf74ef270b35d9df0550c0d0ee172895c6c0921d5598e502d0de5a16ffbd2dcc  deviceinfo
+f36ce14e46d08d896bf24bee638c5d9bc7f7d21d0219e871eeb176d255421859f3bc20899b6f6db14d41f11c5677619c0d710106e9729b4cb97373005cb640b7  deviceinfo
 029156e04ee0f9e20cf37d6fd0f52278ecc6a029b9ca86845a5e9a7b550ed1211b62f09e5ed36083061269d4e83b648788b87bbde0fba3cd1eb68675c47b79eb  modules-initfs
 "

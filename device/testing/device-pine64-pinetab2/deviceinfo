@@ -20,4 +20,4 @@ deviceinfo_gpu_accelerated="true"
 # Bootloader related
 deviceinfo_flash_method="none"
 deviceinfo_generate_extlinux_config="true"
-deviceinfo_kernel_cmdline="earlycon=uart8250,mmio32,0xfe660000 PMOS_NO_OUTPUT_REDIRECT PMOS_FORCE_PARTITION_RESIZE"
+deviceinfo_kernel_cmdline="earlycon=uart8250,mmio32,0xfe660000 PMOS_FORCE_PARTITION_RESIZE"

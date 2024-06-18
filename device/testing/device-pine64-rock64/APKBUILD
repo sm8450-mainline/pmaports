@@ -2,7 +2,7 @@
 # Maintainer: Timothy Valldeperas <tvall43@gmail.com>
 pkgname=device-pine64-rock64
 pkgver=3
-pkgrel=2
+pkgrel=3
 pkgdesc="PINE64 ROCK64"
 url="https://postmarketos.org"
 license="MIT"
@@ -21,5 +21,5 @@ package() {
 }
 
 sha512sums="
-4963b3cdc4ab3503e3582133aa2a2d84c6c85af7f9a3f371b0150a3acb2217e8c620538f984b4af48792b09c738938de689f229bbdc9d87c26d8078ee18b9b0d  deviceinfo
+f575316cf89aef2524ef86cbc51f43328193bf9f3e967f74d1942c1b5938ec9b2e3d49bb2e252bfce6ccdba7366c73d11ff29b090fe5c17331faf8a533eb1ef5  deviceinfo
 "

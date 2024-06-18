@@ -22,7 +22,7 @@ deviceinfo_flash_method="fastboot-bootpart"
 # This is a bit confusing.
 deviceinfo_flash_fastboot_partition_kernel="system"
 deviceinfo_flash_fastboot_partition_system="userdata"
-deviceinfo_kernel_cmdline="earlycon console=tty0 console=ttyMSM0,115200 PMOS_NO_OUTPUT_REDIRECT"
+deviceinfo_kernel_cmdline="earlycon console=tty0 console=ttyMSM0,115200"
 deviceinfo_getty="ttyMSM0;115200"
 deviceinfo_generate_systemd_boot="true"
 deviceinfo_boot_filesystem="fat32"

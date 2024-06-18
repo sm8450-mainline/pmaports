@@ -2,7 +2,7 @@
 pkgname=device-pocketbook-614-plus
 pkgdesc="PocketBook 614 Plus"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -26,6 +26,6 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 sha512sums="
-d3111d23a9161825628cc7f8eb52ddd0e7665e89031500a5ab4f4ae9408fa23e76d3c34dbe18be4e48f356c77bc1d1deb1940a1cc38900ec15f5fc62dab627a9  deviceinfo
+d95408c6f66bd6b0fee985bce0ac618b21b4ea53d07028637afc71c061ad60981f77b131e2896c306cd525341a129e7525bd7a88e8eb255afd6f3e38c147ba01  deviceinfo
 bccead09b413637b2ef20bf6eed96e29998b85c40b6c3250ac5ecad1b7529e1ad54ea490cd4b29c457d30cd7fdc1e5b30811903c228b1df07145f18cb96739cf  modules-initfs
 "

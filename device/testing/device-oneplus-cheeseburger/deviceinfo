@@ -43,4 +43,4 @@ deviceinfo_kernel_cmdline_mainline="clk_ignore_unused quiet loglevel=5 modprobe.
 deviceinfo_mesa_driver_mainline="msm"
 
 # Alpine kernel options
-deviceinfo_kernel_cmdline_alpine="PMOS_NO_OUTPUT_REDIRECT"
+

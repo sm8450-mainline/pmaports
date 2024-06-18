@@ -4,7 +4,7 @@
 pkgname=device-xunlong-orangepi3
 pkgdesc="Xunlong Orange Pi 3"
 pkgver=1
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -33,5 +33,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-fc068b1693b29a0fa0d4f2586f9dffd44dda8ea348eb644bce827b3049863008cba5cd0579da221b0918d99106e7e7672b7c4d7aecb74b9b732af2b08f0c3e1c  deviceinfo
+23632206ab33cf31a8ba15b55f5fb02a0c17ccec6fdd76ef72670b9135fa3121e0c990768412780bdcb496aa29e6deb13ec1407eb98d64d11b3295e5e846e2b1  deviceinfo
 "

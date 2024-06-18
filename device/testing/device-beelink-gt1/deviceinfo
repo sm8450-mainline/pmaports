@@ -24,8 +24,8 @@ deviceinfo_sd_embed_firmware="u-boot/beelink-gt1/u-boot.bin.sd-stripped.bin:1"
 deviceinfo_boot_part_start="4096"
 deviceinfo_generate_extlinux_config="true"
 # Close to mainline kernel options
-deviceinfo_kernel_cmdline_amlogic="rw console=ttyAML0,115200 console=tty0 PMOS_NO_OUTPUT_REDIRECT no_console_suspend"
+deviceinfo_kernel_cmdline_amlogic="rw console=ttyAML0,115200 console=tty0 no_console_suspend"
 
 # Alpine kernel options
-deviceinfo_kernel_cmdline_alpine="rw console=ttyAML0,115200 console=tty0 PMOS_NO_OUTPUT_REDIRECT no_console_suspend"
+deviceinfo_kernel_cmdline_alpine="rw console=ttyAML0,115200 console=tty0 no_console_suspend"
 

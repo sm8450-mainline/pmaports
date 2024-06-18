@@ -16,7 +16,7 @@ deviceinfo_screen_width="1280"
 deviceinfo_screen_height="800"
 deviceinfo_framebuffer_landscape="false"
 deviceinfo_dev_touchscreen="/dev/input/event4"
-deviceinfo_kernel_cmdline="PMOS_NO_OUTPUT_REDIRECT"
+
 
 # Bootloader related
 deviceinfo_flash_method="fastboot"

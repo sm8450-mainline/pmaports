@@ -2,7 +2,7 @@
 pkgname=device-samsung-matisseve
 pkgdesc="Samsung Galaxy Tab 4 10.1"
 pkgver=7
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -27,6 +27,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-30d4f63f41ad4c00d02a56e680d828c02f035f21804d92b0b6f4189f038dba5f55a3dadcc95f13beacd6d94eb036f02627d9e4190b14dfa36ce9f55862e0b08a  deviceinfo
+075a03ecbaf743db67e02408c2ffee3693718feac97b2cabf6f6b66db05390beef0ad96006cf91273a68cc55432c3524001a3cae22b28a02322a13e3d6f69e29  deviceinfo
 a04d688a6df0cbb202598b558c5c9d3cf2ad39c8268f3055cc79c56fc7728be4a08366f67fddbb2b689e5bb23bec9a3821860114ea21f60a1d1cd0d6723dd53d  modules-initfs
 "

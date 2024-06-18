@@ -18,5 +18,5 @@ deviceinfo_getty="ttyS0;230400"
 
 # Bootloader related
 deviceinfo_flash_method="none"
-deviceinfo_kernel_cmdline="console=tty1 console=ttyS0 PMOS_NO_OUTPUT_REDIRECT PMOS_FORCE_PARTITION_RESIZE"
+deviceinfo_kernel_cmdline="console=tty1 console=ttyS0 PMOS_FORCE_PARTITION_RESIZE"
 deviceinfo_disable_dhcpd="true"

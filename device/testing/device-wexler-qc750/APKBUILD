@@ -2,7 +2,7 @@
 pkgname=device-wexler-qc750
 pkgdesc="WEXLER Tab 7t"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -20,5 +20,5 @@ package() {
 }
 
 sha512sums="
-073a7495bd094d5735cb8b297d172be73255a5829102999c5f62abf3dc5d650f75f11a89bef4415b6ea9bdb9fda569282dd394f5e7ba0c2370a2eab905d188ef  deviceinfo
+ab9158d2ace4973d27904a112d100eb990057dbd1d45cfe3351b891d7e3d0024345f34391e1c2d1afd79c1e147841b4d6a58bd6e16317f4f874d70a015ff5f14  deviceinfo
 "

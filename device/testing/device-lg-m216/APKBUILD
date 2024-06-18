@@ -2,7 +2,7 @@
 pkgname=device-lg-m216
 pkgdesc="LG K10 (m216)"
 pkgver=7
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -33,6 +33,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-d28b2b3387c816f49b8f8f6c5e3f3e6a377032bbf7278e3a12da9b5a6844f47b0c54708e545c31836864a389cdc41505692808cb34137891c618eb29be9e54ec  deviceinfo
+3e16e48fa102db23eeb6da6da4b57a40a48a3277c28a340f994a54763db21df4e44892e0884ff38d8eb87b957348d53a1c7604a3b01944dddd3647e35c3380b3  deviceinfo
 d4d77f5db6e361d723c7202bf68342970bc568d6e040b3fba694c5ff0af0eec0a6aaaf582fd6b40a5ab46a26931edacea3cba70e7f6d13be42e9676a5ee06d86  modules-initfs
 "

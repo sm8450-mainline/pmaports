@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-sony-yuga
 pkgver=4
-pkgrel=0
+pkgrel=1
 pkgdesc="Sony Xperia Z"
 url="https://postmarketos.org"
 arch="armv7"
@@ -49,6 +49,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-ed2a1880bb0249148c7a069a6ea17f1666c41787106b308b228747bf2546fa8fe9a8fca16a6f7b0d88b9bcc91485784e6c0beb4187f85e7996fbfd259f940efa  deviceinfo
+d7f942ff1d17e4a775040c1a00bdafed534fb552696fdf4764fe8a741f4766fa4dacdd243058e9e4574706b9e9e8dccb5144fe4c6c3a6aa04d5fcdad46385601  deviceinfo
 8b6034c0338ab4c7d648f47983aad6da07e427e7dba47baabf85a1b3ddeeda47c8d7fbcd547a302c9a759b2943ee30d3e82c3b368d8582833a058e4671638a9e  90-android-touch-dev.rules
 "

@@ -2,7 +2,7 @@
 pkgname=device-dongshanpi-nezhastu
 pkgdesc="DongshanPi NeZha STU"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="riscv64"
@@ -58,5 +58,5 @@ package() {
 }
 
 sha512sums="
-35daa118d1c1df00c3e1bf5ad9c1b484031630e89a1ae5a28c1fb94353d5b2eafd238395493f0a58988d43ae45428edb2a34fb728e2354666b4b819ccf0e785d  deviceinfo
+340c7d568227d1fcba48abd22add3a68d148981d55ef10fcbd1ce860c3d9784d20930a1b20bb89b55761b5dba26fa1ad98453d3288cc58c63056b121bc7ad6d2  deviceinfo
 "

@@ -2,7 +2,7 @@
 pkgname=device-tokio-techbook
 pkgdesc="Tokio Techbook"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -32,5 +32,5 @@ package() {
 
 sha512sums="
 a84189c9f2bbe5203466c565452dafd79f1a29a921be71946e80a17503bcf48119ba7bae0186fff7cb5058515ff5d1141a4a0f16b83d92097a3ce42ff317915c  deviceinfo
-e3b1a60107e0aa31c409d1f8d54eb10c67fd50135fb0b3091192f13089603631bce6889c2081089e206549f914bcf329a0441a605a8fb1713f9b54f1003554d9  uboot-script.cmd
+a457e78bfd63d9a4ab47f2957ee45b901e6e1c46e6961eee50b797449e0eb78150737d0f6a137ff9b2d98f0398c94e5a5afc6cb6d2ded332beed2fae480e795d  uboot-script.cmd
 "

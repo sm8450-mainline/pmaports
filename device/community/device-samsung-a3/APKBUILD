@@ -5,7 +5,7 @@
 pkgname=device-samsung-a3
 pkgdesc="Samsung Galaxy A3 (2015)"
 pkgver=12
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -57,7 +57,7 @@ phosh() {
 }
 
 sha512sums="
-a2437b8c6f420d4c67f57fd4940974e3cacfd86de9727a72cc524e17837aa7860181da401b501f12980b8c02ec66ef92d4f276a21daa1d64ebef2a40fb5e62ca  deviceinfo
+b0bf0480159db976c1ba827d65cf68400dad255ff0f2627fd9ff74673993d605b8a1059fac1e7f11e4d565e2072dcf1760e61e04f816880bafc722a4b725fc31  deviceinfo
 3754688b2a61c204f37944d700b6fc273f68a01e25d444a3c3f2dd2531d8538650a2e571657e18e7a96a2db96b19f2f738d6f465bde477efd66ab31a78edfb91  modules-initfs
 e8f734a2f8d154813dbb493f0d58af50a7f624ffed41967a81493b975a6211efc6d30743b23825562cfd126791cbdd3348bfbed32eeece9b8acec0a37c3c51b6  phoc.ini
 "

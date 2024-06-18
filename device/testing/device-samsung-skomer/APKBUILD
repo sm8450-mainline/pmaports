@@ -2,7 +2,7 @@
 pkgname=device-samsung-skomer
 pkgdesc="Samsung Galaxy Xcover 2"
 pkgver=5
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -38,6 +38,6 @@ kwin() {
 }
 
 sha512sums="
-828a520f13bd3b60053b7f7f1651799add4545232a1a6b57c511a62da60859b621452a9aaa86a0f479e92fb6b411f4df7699acb64b2947565db38822e38cb379  deviceinfo
+77718024b733a931c687bd893d048b8b6361565e11dab744f90c4e39ac7d1304ca4e2b5e3b43556d801833f8f6d538aa29113bf16b6f5c9044e40caeb679f4a4  deviceinfo
 685ec71484a932c59f83f1039d4d18a010a5849342e96d9e15ae8ce64374aac15073f9c51d7d9f270c60e70d2ea15c685b8f528cdc40f991b093b9227cba6a48  kwin.sh
 "

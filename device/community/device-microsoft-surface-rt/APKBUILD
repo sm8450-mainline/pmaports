@@ -4,7 +4,7 @@
 pkgname=device-microsoft-surface-rt
 pkgdesc="Microsoft Surface RT"
 pkgver=7
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -61,6 +61,6 @@ x11() {
 }
 
 sha512sums="
-4585b96c10b86012d2ce33c623adf4f64a77219372a17e79ff3617bed1b18617f0965a4d9ea859dc7ecc6892970cbc9327936ce9413787e991d77ad57ec94ba6  deviceinfo
+cdaa85adbeff8fe72bc4e4594688937a4bfab20bd3458e2e3b4e8bd2c53f6160c19af3e1de5cf8568f1e6a050d289454c786a50c8480a2e6217ae737b2f53364  deviceinfo
 67ff4306270b7e6e292ddb48ac5fcb1472840d8eaa412f9cd989442fb20139ee3c844fd1ca5c5b923c7980403d945999a77fc6617127059e56e22bdc8dca2bf8  modules-initfs
 "

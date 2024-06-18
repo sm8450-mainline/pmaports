@@ -3,7 +3,7 @@
 pkgname=device-zte-b860hv5
 pkgdesc="ZTE ZXV10 B860HV5"
 pkgver=0.1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -28,6 +28,6 @@ package() {
 }
 
 sha512sums="
-96a3d95b8e228e33d8ba51cfa6004772a3eb3ab6822e2c28542fb7ea5ecd8f5cb7241b2034f62f9acbb96777896e9b585e229c154055a91e24dd265aa873411b  deviceinfo
+c1d8a2047649cb745cb12226f1ce19cfeb6926a06d9f257446cd84600a1fbdb1fec3acb100502119cf95e0c0bf37a41756a41149406bf42fb76ef4b510da5ae0  deviceinfo
 cbd7012fcb2db0f11f694ffa621e4c47447f6b36690366da35a16918b20e58a0324cfd07eb3ed7165887e099100286098d19ae131bd62ac8b3a088780f59a1d8  modules-initfs
 "

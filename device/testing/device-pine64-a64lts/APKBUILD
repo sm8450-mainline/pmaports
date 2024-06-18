@@ -2,7 +2,7 @@
 pkgname=device-pine64-a64lts
 pkgdesc="PINE64 A64-LTS"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -34,5 +34,5 @@ nonfree_firmware() {
 
 sha512sums="
 b6fe933886888b453839084d2001de93f343472d1f4e2597914901692d9410d15202f790d92a3f70312e4ededd687f02edd79423ea7b9a9f831f6db57f9093fa  deviceinfo
-b03a8e7c365d419aa0796586cd19cb0b4cbce8be5e5dba86e48755ad921ee4ec757259e1d6e5a72c3dfe8d7eff2d04bf2a19bdd5d8e6e53a2a414aaeb563d850  uboot-script.cmd
+9f53b80ebc9cbbea488c75dc9b3abe374d5a5e6b756831dd5d298fd4af73450fedea5cc93381f93bbbdd3503cffd4ea5edb2a6836ea130fb408327ea4cf12576  uboot-script.cmd
 "

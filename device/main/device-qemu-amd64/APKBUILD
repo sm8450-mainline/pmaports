@@ -3,7 +3,7 @@
 # Co-Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=device-qemu-amd64
 pkgver=6
-pkgrel=3
+pkgrel=4
 pkgdesc="Simulated device in QEMU (x86_64)"
 url="https://postmarketos.org"
 arch="x86_64"
@@ -71,7 +71,7 @@ kernel_edge() {
 }
 
 sha512sums="
-94f8f9ad44ba6ffe55a07a5bce11351f89a7d97e0c52931c573ea21ff7416cc3ede800da94611e04ebfed6914f8d5edb9614f8c0847b53b09ae168a8607f6195  deviceinfo
+74dd746b16f17ce67f6d58b6b86878b6eebaaa473fa36f475074c2c14ed738386c1b5cfcf15ad07b58f94d303799e8a9ed356143061e7854cf38170bef999a0b  deviceinfo
 29766094e64a7ce881c8e96433203ea538057b8fd1d577fc69b9add6bc1217af04ddf60cbcf82333811c627897eda7537b0b1f862899e1fdfd93403b3f6425d7  modules-initfs
 99d32eed6c5cda59e91516e982c5bd5165ff718133e2411a0dbba04e2057d1dfad49a75e5cc67140d0e0adcbe1383671bd2892335929b782a5b19f5472e635ad  mce-display-blanking.conf
 "

@@ -38,7 +38,7 @@ deviceinfo_kernel_cmdline_downstream="bootopt=64S3,32N2,64N2"
 
 # Mainline kernel related
 deviceinfo_dtb_mainline="mediatek/mt6769z-volla-mimameid"
-deviceinfo_kernel_cmdline_mainline="bootopt=64S3,32N2,64N2 PMOS_NO_OUTPUT_REDIRECT"
+deviceinfo_kernel_cmdline_mainline="bootopt=64S3,32N2,64N2"
 deviceinfo_flash_fastboot_partition_dtbo_mainline="dtbo"
 
 # NOTE: Flashing kernel on upgrades unsupported due to "dd: error writing

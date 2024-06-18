@@ -3,7 +3,7 @@
 pkgname=device-samsung-serranove
 pkgdesc="Samsung Galaxy S4 Mini Value Edition"
 pkgver=13
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -53,7 +53,7 @@ phosh() {
 }
 
 sha512sums="
-b9c9595c48a43a9f2470a01fb21e58d8f6c1b21680f27c28462fd3c4895b44b9793ac78fe57fbb2fdb5b9c7afee82ef831d6586fe239fc882a12087baee25bad  deviceinfo
+6c28cc461becf05428282016c6d0e1982e0d5e08484245877bd8674b667d2f1f6bb7db8a696a1493f3bf36511e2c84835b28435b3c395b10424edc51f33d512a  deviceinfo
 0c92ace5c522d039d356e8914c0e0237e11fc38dd05390ba7a89532be659707d2b499ae77b263c5984345caac11fd007bd6d1e279d3426126bc276a0bcd9348b  modules-initfs
 1bc90a1a67309b43435039332b2a1d7e606408c6429b3cb8991a57f53dd4de36fbe471481b6481fbdb098c3819344e8093dd8eab0d34eb3c091ab6d8abd5c087  phoc.ini
 "

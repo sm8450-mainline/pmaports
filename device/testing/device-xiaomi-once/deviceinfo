@@ -22,4 +22,4 @@ deviceinfo_gpu_accelerated="true"
 # Bootloader related
 deviceinfo_flash_method="none"
 deviceinfo_generate_extlinux_config="true"
-deviceinfo_kernel_cmdline="rw console=ttyAML0,115200 PMOS_NO_OUTPUT_REDIRECT no_console_suspend"
+deviceinfo_kernel_cmdline="rw console=ttyAML0,115200 no_console_suspend"

@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-motorola-osprey
 pkgver=8
-pkgrel=0
+pkgrel=1
 pkgdesc="Motorola Moto G 2015"
 url="https://postmarketos.org"
 arch="aarch64"
@@ -34,6 +34,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-9f947bef8c8f90924f1e087a6f9443d7739546c8971b855ebee2c0fd0437d26ab45feaf2f6f7c38db98831e3f16b19020d945d1f580d974a6d7597723e7d072b  deviceinfo
+84a6e3df87b55153265538e6c89d9a6c478f7cfcc49c3c7719b6d2ef80c53b456043a7d652d31dab44e753b948193bc9450e2cd3e5441d0fce01361acda3ac64  deviceinfo
 fc1d1e57bd2a366884b1359ba32acfb484719958fb655067cfba28787384d626dde7683750dda523e2941df4fc78e2d234130ef5a5217002a09623a4a2f34919  modules-initfs
 "

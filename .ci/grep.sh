@@ -80,4 +80,11 @@ if grep -q 'before wpa_supplicant' $OPENRC_SERVICE_FILES; then
 	exit_code=1
 fi
 
+if grep -qEr 'PMOS_NO_OUTPUT_REDIRECT' -- *; then
+	echo "ERROR: PMOS_NO_OUTPUT_REDIRECT is deprecated and doesn't do anything."
+	echo "Please remove it from the following files:"
+	grep --color=always -Er 'PMOS_NO_OUTPUT_REDIRECT' -- *
+	exit_code=1
+fi
+
 exit "$exit_code"

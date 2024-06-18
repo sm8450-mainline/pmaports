@@ -3,7 +3,7 @@
 pkgname=device-huawei-g7
 pkgdesc="Huawei Ascend G7"
 pkgver=3
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -32,7 +32,7 @@ nonfree_firmware() {
 }
 
 sha512sums="
-105bd5e1943798ca82966daece0e75f101589f1ba881487ffb2e5103b5018be4c3733a4fd6a4e5d1ada6353d14e72d980633adbf394f3090a229cffd149d52f4  deviceinfo
+63b398a256b7863bdcb82fcb55a381226cc7c832e28035eda536ac1e780ec425b4989d1628ec4ea74954971113c217ad5accc98ed846bfc71cb2a32b8e5461ec  deviceinfo
 1523b9cdd3d3578089bd4ffca40c06f595cda5f94c75433b5786dddeba5df1011cbb027e46d66c153479b03bc3e7ac3a1ea74fc296fc07032562abc4892b22bd  modules-initfs
 b47b3eee3f330408ea28f89b0a70752466f1ab854fc7c4677157fd2dcf5a546d1056b1fbfac587ece827b7ae864e969f0fef6981e4e9802b159f88d03fe9b487  pointercal
 "

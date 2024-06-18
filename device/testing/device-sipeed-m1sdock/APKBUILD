@@ -2,7 +2,7 @@
 pkgname=device-sipeed-m1sdock
 pkgdesc="Sipeed M1s DOCK"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="riscv64"
@@ -23,5 +23,5 @@ package() {
 }
 
 sha512sums="
-7443589c8dcb1c17953d2cf798ae1ea25b9904cff2d7f5c4ff0a42453d5ba2ef26d18b626e753a96f1982b3ab1d75ab24a20df82aa2710241a281a4c4a2ae0cc  deviceinfo
+3ef8201ee4a12b305013540cf47c792f8696df32be2b5725f7699bb6ed91e1cdefc81f478b8b33f8def6b47acaf3b8d53b49c88f4f592ac8be9e524dd54c3069  deviceinfo
 "

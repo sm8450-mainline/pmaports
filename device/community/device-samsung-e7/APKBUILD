@@ -3,7 +3,7 @@
 pkgname=device-samsung-e7
 pkgdesc="Samsung Galaxy E7"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -37,6 +37,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-eac74a530dfec9136cbce8fbfb4e4548416374609e3db26d7ebc05b2af8d2344f4120aca5dda98007ce6fb790554236ec077875dfa0e41ffbed56c1409dd252e  deviceinfo
+a07a79468307db2a23ef0daead5c49d588e64a42b2806a5051eb422e693cb176cf16092f384aacd08d53e34be828725766d75f94d2b88cac2c31932051bd2ebc  deviceinfo
 659b6cdc0e9be756cfae34031d407175356edc331a8d4f51fb70b0beea4f8067c5ded39e158054c02811df0964d967d3a790bfef99675ca2587ef867d02db8db  modules-initfs
 "

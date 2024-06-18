@@ -4,7 +4,7 @@
 _flavor="postmarketos-mediatek-mt6735"
 pkgname=linux-$_flavor
 pkgver=6.1.9
-pkgrel=0
+pkgrel=1
 pkgdesc="Linux kernel with patches for devices with the MediaTek MT6735 SoC"
 arch="aarch64"
 _carch="arm64"
@@ -52,5 +52,5 @@ package() {
 }
 sha512sums="
 34bf27d0934cd6962a8e84cb79d59fe7b5cc7aed62eee0b2150d0dd77c4fa5a1ad803674bb61192feca99d1ad2e61a1c7d2579f03657fe978dd41d550c84a410  linux-v6.1.9-mt6735.tar.gz
-6c5dce329a0a2c42d3bbff6b2bfeb1c14101c5c02c08fa95f1911eb4c68b213229f951e1bea8fe8e38aa51f1121aea31965c37c346d7f513f2ae9f22cb812a8c  config-postmarketos-mediatek-mt6735.aarch64
+2f7974844331e9e25e997659005ebb05262c34f7c673f8ff91f30804cd725298ae51dcee715275e86b1e7e75ff8de4299404938f48277ab4145354ee38fd22c7  config-postmarketos-mediatek-mt6735.aarch64
 "

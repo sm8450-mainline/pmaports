@@ -2,7 +2,7 @@
 pkgname=device-samsung-gprimeltecan
 pkgdesc="Samsung Galaxy Grand Prime CAN (G530W)"
 pkgver=3
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -29,6 +29,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-2056e5860b178410c1b6160ae35e57b08d248255cd2a80739e253a93a9f6418e2ac6d5d50287aa06e3b67cae5ee686cea92f8c6cd4bef48364684e820aac8e12  deviceinfo
+a115b035ebbd8ac1fea77bc0905b847ede42e7a242ad006c69706b61ff3d3e98d3bd2cfadb1498bea4e7e305bf52c3d143ed4e03be9eff61794ebaa797e59d5c  deviceinfo
 02b6d383149ba2ec3a31b206767be7ead31d9f0e7ee5cab11047000c53ccad387a118cbddb06093bca5cae3e82f884c02194de47b8e7a9c76102ac46506bb111  modules-initfs
 "

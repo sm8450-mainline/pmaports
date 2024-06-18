@@ -3,7 +3,7 @@
 pkgname=device-htc-m8qlul
 pkgdesc="HTC One M8s"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -30,5 +30,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-20a0272f786014b7240f4a250f7642e410aa36be123f5745740e5f4e8078a12784b5c80c9ab5680197ea4f535393d680d8a61c0aeae1cec4b57d5af8a0bd148f  deviceinfo
+ac64ce00cfdfcc753340852aa0813fdc63b5df8e0f00aa41494c304c23e2d7724efcf61de401e4368aef08542c50786d31847833fb29ebc2b4b4b37a254f6d78  deviceinfo
 "

@@ -2,7 +2,7 @@
 pkgname=device-fairphone-fp2
 pkgdesc="Fairphone 2"
 pkgver=7
-pkgrel=6
+pkgrel=7
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -90,7 +90,7 @@ phosh() {
 }
 
 sha512sums="
-67ca5e97e7da5c8b860b809d9b98ca69362dd0b6d099c1252bb06081cbeab2d2c95c6fe24745cdc68ed9fb7e28002d925b8701c13427800af6ed45d97d3a406f  deviceinfo
+f44cc3b5db025b0df7e3df88561a46b10b8b106e27e5a227ea50b44ebbd91d2986f4eac3a5f1e3cbac2d3a8c119708d22c057bbb9e4fc7b3b9c0c03460f5e850  deviceinfo
 1a99953420a4068c6205dd90015e895909d39011dcc72fd73ac6880920fe4b95fe54377b9d4864a2d4fac56c4334e0c896ba8cc92dea61f93e9384de0998a910  modules-initfs.mainline
 55360b1ba4ddadea341c9edb13c32ba5f19aabf75ab28602f30cfb79b9df8834f115ef979c70569f23ec1293b1fcd408baf320d87803293ce7106bdc73a26c9f  FP2.conf
 b834461c6866bb0c473dd089dd5da641dd42a00f610aad6503117aa50fe6e200db9ad0a264bb609f12350d59faee1f772907bacd75439f702ea7d52f6f85e2b1  hifi

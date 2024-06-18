@@ -21,7 +21,7 @@ deviceinfo_getty="ttyMSM0;115200"
 
 # The panel on this device displays everything horizontally flipped for some reason (WTF Samsung?).
 # Make it look normal by instructing the kernel to flip the screen using video=540x960,reflect_x.
-deviceinfo_kernel_cmdline="earlycon console=ttyMSM0,115200 video=540x960,reflect_x PMOS_NO_OUTPUT_REDIRECT"
+deviceinfo_kernel_cmdline="earlycon console=ttyMSM0,115200 video=540x960,reflect_x"
 
 # Bootloader related
 deviceinfo_flash_method="fastboot"

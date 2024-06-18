@@ -2,7 +2,7 @@
 pkgname=device-realme-porsche
 pkgdesc="Realme GT 2"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -41,6 +41,6 @@ package() {
 }
 
 sha512sums="
-411a59509ffb217969e03f19053192270b305858fcfb1e66722bf712829c27ebad41c173de390b00d587d3e951b4559cd63b932d4bce1b692eba4832cbaae6f8  deviceinfo
+ebc87fb84ff9fc3a9e17e1f63afba4c6ce5a9931ff482f6c8384b4d302879ad22ddc1977c45c5d196305647fa91d62fb89fecb6a553e92aa2b93117354a7ccc6  deviceinfo
 bbc201f65ee01de96ecedc856e7a9aebfb0e421daa2f25a7eb57f61ac9bd7412caefb9f68ac572dfd26f0d1f9752c4033291694f51c4cb5162d7c767beb8a152  empty-realme-porsche.dts
 "

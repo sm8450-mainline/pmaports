@@ -2,7 +2,7 @@
 pkgname=device-asus-x00td
 pkgdesc="Asus ZenFone Max Pro M1"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -43,6 +43,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-11c397ffd3e5578efd7ae8a655857cc930a15ef77c7431843b8c08b6b698765a1759ade4026201116f180eee48aacfb1c37c3e9e788040f388fdc9c737ad59ec  deviceinfo
+cf62307c453d29fcd531430aa3214d2cbf6313abeb42c7b3334bbf43ce7e11f3a88416e8071cc6042a750ab930a5b991689c089197eb06f1dc8584fe6fde614f  deviceinfo
 06dd4eadb150d29ee6db13683c8d49e52c14e4c8da0a890d22d38c6ed8e87bd9a38e6ccdba831cae99cb70baf30bc775fdf9083f36d719530171c005556f47b7  modules-initfs
 "

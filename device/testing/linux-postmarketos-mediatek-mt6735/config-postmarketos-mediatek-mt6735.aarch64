@@ -482,7 +482,7 @@ CONFIG_ARCH_NR_GPIO=0
 #
 # Boot options
 #
-CONFIG_CMDLINE="earlycon=uart8250,mmio,0x11002000,115200n8 console=tty0 ignore_loglevel clk_ignore_unused PMOS_NO_OUTPUT_REDIRECT PMOS_NOSPLASH"
+CONFIG_CMDLINE="earlycon=uart8250,mmio,0x11002000,115200n8 console=tty0 ignore_loglevel clk_ignore_unused PMOS_NOSPLASH"
 CONFIG_CMDLINE_FROM_BOOTLOADER=y
 # CONFIG_CMDLINE_FORCE is not set
 # CONFIG_EFI is not set

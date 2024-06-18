@@ -2,7 +2,7 @@
 pkgname=device-samsung-on7
 pkgdesc="Samsung Galaxy On7 (2015)"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -37,6 +37,6 @@ nonfree_firmware() {
 
 
 sha512sums="
-59985b1a8f4184c017080e373e3cd4e5d01370741e569434159a39c034777f73ab0ea30d20fbd1fcd2be8977461c2b542b34a539f36f9c367f0e33e91da64d10  deviceinfo
+f35bc86201b8def8c48d1620d02ec184ac34e5a47d344291941a3367a333505425b829df889a8378c0ed264240ba853959158fb6b18f02dabd68a6254cf1895e  deviceinfo
 2ec94ab06240419953494aede92263232e07745b8406923d39849c1a4b32bd135f4411243755e5f892d201e39dca10e8aa7b175b6c63361be094f6ba086a518f  modules-initfs
 "

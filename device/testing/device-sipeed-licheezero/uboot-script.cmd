@@ -1,4 +1,4 @@
-setenv bootargs init=/init.sh rw console=tty0 console=ttyS0,115200 panic=10 consoleblank=0 loglevel=1 PMOS_NO_OUTPUT_REDIRECT PMOS_FORCE_PARTITION_RESIZE
+setenv bootargs init=/init.sh rw console=tty0 console=ttyS0,115200 panic=10 consoleblank=0 loglevel=1 PMOS_FORCE_PARTITION_RESIZE
 
 printenv
 

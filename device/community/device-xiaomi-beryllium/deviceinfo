@@ -25,7 +25,7 @@ deviceinfo_rootfs_image_sector_size="4096"
 deviceinfo_flash_method="fastboot"
 # FIXME: Console enabled to workaround a race condition with display initialisation
 # See https://gitlab.freedesktop.org/drm/msm/-/issues/46
-deviceinfo_kernel_cmdline="console=ttyMSM0,115200 PMOS_NO_OUTPUT_REDIRECT"
+deviceinfo_kernel_cmdline="console=ttyMSM0,115200"
 deviceinfo_generate_bootimg="true"
 deviceinfo_bootimg_qcdt="false"
 deviceinfo_bootimg_mtk_mkimage="false"

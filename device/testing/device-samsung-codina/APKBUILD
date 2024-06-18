@@ -2,7 +2,7 @@
 pkgname=device-samsung-codina
 pkgdesc="Samsung Galaxy Ace 2"
 pkgver=2
-pkgrel=3
+pkgrel=4
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -32,5 +32,5 @@ nonfree_firmware() {
 
 
 sha512sums="
-ce13f2711ead5542253083a1eb4183aae0fa4aa206b578daf8771b7d8d1cf8d63d9f7e5971f939a1458769146a6e3d84cbfb8c45e7d25968994b7c1f11bdf2c1  deviceinfo
+71c464e81685f6bae037812e19b2d79258e05e9114b1ff214184d2ccc8a0eae284d06cfc80ae17b75d596a97dbbf1a2aa37e90b8ae5b07e4dfd0c92dd9bf7d63  deviceinfo
 "

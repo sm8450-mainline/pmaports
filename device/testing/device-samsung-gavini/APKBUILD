@@ -2,7 +2,7 @@
 pkgname=device-samsung-gavini
 pkgdesc="Samsung Galaxy Beam (GT-I8530)"
 pkgver=1
-pkgrel=3
+pkgrel=4
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -46,7 +46,7 @@ phosh() {
 }
 
 sha512sums="
-57297d1fb1baaa3ddd81a7b0deb7d2a34bf5c760816786ead0cbfecc3e56e161e11667cecec644132b621b38b607288427eb720f2e0c5f914b3413d07234f291  deviceinfo
+9e3c5e3fa8a25a229942cda8562470755be8077b9a9cf19a701aa1e0de9355f4a39b31b1719a87a900fde012ac7eed5b5bf8b565549ef8794142370d051b82ea  deviceinfo
 685ec71484a932c59f83f1039d4d18a010a5849342e96d9e15ae8ce64374aac15073f9c51d7d9f270c60e70d2ea15c685b8f528cdc40f991b093b9227cba6a48  kwin.sh
 95576332f1ad579d30359df9a3efcc3f478c56688509b5c470a70e8ae41466dbb397fb6db7578b5c54e13795ab8cf869b5c63ba775951817a8bb3d4c682bdfd5  phoc.ini
 "

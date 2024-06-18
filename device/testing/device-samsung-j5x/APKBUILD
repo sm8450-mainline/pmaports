@@ -3,7 +3,7 @@
 pkgname=device-samsung-j5x
 pkgdesc="Samsung Galaxy J5 (2016)"
 pkgver=4
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -35,6 +35,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-bb17af63ba088c6c9a592833fa4f1c6e24046e99a30b47c114d32dcb1705ab0c8096bafa74619487f5fa8896c0b08965a76d02f5d01afcbb510b6dd2efb8153b  deviceinfo
+09e2319dea448b3c4580e55d6b121726557a893e8d8ecde9e62cf3fd5e72acbf784215a3ea688b3c43b5e56cf07523a17ba1aa36bcdbc77413f8362b06bd9a18  deviceinfo
 72ccbf2f59a72d5299339f9db3cdf4e84d4b20c756b549c11d2e94b0bd4b433d993d64c2908e2536ff369363813586691af28c2a5c0e1aecf7a848e8b455cb8d  modules-initfs
 "

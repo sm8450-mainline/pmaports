@@ -2,7 +2,7 @@
 pkgname=device-lenovo-a6020a40
 pkgdesc="Lenovo Vibe K5"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -33,6 +33,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-20189c985b66825cc06e8725509eb99783e94c5d7ce1c6e0e0a6c096f6136dba9f09ae97f9659dbe5a65ad3011429de20ca15622c92d5dc9d03a3d95dba720c0  deviceinfo
+e938936b3d01f085ee9b7b4c44426df3a617c3441ff8d4864db910d1aa6894cbe7a5502af7010d4c95655772bb63a97e0a34504910a767ea4b74dfe30e2bd27f  deviceinfo
 36791d00fdb1856c8b2e25f7ce675cd177262809348b218dd66f7e55e92f5f6e22699860d9a667d12169da75685787074a4d06d5cf49f64d5cb83be74ccf0533  modules-initfs
 "

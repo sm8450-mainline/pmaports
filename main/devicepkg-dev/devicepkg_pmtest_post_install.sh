@@ -19,5 +19,5 @@ cat <<EOF
 #!/bin/sh
 
 echo -e "\n# PMOS CI: enable console logging" >> /etc/deviceinfo
-echo 'deviceinfo_kernel_cmdline_append="console=$console PMOS_NO_OUTPUT_REDIRECT"' >> /etc/deviceinfo
+echo 'deviceinfo_kernel_cmdline_append="console=$console"' >> /etc/deviceinfo
 EOF

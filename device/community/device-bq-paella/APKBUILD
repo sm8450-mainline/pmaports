@@ -3,7 +3,7 @@
 pkgname=device-bq-paella
 pkgdesc="BQ Aquaris X5"
 pkgver=8
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -38,6 +38,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-ae1d413f189856d5f9ccc6a3a64e6cd719ad3cf7e4d1f5b358201037f7fcad2098a33eedfb83278ecf80073bdfbfd49cc796b43da4992f7b2bd3a6dbaa266c40  deviceinfo
+75e857f36f627d1ef209bfc79bac574b432ecb93a0e0de131675de43c43cef15e455284bab7b635376d21fd908e8cd21e6e918c6bd03c6e711179489f56e39a5  deviceinfo
 ebf6a40372329116a25df1407e671365bb2bf0613f61f0a572fc77890fb0a1760259ab35ed9f002ef2a5c6ee8836bc7bbeb50bf5ac3de14c11e6d96872ad3644  modules-initfs
 "

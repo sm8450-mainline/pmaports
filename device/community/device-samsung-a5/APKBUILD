@@ -4,7 +4,7 @@
 pkgname=device-samsung-a5
 pkgdesc="Samsung Galaxy A5 (2015)"
 pkgver=11
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -42,6 +42,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-72cbc4f8e5ec234b5a9b7eb8da40cdabaf3dbe0cee5665aab5107b1795897c30b88a3ec32e3bc4327bf1a512a64fe09a5c1b79baaee9aa2e19ea9d04381550b8  deviceinfo
+2fc9ed97981cc439046475eef8eb6d358bfde571242b14763cf4223c076cbda9ee861221e6978056e65a09020bfaeeb7734e22782701a2bcb134ef113467dc9a  deviceinfo
 13ba472485d757332b46a21fe771ae2779d0c5f1e997b6e51a4c0acce902256f0a2c724828251acf0150d7de919b691053de59041fea0b983569a004dcb75256  modules-initfs
 "

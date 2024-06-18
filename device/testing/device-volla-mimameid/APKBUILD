@@ -3,7 +3,7 @@
 pkgname=device-volla-mimameid
 pkgdesc="Volla Phone 22"
 pkgver=1
-pkgrel=4
+pkgrel=5
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -40,5 +40,5 @@ kernel_mainline() {
 }
 
 sha512sums="
-02455b1b654bb288a49b4e290a473995f17616b97e9c762ef0ef7b0334be74e1b94a36e83d680e42e0988875e74a9c9551156c93098f30d3b98bd2736529b076  deviceinfo
+5adf0f4b14a6b7ae644d84b0777d14c79aa9cfef0b652f31fd3239a7a4e8f9d8638806bd64a2ab0550798aaffd55b827c325644f5a31cbebae7d17c995a1aa69  deviceinfo
 "

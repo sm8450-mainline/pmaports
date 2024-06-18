@@ -2,7 +2,7 @@
 pkgname=device-huawei-kiwi
 pkgdesc="Huawei Honor 5X / GR5 (2016)"
 pkgver=3
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -28,6 +28,6 @@ package() {
 }
 
 sha512sums="
-79f9ad03c06e1eb15be8df8b1d5845dc3c5c4194ef34a94cf66fa4281fb1c35c1706f0a652aa9d4803943bb331cb049b87534e3c2fb51fe7c1b6a955b30fe979  deviceinfo
+9a94fd4e021db757d114b3c053e541d165a30f93ab7b31896cd0a0da09a30403fb2afc3b09258a574fd3448d17949811008b903253aa65f59643872de96ffcce  deviceinfo
 96b41eb6b39f8c8bcb6c99ab6b5729ec33d6bc394b2230ed168cf19cba8f86ebae3340b0ef9e15a3a6ee202895cd81f4d8812e5c81c4cc6d087ca9e239023993  modules-initfs
 "

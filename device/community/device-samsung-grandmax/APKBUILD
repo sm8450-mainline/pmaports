@@ -3,7 +3,7 @@
 pkgname=device-samsung-grandmax
 pkgdesc="Samsung Galaxy Grand Max"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -37,6 +37,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-41bad63b5c0839357a608b2d56917eb8798bb8e6f260dcba0ba8b4e2f6faf7455406d18460ad9b33f112bd5f89ca5843c7327b6d52d29f640b35f3839b85f421  deviceinfo
+a7f7c5ef87b8bc6d6f8c732098342e8a91742a67978eb107e20cc839c5dedb8ce497bf1a9df143fe447e74936cfc6dfeecb4b25427c43278f0020ba1065dee2e  deviceinfo
 24b1b199ca26d902807038faa20b44d6060c039900df5c7aa263cdb22b35930e726c2bfd86e32b1f1dd6fa8ab3b57a6c8ff430ce9aae2dd04c04565ea56c8a43  modules-initfs
 "

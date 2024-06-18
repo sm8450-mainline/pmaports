@@ -4,7 +4,7 @@
 
 pkgname=linux-postmarketos-omap
 pkgver=6.9.3
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline kernel fork for OMAP devices"
 arch="armv7"
 url="https://kernel.org/"
@@ -75,7 +75,7 @@ package() {
 
 sha512sums="
 119320627a73c260725a51ee4234942cc137aeb8b7c67428204ae14e3b518cf7b770e75a8dd0df7fa910333a64241146eb8f93463163f386dae8ddbd6943a631  linux-6.9.3.tar.xz
-4bd7828c0f2afd5ef3829df8bff1c503b4e426fe2621f9c754dcdef1d1118fdd06729729a6516140783e382ccddd38f0f8f0dbeab6624bdd6d7013ce2c9afc97  config-postmarketos-omap.armv7
+0e19ded2c26b3e9b75effdf1c817262840851afea6e0bf7d88d3390632cd7f9f2467c10fae8e9334c4a1bdf056240bb5dfafdaa34d3663b275a5440c33524273  config-postmarketos-omap.armv7
 9a187d93885f07467ec67094621b2d762607d58622e67172bdfcd8ba5f3d6aab900ca5d233efd3d447540f9b906ba950083a35997c84b315801604e1cd5cddc3  0001-Add-TWL6032-dtsi.patch
 f7d1a87088c65278a114125e732d5bebebb560a6245afb34e003083d808ef3f8c5f49ff23131953508a6daae111ab6adfffdbcf56b79260a6d4115f859c7bb3a  0002-arm-dts-Add-common-dtsi-for-espresso.patch
 089ca0547997c7cd5d1b65924c134eb6b7703a7439729923d3639d125763412fa7e826d1cb839ac0b6cd22e614f69a3b52605a75b571e271c33f9a27ff6ac9c2  0003-arm-dts-Add-espresso7-support.patch
