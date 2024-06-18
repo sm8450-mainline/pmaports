@@ -3,7 +3,7 @@
 pkgname=device-samsung-lt01
 pkgdesc="Samsung Galaxy Tab 3 8.0"
 pkgver=1
-pkgrel=3
+pkgrel=4
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -12,6 +12,7 @@ depends="
 	alsa-ucm-conf
 	mkbootimg
 	postmarketos-base
+	postmarketos-initramfs-minimal
 	"
 _pmb_recommends="$pkgname-nonfree-firmware"
 makedepends="devicepkg-dev"
