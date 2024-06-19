@@ -1,7 +1,7 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 # Co-Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-initramfs
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=0
 pkgdesc="Base files for the postmarketOS initramfs / initramfs-extra"
 url="https://postmarketos.org"
@@ -17,6 +17,7 @@ depends="
 	cryptsetup
 	device-mapper
 	devicepkg-utils>=0.2.0
+	dosfstools
 	e2fsprogs
 	e2fsprogs-extra
 	f2fs-tools
@@ -90,8 +91,8 @@ sha512sums="
 20bc7a21f4f59548b8179c5cb1fc2b3db64eb355988bce992db3bc4075d65b4135ff9dd7d754215d0402978811494449cce476a26cda6bb2f0f8b53ae8e36bd7  00-default.modules
 9c0e8f6f61d5da191e03a1aa9d5d0ceb5baf1eae6dbb9bfb0af59817783525119ac8394b135f303f7b6434a3eab0b49185fb90379e06823db847a4999c75ce33  00-initramfs-base.dirs
 929a8e6cca6b2b4ac6af89fc3912e80315f51c9bf6e9479124ccb7ebe9e99c6c1cafb98d3aa01b0a76a2f6e0071ba3eb86c7a2169a15c2e1788d69458bea3471  00-initramfs-base.files
-8a4adad3785af474b36a09a05f6a3b2c4b4f43aac331a53b903abfa51ea12be1e3d1d807b7a6e66a1346815f3b0044daf8cd62e21e2dc75d2db13ee265a72985  00-initramfs-extra-base.files
+f0f00a35f06b7d0a46c67df753ecef880ac92a725a8301649068069d2d477ae3278b3c548ea3f378b4c23eafb39551f5e3ca6a63478486d50a298132140b5b69  00-initramfs-extra-base.files
 e85386077d590cd0db0745e8b58f3323a408cb6a94bca0e4395c43e4db18b0beef29324ed2bfeab6511d0e3b297c067e5a37f420a6877d9c28c285f2416ca420  init.sh
-e0954014d73e7a61376a2463978a4b44d17bbb2319072382a3412a8214e9c3e45266266d8eebd37634b1b18a71094055464a7c81b973501378dcf05aa5c2f4c0  init_functions.sh
+aa9591e2c35577bc3c1e9bafa7904b3dff97c42992a763113fff20754e82d521cc690733a1606d6808d556b5a271b5ad8fdc0d2aa475fcb3921433dca0ce178b  init_functions.sh
 ba3275a9af788c7c782322a22a0f144d5e50e3498ea6886486a29331f23ae89cd32d500a3635cfa7cab369afba92edc18aeca64ccbf0cd589061cce23d15b46c  unudhcpd.conf
 "
