@@ -2,6 +2,7 @@ ahci
 ehci_hcd
 ehci_pci
 hid-multitouch
+hid_apple
 hid_generic
 i2c_hid_acpi
 jbd2
