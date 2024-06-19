@@ -3,7 +3,7 @@
 
 pkgname=linux-next
 pkgver=6.10_git20240619
-pkgrel=0
+pkgrel=1
 _nextver="${pkgver#*_git}"
 pkgdesc="Linux next kernel"
 arch="aarch64"
@@ -28,6 +28,7 @@ makedepends="
 	perl
 	zstd
 	git
+	python3
 "
 builddir="$srcdir/linux-next-next-$_nextver"
 
