@@ -248,7 +248,17 @@ find_root_partition() {
 find_boot_partition() {
 	[ -n "$PMOS_BOOT" ] && echo "$PMOS_BOOT" && return
 
-	# First check for pmos_boot_uuid on the cmdline
+	# Before doing anything else check if we are using a stowaway
+	if grep -q "pmos.stowaway" /proc/cmdline; then
+		mount_root_partition
+		PMOS_BOOT="/sysroot/boot"
+		mount --bind /sysroot/boot /boot
+
+		echo "$PMOS_BOOT"
+		return
+	fi
+
+	# Then check for pmos_boot_uuid on the cmdline
 	# this should be set on all new installs.
 	# shellcheck disable=SC2013
 	for x in $(cat /proc/cmdline); do
@@ -312,13 +322,18 @@ get_partition_type() {
 # /sysroot/boot (rw), after root has been mounted at /sysroot, so we can
 # switch_root to /sysroot and have the boot partition properly mounted.
 mount_boot_partition() {
-	partition=$(find_boot_partition)
+	partition="$(find_boot_partition)"
+	local mount_opts="-o nodev,nosuid,noexec"
+
+	# We dont need to do this when using stowaways
+	if grep -q "pmos.stowaway" /proc/cmdline; then
+		return
+	fi
 
 	if [ "$2" = "rw" ]; then
-		mount_opts=""
 		echo "Mount boot partition ($partition) to $1 (read-write)"
 	else
-		mount_opts="-o ro"
+		mount_opts="$mount_opts,ro"
 		echo "Mount boot partition ($partition) to $1 (read-only)"
 	fi
 
@@ -333,7 +348,7 @@ mount_boot_partition() {
 		vfat)
 			echo "Detected vfat filesystem"
 			modprobe vfat
-			mount_opts="-t vfat $mount_opts"
+			mount_opts="-t vfat $mount_opts,umask=0077,nosymfollow,codepage=437,iocharset=ascii"
 			;;
 		*)	echo "WARNING: Detected unsupported '$type' filesystem ($partition)." ;;
 	esac
@@ -513,6 +528,11 @@ resize_root_filesystem() {
 }
 
 mount_root_partition() {
+	# Don't mount root if it is already mounted
+	if mountpoint -q /sysroot; then
+		return
+	fi
+
 	partition="$(find_root_partition)"
 	rootfsopts=""
 
@@ -542,7 +562,15 @@ mount_root_partition() {
 		fail_halt_boot
 	fi
 
-	if ! [ -e /sysroot/usr ]; then
+	if [ -e /sysroot/.stowaways/pmos/etc/os-release ]; then
+		umount /sysroot
+
+		mkdir /stowaway
+		mount -t "$type" -o rw"$rootfsopts" "$partition" /stowaway
+		mount --bind /stowaway/.stowaways/pmos/ /sysroot
+	fi
+
+	if ! [ -e /sysroot/etc/os-release ]; then
 		echo "ERROR: root partition appeared to mount but does not contain a root filesystem!"
 		show_splash "ERROR: root partition does not contain a root filesystem\\nhttps://postmarketos.org/troubleshooting"
 		fail_halt_boot
