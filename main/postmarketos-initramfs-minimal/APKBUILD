@@ -2,11 +2,11 @@
 # only be used on devices that do not have space for the full size ramdisk.
 pkgname=postmarketos-initramfs-minimal
 pkgver=2.5.6
-pkgrel=0
+pkgrel=1
 pkgdesc="Deprecated minimal initramfs for space constrained devices"
 url="https://postmarketos.org"
 options="!check"  # no tests
-provides="postmarketos-ramdisk"
+provides="postmarketos-ramdisk=$pkgver-r$pkgrel"
 provider_priority=1
 depends="
 	blkid
