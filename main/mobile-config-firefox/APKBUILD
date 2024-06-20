@@ -1,6 +1,6 @@
 # Maintainer: Oliver Smith <ollieparaoid@postmarketos.org>
 pkgname=mobile-config-firefox
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=0
 pkgdesc="Firefox tweaks for mobile and privacy"
 url="https://gitlab.com/postmarketOS/mobile-config-firefox"
@@ -20,5 +20,5 @@ package() {
 	make DESTDIR="$pkgdir" FIREFOX_DIR=/usr/lib/firefox-esr install
 }
 sha512sums="
-4bd2ddc36b8ec9be96bf8545b4a08a4828e3955bcdb076fef21ac0bcb78e5a6aee81b1d18c165d46bb8598f51b8afe1d5b9d0067442e6f5c5d36597d557d6793  mobile-config-firefox-4.3.1.tar.bz2
+b63869a891b72686351cab5a7bd995e0f9dddfa3e8512aba215fafb2762e425b0a4bcba9ad5c98d7b680bb0572c40f4cb6435d1dc3018f117ee37967dda9dddb  mobile-config-firefox-4.3.2.tar.bz2
 "
