@@ -1,7 +1,7 @@
 # WARNING: this package is deprecated and currently unmaintained. It should
 # only be used on devices that do not have space for the full size ramdisk.
 pkgname=postmarketos-initramfs-minimal
-pkgver=2.7.2
+pkgver=2.8.0
 pkgrel=0
 pkgdesc="Deprecated minimal initramfs for space constrained devices"
 url="https://postmarketos.org"
@@ -16,6 +16,7 @@ depends="
 	cryptsetup
 	device-mapper
 	devicepkg-utils>=0.2.0
+	dosfstools
 	e2fsprogs
 	e2fsprogs-extra
 	f2fs-tools
@@ -89,9 +90,9 @@ sha512sums="
 59be0649ed87a72d93624bd8a2e3f8c99a0f32f7b7a26f99436de782beba55671472c269eeee86440efc87e0d7148a0bb335fa537791092e73878ca21330544a  00-default.modules
 9c0e8f6f61d5da191e03a1aa9d5d0ceb5baf1eae6dbb9bfb0af59817783525119ac8394b135f303f7b6434a3eab0b49185fb90379e06823db847a4999c75ce33  00-initramfs-base.dirs
 ab41b45b0613f25a61114ed8c8b92bc53c60838f6e2e0ba18c76e5369b2984e6023a0661887692673aca3f647f268c468a468f6b1ac424cfee609017a89481dd  00-initramfs-base.files
-8a4adad3785af474b36a09a05f6a3b2c4b4f43aac331a53b903abfa51ea12be1e3d1d807b7a6e66a1346815f3b0044daf8cd62e21e2dc75d2db13ee265a72985  00-initramfs-extra-base.files
+4129c444aae613c8a10a2e87c4485482d0023e665581f804c5f0b9f76e2dd6fec3c78d02af07672b1d9eeacfdcd32c8eb5adc2f5677b8774c74d0ee631d950bd  00-initramfs-extra-base.files
 102cb49a5b44282afee7808945c69e9bb9310677efeefc681d92217f0399a90fcbb37eb9ac7aed89cc27c324780298c7c2de6de2bdb89a77499faad1c312e539  init.sh
-8c50b43c3c8c1414a21de00a78db380f6580bcf2337146189891d430f73c1a9f26cea07fc5a70b1de3f98ab49b3c97efe69dfb5ea08dd1e01c2ec65ed7d41113  init_functions.sh
+4d08617c98c83cd47baf820bb536e3003cc983218f20291ec9f201415fe84e0968a819e8ed2d0ae8a9b717b58ca0a534d7796190bd3b704b76afc1f263dae911  init_functions.sh
 ba3275a9af788c7c782322a22a0f144d5e50e3498ea6886486a29331f23ae89cd32d500a3635cfa7cab369afba92edc18aeca64ccbf0cd589061cce23d15b46c  unudhcpd.conf
 675e7d5bee39b2df7d322117f8dcaccc274d61beaf4d50ead19bbf2109446d64b1c0aa0c5b4f9846eb6c1c403418f28f6364eff4537ba41120fbfcbc484b7da7  mdev.conf
 "
