@@ -1,9 +1,9 @@
-# Reference: <https://postmarketos.org/vendorkernel>
+# Maintainer: Caleb Connolly <caleb@postmarketos.org>
 # Kernel config based on: arch/arm64/configs/defconfig
 
 pkgname=linux-next
 pkgver=6.10_git20240619
-pkgrel=1
+pkgrel=2
 _nextver="${pkgver#*_git}"
 pkgdesc="Linux next kernel"
 arch="aarch64"
@@ -11,6 +11,7 @@ _carch="arm64"
 _flavor="generic-trailblazer"
 url="https://kernel.org"
 license="GPL-2.0-only"
+# FIXME: kconfigcheck isn't supported since we use fragments
 options="!strip !check !tracedeps pmb:cross-native"
 source="
 	https://gitlab.com/linux-kernel/linux-next/-/archive/next-$_nextver/linux-next-next-$_nextver.tar.gz
@@ -70,5 +71,5 @@ package() {
 sha512sums="
 6a2c4df355b3e9a055d14e4dd602eb9a07de7e42b5ad0353048481e66064bea1e8b49031e64eb4c05e62530723d3128ff079ba0112650ec872fb66bb6454a9a1  linux-next-next-20240619.tar.gz
 e5b8530b8410d41d60c6c3a5cb4f73cdcdbcf432a8453ddb0b8901bf20083df4ae8c44ff2771aaa17c4a78afddfd604f929f05839bb513ad60809fbd7adb7056  devices.config
-4be8c6f12ab31b709cb67cb783830badae019a79a8e81bf050d509cdfc3b3295b84392b15f357e4c84bc4222fda34979e7a945544e1b5cb4916fb111d56aa70c  pmos.config
+d52f692935675b5b9300c7983848a26149914687a8b3aef3b90f50da3f6534de9b490c6778d490bb5a4202f1a45cc4d9178a1e1b8270a8d612d4181721629c02  pmos.config
 "
