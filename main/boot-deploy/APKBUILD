@@ -1,6 +1,6 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=boot-deploy
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=0
 pkgdesc="tool for finalizing and deploying boot related files"
 url="https://gitlab.com/postmarketos/boot-deploy"
@@ -28,5 +28,5 @@ package() {
 }
 sha512sums="
 a243975b9850d9933e0f917f7eb38fc4a76ea658c3dcc56f035f60ee6c62d6740c1107143b8210bdc0231d4c9b6b2003e458120985604eb09649322d359ae89f  os-customization
-c3ea5948efeabbbe7923b337c73bfcf042bf6235a78a58e4163a60de43edf4236922874947d3d85d072b9119b6653172c7e7ccac1fdfe23e72e361bcc44e42bd  boot-deploy-0.16.1.tar.gz
+f24f639a9c99276c656575fe358ff098472ac654c96521a567f97b3b05918dd9b9c653a1eef6314e92659c81309d343276315c3baf20e98583c5d1fae501e179  boot-deploy-0.16.2.tar.gz
 "
