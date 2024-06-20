@@ -1,3 +1,4 @@
+# Maintainer: Caleb Connolly <caleb@postmarketos.org>
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-postmarketos-trailblazer
 pkgdesc="postmarketOS Trailblazer generic ARM64"
@@ -36,6 +37,6 @@ package() {
 }
 
 sha512sums="
-3ca2143e948f3070df9270918cd5a27259bd42c1bfe42f98c3406364496acaf878562d5b311856c9a4bb842ed9cdb8620754d092d225397f2b0f22e894c8ddf7  deviceinfo
+1f353c9ccca43a43bf04b115f87d07ff472b19ca41ac2289d69f2453c708b12f4d5421599c752ed4ed75455ea341dd3f3c6766117282786933e878a109777fef  deviceinfo
 0ed03dd1a7f1c263d7facb3c28f31993ae1d77df9100bcefd540b087ddf16c8846289d1b901d01eeb633510a4d8db202cca3a93e932b7890490408acfd121812  modules-initfs
 "
