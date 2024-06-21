@@ -13,6 +13,7 @@ deviceinfo_gpu_accelerated="true"
 deviceinfo_chassis="laptop"
 deviceinfo_keyboard="true"
 deviceinfo_external_storage="true"
+deviceinfo_disable_dhcpd="true"
 
 # Bootloader related
 deviceinfo_flash_method="none"
