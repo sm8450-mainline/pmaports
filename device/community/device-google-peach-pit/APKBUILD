@@ -2,8 +2,8 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-peach-pit
 pkgdesc="Samsung Chromebook 2 (11.6 inch)"
-pkgver=6
-pkgrel=2
+pkgver=7
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -58,7 +58,7 @@ nonfree_firmware() {
 }
 
 sha512sums="
-cbeb0f1fdf4357763eae7ede0b28923ae39c18aa187894baa778bdb20afa728aa97cad63b957d799ffcd1130ae40c3b796e293a2a1c97d9a68bf132ec6ce6d13  deviceinfo
+18e829f0eddcc8a0e64eb5081afa324da060de98478ac17d6199c1cecb4d2e984212c8681e8c75b4552d4dd5bbffff2f60dc8be1884b6ef23daa58319d4274fc  deviceinfo
 e12a68f919182cb4e6812a5dd13fce8dc15266d2ac16aa5f0a31034f111cb403c020ebaaa4d94309f4baf2f71379327c57c08029e27c506d152695e9a2b04b2b  modules-initfs
 e53ca475830930ecfc1fd537702e850e2abcb66fbed521cb6c3a2918d762649254bd0244ec93a47b20dfc593ec3afc9bdebdec1759a7bc96dcbe4800f40893da  90-tap-to-click.conf
 6fe67c8f2e09e3e37297eebaf2a86a32671923a5fd4d18e5aeb10e580fb998e4ddb4a691531a0c8f4b4e70c6f0f7e91008dd836ffca8026d59862c6e829fd996  Peach-Pit-I2S-MAX98090.conf
