@@ -19,7 +19,7 @@ libcomposite
 lmh
 msm
 nvmem_qfprom
-onboard_usb_hub
+onboard-usb-dev
 panel-samsung-s6d7aa0
 panel-samsung-sofef00
 panel-visionox-rm69299
