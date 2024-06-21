@@ -17,6 +17,7 @@ deviceinfo_external_storage="true"
 deviceinfo_screen_width="1920"
 deviceinfo_screen_height="1080"
 deviceinfo_gpu_accelerated="true"
+deviceinfo_disable_dhcpd="true"
 
 # Bootloader related
 deviceinfo_flash_method="none"
