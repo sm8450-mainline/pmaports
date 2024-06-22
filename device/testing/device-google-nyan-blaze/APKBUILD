@@ -3,7 +3,7 @@
 pkgname=device-google-nyan-blaze
 pkgdesc="HP Chromebook 14 G3"
 pkgver=4
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -14,6 +14,7 @@ depends="
 	linux-google-nyan>=6.1.27-r0
 	postmarketos-base
 	postmarketos-cros-common
+	postmarketos-initramfs-minimal
 "
 subpackages="
 	$pkgname-mpv-wayland:mpv_wayland
