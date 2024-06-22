@@ -3,7 +3,7 @@
 pkgname=gnome-session
 pkgver=99946.0
 _pkgver=46.0
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME session manager"
 url="https://gitlab.gnome.org/GNOME/gnome-session"
 arch="all"
@@ -30,13 +30,14 @@ makedepends="
 	xmlto
 	"
 options="!check" #no tests
-subpackages="$pkgname-lang $pkgname-doc"
+subpackages="$pkgname-lang $pkgname-doc $pkgname-systemd"
 source="https://download.gnome.org/sources/gnome-session/${_pkgver%%.*}/gnome-session-$_pkgver.tar.xz"
 builddir="$srcdir/gnome-session-$_pkgver"
 
 build() {
 	abuild-meson \
 		-Db_lto=true \
+		-Dsystemduserunitdir=/usr/lib/systemd/user \
 		. output
 	meson compile -C output
 }
@@ -47,7 +48,6 @@ check() {
 
 package() {
 	DESTDIR="$pkgdir" meson install --no-rebuild -C output
-	rm -rf "$pkgdir"/DELETEME
 }
 sha512sums="
 2187b8ae4ac4ec728283c5dc03edba6472864a704f6c6cd7a3e962515a3925d3a8438f7f89855dd082d2c013868da81e16da280c70b0e07537c8e431301b4bd8  gnome-session-46.0.tar.xz
