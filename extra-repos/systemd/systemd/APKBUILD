@@ -5,7 +5,7 @@
 pkgname=systemd
 pkgver=256
 _pkgver="musl-v${pkgver//_/-}"
-pkgrel=2
+pkgrel=3
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !armhf !s390x" # blocked by pmboostrap not supporting
@@ -255,6 +255,7 @@ udevd_zcomp() {
 
 timesyncd() {
 	pkgdesc="systemd Time Synchronization"
+	install="$subpkgname.post-install $subpkgname.pre-deinstall"
 
 	amove etc/systemd/timesyncd.conf
 	amove usr/bin/timedatectl
@@ -276,6 +277,7 @@ timesyncd_zcomp() {
 
 networkd() {
 	pkgdesc="systemd Network Configuration"
+	install="$subpkgname.post-install $subpkgname.pre-deinstall"
 
 	amove usr/bin/networkctl
 	amove etc/systemd/network
@@ -309,6 +311,7 @@ networkd_zcomp() {
 
 resolved() {
 	pkgdesc="systemd Network Name Resolution"
+	install="$subpkgname.post-install $subpkgname.pre-deinstall"
 	replaces="resolvconf"
 	provides="resolvconf"
 

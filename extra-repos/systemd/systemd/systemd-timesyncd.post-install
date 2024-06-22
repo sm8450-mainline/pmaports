@@ -1,0 +1,4 @@
+#!/bin/sh
+
+. /usr/lib/systemd/systemd-apk-macros.sh
+systemd_service_post_install system systemd-timesyncd
