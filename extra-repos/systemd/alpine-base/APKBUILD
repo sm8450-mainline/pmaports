@@ -2,7 +2,7 @@
 
 pkgname=alpine-base
 pkgver=9999
-pkgrel=0
+pkgrel=1
 pkgdesc="Meta package for minimal alpine base"
 url="https://alpinelinux.org"
 arch="noarch"
@@ -20,10 +20,9 @@ depends="
 subpackages="alpine-release:release"
 replaces="alpine-baselayout"
 options="pmb:strict !check"
-source="rc-update"
 
 package() {
-	install -Dm755 rc-update "$pkgdir"/usr/bin/rc-update
+	mkdir -p "$pkgdir"
 }
 
 release() {
@@ -32,6 +31,3 @@ release() {
 
 	mkdir -p "$subpkgdir"
 }
-sha512sums="
-18227112a559e2b90c9a3cf4eb16762595370130c88cb7b7d1a0fda2ba894918802dd084f7c505f8eb379f078d4c2ed2e384f03d16ff25075acdb31ab0186813  rc-update
-"
