@@ -4,7 +4,7 @@
 pkgname=networkmanager
 pkgver=9991.48.2
 _pkgver=1.48.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Network Management daemon"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch="all"
@@ -248,6 +248,11 @@ _default_plugin() {
 	depends="$pkgname=$pkgver-r$pkgrel"
 
 	amove $_plugindir/libnm*-${subpkgname#"$pkgname"-}.so
+}
+
+systemd() {
+	install="$subpkgname.post-install $subpkgname.pre-deinstall"
+	default_systemd
 }
 
 sha512sums="
