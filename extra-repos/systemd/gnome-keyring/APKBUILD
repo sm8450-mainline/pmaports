@@ -4,7 +4,7 @@
 pkgname=gnome-keyring
 pkgver=99946.1
 _pkgver=46.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME keyring"
 url="https://wiki.gnome.org//Projects/GnomeKeyring"
 arch="all"
@@ -35,7 +35,11 @@ provides="dbus:org.freedesktop.Secrets"
 # Highest priority of the bunch since it has the least deps
 provider_priority=500
 options="!check" # Failing tests on 32-bit architectures
-subpackages="$pkgname-lang $pkgname-doc"
+subpackages="
+	$pkgname-doc
+	$pkgname-lang
+	$pkgname-systemd
+	"
 source="https://download.gnome.org/sources/gnome-keyring/${_pkgver%.*}/gnome-keyring-$_pkgver.tar.xz
 	0001-build-Use-p11_module_configs-as-default-pkcs11-confi.patch"
 builddir="$srcdir/gnome-keyring-$_pkgver"
@@ -61,6 +65,11 @@ check() {
 package() {
 	export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 	make DESTDIR="$pkgdir" install
+}
+
+systemd() {
+	install="$subpkgname.post-install $subpkgname.pre-deinstall"
+	default_systemd
 }
 
 sha512sums="
