@@ -1,6 +1,6 @@
 # Maintainer: m0rf30 <morf3089@gmail.com>
 pkgname=firmware-xiaomi-tulip
-pkgver=2
+pkgver=3
 pkgrel=0
 _commit="c8f750d4cdd8c5353c4aaa423f81774c63f87d27"
 pkgdesc="Firmware files for Xiaomi Redmi Note 6 Pro"
@@ -8,19 +8,25 @@ url="https://postmarketos.org"
 arch="aarch64"
 license="proprietary"
 options="!strip !check !archcheck !spdx !tracedeps pmb:cross-native"
+makedepends="qca-swiss-army-knife"
 source="$pkgname-$_commit.tar.gz::https://github.com/M0Rf30/postmarketos-vendor-xiaomi-tulip/archive/$_commit.tar.gz
 	30-gpu-firmware.files
 "
 
 builddir="$srcdir/postmarketos-vendor-xiaomi-tulip-$_commit"
-_fwdir="/lib/firmware/qcom"
+_fwdir="/lib/firmware"
 
 package() {
 	while IFS="" read -r fw; do
-		install -Dm644 "$fw" -t "$pkgdir/$_fwdir"
+		install -Dm644 "$fw" "$pkgdir/$_fwdir/$fw"
 	done < "$srcdir"/30-gpu-firmware.files
-
-	install -Dm644 qcom/a512_zap.elf "$pkgdir/$_fwdir/a512_zap.mbn"
+	ath10k-fwencoder --create \
+		--features=wowlan,no-nwifi-decap-4addr-padding,allows-mesh-bcast,mgmt-tx-by-ref,non-bmi,single-chan-info-per-channel  \
+		--set-wmi-op-version=tlv --set-htt-op-version=tlv \
+		--set-fw-api=5
+	install -Dm644 firmware-5.bin -t "$pkgdir/$_fwdir/ath10k/WCN3990/hw1.0/"
+	install -Dm644 ath10k/WCN3990/hw1.0/board-2.bin -t "$pkgdir/$_fwdir/ath10k/WCN3990/hw1.0/"
+	install -Dm644 qcom/a512_zap.elf "$pkgdir/$_fwdir/postmarketos/a512_zap.mbn"
 }
 
 sha512sums="
