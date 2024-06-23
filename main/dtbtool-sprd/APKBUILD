@@ -1,11 +1,12 @@
 # Maintainer: Anri Dellal <anridellal@gmail.com>
 pkgname=dtbtool-sprd
 pkgver=1.1.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Tool for compiling a dtb.img for Spreadtrum SoC"
 url="https://gitlab.com/Grimler/dtbtool-sprd"
 arch="all"
 license="MIT"
+depends="dtc"
 makedepends="dtc-dev"
 options="!check" # There is no testsuite
 source="
