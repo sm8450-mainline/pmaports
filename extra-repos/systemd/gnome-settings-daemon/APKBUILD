@@ -3,7 +3,7 @@
 pkgname=gnome-settings-daemon
 pkgver=99946.0
 _pkgver=46.0
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME settings daemon"
 url="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
 arch="all"
@@ -47,9 +47,12 @@ checkdepends="
 	py3-gobject3
 	umockdev-dev
 	"
-subpackages="$pkgname-dev $pkgname-lang"
+subpackages="
+	$pkgname-dev
+	$pkgname-lang
+	$pkgname-systemd
+	"
 source="https://download.gnome.org/sources/gnome-settings-daemon/${_pkgver%.*}/gnome-settings-daemon-$_pkgver.tar.xz
-	dont-use-logind-for-brightness-changing.patch
 	"
 builddir="$srcdir/gnome-settings-daemon-$_pkgver"
 
@@ -71,5 +74,4 @@ package() {
 
 sha512sums="
 445e9ee4709af7a67ded55733d4041357995fe9746bcf00fa81f52f6dddc2071e7114e9bf836bcf464bc0f04da3b3c08be04c1942963c1910d1a14b4434f6633  gnome-settings-daemon-46.0.tar.xz
-fd80b939a14bbc5dd502afda0bc6511f2d9c045018680e5ae7fbec32efadb564c5060ec91d374330f246d70571aad5979ce8c175175a29b5ccec3443c8286dc6  dont-use-logind-for-brightness-changing.patch
 "
