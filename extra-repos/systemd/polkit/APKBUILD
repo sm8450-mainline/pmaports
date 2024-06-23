@@ -3,7 +3,7 @@
 pkgname=polkit
 pkgver=999124
 _pkgver=124
-pkgrel=1
+pkgrel=2
 pkgdesc="Application development toolkit for controlling system-wide privileges"
 url="https://www.freedesktop.org/wiki/Software/polkit/"
 arch="all"
@@ -35,6 +35,12 @@ source="https://gitlab.freedesktop.org/polkit/polkit/-/archive/$_pkgver/polkit-$
 	alpine-polkit.pam
 	"
 builddir="$srcdir/polkit-$_pkgver"
+# Not running 'systemctl preset' on polkit
+# Reasoning from fedora:
+#  # The implied (systemctl preset) will fail and complain, but the macro hides
+#  # and ignores the fact.  This is in fact what we want, polkit.service does not
+#  # have an [Install] section and it is always started on demand.
+# https://src.fedoraproject.org/rpms/polkit/blob/rawhide/f/polkit.spec
 
 # secfixes:
 #   0.120-r2:
