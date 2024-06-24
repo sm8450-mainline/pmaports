@@ -2,7 +2,7 @@
 # Maintainer: Newbyte <newbyte@postmarketos.org>
 pkgname=postmarketos-ui-phosh
 pkgver=22.3
-pkgrel=9
+pkgrel=10
 pkgdesc="(Wayland) Mobile UI initially developed for the Librem 5"
 url="https://phosh.mobi"
 arch="noarch !armhf"
@@ -65,7 +65,6 @@ openrc() {
 
 systemd() {
 	install_if="$pkgname=$pkgver-r$pkgrel systemd"
-	install="$subpkgname.post-install"
 	depends="
 		libcap-utils
 	"
