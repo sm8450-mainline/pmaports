@@ -1,15 +1,19 @@
 # Maintainer: Newbyte <newbyte@postmarketos.org>
 pkgname=postmarketos-tweaks
 pkgver=0.13.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Tweak tool for phone UIs"
 url="https://gitlab.com/postmarketOS/postmarketos-tweaks"
 arch="noarch"
 license="GPL-3.0-or-later"
-subpackages="$pkgname-phosh:phosh $pkgname-pinephone:pinephone $pkgname-sxmo-x11:sxmo"
+subpackages="
+	$pkgname-openrc
+	$pkgname-phosh:phosh
+	$pkgname-pinephone:pinephone
+	$pkgname-sxmo-x11:sxmo
+	"
 depends="python3 py3-gobject3 py3-yaml gtk+3.0 libhandy1"
 makedepends="py3-setuptools glib-dev libhandy1-dev meson"
-install="$pkgname.post-install $pkgname.post-upgrade"
 source="$pkgname-$pkgver.tar.gz::https://gitlab.com/postmarketOS/postmarketos-tweaks/-/archive/$pkgver/postmarketos-tweaks-$pkgver.tar.gz"
 options="!check" # There's no testsuite
 
@@ -38,6 +42,13 @@ sxmo() {
 	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-ui-sxmo-de-dwm"
 
 	amove usr/share/postmarketos-tweaks/sxmo-x11.yml
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel"
+	install="$subpkgname.post-install"
+
+	default_openrc
 }
 
 sha512sums="
