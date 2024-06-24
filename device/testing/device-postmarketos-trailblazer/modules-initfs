@@ -24,6 +24,7 @@ panel-samsung-s6d7aa0
 panel-samsung-sofef00
 panel-visionox-rm69299
 phy-qcom-qmp-combo
+phy-qcom-snps-eusb2
 phy-qcom-qmp-ufs
 phy-qcom-qmp-usb
 phy-qcom-qmp-usb
