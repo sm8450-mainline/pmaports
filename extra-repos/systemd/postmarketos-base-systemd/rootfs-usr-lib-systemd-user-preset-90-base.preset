@@ -1,0 +1,8 @@
+## user services
+enable dbus-broker.service
+enable dbus.socket
+enable obex.service
+enable pipewire-pulse.socket
+enable pipewire.socket
+enable pulseaudio.socket
+enable wireplumber.service

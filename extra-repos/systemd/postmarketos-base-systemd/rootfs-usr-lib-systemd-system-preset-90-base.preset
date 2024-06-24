@@ -1,0 +1,58 @@
+# overrides for systemd
+disable systemd-network*
+disable systemd-homed*
+
+# for basically all Uis
+## system services
+enable apk-polkit-server.service
+enable ModemManager.service
+enable NetworkManager.service
+enable bluetooth.service
+enable haveged.service
+enable systemd-rfkill.service
+enable nftables.service
+enable postmarketos-tweakd.service
+enable kill-pbslash.service
+enable hkdm.service
+
+# Note: technically these two shouldn't be enabled at the same time, but
+# pmos-base-wifi provides should make sure that only one is installed at the
+# same time.
+enable iwd.service
+enable wpa_supplicant.service
+
+# UIs:
+## plasma
+enable hfd-service.service
+enable urfkill.service
+
+enable plasma-mobile.service
+enable sddm.service
+
+## phosh
+enable phosh
+
+## gnome
+enable gdm
+
+# Device specifics:
+# TODO: i like the idea of device/soc specific presets, we should move this out of here
+enable adsp-audio.service
+enable gesture.service
+enable gnss-share
+
+## sensors
+enable hexagonrpcd-sdsp.service
+enable iio-sensor-proxy.service
+
+## qcom
+enable pd-mapper.service
+enable tqftpserv.service
+enable qbootctl.service
+enable q6voiced.service
+enable rmtfs.service
+enable qrtr-ns.service
+enable diag-router.service
+
+## pinephone{,-pro}
+enable eg25-manager.service
