@@ -3,7 +3,7 @@
 pkgname=libcamera
 pkgver=9999
 _pkgver=0.3.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Linux camera framework"
 url="https://libcamera.org/"
 arch="all"
@@ -47,6 +47,7 @@ source="https://gitlab.freedesktop.org/camera/libcamera/-/archive/v$_pkgver/libc
 	0002-libcamera-simple-Force-disable-softwareISP-for-milli.patch
 	0003-libcamera-simple-Enable-softISP-for-the-Pinephone.patch
 	0004-libcamera-simple-Skip-hwISP-formats-if-swISP-is-acti.patch
+	0001-libcamera-debayer_cpu-Add-32bits-aligned-output-form.patch
 	qcam.desktop
 	90-libcamera.rules
 	"
@@ -152,6 +153,7 @@ d232593b6cc7f2b772e8cd0b6751fee00ddbde256328c4cf7162726d4766149afca36411075e2b55
 26b274c32c9fc0d8220f58c7e37f6c0c9e590b2ff07adbc908b4c38ae4b7104639bb8ecf57b2faa15d2fae932d0021b51ad6a31a8762a05d3f876d55f0fef242  0002-libcamera-simple-Force-disable-softwareISP-for-milli.patch
 68b66432d3e60adc7329713b1362d023244516b697fbcb67112d9aad1367d2c65a100470b1ab6747074ca2717ec18e848b3888b382f75be1646e182894c6a37c  0003-libcamera-simple-Enable-softISP-for-the-Pinephone.patch
 4bfc5c35cf6bc8f1695744486a43695efa7bef5ce1c3bc93bda227832d08394f3bb0115863f7a30a8adfc4c93af293cdd5063fdb78f8d850f4d0c2ac7b1ff123  0004-libcamera-simple-Skip-hwISP-formats-if-swISP-is-acti.patch
+231a355350d7bd25e997f58bf145c81cad9af852e131d005dcb75d9529ec56c5eff966fca106db1be3e3cefadc1539915340803d6d3a650d862d32fcd066fe55  0001-libcamera-debayer_cpu-Add-32bits-aligned-output-form.patch
 22167a4eceb6d1b40b0b7c45fdf116c71684f5340de7f767535cb8e160ad9d2ae0f00cb3d461f73a344520a48a4641cf46226841d78bee06bfbfd2a91337f754  qcam.desktop
 444a0a52b374751c388f807b6adcc63b36488547adaa5fb70b606dc5646132b1a893a76254236b5c80f3a6d041a4597d413e050af0323cd05626d758190838e2  90-libcamera.rules
 "
