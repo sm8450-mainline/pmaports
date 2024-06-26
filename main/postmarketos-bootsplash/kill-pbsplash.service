@@ -1,6 +1,5 @@
 [Unit]
 Description=Stop pbsplash
-After=graphical.target
 Requisite=graphical.target
 
 [Service]
