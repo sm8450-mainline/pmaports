@@ -533,6 +533,7 @@ unlock_root_partition() {
 			tried=$((tried + 1))
 		done
 		ROOT_PARTITION_UNLOCKED=1
+		PMOS_ROOT=
 		# Show again the loading splashscreen
 		show_splash "Loading..."
 	fi
