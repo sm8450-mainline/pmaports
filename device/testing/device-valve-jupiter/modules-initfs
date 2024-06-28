@@ -1,6 +1,7 @@
 ahci
 amd-pmc
 amd-sfh-hid
+cqhci
 dwc3
 dwc3-pci
 ehci_hcd
@@ -19,6 +20,7 @@ libata
 mbcache
 mmc_block
 mmc_core
+nvme
 pwm_vibra
 scsi_mod
 sd

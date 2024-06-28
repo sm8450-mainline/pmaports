@@ -19,7 +19,7 @@ deviceinfo_screen_height="800"
 deviceinfo_framebuffer_landscape="true"
 # Bootloader related
 deviceinfo_flash_method="none"
-deviceinfo_kernel_cmdline="console=tty0 fbcon=rotate:1 fbcon=vc:4-6 amdgpu.gttsize=8128 amd_iommu=off PMOS_FORCE_PARTITION_RESIZE"
+deviceinfo_kernel_cmdline="quiet console=tty0 fbcon=rotate:1 amdgpu.gttsize=8128 amd_iommu=off PMOS_FORCE_PARTITION_RESIZE"
 deviceinfo_generate_systemd_boot="true"
 deviceinfo_partition_type="gpt"
 deviceinfo_boot_filesystem="fat32"

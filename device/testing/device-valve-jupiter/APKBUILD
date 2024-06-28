@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=device-valve-jupiter
 pkgdesc="Valve Steam Deck"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -42,6 +42,6 @@ gnome_mobile() {
 
 sha512sums="
 f2b0e3bf013b87e13828f95d3db7327c7afee33a0703d764ea5b96f0f791a01af2f2685ab5b17db1729fe68e78fd0e39f3a9b2f53530aa493897066d87b43248  00-scaling-factor.gschema.override
-4c1d05d76139b1c9c1e0cd5c99a9770963a33ccf248c0402fccf051694493af1b1da9761ca7d9f83c35e82a69d77e518bbdb5934ae1a6013d726d97eec0d57a3  deviceinfo
-69873bebeff960f7ec00f2004cee97f7edd9a9df25e78b3b90e1a01592fec03c75d3a77be291e45a1902c57fd6e23bdff327935ace5c282e8f7c7dfa22798c3f  modules-initfs
+929d276aaff5df3e94e95494237670f5b3d634fbcd80cd7b68704fe0e3830071be016497a2e1e4ce0221d83b7182d1caf6ed1796e872893a23529ecd0f88779b  deviceinfo
+07005dfb4be471a3988d34cb7cc40113e4b6ef6f518fc1f586d816673d5bb7a9c7c5878db77e635fdc460a2c6ceb120a5e8f9a06c20730d0aefc65e5a3165659  modules-initfs
 "
