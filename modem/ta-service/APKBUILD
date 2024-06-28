@@ -1,8 +1,8 @@
-# Contributor: Luca Weiss <luca@z3ntu.xyz>
-# Maintainer: Luca Weiss <luca@z3ntu.xyz>
+# Contributor: Luca Weiss <luca@lucaweiss.eu>
+# Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=ta-service
 pkgver=0_git20180925
-pkgrel=0
+pkgrel=1
 pkgdesc="TA services for msm8974-based Sony Xperia devices"
 url="https://github.com/andersson/ta-service"
 arch="armv7" # only useful on armv7 Sony phones

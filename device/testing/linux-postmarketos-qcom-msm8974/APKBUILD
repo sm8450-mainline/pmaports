@@ -1,5 +1,5 @@
 # Maintainer: Alexey Minnekhanov <alexeymin@postmarketos.org>
-# Co-Maintainer: Luca Weiss <luca@z3ntu.xyz>
+# Co-Maintainer: Luca Weiss <luca@lucaweiss.eu>
 _flavor=postmarketos-qcom-msm8974
 _config="config-$_flavor.$CARCH"
 

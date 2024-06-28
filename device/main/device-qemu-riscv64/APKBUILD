@@ -1,6 +1,6 @@
 # Reference: <https://postmarketos.org/devicepkg>
 # Maintainer: Minecrell <minecrell@minecrell.net>
-# Co-Maintainer: Luca Weiss <luca@z3ntu.xyz>
+# Co-Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=device-qemu-riscv64
 pkgver=2
 pkgrel=2

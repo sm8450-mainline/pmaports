@@ -1,9 +1,9 @@
 # Reference: <https://postmarketos.org/devicepkg>
-# Maintainer: Luca Weiss <luca@z3ntu.xyz>
+# Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=device-fairphone-fp4
 pkgdesc="Fairphone 4"
 pkgver=2
-pkgrel=4
+pkgrel=5
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

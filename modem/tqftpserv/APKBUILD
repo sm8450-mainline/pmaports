@@ -1,7 +1,7 @@
-# Maintainer: Luca Weiss <luca@z3ntu.xyz>
+# Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=tqftpserv
 pkgver=0_git20240423
-pkgrel=0
+pkgrel=1
 _commit="5f9f263ae291fbbb9fc86756911e4185aa059964"
 pkgdesc="Trivial File Transfer Protocol server over AF_QIPCRTR"
 url="https://github.com/linux-msm/tqftpserv"

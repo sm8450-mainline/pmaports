@@ -1,8 +1,8 @@
-# Maintainer: Luca Weiss <luca@z3ntu.xyz>
+# Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=qmi-ping
 pkgver=0_git20200306
 _commit="16624da254b4721fdff9f89d2b29cb9cfacdd5f3"
-pkgrel=0
+pkgrel=1
 pkgdesc="Ping-like utility for QMI/QRTR"
 url="https://github.com/andersson/qmi-ping"
 arch="all"
