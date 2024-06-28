@@ -1,4 +1,5 @@
 #!/bin/sh
+rc-update add hexagonrpcd-adsp-sensorspd default
 rc-update add pd-mapper boot
 rc-update add qbootctl default
 rc-update add tqftpserv boot
