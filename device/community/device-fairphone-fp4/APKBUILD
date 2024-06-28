@@ -10,14 +10,29 @@ arch="aarch64"
 options="!check !archcheck"
 depends="
 	bootmac
+	firmware-fairphone-fp4-adreno
+	firmware-fairphone-fp4-adsp
+	firmware-fairphone-fp4-bluetooth
+	firmware-fairphone-fp4-cdsp
+	firmware-fairphone-fp4-ipa
+	firmware-fairphone-fp4-modem
+	firmware-fairphone-fp4-wlan
+	firmware-qcom-adreno-a630
+	linux-firmware-ath10k
 	linux-postmarketos-qcom-sm6350
 	make-dynpart-mappings
 	mesa-vulkan-freedreno
 	mkbootimg
+	msm-modem
+	msm-modem-uim-selection
+	pd-mapper
+	pd-mapper-openrc
 	postmarketos-base
 	qbootctl
 	qbootctl-openrc
 	swclock-offset
+	tqftpserv
+	tqftpserv-openrc
 "
 makedepends="devicepkg-dev"
 install="$pkgname.post-install $pkgname.post-upgrade"
@@ -26,9 +41,6 @@ source="
 	deviceinfo
 	modules-initfs
 	"
-subpackages="
-	$pkgname-nonfree-firmware:nonfree_firmware
-"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -39,27 +51,6 @@ package() {
 
 	install -Dm644 "$srcdir"/90-feedbackd-aw8695.rules \
 		"$pkgdir"/usr/lib/udev/rules.d/90-feedbackd-aw8695.rules
-}
-
-nonfree_firmware() {
-	pkgdesc="Firmware for Modem, WiFi, etc."
-	depends="
-		firmware-fairphone-fp4-adreno
-		firmware-fairphone-fp4-adsp
-		firmware-fairphone-fp4-bluetooth
-		firmware-fairphone-fp4-cdsp
-		firmware-fairphone-fp4-ipa
-		firmware-fairphone-fp4-modem
-		firmware-fairphone-fp4-wlan
-		firmware-qcom-adreno-a630
-		linux-firmware-ath10k
-		msm-modem
-		msm-modem-uim-selection
-		pd-mapper
-		tqftpserv
-		"
-	install="$subpkgname.post-install"
-	mkdir "$subpkgdir"
 }
 
 sha512sums="
