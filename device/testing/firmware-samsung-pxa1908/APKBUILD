@@ -1,6 +1,6 @@
 pkgname=firmware-samsung-pxa1908
 pkgver=2
-pkgrel=2
+pkgrel=3
 pkgdesc="Firmware for Samsung PXA1908 devices"
 url="https://postmarketos.org"
 arch="aarch64"
@@ -12,17 +12,16 @@ source="
 	$pkgname-$_commit.tar.gz::https://github.com/xcover3/$_repo/archive/$_commit.tar.gz
 	sd8x-wlan.initd
 "
-_files="sd8777_uapsta.bin WlanCalData_ext.conf txpwrlimit_cfg.bin bt_cal_data.conf"
+_fw_file="sd8777_uapsta.bin"
+_misc_files="WlanCalData_ext.conf txpwrlimit_cfg.bin bt_cal_data.conf"
 builddir="$srcdir/$_repo-$_commit"
 subpackages="$pkgname-downstream:downstream"
 
 package() {
 	cd proprietary/etc/firmware/mrvl/
 
-	for _i in $_files; do
-		install -Dm644 "$_i" \
-			-t "$pkgdir/lib/firmware/postmarketos/mrvl"
-	done
+	install -Dm644 "$_fw_file" \
+		-t "$pkgdir/lib/firmware/postmarketos/mrvl"
 }
 
 downstream() {
@@ -31,6 +30,12 @@ downstream() {
 	install="$subpkgname.post-install"
 
 	mkdir "$subpkgdir"
+
+	cd "$builddir"/proprietary/etc/firmware/mrvl/
+	for _i in $_misc_files; do
+		install -Dm644 "$_i" \
+			-t "$subpkgdir/lib/firmware/postmarketos/mrvl"
+	done
 	install -Dm755 "$srcdir"/sd8x-wlan.initd "$subpkgdir"/etc/init.d/sd8x-wlan
 }
 
