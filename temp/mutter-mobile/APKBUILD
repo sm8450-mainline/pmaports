@@ -2,7 +2,7 @@
 
 pkgname=mutter-mobile
 pkgver=46.0
-pkgrel=0
+pkgrel=1
 pkgdesc="clutter-based window manager and compositor"
 url="https://wiki.gnome.org/Projects/Mutter/"
 # ricsv64: doesn't build currently:
@@ -81,7 +81,6 @@ prepare() {
 
 build() {
 	abuild-meson \
-		-Degl_device=true \
 		-Dudev=true \
 		-Dnative_backend=true \
 		-Dintrospection=true \
