@@ -1,6 +1,6 @@
 pkgname=firmware-samsung-pxa1908
 pkgver=2
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware for Samsung PXA1908 devices"
 url="https://postmarketos.org"
 arch="aarch64"
@@ -15,6 +15,7 @@ source="
 "
 _files="sd8777_uapsta.bin WlanCalData_ext.conf txpwrlimit_cfg.bin bt_cal_data.conf"
 builddir="$srcdir/$_repo-$_commit"
+subpackages="$pkgname-downstream:downstream"
 
 package() {
 	cd proprietary/etc/firmware/mrvl/
@@ -23,8 +24,14 @@ package() {
 		install -Dm644 "$_i" \
 			-t "$pkgdir/lib/firmware/postmarketos/mrvl"
 	done
+}
 
-	install -Dm755 "$srcdir"/sd8x-wlan.initd "$pkgdir"/etc/init.d/sd8x-wlan
+downstream() {
+	pkgdesc="OpenRC service for enabling WLAN on downstream kernels"
+	depends="$pkgname"
+
+	mkdir "$subpkgdir"
+	install -Dm755 "$srcdir"/sd8x-wlan.initd "$subpkgdir"/etc/init.d/sd8x-wlan
 }
 
 sha512sums="

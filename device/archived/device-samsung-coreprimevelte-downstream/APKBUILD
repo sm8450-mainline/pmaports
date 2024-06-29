@@ -4,7 +4,7 @@
 pkgname=device-samsung-coreprimevelte-downstream
 pkgdesc="Samsung Galaxy Core Prime VE LTE downstream"
 pkgver=1
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -25,7 +25,7 @@ package() {
 
 nonfree_firmware() {
 	pkgdesc="Wi-Fi firmware"
-	depends="firmware-samsung-pxa1908"
+	depends="firmware-samsung-pxa1908-downstream"
 	mkdir "$subpkgdir"
 }
 
