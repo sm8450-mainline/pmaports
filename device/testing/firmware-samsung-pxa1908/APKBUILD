@@ -1,12 +1,11 @@
 pkgname=firmware-samsung-pxa1908
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware for Samsung PXA1908 devices"
 url="https://postmarketos.org"
 arch="aarch64"
 license="proprietary"
 options="!strip !check !archcheck !spdx pmb:cross-native !tracedeps"
-install="$pkgname.post-install"
 _repo="android_vendor_samsung_xcover3lte"
 _commit="6e324b43b32dc607327d89148dd5d83a14429ee6"
 source="
@@ -29,6 +28,7 @@ package() {
 downstream() {
 	pkgdesc="OpenRC service for enabling WLAN on downstream kernels"
 	depends="$pkgname"
+	install="$subpkgname.post-install"
 
 	mkdir "$subpkgdir"
 	install -Dm755 "$srcdir"/sd8x-wlan.initd "$subpkgdir"/etc/init.d/sd8x-wlan
