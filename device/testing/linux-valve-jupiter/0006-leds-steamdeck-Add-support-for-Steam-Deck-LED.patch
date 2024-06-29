@@ -1,4 +1,4 @@
-From 5649180090a647fa91fff540f4b6a87b70a66449 Mon Sep 17 00:00:00 2001
+From c6e8734dc50591a2c69cbbc01cac419e96ce167a Mon Sep 17 00:00:00 2001
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 Date: Sun, 27 Feb 2022 12:58:05 -0800
 Subject: [PATCH 06/21] leds: steamdeck: Add support for Steam Deck LED
@@ -123,5 +123,5 @@ index 000000000000..686500b8de73
 +MODULE_DESCRIPTION("Steam Deck LEDs driver");
 +MODULE_LICENSE("GPL");
 -- 
-2.44.0
+2.45.2
 

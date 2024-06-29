@@ -1,4 +1,4 @@
-From ef64d0cede1c3cbc780118f2d2694bd4ebbb7485 Mon Sep 17 00:00:00 2001
+From dc7c80a83c9aa6dd7792390462015bd499fd4046 Mon Sep 17 00:00:00 2001
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 Date: Sun, 27 Feb 2022 14:46:08 -0800
 Subject: [PATCH 07/21] extcon: Add driver for Steam Deck
@@ -13,10 +13,10 @@ Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
  create mode 100644 drivers/extcon/extcon-steamdeck.c
 
 diff --git a/drivers/extcon/Kconfig b/drivers/extcon/Kconfig
-index 5f869eacd19a..90f51661a489 100644
+index 3da94b382292..88ac6e28689c 100644
 --- a/drivers/extcon/Kconfig
 +++ b/drivers/extcon/Kconfig
-@@ -202,4 +202,11 @@ config EXTCON_RTK_TYPE_C
+@@ -203,4 +203,11 @@ config EXTCON_RTK_TYPE_C
  	  The DHC (Digital Home Hub) RTD series SoC contains a type c module.
  	  This driver will detect the status of the type-c port.
  
@@ -225,5 +225,5 @@ index 000000000000..74f190adc8ea
 +MODULE_DESCRIPTION("Steam Deck extcon driver");
 +MODULE_LICENSE("GPL");
 -- 
-2.44.0
+2.45.2
 

@@ -1,4 +1,4 @@
-From 8b12a04e9b7ceaa5026ced58e6dcd957cc55faa1 Mon Sep 17 00:00:00 2001
+From 174c99bdf20a4a9455bbbe22ac9e1aeaca714b4b Mon Sep 17 00:00:00 2001
 From: "Pierre-Loup A. Griffais" <pgriffais@valvesoftware.com>
 Date: Tue, 14 Jun 2022 14:31:18 -0700
 Subject: [PATCH 02/21] drivers: video: backlight: Disable backlight
@@ -17,10 +17,10 @@ Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/drivers/video/backlight/backlight.c b/drivers/video/backlight/backlight.c
-index 86e1cdc8e369..06641d99c209 100644
+index a82934694d05..b9daf4469143 100644
 --- a/drivers/video/backlight/backlight.c
 +++ b/drivers/video/backlight/backlight.c
-@@ -160,6 +160,7 @@ static inline void backlight_unregister_fb(struct backlight_device *bd)
+@@ -162,6 +162,7 @@ static inline void backlight_unregister_fb(struct backlight_device *bd)
  static void backlight_generate_event(struct backlight_device *bd,
  				     enum backlight_update_reason reason)
  {
@@ -28,7 +28,7 @@ index 86e1cdc8e369..06641d99c209 100644
  	char *envp[2];
  
  	switch (reason) {
-@@ -175,6 +176,7 @@ static void backlight_generate_event(struct backlight_device *bd,
+@@ -177,6 +178,7 @@ static void backlight_generate_event(struct backlight_device *bd,
  	}
  	envp[1] = NULL;
  	kobject_uevent_env(&bd->dev.kobj, KOBJ_CHANGE, envp);
@@ -37,5 +37,5 @@ index 86e1cdc8e369..06641d99c209 100644
  }
  
 -- 
-2.44.0
+2.45.2
 

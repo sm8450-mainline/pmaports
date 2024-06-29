@@ -1,4 +1,4 @@
-From 23b10f478de6245926aa3b9bf7bbaab765baeceb Mon Sep 17 00:00:00 2001
+From 6cb407a237815697eef2f5184041dffe24ecc101 Mon Sep 17 00:00:00 2001
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 Date: Sat, 29 Oct 2022 15:25:21 -0700
 Subject: [PATCH 18/21] usb: dwc3: Drop "usb-role-swtich" from
@@ -20,10 +20,10 @@ Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
  1 file changed, 2 deletions(-)
 
 diff --git a/drivers/usb/dwc3/dwc3-pci.c b/drivers/usb/dwc3/dwc3-pci.c
-index 0e2d08b22e0d..ebe42ae00951 100644
+index 60be038a5997..de33accdc1ce 100644
 --- a/drivers/usb/dwc3/dwc3-pci.c
 +++ b/drivers/usb/dwc3/dwc3-pci.c
-@@ -175,8 +175,6 @@ static const struct property_entry dwc3_pci_amd_properties[] = {
+@@ -176,8 +176,6 @@ static const struct property_entry dwc3_pci_amd_properties[] = {
  
  static const struct property_entry dwc3_pci_mr_properties[] = {
  	PROPERTY_ENTRY_STRING("dr_mode", "otg"),
@@ -33,5 +33,5 @@ index 0e2d08b22e0d..ebe42ae00951 100644
  	PROPERTY_ENTRY_STRING("linux,extcon-name", "VLV0100:00"),
  	{}
 -- 
-2.44.0
+2.45.2
 
