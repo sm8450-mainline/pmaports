@@ -1,0 +1,319 @@
+# pmaports CI and "pmbootstrap kconfig check" use this file to ensure our
+# kernels have certain kernel config options set. Which categories are checked
+# depends on options="pmb:kconfigcheck-…" in the linux APKBUILD. If no such
+# option is set, see the default in ["category:default".">=0.0.0"."all"] below.
+
+[aliases]
+# Devices with options="pmb:kconfigcheck-community" in the device APKBUILD will
+# check for the following categories. A CI check ensures that all devices in
+# device/main and device/community dirs have this option. Devices in testing
+# may also have "pmb:kconfigcheck-community", but it may be removed when
+# modifying the required options and adjusting the devices in testing is too
+# much effort. Device maintainers may fix it up afterwards and add it back.
+community = [
+	"category:default",
+	"category:community_various",
+	"category:containers",
+	"category:filesystems",
+	"category:iwd",
+	"category:netboot",
+	"category:nftables",
+	"category:usb_gadgets",
+	"category:waydroid",
+	"category:wireguard",
+	"category:zram",
+]
+
+# Format for rule sections:
+#   ["category:<NAME>"."<KERNEL_VERSION>"."<ARCHITECTURES>"]
+# Implemented value types:
+# - boolean (e.g. 'ANDROID_PARANOID_NETWORK = false'):
+#   - false: disabled
+#   - true: enabled, either as module or built-in
+# - list (e.g. 'ANDROID_BINDER_DEVICES = ["binder", "hwbinder"]'):
+#   - each element of the array must be contained in the kernel config string,
+#     in any order. The example above would accept the following in the config:
+#       CONFIG_ANDROID_BINDER_DEVICES="hwbinder,vndbinder,binder"
+# - string (e.g. 'LSM = "lockdown,yama,loadpin,safesetid,integrity"'):
+#   - the value in the kernel config must be the same as the given string. Use
+#     this e.g. if the order of the elements is important.
+
+# default: all devices must satisfy these
+["category:default".">=0.0.0"."all"]
+ANDROID_PARANOID_NETWORK = false
+BLK_DEV_INITRD = true
+CGROUPS = true
+CRYPTO_AES = true
+CRYPTO_XTS = true
+DEVTMPFS = true
+DM_CRYPT = true
+INPUT_EVDEV = true
+EXT4_FS = true
+KINETO_GAN = false
+PFT = false
+SEC_RESTRICT_ROOTING = false
+SYSVIPC = true
+TMPFS_POSIX_ACL = true
+USE_VFB = false
+VT = true
+["category:default".">=2.6.0"."all"]
+BINFMT_ELF = true
+["category:default".">=3.10.0"."all"]
+BINFMT_SCRIPT = true
+["category:default".">=4.0.0"."all"]
+UEVENT_HELPER = true
+USER_NS = true
+["category:default"."<4.7.0"."all"]
+DEVPTS_MULTIPLE_INSTANCES = true
+["category:default"."<4.14.0"."all"]
+SAMSUNG_TUI = false
+TZDEV = false
+["category:default"."<5.2.0"."armhf armv7 x86"]
+LBDAF = true
+
+# waydroid: android compatibility layer
+["category:waydroid".">=0.0.0"."all"]
+ANDROID_BINDERFS = false
+ANDROID_BINDER_DEVICES = ["binder", "hwbinder", "vndbinder"]
+ANDROID_BINDER_IPC = true
+ANDROID_BINDER_IPC_SELFTEST = false
+BLK_DEV_LOOP = true
+BPF_SYSCALL = true
+BRIDGE = true
+BRIDGE_VLAN_FILTERING = true
+CGROUP_BPF = true
+FUSE_FS = true
+IP_NF_MANGLE = true
+NETFILTER_XTABLES = true
+NETFILTER_XT_MATCH_COMMENT = true
+PSI = true
+PSI_DEFAULT_DISABLED = false
+SQUASHFS = true
+SQUASHFS_XATTR = true
+SQUASHFS_XZ = true
+TMPFS_XATTR = true
+TUN = true
+VETH = true
+VLAN_8021Q = true  # prerequisite for bridge
+["category:waydroid".">=3.5"."all"]
+CROSS_MEMORY_ATTACH = true
+["category:waydroid".">=4.20.0"."all"]
+PSI = true  # required by userspace OOM killer
+PSI_DEFAULT_DISABLED = false
+["category:waydroid"."<5.18"."all"]
+ASHMEM = true
+
+# iwd: modern inet wireless daemon
+# Obtained from 'grep ADD_MISSING src/main.c' in iwd.git
+["category:iwd".">=0.0.0"."all"]
+ASYMMETRIC_KEY_TYPE = true
+ASYMMETRIC_PUBLIC_KEY_SUBTYPE = true
+CRYPTO_AES = true
+CRYPTO_CBC = true
+CRYPTO_CMAC = true
+CRYPTO_DES = true
+CRYPTO_ECB = true
+CRYPTO_HMAC = true
+CRYPTO_MD5 = true
+CRYPTO_SHA1 = true
+CRYPTO_SHA256 = true
+CRYPTO_SHA512 = true
+CRYPTO_USER_API_HASH = true
+CRYPTO_USER_API_SKCIPHER = true
+KEYS = true
+KEY_DH_OPERATIONS = true
+PKCS7_MESSAGE_PARSER = true
+PKCS8_PRIVATE_KEY_PARSER = true
+X509_CERTIFICATE_PARSER = true
+RFKILL = true
+
+# nftables: firewall, not related to nft scams
+["category:nftables".">=3.13.0"."all"]
+NETFILTER = true
+NF_CONNTRACK = true
+NF_TABLES = true
+NF_TABLES_INET = true
+NFT_CT = true
+NFT_LOG = true
+NFT_LIMIT = true
+NFT_MASQ = true
+NFT_NAT = true
+NFT_REJECT = true
+NF_TABLES_IPV4 = true
+NF_REJECT_IPV4 = true
+IP_NF_IPTABLES = true
+IP_NF_FILTER = true
+IP_NF_TARGET_REJECT = true
+IP_NF_NAT = true
+NF_TABLES_IPV6 = true
+NF_REJECT_IPV6 = true
+IP6_NF_IPTABLES = true
+IP6_NF_FILTER = true
+IP6_NF_TARGET_REJECT = true
+IP6_NF_NAT = true
+["category:nftables".">=3.13.0 <0.17"."all"]
+NFT_COUNTER = true
+
+# containers: lxc, docker, etc.
+["category:containers".">=0.0.0"."all"]
+NAMESPACES = true
+NET_NS = true
+PID_NS = true
+IPC_NS = true
+UTS_NS = true
+CGROUPS = true
+CGROUP_CPUACCT = true
+CGROUP_DEVICE = true
+CGROUP_FREEZER = true
+CGROUP_SCHED = true
+CPUSETS = true
+KEYS = true
+VETH = true
+BRIDGE = true  # (also needed for waydroid)
+BRIDGE_NETFILTER = true
+IP_NF_FILTER = true
+IP_NF_TARGET_MASQUERADE = true
+NETFILTER_XT_MATCH_ADDRTYPE = true
+NETFILTER_XT_MATCH_CONNTRACK = true
+NETFILTER_XT_MATCH_IPVS = true
+NETFILTER_XT_MARK = true
+NETFILTER_XT_TARGET_CHECKSUM = true  # Needed for lxc
+IP_NF_NAT = true
+NF_NAT = true
+POSIX_MQUEUE = true
+BLK_DEV_DM = true  # Storage Drivers
+DUMMY = true  # Network Drivers
+# USER_NS = true  # This is already in pmOS kconfig check
+BLK_CGROUP = true  # Optional section
+BLK_DEV_THROTTLING = true  # Optional section
+CGROUP_PERF = true  # Optional section
+NET_CLS_CGROUP = true  # Optional section
+FAIR_GROUP_SCHED = true  # Optional section
+IP_NF_TARGET_REDIRECT = true  # Optional section
+IP_VS = true  # Optional section
+IP_VS_NFCT = true  # Optional section
+IP_VS_PROTO_TCP = true  # Optional section
+IP_VS_PROTO_UDP = true  # Optional section
+IP_VS_RR = true  # Optional section
+# EXT4_FS = true  # This is already in pmOS kconfig check
+EXT4_FS_POSIX_ACL = true  # Optional section
+EXT4_FS_SECURITY = true  # Optional section
+["category:containers".">=3.2"."all"]
+CFS_BANDWIDTH = true  # Optional section
+["category:containers".">=3.3"."all"]
+CHECKPOINT_RESTORE = true  # Needed for lxc
+["category:containers".">=3.6"."all"]
+MEMCG = true
+DM_THIN_PROVISIONING = true  # Storage Drivers
+SWAP = true
+["category:containers".">=3.6"."x86 x64_64"]
+HUGETLB_PAGE = true
+CGROUP_HUGETLB = true  # Optional section
+["category:containers".">=3.6 <6.1_rc1"."all"]
+MEMCG_SWAP = true
+["category:containers".">=3.7 <5.0"."all"]
+NF_NAT_IPV4 = true  # Needed for lxc
+NF_NAT_IPV6 = true  # Needed for lxc
+["category:containers".">=3.7"."all"]
+VXLAN = true  # Network Drivers
+IP6_NF_TARGET_MASQUERADE = true  # Needed for lxc
+["category:containers".">=3.9"."all"]
+BRIDGE_VLAN_FILTERING = true  # Network Drivers (also for waydroid)
+MACVLAN = true  # Network Drivers
+["category:containers".">=3.13"."all"]
+NFT_COMPAT = true
+["category:containers".">=3.14"."all"]
+CGROUP_NET_PRIO = true  # Optional section
+["category:containers".">=3.18"."all"]
+OVERLAY_FS = true  # Storage Drivers
+["category:containers".">=3.19"."all"]
+IPVLAN = true  # Network Drivers
+SECCOMP = true  # Optional section
+["category:containers".">=4.4"."all"]
+CGROUP_PIDS = true  # Optional section
+
+# zram: RAM disk with on-the-fly compression
+["category:zram".">=3.14.0"."all"]
+ZRAM = true
+ZSMALLOC = true
+CRYPTO_LZ4 = true
+LZ4_COMPRESS = true
+SWAP = true
+
+# netboot: https://postmarketos.org/netboot
+["category:netboot".">=0.0.0"."all"]
+BLK_DEV_NBD = true
+
+# wireguard: VPN software, also includes options for wg-quick
+["category:wireguard".">=5.6_rc1"."all"]
+WIREGUARD = true
+IP_ADVANCED_ROUTER = true
+IP_MULTIPLE_TABLES = true
+IPV6_MULTIPLE_TABLES = true
+NF_TABLES = true
+NF_TABLES_IPV4 = true
+NF_TABLES_IPV6 = true
+NFT_CT = true
+NFT_FIB = true
+NFT_FIB_IPV4 = true
+NFT_FIB_IPV6 = true
+NF_CONNTRACK_MARK = true
+
+# filesystems
+["category:filesystems".">=0.0.0"."all"]
+BTRFS_FS = true
+EXFAT_FS = true
+EXT4_FS = true
+F2FS_FS = true
+
+# usb_gadgets
+["category:usb_gadgets".">=0.0.0"."all"]
+# disable legacy gadgets
+USB_ETH = false
+USB_FUNCTIONFS = false
+USB_MASS_STORAGE = false
+USB_G_SERIAL = false
+# enable configfs gadgets
+USB_CONFIGFS_NCM = true  # USB networking via NCM
+USB_CONFIGFS_RNDIS = true  # USB networking via RNDIS (legacy)
+
+# community_various: Various options that were not categorized properly due to
+# inflexibility of previous kconfigcheck related code. We should move these to
+# proper categories above and/or invent new categories with meaningful names.
+# >> Do not add more here!! <<
+["category:community_various".">=0.0.0"."all"]
+BINFMT_MISC = true  # register binary formats
+CIFS = true  # mount SMB shares
+INPUT_UINPUT = true  # buffyboard
+LEDS_TRIGGER_PATTERN = true  # feedbackd
+LEDS_TRIGGER_TIMER = true  # hfd-service
+NETFILTER_XT_MATCH_STATISTIC = true  # kube-proxy
+NETFILTER_XT_MATCH_TCPMSS = true  # change MTU e.g. for Wireguard
+NETFILTER_XT_TARGET_TCPMSS = true  # change MTU e.g. for Wireguard
+# TODO = Depends on SUSPEND which is not enabled for some devices
+# PM_WAKELOCKS = true  # Sxmo
+SND_USB_AUDIO = true  # USB audio devices
+UCLAMP_TASK = true  # Scheduler hints
+UCLAMP_TASK_GROUP = true  # Scheduler hints
+UHID = true  # e.g. Bluetooth input devices
+USB_STORAGE = true  # USB mass storage devices
+RT_GROUP_SCHED = false  # https://gitlab.com/postmarketOS/pmaports/-/issues/2652
+
+# uefi: proper modern booting
+["category:uefi".">=0.0.0"."all"]
+EFI_STUB = true
+EFI = true
+DMI = true
+EFI_ESRT = true
+EFI_VARS_PSTORE = true
+EFI_RUNTIME_WRAPPERS = true
+VFAT_FS = true
+NLS_ASCII = true
+["category:uefi".">=0.0.0"."x86_64"]
+EFI_MIXED = true
+["category:uefi".">=0.0.0"."aarch64 armv7"]
+EFI_GENERIC_STUB = true
+EFI_PARAMS_FROM_FDT = true
+["category:uefi".">=6.1.0"."aarch64"]
+# Required EFI booting compressed kernels on this arch
+EFI_ZBOOT = true
