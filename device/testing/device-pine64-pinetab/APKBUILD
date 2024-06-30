@@ -1,10 +1,9 @@
 # Reference: <https://postmarketos.org/devicepkg>
-# Maintainer: Martijn Braam <martijn@brixit.nl>
-# Co-Maintainer: Dylan Van Assche <me@dylanvanassche.be>
+# Maintainer: Dylan Van Assche <me@dylanvanassche.be>
 pkgname=device-pine64-pinetab
 pkgdesc="PINE64 PineTab"
 pkgver=1
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

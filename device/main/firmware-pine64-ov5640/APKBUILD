@@ -1,7 +1,6 @@
-# Maintainer: Martijn Braam <martijn@brixit.nl>
 pkgname=firmware-pine64-ov5640
 pkgver=0_git20201028
-pkgrel=1
+pkgrel=2
 _commit="61beaa4eb1ad87ad067cfbe123fbcd0a0cf01246"
 pkgdesc="Firmware for the ov5640 autofocus"
 url="https://github.com/pmsourcedump/ov5640"

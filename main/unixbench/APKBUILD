@@ -1,8 +1,7 @@
-# Maintainer: Martijn Brixit <martijn@brixit.nl>
 pkgname=unixbench
 pkgver=5.1.3_git20180129
 _commit="070030e09f6effdf0c6721e8fcc3a5c6fb5bed1a"
-pkgrel=1
+pkgrel=2
 pkgdesc="The original BYTE UNIX benchmark suite"
 url="https://github.com/kdlucas/byte-unixbench"
 # riscv64: doesn't build

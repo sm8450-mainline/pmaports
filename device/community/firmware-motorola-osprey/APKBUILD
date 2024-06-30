@@ -1,7 +1,6 @@
-# Maintainer: Martijn Braam <martijn@brixit.nl>
 pkgname=firmware-motorola-osprey
 pkgver=4
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware for Motorola Moto G 2015"
 url="https://github.com/pmsourcedump/firmware-motorola-osprey"
 subpackages="$pkgname-wcnss $pkgname-wcnss-nv:wcnss_nv $pkgname-venus"

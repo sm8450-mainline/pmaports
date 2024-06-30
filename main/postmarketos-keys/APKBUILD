@@ -1,7 +1,6 @@
-# Maintainer: Martijn Braam <martijn@brixit.nl>
 pkgname=postmarketos-keys
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="Public keys for the postmarketOS repositories"
 url="https://postmarketos.org/"
 arch="noarch"
