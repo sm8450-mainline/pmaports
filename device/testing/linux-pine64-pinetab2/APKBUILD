@@ -2,7 +2,7 @@
 # Kernel config based on: arch/arm64/configs/pinetab2_defconfig
 # Maintainer: Danct12 <danct12@disroot.org>
 pkgname=linux-pine64-pinetab2
-pkgver=6.9.3
+pkgver=6.9.6
 pkgrel=0
 pkgdesc="Pine64 PineTab 2 mainline"
 arch="aarch64"
@@ -64,6 +64,6 @@ package() {
 }
 
 sha512sums="
-53ee3f616430029afe1c3b044821b71829d266a24e71798fc2999e566d661f39856e7c3fd4eba6b48179e041732e5ec59a6d26fc414f63f7d6d9730a6799d36e  linux-pine64-pinetab2-v6.9.3-danctnix1.tar.gz
-b4070f16912ecce2d5f559aac2e9102ab1f430401bf9230e3844ef4e5f3f516b99a555ea07b1a2bf6d3a432aa51c7daccc6ba6776696f52a205fadadf410aa5f  config-pine64-pinetab2.aarch64
+2e15c0491c93895605b9e371942927483d8c1b35df13540f953d9a5a12941becbe83a908ee3bab68c9700e044958dd3505b30defdc916c92c8eea33547f39754  linux-pine64-pinetab2-v6.9.6-danctnix1.tar.gz
+1d2e735eefce1e35d7df487df8af1979dd556217665e16c4d812829df088fb88e73054fdbd3d599d058638790de0aaa368d530fe7e6149699110fee5bbb2dd72  config-pine64-pinetab2.aarch64
 "
