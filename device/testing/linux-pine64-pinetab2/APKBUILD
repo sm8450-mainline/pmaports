@@ -27,7 +27,7 @@ makedepends="
 "
 
 # Source
-_tags="v6.9.3-danctnix1"
+_tags="v$pkgver-danctnix1"
 _config="config-$_flavor.$arch"
 source="
 	$pkgname-$_tags.tar.gz::https://github.com/dreemurrs-embedded/linux-pinetab2/archive/$_tags.tar.gz
