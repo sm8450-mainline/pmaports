@@ -15,14 +15,23 @@ dbus-monitor --system "type='signal',interface='$interface',member='$member'" |
 				echo "Call Started"
 
 				# Unload module-suspend-on-idle when call begins
-				pactl unload-module module-suspend-on-idle
+				pidof pulseaudio && pactl unload-module module-suspend-on-idle
+
+				# With Wireplumber audio, the Pulseaudio
+				# compatibility layer doesn't support
+				# loading/unloading the suspend module. Add
+				# loopback sinks and sources instead.
+				sleep 1
+				pw-loopback -m '[FL FR]' --capture-props='media.class=Audio/Sink' &
+				pw-loopback -m '[FL FR]' --playback-props='media.class=Audio/Source' &
 			fi
 
 			if [ "$state" -eq '7' ]; then
 				echo "Call Ended"
+				killall -9 pw-loopback &
 
 				# Reload module-suspend-on-idle after call ends
-				pactl load-module module-suspend-on-idle
+				pidof pulseaudio && pactl load-module module-suspend-on-idle
 			fi
 		fi
 	done &

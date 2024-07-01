@@ -2,7 +2,7 @@
 # Co-Maintainer: Joel Selvaraj <joelselvaraj.oss@gmail.com>
 pkgname=soc-qcom-sdm845
 pkgdesc="Common package for Qualcomm SDM845 devices"
-pkgver=21
+pkgver=22
 pkgrel=0
 url="https://postmarketos.org"
 license="BSD-3-Clause"
@@ -25,7 +25,7 @@ subpackages="
 _ucm_commit="aaa7889f7a6de640b4d78300e118457335ad16c0"
 source="
 	10-initramfs-sdm845.files
-	51-qcom-sdm845.lua
+	51-qcom-sdm845.conf
 	90-feedbackd-pmi8998.rules
 	UPower.conf
 	alsa-ucm-conf-$_ucm_commit.tar.gz::https://gitlab.com/sdm845-mainline/alsa-ucm-conf/-/archive/$_ucm_commit/alsa-ucm-conf-$_ucm_commit.tar.gz
@@ -47,8 +47,8 @@ package() {
 	install -Dm644 "$srcdir"/10-initramfs-sdm845.files \
 		-t "$pkgdir"/usr/share/mkinitfs/files/
 
-	install -Dm644 "$srcdir"/51-qcom-sdm845.lua \
-		-t "$pkgdir"/usr/share/wireplumber/main.lua.d
+	install -Dm644 "$srcdir"/51-qcom-sdm845.conf \
+		-t "$pkgdir"/usr/share/wireplumber/wireplumber.conf.d
 }
 
 modem() {
@@ -124,12 +124,12 @@ pulseaudio() {
 
 sha512sums="
 56845726c5e7b685953f96c381404181ad9b70ea7dbfe5a3d963fb6f15821addaead43a65c9b140cb938c2d45173cfb5421816bd36024fd7e1b8555e0b32622f  10-initramfs-sdm845.files
-022852b33ba4dd76684cc7e6df5ce04830631f80382f293e96101663856bad746c17c2ca9cd0ceacf28e2c03d8ce367165b8bd2affc69db3dcbb3a5411bd1926  51-qcom-sdm845.lua
+28c14f47eaedec577d152001c51753537c98f267ac4a0acf78a304efebe5f6a1b4dc6d501497da9a0a925806a1d9c80b25e001cf9b1eb21efa22cd6a41ff753b  51-qcom-sdm845.conf
 4f2c22a3a3fc7d380e200ad977578107d81f0e7ade7918e03bdb15b60a564e8db5f47e13cce22f636d38fd3722696bb46076b8872dae0ca2d8a3838522a1f025  90-feedbackd-pmi8998.rules
 9d455b56558d453d501a1ad869ffa79f9952ed43485a9847d506db6a78bfcd9f9c9d855660ee1d368eb74f4429385ec166addc30d802261c75562e785fe84c52  UPower.conf
 62e85ff4d983bd58078633088a6506b8ed9dab88b13adb1af72abd324386a3614ad4af6b3a9594c5a1d1fbdb1891ad906d360764081c83318e9970c94838dfb8  alsa-ucm-conf-aaa7889f7a6de640b4d78300e118457335ad16c0.tar.gz
 6fb4c0bd8b7ed534d855a6732ccff783960e3cfa0e0cc7effcbb93afa00798dec15361a37a3200081bc114c8d266b7a0851cc4e819ad36eabdb47a50c72620d9  call_audio_idle_suspend_workaround.confd
 5a58475b6e2ee1d655f3f23d8dc19e1cb2f32f1dfff3b9a9337d9c5baad1ec24bfaec0fb9cc03f00e5a291bee27c6b8bffbc65157e2bee5d65ef6d1adcb0910b  call_audio_idle_suspend_workaround.initd
-aa5cdb138a3cdd0b15d2bbb60c7f67ae0280ddc7d0488cfe2fc44680095a43c1cdacc54d70a689f2117538e9bf1e42758d8c3ac542c9cb8e8dc6d6f3161b7577  call_audio_idle_suspend_workaround.sh
+6da0a9209f114354aa2aa1185ec3896a8e0bb1bfce0dc3fc4c0de339cf1389feaa2d724e733c251ff032a5e86d37d9549e94f8f7c7a5accfedbd8a4d6316bbfd  call_audio_idle_suspend_workaround.sh
 e33f41360ccc4900bb76a26cc7b46bde1fb90facdf45c4fbcebc80499386939948401cacd6df9f779eafab10f4ee77ee1fef3e7bd06f483f8c2a4a644c84f327  modemmanager.conf
 "
