@@ -4,14 +4,14 @@
 pkgname=device-samsung-coreprimevelte-downstream
 pkgdesc="Samsung Galaxy Core Prime VE LTE downstream"
 pkgver=1
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="mkbootimg linux-samsung-coreprimevelte-downstream postmarketos-base postmarketos-initramfs-minimal pxa-mkbootimg u-boot-tools"
 makedepends="devicepkg-dev"
-subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
+_pmb_recommends="firmware-samsung-pxa1908-downstream"
 source="deviceinfo 90-coreprimevelte.conf"
 
 build() {
@@ -21,12 +21,6 @@ build() {
 package() {
 	devicepkg_package $startdir $pkgname
 	install -Dm444 $startdir/90-coreprimevelte.conf $pkgdir/etc/sysctl.d/90-coreprimevelte.conf
-}
-
-nonfree_firmware() {
-	pkgdesc="Wi-Fi firmware"
-	depends="firmware-samsung-pxa1908-downstream"
-	mkdir "$subpkgdir"
 }
 
 sha512sums="
