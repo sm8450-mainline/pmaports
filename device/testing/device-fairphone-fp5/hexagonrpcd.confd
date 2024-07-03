@@ -1,0 +1,2 @@
+# Fairphone 5 specific hexagonrpcd firmware directory
+hexagonrpcd_fw_dir="/usr/share/qcom/qcm6490/Fairphone/fairphone5"
