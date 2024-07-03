@@ -6,7 +6,7 @@
 # How to add a new service file (4 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=11
+pkgver=12
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -16,38 +16,38 @@ license="BSD-3-Clause"
 triggers="$pkgname.trigger=/usr/lib/systemd"
 
 # 2. Add a new entry to subpackes in the format
-#    <pkgname>-service:_service where pkgname is the name
+#    <pkgname>-systemd:_service where pkgname is the name
 #    of the package this service file should be part of
 #    ALPHABETICAL ORDER!!!
 subpackages="
-	apk-polkit-rs-service:_service
-	at-spi2-core-service:_service
-	bluez-service:_service
-	dconf-service:_service
-	flatpak-service:_service
-	geoclue-service:_service
+	apk-polkit-rs-systemd:_service
+	at-spi2-core-systemd:_service
+	bluez-systemd:_service
+	dconf-systemd:_service
+	flatpak-systemd:_service
+	geoclue-systemd:_service
 	gnome-clocks:_service
-	hexagonrpcd-service:_service
-	iio-sensor-proxy-service:_service
-	iwd-service:_service
-	mmsd-tng-service:_service
-	modemmanager-service:_service
-	nftables-service:_service
-	openssh-server-pam-service:_service
-	pd-mapper-service:_service
-	phosh-service:_service
-	q6voiced-service:_service
-	qbootctl-service:_service
-	rmtfs-service:_service
-	rtkit-service:_service
-	sleep-inhibitor-service:_service
-	tqftpserv-service:_service
-	wireplumber-service:_service
-	wpa_supplicant-service:_service
-	xdg-desktop-portal-service:_service
-	xdg-desktop-portal-gtk-service:_service
-	xdg-desktop-portal-gnome-service:_service
-	xdg-desktop-portal-wlr-service:_service
+	hexagonrpcd-systemd:_service
+	iio-sensor-proxy-systemd:_service
+	iwd-systemd:_service
+	mmsd-tng-systemd:_service
+	modemmanager-systemd:_service
+	nftables-systemd:_service
+	openssh-server-pam-systemd:_service
+	pd-mapper-systemd:_service
+	phosh-systemd:_service
+	q6voiced-systemd:_service
+	qbootctl-systemd:_service
+	rmtfs-systemd:_service
+	rtkit-systemd:_service
+	sleep-inhibitor-systemd:_service
+	tqftpserv-systemd:_service
+	wireplumber-systemd:_service
+	wpa_supplicant-systemd:_service
+	xdg-desktop-portal-systemd:_service
+	xdg-desktop-portal-gtk-systemd:_service
+	xdg-desktop-portal-gnome-systemd:_service
+	xdg-desktop-portal-wlr-systemd:_service
 "
 # 3. Add a new entry below with the list of service files
 #    to install for that package
@@ -125,8 +125,8 @@ source="$(flatpath \
 )"
 
 _service() {
-	local name=$(echo ${subpkgname%%-service})
-	local n=$(echo ${subpkgname%-service} | sed s/-/_/g)
+	local name=$(echo ${subpkgname%%-systemd})
+	local n=$(echo ${subpkgname%-systemd} | sed s/-/_/g)
 	pkgdesc="$name systemd service files"
 	install_if="systemd-services=$pkgver-r$pkgrel systemd $name"
 	for f in $(eval "echo \$_${n}_sources"); do
