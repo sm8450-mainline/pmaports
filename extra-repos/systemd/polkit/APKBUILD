@@ -3,7 +3,7 @@
 pkgname=polkit
 pkgver=999124
 _pkgver=124
-pkgrel=0
+pkgrel=1
 pkgdesc="Application development toolkit for controlling system-wide privileges"
 url="https://www.freedesktop.org/wiki/Software/polkit/"
 arch="all"
@@ -29,7 +29,7 @@ subpackages="
 	$pkgname-libs
 	$pkgname-doc
 	$pkgname-lang
-	$pkgname-service
+	$pkgname-systemd
 	"
 source="https://gitlab.freedesktop.org/polkit/polkit/-/archive/$_pkgver/polkit-$_pkgver.tar.bz2
 	alpine-polkit.pam
