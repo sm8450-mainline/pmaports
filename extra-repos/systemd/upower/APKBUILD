@@ -3,7 +3,7 @@
 pkgname=upower
 pkgver=9999
 _pkgver=1.90.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Power Management Services"
 url="https://upower.freedesktop.org"
 arch="all"
@@ -26,7 +26,7 @@ checkdepends="
 	py3-packaging
 	umockdev-dev
 	"
-subpackages="$pkgname-dev $pkgname-lang $pkgname-doc $pkgname-service"
+subpackages="$pkgname-dev $pkgname-lang $pkgname-doc $pkgname-systemd"
 source="https://gitlab.freedesktop.org/upower/upower/-/archive/v$_pkgver/upower-v$_pkgver.tar.bz2
 	"
 builddir="$srcdir/$pkgname-v$_pkgver"
