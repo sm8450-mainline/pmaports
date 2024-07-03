@@ -3,7 +3,7 @@
 pkgname=gdm
 pkgver=9999
 _pkgver=45.0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME display manager"
 url="https://wiki.gnome.org/Projects/GDM"
 # blocked by gnome-shell
@@ -38,7 +38,7 @@ makedepends="
 	meson
 	systemd-dev
 	"
-subpackages="$pkgname-dev $pkgname-doc $pkgname-lang $pkgname-service"
+subpackages="$pkgname-dev $pkgname-doc $pkgname-lang $pkgname-systemd"
 options="!check" # Causes circular dep with gnome-shell
 source="https://download.gnome.org/sources/gdm/${_pkgver%%.*}/gdm-$_pkgver.tar.xz
 	0001-DOWNSTREAM-use-bin-touch-instead-of-usr-bin-touch.patch
