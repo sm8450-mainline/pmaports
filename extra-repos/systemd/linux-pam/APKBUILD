@@ -6,7 +6,7 @@ pkgname=linux-pam
 # we hard depend on this exact version in postmarketos-base-systemd. When updating
 # the package here it must also be updated in postmarketos-base-systemd.
 pkgver=1.6.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Linux PAM (Pluggable Authentication Modules for Linux)"
 url="https://www.kernel.org/pub/linux/libs/pam"
 arch="all"
@@ -24,7 +24,7 @@ makedepends="
 "
 options="pmb:strict suid !check"
 provider_priority=100
-subpackages="$pkgname-dev $pkgname-doc $pkgname-service"
+subpackages="$pkgname-dev $pkgname-doc $pkgname-systemd"
 source="
 	https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver.tar.xz
 	pam_namespace.patch
