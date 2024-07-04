@@ -1,11 +1,8 @@
-# Contributor: Bart Ribbers <bribbers@disroot.org>
-# Maintainer: team/kde <bribbers@disroot.org>
+# Forked from Alpine to add systemd!
 
-# The group tag is just to easily find this APKBUILD by some scripts for automation
-# group=kde-plasma
 pkgname=kwin
-pkgver=99996.0.4.1
-_pkgver=6.0.4.1
+pkgver=99996.1.2
+_pkgver=6.1.2
 pkgrel=0
 pkgdesc="An easy to use, but flexible, composited Window Manager"
 # armhf blocked by qt6-qtdeclarative
@@ -88,8 +85,7 @@ case "$_pkgver" in
 esac
 subpackages="$pkgname-dbg $pkgname-dev $pkgname-doc $pkgname-lang"
 _repo_url="https://invent.kde.org/plasma/kwin.git"
-source="https://download.kde.org/stable/plasma/${_pkgver%.*}/kwin-$_pkgver.tar.xz
-	0001-kwin-Fix-building-of-tests.patch
+source="https://download.kde.org/stable/plasma/$(echo $_pkgver | cut -d . -f 1-3)/kwin-$_pkgver.tar.xz
 	"
 # Broken, fails to setup due to missing or invalid XDG_RUNTIME_DIR?
 options="!check"
@@ -115,6 +111,5 @@ package() {
 	DESTDIR="$pkgdir" cmake --install build
 }
 sha512sums="
-a38605dea13a225220544b77f835bff5bb191861ad34dd5ea6de06069921bc6db1f2683cb361d421ab3f7a82c58d2ff914512074a17e8e554bac3e5303f19ab5  kwin-6.0.4.1.tar.xz
-76dbcc01d7863939a1c83bdb730c61ecf939396428fd393be103c0621442143ba46ae366802c99a7cf3b27b67e28dea74e2e72f2511f697bd32bdc85a1bccfdc  0001-kwin-Fix-building-of-tests.patch
+cd138846c985ad415ef8fe070034da7887bfd0f31641f2ef5d52e8a0f4c9d00d759c6dcbeaa21b2e482c145f357cc6548476aae53d3eab8654a5b0175eeedc0e  kwin-6.1.2.tar.xz
 "
