@@ -1,7 +1,7 @@
 # Maintainer: Adam Thiede <me@adamthiede.com>
 # Co-Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=linux-postmarketos-mediatek-mt8173
-pkgver=6.9.6
+pkgver=6.9.8
 pkgrel=0
 pkgdesc="Mainline kernel fork for Mediatek MT8173 devices"
 arch="aarch64"
@@ -68,8 +68,8 @@ package() {
 }
 
 sha512sums="
-58ff65fde9a1e22678dc70e9da900f479c5fae0bc87056f89e2919603e0f56016131f2d1c020ec889eb2a4cfd7ff22f1feadedc3cab76852ef19bed0ccf9ab8a  linux-6.9.6.tar.xz
-caabd801e8a0b4f8535085f2661c8363e8cded72bc87128b57245c4aab9f5dd17107ef8e3b982e96fc2ad6ce58b02ec252134d661c46246a8e107bf3d3cb88b3  config-postmarketos-mediatek-mt8173.aarch64
+e7616207a1f08100cbfd9a3cd08bb0ea6cfd474c3a4cb95b3bf738461b7a8ae128270ba1bbaf512ae9c0eb2a409fa0c1d79317ab6dec9ff317aa9019c86d0c62  linux-6.9.8.tar.xz
+66668da1f3433f0784767b839804dab114ab664acbe81be7423966528cf122671e5de8d6704f0b3dfa19a68ca8c4e2050cf60b6907e2ff52ec24c3e3b563723f  config-postmarketos-mediatek-mt8173.aarch64
 4b499c1fbf53631cffd6fa7299643dc744e0e2187f71804664b02f05296162b42e3f76aa0d8c688cecb43a8bcd41ec92991c98287951292260237b828dcca710  fix-mmc1-speed.patch
 c86f8dfc32165a32381d45a4c8b6811ebf43f01b5d8a48fbe227cf5084cfefe24b32264c1c150cb49115db4759a2d21ad48b37dcaac78367d226e9cc2a5ba849  fix-mmc-order.patch
 caf48ac0f77661153ee94c7de4931baca135a69a97e93f01ad8f276b4a9944e077d7214c117450943cca07990c773661f79718cb0c2ff7c5789c93d37afb26de  fix-spi-nor-max-frequency.patch
