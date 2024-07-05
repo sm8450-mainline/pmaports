@@ -3,7 +3,7 @@
 pkgname=device-xiaomi-fire
 pkgdesc="Xiaomi Redmi 12"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -14,6 +14,7 @@ depends="
 	linux-xiaomi-fire
 	msm-fb-refresher
 	postmarketos-base-downstream
+	firmware-xiaomi-fire
 "
 makedepends="devicepkg-dev"
 source="deviceinfo"
