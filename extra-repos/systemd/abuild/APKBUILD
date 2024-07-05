@@ -3,7 +3,7 @@
 pkgname=abuild
 pkgver=99993.12.0
 _pkgver=3.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Script to build Alpine Packages"
 url="https://git.alpinelinux.org/cgit/abuild/"
 arch="all"
@@ -25,6 +25,7 @@ pkggroups="abuild"
 source="
 	https://gitlab.alpinelinux.org/alpine/abuild/-/archive/$_pkgver/abuild-$_pkgver.tar.gz
 	0001-abuild-add-systemd-splitfunc.patch
+	0002-abuild-add-warning-in-systemd-split-func-about-non-u.patch
 	"
 builddir="$srcdir/$pkgname-$_pkgver"
 
@@ -102,4 +103,5 @@ _rootbld() {
 sha512sums="
 00fac67aa96a83f33406dde60bd9526bfa5fdff690b84dbe867b6ed197f147b2afafcdfbda900c005e00a64a42bcb98ca425ffc8bf2158b9540cbb67d935577d  abuild-3.12.0.tar.gz
 52cc5857b3c93bd4595de1d06c3c600b88871c68f7a1ea51e10d720ddd9c8fb7f0f63cd2f4fe280c0d9adaf607de8b858f4add3e46b1a5a28cc6c711359f6c60  0001-abuild-add-systemd-splitfunc.patch
+3782341dac814ecbcb7d2b4242d85f03ca2e4bf9eeb3b1e9524b2c434b05c864f5a4b5b8abc4031085e7e943e90780fe07b1e99d4cfadf0695340ad321647cac  0002-abuild-add-warning-in-systemd-split-func-about-non-u.patch
 "
