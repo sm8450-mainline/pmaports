@@ -3,7 +3,7 @@
 pkgname=device-google-asurada
 pkgdesc="Google Asurada Chromebooks"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -30,7 +30,7 @@ package() {
 
 nonfree_firmware() {
 	pkgdesc="WiFi/BT firmware"
-	depends="linux-firmware-mediatek linux-firmware-rtw88"
+	depends="linux-firmware-mediatek linux-firmware-rtw88 linux-firmware-rtl_bt"
 	mkdir "$subpkgdir"
 }
 
