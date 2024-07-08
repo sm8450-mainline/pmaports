@@ -1,7 +1,7 @@
-# Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
+# Maintainer: Caleb Connolly <caleb@postmarketos.org>
 # Co-Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-initramfs
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=0
 pkgdesc="Base files for the postmarketOS initramfs / initramfs-extra"
 url="https://postmarketos.org"
@@ -92,7 +92,7 @@ sha512sums="
 9c0e8f6f61d5da191e03a1aa9d5d0ceb5baf1eae6dbb9bfb0af59817783525119ac8394b135f303f7b6434a3eab0b49185fb90379e06823db847a4999c75ce33  00-initramfs-base.dirs
 929a8e6cca6b2b4ac6af89fc3912e80315f51c9bf6e9479124ccb7ebe9e99c6c1cafb98d3aa01b0a76a2f6e0071ba3eb86c7a2169a15c2e1788d69458bea3471  00-initramfs-base.files
 f0f00a35f06b7d0a46c67df753ecef880ac92a725a8301649068069d2d477ae3278b3c548ea3f378b4c23eafb39551f5e3ca6a63478486d50a298132140b5b69  00-initramfs-extra-base.files
-e85386077d590cd0db0745e8b58f3323a408cb6a94bca0e4395c43e4db18b0beef29324ed2bfeab6511d0e3b297c067e5a37f420a6877d9c28c285f2416ca420  init.sh
+7ea2c318e3b63b84ba8eb09e31dd74cdd9c86f5f4d8970ab54bb9213930e913c09728b60d429828007ea2dbb0472fd50dc3daae2efbe307babf854e4d8ecb238  init.sh
 aa9591e2c35577bc3c1e9bafa7904b3dff97c42992a763113fff20754e82d521cc690733a1606d6808d556b5a271b5ad8fdc0d2aa475fcb3921433dca0ce178b  init_functions.sh
 ba3275a9af788c7c782322a22a0f144d5e50e3498ea6886486a29331f23ae89cd32d500a3635cfa7cab369afba92edc18aeca64ccbf0cd589061cce23d15b46c  unudhcpd.conf
 "

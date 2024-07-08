@@ -26,6 +26,7 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 mount_proc_sys_dev
 setup_log
 setup_firmware_path
+modprobe libcomposite
 # Run udev early, before splash, to make sure any relevant display drivers are
 # loaded in time
 setup_udev
