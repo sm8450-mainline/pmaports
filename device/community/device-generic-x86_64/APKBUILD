@@ -29,6 +29,7 @@ _pmb_recommends="
 	linux-firmware
 	oem-amd
 	oem-intel
+	oem-nvidia
 "
 provides="device-tablet-x64uefi=$pkgver-r$pkgrel device-tablet-x86uefi=$pkgver-r$pkgrel"
 replaces="device-tablet-x64uefi device-tablet-x86uefi"
