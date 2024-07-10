@@ -116,6 +116,7 @@ device/*/linux-samsung-j5y17lte/	@andrisas
 device/*/linux-samsung-klimtlte/		@Grimler
 device/*/oem-amd/				@craftyguy
 device/*/oem-intel/				@craftyguy
+device/*/oem-nvidia/				@craftyguy
 device/*/soc-mediatek-mt8183/			@jenneron
 device/*/soc-qcom-msm8953/			@barni2000
 device/*/soc-qcom-msm8996/			@Tooniis
