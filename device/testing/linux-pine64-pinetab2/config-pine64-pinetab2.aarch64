@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.9.6-danctnix1 Kernel Configuration
+# Linux/arm64 6.9.8-danctnix2 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="aarch64-alpine-linux-musl-gcc (Alpine 13.2.1_git20240309) 13.2.1 20240309"
 CONFIG_CC_IS_GCC=y
@@ -5677,9 +5677,10 @@ CONFIG_USB_G_ACM_MS=m
 CONFIG_TYPEC=y
 CONFIG_TYPEC_TCPM=y
 CONFIG_TYPEC_TCPCI=y
+CONFIG_TYPEC_HUSB311=y
 # CONFIG_TYPEC_RT1711H is not set
 # CONFIG_TYPEC_TCPCI_MAXIM is not set
-CONFIG_TYPEC_FUSB302=y
+# CONFIG_TYPEC_FUSB302 is not set
 CONFIG_TYPEC_UCSI=y
 # CONFIG_UCSI_CCG is not set
 # CONFIG_UCSI_STM32G0 is not set
@@ -5689,6 +5690,7 @@ CONFIG_TYPEC_UCSI=y
 # CONFIG_TYPEC_HD3SS3220 is not set
 # CONFIG_TYPEC_STUSB160X is not set
 # CONFIG_TYPEC_WUSB3801 is not set
+CONFIG_TYPEC_EXTCON=y
 
 #
 # USB Type-C Multiplexer/DeMultiplexer Switch support

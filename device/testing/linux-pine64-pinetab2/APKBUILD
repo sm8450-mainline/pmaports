@@ -2,7 +2,8 @@
 # Kernel config based on: arch/arm64/configs/pinetab2_defconfig
 # Maintainer: Danct12 <danct12@disroot.org>
 pkgname=linux-pine64-pinetab2
-pkgver=6.9.6
+pkgver=6.9.8
+_danctnix_kernel_rel=2
 pkgrel=0
 pkgdesc="Pine64 PineTab 2 mainline"
 arch="aarch64"
@@ -27,7 +28,7 @@ makedepends="
 "
 
 # Source
-_tags="v$pkgver-danctnix1"
+_tags="v$pkgver-danctnix$_danctnix_kernel_rel"
 _config="config-$_flavor.$arch"
 source="
 	$pkgname-$_tags.tar.gz::https://github.com/dreemurrs-embedded/linux-pinetab2/archive/$_tags.tar.gz
@@ -64,6 +65,6 @@ package() {
 }
 
 sha512sums="
-2e15c0491c93895605b9e371942927483d8c1b35df13540f953d9a5a12941becbe83a908ee3bab68c9700e044958dd3505b30defdc916c92c8eea33547f39754  linux-pine64-pinetab2-v6.9.6-danctnix1.tar.gz
-1d2e735eefce1e35d7df487df8af1979dd556217665e16c4d812829df088fb88e73054fdbd3d599d058638790de0aaa368d530fe7e6149699110fee5bbb2dd72  config-pine64-pinetab2.aarch64
+65bfeb9d718f8105b46bdfffabb9fd4ac69ad969c912c342ab4b56fc652b1cc06550acd805a6df08b204e4860be344185641495e576a9753abd9e3d88ab220bc  linux-pine64-pinetab2-v6.9.8-danctnix2.tar.gz
+7053b57f5e6f1b5a0ff97442fe598f8cc0176037a7f664a4c1a83ff1f04eb2d7f3aa72aca78fd3ed12ecaee7d2755231985abc0a9dbd012006d404454a757a47  config-pine64-pinetab2.aarch64
 "
