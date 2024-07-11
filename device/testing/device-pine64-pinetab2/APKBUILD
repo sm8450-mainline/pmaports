@@ -1,5 +1,6 @@
 # Reference: <https://postmarketos.org/devicepkg>
 # Maintainer: Danct12 <danct12@disroot.org>
+# Co-Maintainer: Stefan Hansson <newbyte@postmarketos.org>
 pkgname=device-pine64-pinetab2
 pkgdesc="Pine64 PineTab 2"
 pkgver=1

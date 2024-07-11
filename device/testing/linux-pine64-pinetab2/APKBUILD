@@ -1,6 +1,7 @@
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on: arch/arm64/configs/pinetab2_defconfig
 # Maintainer: Danct12 <danct12@disroot.org>
+# Co-Maintainer: Stefan Hansson <newbyte@postmarketos.org>
 pkgname=linux-pine64-pinetab2
 pkgver=6.9.8
 _danctnix_kernel_rel=2
