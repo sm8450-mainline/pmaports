@@ -2,7 +2,7 @@
 # Maintainer: Newbyte <newbyte@postmarketos.org>
 pkgname=postmarketos-ui-phosh
 pkgver=22.3
-pkgrel=7
+pkgrel=8
 pkgdesc="(Wayland) Mobile UI initially developed for the Librem 5"
 url="https://phosh.mobi"
 arch="noarch !armhf"
@@ -67,7 +67,6 @@ systemd() {
 	install="$subpkgname.post-install"
 	depends="
 		libcap-utils
-		phosh-service
 	"
 	mkdir "$subpkgdir"
 }
