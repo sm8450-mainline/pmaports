@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-coreprimevelte
 pkgdesc="Samsung Galaxy Core Prime VE LTE"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -10,7 +10,10 @@ options="!check !archcheck"
 depends="linux-samsung-coreprimevelte postmarketos-base mkbootimg u-boot-tools pxa-mkbootimg"
 makedepends="devicepkg-dev"
 _pmb_recommends="firmware-samsung-pxa1908"
-source="deviceinfo"
+source="
+	deviceinfo
+	90-mlan-to-wlan.rules
+"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -18,8 +21,12 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
+
+	install -Dm644 "$srcdir"/90-mlan-to-wlan.rules \
+		-t "$pkgdir"/usr/lib/udev/rules.d
 }
 
 sha512sums="
 e9ed10e30e09b31f9f4cb148f3d0d2cef252f6c6a40161828d5bc7c8150772746d09e79c4d94614f2e2ce192f135e224cc0a9c61f1bdbd6cde2bc026018744af  deviceinfo
+d51facbaa99f69964786e770dc8ed500bfb2609353a25aa344701c851131cc421ef3a2663fe4422a21a5f38e01f0c34235fa4fad75739fb614109a2fb268db8a  90-mlan-to-wlan.rules
 "
