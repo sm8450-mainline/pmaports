@@ -6,8 +6,8 @@
 # How to add a new service file (4 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=13
-pkgrel=1
+pkgver=14
+pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
 arch="noarch"
@@ -24,6 +24,7 @@ subpackages="
 	at-spi2-core-systemd:_service
 	bluez-systemd:_service
 	dconf-systemd:_service
+	eg25-manager-systemd:_service
 	flatpak-systemd:_service
 	geoclue-systemd:_service
 	gnome-clocks-systemd:_service
@@ -61,6 +62,7 @@ _bluez_sources="
 	user/obex.service
 " # From bluez build with --enable-systemd
 _dconf_sources="user/dconf.service"
+_eg25_manager_sources="system/eg25-manager.service" # From https://gitlab.com/mobian1/eg25-manager/-/blob/master/data/eg25-manager.service.in
 _flatpak_sources="system/flatpak-system-helper.service user/flatpak-session-helper.service user/flatpak-portal.service"
 _geoclue_sources="system/geoclue.service" # From https://gitlab.freedesktop.org/geoclue/geoclue/-/blob/master/data/geoclue.service.in
 _gnome_clocks_sources="user/gnome-clocks.service"
@@ -104,6 +106,7 @@ source="$(flatpath \
 	$_at_spi2_core_sources \
 	$_bluez_sources \
 	$_dconf_sources \
+	$_eg25_manager_sources \
 	$_flatpak_sources \
 	$_geoclue_sources \
 	$_gnome_clocks_sources \
@@ -153,6 +156,7 @@ de133c35cf95d7c833368c9010264668e72657400ad4e5259ef046321c878507f36ef73fa7b4759f
 00049b418fab6dec7d9931a87cc64d2062efa0f7128bec1a693bfdf112703e628a2f1c98d2d5bf71554e6e576882890cef7a02de283909b1dd2f4c5ec0f6393e  user-mpris-proxy.service
 5ad5f8adcc89759e5c935a2e55803fac52a9681af3a28f5c8d46f693717afcf7c8c6394f85dd5dbc1ddb575b909b0f6feee2e9973ee177e6445d375136b932ee  user-obex.service
 e4de73d12abd046c8683e3be6e3aab40a5db3f5d6246cedbb3ff099bcc8037a167b23ac957d30f1118db571b69cb10c042272ac2b54dacf83fa6a3e9dad13a87  user-dconf.service
+780912dbfdc7e9a350e934d46022b043edda86a393a7c107d0c855e9580240e4bce791428fdadef0a45adc6cfa24fb5d58981b6ccd80e3dad99da3e5fa3dc7b8  system-eg25-manager.service
 0cfef56afeea103ca487b36f13665021bb349b8c890f023135a93c47d45cb58dd39ffe76212fb780546b1aaed8174e40345a961d7125f7d7ace5921e1dcc7ba9  system-flatpak-system-helper.service
 815a3072c211c85ff475ac7f2fb9c280b567b98777c0f7bf7fea4575b5eaa3b9a4003a08eb3b8cb5b2d7f9fb6525e04491e8d87013e2539ae3a574db647f97b1  user-flatpak-session-helper.service
 7a17986c0f0554f0b27a5933b3e04657323edb23047878616727863fdc748cb8d8fea978f43895341037e2d1512bbd492bdbc19c40419cd3e109345614645388  user-flatpak-portal.service
