@@ -10,6 +10,8 @@ stages:
   - lint
   - build
   - autoupdate
+variables:
+  PMBOOTSTRAP_TAG: "master"
 
 # This defines the rules for when a pipeline should run.
 workflow:
