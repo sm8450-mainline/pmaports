@@ -19,16 +19,11 @@ if [ -z "$(command -v pytest)" ]; then
 	exit 1
 fi
 
-# Wrap pmbootstrap to use this repository for --aports
 pmaports="$(cd "$(dirname "$0")"/..; pwd -P)"
-_pmbootstrap="$(command -v pmbootstrap)"
-pmbootstrap() {
-	"$_pmbootstrap" --aports="$pmaports" "$@"
-}
-
 # Make sure that the work folder format is up to date, and that there are no
 # mounts from aborted test cases (pmbootstrap#1595)
 pmbootstrap work_migrate
+pmbootstrap config aports "$pmaports"
 pmbootstrap -q shutdown
 
 # Make sure we have a valid device (pmbootstrap#1128)
