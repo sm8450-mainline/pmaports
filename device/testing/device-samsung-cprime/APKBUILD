@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-cprime
 pkgdesc="Samsung Galaxy Core Prime"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -18,12 +18,8 @@ makedepends="devicepkg-dev"
 source="
 	deviceinfo
 	modules-initfs
-	phoc.ini
 "
-subpackages="
-	$pkgname-nonfree-firmware:nonfree_firmware
-	$pkgname-phosh
-"
+subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
 _pmb_select="soc-qcom-msm8916-rproc"
 
 build() {
@@ -40,14 +36,7 @@ nonfree_firmware() {
 	mkdir "$subpkgdir"
 }
 
-phosh() {
-	install_if="$pkgname postmarketos-ui-phosh"
-	install -Dm644 "$srcdir"/phoc.ini \
-		"$subpkgdir"/etc/phosh/phoc.ini
-}
-
 sha512sums="
 81d2f6f4fb769563b176630d38a126a45570e6237e089ae67a5d65d719eef6489fae8fc624dda18e35a6d97de122620efa1508b9378a53f7f47182ca181971b1  deviceinfo
 9ead03b9e3edb69b238b25e5eecd477c99f03223237a549d124903dfb56a8be02df25ea43c8c308998d2250f9e586c8fef594007f43bc426dfb2d074a6270bba  modules-initfs
-9793dfd1ea066fbadeca874401a0c7c9b735b98054ccfbafa0b8d99e47ef78e28c971c544905ae556da50b55037e6970ab79be2e0a28672d9acb6f9d7d77093b  phoc.ini
 "
