@@ -14,9 +14,10 @@ import pmb.parse
 import pmb.parse._apkbuild
 import pmb.parse.apkindex
 import pmb.helpers.repo
+from pmb.core.pkgrepo import pkgrepo_iter_package_dirs, pkgrepo_relative_path
 
 
-def parse_source_from_checksums(args, apkbuild_path):
+def parse_source_from_checksums(apkbuild_path):
     """
     Read the APKBUILD file and parse source files from the checksums at the
     bottom. This has always the same format, even if $source is built with hard
@@ -64,17 +65,20 @@ def parse_source_from_checksums(args, apkbuild_path):
     return ret
 
 
-def test_aports_unreferenced_files(args):
+def test_aports_unreferenced_files():
     """
     Raise an error if an unreferenced file is found
     """
-    for apkbuild_path in glob.iglob(args.aports + "/**/APKBUILD", recursive=True):
+    for apkbuild_path in pkgrepo_iter_package_dirs():
         # pmbootstrap parser has some issues with complicated APKBUILDs, skip those.
-        if apkbuild_path.startswith(args.aports + "/cross/"):
+        _, relpath = pkgrepo_relative_path(apkbuild_path)
+        if relpath.parts[0] == "cross":
             continue
 
+        apkbuild_path = apkbuild_path / "APKBUILD"
+
         apkbuild = pmb.parse.apkbuild(apkbuild_path)
-        sources_chk = parse_source_from_checksums(args, apkbuild_path)
+        sources_chk = parse_source_from_checksums(apkbuild_path)
 
         # Collect files from subpackages
         subpackage_installs = []
@@ -105,7 +109,7 @@ def test_aports_unreferenced_files(args):
                 raise RuntimeError(f"{apkbuild_path}: found unreferenced file: {rel_file_path}")
 
 
-def test_distfiles_conflict(args):
+def test_distfiles_conflict():
     """
     Make sure that each filename mentioned in any source= of any APKBUILD
     always has the same checksum. This is important because apk caches
@@ -115,10 +119,11 @@ def test_distfiles_conflict(args):
     with a checksum error.
     """
     source_all = {}
-    for apkbuild_path in glob.iglob(f"{args.aports}/**/APKBUILD", recursive=True):
-        source = parse_source_from_checksums(args, apkbuild_path)
+    for apkbuild_path in pkgrepo_iter_package_dirs():
+        apkbuild_path = apkbuild_path / "APKBUILD"
+        source = parse_source_from_checksums(apkbuild_path)
         dir_path = os.path.dirname(apkbuild_path)
-        apkbuild_rel = os.path.relpath(apkbuild_path, args.aports)
+        _, apkbuild_rel = pkgrepo_relative_path(apkbuild_path)
         for filename, checksum in source.items():
             # Files bundled with the APKBUILD don't get copied to the distfiles
             # cache, so not relevant for this check. Use glob.glob here and not

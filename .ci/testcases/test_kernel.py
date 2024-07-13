@@ -11,14 +11,15 @@ from pathlib import Path
 
 import add_pmbootstrap_to_import_path
 import pmb.parse
+from pmb.core.pkgrepo import pkgrepo_iglob, pkgrepo_relative_path
 
 
-def test_aports_kernel(args):
+def test_aports_kernel():
     """
     Various tests performed on the /**/linux-* aports.
     """
 
-    for path in glob.iglob(f"{args.aports}/**/linux-*/APKBUILD", recursive=True):
+    for path in pkgrepo_iglob("**/linux-*/APKBUILD", recursive=True):
         apkbuild = pmb.parse.apkbuild(path)
         aport_name = os.path.basename(os.path.dirname(path))
 
@@ -37,14 +38,15 @@ def test_aports_kernel(args):
                                    " automatically.")
 
         # check some options only for main and community devices
-        for dir in ["main", "device/main", "device/community"]:
-            if path.startswith(f"{args.aports}/{dir}"):
+        _, relpath = pkgrepo_relative_path(path)
+        for part in ["main", "community"]:
+            if part in relpath.parts:
                 if "pmb:kconfigcheck-community" not in apkbuild["options"]:
                     raise RuntimeError(f"{aport_name}: \"pmb:kconfigcheck-community\" missing in"
                                        " options= line, required for all community/main devices.")
 
         # check for postmarketos-installkernel in makedepends when installing kernel with make
-        if bool(re.search("make z?install", Path(path).read_text(encoding="utf-8"))):
+        if bool(re.search("make z?install", path.read_text(encoding="utf-8"))):
             if "postmarketos-installkernel" not in apkbuild["makedepends"]:
                 raise RuntimeError(f"{aport_name}: \"postmarketos-installkernel\" missing in"
                                    " makedepends, required when using make install/zinstall.")

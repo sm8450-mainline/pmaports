@@ -7,9 +7,10 @@ import os
 
 import add_pmbootstrap_to_import_path
 import pmb.parse
+from pmb.core.pkgrepo import pkgrepo_default_path, pkgrepo_iglob
 
 
-def test_aports_firmware(args):
+def test_aports_firmware():
     """
     Various tests performed on the /**/firmware-* aports.
     """
@@ -26,9 +27,9 @@ def test_aports_firmware(args):
         "firmware-xiaomi-willow",  # Doesn't build, source link is dead (pma#1212)
     ]
 
-    for path in glob.iglob(f"{args.aports}/**/firmware-*/APKBUILD", recursive=True):
+    for path in pkgrepo_iglob("**/firmware-*/APKBUILD", recursive=True):
         apkbuild = pmb.parse.apkbuild(path)
-        aport_name = os.path.basename(os.path.dirname(path))
+        aport_name = os.path.basename(path.parent)
 
         if aport_name not in excluded:
             if "pmb:cross-native" not in apkbuild["options"]:

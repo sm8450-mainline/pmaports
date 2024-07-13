@@ -10,6 +10,7 @@ import sys
 import add_pmbootstrap_to_import_path
 import pmb.parse
 import pmb.parse._apkbuild
+from pmb.core.pkgrepo import pkgrepo_iter_package_dirs, pkgrepo_relative_path
 
 
 def apkbuild_check_provides(path, apkbuild, version, pkgname, subpkgname=None):
@@ -65,13 +66,14 @@ def apkbuild_check_provides(path, apkbuild, version, pkgname, subpkgname=None):
     return ret
 
 
-def test_provides(args):
+def test_provides():
     errors = []
-    for path in glob.iglob(f"{args.aports}/**/APKBUILD", recursive=True):
+    for path in pkgrepo_iter_package_dirs():
+        path = path / "APKBUILD"
         apkbuild = pmb.parse.apkbuild(path)
         pkgname = apkbuild["pkgname"]
         version = f"{apkbuild['pkgver']}-r{apkbuild['pkgrel']}"
-        path_rel = os.path.relpath(path, args.aports)
+        _, path_rel = pkgrepo_relative_path(path)
         errors += apkbuild_check_provides(path_rel, apkbuild, version, pkgname)
 
         for subpkg, subpkg_data in apkbuild["subpackages"].items():

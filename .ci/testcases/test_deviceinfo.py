@@ -10,6 +10,7 @@ import sys
 
 import add_pmbootstrap_to_import_path
 import pmb.parse
+from pmb.core.pkgrepo import pkgrepo_iglob
 
 
 def deviceinfo_obsolete(info):
@@ -22,13 +23,13 @@ def deviceinfo_obsolete(info):
         "weston_pixman_type",
     ]
     for option in obsolete_options:
-        if option in info and info[option]:
+        if getattr(info, option, None):
             raise RuntimeError(f"option {option} is obsolete, please rename"
                                " or remove it (see reasons for removal of at"
                                " https://postmarketos.org/deviceinfo)")
 
 
-def test_deviceinfo(args):
+def test_deviceinfo():
     """
     Parse all deviceinfo files successfully and run checks on the parsed data.
     """
@@ -37,10 +38,10 @@ def test_deviceinfo(args):
     count = 0
     pattern = re.compile("^deviceinfo_[a-zA-Z0-9_]*=\".*\"$")
 
-    for folder in glob.glob(args.aports + "/device/*/device-*"):
-        device = folder[len(args.aports):].split("-", 1)[1]
+    for folder in pkgrepo_iglob("device/*/device-*"):
+        device = folder.name.split("-", 1)[1]
 
-        f = open(folder[len(args.aports):][1:] + "/deviceinfo")
+        f = open(folder / "deviceinfo")
         lines = f.read().split("\n")
         f.close()
 
@@ -66,12 +67,12 @@ def test_deviceinfo(args):
                                        f" to line instead of above? {line}")
 
             # Successful deviceinfo parsing / obsolete options
-            info = pmb.parse.deviceinfo(args, device)
+            info = pmb.parse.deviceinfo(device)
             deviceinfo_obsolete(info)
 
             # deviceinfo_name must start with manufacturer
-            name = info["name"]
-            manufacturer = info["manufacturer"]
+            name = info.name
+            manufacturer = info.manufacturer
             if not name.startswith(manufacturer) and \
                     not name.startswith("Google"):
                 raise RuntimeError("Please add the manufacturer in front of"

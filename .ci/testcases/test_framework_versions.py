@@ -15,9 +15,10 @@ import sys
 import add_pmbootstrap_to_import_path
 import pmb.config
 import pmb.parse
+from pmb.core.pkgrepo import pkgrepo_iter_package_dirs
 
 
-def get_categorized_packages(args):
+def get_categorized_packages():
     """
     Parse all aports and categorize them.
 
@@ -28,7 +29,7 @@ def get_categorized_packages(args):
     """
     ret = {}
 
-    for path in glob.glob(args.aports + "/*/*/APKBUILD"):
+    for path in pkgrepo_iter_package_dirs():
         # Parse APKBUILD
         apkbuild = pmb.parse.apkbuild(path)
         url = apkbuild["url"]
@@ -109,10 +110,10 @@ def check_categories(categories):
     return ret
 
 
-def test_framework_versions(args):
+def test_framework_versions():
     """
     Make sure that packages of the same framework have the same version.
     """
-    categories = get_categorized_packages(args)
+    categories = get_categorized_packages()
     if not check_categories(categories):
         raise RuntimeError("Framework version check failed!")
