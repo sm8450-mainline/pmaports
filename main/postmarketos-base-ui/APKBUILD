@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-base-ui
 pkgver=25
-pkgrel=0
+pkgrel=1
 pkgdesc="Meta package for minimal postmarketOS UI base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -21,7 +21,6 @@ depends="
 	wireless-regdb
 	wireplumber
 	"
-_pmb_recommends="font-twemoji"
 subpackages="
 	$pkgname-audio-none:_audio_none
 	$pkgname-audio-pipewire:_audio_pipewire
@@ -36,6 +35,7 @@ subpackages="
 	$pkgname-qt-tweaks:qt_tweaks
 	$pkgname-qt-wayland:qt_wayland
 	$pkgname-tinydm
+	$pkgname-wayland
 	$pkgname-wifi-iwd:iwd
 	$pkgname-wifi-wpa_supplicant:wpa_supplicant
 	$pkgname-x11
@@ -107,12 +107,20 @@ package() {
 	done
 }
 
+wayland() {
+	install_if="$pkgname=$pkgver-r$pkgrel wayland-server-libs"
+	_pmb_recommends="font-twemoji"
+
+	mkdir -p "$subpkgdir"
+}
+
 x11() {
 	install_if="$pkgname=$pkgver-r$pkgrel xorg-server"
 	depends="
 		libinput
 		xf86-input-libinput
 		xf86-video-fbdev"
+	_pmb_recommends="font-twemoji"
 	provides="postmarketos-base-x11=$pkgver-r$pkgrel"
 	amove etc/X11/Xwrapper.config
 }
