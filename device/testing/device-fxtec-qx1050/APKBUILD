@@ -1,0 +1,31 @@
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-fxtec-qx1050
+pkgdesc="F(x)tec Pro1x (QX1050)"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	linux-postmarketos-qcom-sm6115
+	firmware-fxtec-qx1050-adreno
+	firmware-fxtec-qx1050-radio
+	firmware-fxtec-qx1050-rproc
+	mkbootimg
+	postmarketos-base
+"
+makedepends="devicepkg-dev"
+source="deviceinfo"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+f5f591cf45f48c84b3cc672b998f82636011b1f86400c910c0877f7f5f6719b547028a45aed15109b1ff94a67873efb8c742a05b04daf578955ac2d70d081037  deviceinfo
+"
