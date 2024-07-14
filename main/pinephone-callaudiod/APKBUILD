@@ -1,0 +1,32 @@
+# Maintainer: Arnav Singh <me@arnavion.dev>
+pkgname=pinephone-callaudiod
+pkgver=0.1.2
+pkgrel=0
+pkgdesc="Call audio routing daemon"
+url="https://github.com/Arnavion/pinephone-callaudiod"
+arch="noarch"
+license="AGPL-3.0-only"
+makedepends="make"
+depends="
+	python3
+	py3-dasbus
+	cmd:amixer
+	cmd:pactl
+	"
+provides="callaudiod=$pkgver-r$pkgrel"
+provider_priority=1
+source="
+	$pkgname-$pkgver.tar.gz::https://github.com/Arnavion/pinephone-callaudiod/archive/v$pkgver.tar.gz
+	"
+
+build() {
+	return 0
+}
+
+package() {
+	make DESTDIR="$pkgdir" prefix=/usr libexecdir=/usr/lib install
+}
+
+sha512sums="
+a5a36663e6891bb0e801f7aa1d8b0fcea8dea4e1cd1a3dc9465e959d3a106553b5cac9641c992928368dff64e0bd611da7ed55ad7e71d96e506629c0974b3cd8  pinephone-callaudiod-0.1.2.tar.gz
+"
