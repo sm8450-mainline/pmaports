@@ -4,7 +4,7 @@
 pkgname=apk-tools
 pkgver=9992.14
 _pkgver=2.14.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Alpine Package Keeper - package manager for alpine"
 arch="all"
 url="https://gitlab.alpinelinux.org/alpine/apk-tools"
@@ -31,8 +31,8 @@ if [ "$CBUILD" = "$CHOST" ]; then
 	depends="$depends ca-certificates-bundle"
 fi
 
-_commit="3ffd8c224c5e87328bd237dad6a63bb75fb10255"
-source="https://gitlab.com/calebccff/apk-tools/-/archive/$_commit/apk-tools-$_commit.tar.gz
+_commit="5f12ed34afdc52bd24778b9331a3fa3a1cb38f83"
+source="https://gitlab.com/postmarketOS/apk-tools/-/archive/$_commit/apk-tools-$_commit.tar.gz
 	_apk
 	"
 builddir="$srcdir/$pkgname-$_commit"
@@ -96,6 +96,6 @@ luaapk() {
 }
 
 sha512sums="
-5028790865c4a1e8b231bceb2d28e06f870cbdd6e0bb8ef5d203420dfb137142ead08002659af16c103d867f8501eb00624d7860c20df490f95dd2ec24226153  apk-tools-3ffd8c224c5e87328bd237dad6a63bb75fb10255.tar.gz
+ff52a3b2221e3894761ff706f3cd0b03a04c555bf0007e189831ee1a394944716fd63b18e8fae7471c9663c87126a648042e0481e099073df1fa5ddcacdfc761  apk-tools-5f12ed34afdc52bd24778b9331a3fa3a1cb38f83.tar.gz
 7870676720f5007eee9482786e02246f8e3474afb90e76c9c83aebe914747a8e007b5d2eed6441933f4922024b3f0664db270f21981ad6c2db877a110b0cd79e  _apk
 "
