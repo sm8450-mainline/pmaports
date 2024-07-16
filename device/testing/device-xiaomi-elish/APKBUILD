@@ -1,13 +1,15 @@
 # Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: Jianhua Lu <lujianhua000@gmail.com>
 pkgname=device-xiaomi-elish
 pkgdesc="Xiaomi Mi Pad 5 Pro"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
+	bootmac
 	make-dynpart-mappings
 	mesa-vulkan-freedreno
 	mkbootimg
