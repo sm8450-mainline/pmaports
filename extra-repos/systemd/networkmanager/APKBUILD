@@ -2,7 +2,7 @@
 # integrates with logind for sleepmonitor and sessionmonitor.
 
 pkgname=networkmanager
-pkgver=9999
+pkgver=9991.42.6
 _pkgver=1.42.6
 pkgrel=0
 pkgdesc="Network Management daemon"
@@ -61,7 +61,7 @@ subpackages="
 	$pkgname-dev
 	$pkgname-elogind
 	$pkgname-lang
-	$pkgname-service
+	$pkgname-systemd
 	$pkgname-adsl
 	$pkgname-bluetooth
 	$pkgname-ovs
@@ -264,10 +264,6 @@ dnsmasq() {
 	depends="$pkgname=$pkgver-r$pkgrel dnsmasq-dnssec-dbus"
 
 	mkdir -p "$subpkgdir"
-}
-
-service() {
-	default_service
 }
 
 _default_plugin() {
