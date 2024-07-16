@@ -8,7 +8,6 @@ license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
-	alsa-ucm-conf-xiaomi-elish
 	make-dynpart-mappings
 	mesa-vulkan-freedreno
 	mkbootimg
@@ -18,7 +17,12 @@ depends="
 "
 makedepends="devicepkg-dev"
 install="$pkgname.post-install $pkgname.post-upgrade"
-source="deviceinfo modules-initfs"
+source="
+	alsa-ucm-conf/elish.conf
+	alsa-ucm-conf/HiFi.conf
+	deviceinfo
+	modules-initfs
+"
 
 subpackages="
 	$pkgname-kernel-boe:kernel_boe
@@ -32,6 +36,17 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
+
+	# device-specific alsa ucm conf
+	install -Dm644 "$srcdir/elish.conf" \
+		"$pkgdir/usr/share/alsa/ucm2/Xiaomi/elish/elish.conf"
+
+	install -Dm644 "$srcdir/HiFi.conf" \
+		"$pkgdir/usr/share/alsa/ucm2/Xiaomi/elish/HiFi.conf"
+
+	mkdir -p "$pkgdir/usr/share/alsa/ucm2/conf.d/sm8250"
+	ln -s ../../Xiaomi/elish/elish.conf \
+		"$pkgdir/usr/share/alsa/ucm2/conf.d/sm8250/Xiaomi Mi Pad 5 Pro.conf"
 }
 
 kernel_boe() {
@@ -66,6 +81,8 @@ nonfree_firmware() {
 }
 
 sha512sums="
+7b5def03dc5da28c7449719f0619f9d9ddbd988235b8591304ae4fea0989189d65ca1bc0d43664115f595137ba7896359b1b5f48fd6e350cac5d41ef9b1df869  elish.conf
+ed9a509f70715fd6c6614ee5fddbdb0ed2aa69f4a2983af9dbec26bdeb18fe93e3d1a65e03c618550c61da1416c79eb9440fb1bcd4961f85059b27904c4395cc  HiFi.conf
 767b9347ef08e8dad66c9f9afa282e53fbc7eafa240d49a18de4bdb3cf4b586f236cb0cb5709ff83ac2db0ccfc2e63c657fb7b746c1abf59d707b22e4d4267ed  deviceinfo
 08429bea885350e34c4d7f7aec02e440080a78db3ac10d8a757012ffa5dcafe93a12db24e37201d02cd423db9c33cf0bafcd0c03935dfa159a2e89ccafe93f3e  modules-initfs
 "
