@@ -7,7 +7,7 @@
 pkgname=systemd-services
 # 1. bump pkgver
 pkgver=13
-pkgrel=0
+pkgrel=1
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
 arch="noarch"
@@ -26,7 +26,7 @@ subpackages="
 	dconf-systemd:_service
 	flatpak-systemd:_service
 	geoclue-systemd:_service
-	gnome-clocks:_service
+	gnome-clocks-systemd:_service
 	hexagonrpcd-systemd:_service
 	iio-sensor-proxy-systemd:_service
 	iwd-systemd:_service
