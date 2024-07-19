@@ -124,6 +124,7 @@ subpackages="
 
 source="
 	https://gitlab.com/postmarketOS/systemd/-/archive/$_pkgver/systemd-$_pkgver.tar.gz
+	systemd-apk-macros.sh
 	wired.network
 	"
 builddir="$srcdir/systemd-$_pkgver"
@@ -218,6 +219,9 @@ package() {
 	# ship default policy to leave services disabled
 	mkdir -p "$pkgdir"/usr/lib/systemd/system-preset
 	echo 'disable' > "$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
+
+	install -Dm755 "$srcdir"/systemd-apk-macros.sh -t \
+		"$pkgdir"/usr/lib/systemd
 }
 
 udevd() {
@@ -396,5 +400,6 @@ dev() {
 
 sha512sums="
 f556d2eabcb732bed6bf7a5396be6f6d67eebf80218c7ae5525042fba661b1d242cb7941a720ff6d015a3b6af0ee545a4a647044a9da2acd16914d6c0cdda4c2  systemd-musl-v256.tar.gz
+73d10e72413c6b688c847c667ccb42ef1f273d498e4b4ff5344dc98432e05aab92bbcd42725935b15f3ebcc627729318ac592c3372cf22465f39ea93a5dedc8b  systemd-apk-macros.sh
 81c897fed8a3fbfb67ec591b2398a5d65e4af1b3ef379376c157c98d71f085b707f8ebc896d5571a94f99f8fc84fd6b43e3b879ca9b0d57fc6c4596034c7a777  wired.network
 "
