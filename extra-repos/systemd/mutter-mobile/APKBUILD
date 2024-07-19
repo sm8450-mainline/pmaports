@@ -1,8 +1,8 @@
 # Forked from Alpine to apply mobile adaptivity patches
 
 pkgname=mutter-mobile
-pkgver=99945_git20230908
-_pkgver=45_git20230908
+pkgver=99946.0
+_pkgver=46.0
 pkgrel=1
 pkgdesc="clutter-based window manager and compositor"
 url="https://wiki.gnome.org/Projects/Mutter/"
@@ -11,7 +11,7 @@ url="https://wiki.gnome.org/Projects/Mutter/"
 arch="all !riscv64"
 license="GPL-2.0-or-later"
 depends="
-	gnome-settings-daemon
+	gnome-settings-daemon-mobile
 	gsettings-desktop-schemas
 	mutter-mobile-schemas
 	xkeyboard-config
@@ -27,7 +27,7 @@ makedepends="
 	gdk-pixbuf-dev
 	glib-dev
 	gnome-desktop-dev
-	gnome-settings-daemon-dev
+	gnome-settings-daemon-mobile-dev
 	gobject-introspection-dev
 	graphene-dev
 	gtk+3.0-dev
@@ -67,13 +67,11 @@ makedepends="
 options="!check" # Can't be run with release builds
 provides="mutter=$pkgver-r$pkgrel"
 subpackages="$pkgname-dbg $pkgname-dev $pkgname-doc $pkgname-lang $pkgname-schemas::noarch"
-_commit="0f08f5aba4c9b5ac34b2d5711182d50b719d838e"
-source="mobile-mutter-$_commit.tar.gz::https://gitlab.gnome.org/verdre/mobile-mutter/-/archive/$_commit/mobile-mutter-$_commit.tar.gz
-	fixudev-req.patch
+_commit="46-mobile-0"
+source="mutter-mobile-$_commit.tar.gz::https://gitlab.gnome.org/verdre/mutter-mobile/-/archive/$_commit/mutter-mobile-$_commit.tar.gz
 	pcversion.patch
-	version.patch
 	"
-builddir="$srcdir/mobile-mutter-$_commit"
+builddir="$srcdir/mutter-mobile-$_commit"
 
 prepare() {
 	default_prepare
@@ -122,8 +120,6 @@ package() {
 }
 
 sha512sums="
-715c3efbbf416a11ae0a723184d1e018d3679c876bc419f110da1200f9dad3b7719255ac81cca301cff55e16ba36578bc9906805599ff009faeebf9455f5bcb1  mobile-mutter-0f08f5aba4c9b5ac34b2d5711182d50b719d838e.tar.gz
-6f21171bbd0ad0fc67cbaf5fb1478b22b482a9ae33b9328cc51a5dd31bcf7d95cd41e6cbbac21d3d8801cc064a62a64ae38ed7d0501ab605b861058c32f3bc30  fixudev-req.patch
-bb46a4692aaff0c9e6092d1ba80d19b336035e983f0f20a437a586757bc2530860f50fbd46b09f73e88f0dd80ea7188d1df467b8f762918717785e618b6e9c4b  pcversion.patch
-a9a82e945081480ae7ce59098aa3e46c87f5ea97481bd4c4933b3ef0a1757492ecb6e8453e8a2f74fb42edd51d39f76aaf9ef45ad8c52008acd6bbcbec219f83  version.patch
+97de32571ca2aeeee4d213e085fc22d0c9f669ec8d24219a5a4205f21a2e0b261f8e6d042248262926df27e0530b7a0501922d1efde5278f8c23507909d1fa84  mutter-mobile-46-mobile-0.tar.gz
+2f2379d1f6676c69ba182d008d44c3d216ba5044af56352c785f4c34d17aeb0ac98a539827371d06ade7c2b42b06f916753c736167d2d89c0053b0a0e738c5d5  pcversion.patch
 "

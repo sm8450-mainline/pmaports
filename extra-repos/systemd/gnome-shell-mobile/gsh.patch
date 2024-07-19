@@ -13,15 +13,16 @@ diff --git a/src/main.c b/src/main.c
 index 8cccc0a..ef6408f 100644
 --- a/src/main.c
 +++ b/src/main.c
-@@ -19,6 +19,10 @@
+@@ -20,8 +20,12 @@
+ #include <meta/prefs.h>
  #include <atk-bridge.h>
  #include <link.h>
- 
+
 +#ifdef HAVE_EXE_INTROSPECTION
 +#undef HAVE_EXE_INTROSPECTION
 +#endif
 +
  #ifdef HAVE_EXE_INTROSPECTION
+ #include <dlfcn.h>
  #include <elf.h>
  #endif
-
