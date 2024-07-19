@@ -3,7 +3,7 @@
 # Co-Maintainer: Jan Jasper de Kroon <jajadekroon@gmail.com>
 pkgname=device-pine64-pinephone
 pkgver=3
-pkgrel=2
+pkgrel=3
 pkgdesc="PINE64 PinePhone"
 url="https://postmarketos.org"
 license="MIT"
@@ -40,7 +40,7 @@ depends="
 # FIXME: use upstream alsa-ucm-conf instead, once it works the same (pma#2115)
 replaces="alsa-ucm-conf"
 makedepends="devicepkg-dev dtc"
-install="$pkgname.post-install $pkgname.post-upgrade $pkgname.pre-upgrade"
+install="$pkgname.pre-upgrade"
 source="
 	00_alsa_pinephone_dshare.conf
 	10-pinephone-proximity.rules
@@ -177,6 +177,7 @@ nonfree_firmware() {
 
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel eg25-manager-openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
 	depends="eg25-manager-openrc"
 	install -Dm644 "$srcdir"/90-modem-eg25-openrc.rules -t \
 		"$subpkgdir"/usr/lib/udev/rules.d/
