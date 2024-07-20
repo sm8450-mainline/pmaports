@@ -2,13 +2,18 @@
 pkgname=device-samsung-jflte
 pkgdesc="Samsung Galaxy S4"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
-depends="postmarketos-base linux-samsung-jflte mkbootimg
-	msm-fb-refresher"
+depends="
+	postmarketos-base
+	linux-samsung-jflte
+	mkbootimg
+	msm-fb-refresher
+	postmarketos-initramfs-minimal
+"
 makedepends="devicepkg-dev"
 subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
 source="deviceinfo fb.modes"
