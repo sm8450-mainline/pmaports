@@ -2,7 +2,7 @@
 # Maintainer: Newbyte <newbyte@postmarketos.org>
 pkgname=postmarketos-ui-gnome-mobile
 pkgver=2
-pkgrel=4
+pkgrel=5
 pkgdesc="(Wayland) Gnome Shell patched to adapt better to phones (Experimental)"
 url="https://gnome.org/"
 arch="noarch !armhf !riscv64" # gnome-shell / riscv64: mutter-mobile
@@ -43,10 +43,8 @@ _pmb_recommends="
 	postprocessd
 	ttyescape
 	"
-install="$pkgname.post-install $pkgname.post-upgrade"
-source="
-	firefox-wayland.sh
-	"
+subpackages="$pkgname-openrc"
+source="firefox-wayland.sh"
 options="!check"
 
 package() {
@@ -54,6 +52,15 @@ package() {
 		"$srcdir"/firefox-wayland.sh \
 		-t "$pkgdir"/etc/profile.d/
 }
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="gdm-openrc"
+
+	mkdir -p "$subpkgdir"
+}
+
 sha512sums="
 0d9ec58be7dc354e181989c7f08e7d4dd93fefd06a99e784b87fe898479dd47a40dfa9689c6a63ebdc04bf87883a270686aec27f7cc34cb21ec0f370a4afe2d8  firefox-wayland.sh
 "
