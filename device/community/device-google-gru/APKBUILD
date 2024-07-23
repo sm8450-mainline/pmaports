@@ -2,7 +2,7 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-gru
 pkgdesc="Google Gru Chromebooks"
-pkgver=6
+pkgver=7
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -53,6 +53,6 @@ nonfree_firmware() {
 
 
 sha512sums="
-6a8aba7e13f864a223a658f724ad8ff6c04ed986a747439cf88a6365c5fa037da9fb4950fa94794eff64937979f988015af9d0a6359deb041d1a2b128baac75e  deviceinfo
+7815e3a164720b5ad0df7ce8d12b12fe85cc4bb7bf4a09ccc0eb831a58a920026fd92d545f4d6fb459a688e15b9d542e360fd597cd5d3b01a3ea338c3928d2a3  deviceinfo
 a750a0c41068082e0b82351d5aec91715e1a5215b09b26fec644dfe259cea2d662e878433a732a8c06dab2a9b420baec2bcc6161d8357cf3ed770239c5165090  modules-initfs
 "
