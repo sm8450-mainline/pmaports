@@ -2,8 +2,8 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-corsola
 pkgdesc="Google Corsola Chromebooks"
-pkgver=3
-pkgrel=1
+pkgver=4
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -58,7 +58,7 @@ nonfree_firmware() {
 }
 
 sha512sums="
-924d60f2d921a9e22a34c945f55cb45c6c19245aeaec4993ae03fcafc91c1533632c61178f1836cbd11b581a26fa2bed5445e12f2ecccb4096a0ee33f7cb2772  deviceinfo
+2e00f2483bc135ececdc0e4428bab92798a1b43f7ddf6c6440d41313695bf2162ca56ab8931392e05a20aaf0b8dfd08d5f6c21e9bfbf3b734d06337bd8f254bb  deviceinfo
 56fdcaa7a610497ed1bddbbfc0850f895bcfd79173b2e7de4bcf196f69120e1b62680da2a0b74543f153cb3d2b84055e71e258e7df938913aff66dca47061d7a  modules-initfs
 d33545d435755c2cca3b916d920464f3f711c6f09f48b68622f740f389c4faf95544467d9e3b418e562fadb8141ae37f2311166f228d5149434183736710567d  alsa-ucm-conf-b728563a07ebcd05545c60989412ae023b1dd06d.tar.gz
 "

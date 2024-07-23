@@ -32,4 +32,5 @@ deviceinfo_cgpt_kpart_size="262144"
 # dtbs from deviceinfo_dtb variable and nothing more, so use "mt8186"
 # board here.
 deviceinfo_depthcharge_board="mt8186"
+deviceinfo_depthcharge_compression="lzma"
 deviceinfo_generate_depthcharge_image="true"
