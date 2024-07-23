@@ -2,8 +2,8 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-asurada
 pkgdesc="Google Asurada Chromebooks"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -35,6 +35,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-181faa71684361dbdcd49f2d16786ce8cd2366814f54a18c9e9caa989529ccc045713688d822a053959f88382a716622232276acf68d2f95597ac307ddf2240c  deviceinfo
+d497233fa521d67a04a87d6c1ca0c4360fc182856f9db1eff46f567127f258aa2516b1fbc4b0d1881f08204656b48b899becc7bdf6cbc6299dd6302505767495  deviceinfo
 d90b91bd2bb409941878ebadf8d28ef66406edb64cbcac99443c3e0c072801ba94ec9fa3b551f59b8a27a33c7a34f511604bd30328195fc261f927d87138801d  modules-initfs
 "
