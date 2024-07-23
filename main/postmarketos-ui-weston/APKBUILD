@@ -2,15 +2,15 @@
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=postmarketos-ui-weston
 pkgver=6
-pkgrel=8
+pkgrel=9
 pkgdesc="(Wayland) Reference compositor (demo, not a phone interface)"
 url="https://postmarketos.org"
 arch="noarch"
 license="GPL-3.0-or-later"
 depends="
+	bluez
 	dnsmasq
 	elogind
-	elogind-openrc
 	postmarketos-base-ui
 	postmarketos-base-ui-networkmanager
 	tinydm
@@ -28,7 +28,7 @@ _pmb_recommends="htop
 	weston-xwayland
 	xwayland
 	"
-install="$pkgname.post-install $pkgname.post-upgrade"
+subpackages="$pkgname-openrc"
 source="start_weston.sh weston.ini.default"
 options="!check pmb:gpu-accel" # Meta package, no test suite
 
@@ -38,6 +38,19 @@ package() {
 
 	install -Dm644 "$srcdir"/weston.ini.default \
 		"$pkgdir"/etc/xdg/weston/weston.ini.default
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="
+		bluez-openrc
+		elogind-openrc
+		lightdm-openrc
+		networkmanager-openrc
+		"
+
+	mkdir -p "$subpkgdir"
 }
 sha512sums="
 6c9f4f6eeb179b067f1d08c84f35d6a705043432a92c3733491de3c240d48a85e95173e0b4e2f83b737761212a2aec365b1375c077c330735013c9cf36d4390e  start_weston.sh
