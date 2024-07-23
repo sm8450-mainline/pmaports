@@ -2,7 +2,7 @@
 # Maintainer: Craig Comstock <craig@unreasonablefarm.org>
 pkgname=postmarketos-ui-shelli
 pkgver=3
-pkgrel=6
+pkgrel=7
 pkgdesc="Plain console with touchscreen gesture support"
 url="https://gitlab.com/unrznbl/shelli"
 arch="all"
@@ -15,10 +15,21 @@ depends="
 	postmarketos-base-ui-networkmanager
 	shelli
 	"
-install="$pkgname.post-install $pkgname.pre-deinstall $pkgname.post-upgrade"
+subpackages="$pkgname-openrc"
 options="!check" # No tests
 
 package() {
 	mkdir -p "$pkgdir"
 }
 
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.pre-deinstall $subpkgname.post-upgrade"
+	depends="
+		networkmanager-openrc
+		ofono-openrc
+		shelli-openrc
+		"
+
+	mkdir -p "$subpkgdir"
+}
