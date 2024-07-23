@@ -3,7 +3,7 @@
 # Co-Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-oak
 pkgdesc="Google Oak Chromebooks"
-pkgver=5
+pkgver=6
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -40,6 +40,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-ebf7ed07ffcfe30c01c717db00c255e2c650339bace70afffcac4566267da8b6d3e22f819601be2ee355d2c1f56b01e37fca5566a2517fc1ffb642e530b674fb  deviceinfo
+d082e6c155347f662403f611f44c3eddb2a0548397bec4f29b882f371a18efa9c2628a88599b19c0c58c1886d0c25035367f02651a60fb6c3293faa1449b83d5  deviceinfo
 4b0197eacfeeb4b13f5abc26950f570ee762742547674ce10110ccea63eb46630a2e3b5f87e9c9a1f9deda21baf05bec248ab7a65656687ec94d296b5657dafa  modules-initfs
 "
