@@ -33,4 +33,5 @@ deviceinfo_cgpt_kpart_size="262144"
 # dtbs from deviceinfo_dtb variable and nothing more, so use "qc7180"
 # board here.
 deviceinfo_depthcharge_board="qc7180"
+deviceinfo_depthcharge_compression="lzma"
 deviceinfo_generate_depthcharge_image="true"
