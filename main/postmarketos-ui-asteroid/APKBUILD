@@ -1,7 +1,7 @@
 # Reference: https://postmarketos.org/uipkg
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=postmarketos-ui-asteroid
-pkgver=0.2
+pkgver=1
 pkgrel=0
 pkgdesc="(Wayland) Smartwatch UI from AsteroidOS"
 url="https://wiki.postmarketos.org/wiki/AsteroidOS"
@@ -15,10 +15,8 @@ depends="
 # Required to launch
 depends="$depends
 	elogind
-	elogind-openrc
 	postmarketos-base-ui
 	tinydm
-	tinydm-openrc
 	"
 _pmb_recommends="
 	asteroid-alarmclock
@@ -35,7 +33,7 @@ _pmb_recommends="
 	asteroid-weather
 	"
 _pmb_groups="users"
-install="$pkgname.post-install $pkgname.post-upgrade"
+subpackages="$pkgname-openrc"
 source="
 	asteroid.desktop
 	asteroid-launcher-wrapper.sh
@@ -47,6 +45,22 @@ package() {
 	install -Dm755 "$srcdir"/asteroid-launcher-wrapper.sh "$pkgdir"/usr/bin/asteroid-launcher-wrapper
 	install -Dm644 "$srcdir"/asteroid.desktop -t "$pkgdir"/usr/share/wayland-sessions/
 	install -Dm755 "$srcdir"/gtk-app-wayland.sh -t "$pkgdir"/etc/profile.d/
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="
+		bluez-openrc
+		connman-openrc
+		dsme-openrc
+		elogind-openrc
+		mce-openrc
+		tinydm-openrc
+		usb-moded-openrc
+		"
+
+	mkdir -p "$subpkgdir"
 }
 
 sha512sums="
