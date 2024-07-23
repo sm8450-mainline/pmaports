@@ -2,7 +2,7 @@
 # Maintainer: Jakko <jahau@rocketmail.com>
 pkgname=postmarketos-ui-mate
 pkgver=7
-pkgrel=1
+pkgrel=2
 pkgdesc="(X11) MATE Desktop Environment, fork of GNOME2 (stylus recommended)"
 url="http://mate-desktop.org/"
 arch="noarch"
@@ -12,10 +12,8 @@ depends="
 	dbus-x11
 	dnsmasq
 	elogind
-	elogind-openrc
 	gtk+2.0
 	lightdm
-	lightdm-openrc
 	mate-desktop-environment
 	mesa-egl
 	polkit-elogind
@@ -33,7 +31,7 @@ _pmb_recommends="
 	onboard
 	unclutter-xfixes
 	"
-install="$pkgname.post-install $pkgname.post-upgrade"
+subpackages="$pkgname-openrc"
 source="
 	000-system-background.gschema.override
 	001-screensaver.gschema.override
@@ -64,6 +62,19 @@ package() {
 
 	install -Dm644 "$srcdir"/gtk.css \
 		"$pkgdir"/etc/skel/.config/gtk-3.0/gtk.css
+}
+
+openrc() {
+	install="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="
+		bluez-openrc
+		elogind-openrc
+		lightdm-openrc
+		networkmanager-openrc
+		"
+
+	mkdir -p "$subpkgdir"
 }
 
 sha512sums="
