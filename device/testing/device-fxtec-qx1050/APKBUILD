@@ -2,7 +2,7 @@
 pkgname=device-fxtec-qx1050
 pkgdesc="F(x)tec Pro1x (QX1050)"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -10,8 +10,12 @@ options="!check !archcheck"
 depends="
 	linux-postmarketos-qcom-sm6115
 	firmware-fxtec-qx1050-adreno
+	firmware-fxtec-qx1050-adsp
+	firmware-fxtec-qx1050-cdsp
+	firmware-fxtec-qx1050-ipa
 	firmware-fxtec-qx1050-radio
 	firmware-fxtec-qx1050-rproc
+	firmware-fxtec-qx1050-venus
 	mkbootimg
 	postmarketos-base
 "

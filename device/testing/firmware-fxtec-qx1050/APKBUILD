@@ -1,28 +1,23 @@
 pkgname=firmware-fxtec-qx1050
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware for F(x)tec Pro1x (QX1050)"
 subpackages="
 	$pkgname-adreno
+	$pkgname-adsp
+	$pkgname-cdsp
+	$pkgname-ipa
 	$pkgname-radio
 	$pkgname-rproc
+	$pkgname-venus
 	"
 url="https://github.com/zstas/fxtec-pro1x-firmware"
 arch="aarch64"
 license="proprietary"
-makedepends="pil-squasher"
 options="!check !strip !archcheck !tracedeps pmb:cross-native"
-_commit="f52d17cb759b9132b327f5cd10dc8c1b69d8d238"
-source="$pkgname-$_commit.tar.gz::https://github.com/zstas/fxtec-pro1x-firmware/archive/$_commit.tar.gz"
-builddir="$srcdir/fxtec-pro1x-firmware-$_commit"
-
-build() {
-	pil-squasher a610_zap.mbn a610_zap.mdt
-	pil-squasher adsp.mbn adsp.mdt
-	pil-squasher cdsp.mbn cdsp.mdt
-	pil-squasher modem.mbn modem.mdt
-	pil-squasher venus.mbn venus.mdt
-}
+_commit="6c1ef5bce85750688f789bc6e232ca8237b24713"
+source="$pkgname-$_commit.tar.gz::https://github.com/sm6115-mainline/firmware-fxtec-qx1050/archive/$_commit.tar.gz"
+builddir="$srcdir/$pkgname-$_commit/lib/firmware/qcom/sm6115/Fxtec/QX1050/"
 
 package() {
 	# parent package is empty
@@ -31,29 +26,40 @@ package() {
 
 adreno() {
 	pkgdesc="Fxtec Pro1x (QX1050) adreno firmware"
+	depends="firmware-qcom-adreno-a630"
 
 	install -Dm644 "$builddir"/a610_zap.mbn -t \
 		"$subpkgdir/lib/firmware/qcom/sm6115/Fxtec/QX1050/"
-	install -Dm644 "$builddir"/a630_sqe.fw -t \
-		"$subpkgdir/lib/firmware/qcom/"
+}
+
+adsp() {
+	pkgdesc="Fxtec Pro1x (QX1050) ADSP firmware"
+
+	install -Dm644 "$builddir"/adsp* -t \
+		"$subpkgdir/lib/firmware/qcom/sm6115/Fxtec/QX1050/"
+}
+
+cdsp() {
+	pkgdesc="Fxtec Pro1x (QX1050) CDSP firmware"
+
+	install -Dm644 "$builddir"/cdsp* -t \
+		"$subpkgdir/lib/firmware/qcom/sm6115/Fxtec/QX1050/"
+}
+
+ipa() {
+	pkgdesc="Fxtec Pro1x (QX1050) IPA firmware"
+
+	install -Dm644 "$builddir"/ipa_fws.mbn -t \
+		"$subpkgdir/lib/firmware/qcom/sm6115/Fxtec/QX1050/"
 }
 
 radio() {
 	pkgdesc="Fxtec Pro1x (QX1050) radio firmware"
+	depends="linux-firmware-ath10k"
 
-	install -Dm644 "$builddir"/board-2.bin -t \
-		"$subpkgdir/lib/firmware/ath10k/WCN3990/hw1.0/"
-	install -Dm644 "$builddir"/firmware-5.bin -t \
-		"$subpkgdir/lib/firmware/ath10k/WCN3990/hw1.0/"
-	install -Dm644 "$builddir"/adsp.mbn -t \
-		"$subpkgdir/lib/firmware/qcom/sm6115/Fxtec/QX1050/"
-	install -Dm644 "$builddir"/cdsp.mbn -t \
-		"$subpkgdir/lib/firmware/qcom/sm6115/Fxtec/QX1050/"
 	install -Dm644 "$builddir"/modem.mbn -t \
 		"$subpkgdir/lib/firmware/qcom/sm6115/Fxtec/QX1050/"
-	install -Dm644 "$builddir"/modemuw.jsn -t \
-		"$subpkgdir/lib/firmware/qcom/sm6115/Fxtec/QX1050/"
-	install -Dm644 "$builddir"/venus.mbn -t \
+	install -Dm644 "$builddir"/modem*.jsn -t \
 		"$subpkgdir/lib/firmware/qcom/sm6115/Fxtec/QX1050/"
 	install -Dm644 "$builddir"/wlanmdsp.mbn -t \
 		"$subpkgdir/lib/firmware/qcom/sm6115/Fxtec/QX1050/"
@@ -72,6 +78,13 @@ rproc() {
 	mkdir "$subpkgdir"
 }
 
+venus() {
+	pkgdesc="Fxtec Pro1x (QX1050) venus firmware"
+
+	install -Dm644 "$builddir"/venus.mbn -t \
+		"$subpkgdir/lib/firmware/qcom/sm6115/Fxtec/QX1050/"
+}
+
 sha512sums="
-c46658bc9536dd7bdb97aa787c5c3f2093fc27f7279d2ca48baf88030c7ff671ae09632b980c61fad9dad91cb57b5ebd8d5f773bf85b92f48249987946e6ccda  firmware-fxtec-qx1050-f52d17cb759b9132b327f5cd10dc8c1b69d8d238.tar.gz
+c46cdaf573c487f0971c3ebe78d79531eac3e4e3b4e840d9132d4107a6f1aa55061b752606df8d861e8feac3b96c83d5ba6f215b36e3d14b21ee43833d32db09  firmware-fxtec-qx1050-6c1ef5bce85750688f789bc6e232ca8237b24713.tar.gz
 "
