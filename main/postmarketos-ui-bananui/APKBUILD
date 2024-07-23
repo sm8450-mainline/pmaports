@@ -2,7 +2,7 @@
 # Maintainer: Affe Null <affenull2345@gmail.com>
 pkgname=postmarketos-ui-bananui
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="(Wayland) Keypad controlled UI for feature phones"
 url="https://git.abscue.de/obp/bananui"
 arch="noarch"
@@ -33,10 +33,22 @@ _pmb_groups="
 	seat
 	wroomd
 	"
-install="$pkgname.post-install $pkgname.post-upgrade"
+subpackages="$pkgname-openrc"
 options="!check"
 
 package() {
 	mkdir -p "$pkgdir"
 }
 
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="
+		networkmanager-openrc
+		seatd-dev
+		tinydm-openrc
+		wroomd-dev
+		"
+
+	mkdir -p "$subpkgdir"
+}
