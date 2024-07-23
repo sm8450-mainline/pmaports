@@ -1,19 +1,16 @@
 # Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=tqftpserv
-pkgver=0_git20240423
-pkgrel=1
-_commit="5f9f263ae291fbbb9fc86756911e4185aa059964"
+pkgver=1.1
+pkgrel=0
 pkgdesc="Trivial File Transfer Protocol server over AF_QIPCRTR"
 url="https://github.com/linux-msm/tqftpserv"
 arch="all"
 license="BSD-3-Clause"
-makedepends="meson qrtr-dev"
-source="https://github.com/linux-msm/tqftpserv/archive/$_commit/tqftpserv-$_commit.tar.gz
-	0001-meson.build-Make-systemd-dep-optional.patch
+makedepends="meson qrtr-dev zstd-dev"
+source="https://github.com/linux-msm/tqftpserv/archive/v$pkgver/tqftpserv-v$pkgver.tar.gz
 	tqftpserv.initd
 	"
 subpackages="$pkgname-doc $pkgname-openrc"
-builddir="$srcdir/tqftpserv-$_commit"
 options="!check" # No test suite
 
 build() {
@@ -29,7 +26,6 @@ package() {
 }
 
 sha512sums="
-69b603691a636ea6203b8aba98b8600b32c89f1e3864710f7b5664ec787509c19dbd46c40a38c49d1f17aa80699ef98acb68d6442c2046b4ed5873ecce468699  tqftpserv-5f9f263ae291fbbb9fc86756911e4185aa059964.tar.gz
-501cdbaeb6167ef87b60e891a79229df2756c5e043e064aeba1343a296cdb5f72f5242d9871cc41721f78aa5d32dd3aee20f284bd9f1a57e139e03861109a237  0001-meson.build-Make-systemd-dep-optional.patch
+99625c8623f5d9140d4f773366ab98854154bb005f1795a4ce437c3feb968b3304623b30ffa05aacc22ba12fc27f635b8d055300f2695a0df63684168ae6123f  tqftpserv-v1.1.tar.gz
 9fde613a1ed53e633ab676e37245d40598deb4b6896c379054389adad5af9f110fcf95871fe31bad3f0ed9321ba3cee8a2160b95e56873719382f81063a85721  tqftpserv.initd
 "
