@@ -2,7 +2,7 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-kukui
 pkgdesc="Google Kukui Chromebooks"
-pkgver=7
+pkgver=8
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -14,7 +14,6 @@ depends="
 	linux-postmarketos-mediatek-mt8183>=6.1.28-r0
 	postmarketos-base
 	postmarketos-cros-common
-	postmarketos-initramfs-minimal
 	soc-mediatek-mt8183
 "
 makedepends="devicepkg-dev"
@@ -74,6 +73,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-e1c88545563aa40b69f79ed1d86b4da0d7ad65dfff07dce05f56d51b442ad9bae27ae2d27afa2f5131309072a9ea4f3b026d498ab067b315ed0719a3dded4b2c  deviceinfo
+ecd503069ecf272ddc238bd49dc257a1f3e0f4c20b322238e2da83104b94b331c22886d1591b6fe0b78c986e15ac6251e364ec1b750f9125ea722a6b1a79e2b8  deviceinfo
 8e95624610dae7d18684056396c9e82635ddce7303d6770e965f9372ffa101fdfd5f8337bc7368004890e9836798663a98c142c52ed63795877ea37ac8da56af  modules-initfs
 "
