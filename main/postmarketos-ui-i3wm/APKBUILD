@@ -1,24 +1,25 @@
 # Reference: https://postmarketos.org/uipkg
 # Maintainer: fossdd <fossdd@pwned.life>
 pkgname=postmarketos-ui-i3wm
-pkgver=0.6
-pkgrel=1
+pkgver=1
+pkgrel=0
 pkgdesc="(X11) Tiling WM (keyboard required)"
 url="https://i3wm.org"
 # riscv64 has very unstable builders
 arch="noarch !riscv64"
 license="GPL-3.0-or-later"
-source="i3wm-pmos i3-exec"
+source="
+	i3-exec
+	i3wm-pmos
+	"
 depends="
 	dmenu-virtual
 	dnsmasq
 	elogind
-	elogind-openrc
 	feh
 	i3status
 	i3wm
 	tinydm
-	tinydm-openrc
 	mesa-egl
 	polkit-elogind
 	postmarketos-base-ui
@@ -27,7 +28,7 @@ depends="
 	st-virtual
 	xorg-server
 	"
-install="$pkgname.post-install $pkgname.post-upgrade"
+subpackages="$pkgname-openrc"
 options="!check"
 
 build() {
@@ -42,6 +43,19 @@ package() {
 	install -Dm644 "$srcdir"/i3-exec \
 		"$pkgdir"/usr/share/xsessions/i3.desktop
 }
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="
+		elogind-openrc
+		networkmanager-openrc
+		tinydm-openrc
+		"
+
+	mkdir -p "$subpkgdir"
+}
+
 sha512sums="
 6ced3726dff7138af7739b15433e06b09876e2c8ad7ecb33d4990a0ed15181b79622117c818ce1cce9ae595c1c2766c9623dbd3ec365b081cf348e49f783cc10  i3wm-pmos
 5160619693a52a1e5d62008abb0b756efb072368120dc72a0d598083aa291fd50d39abc40465950193782467d6a7f80be9934cd058f81596038336fa07e90206  i3-exec
