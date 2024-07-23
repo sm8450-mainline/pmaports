@@ -2,7 +2,7 @@
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=postmarketos-ui-kodi
 pkgver=2
-pkgrel=8
+pkgrel=9
 pkgdesc="(GBM) 10-foot UI useful on TV's"
 url="https://kodi.tv"
 # kodi does not know of other archs
@@ -10,7 +10,6 @@ arch="x86_64 aarch64 armv7" # flatbuffers missing on armhf and x86
 license="GPL-3.0-or-later"
 depends="
 	elogind
-	elogind-openrc
 	kodi
 	kodi-gbm
 	kodi-polkit
@@ -19,13 +18,25 @@ depends="
 	postmarketos-base-ui-networkmanager
 	upower
 	"
-install="$pkgname.post-install $pkgname.post-upgrade"
-options="!check pmb:gpu-accel"
+subpackages="$pkgname-openrc"
 source="automount-media.rules"
+options="!check pmb:gpu-accel"
 
 package() {
 	install -Dm 644 automount-media.rules \
 		"$pkgdir"/usr/lib/udev/rules.d/99-automount-media.rules
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="
+		elogind-openrc
+		kodi-openrc
+		networkmanager-openrc
+		"
+
+	mkdir -p "$subpkgdir"
 }
 sha512sums="
 2f1d46ba553cfa129f343ac856d736532374a347329016e35235aa6173658c9db64b259363180207592e77bf1817011b7df6c966f002850c4b0b1ddea856ae27  automount-media.rules
