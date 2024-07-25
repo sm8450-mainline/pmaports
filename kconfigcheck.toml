@@ -71,6 +71,8 @@ SAMSUNG_TUI = false
 TZDEV = false
 ["category:default"."<5.2.0"."armhf armv7 x86"]
 LBDAF = true
+["category:default".">=5.19.0"."all"]
+FW_LOADER_COMPRESS_ZSTD = true
 
 # waydroid: android compatibility layer
 ["category:waydroid".">=0.0.0"."all"]
