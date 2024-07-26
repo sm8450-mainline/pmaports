@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+name="81voltd"
+description="Server-side implementation of the QMI IMS Data service"
+
+command="/usr/bin/81voltd"
+command_args=""
+command_background=true
+
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need modemmanager
+}

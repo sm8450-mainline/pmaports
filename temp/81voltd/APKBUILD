@@ -1,0 +1,37 @@
+pkgname=81voltd
+pkgver=1.0.0
+pkgrel=0
+pkgdesc="Server-side implementation of the QMI IMS Data service"
+url="https://gitlab.com/flamingradian/81voltd"
+arch="all"
+license="GPL-2.0-or-later"
+makedepends="
+	modemmanager-dev
+	qrtr-dev
+	meson
+	"
+source="
+	$pkgname-$pkgver.tar.gz::https://gitlab.com/flamingradian/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz
+	81voltd.initd
+	"
+builddir="$srcdir/$pkgname-v$pkgver"
+
+# There are no checks to run
+options="!check"
+
+build() {
+        abuild-meson . output
+        meson compile -C output
+}
+
+package() {
+	DESTDIR="$pkgdir" meson install --no-rebuild -C output
+
+	install -Dm755 "$builddir"/output/81voltd "$pkgdir"/usr/bin/81voltd
+        install -Dm755 "$srcdir"/81voltd.initd "$pkgdir"/etc/init.d/81voltd
+}
+
+sha512sums="
+460ad150d7f43303147d22d4552ee5fc90a6ba0cda5606d29e55939de1df465f713272cfa009ab1d606fd6b140ffdb9f080f2356713cd24e7c8b3040031013fc  81voltd-1.0.0.tar.gz
+73fa6f27259f3731a811216983911886e4ce5fb15664f978e99184ab88fd4444142f72b6313474e59260596a54e8e3ace7b66f10ead92159fad930b3a225b464  81voltd.initd
+"
