@@ -26,6 +26,11 @@ def check_kconfig(pkgnames):
     return last_failed
 
 
+def check_kconfig_all():
+    p = subprocess.run(["pmbootstrap", "kconfig", "check"], check=False)
+    return p.returncode == 0
+
+
 def show_error(last_failed):
     print("")
     print("---")
@@ -46,8 +51,39 @@ def show_error(last_failed):
     print("")
 
 
+def show_error_all():
+    print("")
+    print("---")
+    print("")
+    print("Please adjust the failed kernel configs. This is required for")
+    print("getting your patch merged.")
+    print("")
+    print("If a kernel in the testing category failed, and fixing is too much")
+    print("effort, remove 'pmb:kconfigcheck-community' from the APKBUILD.")
+    print("")
+    print("Edit a kernel config:")
+    print("  pmbootstrap kconfig edit <PACKAGE NAME>")
+    print("")
+    print("Test a specific kernel config again:")
+    print("  pmbootstrap kconfig check <PACKAGE NAME>")
+    print("")
+    print("Run this check again (on all kernels you modified):")
+    print("  pmbootstrap ci kconfig")
+    print("")
+    print("---")
+    print("")
+
+
 if __name__ == "__main__":
     common.add_upstream_git_remote()
+
+    if "kconfigcheck.toml" in common.get_changed_files():
+        print("kconfigcheck.toml changed -> checking all kernels")
+        if not check_kconfig_all():
+            show_error_all()
+            exit(1)
+        exit(0)
+
     pkgnames = common.get_changed_kernels()
     print(f"Changed kernels: {pkgnames}")
 

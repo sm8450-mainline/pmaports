@@ -102,6 +102,7 @@ kernel-kconfig:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_PROTECTED == "false"
       changes:
+        - kconfigcheck.toml
         - device/*/linux-*/config-*
         - main/linux-*/config-*
   script:
