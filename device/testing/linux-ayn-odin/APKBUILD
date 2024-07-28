@@ -8,7 +8,7 @@
 _flavor="ayn-odin"
 pkgname=linux-$_flavor
 pkgver=6.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mainline Kernel fork for AYN Odin"
 arch="aarch64"
 _carch="arm64"
@@ -75,5 +75,5 @@ package() {
 
 sha512sums="
 baedc6653df9a0c697ddf127dd9d43be12fb54f34c699404ec5d2837f24ca8fc8889e4b5055c84ce0f6be120c4284386acbc8eeb134fe80edc01c26f9d1893be  linux-87349bbdebbd62f0a235cdcc31dc25f507fc444f.tar.gz
-f34aadf069d810e6e90232db0e5ab517e98504fa507c41aecc6361849c5f3e2a6bceaf9710ed405c07f743f3b50bfc38cb326a0b638df8253c150fcfeea68c58  config-ayn-odin.aarch64
+7b741ea5c1c7ea493a9c21bf33688470b969c50ddd180ce9590665fdc089c691d6948169288d914f9bd4e9bcd4e90548cda97e6e2ea58050dfab7df232f54a58  config-ayn-odin.aarch64
 "
