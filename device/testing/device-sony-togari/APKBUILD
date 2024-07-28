@@ -1,0 +1,39 @@
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-sony-togari
+pkgver=1
+pkgrel=0
+pkgdesc="Sony Xperia Z Ultra"
+url="https://postmarketos.org"
+arch="armv7"
+license="MIT"
+depends="
+	postmarketos-base
+	mkbootimg
+	linux-postmarketos-qcom-msm8974
+"
+makedepends="devicepkg-dev"
+subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
+source="
+	deviceinfo
+	modules-initfs
+"
+options="!check !archcheck"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+nonfree_firmware() {
+	pkgdesc="Wifi firmware"
+	depends="firmware-sony-rhine"
+	mkdir "$subpkgdir"
+}
+
+sha512sums="
+d5683d5dd38bd24df06d78fae92e0b3e1d88c9da72880d9873b12c00dffe680fafc1b9bf2107a4d7413678086f3cdff1595de2a6dc697ac88e17b465d3bb06d9  deviceinfo
+760cc0e57426a534412c113addf8406c43463b3153a8517cc5d97eb9eec57d1e3a4af7f36dfcb1b5ed1d2b0be7d57af7903b5209096a902949f05df79b96dd66  modules-initfs
+"
