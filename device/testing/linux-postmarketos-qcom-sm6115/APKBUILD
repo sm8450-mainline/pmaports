@@ -1,6 +1,6 @@
 pkgname=linux-postmarketos-qcom-sm6115
 pkgver=6.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Mainline Kernel fork for SM6115 devices"
 arch="aarch64"
 _carch="arm64"
@@ -61,5 +61,5 @@ package() {
 
 sha512sums="
 67cf8499a17a18bbeec08eb7729b7dcec05661433dfb37684320ed806bedf105499a3f38dd8662ec1e443ae979d4050094a266fe250b6e6869ddd0eda2b14053  linux-postmarketos-qcom-sm6115-42b61ea7cdb9f531dd53f9e2c844a056db8978c1.tar.gz
-d25eb84b2545ea89fef22db544a6b645b9ab54f9267efc67cfc1c60ed626b776be8d7223ba29beae44d7607291ea21e88f8f41d609187490780343e536cb16fe  config-postmarketos-qcom-sm6115.aarch64
+732bebcbb1796efc3b0022ccd524e8c1728d7ae63455e3bbd2acf929d08370ce5a96010f6b7a45cf0b2c65a7b6d460bddc171807065922edb0753f15df436201  config-postmarketos-qcom-sm6115.aarch64
 "
