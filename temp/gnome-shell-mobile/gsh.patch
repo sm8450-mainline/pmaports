@@ -4,7 +4,7 @@ Author: Daniel Kolesa <daniel@octaforge.org>
 Date:   Sun Mar 19 19:11:00 2023 +0100
 
     Disable 9bc89b821cf09195418f20225bbec39c0567d263
-
+    
     Even if we manually define _DYNAMIC, it does not work (segfaults
     somewhere in musl, coming from g_strsplit) and is pretty useless
     for our case anyway.
@@ -24,4 +24,3 @@ index 8cccc0a..ef6408f 100644
  #ifdef HAVE_EXE_INTROSPECTION
  #include <elf.h>
  #endif
-
