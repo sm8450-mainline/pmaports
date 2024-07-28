@@ -2,12 +2,12 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=postmarketos-ui-sway
 pkgver=3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="(Wayland) Tiling WM, drop-in replacement for i3wm (DOES NOT RUN WITHOUT HW ACCELERATION!)"
 url="https://postmarketos.org"
 arch="noarch"
 license="GPL-3.0-or-later"
-subpackages="$pkgname-logo-key-alt:logo_key_alt"
+subpackages="$pkgname-openrc $pkgname-logo-key-alt:logo_key_alt"
 depends="
 	bluez
 	dnsmasq
@@ -30,7 +30,6 @@ _pmb_recommends="
 _pmb_groups="
 	seat
 	"
-subpackages="$pkgname-openrc"
 source="
 	etc-sway-config
 	etc-sway-config.d-00-logo-key.conf
