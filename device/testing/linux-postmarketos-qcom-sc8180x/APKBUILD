@@ -10,7 +10,6 @@ url="https://gitlab.com/sc8180x-mainline/linux"
 license="GPL-2.0-only"
 options="!strip !check !tracedeps
 	pmb:cross-native
-	pmb:kconfigcheck-community
 	pmb:kconfigcheck-uefi"
 makedepends="bash bison findutils flex installkernel openssl-dev perl"
 

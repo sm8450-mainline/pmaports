@@ -14,7 +14,6 @@ url="https://gitlab.com/msm8998-mainline/linux"
 license="GPL-2.0-only"
 options="!strip !check !tracedeps
 	pmb:cross-native
-	pmb:kconfigcheck-community
 "
 makedepends="
 	bash
