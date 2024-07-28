@@ -2,7 +2,7 @@
 pkgname=linux-powkiddy-x55
 pkgdesc="The $pkgname kernel and modules"
 pkgver=6.8.6
-pkgrel=1
+pkgrel=2
 arch="aarch64"
 url="https://kernel.org"
 license="GPL-2.0-only"
@@ -68,5 +68,5 @@ package() {
 sha512sums="
 5da8000a640243d06c456eb4102592134fcc5051785d91c53845fd693d0b0aca9751a7179ab8c8bdc633fc039c7ce8cfbec8357fdca9d01509b2dfb251b2586c  linux-6.8.6.tar.xz
 b38ed4cfe0f20b440426c4ba55eb727cfa64f01370f22d7aca486df4f44aceec1c1d0790c29b8984b151bee0d3ef671253d220dc0c7bec9fef6a4ce1b6cf6169  rtw88_wifi_fix.patch
-82007dc970c343cd5660ab8bc68d75331b8b43db23f4d3e73923af21144976619cd55e183f1af9e18f0907bd789c5b3f6d16551d252ba31b36ccbe5732151c1d  config-powkiddy-x55.aarch64
+0d47d4c52f052d57545d0df05ecf7ec400a4952e3b5b0596dd7deed8c00e3822479767f0cfdf86404dcecdc4dd54671f8632219c0cc2e78da48bfe52822cb415  config-powkiddy-x55.aarch64
 "
