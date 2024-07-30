@@ -3,7 +3,7 @@
 
 pkgname=linux-pine64-pinenote
 pkgver=6.3.10
-pkgrel=0
+pkgrel=1
 pkgdesc="Pine64 PineNote close to mainline fork"
 arch="aarch64"
 _carch="arm64"
@@ -54,5 +54,5 @@ package() {
 
 sha512sums="
 7ce7e734e31eaad89fb719b2a43600df1ffafca2c9db37df2a30df1b0df9f524585e2cd7ba89fb50f4278497abd2c1704038badcc6ce9d079929e042622a5882  linux-pine64-pinenote-6.3.10.tar.gz
-97e8c1b137768ff7722ad3d975ad2496490c11249aaf9ffc4ee4d77b8935e24f59244cc6346bafd9b0c9fd5751f2ccfa24def2256f03b995c46f8906d8c8fe9c  config-pine64-pinenote.aarch64
+a05ccc590de8e907dcdb7326a21791e85bd9bae5de2ce67e14e51dc4f8628f2c54dd315f84f6521911054a8130de752c1cc87fde0d03ea128ae1557b5e1c7f7d  config-pine64-pinenote.aarch64
 "
