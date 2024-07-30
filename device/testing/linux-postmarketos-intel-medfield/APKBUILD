@@ -1,7 +1,7 @@
 _flavor="postmarketos-intel-medfield"
 pkgname=linux-$_flavor
 pkgver=6.2.7
-pkgrel=0
+pkgrel=1
 _commit="bd6b63fadb5fb4b1637afede0ff24e1fd2456384"
 pkgdesc="Mainline Kernel fork for Intel Medfield based devices"
 url="https://www.kernel.org/"
@@ -57,5 +57,5 @@ package() {
 
 sha512sums="
 a9071335b9af05a30de32e0d02041cefb2f2c4a8d2ed09d21e39800002540444e699a7197b40dd0d7a1fe0f943aff4d7c1a9b9a07c75d1e59219862d27104d1e  linux-bd6b63fadb5fb4b1637afede0ff24e1fd2456384.tar.gz
-5161603e4a4ea3cbadfdec3f4459dfa0258feb216affbf816031cd94ec06c4e8386b995a27c57568aa16f7bd7e6fd191b67716c9cf5c51b80b0a44e6e8efecb2  config-postmarketos-intel-medfield.x86
+b6c2c0d81890d8dea0863c500fda5297a245972ac07cd9e3833c6a7bfb4a5039af826bd9018eb43d0229e140d786a22b7cd9a9fb80601a3aabdbc56d8d932712  config-postmarketos-intel-medfield.x86
 "
