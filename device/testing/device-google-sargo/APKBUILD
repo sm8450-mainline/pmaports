@@ -2,8 +2,8 @@
 # Maintainer: Richard Acayan <mailingradian@gmail.com>
 pkgname=device-google-sargo
 pkgdesc="Google Pixel 3a"
-pkgver=4
-pkgrel=1
+pkgver=5
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -25,6 +25,7 @@ source="
 	deviceinfo
 	hexagonrpcd-adsp-sensorspd.confd
 	modules-initfs
+	no-hexagonrpcd-on-suspend.sh
 	q6voiced.conf
 "
 subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
@@ -71,6 +72,10 @@ nonfree_firmware() {
 	# Sensors depend on ADSP firmware and the sensors registry served over FastRPC.
 	install -Dm644 "$srcdir"/81-libssc-google-sargo.rules \
 		"$subpkgdir"/usr/lib/udev/rules.d/81-libssc-google-sargo.rules
+
+	# The FastRPC service is only enabled when non-free firmware is installed.
+	install -Dm755 "$srcdir"/no-hexagonrpcd-on-suspend.sh \
+		"$subpkgdir"/etc/elogind/system-sleep/no-hexagonrpcd-on-suspend.sh
 }
 
 sha512sums="
@@ -80,5 +85,6 @@ f700af3145b79d1ef9edfb22982899b25cabfb212f9620dcbd3a2e6f44b5ad591e0a66056c6fcd66
 8af19da4e4a4a59c49263722065229fae849c3273af313300b7ea1b8fe008c6e55cfd060b91909306dd600134e2494f740adda245707dbcff84b1ab2f37dbde7  deviceinfo
 b6208c254b6e44ac4f6d748a38cc6b05da0db2c90235ada2011b138b82ccc3372687df2f5ad97e885e9eea135216a3c52266a08a7f4eb323e62e799f6f82ec7b  hexagonrpcd-adsp-sensorspd.confd
 3213a3586c25cef843a47e2446179ff73acad6421826a64bedb6b9800d30673503d0ea6b3fcc8cfbdcdcaf0926755a489323fce9d14d4411799e6988144b3518  modules-initfs
+2972005a9cf6ca57061965075593dddfa8ee479bc6c21cd41851b1a14768cb1cddbd31a17975ae17adc36d40d294ccbc6bf83defbd69fc7b363f638d8564fbbc  no-hexagonrpcd-on-suspend.sh
 7f599f086dba97ac39ce98798969bc8e9c26dd3b062bb8f95852182df52814b70d49b701e27b43abeb3639b16ba053e416c14cf75e0bf4a9f2fe7c01fb0ac41c  q6voiced.conf
 "
