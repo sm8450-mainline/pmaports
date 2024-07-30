@@ -1,7 +1,7 @@
 # Kernel config based on defconfig and exynos7870.config
 pkgname=linux-postmarketos-exynos7870
 pkgver=6.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Close-to-mainline kernel for Samsung Exynos 7870 devices"
 arch="aarch64"
 _carch="arm64"
@@ -84,7 +84,7 @@ package() {
 }
 
 sha512sums="
-ffdea8c886fe106cf551d2dcf7ed78b790e13ad0fcea2afc6eff03ff5216d8cb984506e8cfa309bbdee3a3b89fc5f1d9e8f59f08100c90a94da004354cced884  config-postmarketos-exynos7870.aarch64
+eb4426424d2d8e1b00dd0606f3ad78d0ba3791e92cba0eeff8df925eab254464ca70c63fe08a0fa293cf2bda58f1c440f25296f375f4e76fa9a828b01057be7e  config-postmarketos-exynos7870.aarch64
 a08c966b4c3cce22fa4963b2b17b42966ceb959ccb0280f83a67fa84abed773ec5e155df7678df121c7825772a9ba82df71fa142734754d3847e73b7e65488f7  linux-6.8.1.tar.gz
 275b3a8be2e089348ed18d12ff07118bf66574be46aeb0004950f8a46e46609e5312a2e792ab85a9a8eef0ace9fec7eb4066f839f76efd688e0ee5e09623cdc6  patches-6608cbe5d3b29c44a177d12c14c7f1b070584363.tar.gz
 "
