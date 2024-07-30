@@ -1,6 +1,6 @@
 pkgname=linux-postmarketos-bflb
 pkgver=6.2.0_git20230310
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline kernel for Bouffalolab BL808 platform"
 arch="riscv64"
 _flavor="${pkgname#linux-}"
@@ -48,5 +48,5 @@ package() {
 
 sha512sums="
 41ffc9aa2f55b4466aacba702277bb8232df808e3968a94a361e451e606fcd3a72df711825e1c47a3f526779bb472a3c1f607e335065034e456e76aeb3ce484b  linux-postmarketos-bflb-467fe3369eda1d2f09426e8be15eb10dcf9d7a4a.tar.gz
-419b74e8150dca4d7e90b90c24b0bb33f53e27d3d8f1cd67b136f5f7956fabba7dbe7395f97ed6de42c3a96bb2ce9823da0bf582dd371690d47579cdf080aa84  config-postmarketos-bflb.riscv64
+a534efdab2b961189908551573e49b7bc7e1a90b5a3793d231d1ab313af8adbadc85d3d81bbda24611f8e502839f3fe46ad8338d0bdffe03366dee5f94577ba7  config-postmarketos-bflb.riscv64
 "
