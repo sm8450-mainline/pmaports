@@ -1,13 +1,19 @@
 pkgname=msm-modem
 pkgver=7
-pkgrel=2
+pkgrel=3
 pkgdesc="Common support for Qualcomm MSM modems"
 url="https://postmarketos.org/"
 arch="armhf armv7 aarch64"
 license="GPL-3.0-or-later"
-depends="rmtfs rmtfs-openrc"
-install="$pkgname.post-install"
-subpackages="$pkgname-downstream $pkgname-uim-selection:uim_selection"
+depends="rmtfs"
+subpackages="
+	$pkgname-downstream
+	$pkgname-downstream-openrc:downstream_openrc
+	$pkgname-openrc
+	$pkgname-uim-selection:uim_selection
+	$pkgname-uim-selection-openrc:uim_selection_openrc
+"
+
 source="
 	msm-modem-downstream.initd
 	msm-modem-uim-selection.confd
@@ -23,19 +29,40 @@ package() {
 uim_selection() {
 	pkgdesc="$pkgdesc (UIM selection)"
 	depends="$pkgname libqmi qmi-utils"
+
+	mkdir -p "$subpkgdir"
+}
+
+uim_selection_openrc() {
+	install_if="$pkgname-uim_selection=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install"
 
-	install -Dm644 "$srcdir/$subpkgname.confd" "$subpkgdir/etc/conf.d/$subpkgname"
-	install -Dm755 "$srcdir/$subpkgname.initd" "$subpkgdir/etc/init.d/$subpkgname"
+	install -Dm644 "$srcdir/$pkgname-uim-selection.confd" \
+		"$subpkgdir/etc/conf.d/$pkgname-uim-selection"
+	install -Dm755 "$srcdir/$pkgname-uim-selection.initd" \
+		"$subpkgdir/etc/init.d/$pkgname-uim-selection"
 }
 
 downstream() {
 	pkgdesc="$pkgdesc (downstream)"
 	depends="$pkgname libqipcrtr4msmipc libsmdpkt_wrapper keepfileopen"
+
+	install -Dm644 "$srcdir/udev-downstream.rules" "$subpkgdir/usr/lib/udev/rules.d/55-$pkgname.rules"
+}
+
+downstream_openrc() {
+	install_if="$pkgname-downstream=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install"
 
-	install -Dm755 "$srcdir/$subpkgname.initd" "$subpkgdir/etc/init.d/$subpkgname"
-	install -Dm644 "$srcdir/udev-downstream.rules" "$subpkgdir/usr/lib/udev/rules.d/55-$pkgname.rules"
+	install -Dm755 "$srcdir/$pkgname-downstream.initd" \
+		"$subpkgdir/etc/init.d/$pkgname-downstream"
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	depends="rmtfs-openrc"
+	install="$subpkgname.post-install"
+	mkdir -p "$subpkgdir"
 }
 
 sha512sums="
