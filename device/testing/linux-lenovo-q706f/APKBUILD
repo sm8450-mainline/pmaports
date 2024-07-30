@@ -1,0 +1,65 @@
+# Kernel config based on: arch/arm64/configs/defconfig
+# Maintainer: chalkin Deng <chalkin@yeah.net>
+_flavor="lenovo-q706f"
+pkgname=linux-$_flavor
+pkgver=6.10.0
+pkgrel=0
+pkgdesc="Mainline kernel fork for Lenovo SM8250"
+arch="aarch64"
+_carch="arm64"
+url="https://github.com/silime/linux"
+license="GPL-2.0-only"
+options="!strip !check !tracedeps
+	pmb:cross-native
+	pmb:kconfigcheck-community
+"
+makedepends="
+	bash
+	bison
+	findutils
+	flex
+	openssl-dev
+	perl
+	postmarketos-installkernel
+	python3
+"
+_tag="sm8250-$pkgver"
+_config="config-$_flavor.$arch"
+_commit="d0ee36285ee039b9e0bfc854761d475bdef1a23b"
+
+source="
+	$pkgname-$_tag.tar.gz::https://github.com/silime/linux/archive/refs/tags/$_tag.tar.gz
+	$_config
+"
+builddir="$srcdir/linux-$_tag"
+
+prepare() {
+	default_prepare
+	cp "$srcdir/config-$_flavor.$arch" .config
+}
+
+build() {
+	unset LDFLAGS
+	make ARCH="$_carch" CC="${CC:-gcc}" \
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-$_flavor"
+}
+
+package() {
+	mkdir -p "$pkgdir"/boot
+
+	make zinstall modules_install dtbs_install \
+		ARCH="$_carch" \
+		INSTALL_PATH="$pkgdir"/boot/ \
+		INSTALL_MOD_PATH="$pkgdir" \
+		INSTALL_MOD_STRIP=1 \
+		INSTALL_DTBS_PATH="$pkgdir/boot/dtbs"
+	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
+
+	install -D "$builddir"/include/config/kernel.release \
+		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
+}
+
+sha512sums="
+13fd93a34bc6c76a8570661aa5aca77e00e348ea790997191d72469da79f64ae9e170ad39095b8b7bd570d57740f636cd4f9e018addc4f26e880b41cd1122d80  linux-lenovo-q706f-sm8250-6.10.0.tar.gz
+e16347f8ab87704ae629dfbb57649705746d83f8ab41b21331d4d7843e67f4ee92b862c967b5404e30d5681925331ee6b161db20a4f7c52776fb942205d3d009  config-lenovo-q706f.aarch64
+"
