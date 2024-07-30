@@ -4,8 +4,8 @@
 # Kernel config based on: arch/arm/configs/exynos_defconfig
 
 pkgname=linux-postmarketos-exynos4
-pkgver=6.7.6
-pkgrel=6
+pkgver=6.10.0
+pkgrel=0
 pkgdesc="Mainline kernel fork for Samsung Exynos4 devices"
 arch="armv7"
 _carch="arm"
@@ -41,23 +41,11 @@ _tag="v${pkgver//_/-}-exynos4"
 source="
 	$pkgname-$_tag.tar.bz2::$url/-/archive/$_tag/linux-$_tag.tar.bz2
 	$_config
-	initramfs.list
-	init
-	tab3-limit-memory.patch
 "
 builddir="$srcdir/linux-$_tag"
 
-prepare_isorec() {
-	# https://wiki.postmarketos.org/wiki/Boot_process#isorec
-	cp -v /usr/$(arch_to_hostspec $arch)/bin/busybox.static \
-		"$builddir"/usr/
-	cp -v "$srcdir"/init "$builddir"/usr/
-	cp -v "$srcdir"/initramfs.list "$builddir"/usr/
-}
-
 prepare() {
 	default_prepare
-	prepare_isorec
 	cp -v "$srcdir/$_config" .config
 }
 
@@ -81,9 +69,6 @@ package() {
 }
 
 sha512sums="
-705cd617d135900cb25c8b6da7177d507e6a179b521e04aeae18080995514cbd69381a21f942ebf4d8cee427e3c60d53e6a06ed918ddcaacc243ca585ef61c11  linux-postmarketos-exynos4-v6.7.6-exynos4.tar.bz2
-4de127f68b56c380455f77610fcd6b0fd2ed8b79355fa9050ac90b0b2a9d5ad9fe3f5e81f304f8e3327e0203866ded2d6eae083847670eaa9fbdb156b50db9b8  config-postmarketos-exynos4.armv7
-aaff0332b90e1f9f62de1128cace934717336e54ab09de46477369fa808302482d97334e43a85ee8597c1bcab64d3484750103559fea2ce8cd51776156bf7591  initramfs.list
-09f1f214a24300696809727a7b04378887c06ca6f40803ca51a12bf2176a360b2eb8632139d6a0722094e05cb2038bdb04018a1e3d33fc2697674552ade03bee  init
-aea665e80dee318ec3be23d3f28b88e87eb551d2756e14d896781a0861a4387920f6969990eb171e8c7d6f86c36cef63a89337d63bfee7e44b9de7a8efb36c73  tab3-limit-memory.patch
+a320d0be4532f469be015e2a6706e507e89daaa55ad50d57a56451dca04b6bbea56f62d15877ef000027ce887ecd04257f9c71d7c9d80aab55607494205fa5c7  linux-postmarketos-exynos4-v6.10.0-exynos4.tar.bz2
+2dc3a1d57bf485b513308362b263de59dd4ee507f9a23935a91f7bee9fb119a172089b5b64b364a770e378e225e253424eacad6905e9f1be57231d4ed5cf7b9f  config-postmarketos-exynos4.armv7
 "
