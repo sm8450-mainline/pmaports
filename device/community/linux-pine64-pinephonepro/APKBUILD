@@ -3,7 +3,7 @@ pkgname=linux-pine64-pinephonepro
 pkgver=6.6.0
 _pkgver=6.6
 _tagdate=20231104-22589
-pkgrel=2
+pkgrel=3
 pkgdesc="Mainline kernel for the pinephone pro"
 arch="aarch64"
 _flavor="${pkgname#linux-}"
@@ -72,5 +72,5 @@ package() {
 
 sha512sums="
 d59c410ecc1a824b7b9a38f36b224693812003320220a3464a648084152023ed8be48d0448eb8054cd2b1d42befd5e8958d3ad243e50138e1c9d0269ac2917ea  linux-ppp-6.6-20231104-22589.tar.gz
-5fc12d916cd9027dd8c4dc80c8773c499bcbf23dbef4303ee39a8644cfdad1e70da82c94ad992ee91864dbdc23a44dfd9f86459d12b511b206ff659e599c5727  config-pine64-pinephonepro.aarch64
+0806ec3859bb71739c59108e66fe0f45c9db384f0beab9b736627e79b45363e2c0bc466e6b584c00f91ce262bd7a4a2d14c8f14eee1bb8158c7deddd18452bda  config-pine64-pinephonepro.aarch64
 "
