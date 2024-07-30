@@ -5,7 +5,7 @@
 _flavor="postmarketos-allwinner-d1"
 pkgname=linux-$_flavor
 pkgver=6.1_rc3
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline kernel fork for d1/d1-h"
 arch="riscv64"
 _carch="riscv"
@@ -75,5 +75,5 @@ package() {
 
 sha512sums="
 7f3daae1964118df9a764557848742e8d34a40c26c41bf4c3012cbbbd78c3d795041e9081c9312a0f088aadd4126887238ee1aafec3f9137fc755f4865e2f5b1  linux-postmarketos-allwinner-d1-9496edef9edad6eb4a3c6808b0d81fe68754f02f.tar.gz
-180222615f4d44ea8a2ed53819ab238b3dd2720993c666c1090ccfb640d83cdb1c48f6aadabf3a59020bb9d25fbf369c4f6b96e20422c3e5748800e6e0f0b6a4  config-postmarketos-allwinner-d1.riscv64
+bd748d320eb91bc0b30d3808cda8d30768075948da21004eacf20700d01fe54a9abd68f50f23a1ff11e86e77f896af235eb9a1683b264e104c5c2295fc7f121e  config-postmarketos-allwinner-d1.riscv64
 "
