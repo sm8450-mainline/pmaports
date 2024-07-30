@@ -3,7 +3,7 @@
 pkgname=soc-qcom-sdm845
 pkgdesc="Common package for Qualcomm SDM845 devices"
 pkgver=22
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
@@ -14,9 +14,13 @@ depends="
 replaces="upower"
 subpackages="
 	$pkgname-modem
+	$pkgname-modem-openrc:modem_openrc
 	$pkgname-nonfree-firmware:nonfree_firmware
+	$pkgname-nonfree-firmware-openrc:nonfree_firmware_openrc
 	$pkgname-pulseaudio
+	$pkgname-pulseaudio-openrc:pulseaudio_openrc
 	$pkgname-qbootctl
+	$pkgname-qbootctl-openrc:qbootctl_openrc
 	$pkgname-ucm
 	$pkgname-vulkan
 "
@@ -54,13 +58,17 @@ modem() {
 	pkgdesc="Modem services and configuration"
 	depends="
 		q6voiced
-		q6voiced-openrc
 		msm-modem-uim-selection
 		81voltd
 	"
 
+	mkdir -p "$subpkgdir"
+}
+
+modem_openrc() {
+	install_if="$pkgname-modem=$pkgver-r$pkgrel openrc"
+	depends="q6voiced-openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
-	mkdir "$subpkgdir"
 
 	install -Dm644 "$srcdir"/modemmanager.conf \
 		"$subpkgdir"/etc/conf.d/modemmanager
@@ -70,15 +78,23 @@ nonfree_firmware() {
 	pkgdesc="Modem, WiFi and GPU Firmware"
 	depends="
 		pd-mapper
-		pd-mapper-openrc
 		tqftpserv
-		tqftpserv-openrc
 		msm-modem
 		bootmac
 		alsa-utils
 	"
 
+	mkdir "$subpkgdir"
+}
+
+nonfree_firmware_openrc() {
+	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel openrc"
+	depends="
+		pd-mapper-openrc
+		tqftpserv-openrc
+	"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
+
 	mkdir "$subpkgdir"
 }
 
@@ -94,7 +110,14 @@ ucm() {
 qbootctl() {
 	pkgdesc="Enable qbootctl mark-boot-successful service"
 	depends="qbootctl"
+
+	mkdir "$subpkgdir"
+}
+
+qbootctl_openrc() {
+	install_if="$pkgname-qbootctl=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
+
 	mkdir "$subpkgdir"
 }
 
@@ -107,12 +130,15 @@ vulkan() {
 
 pulseaudio() {
 	install_if="$pkgname=$pkgver-r$pkgrel pulseaudio"
-	replaces="$pkgname" # To migrate from workaround being in main package
-	install="$subpkgname.post-install $subpkgname.post-upgrade"
 
 	# Call Audio idle suspend workaround code
 	install -Dm755 "$srcdir"/call_audio_idle_suspend_workaround.sh \
 		"$subpkgdir"/usr/sbin/call_audio_idle_suspend_workaround
+}
+
+pulseaudio_openrc() {
+	install_if="$pkgname-pulseaudio=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
 
 	# Call Audio idle suspend workaround init script
 	install -Dm755 "$srcdir"/call_audio_idle_suspend_workaround.initd \
