@@ -2,7 +2,7 @@
 # Kernel config based on: arch/arm64/configs/defconfig
 pkgname=linux-postmarketos-apple
 pkgver=6.1.0_rc1
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline kernel fork for Apple iPhone and iPad devices"
 arch="aarch64"
 _carch="arm64"
@@ -51,5 +51,5 @@ package() {
 
 sha512sums="
 96c339d32c602f68700755d9aa7f7f867d5d89639d9126023fd7eca7f12c55a700308addefde95023b5847277c8506dc3f091118d1ff15fad7f2a3d0edd9f1f1  bdffb36db88ab94ee624af340fef87cdb2b4aef3.tar.gz
-54c1a7d4b77202f1c64d26f9f1db9ec7153fb41757f04ef0e12a02e348b30a89f5fa80d618edeb71a14e74217423b4343736b3b07c7f439aad61e6b745795a05  config-apple-iphone6.aarch64
+61e666d28ddc027a27ecb9f7f43741f960e3c8fb097b12dc28801d057d8aa86fb14d2832aced00ea75e0115714d9afc89766a628fc32c11e548cb034c5195fe3  config-apple-iphone6.aarch64
 "
