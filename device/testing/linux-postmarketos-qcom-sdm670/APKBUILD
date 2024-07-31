@@ -4,7 +4,7 @@
 
 _flavor="postmarketos-qcom-sdm670"
 pkgname=linux-$_flavor
-pkgver=6.9.3
+pkgver=6.10.2
 pkgrel=0
 pkgdesc="Mainline Kernel fork for SDM670 devices"
 arch="aarch64"
@@ -13,7 +13,17 @@ url="https://gitlab.com/sdm670-mainline/linux"
 license="GPL-2.0-only"
 options="!strip !check !tracedeps
 	pmb:cross-native"
-makedepends="bash bison findutils flex installkernel openssl-dev perl zstd"
+makedepends="
+	bash
+	bison
+	findutils
+	flex
+	installkernel
+	openssl-dev
+	perl
+	python3
+	zstd
+"
 
 _config="config-$_flavor.$arch"
 _tag="sdm670-v$pkgver"
@@ -55,6 +65,6 @@ package() {
 }
 
 sha512sums="
-026d62a7ca42da018927b697434bff6b48d945c4d71c193670a796861466398b5db234d5c92483eb9a1cdb765cf6c3379b56276ffcf0e8781ff0d3ae205f4ccc  linux-sdm670-v6.9.3.tar.gz
-5b3fed1d7c1d9be5d4ebdfadd30b6c8595d17c840b52d5da5de6a1a31d9a583771f4460c00197cf8a45733f56350db0d4abbffc1157dc287be030e32ff817c43  config-postmarketos-qcom-sdm670.aarch64
+b992e72c8a8f2186088afb427acb8b79760ddb6350087abe15c0ac6064d10bd77adb2c3e260cf3f2014f93dd4b9fafd3f5a9805e9905cf75907e53a1f672dc36  linux-sdm670-v6.10.2.tar.gz
+aa96f401a997f7c2ec2cbc89425f1915254666303039f97250a00d19ff21b2a2057ea6fc79b2d09f88333f08bdda0c5467be54174f2233f55ea8530b0689cae7  config-postmarketos-qcom-sdm670.aarch64
 "
