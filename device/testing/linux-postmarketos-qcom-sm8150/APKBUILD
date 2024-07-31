@@ -7,7 +7,7 @@
 _flavor="postmarketos-qcom-sm8150"
 pkgname=linux-$_flavor
 pkgver=6.4
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline Kernel fork for SM8150 devices"
 arch="aarch64"
 _carch="arm64"
@@ -65,5 +65,5 @@ package() {
 
 sha512sums="
 fde637d245fa55525763d509caeb038005b419ddddfb28bd5087826c3b38e88126cacee048cdef191c2df67cb421cda19ad125ecaa83e0668de0d848a3f38318  linux-.tar.bz2
-d4cebfea2a6230b3293db13853d8b5c5b5434fc7e18e112570fa79702d3d667963017b6d7a0d90d1b437865f177c42ac95d5c8f0e5f1733d4a5f5414f07e3e0f  config-postmarketos-qcom-sm8150.aarch64
+9670438faecb82be59defad995444830cd0a07831e5da51d5bbed53978d7a481605d12fb1d5871a628dea45e349fd2d6ac3543330cc52647d4c6d28b1f04ffae  config-postmarketos-qcom-sm8150.aarch64
 "
