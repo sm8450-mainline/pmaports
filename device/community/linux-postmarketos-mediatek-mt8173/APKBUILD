@@ -2,7 +2,7 @@
 # Co-Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=linux-postmarketos-mediatek-mt8173
 pkgver=6.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Mainline kernel fork for Mediatek MT8173 devices"
 arch="aarch64"
 _carch="arm64"
@@ -69,7 +69,7 @@ package() {
 
 sha512sums="
 baa2487954044f991d2ae254d77d14a1f0185dd62c9f0fcaff69f586c9f906823017b8db1c4588f27b076dfa3ebb606929fec859f60ea419e7974330b9289cc2  linux-6.10.tar.xz
-9a10b30cf7ba3c7cd51c4df8980798df5f0e97bc8f5ee63c6ab193b1ebf52f504d0e56db318d7d86bc2a1c38f5bdb80b6ef5eea47df2272cd8bda6dfcda4d8d8  config-postmarketos-mediatek-mt8173.aarch64
+55fbda0652a58fafec64b9a7f1c8ee212052f3c553de9fd29264631d19e63a7aecae483a32f0583b3ea4f4a0851e8e65b077827e100388052edd8b666e0a0400  config-postmarketos-mediatek-mt8173.aarch64
 4b499c1fbf53631cffd6fa7299643dc744e0e2187f71804664b02f05296162b42e3f76aa0d8c688cecb43a8bcd41ec92991c98287951292260237b828dcca710  fix-mmc1-speed.patch
 c86f8dfc32165a32381d45a4c8b6811ebf43f01b5d8a48fbe227cf5084cfefe24b32264c1c150cb49115db4759a2d21ad48b37dcaac78367d226e9cc2a5ba849  fix-mmc-order.patch
 caf48ac0f77661153ee94c7de4931baca135a69a97e93f01ad8f276b4a9944e077d7214c117450943cca07990c773661f79718cb0c2ff7c5789c93d37afb26de  fix-spi-nor-max-frequency.patch
