@@ -3,7 +3,7 @@
 
 pkgname=linux-epson-embt2ws
 pkgver=6.9.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Epson Moverio BT-200 kernel fork, close to mainline"
 arch="armv7"
 _carch="arm"
@@ -59,5 +59,5 @@ package() {
 
 sha512sums="
 9e9372557ed41aa497c9317cc19bd6746fc10366bf0b0e6f298f7a8f867b8b9f5072ae0648ba2f420e24cbae228418ce05e4b2596d7e07b7c6978164369817f3  linux-epson-embt2ws-0b7d50a17ac503c09f1a39ccc67c542184be0f8a.tar.gz
-7b45f1abe52c6a6fc1002c9206600f7994fa55dd028dd1184f16cb784eed069d627df0a50248716ce7526f0e9debbe394fa48670c663de644bf60191d1f583e8  config-epson-embt2ws.armv7
+4805a6b19d302260d1a4172c70fd78c58c37e580018334e32960f351836e477d55f23aee7bea87973bfa1d273d7e3eeae52279c0dec24bf30b65997034716833  config-epson-embt2ws.armv7
 "
