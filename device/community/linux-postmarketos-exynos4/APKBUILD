@@ -1,4 +1,6 @@
 # Maintainer: Newbyte <newbyte@disroot.org>
+# Co-Maintainer: Henrik Grimler <henrik@grimler.se>
+# Co-Maintainer: knuxify <knuxify@gmail.com>
 # Kernel config based on: arch/arm/configs/exynos_defconfig
 
 pkgname=linux-postmarketos-exynos4

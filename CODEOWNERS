@@ -97,7 +97,7 @@ device/*/linux-huawei-plank/			@gtrxAC
 device/*/linux-next/				@calebccff
 device/*/linux-postmarketos-allwinner/		@Arnavion @PsychoGame
 device/*/linux-postmarketos-amlogic/		@funderscore @exkc
-device/*/linux-postmarketos-exynos4/		@Newbyte
+device/*/linux-postmarketos-exynos4/		@Newbyte @Grimler @knuxify
 device/*/linux-postmarketos-exynos5/		@jenneron @Grimler
 device/*/linux-postmarketos-grate/		@clamor-s @jenneron @jethrob
 device/*/linux-postmarketos-imx-ereader/	@akemnade
