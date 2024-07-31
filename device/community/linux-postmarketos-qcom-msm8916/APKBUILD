@@ -8,7 +8,7 @@ pkgver=6.6
 # When making kernel config changes please also submit a PR to
 # https://github.com/msm8916-mainline/linux/blob/master/kernel/configs/pmos.config
 # since the kernel config is regenerated on upgrades and all changes will be lost!
-pkgrel=6
+pkgrel=7
 pkgdesc="Mainline kernel fork for Qualcomm MSM8909/MSM8916/MSM8939 devices"
 arch="aarch64 armv7"
 url="https://github.com/msm8916-mainline/linux"
@@ -92,6 +92,6 @@ package() {
 
 sha512sums="
 5fbbdf333412667e0a0e38dcc7e83f640bd5a1e0b07e1c7786ff3e18f17b9cdec088936263d68986b3869ee305cfcecdf22970134ca8fb8d2a2769874a5a4676  linux-postmarketos-qcom-msm8916-v6.6-msm8916.tar.gz
-79db0788419e426201d284cd290afadd85448371aba4c61e77017f2584775af6020b97e2ff714d4dbbf44684cc32f9c4d0b3f120b902b1f9455f6f2741558497  config-postmarketos-qcom-msm8916.aarch64
-76d4ced20c29728e0a949b931b1df1454aee4769dbfa1670d93ebf3ca366529401e8ca8c8e3459996102a07e10e0851bc0511c301ac95785cb09d37b178a73d6  config-postmarketos-qcom-msm8916.armv7
+1f671413ffa08a2452c6bde326235b8731b0fae88a5727dd5a547d0d62b8abe7d184ae26794cb5592ab276c3788962a5916592c417c013afcd99f20131008f85  config-postmarketos-qcom-msm8916.aarch64
+c6fe29dd7233ff10bd764ba516ecf61aa4b9036495af4499843192433020aeaa233dfed9bb06aa871177712bf4a1c43daecab64b97c4377d097f751adc815209  config-postmarketos-qcom-msm8916.armv7
 "
