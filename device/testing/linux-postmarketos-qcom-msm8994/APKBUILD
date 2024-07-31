@@ -4,7 +4,7 @@
 _flavor="postmarketos-qcom-msm8994"
 pkgname=linux-$_flavor
 pkgver=6.8
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline kernel for Qualcomm MSM8994/MSM8992 devices"
 arch="aarch64"
 _carch="arm64"
@@ -60,7 +60,7 @@ package() {
 
 sha512sums="
 17991b3e0cd69e910416e8b11ba48919a4ee179bf1bb8a66516897218f1bafb297754777ebee77e75f6f844a6ec79a748b10371e33ae5374a4f4accab6c6b8f7  linux-6.8.tar.gz
-18045ce30abc81bbfada6ac999fd2f49f8a4ba82ce60952b9e8d62dc6374d7dd5072adeb323efc5be37cbba1a495ad44d1bd4a9f6d195be55e11752f0fda262f  config-postmarketos-qcom-msm8994.aarch64
+9f923f4dc4cf33a45208c65873d5d02f01f58a90a949155eb8d186cfe940a3f50823ddc2c590986ce5933a85fa51091cce78305ad58900a9e0fd0473bc71a5c0  config-postmarketos-qcom-msm8994.aarch64
 4dc3de184eac5cfb593a308278e3a5ab27f5e94b5dec8b288c053070f788fdb8d8fad8628b5a996701eacc11b1015999b99f8d279b207e214dd0e63f97cfb4d6  0001-arm64-dts-qcom-msm8994-huawei-angler-Add-regulators.patch
 1293b1db2fa485f1e5fd11b6e44d71e42a3c6a2fc46b49498fc12c261729055c94edb0b081a8d0495658ba04353ac70c32377e5228c4ed2c1e43de321c628f78  0002-arm64-dts-qcom-msm8992-lg-h815.patch
 "
