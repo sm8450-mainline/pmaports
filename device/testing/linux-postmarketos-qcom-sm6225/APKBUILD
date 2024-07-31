@@ -2,7 +2,7 @@
 # Maintainer: TQMatvey <maybeetube@gmail.com>
 pkgname=linux-postmarketos-qcom-sm6225
 pkgver=6.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline Kernel fork for SM6225 devices"
 arch="aarch64"
 _carch="arm64"
@@ -62,5 +62,5 @@ package() {
 
 sha512sums="
 df2584f29d4e2c753eed2f843da9c2134211c6359d0bd58d0d5f3ab3baf6cdebf57e37997da5a92a2401669329fcb30dd3c8c2c65c7be1eb86fe67abc9c2da91  linux-postmarketos-qcom-sm6225-849f3f471b6268280dc8418e0bddda435ae5d4a5.tar.gz
-ce5856fd55973fea0678dbe646e5688c142cee9c84ae4a5c76ab003a6f368de640577a5c13261393b8a4b72aa84a492a1e84683b5cc02ae0b6ad6396ae110765  config-postmarketos-qcom-sm6225.aarch64
+b14ed478c2e88690334b328481272f2c951b4438db2c8366856c2bdf37082813f8962884c1b95e04f9604bd397c7c3739d10d61b72e952db89d10f787bc610c8  config-postmarketos-qcom-sm6225.aarch64
 "
