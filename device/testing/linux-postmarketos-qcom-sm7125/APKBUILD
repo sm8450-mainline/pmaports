@@ -3,7 +3,7 @@
 _flavor="postmarketos-qcom-sm7125"
 pkgname=linux-$_flavor
 pkgver=6.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Mainline Kernel fork for SM7125 devices"
 arch="aarch64"
 _carch="arm64"
@@ -49,5 +49,5 @@ package() {
 
 sha512sums="
 a168f5b3e7ee7451d5bb1c7f6c090d6002330a4529ef74b2e47f6902ba3d6feaa8dc89f7b5a072d52f6933fd08354a0ff1e12f22240ce53c758c144d4ad132cd  linux-6.9.2.tar.xz
-fe18f3efd0c4d9d37244f2727e93650132328de4c8db4d4128134064623f5e2c4318b9d61aea62286ac6f58735c9e7c7d3ede0b9c3c6fa2513212ac7f3badba6  config-postmarketos-qcom-sm7125.aarch64
+6b452137dd0797a5c27d64df216f9ade421ef23e5e84294b482c0a8e486221fd419a96d2f438bf2a56ca36e7c716899a915ae979be3e7dd0b8eac322f24b0181  config-postmarketos-qcom-sm7125.aarch64
 "
