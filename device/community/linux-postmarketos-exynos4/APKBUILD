@@ -1,10 +1,9 @@
-# Maintainer: Thiago Foganholi <thiagaoplusplus@outlook.com>
-# Co-Maintainer: Newbyte <newbyte@disroot.org>
+# Maintainer: Newbyte <newbyte@disroot.org>
 # Kernel config based on: arch/arm/configs/exynos_defconfig
 
 pkgname=linux-postmarketos-exynos4
 pkgver=6.7.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Mainline kernel fork for Samsung Exynos4 devices"
 arch="armv7"
 _carch="arm"
