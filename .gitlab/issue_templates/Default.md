@@ -51,4 +51,13 @@
 -->
 
 ### Additional information
-<!-- logs, etc. -- make use <details> for long listings -->
+<!--
+	logs, etc. -- make use <details> for long listings
+
+	If your device displays an error message on boot or drops to the debug
+	shell, attaching it to your PC with a USB cable may show a removable USB
+	drive. You can drag and drop the .tar.gz file or otherwise upload it
+	here.
+
+	Refer to the README file on the device for more information.
+-->
