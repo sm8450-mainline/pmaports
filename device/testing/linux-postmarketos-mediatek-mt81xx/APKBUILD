@@ -1,7 +1,7 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=linux-postmarketos-mediatek-mt81xx
 pkgver=6.10.0_rc4_git20240624
-pkgrel=1
+pkgrel=2
 pkgdesc="Mediatek MT8186/8192/8195 kernel package"
 arch="aarch64"
 url="https://kernel.org"
@@ -37,6 +37,7 @@ source="
 	$pkgname-$_commit.tar.gz::https://gitlab.collabora.com/google/$_repository/-/archive/$_commit/chromeos-kernel-$_commit.tar.gz
 	0001-arm64-dts-mediatek-Add-dts-for-hayato-rev5-sku0.patch
 	remove-audio-routing.patch
+	update-ADSP-reserved-memory-region.patch
 	$_config
 "
 builddir="$srcdir/$_repository-$_commit"
@@ -73,4 +74,5 @@ sha512sums="
 bf39ed6646a869a7a99dc7f0ccc7bbaca0c50776e87848cb1a9e55bef317a73c08549a9acb8cce5c394ab3bf90667e4d1cf8a3671bb9de15d2a470d5e8be0261  0001-arm64-dts-mediatek-Add-dts-for-hayato-rev5-sku0.patch
 f10464bf131ba44686a36a35aaf16492915413893d1b3faa43959d5f853b5ed66419f835565836a17480cd3458de0943cee72e700713e00125c8ecd184f3b677  remove-audio-routing.patch
 ca5107ab3f9954a88431231243acf5b60da61aa377ce024fc3b30a9f6ca115ef55a3cdb14efc6d6e4ee4c28fd8cfa87ed01f2089e7683d7076b8d59abb12d896  config-postmarketos-mediatek-mt81xx.aarch64
+614ebc613902c088afc32ced6e612f3bb04405a36431a53ace96516a41e7c776e0353db55356ae9fc125b376049064720d4ad17cd7f1da2b3d2503fb0fa812a1  update-ADSP-reserved-memory-region.patch
 "
