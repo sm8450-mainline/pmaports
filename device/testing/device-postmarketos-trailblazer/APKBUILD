@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-postmarketos-trailblazer
 pkgdesc="postmarketOS Trailblazer generic ARM64"
-pkgver=4
+pkgver=5
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -21,6 +21,7 @@ depends="
 	systemd-boot
 	firmware-siliconlabs-rs9116
 	firmware-brcm43752
+	dtbloader
 "
 makedepends="devicepkg-dev"
 source="
