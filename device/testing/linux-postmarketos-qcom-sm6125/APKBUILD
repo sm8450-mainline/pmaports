@@ -3,7 +3,7 @@
 # Maintainer: Lux Aliaga <they@mint.lgbt>
 pkgname=linux-postmarketos-qcom-sm6125
 pkgver=6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mainline Kernel fork for SM6125 devices"
 arch="aarch64"
 _carch="arm64"
@@ -39,8 +39,9 @@ prepare() {
 
 build() {
 	unset LDFLAGS
+	# V=1: workaround for pma#1990, remove after upgrading to >= 6.2
 	make ARCH="$_carch" CC="${CC:-gcc}" \
-		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-$_flavor"
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-$_flavor" V=1
 }
 
 package() {
