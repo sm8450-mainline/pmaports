@@ -7,6 +7,6 @@ adduser -S -H -D -h / -s /usr/sbin/nologin -g 'systemd Core Dumper' systemd-core
 addgroup -S systemd-network 2>/dev/null
 addgroup -S systemd-journal 2>/dev/null
 addgroup -S render 2>/dev/null
-addgroup -S sgx 2 >/dev/null
+addgroup -S sgx 2>/dev/null
 
 exit 0
