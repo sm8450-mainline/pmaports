@@ -29,6 +29,9 @@ msm
 # USB boot
 phy_qcom_qmp_usb
 phy_qcom_snps_femto_v2
+dwc3
+dwc3_qcom
+extcon_core
 ## Need to load remoteproc modules in the initramfs, if they are loaded later
 ## then it can cause a power cycle that breaks USB
 qcom_common

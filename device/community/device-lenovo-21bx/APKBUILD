@@ -4,7 +4,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lenovo-21bx
 pkgdesc="Lenovo ThinkPad X13s"
-pkgver=9
+pkgver=10
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -67,7 +67,7 @@ usbguard() {
 sha512sums="
 c3570f44cd0134fd7400a5467cfddb3c1877a771fda8006228d1b0fd81536171ece53bf7562fc0e11dcc1fd3c6830e324e0d5ad9fdc4e16b53107fa3a04004fb  deviceinfo
 82f7719285434d8c7a5268ddc21d513bb3f3788eb3dd2df099e1c245add9d19719047b003a47edb077e095ebe09d9601b1312c001578e7dfa4ed61d72098ef74  firmware.files
-654c4e931cfd86bcfd833d5e3ac03fabad5f3d77195ce12509cfce9c1e089822f3cde791ca088ee6611c010a9354efaac488740281c2f5c2ea03b6d7af479935  modules-initfs
+27705e998db262602b50004083fe160dbcde88e9fdcaeb43e3d1d79be0b7af371f84855bb93ba16ada3cf5fa8ff8da6ca159cda4b1de08fb54ac451c57169c57  modules-initfs
 52bbb9564ec713db5d46937701b121afe0c6c644fffe189a05766f491b4997b1bbc4c1f90229efb5764d795df8d40a57d4c840ee4b32d426e7a84520364b8bf5  pipewire.conf
 0d0412eb1f01af39000c39391f622640461305d83dae1a53aa7eef640cc17fd265cabca4e4e57dea053c47a4e50f9feb90f12ee5310d5b6425783e83efc5f9d8  usbguard.conf
 "
