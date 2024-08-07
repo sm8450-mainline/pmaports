@@ -1,0 +1,76 @@
+# Forked from Alpine to add systemd!
+
+pkgname=drkonqi
+pkgver=99996.1.4
+_pkgver=6.1.4
+pkgrel=0
+pkgdesc="The KDE crash handler"
+# armhf blocked by extra-cmake-modules
+arch="all !armhf"
+url="https://kde.org/plasma-desktop/"
+license="GPL-2.0-or-later"
+depends="
+	kirigami
+	kitemmodels
+	py3-sentry-sdk
+	"
+makedepends="
+	extra-cmake-modules
+	kcompletion-dev
+	kconfigwidgets-dev
+	kcoreaddons-dev
+	kcrash-dev
+	kdeclarative-dev
+	ki18n-dev
+	kidletime-dev
+	kio-dev
+	kjobwidgets-dev
+	knotifications-dev
+	kservice-dev
+	kstatusnotifieritem-dev
+	kuserfeedback-dev
+	kwallet-dev
+	kwidgetsaddons-dev
+	py3-chai
+	qt6-qtbase-dev
+	samurai
+	syntax-highlighting-dev
+	systemd-dev
+	"
+checkdepends="
+	py3-psutil
+	py3-pygdbmi
+	"
+
+case "$pkgver" in
+	*.90*) _rel=unstable;;
+	*) _rel=stable;;
+esac
+subpackages="$pkgname-lang"
+_repo_url="https://invent.kde.org/plasma/drkonqi.git"
+source="https://download.kde.org/stable/plasma/$_pkgver/drkonqi-$_pkgver.tar.xz"
+
+builddir="$srcdir/$pkgname-$_pkgver"
+
+build() {
+	cmake -B build -G Ninja \
+		-DWITH_PYTHON_VENDORING=OFF \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_TESTING=ON
+	cmake --build build
+}
+
+check() {
+	# connectiontest requires a network connection
+	ctest --test-dir build --output-on-failure -E "(connection|preamble)test"
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+}
+
+sha512sums="
+ef79b3b4b31d1d8329a699a8b9d2a1dc28e7faf88ac7a3c11aa7361dc77adab3293d069d178da3e6d2117496736b30c7b092a7b27185381209ea2ce3aae4ab7c  drkonqi-6.1.4.tar.xz
+"
