@@ -1,9 +1,9 @@
 # Forked from Alpine to add systemd!
 
 pkgname=plasma-workspace
-pkgver=99996.1.3
-_pkgver=6.1.3
-pkgrel=1
+pkgver=99996.1.4
+_pkgver=6.1.4
+pkgrel=0
 pkgdesc="KDE Plasma Workspace"
 # armhf blocked by extra-cmake-modules
 arch="all !armhf !armv7"
@@ -108,6 +108,7 @@ subpackages="
 	$pkgname-doc
 	$pkgname-lang
 	$pkgname-zsh-completion
+	$pkgname-systemd
 	"
 _repo_url="https://invent.kde.org/plasma/plasma-workspace.git"
 source="https://download.kde.org/$_rel/plasma/$_pkgver/plasma-workspace-$_pkgver.tar.xz"
@@ -167,5 +168,5 @@ package() {
 }
 
 sha512sums="
-80d032aed575894bf179dcc2802cf43a47db459ef739b22463d8d923a8d92ed15d2794a18c02e01e535762da05c00c552dee56e5ee50fed505bde221d85cbe03  plasma-workspace-6.1.3.tar.xz
+c7ac27c60e75998e2cc6abb96004ce2abd84b7a7978de4fc256bf06892fca818595e2a5dd505768bcce9be4103ccecbb34d82761c0f7be45a402ca6173e90f05  plasma-workspace-6.1.4.tar.xz
 "

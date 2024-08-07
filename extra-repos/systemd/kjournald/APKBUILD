@@ -1,7 +1,7 @@
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=kjournald
-pkgver=24.05.1
+pkgver=24.05.2
 pkgrel=0
 pkgdesc="Framework for interacting with systemd-journald"
 # armhf blocked by extra-cmake-modules
@@ -46,5 +46,5 @@ package() {
 }
 
 sha512sums="
-850e6ab4f9cdd9f38563858db3507523af5918b111176a743a0285c19cf67dcf53b3d70bdd6397d22c8f54f5ddba42ba53b669398aa7323caa2947c382879dea  kjournald-24.05.1.tar.xz
+80ee92ca3ad409373ff160e59e815bd83f9d39a078d563ad7261ed1b5712aefbbd82c573da5451c99304bf8dd3fcfab2d343711fcf283565d202e6148e8811b7  kjournald-24.05.2.tar.xz
 "
