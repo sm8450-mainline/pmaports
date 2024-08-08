@@ -25,11 +25,12 @@ makedepends="
 	devicepkg-dev
 	findutils
 	flex
+	git
+	linux-headers
 	openssl-dev
 	perl
-	zstd
-	git
 	python3
+	zstd
 "
 builddir="$srcdir/linux-next-next-$_nextver"
 
