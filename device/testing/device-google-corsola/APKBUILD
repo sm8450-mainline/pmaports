@@ -3,7 +3,7 @@
 pkgname=device-google-corsola
 pkgdesc="Google Corsola Chromebooks"
 pkgver=3
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -40,7 +40,7 @@ nonfree_firmware() {
 	_dir="$subpkgdir/lib/firmware/mediatek/sof-tplg"
 	mkdir -p "$_dir"
 
-	ln -s sof-mt8186.tplg "$_dir"/sof-mt8186-google-steelix.tplg
+	ln -s sof-mt8186.tplg.zst "$_dir"/sof-mt8186-google-steelix.tplg.zst
 
 	# Alsa UCM configs
 	_ucm_files="
