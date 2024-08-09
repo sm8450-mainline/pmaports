@@ -3,7 +3,7 @@
 pkgname=device-xiaomi-elish
 pkgdesc="Xiaomi Mi Pad 5 Pro"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -75,10 +75,7 @@ nonfree_firmware() {
 		firmware-xiaomi-elish-venus
 		linux-firmware-ath11k
 		linux-firmware-qca
-		pd-mapper
-		tqftpserv
 		"
-	install="$subpkgname.post-install $subpkgname.post-upgrade"
 	mkdir "$subpkgdir"
 }
 
