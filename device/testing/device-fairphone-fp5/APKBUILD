@@ -3,7 +3,7 @@
 pkgname=device-fairphone-fp5
 pkgdesc="Fairphone 5"
 pkgver=4
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -55,9 +55,9 @@ package() {
 	install -Dm644 -t "$pkgdir"/usr/share/alsa/ucm2/Fairphone/fp5 \
 		"$srcdir"/HiFi.conf \
 		"$srcdir"/fp5.conf
-	mkdir -p "$pkgdir"/usr/share/alsa/ucm2/conf.d/sm8250
+	mkdir -p "$pkgdir"/usr/share/alsa/ucm2/conf.d/qcm6490
 	ln -s /usr/share/alsa/ucm2/Fairphone/fp5/fp5.conf \
-		"$pkgdir"/usr/share/alsa/ucm2/conf.d/sm8250/Fairphone\ 5.conf
+		"$pkgdir"/usr/share/alsa/ucm2/conf.d/qcm6490/Fairphone\ 5.conf
 }
 
 sha512sums="
