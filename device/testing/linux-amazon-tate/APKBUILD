@@ -56,7 +56,7 @@ package() {
 	make modules_install \
 		O="$_outdir" ARCH="$_carch" \
 		CC="${CC:-gcc}" \
-                KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS" \
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS" \
 		INSTALL_MOD_STRIP=1 \
 		INSTALL_MOD_PATH="$pkgdir"
 }
