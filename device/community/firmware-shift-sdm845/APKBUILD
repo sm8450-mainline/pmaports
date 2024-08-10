@@ -2,7 +2,7 @@
 
 pkgname=firmware-shift-sdm845
 pkgver=20240517
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware for SHIFT sdm845 devices"
 url="https://gitlab.com/sdm845-mainline/firmware-shift-sdm845"
 arch="aarch64"
@@ -33,8 +33,8 @@ package() {
 	done < "$srcdir/firmware.files"
 
 	# Install symlinks for using upstream firmware
-	ln -s ../mba.mbn "$pkgdir"/lib/firmware/qcom/sdm845/axolotl/mba.mbn
-	ln -s ../../../ath10k/WCN3990/hw1.0/wlanmdsp.mbn "$pkgdir"/lib/firmware/qcom/sdm845/axolotl/wlanmdsp.mbn
+	ln -s ../mba.mbn.zst "$pkgdir"/lib/firmware/qcom/sdm845/axolotl/mba.mbn.zst
+	ln -s ../../../ath10k/WCN3990/hw1.0/wlanmdsp.mbn.zst "$pkgdir"/lib/firmware/qcom/sdm845/axolotl/wlanmdsp.mbn.zst
 }
 
 pmtest() {
