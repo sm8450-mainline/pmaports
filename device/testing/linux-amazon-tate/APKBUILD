@@ -3,7 +3,7 @@
 
 pkgname=linux-amazon-tate
 pkgver=3.0.72
-pkgrel=1
+pkgrel=0
 pkgdesc="Amazon Kindle Fire HD (2nd Generation) kernel fork"
 arch="armv7"
 _carch="arm"
