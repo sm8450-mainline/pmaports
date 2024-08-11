@@ -81,6 +81,9 @@ update_linux_next() {
 	# Update the checksums
 	pmbootstrap checksum linux-next
 
+	# Ensure it builds
+	pmbootstrap build linux-next
+
 	# Commit
 	git add device/testing/linux-next/APKBUILD
 	git commit -S -m "linux-next: upgrade to $latest"
