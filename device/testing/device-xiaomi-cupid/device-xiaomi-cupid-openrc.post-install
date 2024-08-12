@@ -1,2 +1,3 @@
 #!/bin/sh
 rc-update add qbootctl default
+rc-update add tqftpserv boot
