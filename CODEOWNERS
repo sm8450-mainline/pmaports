@@ -31,6 +31,7 @@ device/*/*-pine64-pinephonepro/			@PsychoGame
 device/*/*-pine64-rockpro64/			@PureTryOut
 device/*/*-purism-librem5/			@craftyguy @alistair23 @Newbyte
 device/*/*-qcom-msm8916/			@Minecrell @TravMurav
+device/*/*-qcom-sdm670/				@flamingradian
 device/*/*-qcom-sdm845/				@sdm845-mainline
 device/*/*-qcom-sm6350/				@z3ntu
 device/*/*-samsung-a3/				@Mis012 @TravMurav @Minecrell
@@ -57,12 +58,14 @@ device/*/*-xiaomi-vince/			@M0Rf30
 device/*/*-xiaomi-wt88047/			@Minecrell
 device/*/*-xiaomi-ysl/				@barni2000
 device/*/alsa-ucm-conf-cros/			@WeirdTreeThing
+device/*/alsa-ucm-conf-qcom-sdm670/		@flamingradian
 device/*/device-fairphone-*/			@z3ntu
 device/*/device-generic-x86_64/			@craftyguy @ollieparanoid
 device/*/device-google-nyan-big/		@jenneron
 device/*/device-google-nyan-blaze/		@jenneron
 device/*/device-google-peach-pi/		@jenneron
 device/*/device-google-peach-pit/		@jenneron
+device/*/device-google-sargo/			@flamingradian
 device/*/device-google-snow/			@jenneron
 device/*/device-huawei-plank/			@gtrxAC
 device/*/device-lg-judyln/			@Newbyte
