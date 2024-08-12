@@ -3,19 +3,31 @@
 pkgname=device-xiaomi-cupid
 pkgdesc="Xiaomi 12"
 pkgver=1
-pkgrel=10
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
+	firmware-xiaomi-cupid-adsp
+	firmware-xiaomi-cupid-cdsp
+	firmware-xiaomi-cupid-gpu
+	firmware-xiaomi-cupid-initramfs
+	firmware-xiaomi-cupid-ipa
+	firmware-xiaomi-cupid-modem
+	firmware-xiaomi-cupid-slpi
+	linux-firmware-ath11k
+	linux-firmware-qca
+	linux-firmware-qcom
 	linux-postmarketos-qcom-sm8450
 	make-dynpart-mappings
-	mesa-dri-gallium
 	mkbootimg
+	msm-modem
+	msm-modem-uim-selection
 	postmarketos-base
 	qbootctl
 	qbootctl-openrc
+	tqftpserv
 "
 makedepends="
 	devicepkg-dev
@@ -23,10 +35,7 @@ makedepends="
 install="$pkgname.post-install $pkgname.post-upgrade"
 source="
 	deviceinfo
-"
-
-subpackages="
-	$pkgname-nonfree-firmware:nonfree_firmware
+	modules-initfs
 "
 
 build() {
@@ -37,27 +46,7 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 
-nonfree_firmware() {
-	pkgdesc="Firmware for GPU, Audio, Modem, WiFi, etc."
-	depends="
-		firmware-xiaomi-cupid-adsp
-		firmware-xiaomi-cupid-cdsp
-		firmware-xiaomi-cupid-gpu
-		firmware-xiaomi-cupid-initramfs
-		firmware-xiaomi-cupid-ipa
-		firmware-xiaomi-cupid-modem
-		firmware-xiaomi-cupid-slpi
-		linux-firmware-qca
-		linux-firmware-qcom
-		msm-modem
-		msm-modem-uim-selection
-		pd-mapper
-		tqftpserv
-		"
-	install="$subpkgname.post-install"
-	mkdir "$subpkgdir"
-}
-
 sha512sums="
-26344777aef8b8a6699c73cc9b072cf164bc6a6e4d950eea87cb0f3ce2bc48b92a73aedbcb5c7d7f54b9a778e33c1ab1ca70ab3e6578d3db7da5bcf5cac89877  deviceinfo
+af99d8d1c08e7d73553fe554ea4d76cd86b59e122497c85d6dba492d6795ca2e9008a228bc4c04c30e0f1e4a2167a6a8829a9d844e5203ec6e776c254c17ef28  deviceinfo
+6d3d9d7946f081f71d169b1684f53d64f438f02b3840faaaa1b8e2ee1c63fe7c514360a071db1f988a68c712d5ae8eab7204bed371ab7d8f27d8a299a71d3bb0  modules-initfs
 "
