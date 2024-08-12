@@ -17,7 +17,7 @@ def check_kconfig(pkgnames):
         pkgname = pkgnames[i]
         print(f"  ({i+1}/{len(pkgnames)}) {pkgname}")
 
-        p = subprocess.run(["pmbootstrap", "kconfig", "check", pkgname],
+        p = subprocess.run(["pmbootstrap", "kconfig", "check", "--keep-going", pkgname],
                            check=False)
 
         if p.returncode:
@@ -27,7 +27,7 @@ def check_kconfig(pkgnames):
 
 
 def check_kconfig_all():
-    p = subprocess.run(["pmbootstrap", "kconfig", "check"], check=False)
+    p = subprocess.run(["pmbootstrap", "kconfig", "check", "--keep-going"], check=False)
     return p.returncode == 0
 
 
