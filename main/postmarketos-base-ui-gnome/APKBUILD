@@ -1,7 +1,7 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=postmarketos-base-ui-gnome
 pkgver=3
-pkgrel=10
+pkgrel=11
 pkgdesc="Meta package for shared configuration for GNOME-based UIs"
 url="https://postmarketos.org"
 arch="noarch"
@@ -26,7 +26,7 @@ source="
 	00_postmarketos-base-ui-gnome.gschema.override
 	"
 options="!check"
-subpackages="$pkgname-openrc $pkgname-systemd"
+subpackages="$pkgname-openrc"
 
 _pmb_recommends="
 	firefox-esr
@@ -67,13 +67,6 @@ openrc() {
 	"
 
 	mkdir "$subpkgdir"
-}
-
-systemd() {
-	install_if="$pkgname=$pkgver-r$pkgrel systemd"
-	install="$subpkgname.post-install $subpkgname.post-upgrade"
-
-	mkdir -p "$subpkgdir"
 }
 
 sha512sums="

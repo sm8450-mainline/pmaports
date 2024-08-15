@@ -1,6 +1,0 @@
-#!/bin/sh
-
-systemctl enable bluetooth
-systemctl enable ModemManager
-systemctl enable NetworkManager
-systemctl enable apk-polkit-server
