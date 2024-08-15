@@ -23,5 +23,3 @@ deviceinfo_partition_type="gpt"
 deviceinfo_boot_filesystem="fat32"
 deviceinfo_generate_systemd_boot="true"
 
-# Required for devices using UFS as storage (instead of e.g. eMMC)
-deviceinfo_rootfs_image_sector_size="4096"
