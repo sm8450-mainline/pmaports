@@ -82,7 +82,7 @@ update_linux_next() {
 	pmbootstrap checksum linux-next
 
 	# Ensure it builds
-	pmbootstrap build linux-next
+	pmbootstrap build --details-to-stdout linux-next
 
 	# Commit
 	git add device/testing/linux-next/APKBUILD
