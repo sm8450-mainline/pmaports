@@ -1,6 +1,0 @@
-#!/bin/sh
-
-systemctl enable bluetooth
-#systemctl enable hfd-service
-systemctl enable NetworkManager
-#systemctl enable urfkill
