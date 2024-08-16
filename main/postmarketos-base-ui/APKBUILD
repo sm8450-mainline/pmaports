@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-base-ui
-pkgver=27
-pkgrel=1
+pkgver=28
+pkgrel=0
 pkgdesc="Meta package for minimal postmarketOS UI base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -69,6 +69,7 @@ _source644="
 	usr/lib/NetworkManager/conf.d/50-tethering.conf
 	usr/lib/NetworkManager/conf.d/50-use-dnsmasq.conf
 	usr/share/wireplumber/wireplumber.conf.d/50-bluetooth.conf
+	usr/share/mkinitfs/files/10-wireless-regdb.files
 "
 _source600="
 	etc/ssh/sshd_config.d/postmarketos-ui-policy.conf
@@ -317,6 +318,7 @@ d4b4c4fed2dee7266f6a87ae266691377593014943e2953e4cd87a59f3110f25bfb5f3f866cc8435
 6507eb31cdd694a7db0280246433118a650bf5d99fbe639f967ae2d95945429a7e03ca6feb5bb6e7b9fb14fcec21e13e51209a79edd0041e77b5bf76b129ed6f  rootfs-usr-lib-NetworkManager-conf.d-50-tethering.conf
 900554534191fa0797064d35350934cdd8af59f30f0ae7d8ec63c2e11c44a16c643d3024b6543940488cd590fec1d392548bcaacc3be88cddff90f69b17ece07  rootfs-usr-lib-NetworkManager-conf.d-50-use-dnsmasq.conf
 92930f027626825b027f585a9be180f8a6ebae6dc44d2cf8f9d43cce00db8cbb43c33fc341fe382abacb832ea1b6414dc4c8129d265b0258d096599b2e206a93  rootfs-usr-share-wireplumber-wireplumber.conf.d-50-bluetooth.conf
+66a7a72746e822676d0ec76160e39b65c711e574a6334f3aad38c563d3104b33d0619d50b92c9201546fd81bfd10cfe0e4a59278cbcbddf20a238f6ad71c050c  rootfs-usr-share-mkinitfs-files-10-wireless-regdb.files
 ee59e9fd55a8458fa1f149890680c9353def9d49a52199d104f84db3fc588edf23e2acbb9fcf84c8bb4fd0bd8fe3186eb2cc444a3a7eeececcd8eee0d74037d9  rootfs-etc-ssh-sshd_config.d-postmarketos-ui-policy.conf
 1b8add60574ec4644197cb93263c0653325c2e88e03673de918be5fb3280c7b81e8e97dce498850a07f2f3307771c44f3c876922e5cbd5207523ede31816296f  rootfs-usr-lib-NetworkManager-system-connections-USB_Networking.nmconnection
 d1ddd43489e6016e3ffd716027ed2bae4a2ab5f213118bdbcb96750e267ab7c0367cd0e0e386300aa5550352653144f5caeddd790621fe0879f83ca1995bb65c  rootfs-etc-tinydm.d-env-wayland.d-50-firefox-wayland.sh
