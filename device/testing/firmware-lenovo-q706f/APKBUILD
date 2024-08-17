@@ -1,11 +1,12 @@
 pkgname=firmware-lenovo-q706f
 pkgver=20240726
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware for Lenovo Xiaoxin Pad Pro 12.6 (Lenovo Tab P12 Pro)"
 subpackages="
 	$pkgname-adreno
 	$pkgname-adsp
 	$pkgname-cdsp
+	$pkgname-cirrus
 	$pkgname-slpi
 	$pkgname-venus
 	"
@@ -13,7 +14,7 @@ url="https://github.com/silime/lenovo-sm8250-q706f-firmware"
 arch="aarch64"
 license="proprietary"
 options="!check !strip !archcheck !tracedeps pmb:cross-native"
-_commit="cec1c1d8b4105caa661cf3212a5894981c1c8954"
+_commit="24f7bcfbe457e5de21a2600be4619303503d3695"
 source="https://github.com/silime/lenovo-sm8250-q706f-firmware/archive/$_commit.zip"
 builddir="$srcdir/lenovo-sm8250-q706f-firmware-$_commit"
 
@@ -24,7 +25,7 @@ package() {
 
 # lenovo q706f boots with secure boot, it can only load signed firmwares.
 adreno() {
-	pkgdesc="lenovo q706f adreno firmware"
+	pkgdesc="Lenovo q706f adreno firmware"
 	depends="firmware-qcom-adreno-a650"
 	ls "$builddir"
 	install -Dm644 "$builddir"/sm8250/q706f/a650_zap.mbn -t \
@@ -32,33 +33,40 @@ adreno() {
 }
 
 adsp() {
-	pkgdesc="lenovo q706f adsp firmware"
+	pkgdesc="Lenovo q706f adsp firmware"
 
 	install -Dm644 "$builddir"/sm8250/q706f/adsp* -t \
 		"$subpkgdir/lib/firmware/qcom/sm8250/q706f/"
 }
 
 cdsp() {
-	pkgdesc="lenovo q706f cdsp firmware"
+	pkgdesc="Lenovo q706f cdsp firmware"
 
 	install -Dm644 "$builddir"/sm8250/q706f/cdsp* -t \
 		"$subpkgdir/lib/firmware/qcom/sm8250/q706f/"
 }
 
+cirrus() {
+	pkgdesc="Lenovo q706f cirrus firmware"
+
+	install -Dm644 "$builddir"/cirrus/cs35l45* -t \
+		"$subpkgdir/lib/firmware/cirrus/"
+}
+
 slpi() {
-	pkgdesc="lenovo q706f slpi firmware"
+	pkgdesc="Lenovo q706f slpi firmware"
 
 	install -Dm644 "$builddir"/sm8250/q706f/slpi* -t \
 		"$subpkgdir/lib/firmware/qcom/sm8250/q706f/"
 }
 
 venus() {
-	pkgdesc="lenovo q706f venus firmware"
+	pkgdesc="Lenovo q706f venus firmware"
 
 	install -Dm644 "$builddir"/sm8250/q706f/venus.mbn -t \
 		"$subpkgdir/lib/firmware/qcom/sm8250/q706f/"
 }
 
 sha512sums="
-6b5cf73808c2a7cd480d3fa008564cf9b69c4c3303761173adcf094c9a70b08c295890b7d5fa5f685a983949443d757749a71080077a3da27758309a6cd5534a  cec1c1d8b4105caa661cf3212a5894981c1c8954.zip
+8590482902de2239e0d2edac36a548ccc51204a8c8173ed865f1f0697435eb70b1de8680e8fa2b7bb2274ad0876ab42e64d25682cfab171f45eb4c9f5819ed2c  24f7bcfbe457e5de21a2600be4619303503d3695.zip
 "
