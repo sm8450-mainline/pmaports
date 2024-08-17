@@ -13,7 +13,7 @@ deviceinfo_arch="aarch64"
 deviceinfo_gpu_accelerated="true"
 deviceinfo_chassis="tablet"
 deviceinfo_keyboard="false"
-deviceinfo_external_storage="false"
+deviceinfo_external_storage="true"
 deviceinfo_screen_width="1600"
 deviceinfo_screen_height="2560"
 
