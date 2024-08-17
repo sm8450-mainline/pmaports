@@ -6,7 +6,7 @@
 # How to add a new service file (4 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=14
+pkgver=15
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -37,6 +37,7 @@ subpackages="
 	openssh-server-pam-systemd:_service
 	pd-mapper-systemd:_service
 	phosh-systemd:_service
+	plasma-mobile-systemd:_service
 	q6voiced-systemd:_service
 	qbootctl-systemd:_service
 	rmtfs-systemd:_service
@@ -75,6 +76,7 @@ _nftables_sources="system/nftables.service"
 _openssh_server_pam_sources="system/sshd.service system/sshdgenkeys.service"
 _pd_mapper_sources="system/pd-mapper.service"
 _phosh_sources="system/phosh.service"
+_plasma_mobile_sources="system/plasma-mobile.service"
 _q6voiced_sources="system/q6voiced.service"
 _qbootctl_sources="system/qbootctl.service"
 _rmtfs_sources="system/rmtfs.service"
@@ -119,6 +121,7 @@ source="$(flatpath \
 	$_openssh_server_pam_sources \
 	$_pd_mapper_sources \
 	$_phosh_sources \
+	$_plasma_mobile_sources \
 	$_q6voiced_sources \
 	$_qbootctl_sources \
 	$_rmtfs_sources \
@@ -173,6 +176,7 @@ fa445c4a53214524baed4e9c52a5463592a074f88a5a286eacb60d0907c0545f725afde23abd68cf
 c0badea3905c1d53d213fbfe11d25b556a2e484fe77eb50e9f4d42e25b67b56a0804e7d8e1b7731cd280cbb3525b4c60311817609381e2308d9f2dfb7c0d7072  system-sshdgenkeys.service
 0bed9a8a719661609ad84d1c6fcdf2fe9213e741682b7ddebad82d9744f137c593788ed522868f10b95b599d81743d07ec3212630a7e99d333261dfa1bf1cc11  system-pd-mapper.service
 5f53e07a48c64ab27deead4c1dc64dbea048de5632026d131e27e0fc3115723a1138d043199e2fdba9a281c420b3286a0aa96b063ed7f02c1153487ef732dd98  system-phosh.service
+e12d8e98e28a795f879aebcceb32a991ee4abcb3bc5ec458aa5378bb52ff86cf39be04bc4a196925f532d623304b3005f561fa5e55d1c87944d718058ec4c0e6  system-plasma-mobile.service
 4c4c3f1e5e829ff67dd35df59120ab59730ff1f1ca0aab93f16d670132979a99099fad59e6c736908cc19df9172c9bdfe476ec721a1cc28de8c2210da46ce1f1  system-q6voiced.service
 621189aa251655796795f4fa0cd79360bb67573e7327e545064eaadafc83cc7b382a405d6ba80662e0a4ece3876e4270e3563d859a6ba63b5e3854b39c35873e  system-qbootctl.service
 11bb0ff9ab32f0f230c665db2738e37e5226fa200621b9207baf92e0632a38f840395a55ef6e827763911cf78f3bad95cd3456e77cc01b30b8abce96dc13df9d  system-rmtfs.service
