@@ -3,7 +3,7 @@
 _flavor="lenovo-q706f"
 pkgname=linux-$_flavor
 pkgver=6.10.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline kernel fork for Lenovo SM8250"
 arch="aarch64"
 _carch="arm64"
@@ -22,8 +22,9 @@ makedepends="
 	perl
 	postmarketos-installkernel
 	python3
+	zstd
 "
-_tag="sm8250-$pkgver"
+_tag="sm8250-6.10.1"
 _config="config-$_flavor.$arch"
 _commit="d0ee36285ee039b9e0bfc854761d475bdef1a23b"
 
@@ -60,6 +61,6 @@ package() {
 }
 
 sha512sums="
-13fd93a34bc6c76a8570661aa5aca77e00e348ea790997191d72469da79f64ae9e170ad39095b8b7bd570d57740f636cd4f9e018addc4f26e880b41cd1122d80  linux-lenovo-q706f-sm8250-6.10.0.tar.gz
-15f52cd54a6d835f68deb12684b79445aa5d144a59ae4f394368f0716bc25fb8d47c96cbd5cc9630814503cf42b9db392a473890fc0612ec0d068f8eaa2c03aa  config-lenovo-q706f.aarch64
+6ea3920364723f1821639cad7f8ea0423b2a6fba06328ee354e93c1df183b12dbcdabdaaf16905107d89835ad765f4ec1d8a3f5d2c129c3880590c7f2b317d1c  linux-lenovo-q706f-sm8250-6.10.1.tar.gz
+36d87cf19dee2af5e515e72d3de1620e166f17585acd59afb30b920ef237042a5813f2079e79113d30378a301ba40f3c0c8d1b4d964e8c3d59907de3ff7ca74c  config-lenovo-q706f.aarch64
 "
