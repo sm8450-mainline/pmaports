@@ -1,0 +1,71 @@
+# Reference: <https://postmarketos.org/vendorkernel>
+# Kernel config based on: arch/arm64/configs/raphael_defconfig
+pkgname=linux-xiaomi-raphael
+pkgver=6.5.0
+pkgrel=0
+pkgdesc="Xiaomi Mi 9T Pro / Redmi K20 Pro kernel fork"
+arch="aarch64"
+_carch="arm64"
+_flavor="xiaomi-raphael"
+url="https://kernel.org"
+license="GPL-2.0-only"
+options="!strip !check !tracedeps pmb:cross-native !pmb:kconfigcheck"
+makedepends="
+	bash
+	build-base
+	bc
+	bison
+	devicepkg-dev
+	flex
+	openssl-dev
+	perl
+	linux-headers
+	cpio
+"
+
+# Source
+_repository="linux"
+_commit="35e5c5db1ba4a5cab994638817481220f88b8275"
+_config="config-$_flavor.$arch"
+source="
+	$pkgname-$_commit.tar.gz::https://github.com/degdag-mohamed/$_repository/archive/$_commit.tar.gz
+	$_config
+	"
+builddir="$srcdir/$_repository-$_commit"
+_outdir="out"
+
+prepare() {
+	default_prepare
+	REPLACE_GCCH=0
+	. downstreamkernel_prepare
+}
+
+build() {
+	unset LDFLAGS
+	make -j$(nproc) O="$_outdir" ARCH="$_carch" CC="${CC:-gcc}" \
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
+}
+
+package() {
+	mkdir -p "$pkgdir"/boot
+
+	install -Dm644 "$builddir/out/arch/$_carch/boot/Image.gz" \
+		"$pkgdir/boot/vmlinuz"
+
+	make -j2 O="$_outdir" modules_install dtbs_install \
+		ARCH="$_carch" \
+		INSTALL_PATH="$pkgdir"/boot/ \
+		INSTALL_MOD_PATH="$pkgdir" \
+		INSTALL_MOD_STRIP=1 \
+		INSTALL_DTBS_PATH="$pkgdir"/boot/dtbs
+	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
+
+	install -D "$builddir"/out/include/config/kernel.release \
+		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
+}
+
+
+sha512sums="
+4a395c62cce09e9ad5d96315029e6f834e43c82d4211abdf48cbc20e603928511b8a8563c8e8b6fc08b24e28e00a098c2bbab19947b20805610cc5a26f16b3d9  linux-xiaomi-raphael-35e5c5db1ba4a5cab994638817481220f88b8275.tar.gz
+54b76d86c344eb67dca53d5940c7b9a550a0493d10925a4b1b9d338bddd41168079cf5dcf11b0f854c0e84d21b8422f2730c912f0103a4d273a829fe4fc5caa3  config-xiaomi-raphael.aarch64
+"
