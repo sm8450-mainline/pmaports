@@ -8,7 +8,7 @@ fi
 
 pkgname=musl-aarch64
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 arch="x86_64"
 subpackages="musl-dev-aarch64:package_dev"
 
@@ -57,6 +57,6 @@ package_dev() {
 }
 
 sha512sums="
-5ad546aca584d77f6fcf7d92bc5e6432d8c32b3db2922a4099423649e674b5c149464bd0048021e50b18398a00382bbeb6a0a598148bea4fa6d783f5c4c4445d  musl-1.2.5-r1-aarch64-edge.apk
-b6fed1441c0eacfea0061967915a876ce0af79b83511d9b05ae7e7cf489d88e36a544fa7f7512f390429d7d0217b672c04a83dfceea603ce0e86d2a47c50f4cc  musl-dev-1.2.5-r1-aarch64-edge.apk
+a3c660153e2cd1859a83e692c4d1c9f92bb442948ec4ed63412ac1d75502fa40a5a383bb548c8ac98d83fdd27f067304e876be1e15f41eaa09f1414cf5d4e189  musl-1.2.5-r2-aarch64-edge.apk
+6e921c1a761125e768e78e072585b226180c1447f04a4d5fc50564787b30f9c1520b3bfe90d835cfba1716fc4672d3df95a0883187adb50627eed9a3c4249a04  musl-dev-1.2.5-r2-aarch64-edge.apk
 "

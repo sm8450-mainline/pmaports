@@ -8,7 +8,7 @@ fi
 
 pkgname=musl-x86
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 arch="x86_64"
 subpackages="musl-dev-x86:package_dev"
 
@@ -57,6 +57,6 @@ package_dev() {
 }
 
 sha512sums="
-53a30a57f0db29e8d73d7190590fce18a19bcd358f9b0f3d4fa0b8821dad4ed5f1065c3c07dbc373a23cbd98c9a9dc1c2c2d864ac88eefd53dc5f89d8e57ed67  musl-1.2.5-r1-x86-edge.apk
-e9178fcfe27bdc7568c35889cff8cf20829f67460fd6dc22a6ca0465063a809081ee1267b4275432d23d1e7d457a4b207a0ff11c678233c4e430a1173d4ccea8  musl-dev-1.2.5-r1-x86-edge.apk
+bde9b17b3f8b696dd863509713113b720bdff8d125e98eed5165f5fa0934d3a8adc317ffb319e3c045b99389ebb0ac08896c0bedd6d0e7461c9f2d98ffee62f9  musl-1.2.5-r2-x86-edge.apk
+cfd0b502e1237024736b6215ac944299664f4b44802533f5cf6b5239a15c22bdc7782004e1485e15d8184ca0cc9afbf704c12cc39d4fe93611f65c8915d595a7  musl-dev-1.2.5-r2-x86-edge.apk
 "
