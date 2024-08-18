@@ -2,12 +2,13 @@
 # Maintainer: Newbyte <newbyte@postmarketos.org>
 pkgname=postmarketos-ui-phosh
 pkgver=22.3
-pkgrel=8
+pkgrel=9
 pkgdesc="(Wayland) Mobile UI initially developed for the Librem 5"
 url="https://phosh.mobi"
 arch="noarch !armhf"
 license="GPL-3.0-or-later"
 depends="
+	!gnome-settings-daemon-mobile
 	!gnome-shell-mobile
 	!gnome-shell-mobile-schemas
 	!mutter-mobile
