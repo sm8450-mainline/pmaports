@@ -26,7 +26,6 @@ makedepends="
 	findutils
 	flex
 	git
-	linux-headers
 	openssl-dev
 	perl
 	python3
