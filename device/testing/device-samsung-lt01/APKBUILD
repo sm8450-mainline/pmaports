@@ -2,8 +2,8 @@
 # Maintainer: knuxify <knuxify@gmail.com>
 pkgname=device-samsung-lt01
 pkgdesc="Samsung Galaxy Tab 3 8.0"
-pkgver=1
-pkgrel=4
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -75,5 +75,5 @@ kernel_lte() {
 sha512sums="
 0a1ff386ed7288858e10bb42ac5b63bccbe8e82503bfabfdfb42dbc39e2b80529e1f85ba92b0dd7dd5ff0f550792521d9aad2f5dc2309a711759be5fe94b2d98  deviceinfo
 caa81e8ab6753c0ca24c22fb6742288765dfbf2469b8b8c35c5789edfcee546ef1c3b14ad6e540c417f434258399300f17d312b58157635eafab134587ef94cc  TAB3.conf
-d08c35377c66681ac3b562888301cff8516024581180aa7d7cf6cfe89ed2d2d6b715f2a1164445678041d160775e945f99bf0605ffc12b6ee8d84c50ef57df9b  HiFi.conf
+fc3610233f53a6e44491b2337b18bbfd42bb2f70d3f3aa70044449505ab12e91c582aa0c248fed28fe2017f4e9eaebac299545aa80117388d31409634a5f8e38  HiFi.conf
 "
