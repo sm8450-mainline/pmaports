@@ -3,15 +3,14 @@
 # Kernel config based on: arch/arm/configs/omap2plus_defconfig
 
 pkgname=linux-postmarketos-omap
-pkgver=6.9.3
-pkgrel=2
+pkgver=6.10.6
+pkgrel=0
 pkgdesc="Mainline kernel fork for OMAP devices"
 arch="armv7"
 url="https://kernel.org/"
 license="GPL-2.0-only"
 options="!strip !check !tracedeps pmb:cross-native pmb:kconfigcheck-community"
-makedepends="bash bison findutils flex openssl-dev perl gmp-dev mpc1-dev mpfr-dev postmarketos-installkernel xz"
-
+makedepends="bash bison findutils flex linux-headers openssl-dev perl gmp-dev mpc1-dev mpfr-dev postmarketos-installkernel xz"
 _carch="arm"
 _flavor="postmarketos-omap"
 _config="config-$_flavor.armv7"
@@ -42,9 +41,6 @@ source="
 	0007-hsi-ssi_port-force-pio-path.patch
 	0008-n900-dts-volume-keys.patch
 	0009-ARM-dts-disable-twl-off-idle-configuration-for-N900.patch
-	0010-bq27xxx_battery-map-edv1-to-low-battery-capacity.patch
-	0011-bq27xxx_battery-add-voltage-based-capacity-estimatio.patch
-	0012-ARM-dts-n900-set-charge-current-limit-to-950mA.patch
 "
 builddir="$srcdir/linux-$_kernver"
 replaces="linux-samsung-espresso3g linux-nokia-n900"
@@ -74,18 +70,15 @@ package() {
 }
 
 sha512sums="
-119320627a73c260725a51ee4234942cc137aeb8b7c67428204ae14e3b518cf7b770e75a8dd0df7fa910333a64241146eb8f93463163f386dae8ddbd6943a631  linux-6.9.3.tar.xz
+991ec7c7d2d490cb90b182a29e892dae586918eee7f3ff4b6e26f4ff9b31b6d7a31cdc31d25ca12243ecab59787aad75f0056b2fbe6997d0dfd68c357e7703af  linux-6.10.6.tar.xz
 b0bcd5aa9db5479d6daa310a9e167fd3316d523b5077c6aa25547af0c39249a4f1f94afb7e64b6bd626f05c949dd8baa76b3b55e4e642df55de9ffe786284564  config-postmarketos-omap.armv7
 9a187d93885f07467ec67094621b2d762607d58622e67172bdfcd8ba5f3d6aab900ca5d233efd3d447540f9b906ba950083a35997c84b315801604e1cd5cddc3  0001-Add-TWL6032-dtsi.patch
 f7d1a87088c65278a114125e732d5bebebb560a6245afb34e003083d808ef3f8c5f49ff23131953508a6daae111ab6adfffdbcf56b79260a6d4115f859c7bb3a  0002-arm-dts-Add-common-dtsi-for-espresso.patch
 089ca0547997c7cd5d1b65924c134eb6b7703a7439729923d3639d125763412fa7e826d1cb839ac0b6cd22e614f69a3b52605a75b571e271c33f9a27ff6ac9c2  0003-arm-dts-Add-espresso7-support.patch
 97f6671bd6fa02d095b726793a3ae68a5b94b0a89719006121a6eaf1607c477f74446489a0f62250edc3c193945f571c92196c85ec8043ae18a141ea9adffd51  0004-arm-dts-Add-espresso10-support.patch
-fe9ce7ed5757a1e72663c15e80cef47531b80150e8c45fa94c03a291edc39a401c0678894c3f7afbe9b78b5cbe88529982bd6c90ab3f515c31199e6939aa3b96  0005-Add-TWL6030-power-button-support-to-twl-pwrbutton.patch
+8d14c1e7946cee7f7301a909f4e41ed9c909f0de84190006dfc370558bccaf2113a5f00a303a6d623ebd7064098300db9d89b64506a4abd65cadc79d2be997fd  0005-Add-TWL6030-power-button-support-to-twl-pwrbutton.patch
 1a68e3a32ae1e56d325c0f759ee66d64d14f46a5d52e75ae008dfddac335beb3aa7acaf62abb95b6d5ce1557f0cf9b4c31ab78e110af178db1ac963bb377dbf0  0006-iio-rescale-revert-logic.patch
 c3af9715b3559c2d593f4fcfa078730722c7deeec132c5b83e085ff4d9815d85ef349384097c580efe1bbc37c60f42e18ef559f0abccfe236080670e4403fa77  0007-hsi-ssi_port-force-pio-path.patch
 b98ce806b3d5a0122086e4c9670639174470ff6d29851c60258cc5d699ce9a479dbf4996b24299fc075d25e9fe8f6b1250fafdff742deea0ddeaf53d342a9d72  0008-n900-dts-volume-keys.patch
 66abb5548910ad369608b08200f5835d5a8526c04cc3617221ef546f3e3d22cd944db91dc6727a5c26a102b24d8ef1306ea01254c9c382759afced91b31747ef  0009-ARM-dts-disable-twl-off-idle-configuration-for-N900.patch
-6680b264db0c992826f9da0078256ba20ffae3de26a77978106b94499d96e72ed90d9a35bb42be38bae1e798e7ddf068e3c5e7fe63462b3bbad5031195622192  0010-bq27xxx_battery-map-edv1-to-low-battery-capacity.patch
-cd91f0bb59e466c517b498a549357325be884bb1884986e593fef905a6210872024e0cab179df03833dfc6e8d1221441fa384466ae8227d82f6e70b22fce655c  0011-bq27xxx_battery-add-voltage-based-capacity-estimatio.patch
-a11493d762b8f1ee90384e1d2baba7c6b7b37f4c11a8e6a876c1476de52b44a8f5a93db2bcd0fe68bb7e91dd54c76396b46727f8e94fc4aad1754feed3822061  0012-ARM-dts-n900-set-charge-current-limit-to-950mA.patch
 "
