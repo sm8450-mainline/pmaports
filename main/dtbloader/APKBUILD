@@ -1,7 +1,7 @@
 # Contributor: Nikita Travkin <nikita@trvn.ru>
 # Maintainer: Nikita Travkin <nikita@trvn.ru>
 pkgname=dtbloader
-pkgver=1.1
+pkgver=1.2
 pkgrel=0
 pkgdesc="EFI driver that finds and installs DeviceTree into the UEFI configuration table"
 url="https://github.com/TravMurav/dtbloader"
@@ -37,5 +37,5 @@ boot_deploy() {
 }
 
 sha512sums="
-7fe2c4bac469afdcb665d3026ebfa2d539a6c6c043bf0bd923d95446455969241cb57617a7a46052ab5dfee76c264050b5c57c2da57691c32f97d8aedb0071cc  dtbloader-1.1.tar.gz
+f92855c5a1806cdceeb776e6c98aad03e8854a96b5a0f681464ed6de339b7e359234c0b048ae4ef695e62342e9f44c15c70e7b97e5e439027ad33ca0b06599f2  dtbloader-1.2.tar.gz
 "
