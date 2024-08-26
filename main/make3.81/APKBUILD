@@ -1,0 +1,39 @@
+pkgname=make3.81
+pkgver=3.81
+pkgrel=0
+pkgdesc="GNU make utility to maintain groups of programs"
+url="https://www.gnu.org/software/make"
+arch="all"
+license="GPL-2.0-or-later"
+source="
+	https://ftp.gnu.org/gnu/make/make-$pkgver.tar.gz
+	config.sub
+"
+builddir="$srcdir/make-$pkgver"
+
+build() {
+	if [ -z "$BOOTSTRAP" ]; then
+		export CFLAGS="$CFLAGS -flto=auto"
+	fi
+	cp "$srcdir"/config.sub "$builddir"/config/
+	./configure \
+		--build=$CBUILD \
+		--host=$CHOST \
+		--prefix="/usr/make$pkgver" \
+		--disable-nls
+	make
+}
+
+check() {
+	[ "$CBUILD" != "$CHOST" ] || (ulimit -n 64 && PERL5LIB=. make check)
+}
+
+package() {
+	install -Dm755 make "$pkgdir"/usr/make"$pkgver"/bin/make
+	ln -sfv make "$pkgdir"/usr/make"$pkgver"/bin/gmake
+}
+
+sha512sums="
+2d5492ba95cc423d8c6b91dd92776ed57e807def18acb647186e01af28a81e06d37490887f75a99a6aae498c51fe68645dbe9cd145f6c482f1ce2a47385b24e8  make-3.81.tar.gz
+0934d0d3d1cdc24719c89968eeb2377a9e7c07a0cf8fc3a1282785483a8812e823d459b3c41475fc7fec0284cb596898a44badf7d25a0de14532225c01602a4d  config.sub
+"
