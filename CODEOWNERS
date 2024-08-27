@@ -89,6 +89,7 @@ device/*/device-samsung-lt01/			@knuxify
 device/*/device-samsung-m0/			@Newbyte
 device/*/device-samsung-manta/			@jenneron @alexmrqt
 device/*/device-shift-axolotl/			@amartinz @calebccff @dylanvanassche
+device/*/firmware-google-sargo/			@flamingradian
 device/*/firmware-google-veyron-brcm/		@jenneron
 device/*/firmware-odroid-xu4/			@Grimler
 device/*/firmware-oneplus-sdm845/		@calebccff
