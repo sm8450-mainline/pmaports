@@ -5,7 +5,7 @@
 /etc/unudhcpd.conf
 /sbin/blkid
 /usr/bin/iskey
-/sbin/modprobe
+/usr/bin/modprobe
 /usr/bin/unudhcpd
 /usr/sbin/kpartx
 /usr/share/deviceinfo/deviceinfo
