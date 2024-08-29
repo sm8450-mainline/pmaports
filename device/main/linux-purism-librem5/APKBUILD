@@ -4,7 +4,7 @@
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 pkgname=linux-purism-librem5
 pkgver=6.6.40
-pkgrel=3
+pkgrel=4
 # NOTE: Don't forget to rebase the config! See prepare() for instructions.
 _purismrel=2
 # <kernel ver>.<purism kernel release>
@@ -90,5 +90,5 @@ package() {
 
 sha512sums="
 b16f6d040024d826d4ac7a33ad23137fafbf1ac7ac8adeef3fd80a80dc308b70cf572de6e4a451eb607b1d18ad58c03493108c7a1ff9b26fa2bd03a475002903  linux-purism-librem5-6.6.40pureos2.tar.gz
-126a651c40c3fb34a6fdb4ebe51a68c0bfbc22971e75104d20c4c2fa182d94683c84f0a7e14ef6731bd6574464a286b7e15eaa08b189c019c386da81aa587e58  config-purism-librem5.aarch64
+e938306d7f2d91e7e0a279e25eb163fb8922b32b0eca7f96f96de2a06e3f51a7aa3e7cb9bc640a793e731a2e4580d86d84d9e4240c1fe76a505345940bf3133e  config-purism-librem5.aarch64
 "
