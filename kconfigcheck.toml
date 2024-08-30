@@ -14,9 +14,11 @@ community = [
 	"category:default",
 	"category:community_various",
 	"category:containers",
-	"category:libcamera",
+	"category:debug",
 	"category:filesystems",
+	"category:input",
 	"category:iwd",
+	"category:libcamera",
 	"category:netboot",
 	"category:nftables",
 	"category:usb_gadgets",
@@ -268,6 +270,8 @@ BTRFS_FS = true
 EXFAT_FS = true
 EXT4_FS = true
 F2FS_FS = true
+UDF_FS = true
+XFS_FS = true
 
 # usb_gadgets
 ["category:usb_gadgets".">=0.0.0"."all"]
@@ -287,20 +291,19 @@ USB_CONFIGFS_RNDIS = true  # USB networking via RNDIS (legacy)
 ["category:community_various".">=0.0.0"."all"]
 BINFMT_MISC = true  # register binary formats
 CIFS = true  # mount SMB shares
-INPUT_UINPUT = true  # buffyboard
 LEDS_TRIGGER_PATTERN = true  # feedbackd
 LEDS_TRIGGER_TIMER = true  # hfd-service
+NETFILTER_XT_MATCH_MARK = true  # e.g. HashiCorp Nomad
+NETFILTER_XT_MATCH_MULTIPORT = true  # e.g. HashiCorp Nomad
 NETFILTER_XT_MATCH_STATISTIC = true  # kube-proxy
 NETFILTER_XT_MATCH_TCPMSS = true  # change MTU e.g. for Wireguard
 NETFILTER_XT_TARGET_TCPMSS = true  # change MTU e.g. for Wireguard
 # TODO = Depends on SUSPEND which is not enabled for some devices
 # PM_WAKELOCKS = true  # Sxmo
-SND_USB_AUDIO = true  # USB audio devices
 UCLAMP_TASK = true  # Scheduler hints
 UCLAMP_TASK_GROUP = true  # Scheduler hints
-UHID = true  # e.g. Bluetooth input devices
-USB_STORAGE = true  # USB mass storage devices
 RT_GROUP_SCHED = false  # https://gitlab.com/postmarketOS/pmaports/-/issues/2652
+DM_INTEGRITY = true  # Device-mapper integrity target
 
 # uefi: proper modern booting
 ["category:uefi".">=0.0.0"."all"]
@@ -326,3 +329,26 @@ DMABUF_HEAPS_CMA = true
 DMABUF_HEAPS = true
 DMA_CMA = true
 CMA = true
+
+["category:input".">=0.0.0"."all"]
+BT_HIDP = true  # Bluetooth HID
+HIDRAW = true  # /dev/hidraw* support
+INPUT_UINPUT = true  # buffyboard
+JOYSTICK_XPAD = true  # Xbox controller
+JOYSTICK_XPAD_FF = true  # Xbox controller force-feedback
+JOYSTICK_XPAD_LEDS = true  # Xbox controller LEDs
+UHID = true  # User-space HID, e.g. Bluetooth
+USB_ANNOUNCE_NEW_DEVICES = true  # dmesg messages when connecting device
+USB_HIDDEV = true  # /dev/usb/hiddevX support
+USB_PRINTER = true  # printers
+
+["category:usb".">=0.0.0"."all"]
+DRM_UDL = true  # DisplayLink - connecting displays via USB
+SND_USB_AUDIO = true  # USB audio devices
+USB_SERIAL_CP210X = true  # USB serial console
+USB_STORAGE = true  # USB mass storage devices
+USB_RTL8152 = true  # USB Ethernet
+
+["category:debug".">=0.0.0"."all"]
+DYNAMIC_DEBUG = true  # Enable debug dynamically
+DYNAMIC_FTRACE = true  # Enable function tracing dynamically

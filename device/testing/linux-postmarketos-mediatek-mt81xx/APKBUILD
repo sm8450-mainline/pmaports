@@ -1,7 +1,7 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=linux-postmarketos-mediatek-mt81xx
 pkgver=6.10.0_rc4_git20240624
-pkgrel=2
+pkgrel=3
 pkgdesc="Mediatek MT8186/8192/8195 kernel package"
 arch="aarch64"
 url="https://kernel.org"
@@ -73,6 +73,6 @@ sha512sums="
 73ca8b9d4cb02d70e5d58312df25fb15f636a3dc01d3bd4e4a3603abfb951cd2168cd64c1b4ea0724e115f6cb07e04458e10e5021cff7d726255d52300649314  linux-postmarketos-mediatek-mt81xx-81a5880479c33471287692dc5fff0bc97a79bd92.tar.gz
 bf39ed6646a869a7a99dc7f0ccc7bbaca0c50776e87848cb1a9e55bef317a73c08549a9acb8cce5c394ab3bf90667e4d1cf8a3671bb9de15d2a470d5e8be0261  0001-arm64-dts-mediatek-Add-dts-for-hayato-rev5-sku0.patch
 f10464bf131ba44686a36a35aaf16492915413893d1b3faa43959d5f853b5ed66419f835565836a17480cd3458de0943cee72e700713e00125c8ecd184f3b677  remove-audio-routing.patch
-ca5107ab3f9954a88431231243acf5b60da61aa377ce024fc3b30a9f6ca115ef55a3cdb14efc6d6e4ee4c28fd8cfa87ed01f2089e7683d7076b8d59abb12d896  config-postmarketos-mediatek-mt81xx.aarch64
 614ebc613902c088afc32ced6e612f3bb04405a36431a53ace96516a41e7c776e0353db55356ae9fc125b376049064720d4ad17cd7f1da2b3d2503fb0fa812a1  update-ADSP-reserved-memory-region.patch
+3e85a333ab1f7cd0a2a947bfc4f7efab414dc6f7d0deaba95a5413d7d42028c2f4dd9d22c06dd0f7a5060ccb995b08d5080ddf64a776506747463d830c00d150  config-postmarketos-mediatek-mt81xx.aarch64
 "
