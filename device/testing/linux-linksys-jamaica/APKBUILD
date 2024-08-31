@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/vendorkernel>
 pkgname=linux-linksys-jamaica
 pkgver=5.4.164
-pkgrel=0
+pkgrel=1
 pkgdesc="Linksys EA9350 V3 kernel fork"
 arch="armv7"
 _carch="arm"
@@ -72,7 +72,7 @@ package() {
 
 sha512sums="
 a3040cd9c89fe1704957acf1da7d986810b60d2a337baaa4307fc434c9dfd8821a714c4b6aa0ba1c5f7ed10374806418558323532d65df3e1c403592c9813511  linux-linksys-jamaica-d5fcb18e5420670c8734c6a659873e73adab6dac.tar.gz
-df3fb2f10df0d1fc25e708e2c8d8518d71310939357de1882ecb269fff7c3f0a3612c7192a9535632e4b9dfb87741d09d146555c4c37523a4b0f07d47f6b668d  config-linksys-jamaica.armv7
+f850193f3d5020da0c29e88671bbf52c48da514cdf4a21a5171fed88f3a8003afbd3ca2bd31bb89e9a219362aaa76dc0f1d0be160941786bd2eb23bdc97e8614  config-linksys-jamaica.armv7
 ee80928d83189a6b71f853c97551326e3ac74167dee3bda0ae85a034278ca69403bbfbbd9dfaf9f77426e46d7260e4fda8e8900649f1b6355bac62a8cda83776  linux5.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
 f4fcc19216ac758ba0ba10f3c003d0d06270501d7294f1cf8bf2d7dea1341de9d7b5b7151660399049cbce9648d0ae4c14ece624866f9dd4c2b42cff4227fe14  001-fix-build.patch
 0343e7791d9b58d96d40314f73adce0e47ce15439ed383e757a7e3d565a04dd75785ccdb49621584a21f23f94edf96b725ec9814a37763b45c533e08a2226ebf  601-netfilter-br_netfilter-Don-t-invoke-iptables-by-defa.patch
