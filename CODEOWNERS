@@ -81,6 +81,7 @@ device/*/device-qemu-aarch64/			@Minecrell @ollieparanoid
 device/*/device-qemu-amd64/			@Minecrell @ollieparanoid
 device/*/device-qemu-riscv64/			@Minecrell @z3ntu
 device/*/device-qualcomm-sdm845/		@calebccff
+device/*/device-raspberry-pi3/			@fossdd
 device/*/device-samsung-chagallwifi/		@Grimler
 device/*/device-samsung-coreprimevelte/		@legolivesmatter @balejk
 device/*/device-samsung-j5y17lte/	@andrisas
