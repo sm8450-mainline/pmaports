@@ -1,0 +1,4 @@
+#!/bin/sh
+
+. /usr/lib/systemd/systemd-apk-macros.sh
+systemd_service_pre_deinstall user pipewire.socket

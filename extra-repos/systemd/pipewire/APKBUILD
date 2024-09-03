@@ -3,7 +3,7 @@
 pkgname=pipewire
 pkgver=9991.2.0
 _pkgver=1.2.0
-pkgrel=0
+pkgrel=1
 _so_ver=0.3
 pkgdesc="Multimedia processing graphs"
 url="https://pipewire.org/"
@@ -59,7 +59,7 @@ subpackages="
 	$pkgname-spa-tools:spa_tools
 	$pkgname-lang
 	"
-install="$pkgname.post-upgrade $pkgname.post-install"
+install="$pkgname.post-upgrade $pkgname.post-install $pkgname.pre-deinstall"
 source="https://gitlab.freedesktop.org/PipeWire/pipewire/-/archive/$_pkgver/pipewire-$_pkgver.tar.gz
 	pipewire.desktop
 	pipewire-launcher.sh
@@ -151,6 +151,7 @@ pulse() {
 		"
 	provides="pulseaudio=$pkgver-r$pkgrel pulseaudio-bluez=$pkgver-r$pkgrel"
 	provider_priority=1
+	install="$subpkgname.post-install $subpkgname.pre-deinstall"
 
 	amove usr/bin/pipewire-pulse
 	amove usr/lib/pipewire-$_so_ver/libpipewire-module-protocol-pulse.so
