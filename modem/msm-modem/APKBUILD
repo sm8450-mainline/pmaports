@@ -1,6 +1,6 @@
 pkgname=msm-modem
 pkgver=7
-pkgrel=3
+pkgrel=4
 pkgdesc="Common support for Qualcomm MSM modems"
 url="https://postmarketos.org/"
 arch="armhf armv7 aarch64"
@@ -34,7 +34,7 @@ uim_selection() {
 }
 
 uim_selection_openrc() {
-	install_if="$pkgname-uim_selection=$pkgver-r$pkgrel openrc"
+	install_if="$pkgname-uim-selection=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install"
 
 	install -Dm644 "$srcdir/$pkgname-uim-selection.confd" \
