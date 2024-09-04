@@ -1,0 +1,65 @@
+# Forked from Alpine to add support for usr merge
+
+pkgname=kmod
+pkgver=99932
+_pkgver=32
+pkgrel=3
+pkgdesc="Linux kernel module management utilities"
+url="http://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary"
+arch="all"
+options="!check"  # https://bugs.gentoo.org/408915#c3
+license="GPL-2.0-or-later"
+# gnu sed is needed for symlink
+makedepends_build="sed libxslt"
+makedepends_host="$depends_dev zlib-dev xz-dev zstd-dev openssl-dev>3"
+makedepends="$makedepends_build $makedepends_host"
+triggers="$pkgname.trigger=/lib/modules/*"
+subpackages="
+	$pkgname-dev
+	$pkgname-doc
+	$pkgname-libs
+	$pkgname-bash-completion
+	"
+source="https://kernel.org/pub/linux/utils/kernel/kmod/kmod-$_pkgver.tar.xz
+	strndupa.patch
+	portable-basename.patch
+	"
+builddir="$srcdir/$pkgname-$_pkgver"
+
+build() {
+	if [ -z "$BOOTSTRAP" ]; then
+		export CFLAGS="$CFLAGS -flto=auto"
+	fi
+	./configure \
+		--build=$CBUILD \
+		--host=$CHOST \
+		--prefix=/usr \
+		--bindir=/bin \
+		--sysconfdir=/etc \
+		--with-rootlibdir=/lib \
+		--with-zlib \
+		--with-xz \
+		--with-zstd \
+		--with-openssl
+	make
+}
+
+package() {
+	make DESTDIR="$pkgdir" install
+	local i
+	mkdir -p "$pkgdir"/sbin
+	for i in lsmod rmmod insmod modinfo modprobe depmod; do
+		ln -sf ../bin/$i "$pkgdir"/sbin/$i
+	done
+}
+
+libs() {
+	license="LGPL-2.1-or-later"
+	default_libs
+}
+
+sha512sums="
+29162135aabd025dff178a4147a754b5da5964855dbeee65ca867dec3b84437f35c1c97f0f027e974a021d3ee9a4940309a716859cc3cfe93c7ed0aada338f24  kmod-32.tar.xz
+f2ea3527bfba182c5e15557c224a5bba8c7e2ea3d21cf604e6eb2277226dcf983c3aeb9ac44a322c7f2b4942b35135da999d63a5b946b829d3f3b09c050a0f17  strndupa.patch
+5fc41a7c4ea3ad3e33516ebdf8d19ac7ce0223d75a3e99f185e8a7fd71007b9d2e2d850e319b122d470cd95f45098a5a39faa21a17c0fb82124138f97db9d85c  portable-basename.patch
+"
