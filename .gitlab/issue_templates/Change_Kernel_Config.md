@@ -28,4 +28,4 @@
 
 
 <!-- leave this, so it applies the correct label in gitlab -->
-/change-kernel-config
+/label ~"change-kernel-config"
