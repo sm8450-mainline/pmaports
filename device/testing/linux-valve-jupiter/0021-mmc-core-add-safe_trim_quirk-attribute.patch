@@ -1,4 +1,4 @@
-From 9b4eac736a8404eecd695a68398c39e589faa7f9 Mon Sep 17 00:00:00 2001
+From 836cc60357f95c5edfae621d458ec64c79880557 Mon Sep 17 00:00:00 2001
 From: Andres Rodriguez <andresx7@gmail.com>
 Date: Tue, 8 Nov 2022 17:32:25 -0500
 Subject: [PATCH 21/21] mmc: core: add safe_trim_quirk attribute
@@ -83,5 +83,5 @@ index f34407cc2788..12fdace380f0 100644
  #define MMC_QUIRK_BLKSZ_FOR_BYTE_MODE (1<<1)	/* use func->cur_blksize */
  						/* for byte mode */
 -- 
-2.45.2
+2.46.0
 

@@ -1,4 +1,4 @@
-From 174c99bdf20a4a9455bbbe22ac9e1aeaca714b4b Mon Sep 17 00:00:00 2001
+From 14d9c8a1d8f4efaa02b3679d6ea550e40bf5fb68 Mon Sep 17 00:00:00 2001
 From: "Pierre-Loup A. Griffais" <pgriffais@valvesoftware.com>
 Date: Tue, 14 Jun 2022 14:31:18 -0700
 Subject: [PATCH 02/21] drivers: video: backlight: Disable backlight
@@ -37,5 +37,5 @@ index a82934694d05..b9daf4469143 100644
  }
  
 -- 
-2.45.2
+2.46.0
 

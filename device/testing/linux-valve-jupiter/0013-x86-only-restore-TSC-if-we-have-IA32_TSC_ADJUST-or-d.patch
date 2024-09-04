@@ -1,4 +1,4 @@
-From e85f58709b6c4d56d7564a2146c233fe896a8c80 Mon Sep 17 00:00:00 2001
+From 768c89703cb4ab128c76179242ff58c2ba84349b Mon Sep 17 00:00:00 2001
 From: Steven Noonan <steven@uplinklabs.net>
 Date: Wed, 17 Nov 2021 11:58:46 -0800
 Subject: [PATCH 13/21] x86: only restore TSC if we have IA32_TSC_ADJUST or
@@ -35,5 +35,5 @@ index 07b7f6e578e8..48a7a0341b81 100644
  	header->real_magic = 0x12345678;
  
 -- 
-2.45.2
+2.46.0
 

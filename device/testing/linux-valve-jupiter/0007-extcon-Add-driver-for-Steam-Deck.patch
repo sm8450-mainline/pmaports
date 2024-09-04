@@ -1,4 +1,4 @@
-From dc7c80a83c9aa6dd7792390462015bd499fd4046 Mon Sep 17 00:00:00 2001
+From fbeb4255d216bebd4335dcecf26af6ba1eb4d1df Mon Sep 17 00:00:00 2001
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 Date: Sun, 27 Feb 2022 14:46:08 -0800
 Subject: [PATCH 07/21] extcon: Add driver for Steam Deck
@@ -225,5 +225,5 @@ index 000000000000..74f190adc8ea
 +MODULE_DESCRIPTION("Steam Deck extcon driver");
 +MODULE_LICENSE("GPL");
 -- 
-2.45.2
+2.46.0
 

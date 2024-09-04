@@ -1,4 +1,4 @@
-From c9c01ca1d180dcd7bb04ec0881656b72f1b5ff30 Mon Sep 17 00:00:00 2001
+From 02d6a2be69db32e90e004abb7d163eb7c77c0e5e Mon Sep 17 00:00:00 2001
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 Date: Sun, 27 Feb 2022 16:34:23 -0800
 Subject: [PATCH 19/21] usb: dwc3: Fix "linux,extcon-name"
@@ -10,10 +10,10 @@ Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/usb/dwc3/dwc3-pci.c b/drivers/usb/dwc3/dwc3-pci.c
-index de33accdc1ce..24c54211284c 100644
+index ac6827f4ef89..23d0c29380a7 100644
 --- a/drivers/usb/dwc3/dwc3-pci.c
 +++ b/drivers/usb/dwc3/dwc3-pci.c
-@@ -177,7 +177,7 @@ static const struct property_entry dwc3_pci_amd_properties[] = {
+@@ -181,7 +181,7 @@ static const struct property_entry dwc3_pci_amd_properties[] = {
  static const struct property_entry dwc3_pci_mr_properties[] = {
  	PROPERTY_ENTRY_STRING("dr_mode", "otg"),
  	PROPERTY_ENTRY_BOOL("linux,sysdev_is_parent"),
@@ -23,5 +23,5 @@ index de33accdc1ce..24c54211284c 100644
  };
  
 -- 
-2.45.2
+2.46.0
 

@@ -1,4 +1,4 @@
-From a930dedf1dc4aad10286e9cfc25d7266903d9981 Mon Sep 17 00:00:00 2001
+From 4142d218879226afa7dffc82521f25fe698245c7 Mon Sep 17 00:00:00 2001
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 Date: Tue, 18 Jan 2022 08:44:34 -0800
 Subject: [PATCH 17/21] usb: dwc3: Bump USB gadget wakeup timeout
@@ -26,5 +26,5 @@ index 89fc690fdf34..d68bc1650afb 100644
  	while (retries--) {
  		reg = dwc3_readl(dwc->regs, DWC3_DSTS);
 -- 
-2.45.2
+2.46.0
 

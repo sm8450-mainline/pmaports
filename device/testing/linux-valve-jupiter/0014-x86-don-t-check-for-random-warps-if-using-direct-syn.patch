@@ -1,4 +1,4 @@
-From fcbe33fd9bd71650c224769d06e7578871d53882 Mon Sep 17 00:00:00 2001
+From 9361949639e0b6a17c71fa4fb03e871018be34a1 Mon Sep 17 00:00:00 2001
 From: Steven Noonan <steven@uplinklabs.net>
 Date: Wed, 17 Nov 2021 19:42:32 -0800
 Subject: [PATCH 14/21] x86: don't check for random warps if using direct sync
@@ -27,5 +27,5 @@ index 3cc241632221..ad224f7c0d5b 100644
  		atomic_set(&test_runs, 0);
  
 -- 
-2.45.2
+2.46.0
 

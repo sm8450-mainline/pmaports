@@ -1,4 +1,4 @@
-From 7b4f303d707bf291c2dab32642786f58483f3f90 Mon Sep 17 00:00:00 2001
+From 1de0de2a4bf099b59c402061d2554d0af215ed5a Mon Sep 17 00:00:00 2001
 From: Shreeya Patel <shreeya.patel@collabora.com>
 Date: Mon, 17 Jul 2023 14:02:21 +0530
 Subject: [PATCH 03/21] iio: light: ltrf216a: Return floating point values
@@ -77,5 +77,5 @@ index 68dc48420a88..d2914252b99f 100644
  	case IIO_CHAN_INFO_INT_TIME:
  		mutex_lock(&data->lock);
 -- 
-2.45.2
+2.46.0
 

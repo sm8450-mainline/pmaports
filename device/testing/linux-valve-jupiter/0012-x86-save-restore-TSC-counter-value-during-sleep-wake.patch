@@ -1,4 +1,4 @@
-From b3779261314ec31b9c2ac96d58820cf3ab7f3cdc Mon Sep 17 00:00:00 2001
+From 28afac2af617e11e03150141f8deda6dbabfe4ae Mon Sep 17 00:00:00 2001
 From: Steven Noonan <steven@uplinklabs.net>
 Date: Wed, 17 Nov 2021 00:26:20 -0800
 Subject: [PATCH 12/21] x86: save/restore TSC counter value during sleep/wake
@@ -78,5 +78,5 @@ index 02d0ba16ae33..0154ef895960 100644
  
  #ifndef CONFIG_64BIT
 -- 
-2.45.2
+2.46.0
 
