@@ -2,6 +2,10 @@
 disable systemd-network*
 disable systemd-homed*
 
+# starting multipathd on systems with no multipath hardware can soft-hang
+# boot, so disable it by default
+disable multipathd.service
+
 # for basically all Uis
 ## system services
 enable apk-polkit-server.service
