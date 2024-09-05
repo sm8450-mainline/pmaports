@@ -3,9 +3,9 @@
 # Co-Maintainer: jane400 <jane400@postmarketos.org>
 
 pkgname=systemd
-pkgver=256
+pkgver=256.5
 _pkgver="musl-v${pkgver//_/-}"
-pkgrel=5
+pkgrel=0
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !armhf !s390x" # blocked by pmboostrap not supporting
@@ -66,7 +66,7 @@ depends="
 	!openrc
 	kbd
 	kmod
-"
+	"
 if [ -z "$BOOTSTRAP" ] || [ "$BOOTSTRAP" -gt 2 ]; then
 	makedepends="$makedepends
 		dbus-dev
@@ -213,13 +213,20 @@ package() {
 	#
 	# FIXME: For some reason .note.dlopen isn't placed in the binary. Investigate!
 	# https://github.com/systemd/systemd/blob/main/docs/ELF_DLOPEN_METADATA.md
-	depends="$pkgname-udevd $pkgname-journald util-linux-login less so:libkmod.so.2"
+	depends="
+		$pkgname-journald=$pkgver-r$pkgrel
+		$pkgname-udevd=$pkgver-r$pkgrel
+		less
+		so:libkmod.so.2
+		util-linux-login
+		!openrc
+		"
 
 	DESTDIR="$pkgdir" meson install --no-rebuild -C build
 
 	# ship default policy to leave services disabled
 	mkdir -p "$pkgdir"/usr/lib/systemd/system-preset
-	echo 'disable *' >"$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
+	echo 'disable *' > "$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
 
 	install -Dm755 "$srcdir"/systemd-apk-macros.sh -t \
 		"$pkgdir"/usr/lib/systemd
@@ -227,6 +234,7 @@ package() {
 
 udevd() {
 	pkgdesc="systemd udev"
+	# is a dependency of systemd
 
 	# NOTE: should only be udev, but packages hardcode eudev
 	provides="eudev udev eudev-libs"
@@ -256,6 +264,7 @@ udevd_zcomp() {
 
 timesyncd() {
 	pkgdesc="systemd Time Synchronization"
+	depends="$pkgname=$pkgver-r$pkgrel"
 	install="$subpkgname.post-install $subpkgname.pre-deinstall"
 
 	amove etc/systemd/timesyncd.conf
@@ -278,6 +287,7 @@ timesyncd_zcomp() {
 
 networkd() {
 	pkgdesc="systemd Network Configuration"
+	depends="$pkgname=$pkgver-r$pkgrel"
 	install="$subpkgname.post-install $subpkgname.pre-deinstall"
 
 	amove usr/bin/networkctl
@@ -312,6 +322,7 @@ networkd_zcomp() {
 
 resolved() {
 	pkgdesc="systemd Network Name Resolution"
+	depends="$pkgname=$pkgver-r$pkgrel"
 	install="$subpkgname.post-install $subpkgname.pre-deinstall"
 	replaces="resolvconf"
 	provides="resolvconf"
@@ -340,7 +351,11 @@ resolved_zcomp() {
 
 logind() {
 	pkgdesc="systemd User Login Management"
-	depends="dbus shadow"
+	depends="
+		$pkgname=$pkgver-r$pkgrel
+		dbus
+		shadow
+	"
 
 	provides="elogind"
 	provider_priority=100
@@ -368,6 +383,7 @@ logind_zcomp() {
 
 journald() {
 	pkgdesc="systemd Journal"
+	# is a dependency of systemd
 
 	amove usr/bin/journalctl
 	amove etc/systemd/journal-remote.conf
@@ -403,7 +419,7 @@ dev() {
 }
 
 sha512sums="
-f556d2eabcb732bed6bf7a5396be6f6d67eebf80218c7ae5525042fba661b1d242cb7941a720ff6d015a3b6af0ee545a4a647044a9da2acd16914d6c0cdda4c2  systemd-musl-v256.tar.gz
+5d1f4625b75b6637afa71519bc7048fe899b4f5785ce26316524ac78941e43cf6ba83391dae68497cfa4f8aaa35d953ec0c04ee581307ffc7007cf4b9d9c4454  systemd-musl-v256.5.tar.gz
 73d10e72413c6b688c847c667ccb42ef1f273d498e4b4ff5344dc98432e05aab92bbcd42725935b15f3ebcc627729318ac592c3372cf22465f39ea93a5dedc8b  systemd-apk-macros.sh
 81c897fed8a3fbfb67ec591b2398a5d65e4af1b3ef379376c157c98d71f085b707f8ebc896d5571a94f99f8fc84fd6b43e3b879ca9b0d57fc6c4596034c7a777  wired.network
 "
