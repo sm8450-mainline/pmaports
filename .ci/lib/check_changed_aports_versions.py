@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import glob
+import pathlib
 import tempfile
 import sys
 import subprocess
@@ -15,8 +16,9 @@ import add_pmbootstrap_to_import_path  # noqa
 import pmb.parse
 import pmb.parse.version
 import pmb.helpers.logging
+from pmb.core.context import get_context
 
-def get_package_contents(args, package, revision, check=True):
+def get_package_contents(package, revision, check=True):
     # Redirect stderr to /dev/null, so git doesn't complain about files not
     # existing in upstream branch for new packages
     stderr = None
@@ -37,15 +39,16 @@ def get_package_contents(args, package, revision, check=True):
     with tempfile.TemporaryDirectory() as tempdir:
         with open(tempdir + "/APKBUILD", "w", encoding="utf-8") as handle:
             handle.write(apkbuild_content)
-        parsed = pmb.parse.apkbuild(tempdir + "/APKBUILD", False, False)
+        parsed = pmb.parse.apkbuild(pathlib.Path(tempdir, "APKBUILD"),
+                                    False, False)
 
     return parsed
 
 
-def get_package_version(args, package, revision, check=True):
+def get_package_version(package, revision, check=True):
     """ returns version in the format "{pkgver}-r{pkgrel}", or None if no 
         matching package is found """
-    parsed = get_package_contents(args, package, revision, check)
+    parsed = get_package_contents(package, revision, check)
     if parsed is None:
         return None
     return parsed["pkgver"] + "-r" + parsed["pkgrel"]
@@ -91,7 +94,7 @@ def exit_with_error_message():
     exit(1)
 
 
-def check_versions(args, packages):
+def check_versions(packages):
     error = False
 
     # Get relevant commits: compare HEAD against upstream branch or HEAD~1
@@ -110,8 +113,8 @@ def check_versions(args, packages):
 
     for package in packages:
         # Get versions, skip new packages
-        head = get_package_version(args, package, "HEAD")
-        upstream = get_package_version(args, package, commit, False)
+        head = get_package_version(package, "HEAD")
+        upstream = get_package_version(package, commit, False)
         if not upstream:
             if head.rpartition('r')[2] != "0":
                 print(f"- {package}: {head} (HEAD) (new package) [ERROR]")
@@ -129,8 +132,8 @@ def check_versions(args, packages):
 
         # Additional checks for device packages
         if package.startswith('device-'):
-            head_parsed = get_package_contents(args, package, "HEAD", False)
-            upstream_parsed = get_package_contents(args, package, commit, False)
+            head_parsed = get_package_contents(package, "HEAD", False)
+            upstream_parsed = get_package_contents(package, commit, False)
 
             # checksums did not change
             if head_parsed["sha512sums"] == upstream_parsed["sha512sums"]:
@@ -191,8 +194,12 @@ if __name__ == "__main__":
     # Initialize args (so we can use pmbootstrap's APKBUILD parsing)
     sys.argv = ["pmbootstrap.py", "chroot"]
     args = pmb.parse.arguments()
-    pmb.helpers.logging.init(args)
+    context = get_context()
+
+    # pmb.helpers.logging.init(args)
+    pmb.helpers.logging.init(context.log, args.verbose, context.details_to_stdout)
+
 
     # Verify package versions
     print("checking changed package versions...")
-    check_versions(args, packages)
+    check_versions(packages)

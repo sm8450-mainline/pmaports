@@ -2,6 +2,7 @@
 # Copyright 2021 Oliver Smith
 # SPDX-License-Identifier: GPL-3.0-or-later
 import sys
+import pathlib
 
 # Same dir
 import common
@@ -11,6 +12,7 @@ import add_pmbootstrap_to_import_path
 import pmb.parse
 import pmb.parse._apkbuild
 import pmb.helpers.pmaports
+from pmb.core.context import get_context
 
 
 def build_strict(packages, arch):
@@ -59,15 +61,16 @@ if __name__ == "__main__":
         verify_checksums(packages, arch)
         sys.exit(0)
 
-    # Prepare "args" to use pmbootstrap code
-    sys.argv = ["pmbootstrap", "chroot"]
+    # Load context
+    sys.argv = ["pmbootstrap.py", "chroot"]
     args = pmb.parse.arguments()
+    context = get_context()
 
     # Filter out packages that can't be built for given arch
     # (Iterate over copy of packages, because we modify it in this loop)
     for package in packages.copy():
-        apkbuild_path = pmb.helpers.pmaports.find(args, package)
-        apkbuild = pmb.parse._apkbuild.apkbuild(f"{apkbuild_path}/APKBUILD")
+        apkbuild_path = pmb.helpers.pmaports.find(package)
+        apkbuild = pmb.parse._apkbuild.apkbuild(pathlib.Path(apkbuild_path, "APKBUILD"))
 
         if not pmb.helpers.pmaports.check_arches(apkbuild["arch"], arch):
             print(f"{package}: not enabled for {arch}, skipping")
