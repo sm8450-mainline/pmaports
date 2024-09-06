@@ -2,7 +2,7 @@
 # Co-Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=device-generic-x86_64
 pkgdesc="Generic x86_64 system, with EFI"
-pkgver=15
+pkgver=16
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -17,10 +17,11 @@ makedepends="devicepkg-dev"
 source="
 	deviceinfo
 	modules-initfs
-	30-gpu-firmware.files
+	30-gpu-i915-firmware.files
 "
 install="$pkgname.post-install $pkgname.post-upgrade"
 subpackages="
+	$pkgname-intel
 	$pkgname-kernel-edge:kernel_edge
 	$pkgname-kernel-lts:kernel_lts
 "
@@ -41,9 +42,14 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
+}
 
-	install -Dm644 "$srcdir"/30-gpu-firmware.files \
-		-t "$pkgdir"/usr/share/mkinitfs/files/
+intel() {
+	pkgdesc="Intel-specific configuration"
+	install_if="$pkgname=$pkgver-r$pkgrel oem-intel"
+
+	install -Dm644 "$srcdir"/30-gpu-i915-firmware.files \
+		-t "$subpkgdir"/usr/share/mkinitfs/files/
 }
 
 kernel_edge() {
@@ -65,5 +71,5 @@ kernel_lts() {
 sha512sums="
 e9dfcd70ccfb9a0fdaa0cdc52faf3be96d6de8af8c60a758bb703c515b0648cec4552e0eaf56e5168b0004cd3fc4b28118abb05dad2c581d3579a2e9134862cb  deviceinfo
 e464ef0ad4a4c34d2d53f69c4612b612ea878a77c9efdef69b0f842edf701036c8218809fd63aac286d6a08ae07f39e568199fc3e38d145e716c1723e7215019  modules-initfs
-9599a10679a43929e4ed2ea22269a0716219163817574d48db4dc1cb21a0fcf17ea54d77d5fd8efd034905c421ecb3eaa600a72927d683983ce48d1159329881  30-gpu-firmware.files
+9599a10679a43929e4ed2ea22269a0716219163817574d48db4dc1cb21a0fcf17ea54d77d5fd8efd034905c421ecb3eaa600a72927d683983ce48d1159329881  30-gpu-i915-firmware.files
 "
