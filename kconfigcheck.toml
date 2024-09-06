@@ -352,3 +352,7 @@ USB_RTL8152 = true  # USB Ethernet
 ["category:debug".">=0.0.0"."all"]
 DYNAMIC_DEBUG = true  # Enable debug dynamically
 DYNAMIC_FTRACE = true  # Enable function tracing dynamically
+
+# librem5: Specific to the Purism Librem 5
+["category:librem5".">=0.0.0"."aarch64"]
+RS9116_FLASH_MODE = false
