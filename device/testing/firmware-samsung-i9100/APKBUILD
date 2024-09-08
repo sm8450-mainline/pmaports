@@ -7,16 +7,12 @@ arch="armv7"
 license="proprietary"
 options="!check !tracedeps pmb:cross-native"
 
-# Source
-_files="
-	bcmdhd_sta.bin
-	nvram_net.txt
+_commit="5ae6836ddc96cdb6fa1910cb36dfab3ec77d9c67"
+_url="https://github.com/TheMuppets/proprietary_vendor_samsung/raw/$_commit"
+source="
+	$pkgname-$_commit-bcmdhd_sta.bin::$_url/skyrocket/proprietary/etc/wifi/bcmdhd_sta.bin
+	$pkgname-$_commit-nvram_net.txt::$_url/i9100/proprietary/system/etc/wifi/nvram_net.txt
 "
-_commit="a5346c8874d5186c967b74291c2055d902f7a928"
-_url="https://github.com/TheMuppets/proprietary_vendor_samsung/raw/$_commit/i9100/proprietary/system/etc/wifi"
-for _i in $_files; do
-	source="$source $pkgname-$_commit-$_i::$_url/$_i";
-done
 
 package() {
 	install -Dm644 "$srcdir/$pkgname-$_commit-bcmdhd_sta.bin" \
@@ -25,5 +21,7 @@ package() {
 		"$pkgdir/lib/firmware/postmarketos/brcm/brcmfmac4330-sdio.samsung,i9100.txt"
 }
 
-sha512sums="a6d602a768e8748c44b5debf2b7388d42c909919fb2b73c0f511ac2bceadac7d7208c6ba94c2df9aa900c9fb446f35f670b0adc552689f8567fa87ded754a947  firmware-samsung-i9100-a5346c8874d5186c967b74291c2055d902f7a928-bcmdhd_sta.bin
-4a473740dfb3202e77fdd07c0bfe59c3cd2ea30e3388b7a09c38484408d9253b7e83a96558995e1fce87e00d6a071eec49ee5a10d68c0e05ab6b6a3dd873604e  firmware-samsung-i9100-a5346c8874d5186c967b74291c2055d902f7a928-nvram_net.txt"
+sha512sums="
+ef70cd280d5febcce7387eceb0ef8a7c3d389dfdad4bb7b4631b4dccd7fe55034d1857f79349969d1e104a8dd7d3c2db84eb623c566711aa5072bc2d8145d4b7  firmware-samsung-i9100-5ae6836ddc96cdb6fa1910cb36dfab3ec77d9c67-bcmdhd_sta.bin
+4a473740dfb3202e77fdd07c0bfe59c3cd2ea30e3388b7a09c38484408d9253b7e83a96558995e1fce87e00d6a071eec49ee5a10d68c0e05ab6b6a3dd873604e  firmware-samsung-i9100-5ae6836ddc96cdb6fa1910cb36dfab3ec77d9c67-nvram_net.txt
+"
