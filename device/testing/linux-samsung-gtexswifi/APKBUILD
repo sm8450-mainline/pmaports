@@ -4,7 +4,7 @@
 
 pkgname=linux-samsung-gtexswifi
 pkgver=3.10.108
-pkgrel=0
+pkgrel=1
 pkgdesc="Samsung Galaxy Tab A 7.0 kernel fork"
 arch="armv7"
 _carch="arm"
@@ -36,6 +36,8 @@ source="
 	replace-solaris-style-directive.patch
 	printk-fix.patch
 	x11-fix.patch
+	fix-check-lxdialog-makefile.patch
+	fix-check-lxdialog.patch
 "
 
 builddir="$srcdir/$_repository-$_commit"
@@ -71,4 +73,6 @@ sha512sums="
 a4196e0184b3bb1bc8d0cf4fae931dab623bb9cd02732758bb8ac1d0588682960f58d4dba8ccebb1377e853ca5c135d2a700750228d54ac95a33d1cd44533bca  replace-solaris-style-directive.patch
 292a1a72cf956f0911918e5d07dccb937312838dc43c9ddd2030e96a1cf772cbf0c92ddde41ecfd05ce310f5c119d08b4992d31aabae3775425668eb74d91f35  printk-fix.patch
 1bab85f34cb955f25eae3c28e519c325dca3b1b87ad25c15a78f5538a775b3bc2699b615bfc5182e1cb0fdb4520999ff7a0ee03fe3c6a1cef70baa4fb3809b40  x11-fix.patch
+c33fad9de627e72f12e61e728fa1ec53ef15259c7790392a997cc7269e60e45da9534d58851c3b348a1729aaa134d1df305e33546e8a1f3654462f2c3c1d9563  fix-check-lxdialog-makefile.patch
+182be3c596b9cc267ac108d7cf03fc8c328ccc6b36770800e4dcedea8d1bb65e3f5eacf590c2948f58b1418cc60a1670ba77dde8c259e428d158c31b6e1dbaf5  fix-check-lxdialog.patch
 "
