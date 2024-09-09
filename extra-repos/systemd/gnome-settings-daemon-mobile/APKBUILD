@@ -1,0 +1,85 @@
+# Forked from Alpine for systemd support
+
+pkgname=gnome-settings-daemon-mobile
+pkgver=99946.0
+_pkgver=46.0
+pkgrel=0
+pkgdesc="GNOME settings daemon"
+url="https://gitlab.gnome.org/verdre/gnome-settings-daemon-mobile"
+arch="all"
+options="!check" # tests fail on builders
+license="GPL-2.0-only AND LGPL-2.1-only"
+depends="pulseaudio"
+provides="gnome-settings-daemon=$pkgver-r$pkgrel"
+depends_dev="
+	alsa-lib-dev
+	colord-dev
+	cups-dev
+	geoclue-dev
+	geocode-glib-dev>=3.26.4-r1
+	lcms2-dev
+	libcanberra-dev
+	libgweather4-dev
+	libnotify-dev
+	libwacom-dev
+	modemmanager-dev
+	networkmanager-dev
+	nss-dev
+	pango-dev
+	polkit-dev
+	systemd-dev
+	pulseaudio-dev
+	upower-dev
+	"
+makedepends="
+	$depends_dev
+	coreutils
+	gcr4-dev
+	glib-dev
+	gnome-desktop-dev
+	gsettings-desktop-schemas-dev
+	gtk+3.0-dev
+	libxml2-utils
+	meson
+	"
+checkdepends="
+	gnome-session
+	gnome-shell
+	py3-dbusmock
+	py3-gobject3
+	umockdev-dev
+	"
+subpackages="$pkgname-dev $pkgname-lang"
+_commit=46-mobile-0
+_gvc_commit="8e7a5a4c3e51007ce6579292642517e3d3eb9c50"
+source="gnome-settings-daemon-mobile-$_commit.tar.gz::https://gitlab.gnome.org/verdre/gnome-settings-daemon-mobile/-/archive/$_commit/gnome-settings-daemon-mobile-$_commit.tar.gz
+	libgnome-volume-control-$_gvc_commit.tar.gz::https://gitlab.gnome.org/GNOME/libgnome-volume-control/-/archive/$_gvc_commit/gnome-shell-$_gvc_commit.tar.gz"
+builddir="$srcdir/$pkgname-$_commit"
+
+build() {
+	rm -rf "$builddir/subprojects/gvc"
+	mv "$srcdir/libgnome-volume-control-$_gvc_commit" $builddir/subprojects/gvc
+	abuild-meson \
+		-Db_lto=true \
+		-Dsystemd=true \
+		. output
+	meson compile -C output
+}
+
+dev() {
+	provides="gnome-settings-daemon-dev=$pkgver-r$pkgrel"
+	default_dev
+}
+
+check() {
+	meson test --no-rebuild --print-errorlogs -C output
+}
+
+package() {
+	DESTDIR="$pkgdir" meson install --no-rebuild -C output
+}
+
+sha512sums="
+1d8f0cc22416a76787495fbef70d57496c7970783c3b4356284c7c68e1fe3599b75df7efb8bd6747ef19ee9a2d68dd0bb8fe7b1f53b5baa2cedef6705962f59a  gnome-settings-daemon-mobile-46-mobile-0.tar.gz
+ebc6985afbda5ddebcda44d8b6732a9abc2d7249aff3adf7a76a90aa681590f830dcf2e5f3534a624adc32d1f0445e261ee149d65c221f733e0c33e0690a004d  libgnome-volume-control-8e7a5a4c3e51007ce6579292642517e3d3eb9c50.tar.gz
+"
