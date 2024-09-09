@@ -2,6 +2,7 @@
 # Copyright 2021 Oliver Smith
 # SPDX-License-Identifier: GPL-3.0-or-later
 import sys
+import os
 import pathlib
 
 # Same dir
@@ -9,6 +10,7 @@ import common
 
 # pmbootstrap
 import add_pmbootstrap_to_import_path
+import pmb.core
 import pmb.parse
 import pmb.parse._apkbuild
 import pmb.helpers.pmaports
@@ -66,9 +68,29 @@ if __name__ == "__main__":
     args = pmb.parse.arguments()
     context = get_context()
 
-    # Filter out packages that can't be built for given arch
+    # Get set of all buildable packages for the enabled repos, for skipping unbuildable
+    # aports later. We might be given a changed aport from e.g. extra-repos/systemd when
+    # that repo is not enabled
+    buildable_pkgs = set()
+    for path in pmb.core.pkgrepo.pkgrepo_iter_package_dirs():
+        buildable_pkgs.add(os.path.basename(path))
+
+    # To store a list of packages from extra-repos/systemd for special handling later:
+    systemd_pkgs = list()
+
+    # Filter out packages that either:
+    #  1. can't be built for given arch
+    #  2. are not found in enabled repos
     # (Iterate over copy of packages, because we modify it in this loop)
     for package in packages.copy():
+        if package not in buildable_pkgs:
+            print(f"{package}: not in any available repos, skipping")
+            packages.remove(package)
+            # FIXME: this should probably be more generic, if other repos are added later?
+            # This just tosses the package into the list of packages to try building later w/ systemd enabled, and assumes it'll be found there.
+            systemd_pkgs.append(package)
+            continue
+
         apkbuild_path = pmb.helpers.pmaports.find(package)
         apkbuild = pmb.parse._apkbuild.apkbuild(pathlib.Path(apkbuild_path, "APKBUILD"))
 
@@ -84,3 +106,10 @@ if __name__ == "__main__":
     # Build packages
     print(f"building in strict mode for {arch}: {', '.join(packages)}")
     build_strict(packages, arch)
+
+    # Build packages in extra-repos/systemd
+    # FIXME: this should probably be more generic, if other repos are added later?
+    if systemd_pkgs:
+        print(f"building in strict mode for {arch}, from extra-repos/systemd: {', '.join(packages)}")
+        common.run_pmbootstrap(["config", "systemd", "always"])
+        build_strict(systemd_pkgs, arch)
