@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-pine64-dontbeevil
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="PINE64 PinePhone Don't be evil devkit"
 url="https://postmarketos.org"
 license="MIT"
@@ -48,7 +48,7 @@ x11() {
 
 nonfree_firmware() {
 	pkgdesc="Wifi and Bluetooth firmware"
-	depends="linux-firmware-rtlwifi linux-firmware-rtl_bt firmware-pine64-rtl8723bt"
+	depends="linux-firmware-rtlwifi linux-firmware-rtl_bt"
 	mkdir "$subpkgdir"
 }
 

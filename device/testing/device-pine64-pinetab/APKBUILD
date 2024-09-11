@@ -3,7 +3,7 @@
 pkgname=device-pine64-pinetab
 pkgdesc="PINE64 PineTab"
 pkgver=1
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -140,7 +140,7 @@ package() {
 
 nonfree_firmware() {
 	pkgdesc="Bluetooth Firmware"
-	depends="firmware-pine64-rtl8723bt"
+	depends="linux-firmware-rtl_bt"
 	mkdir "$subpkgdir"
 }
 

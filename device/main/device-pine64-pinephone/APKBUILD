@@ -3,7 +3,7 @@
 # Co-Maintainer: Jan Jasper de Kroon <jajadekroon@gmail.com>
 pkgname=device-pine64-pinephone
 pkgver=4
-pkgrel=0
+pkgrel=1
 pkgdesc="PINE64 PinePhone"
 url="https://postmarketos.org"
 license="MIT"
@@ -167,7 +167,6 @@ nonfree_firmware() {
 	depends="
 		linux-firmware-rtlwifi
 		linux-firmware-rtl_bt
-		firmware-pine64-rtl8723bt
 		firmware-pine64-ov5640
 		"
 	mkdir "$subpkgdir"
