@@ -1,8 +1,8 @@
 # Maintainer: WeirdTreeThing <bradyn127@protonmail.com>
 # Co-Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=linux-postmarketos-mediatek-mt8183
-pkgver=6.6.25
-pkgrel=4
+pkgver=6.6.29
+pkgrel=0
 pkgdesc="Mainline kernel for mediatek mt8183"
 arch="aarch64"
 _flavor="${pkgname#linux-}"
@@ -88,7 +88,7 @@ package() {
 
 
 sha512sums="
-1f1c31a104aa399cd7fd67c0e73c5037e95112e544b00ad70a2a809b52d9d190c303e3f946d67d805125181004fe7de500ff2069dcacad94f6b56bfb8f180f6a  linux-6.6.25.tar.xz
+d5ab8b7650fd9c449bb75fcbc2cb876d03829545c3b0c88ba5f980c33ab2a7c09ea09f7826ca457a64b33910d655e6c3a5e7c99e009ed5abe1c02b83fd528740  linux-6.6.29.tar.xz
 669a1bbf8707ec9294da83336673fbb55061a2eed0c6ddb2613da3ae4fa9b0e2bdbdd91ad166694173e3540ea934b2f3bf27d5f9659a6952de806765eed9b824  arm64-dts-mediatek-mt8183-Add-missing-GPU-clocks.patch
 027fee259454764e47ffee7100dba7cb9f0741a156ba3d1b47815a0beb6b4ea6cccba885f93b068923ff88047fa82a3d937d3808d0199f1de85cf553068a9ba7  arm64-dts-mediatek-mt8183-Add-missing-syscon-power-d.patch
 40246a8da036dc6c21592efd6625a4be22d6f524b067854f17f5671f5f3b134ed1c63a8c03a15a55e9b45b7d8d1a9b63833b86f38a6f5863e02cc8ddbf70fa57  arm64-dts-mediatek-mt8183-Add-video-encoder-decoder.patch
