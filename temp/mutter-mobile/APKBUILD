@@ -1,8 +1,8 @@
 # Forked from Alpine to apply mobile adaptivity patches
 
 pkgname=mutter-mobile
-pkgver=46.0
-pkgrel=1
+pkgver=46.1
+pkgrel=0
 pkgdesc="clutter-based window manager and compositor"
 url="https://wiki.gnome.org/Projects/Mutter/"
 # ricsv64: doesn't build currently:
@@ -67,7 +67,7 @@ makedepends="
 options="!check" # Can't be run with release builds
 provides="mutter=$pkgver-r$pkgrel"
 subpackages="$pkgname-dbg $pkgname-dev $pkgname-doc $pkgname-lang $pkgname-schemas::noarch"
-_commit="46-mobile-0"
+_commit="46-mobile.1"
 source="mutter-mobile-$_commit.tar.gz::https://gitlab.gnome.org/verdre/mutter-mobile/-/archive/$_commit/mutter-mobile-$_commit.tar.gz
 	pcversion.patch
 	"
@@ -77,6 +77,8 @@ prepare() {
 	default_prepare
 
 	sed -i "s/libmutter_api_version = '.*'/libmutter_api_version = '99'/g" meson.build
+	# versions in the format "46-mobile.1" are considered invalid by pkg-config
+	sed -i 's/\([0-9]\+\)-mobile\.\([0-9]\+\)/\1.\2/' meson.build
 }
 
 build() {
@@ -113,6 +115,6 @@ package() {
 }
 
 sha512sums="
-97de32571ca2aeeee4d213e085fc22d0c9f669ec8d24219a5a4205f21a2e0b261f8e6d042248262926df27e0530b7a0501922d1efde5278f8c23507909d1fa84  mutter-mobile-46-mobile-0.tar.gz
+210266238a9cf56b77e195559a2f99574de4a52b973bad7143a88f112730dd61ebf807e6644519998f39fe5ddbcb1bfd589d0d5167c92718953d5ad22eba2ae7  mutter-mobile-46-mobile.1.tar.gz
 670927a5528f9fec4801b7dab8a377b7280c239acb1f7a9077647deef71119738deb958a94d4ce0a99d39b29eeab3b2505698f7d19b880bbcec9f5260202d3a6  pcversion.patch
 "
