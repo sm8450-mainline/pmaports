@@ -4,7 +4,7 @@
 pkgname=device-oneplus-enchilada
 pkgdesc="OnePlus 6"
 pkgver=14
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -56,7 +56,7 @@ nonfree_firmware() {
 }
 
 nonfree_firmware_openrc() {
-	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel"
+	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel openrc"
 	replaces="hexagonrpcd-openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
 
