@@ -8,16 +8,17 @@ disable multipathd.service
 
 # for basically all Uis
 ## system services
-enable apk-polkit-server.service
 enable ModemManager.service
 enable NetworkManager.service
+enable apk-polkit-server.service
 enable bluetooth.service
 enable haveged.service
-enable systemd-rfkill.service
+enable hkdm.service
+enable kill-pbsplash.service
 enable nftables.service
 enable postmarketos-tweakd.service
-enable kill-pbslash.service
-enable hkdm.service
+enable sshd.service
+enable systemd-rfkill.service
 
 # Note: technically these two shouldn't be enabled at the same time, but
 # pmos-base-wifi provides should make sure that only one is installed at the
@@ -34,10 +35,10 @@ enable plasma-mobile.service
 enable sddm.service
 
 ## phosh
-enable phosh
+enable phosh.service
 
 ## gnome
-enable gdm
+enable gdm.service
 
 # Device specifics:
 # TODO: i like the idea of device/soc specific presets, we should move this out of here
