@@ -1,7 +1,7 @@
 # Maintainer: WeirdTreeThing <bradyn127@protonmail.com>
 # Co-Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=linux-postmarketos-mediatek-mt8183
-pkgver=6.6.29
+pkgver=6.6.36
 pkgrel=0
 pkgdesc="Mainline kernel for mediatek mt8183"
 arch="aarch64"
@@ -43,7 +43,6 @@ esac
 source="
 	https://cdn.kernel.org/pub/linux/kernel/v${_kernver%%.*}.x/linux-$_kernver.tar.xz
 	arm64-dts-mediatek-mt8183-Add-missing-GPU-clocks.patch
-	arm64-dts-mediatek-mt8183-Add-missing-syscon-power-d.patch
 	arm64-dts-mediatek-mt8183-Add-video-encoder-decoder.patch
 	arm64-dts-mediatek-mt8183-Drop-VDEC_SYS-register.patch
 	arm64-dts-mediatek-mt8183-Add-register-names-and-sys.patch
@@ -88,9 +87,8 @@ package() {
 
 
 sha512sums="
-d5ab8b7650fd9c449bb75fcbc2cb876d03829545c3b0c88ba5f980c33ab2a7c09ea09f7826ca457a64b33910d655e6c3a5e7c99e009ed5abe1c02b83fd528740  linux-6.6.29.tar.xz
+7dc497868b5b134eb2aa06e3e33aaae3c8026701ebea5b2183a35c0396576eda20f1d5af2d8468086fe0f9cf6691f2e3f3b3d6d03c5546bf734a8559cde5eabe  linux-6.6.36.tar.xz
 669a1bbf8707ec9294da83336673fbb55061a2eed0c6ddb2613da3ae4fa9b0e2bdbdd91ad166694173e3540ea934b2f3bf27d5f9659a6952de806765eed9b824  arm64-dts-mediatek-mt8183-Add-missing-GPU-clocks.patch
-027fee259454764e47ffee7100dba7cb9f0741a156ba3d1b47815a0beb6b4ea6cccba885f93b068923ff88047fa82a3d937d3808d0199f1de85cf553068a9ba7  arm64-dts-mediatek-mt8183-Add-missing-syscon-power-d.patch
 40246a8da036dc6c21592efd6625a4be22d6f524b067854f17f5671f5f3b134ed1c63a8c03a15a55e9b45b7d8d1a9b63833b86f38a6f5863e02cc8ddbf70fa57  arm64-dts-mediatek-mt8183-Add-video-encoder-decoder.patch
 aee85972804ab4a254f007805e25d30a82bb87e48144a05805ccefd49f8530f588e2c50b6550f302895a675003ffbe8e7986c2214d76763474b88804fe7f1519  arm64-dts-mediatek-mt8183-Drop-VDEC_SYS-register.patch
 567b13d7508fdf584a64bf3f9d71ba34c045c6e4610ef7f7024ed98f4e7ebbd78c0ee2d5dccc7a50e651e4a088c0621f5150d477520069965466d5db265160ab  arm64-dts-mediatek-mt8183-Add-register-names-and-sys.patch
