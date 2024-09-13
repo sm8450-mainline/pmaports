@@ -6,7 +6,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=19
+pkgver=20
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -46,6 +46,7 @@ subpackages="
 	rtkit-systemd:_service
 	sleep-inhibitor-systemd:_service
 	tqftpserv-systemd:_service
+	udisks2-systemd:_service
 	wireplumber-systemd:_service
 	wpa_supplicant-systemd:_service
 	xdg-desktop-portal-systemd:_service
@@ -93,6 +94,7 @@ _rmtfs_sources="system/rmtfs.service"
 _rtkit_sources="system/rtkit-daemon.service"
 _sleep_inhibitor_sources="system/sleep-inhibitor.service"
 _tqftpserv_sources="system/tqftpserv.service"
+_udisks2_sources="system/udisks2.service" # From https://github.com/storaged-project/udisks/blob/master/data/udisks2.service.in
 _wireplumber_sources="user/wireplumber.service"  # https://gitlab.freedesktop.org/pipewire/wireplumber/-/blob/master/src/systemd/user
 _wpa_supplicant_sources="system/wpa_supplicant.service"
 _xdg_desktop_portal_sources="
@@ -141,6 +143,7 @@ source="$(flatpath \
 	$_rtkit_sources \
 	$_sleep_inhibitor_sources \
 	$_tqftpserv_sources \
+	$_udisks2_sources \
 	$_wireplumber_sources \
 	$_wpa_supplicant_sources \
 	$_xdg_desktop_portal_sources \
@@ -171,6 +174,7 @@ _rmtfs_system_presets="rmtfs.service"
 _rtkit_system_presets="rtkit-deamon.service"
 _sleep_inhibitor_system_presets="sleep-inhibitor.service"
 _tqftpserv_system_presets="tqftpserv.service"
+_udisks2_system_presets="udisks2.service"
 _wireplumber_user_presets="wireplumber.service"
 _wpa_supplicant_system_presets="wpa_supplicant.service"
 _xdg_desktop_portal_user_presets="xdg-desktop-portal-rewrite-launchers.service"
@@ -248,6 +252,7 @@ e12d8e98e28a795f879aebcceb32a991ee4abcb3bc5ec458aa5378bb52ff86cf39be04bc4a196925
 1a0958e4fe232967946e9f2b17a13434b137236ba5d18442175d648b084d82df3a9fc5723c1621be899ee290b99777ac3c0ee6ad733e72d8e70f63b37ad00036  system-rtkit-daemon.service
 be9df5e3fd9c88ec1a8db4aa2d9e8075d74ee3d2670aa3cfc611df3cff4d4041ac888a0338c9d5f134bbc69aa32eb52ac40eb3e0981813afa18389cba14d3818  system-sleep-inhibitor.service
 c569b27925297672c479e12a6425abdf5791886fff77c2c2b67b7aa9277eb0a22e7b95b52dbc225870c97460d0988a4dae18ed864e19096c704c0895de55b699  system-tqftpserv.service
+c7ea2b18c9d8f82306fbaca6d07b7019de3819d7898c3f50c3d0aceef4da4d311ed3bf31385e2f8998b8e3e326b1eb13309ffd44cf1b2d9db9b40bca00222c16  system-udisks2.service
 210a7610acfcaee642ac34abe80e77f492e7e2411a9226d26578675893a125b8333a26c2756cf4376745e32fb99a2b7851d737e4df3b2c7d923f730d8ae33e9d  user-wireplumber.service
 d55edea6983ad73b1817dfac3e6d418113c8e0fbd6cb2835dedcad2e5c76c8889c09348a184ed4ab38397d7d539831ef6a7ce08037e12c7ab6dc274519dc5812  system-wpa_supplicant.service
 9a3620d3df53540a91efa48df322288d96ec887415f538877a979be40eb5239b95917b9ac57fda2c699fe3f1c6500f7de09a4ce6625b0818f5786e125713552f  user-xdg-desktop-portal.service
