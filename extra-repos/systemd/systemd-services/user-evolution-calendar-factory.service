@@ -1,0 +1,8 @@
+[Unit]
+Description=Evolution calendar service
+
+[Service]
+Type=dbus
+# Bus name from: https://gitlab.gnome.org/GNOME/evolution-data-server/-/blob/master/CMakeLists.txt
+BusName=org.gnome.evolution.dataserver.Calendar8
+ExecStart=/usr/libexec/evolution-calendar-factory

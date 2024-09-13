@@ -1,0 +1,8 @@
+[Unit]
+Description=Evolution address book service
+
+[Service]
+Type=dbus
+# Bus name from: https://gitlab.gnome.org/GNOME/evolution-data-server/-/blob/master/CMakeLists.txt
+BusName=org.gnome.evolution.dataserver.AddressBook10
+ExecStart=/usr/libexec/evolution-addressbook-factory
