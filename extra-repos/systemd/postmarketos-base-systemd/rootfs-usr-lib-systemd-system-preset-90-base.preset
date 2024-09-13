@@ -19,6 +19,7 @@ enable nftables.service
 enable postmarketos-tweakd.service
 enable sshd.service
 enable systemd-rfkill.service
+enable udisks2.service
 
 # Note: technically these two shouldn't be enabled at the same time, but
 # pmos-base-wifi provides should make sure that only one is installed at the
