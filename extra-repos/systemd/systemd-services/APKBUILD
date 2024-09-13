@@ -6,7 +6,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=17
+pkgver=18
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -31,6 +31,7 @@ subpackages="
 	iio-sensor-proxy-systemd:_service
 	iwd-systemd:_service
 	lxc-systemd:_service
+	kded-systemd:_service
 	mmsd-tng-systemd:_service
 	modemmanager-systemd:_service
 	nftables-systemd:_service
@@ -71,6 +72,7 @@ _hexagonrpcd_sources="system/hexagonrpcd-sdsp.service system/iio-sensor-proxy.d/
 _iio_sensor_proxy_sources="system/iio-sensor-proxy.service"
 _iwd_sources="system/iwd.service" # From https://git.kernel.org/pub/scm/network/wireless/iwd.git/tree/src/iwd.service.in
 _lxc_sources="system/lxc@.service"
+_kded_sources="user/kded.service" # From https://invent.kde.org/frameworks/kded/-/blob/master/src/plasma-kded6.service.in
 _mmsd_tng_sources="user/mmsd-tng.service"
 _modemmanager_sources="system/ModemManager.service"
 _nftables_sources="system/nftables.service"
@@ -117,6 +119,7 @@ source="$(flatpath \
 	$_iio_sensor_proxy_sources \
 	$_iwd_sources \
 	$_lxc_sources \
+	$_kded_sources \
 	$_mmsd_tng_sources \
 	$_modemmanager_sources \
 	$_nftables_sources \
@@ -218,6 +221,7 @@ af0e416f78ab317fe09813de58b446e5178457992ea4a2da2eb128811045201087d847e1b7ac0447
 d12ebe6e7db2a8e34baab640dd4e2ea9cd01bc19054adf32d55528a6b27f71c2006ac2d65a58c98e21ed598e9cc66bfe79e197d20ed9d13f866a5a6cd3e247d5  system-iio-sensor-proxy.service
 df3388cb7b9d035e54b34d8f8a6594be89c3015f979fe3bdc199fb7db1ab0bef821d6b306eecdf978eb227454d5e50aab29ac02d9722b1b075ec0ce4705e3518  system-iwd.service
 f6fb4c890cbf72e344ca7a22e7f033fb4c32ce9f5edc27c03ccc5c21424d6a0ef871d79e8a89a502a707bdceb3bfbd7a5b3c8e16b1cd30e149bf2fdf8cccea9e  system-lxc@.service
+b0ecd5d413a2010d3f36285c2d35523119c29007e1e4162e51dfc746cc105f990a82a2a2d6037a8b906628c0a4f606729290525c7a53dbcfbc8147244fa403a7  user-kded.service
 873b53592786a978659bda8d32de5ed9a9f163ca298c4f4112f10bf635a8170c4060cc15b57ff72b3afd50075cd1c5dbc10030f00b166e2540397da9e1c5e46b  user-mmsd-tng.service
 5eab6a59c81232b188df45482e325b2d1cb9e038ca147a1b6983c1c095d8194fba804793c5e291b201a820976c8f506aadd2daf7c52fe573a3af708fc9984641  system-ModemManager.service
 d41d0aa1d4d577cd718185399c95055c0511d4aeb902c771ccec13655354aafc85c3f270431fd3debc7e05f0a8cbdb90f1969b673ae7e5310c1f46cb8120e3f2  system-nftables.service
