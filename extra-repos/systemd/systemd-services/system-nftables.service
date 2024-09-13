@@ -8,7 +8,7 @@ Type=oneshot
 ExecStart=/usr/sbin/nft -f "/etc/nftables.nft"
 ExecReload=/usr/sbin/nft -f "/etc/nftables.nft"
 ExecStop=/usr/sbin/nft flush ruleset
-Type=simple
+RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
