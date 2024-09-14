@@ -90,6 +90,7 @@ device/*/device-samsung-lt01/			@knuxify
 device/*/device-samsung-m0/			@Newbyte
 device/*/device-samsung-manta/			@jenneron @alexmrqt
 device/*/device-shift-axolotl/			@amartinz @calebccff @dylanvanassche
+device/*/device-solidrun-cubox/			@longnoserob
 device/*/firmware-google-sargo/			@flamingradian
 device/*/firmware-google-veyron-brcm/		@jenneron
 device/*/firmware-odroid-xu4/			@Grimler
@@ -106,6 +107,7 @@ device/*/linux-postmarketos-exynos4/		@Newbyte @Grimler @knuxify
 device/*/linux-postmarketos-exynos5/		@jenneron @Grimler
 device/*/linux-postmarketos-grate/		@clamor-s @jenneron @jethrob
 device/*/linux-postmarketos-imx-ereader/	@akemnade
+device/*/linux-postmarketos-marvell-dove/	@longnoserob
 device/*/linux-postmarketos-mediatek-mt8173/	@jenneron @adamthiede
 device/*/linux-postmarketos-mediatek-mt8183/	@jenneron @binarycraft
 device/*/linux-postmarketos-omap/		@MightyM17 @Sicelo

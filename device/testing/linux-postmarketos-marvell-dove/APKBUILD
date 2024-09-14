@@ -1,0 +1,66 @@
+# Reference: https://github.com/archlinuxarm/PKGBUILDs/blob/d2ee78cab3c298583eb3f3bed4d75970f54885be/core/linux-armv7/config
+# Kernel config based on: ~2021 mainline kernel of the linux-armv7 package (5.x mainline) from archlinux arm
+# Maintainer: Robert Eckelmann <longnoserob@postmarketos.org>
+
+pkgname=linux-postmarketos-marvell-dove
+pkgver=6.10.10
+pkgrel=0
+pkgdesc="mainline (stable) for Marvell Dove SoC"
+arch="armv7"
+_carch="arm"
+_flavor="${pkgname#linux-}"
+url="https://kernel.org"
+license="GPL-2.0-only"
+options="!strip !check !tracedeps pmb:cross-native pmb:kconfigcheck-community"
+makedepends="
+	bash
+	bc
+	bison
+	devicepkg-dev
+	findutils
+	flex
+	openssl-dev
+	perl
+	xz
+"
+
+# Source
+_config="config-$_flavor.$arch"
+source="
+	$pkgname-$pkgver.tar.xz::https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/linux-$pkgver.tar.xz
+	$_config
+"
+builddir="$srcdir/linux-$pkgver"
+
+prepare() {
+	default_prepare
+	cp -v "$srcdir"/$_config .config
+}
+
+build() {
+	unset LDFLAGS
+	make ARCH="$_carch" CC="${CC:-gcc}" \
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
+}
+
+package() {
+	install -Dm644 "$builddir/arch/$_carch/boot/zImage" \
+		"$pkgdir/boot/vmlinuz"
+
+	make modules_install dtbs_install \
+		ARCH="$_carch" \
+		INSTALL_PATH="$pkgdir"/boot/ \
+		INSTALL_MOD_PATH="$pkgdir" \
+		INSTALL_MOD_STRIP=1 \
+		INSTALL_DTBS_PATH="$pkgdir"/boot/dtbs
+	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
+
+	install -D "$builddir"/include/config/kernel.release \
+		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
+}
+
+
+sha512sums="
+affaa3690150ca13f0ee14f91f0e09a5ad3340a7ea6404e34286dfb4bd4fdfe12fcac47e83da7878681bf28a8a8b78e0b315e1563408885dbb07aac5bd2e4dce  linux-postmarketos-marvell-dove-6.10.10.tar.xz
+01ab20589f333750232f25fc116409d96c519dc3254fc30d486ae91b77165e3912440d2acd73a0efc00dc4f273554682faf4da2e35f5bfe4230ee5a849390c7e  config-postmarketos-marvell-dove.armv7
+"
