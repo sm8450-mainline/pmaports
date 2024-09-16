@@ -1,5 +1,6 @@
+# Maintainer: Jianhua Lu <lujianhua000@gmail.com>
 pkgname=firmware-xiaomi-elish
-pkgver=20240109
+pkgver=20240917
 pkgrel=0
 pkgdesc="Firmware for Xiaomi Mi Pad 5 Pro"
 subpackages="
@@ -7,6 +8,7 @@ subpackages="
 	$pkgname-adsp
 	$pkgname-cdsp
 	$pkgname-cirrus
+	$pkgname-hexagonfs
 	$pkgname-slpi
 	$pkgname-touchscreen
 	$pkgname-venus
@@ -15,7 +17,7 @@ url="https://github.com/lujianhua/xiaomi-elish-firmware"
 arch="aarch64"
 license="proprietary"
 options="!check !strip !archcheck !tracedeps pmb:cross-native"
-_commit="013b45d1fe64a392c94dc6c58aba72c791be6209"
+_commit="51e9ac8cd91d88de43fb016530b9421a2713467a"
 source="https://github.com/lujianhua/xiaomi-elish-firmware/archive/$_commit/xiaomi-elish-firmware-$_commit.tar.gz"
 builddir="$srcdir/xiaomi-elish-firmware-$_commit"
 
@@ -54,6 +56,18 @@ cirrus() {
 		"$subpkgdir/lib/firmware/cirrus/"
 }
 
+hexagonfs() {
+	pkgdesc="Xiaomi elish hexagonfs files"
+
+	mkdir -p "$subpkgdir"/usr/share/qcom/sm8250/xiaomi
+	cp -r "$builddir"/hexagonfs/ \
+		"$subpkgdir"/usr/share/qcom/sm8250/xiaomi/elish
+
+	# Remove files that we don't need - for now
+	rm -r "$subpkgdir"/usr/share/qcom/sm8250/xiaomi/elish/acdb/
+	rm -r "$subpkgdir"/usr/share/qcom/sm8250/xiaomi/elish/dsp/
+}
+
 slpi() {
 	pkgdesc="Xiaomi elish slpi firmware"
 
@@ -76,5 +90,5 @@ venus() {
 }
 
 sha512sums="
-0581361b9b376ed52798622e337294933b81b594ab7fb223668531e297acc977ce5b6770a0ee5bf7382c1989a6e4d64184f5ce937ea6cb9171e6b4a5bbc7ff16  xiaomi-elish-firmware-013b45d1fe64a392c94dc6c58aba72c791be6209.tar.gz
+c1ebaf280313a00a64c9bc9ebf820574f0bffe26cdf0652a9897068d46e251ae03853e684bf7b26591d557d218c56eb10c36e50358778bcffb36caea948466b5  xiaomi-elish-firmware-51e9ac8cd91d88de43fb016530b9421a2713467a.tar.gz
 "
