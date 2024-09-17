@@ -349,13 +349,9 @@ check_filesystem() {
 
 	partition="$1"
 	type="$(get_partition_type "$partition")"
+	# btrfs check is not included in that list on purpose. it takes too much time
+	# (as in: multiple minutes) and gets even slower the more the partition is used
 	case "$type" in
-		btrfs)
-			echo "Check 'btrfs' root filesystem ($partition)"
-			if ! btrfs check --readonly "$partition" ; then
-				status="fail"
-			fi
-			;;
 		ext*)
 			echo "Auto-repair and check 'ext' filesystem ($partition)"
 			e2fsck -p "$partition"
