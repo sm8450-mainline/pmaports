@@ -1,0 +1,53 @@
+# Maintainer: Bart Ribbers <bribbers@disroot.org>
+pkgname=firmware-pine64-rtl8723bt
+pkgver=0_git20200705
+pkgrel=3
+_commit="8840b1052b4ee426f348cb35e4994c5cafc5fbbd"
+pkgdesc="Firmware for rtl8723cs"
+# Also available at https://megous.com/git/linux-firmware/tree/rtl_bt
+# Possibly originally came from https://github.com/armbian/build/tree/main/packages/blobs/rtl8723bt_fw
+url="https://github.com/anarsoul/rtl8723bt-firmware/"
+arch="aarch64"
+license="proprietary"
+options="!check !strip !archcheck !tracedeps pmb:cross-native"
+source="https://github.com/anarsoul/rtl8723bt-firmware/archive/$_commit/rtl8723bt-firmware-$_commit.tar.gz"
+subpackages="$pkgname-doc"
+builddir="$srcdir/rtl8723bt-firmware-$_commit"
+
+package() {
+	install -d "$pkgdir/lib/firmware/rtl_bt"
+
+	# The anarsoul repo provides rtl8723bs_config.bin, rtl8723cs_xx_fw.bin and rtl8723cs_xx_config.bin
+	# linux-firmware in aports provides all three too, but different versions.
+	# In particular, linux-firmware's rtl8723cs_xx_fw.bin is extracted from RealTek's Windows driver for the RTL8723BS,
+	# and its rtl8723cs_xx_config.bin is symlinked to rtl8723bs_config.bin because the submitter says
+	# the BS's _config.bin also works for the CS.
+	#
+	# However at least on the PinePhone 1.2b (that uses the CS) that last statement is not true.
+	# The combination of anarsoul _fw.bin + anarsoul _config.bin works, as well as
+	# the combination of linux-firmware _fw.bin + anarsoul _config.bin, but
+	# the combination of linux_firmware _fw.bin + linux-firmware _config.bin does not.
+	#
+	# Until this is resolved, this package provides just the rtl8723cs_xx_config.bin
+	# from the anarsoul repo.
+	#
+	# Note that linux-firmware specifically provides a `rtl8723cs_xx_config.bin.zst`, and the kernel loads
+	# `.bin`, `.bin.zst` and `.bin.xz` in that order, so we need to provide either `.bin` or `.bin.zst`
+	# to ensure that our firmware gets loaded and not linux-firmware's. The uncompressed file is small enough that
+	# zstd'ing it actually increases its file size, so we leave it uncompressed. This also means that
+	# we *don't* need to annotate this package with `replaces="linux-firmware"`.
+	#
+	# Ref:
+	#
+	# - https://gitlab.com/postmarketOS/pmaports/-/issues/3179
+	#
+	# - https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/commit/?id=ed9c1349f8ebae720f3572ad3e74af59bfe345d7
+
+	for f in rtl_bt/rtl8723cs_xx_config.bin; do
+		install -Dm644 "$f" "$pkgdir/lib/firmware/$f"
+	done
+
+	install -Dm644 LICENCE.rtlwifi_firmware.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+sha512sums="46941d893c6ce132aad9689263b5a558675ff6e4480881ffa61d192b312e9a8deb45932f613106ce025d8f54eebceed6790b32e7fe8c25f42f105fe97ce8fc82  rtl8723bt-firmware-8840b1052b4ee426f348cb35e4994c5cafc5fbbd.tar.gz"
