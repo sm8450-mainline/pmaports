@@ -325,12 +325,6 @@ check_filesystem() {
 	partition="$1"
 	type="$(get_partition_type "$partition")"
 	case "$type" in
-		btrfs)
-			echo "Check 'btrfs' root filesystem ($partition)"
-			if ! btrfs check --readonly "$partition" ; then
-				status="fail"
-			fi
-			;;
 		ext*)
 			echo "Auto-repair and check 'ext' filesystem ($partition)"
 			e2fsck -p "$partition"
