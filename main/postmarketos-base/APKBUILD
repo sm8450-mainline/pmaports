@@ -1,5 +1,5 @@
 pkgname=postmarketos-base
-pkgver=35
+pkgver=36
 pkgrel=0
 pkgdesc="Meta package for minimal postmarketOS base"
 url="https://postmarketos.org"
@@ -172,7 +172,7 @@ openrc() {
 
 sha512sums="
 e529f5cef1f31481b577f99b8917704f2cfefb963d98bf40a14b017938e55a00134d2033f81d2cb0b8489c5e9b4a92fdc0a788013f1adb4cd46d9580c9988186  rootfs-etc-sudoers
-2f703e78d9887c180d637021d0376863e0c3da87b59924d8a6306b498ca48ae6a791fdfb3a81823b01dd0920c57dd98b5e0be1f5218dca57b6c30ea004579c4b  rootfs-etc-doas.d-10-postmarketos.conf
+ab09e67203bb82226b0c9e600c8bc231a5c0111977b80edb355e55be101d008ac3c06798c263f0ca50e203758e1bfbf25767ad12f2654d082fb007c0411bbd1f  rootfs-etc-doas.d-10-postmarketos.conf
 e0d2d48b82a03239a4c0a00acaf83e00d397c23a8d7c71053d4e2a383357c22dcedef9e81b0e12a1d7514e1fdbe0bb3eb82613d18b29034a7ce5447f13c84a53  rootfs-etc-conf.d-swapfile
 4bc9f9c62d2cb75c1e562e070bc5260c9bc2b0abe6941b7cebd9b5a649342cb4121a0713153d3c246d0a284a50fd335638c9738778698a08fcaed7058b69efb9  rootfs-etc-conf.d-zram-init
 e4576c58c35f80bedddb1e89e186f37d31a186d3e9eb046581b8c5d7b7d435e18924539e851d3e67dc0ede80f9d44d16bd9ef52e73350d3f13224edc31d73a34  rootfs-etc-conf.d-syslog
