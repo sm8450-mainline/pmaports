@@ -10,7 +10,7 @@ goodix
 gpi
 gpi
 gpio_vibra
-i2c-qcom-geni
+i2c-hid-of
 i2c-qcom-geni
 icc-bwmon
 icc-smd-rpm
@@ -18,13 +18,16 @@ led_bl
 libcomposite
 lmh
 msm
+nvme
 nvmem_qfprom
 onboard-usb-dev
 panel-samsung-s6d7aa0
 panel-samsung-sofef00
 panel-visionox-rm69299
+phy-qcom-eusb2-repeater
 phy-qcom-qmp-combo
 phy-qcom-snps-eusb2
+phy-qcom-qmp-pcie
 phy-qcom-qmp-ufs
 phy-qcom-qmp-usb
 phy-qcom-qmp-usb
