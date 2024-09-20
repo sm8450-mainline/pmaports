@@ -1,0 +1,33 @@
+# Maintainer: Sicelo A. Mhlongo <absicsz@gmail.com>
+pkgname=xkeyboard-config
+pkgver=9999
+_pkgver=2.41
+pkgrel=0
+pkgdesc="X keyboard configuration files"
+url="https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config"
+arch="armv7"
+license="MIT"
+subpackages="$pkgname-dev $pkgname-doc $pkgname-lang"
+depends_dev="$pkgname"
+makedepends="gettext meson perl libxslt"
+checkdepends="gawk"
+source="https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config/-/archive/xkeyboard-config-$_pkgver/xkeyboard-config-xkeyboard-config-$_pkgver.tar.gz
+	"
+builddir="$srcdir"/xkeyboard-config-xkeyboard-config-$_pkgver
+
+build() {
+	abuild-meson . output
+	meson compile -C output
+}
+
+check() {
+	meson test --no-rebuild --print-errorlogs -C output
+}
+
+package() {
+	DESTDIR="$pkgdir" meson install --no-rebuild -C output
+}
+
+sha512sums="
+bae6ce7441154b8582cb431256899d748f8f45e24a28898e767e212d1233ea55d52de608ff760f37bb9930e47f1d0d840d085fd4129927e4a1ad3ab446f5b908  xkeyboard-config-xkeyboard-config-2.41.tar.gz
+"
