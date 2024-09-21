@@ -20,6 +20,7 @@ deviceinfo_swap_size_recommended="512"
 # Bootloader related
 deviceinfo_flash_method="fastboot"
 deviceinfo_generate_bootimg="true"
+deviceinfo_generate_extlinux_config="true"
 deviceinfo_bootimg_qcdt="false"
 deviceinfo_bootimg_dtb_second="false"
 deviceinfo_flash_offset_base="0x80000000"
