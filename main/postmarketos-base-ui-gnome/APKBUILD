@@ -45,6 +45,7 @@ _pmb_recommends="
 	lollypop
 	loupe
 	papers
+	nautilus
 "
 
 package() {
