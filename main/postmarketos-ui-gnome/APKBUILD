@@ -22,7 +22,6 @@ _pmb_recommends="
 	gnome-disk-utility
 	gnome-extensions-app
 	gnome-system-monitor
-	nautilus
 	snapshot
 	"
 subpackages="$pkgname-openrc"
