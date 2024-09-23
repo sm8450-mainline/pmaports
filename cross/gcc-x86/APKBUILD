@@ -34,7 +34,7 @@ _pkgsnap="${pkgver##*_git}"
 [ "$CHOST" != "$CTARGET" ] && _target="-$CTARGET_ARCH" || _target=""
 
 pkgname=gcc-x86
-pkgrel=2
+pkgrel=3
 pkgdesc="Stage2 cross-compiler for x86"
 url="https://gcc.gnu.org"
 arch="x86_64"
@@ -64,6 +64,7 @@ _libitm=true
 if [ "$CHOST" != "$CTARGET" ]; then
 	if [ "$BOOTSTRAP" = nolibc ]; then
 		LANG_CXX=false
+		LANG_D=false
 		LANG_ADA=false
 		_libgcc=false
 		_builddir="$srcdir/build-cross-pass2"
@@ -73,7 +74,6 @@ if [ "$CHOST" != "$CTARGET" ]; then
 	LANG_OBJC=false
 	LANG_GO=false
 	LANG_FORTRAN=false
-	LANG_D=false
 	LANG_JIT=false
 	_libgomp=false
 	_libatomic=false
@@ -115,7 +115,6 @@ elif [ "$CBUILD" != "$CHOST" ]; then
 	LANG_OBJC=false
 	LANG_GO=false
 	LANG_FORTRAN=false
-	LANG_D=false
 	LANG_JIT=false
 
 	STRIP_FOR_TARGET=${CROSS_COMPILE}strip
@@ -140,11 +139,11 @@ else
 	export BOOT_LDFLAGS="$LDFLAGS"
 fi
 
-case "$CARCH" in
+case "$CTARGET_ARCH" in
 # GDC hasn't been ported to PowerPC
 # See libphobos/configure.tgt in GCC sources for supported targets
 # riscv fails with: error: static assert  "unimplemented"
-ppc64le|riscv64|loongarch64)	LANG_D=false ;;
+ppc64le|riscv64)	LANG_D=false ;;
 # GDC does currently not work on 32-bit musl architectures.
 # This is a known upstream issue.
 # See: https://github.com/dlang/druntime/pull/3383
@@ -171,7 +170,7 @@ esac
 # currently on x86, x86_64 and ia64
 _libquadmath=$LANG_FORTRAN
 case "$CTARGET_ARCH" in
-x86 | x86_64)	_libquadmath=$LANG_FORTRAN ;;
+x86 | x86_64 | ppc64le)	_libquadmath=$LANG_FORTRAN ;;
 *)		_libquadmath=false ;;
 esac
 
@@ -184,13 +183,8 @@ if $_libgomp; then
 	subpackages="$subpackages libgomp::$CTARGET_ARCH"
 fi
 
-case "$CARCH" in
-riscv64)
-LANG_ADA=false;;
-esac
-
 case "$CTARGET_ARCH" in
-loongarch64)
+riscv64|loongarch64)
 LANG_ADA=false;;
 esac
 
@@ -199,9 +193,17 @@ if $LANG_CXX; then
 	_languages="$_languages,c++"
 fi
 if $LANG_D; then
-	subpackages="$subpackages libgphobos::$CTARGET_ARCH gcc-gdc$_target:gdc"
+	subpackages="$subpackages gcc-gdc$_target:gdc"
 	_languages="$_languages,d"
-	makedepends_build="$makedepends_build libucontext-dev gcc-gdc-bootstrap"
+	makedepends_build="$makedepends_build libucontext-dev"
+	if [ "$CBUILD" = "$CTARGET" ]; then
+		makedepends_build="$makedepends_build gcc-gdc-bootstrap"
+		subpackages="$subpackages libgphobos::$CTARGET_ARCH"
+	else
+		# shared libgphobos is for D programs to link against, so
+		# skip building that while cross-compiling the GDC compiler
+		makedepends_build="$makedepends_build gcc-gdc gcc-gdc$_cross"
+	fi
 fi
 if $LANG_OBJC; then
 	subpackages="$subpackages libobjc::$CTARGET_ARCH gcc-objc$_target:objc"
@@ -278,7 +280,9 @@ source="https://gcc.gnu.org/pub/gcc/releases/gcc-${_pkgbase:-$pkgver}/gcc-${_pkg
 	0033-libphobos-do-not-use-LFS64-symbols.patch
 	0034-libgo-fix-lfs64-use.patch
 	0035-loongarch-disable-multilib-support.patch
+	0036-libphobos-add-riscv64-and-loongarch64-support.patch
 	fix-arm64.patch
+	ppc64le-quadmath.patch
 	"
 
 # secfixes:
@@ -339,7 +343,7 @@ build() {
 	i586-*-*-*)		_arch_configure="--with-arch=pentium-m --with-fpmath=sse --with-tune=generic --enable-cld";;
 	s390x-*-*-*)		_arch_configure="--with-arch=z196 --with-tune=zEC12 --with-zarch --with-long-double-128 --enable-decimal-float";;
 	riscv64-*-*-*)		_arch_configure="--with-arch=rv64gc --with-abi=lp64d --enable-autolink-libatomic";;
-	loongarch64-*-*-*)      _arch_configure="--with-arch=loongarch64 --with-abi=lp64d --with-tls=trad";;
+	loongarch64-*-*-*)      _arch_configure="--with-arch=loongarch64 --with-abi=lp64d";;
 	esac
 
 	case "$CTARGET_ARCH" in
@@ -360,20 +364,23 @@ build() {
 
 	case "$BOOTSTRAP" in
 	nolibc)	_bootstrap_configure="--with-newlib --disable-shared --enable-threads=no" ;;
-	*)	_bootstrap_configure="--enable-shared --enable-threads --enable-tls" ;;
+	*)
+		# cross-bootstrap GDC with a static libphobos: due to GCC's
+		# ./configure not having a --disable-shared=libphobos option,
+		# we have to use --enable-shared with everything else instead.
+		if $LANG_D && [ "$CBUILD" != "$CTARGET" ]; then
+			_bootstrap_configure="--enable-shared=libgcc,libstdc++,libffi,zlib,boehm-gc,ada,libada,libgo,libobjc,libatomic,libgomp,libitm,libgfortran,libquadmath"
+		else
+			_bootstrap_configure="--enable-shared"
+		fi
+		_bootstrap_configure="$_bootstrap_configure --enable-threads --enable-tls"
+		;;
 	esac
 
 	$_libgomp	|| _bootstrap_configure="$_bootstrap_configure --disable-libgomp"
 	$_libatomic	|| _bootstrap_configure="$_bootstrap_configure --disable-libatomic"
 	$_libitm	|| _bootstrap_configure="$_bootstrap_configure --disable-libitm"
-	if ! $_libquadmath; then
-		_arch_configure="$_arch_configure --disable-libquadmath"
-		# ppc64le needs both --disable-libquadmath{,-support}
-		# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=116007
-		[ "$CARCH" = "ppc64le" ] &&
-			_arch_configure="$_arch_configure
-				--disable-libquadmath-support"
-	fi
+	$_libquadmath	|| _arch_configure="$_arch_configure --disable-libquadmath"
 
 	msg "Building the following:"
 	echo ""
@@ -427,6 +434,10 @@ build() {
 		--with-pkgversion="$version"
 
 	msg "building gcc"
+	if $LANG_D && [ "$CBUILD" != "$CTARGET" ]; then
+		# cross-compiling libphobos with parallel make fails
+		make all-target-libphobos
+	fi
 	make
 
 	# we build gccjit separate to not build all of gcc with --enable-host-shared
@@ -667,9 +678,9 @@ libgphobos() {
 
 gdc() {
 	pkgdesc="GCC-based D language compiler"
-	depends="gcc=$_gccrel libgphobos=$_gccrel musl-dev"
-	depends="$depends libucontext-dev"
-	provides="gcc-gdc-bootstrap=$_gccrel"
+	depends="gcc$_target=$_gccrel musl-dev libucontext-dev"
+	[ "$CBUILD" = "$CTARGET" ] && depends="$depends libgphobos=$_gccrel"
+	[ "$CHOST" = "$CTARGET" ] && provides="gcc-gdc-bootstrap=$_gccrel"
 
 	mkdir -p "$subpkgdir/$_gcclibexec" \
 		"$subpkgdir"/$_gcclibdir/include/d/ \
@@ -680,13 +691,25 @@ gdc() {
 	# without installing the compiler
 	mv "$pkgdir/$_gcclibexec/d21" "$subpkgdir/$_gcclibexec/"
 	mv "$pkgdir"/$_gcclibdir/include/d/* "$subpkgdir"/$_gcclibdir/include/d/
-	mv "$pkgdir"/usr/lib/libgdruntime.a "$subpkgdir"/usr/lib/
-	mv "$pkgdir"/usr/lib/libgdruntime.so "$subpkgdir"/usr/lib/
-	mv "$pkgdir"/usr/lib/libgphobos.a "$subpkgdir"/usr/lib/
-	mv "$pkgdir"/usr/lib/libgphobos.so "$subpkgdir"/usr/lib/
-	mv "$pkgdir"/usr/lib/libgphobos.spec "$subpkgdir"/usr/lib/
+	if [ "$CBUILD" = "$CTARGET" ]; then
+		mv "$pkgdir"/usr/lib/libgdruntime.so "$subpkgdir"/usr/lib/
+		mv "$pkgdir"/usr/lib/libgphobos.so "$subpkgdir"/usr/lib/
+	fi
+	if [ "$CHOST" = "$CTARGET" ]; then
+		mv "$pkgdir"/usr/lib/libgdruntime.a "$subpkgdir"/usr/lib/
+		mv "$pkgdir"/usr/lib/libgphobos.a "$subpkgdir"/usr/lib/
+		mv "$pkgdir"/usr/lib/libgphobos.spec "$subpkgdir"/usr/lib/
+		mv "$pkgdir"/usr/bin/gdc "$subpkgdir"/usr/bin/
+	else
+		mkdir -p "$subpkgdir"/usr/$CTARGET/lib/
+		mv "$pkgdir"/usr/$CTARGET/lib/libgdruntime.a \
+			"$subpkgdir"/usr/$CTARGET/lib/
+		mv "$pkgdir"/usr/$CTARGET/lib/libgphobos.a \
+			"$subpkgdir"/usr/$CTARGET/lib/
+		mv "$pkgdir"/usr/$CTARGET/lib/libgphobos.spec \
+			"$subpkgdir"/usr/$CTARGET/lib/
+	fi
 	mv "$pkgdir"/usr/bin/$CTARGET-gdc "$subpkgdir"/usr/bin/
-	mv "$pkgdir"/usr/bin/gdc "$subpkgdir"/usr/bin/
 }
 
 libgo() {
@@ -828,7 +851,7 @@ f382eb5f7c2c60c5a23fac587c9629a3059d7be0898e97a1feaf9b9cbe1ef4693cc1177eb29333e8
 abf845792433a21fed5dd06167b9f6cf5e8f8026a409acce93824e466c5148e192bf5f404a271931fe4b65283499329bf67bb01019f2f3e02501f20619404e6c  0023-riscv-disable-multilib-support.patch
 ab88a2f63e3545bbc36537aa9a86f2c6c35e41bbf702d6e13743a405cdac4f901eed5737189b780da96647fea9f5d863fdc76373f25a00064106dcb5514d6d87  0024-always-build-libgcc_eh.a.patch
 8fdbe0c8bf4ca60f458a33e59027de03d15ac91933fe46d8ca62119346d20b9bc2447c0bf22bceb63d0cf8613ab61512d9197f4e6c2224af473b63ef9f254295  0025-ada-libgnarl-compatibility-for-musl.patch
-5fd23a506b55c88d4f000e01c539eb25d6da2516949c9d7a1c9ee20f4c6b627e4788541284d9c14c33bafa7cb43ce2e0469dd91006152f00e30815107150320f  0026-ada-musl-support-fixes.patch
+684bf2db12aa45e8db7a895ab0f227b4e4351f611b4fcc6e1745d7ad94d31b3554f39d8cf9e2203520b3c6ee35cf309b417d4a842e7a8cd55a2b2accb23f2f24  0026-ada-musl-support-fixes.patch
 3f9a406d7d2ce34951215ffbcadb49a45e55ad5c24ab9097c0e5e92383e43b876872ccd2a7e7def2833ab204975ee5733f8bcf90934db9fa9c4f6f56c62081f6  0027-configure-Add-enable-autolink-libatomic-use-in-LINK_.patch
 720a4001f9a1fa4122e456077ecff8d3eb8af7c83d0a81f9da6a6cca05b23664206a82a349e34482c48bfe40e99aa5f21567613d0913f6a24f282bc84a994496  0028-configure-fix-detection-of-atomic-builtins-in-libato.patch
 2044c23b23726965c0a6fd39f616cc464badd650947cb40495eeabd906a3af629878c1d28b403b8eb46b30a1a0ba39083023290d62f0c99ccf070063226e3f8f  0029-libstdc-do-not-throw-exceptions-for-non-C-locales-on.patch
@@ -838,5 +861,7 @@ b325035cb7122d79c6b42ca6d3fc9e02319ed2f7cddb0639dff25d2798d2ce63812cd623462cdf95
 c474f34e6f9a4239d486a65141a133dbe8ce91427d502a57a9fd6eb403478a2b5715ba74f24c1cc0761e16eec77ba2c1ca921fb7d7bc1e040fc3703fc9559e75  0033-libphobos-do-not-use-LFS64-symbols.patch
 c4482ffc36e7894b2140800159f4cbc9a3e9011e43a69b69f4fa92d5a11e2ee645c7e21df4423dd1e0636e8890849a5719647bfbdf84f951d638f8f488cb718c  0034-libgo-fix-lfs64-use.patch
 65df1d489e8d07a811f39e27fd29e3b2b4164fbc2c5fdc16a5142886d94a96e3fb28ccf4f20dd297ba6540ef8ea1ac3eb65a4279494639bf2f0f8376a3896cc3  0035-loongarch-disable-multilib-support.patch
+06f64544fd8bc4b6c8b06410c5198aa8fb4e82c232afc0cad83b2c69ac5d39399968206defa78297222700cd18e7fd7e8244afa76d343406a01f657c86306453  0036-libphobos-add-riscv64-and-loongarch64-support.patch
 00319c9770362520e8e93bd03fda1769dfa3622eba77d620e11d8af45a38e6d804a5e924046ae388e1cfaea605696e89c343fca507aaaa5edd58d80744fff14f  fix-arm64.patch
+815265826742400f86336f0c2d3e4edc37398dbc6505ee81107c0103c13ac0f406cff851438d2323033c6c6d0c0323765ee15b975eab8d1dd465f9e988168fb9  ppc64le-quadmath.patch
 "
