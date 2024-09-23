@@ -281,6 +281,8 @@ USB_FUNCTIONFS = false
 USB_MASS_STORAGE = false
 USB_G_SERIAL = false
 # enable configfs gadgets
+USB_CONFIGFS_ACM = true  # Serial gadget for debug-shell
+USB_CONFIGFS_MASS_STORAGE = true  # Mass storage gadget for debug-shell
 USB_CONFIGFS_NCM = true  # USB networking via NCM
 USB_CONFIGFS_RNDIS = true  # USB networking via RNDIS (legacy)
 
