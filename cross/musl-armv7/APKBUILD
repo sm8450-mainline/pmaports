@@ -8,7 +8,7 @@ fi
 
 pkgname=musl-armv7
 pkgver=1.2.5
-pkgrel=2
+pkgrel=3
 arch="x86_64"
 subpackages="musl-dev-armv7:package_dev"
 
@@ -57,6 +57,6 @@ package_dev() {
 }
 
 sha512sums="
-0a542c678cfc7ed0cc4246985bd1ecce63247ca4db0ea9fde7c1ee2b30f683b46d7c4011b21931d19fc7c3faeb787413d243580417ec90f745b77534277a6f68  musl-1.2.5-r2-armv7-edge.apk
-26516f5ffc1f04223cce8bae2122a2eab17ec59ce1ef0c1d2382394d9dd0e014ac77336639592f24d15f0ec5120ea7b8329febab1bbbaf3dfecb777b944d6337  musl-dev-1.2.5-r2-armv7-edge.apk
+05d888f66cb8bb75fcf767327068aff0152c32c97d6de680f7df0b9b11bbf99fefd8f2b7c1b92de8489e0f051d536e0d708faa3c5aaff783565e6c0e05d34c3b  musl-1.2.5-r3-armv7-edge.apk
+2c8775a37f2f7d5730857dcf7a7f038a1b0838a775a03e05ce299807f3608a112e95c61b776b32152434c27ee23b999915357b4e89e6559eb89e820666e36d97  musl-dev-1.2.5-r3-armv7-edge.apk
 "
