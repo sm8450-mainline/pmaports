@@ -1,7 +1,7 @@
 # Maintainer: Quade Curry <qc8086@qc8086.com>
 pkgname=linux-postmarketos-rockchip
 pkgver=6.6.34
-pkgrel=3
+pkgrel=4
 pkgdesc="Mainline kernel for rockchip devices"
 arch="aarch64"
 _carch="arm64"
@@ -72,5 +72,5 @@ package() {
 
 sha512sums="
 eaa792be65c4cdfd37b84d4dadd22086c8507c1f78d538255cff03595e1caee0f88b521c398b6bc9ab3632010133cff5c7b14200413d54cf0a38bea79c2fd29f  linux-6.6.34.tar.xz
-584e5be960d0d4e51333eeb23204a9d43969baa1c56a89234e6b2011269b9e14d5fb0b369d2e9946802eeff7ab441f9d807ce33ecf8cf3e40156b0aafb7e3b9c  config-postmarketos-rockchip.aarch64
+984b42f1794650d549f5e4d88a0e023fac2996c63ae5316e5b6bcd914799418a4e6556f1efad542082d73792d480c1ec712b9ed62e9953c8441de3c78cb046f5  config-postmarketos-rockchip.aarch64
 "
