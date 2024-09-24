@@ -62,19 +62,6 @@ mount_boot_partition /boot
 extract_initramfs_extra /boot/initramfs-extra
 run_hooks /hooks-extra
 
-# For testing the mass storage gadget log export function. We use a flag
-# file on /boot so that we can test it on all devices as modifying the
-# kernel cmdline is not always possible.
-if [ -e /boot/.pmos_export_logs ]; then
-	echo "PMOS: Exporting logs via mass storage gadget"
-	show_splash "Exporting boot logs..."
-	# Delete the flag so we don't soft-brick the device by always booting
-	# to the log export mode.
-	mount -o remount,rw /boot
-	rm -f /boot/.pmos_export_logs
-	fail_halt_boot
-fi
-
 wait_root_partition
 delete_old_install_partition
 resize_root_partition
