@@ -5,8 +5,8 @@
 
 _flavor="postmarketos-qcom-msm8953"
 pkgname=linux-$_flavor
-pkgver=6.10.0
-pkgrel=2
+pkgver=6.11.0
+pkgrel=0
 pkgdesc="Close to mainline linux kernel for Qualcomm Snapdragon MSM8953"
 arch="aarch64"
 _carch="arm64"
@@ -27,7 +27,7 @@ makedepends="
 	python3
 "
 
-_tag="$pkgver-r0"
+_tag="$pkgver-r2"
 
 source="
 	$pkgname-v$_tag.tar.gz::$url/archive/v$_tag.tar.gz
@@ -61,6 +61,6 @@ package() {
 		"$pkgdir/usr/share/kernel/$_flavor/kernel.release"
 }
 sha512sums="
-e1204a5424e9991d2a48ece37c6924e72d5d82aed423d102cb6e6f9f309dfccb1814b63dd6dce4898ebed62055edb8302f0fe22e353698200913dac34ecf8bef  linux-postmarketos-qcom-msm8953-v6.10.0-r0.tar.gz
-8940d2837067907fb07c6ea16f8c6331e969fcfbffb5cf2636decd83f061428395f43f2dd01711df8226c5fc74eda394799367147c06f3cf42b6435509fc75af  config-postmarketos-qcom-msm8953.aarch64
+3ae8f3f3fa3652b0eaa66d6c144815589969405db96bb60b0ac2fbf8cc6392c96242e5f3f5a4394019a0288821418ec7b6fd2eded4f6d0288cc16d708b71d54e  linux-postmarketos-qcom-msm8953-v6.11.0-r2.tar.gz
+08dc20ca5b72e4c4aaf13dcd34a9346fb08233e97f1cb30c329ac3740afb2cca39743deb0d67bc89a515cfaae41788e7ed105b170c77fc3bffe3242724ad215f  config-postmarketos-qcom-msm8953.aarch64
 "
