@@ -3,7 +3,7 @@
 # Contributor: Konrad Dybcio <konradybcio@kernel.org>
 pkgname=linux-lenovo-21bx
 pkgver=6.10
-pkgrel=1
+pkgrel=2
 _commit="f0239008542ebdcd4a94755124b5700649df5c39"
 pkgdesc="Lenovo ThinkPad X13s kernel fork"
 arch="aarch64"
@@ -68,5 +68,5 @@ package() {
 
 sha512sums="
 efbf5fdaba513098c9c0f8eb2a559e58c6fd1180bcdf897514b2104480f0d2de2065f073d12204989804b61b083c2b3f9d605493ca6e89bb25e0beeae8545273  linux-lenovo-21bx-f0239008542ebdcd4a94755124b5700649df5c39.tar.gz
-b1ad53eab677711b27505a9a6eac3ab34e83196a3fc2496855c1103d0b78e3e97dabdefd7f86bd318c516f4ab7cb6e303df92e60e1c1ee16ae0bb80ba6f1e08a  config-lenovo-21bx.aarch64
+3b23ca72fa9d31d703ef07e308f6adb7b1eed380578261212f1758a06dbf5718d1aa2d8cdf53cedbaa0ec65345a1bedd5e3f5098075c572f17a44593c696e968  config-lenovo-21bx.aarch64
 "
