@@ -1,4 +1,4 @@
-From 53e200dca1b66d2d51b1ad3546a265a9e146f6c1 Mon Sep 17 00:00:00 2001
+From d06e06fa7a050a32d326f6b800efaa5878c18f6c Mon Sep 17 00:00:00 2001
 From: Robert Mader <robert.mader@collabora.com>
 Date: Wed, 1 May 2024 18:12:02 +0200
 Subject: [PATCH 3/4] libcamera: simple: Enable softISP for the Pinephone
@@ -15,7 +15,7 @@ improves, this can be dropped again.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/libcamera/pipeline/simple/simple.cpp b/src/libcamera/pipeline/simple/simple.cpp
-index 86285bc4..c2658703 100644
+index 08755b80..ffa4f6d6 100644
 --- a/src/libcamera/pipeline/simple/simple.cpp
 +++ b/src/libcamera/pipeline/simple/simple.cpp
 @@ -204,7 +204,7 @@ static const SimplePipelineInfo supportedDevices[] = {
@@ -28,5 +28,5 @@ index 86285bc4..c2658703 100644
  
  } /* namespace */
 -- 
-2.45.2
+2.46.1
 

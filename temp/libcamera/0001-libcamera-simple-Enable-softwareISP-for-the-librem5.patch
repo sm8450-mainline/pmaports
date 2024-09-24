@@ -1,4 +1,4 @@
-From 1fe279d7fcda1b33edd1e82a7a0763d012d1ca7d Mon Sep 17 00:00:00 2001
+From 17a054e8e60fa3f6298698aeb06fbe8196ab3dd2 Mon Sep 17 00:00:00 2001
 From: Robert Mader <robert.mader@collabora.com>
 Date: Mon, 22 Apr 2024 23:30:31 +0200
 Subject: [PATCH 1/4] libcamera: simple: Enable softwareISP for the librem5
@@ -9,7 +9,7 @@ And - in theory - on similar devices.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/libcamera/pipeline/simple/simple.cpp b/src/libcamera/pipeline/simple/simple.cpp
-index c050966a..b6b8f854 100644
+index 81915573..8ce8baea 100644
 --- a/src/libcamera/pipeline/simple/simple.cpp
 +++ b/src/libcamera/pipeline/simple/simple.cpp
 @@ -197,7 +197,7 @@ namespace {
@@ -22,5 +22,5 @@ index c050966a..b6b8f854 100644
  	{ "j721e-csi2rx", {}, true },
  	{ "mtk-seninf", { { "mtk-mdp", 3 } }, false },
 -- 
-2.45.2
+2.46.1
 

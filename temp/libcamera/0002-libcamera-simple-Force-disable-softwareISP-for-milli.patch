@@ -1,4 +1,4 @@
-From 2531eab53574092da0451f4f3b7e5dbc7f9ecd13 Mon Sep 17 00:00:00 2001
+From 5b5a0f92969ad1972c6a9fd7a46ac8f4fedb9389 Mon Sep 17 00:00:00 2001
 From: Robert Mader <robert.mader@collabora.com>
 Date: Thu, 9 May 2024 21:07:07 +0200
 Subject: [PATCH 2/4] libcamera: simple: Force-disable softwareISP for
@@ -12,7 +12,7 @@ swIsp - at the same time.
  1 file changed, 9 insertions(+)
 
 diff --git a/src/libcamera/pipeline/simple/simple.cpp b/src/libcamera/pipeline/simple/simple.cpp
-index b6b8f854..86285bc4 100644
+index 8ce8baea..08755b80 100644
 --- a/src/libcamera/pipeline/simple/simple.cpp
 +++ b/src/libcamera/pipeline/simple/simple.cpp
 @@ -7,6 +7,7 @@
@@ -23,7 +23,7 @@ index b6b8f854..86285bc4 100644
  #include <iterator>
  #include <list>
  #include <map>
-@@ -1544,6 +1545,14 @@ bool SimplePipelineHandler::match(DeviceEnumerator *enumerator)
+@@ -1542,6 +1543,14 @@ bool SimplePipelineHandler::match(DeviceEnumerator *enumerator)
  
  	swIspEnabled_ = info->swIspEnabled;
  
@@ -36,8 +36,8 @@ index b6b8f854..86285bc4 100644
 +	}
 +
  	/* Locate the sensors. */
- 	std::vector<MediaEntity *> sensors = locateSensors();
+ 	std::vector<MediaEntity *> sensors = locateSensors(media);
  	if (sensors.empty()) {
 -- 
-2.45.2
+2.46.1
 

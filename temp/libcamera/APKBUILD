@@ -2,8 +2,8 @@
 
 pkgname=libcamera
 pkgver=9999
-_pkgver=0.3.1
-pkgrel=4
+_pkgver=0.3.2
+pkgrel=5
 pkgdesc="Linux camera framework"
 url="https://libcamera.org/"
 arch="all"
@@ -42,12 +42,10 @@ subpackages="
 	$pkgname-tools
 	"
 source="https://gitlab.freedesktop.org/camera/libcamera/-/archive/v$_pkgver/libcamera-v$_pkgver.tar.gz
-	0001-qcam-Decrease-minimum-width-of-selector-dialog.patch
 	0001-libcamera-simple-Enable-softwareISP-for-the-librem5.patch
 	0002-libcamera-simple-Force-disable-softwareISP-for-milli.patch
 	0003-libcamera-simple-Enable-softISP-for-the-Pinephone.patch
 	0004-libcamera-simple-Skip-hwISP-formats-if-swISP-is-acti.patch
-	0001-libcamera-debayer_cpu-Sync-DMABUFs.patch
 	qcam.desktop
 	90-libcamera.rules
 	"
@@ -147,13 +145,11 @@ tools() {
 }
 
 sha512sums="
-85f62383194ca597baab36375e7b5ee99d6a8580fd54baf2615e5854bef790ef5ae57a92347c7e8408e2b9c04330d467dc56fab1af2f1c478c679a5a05e4f562  libcamera-v0.3.1.tar.gz
-69d6e29d764f752feed453b9c0f61c81cdb506eb14893d0d99d0d6834f369f1e816c2381dfab5ad1a744a3d11211af02d75dc041ecc87c7e4f73e2bd34c666c2  0001-qcam-Decrease-minimum-width-of-selector-dialog.patch
-a5809b7664685bb44ca05a722655d8b94991c90306b69be1e7b135a1ad72699ab69b0e9bf7edbee041700087b7d7bc7ae1ef704334e7672aa81e9e7c96ccf7f9  0001-libcamera-simple-Enable-softwareISP-for-the-librem5.patch
-979259bb16112b1fbbec0543a1d642a65e62f24ba10b229caffe68398da343160d98c2811f923877ce5d2c9a3c8a53205feb2eb4fbaf921612bbc5419d6be1df  0002-libcamera-simple-Force-disable-softwareISP-for-milli.patch
-47616a06fad66df31e29ebd9c024c95bdea542dd1f5c0ed448a242e35a6d9909f973a74332bfe084478c91ac7a2d778d7b10270cd493dba07bb8d5ad34e9544c  0003-libcamera-simple-Enable-softISP-for-the-Pinephone.patch
-685b8cfae3bb9a000d95a36d9daf9d4ff8770fd877e43c69f0fc0768ebd457282f03ec6ad9bf3a33e72765665bbd642af5db66c1a82aac249ce8c2522291dee6  0004-libcamera-simple-Skip-hwISP-formats-if-swISP-is-acti.patch
-bbe991bc605b79b8c35a49571398ccf21bd18cb21b62f46340cbbf4fc3ec80226d6573cd0b98ebebb9b210ea37ca21a653626307dcd69c6baf2bebce1b5e8a39  0001-libcamera-debayer_cpu-Sync-DMABUFs.patch
+7c0fb86cf8f1c86496fac91cf75a689d0fd0cec08d2e2f86d096d984404c1e130b9bba19622cd67098ba09adff74178b39ebe94a19c9b25b0a12f7e30e506823  libcamera-v0.3.2.tar.gz
+ac7df3e4509ae874199810057f4d8416da71720c15534578cc352608a8ae228dfa4814f9eb995d55422124e542b68819625c8dfe18121a3888d9b2238a5923ef  0001-libcamera-simple-Enable-softwareISP-for-the-librem5.patch
+9b6da8bd11ff9d8400ed721fbbeb960ac8753c078fdd971d786a446a9f96fea19dfc55be2705dc44a152e11de996f88139c1d24637bffc257da5083d19fe80c9  0002-libcamera-simple-Force-disable-softwareISP-for-milli.patch
+0fc6a1108c4e905d2d422a664622dc25ec459f13765b5711ad009d4df0fd0cceda8cd067a18e5e54eb2346b292481952161e72deb03d416ba80b300256c25e40  0003-libcamera-simple-Enable-softISP-for-the-Pinephone.patch
+35c74746453f4c2e24a2185331afabcf64e3af01bec2462ec09940518cda0e91c4a1f33853b4b009e1f8352af3c606fbd4b4d3791ffbba0f610f19538380c4c8  0004-libcamera-simple-Skip-hwISP-formats-if-swISP-is-acti.patch
 22167a4eceb6d1b40b0b7c45fdf116c71684f5340de7f767535cb8e160ad9d2ae0f00cb3d461f73a344520a48a4641cf46226841d78bee06bfbfd2a91337f754  qcam.desktop
 cb4eb19eec766f1b8667a8b7c9d5f7d44a2dce79fddfdf3b6e3d1849066cebe79f82566bdcf6659c7ddf4faaf233d5adac10cda636935785e5305e2b7e9b34a9  90-libcamera.rules
 "
