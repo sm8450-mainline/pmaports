@@ -681,7 +681,7 @@ mount_root_partition() {
 run_hooks() {
 	scriptsdir="$1"
 
-	if [ -z "$(ls -A "$scriptsdir")" ]; then
+	if [ -z "$(ls -A "$scriptsdir" 2>/dev/null)" ]; then
 		return
 	fi
 
