@@ -1,9 +1,0 @@
-/sbin/btrfs
-/sbin/dmsetup
-/sbin/e2fsck
-/sbin/fsck.vfat
-/sbin/switch_root
-/usr/sbin/fsck.f2fs
-/usr/sbin/parted
-/usr/sbin/resize2fs
-/usr/sbin/resize.f2fs
