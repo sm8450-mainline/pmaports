@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-p4note
 pkgdesc="Samsung Galaxy Note 10.1"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -12,7 +12,6 @@ depends="
 	mkbootimg
 	alsa-ucm-conf
 	postmarketos-base
-	postmarketos-initramfs-minimal
 "
 makedepends="devicepkg-dev"
 subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
@@ -45,7 +44,7 @@ nonfree_firmware() {
 }
 
 sha512sums="
-b473bd6e9bf1ba3d75f4cfd55bf4acff2edba338a87f4367bfb3aa7be2a0b31ee07012ba506d00faf811ba71f6859f1c771e77ec034fc9e7f3811c739b2068cc  deviceinfo
+766e31f3c5dea5852db78aef74e3dc9190eaea31756bee0b3d44c2a41cd36e3f95fcd3d196d82710dfdd7a00e082c790dd74672b3604f80c167029bb8f38c8d6  deviceinfo
 40c2d13a8e59749a646e4070a444098609f62679f19a975da3f53b1a0fc4ac4c417dd86ec271a339e6a19c1737b384b759661d8f9a167c7eedc4a3ffbaffd77f  HiFi.conf
 2c5011f7d5f25362e6249624796a6d9d36d858169538ab9c4ab1a79f37ece95f425a92b14849a65fd9281c5567753158871c6bf20a772f8dca6b2d6813ea2f03  p4note.conf
 "

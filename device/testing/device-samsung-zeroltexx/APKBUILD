@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-zeroltexx
 pkgdesc="Samsung Galaxy S6 edge"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -13,7 +13,6 @@ depends="
 	linux-samsung-zeroltexx
 	mkbootimg
 	msm-fb-refresher
-	postmarketos-initramfs-minimal
 "
 makedepends="devicepkg-dev"
 source="deviceinfo"
@@ -38,5 +37,5 @@ nonfree_firmware() {
 
 
 sha512sums="
-d78cdb8df408593d4ec842882825b2f0c4fa9a6d7fbe48c3b7ae5f2819864a165dccf0c88859750026588aceca7eb552eff09735c852caa2f5de1646637188e8  deviceinfo
+6a1e7ae233b4327039058ed61b8353c9012fc7abfdf554c94f11002160098c9df3814db43c63fe4b9ee9af649c42d310a1cd7a182087a7a2b3fcc0d1c6a9080d  deviceinfo
 "

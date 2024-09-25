@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-t03g
 pkgdesc="Samsung Galaxy Note II (GSM)"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -11,7 +11,6 @@ depends="
 	alsa-ucm-conf
 	mkbootimg
 	postmarketos-base
-	postmarketos-initramfs-minimal
 	soc-samsung-exynos4412-haptics
 "
 makedepends="devicepkg-dev"
@@ -64,7 +63,7 @@ kernel_ea8061() {
 }
 
 sha512sums="
-dacaf39343e03a84444f34e57abd0cef3933dd86b0212c358f0d42e416d4b23b6cf3dca41112eeb6feccae8d784ef5db2041a8b05a6803445359181cbe4df168  deviceinfo
+dcbb60389cb6f20b518a4747bbcebb96d820e86ce95f9fc2636108e91b04f30d89415adc3b973f690af9a18d932e47840baa6b0564bc47c2a6543a36d5b6208b  deviceinfo
 7f07ea4bc279549844d071d94d9000d6335ed7548e06c1526f82cd6ccb39b5f5a50414b1e6e77d803ed86074d35e5f9f66f8e1b6b8352a2b1d2a7cd1a9b68472  Midas.conf
 b25c730d18b176bed5890c800f1c1d3e224c1ccd410d2e4d64e9136fa1a715e46f85e66116d7a66c3b649c6ed09cdd9a48fc74ed7142c48092aef6ecb98c526a  HiFi.conf
 56a2bdffc273cb0a581192e65378ff50e71c7bc8a696af7d5e7c165a53c005aae104c4514c68afb668454c5a94ce78bd509f8a40e3401d67e16636b1ed81d051  modules-load.conf

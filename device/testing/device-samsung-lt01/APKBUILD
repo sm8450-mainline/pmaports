@@ -2,7 +2,7 @@
 # Maintainer: knuxify <knuxify@gmail.com>
 pkgname=device-samsung-lt01
 pkgdesc="Samsung Galaxy Tab 3 8.0"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -12,7 +12,6 @@ depends="
 	alsa-ucm-conf
 	mkbootimg
 	postmarketos-base
-	postmarketos-initramfs-minimal
 	"
 _pmb_recommends="$pkgname-nonfree-firmware"
 makedepends="devicepkg-dev"
@@ -73,7 +72,7 @@ kernel_lte() {
 }
 
 sha512sums="
-0a1ff386ed7288858e10bb42ac5b63bccbe8e82503bfabfdfb42dbc39e2b80529e1f85ba92b0dd7dd5ff0f550792521d9aad2f5dc2309a711759be5fe94b2d98  deviceinfo
+4baaae95b28032c835d5e90ae3ba446a38969b2baa1bffc0cd21dca067679b7c80f41e94390877434d8f0bad70b523c360a833688f71f2e38e89b663788d961e  deviceinfo
 caa81e8ab6753c0ca24c22fb6742288765dfbf2469b8b8c35c5789edfcee546ef1c3b14ad6e540c417f434258399300f17d312b58157635eafab134587ef94cc  TAB3.conf
 fc3610233f53a6e44491b2337b18bbfd42bb2f70d3f3aa70044449505ab12e91c582aa0c248fed28fe2017f4e9eaebac299545aa80117388d31409634a5f8e38  HiFi.conf
 "

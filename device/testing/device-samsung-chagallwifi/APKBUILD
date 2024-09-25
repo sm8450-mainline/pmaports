@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-chagallwifi
 pkgdesc="Samsung Galaxy Tab S 10.5"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -43,7 +43,7 @@ kernel_downstream() {
 
 kernel_mainline() {
 	pkgdesc="Mainline WIP (usb networking and wifi works but not much else)"
-	depends="linux-postmarketos-exynos5 postmarketos-initramfs-minimal"
+	depends="linux-postmarketos-exynos5"
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
@@ -67,5 +67,5 @@ nonfree_firmware_mainline() {
 }
 
 sha512sums="
-46b88bc588ddce097f43a7600f0a2131860230591166529a2c37dcf5bea7731f528a92d4f4416a4b89ecd261961d546fe709975f638f4c9815919d5e512a0082  deviceinfo
+73c1fa71021e8a3e804feb47f8723f428a76a43a06b7ae94d5d328f412a3120aa05c428f216d714ed58f595224de6ec8c5e57e340e08efca8110e129d89fc156  deviceinfo
 "

@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-google-spring
 pkgdesc="HP Chromebook 11 G1"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -13,7 +13,6 @@ depends="
 	linux-postmarketos-exynos5
 	postmarketos-base
 	postmarketos-cros-common
-	postmarketos-initramfs-minimal
 "
 makedepends="devicepkg-dev"
 source="deviceinfo modules-initfs"
@@ -34,6 +33,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-fbf6b74a7b1cc63ea166db91319d071ed8379220c83e44661f1549091e2ebab0b7a2d6d71456e098f30c20d4e56b21ab01b29a5799a35134a51dcd1f92385b43  deviceinfo
+142c64f5a6abae8c8431b2510f4b6afbd5cc7f9c12040edc25f02c0977a96f8daa764cbb7838b46d6c4462ce0bbeb972b4448e3f2cf358d53053d5805cc33d3d  deviceinfo
 59a59149b995f8936da68b08852996725da70fc51b43204180602537c4fc6c59e21452994773685b49cf1e3add76cfd5d72ea9ce0b79aacaa9c4ef93295baa61  modules-initfs
 "

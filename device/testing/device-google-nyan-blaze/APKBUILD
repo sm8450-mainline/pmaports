@@ -2,8 +2,8 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-nyan-blaze
 pkgdesc="HP Chromebook 14 G3"
-pkgver=4
-pkgrel=1
+pkgver=5
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -14,7 +14,6 @@ depends="
 	linux-google-nyan>=6.1.27-r0
 	postmarketos-base
 	postmarketos-cros-common
-	postmarketos-initramfs-minimal
 "
 subpackages="
 	$pkgname-mpv-wayland:mpv_wayland
@@ -75,7 +74,7 @@ sway() {
 
 sha512sums="
 793688374d77efaf050c187d296d7fd55243773a1257b4d8adfa4cda50d4c0cacc035fb3d419a4b608989ed920636048680d900afe8a712f2166edf51552087a  30-xusb-firmware.files
-dbd36a4737b2035a333a861eb5fe2b34ae423f10e7ecb5f288169dfc5127690365129bedb09c9252509b0419866f11de8b35525a32a0d3352a4279d9f4c8884c  deviceinfo
+dad80578c0087b3a843d1bc6817ee6f14790de84f6987a66aeaff13b2199c8c7cd9a65decd0f1295025ada2f978c5499249b8e2a949397c7180bab80c0f66aa6  deviceinfo
 8cf99819584972f96c2342d6fa945bea13f0f374d1525d3b35c41137f4cce71ade20b927072e16c1e354f2a62018bd6c9bed2923a0afa127cc0b9bd645fc3937  modules-initfs
 e6c5382b6f7dd10f350136d65a714de3ae337978c3ca88e63f016b4a42be87b422d2388fbf6d6a2feba15516fb9b409f6c5ff08968829e6fc2d1e8aeb9d3c508  gpu.conf
 8f9dc3c7caeab6c5321dc2bf498f1a03a793f23cb776763316bc356b9d433d7a3337e61154069464dcda200bf390b99f3be8f657a40c6d2f6be3cbc6fb751080  mpv.conf.wayland

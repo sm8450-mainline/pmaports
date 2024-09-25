@@ -15,6 +15,7 @@ deviceinfo_keyboard="false"
 deviceinfo_external_storage="false"
 deviceinfo_screen_width="1440"
 deviceinfo_screen_height="2560"
+deviceinfo_create_initfs_extra="true"
 
 # Bootloader related
 deviceinfo_flash_method="heimdall-bootimg"

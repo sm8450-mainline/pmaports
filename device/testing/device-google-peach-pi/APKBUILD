@@ -2,7 +2,7 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-peach-pi
 pkgdesc="Samsung Chromebook 2 (13.3 inch)"
-pkgver=7
+pkgver=8
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -14,7 +14,6 @@ depends="
 	linux-postmarketos-exynos5
 	postmarketos-base
 	postmarketos-cros-common
-	postmarketos-initramfs-minimal
 "
 makedepends="devicepkg-dev"
 source="
@@ -56,7 +55,7 @@ nonfree_firmware() {
 }
 
 sha512sums="
-8b5b68e94cc58fca7a1f5f0b711aca53875839a4ddb272507066911694f4c7bc1263077b26ac30f2a3aa62d83656edc473f2f8c4dad8018d58c657092e06aa29  deviceinfo
+71c61f4599ef4772a217b32e4cee04f1180ecee11c7d7ebbfb3cb6cd8e232e543c4b3f8fbd462f74480a822f9485c5076794a21521be6bdd35d4e17308c4c94a  deviceinfo
 e12a68f919182cb4e6812a5dd13fce8dc15266d2ac16aa5f0a31034f111cb403c020ebaaa4d94309f4baf2f71379327c57c08029e27c506d152695e9a2b04b2b  modules-initfs
 e53ca475830930ecfc1fd537702e850e2abcb66fbed521cb6c3a2918d762649254bd0244ec93a47b20dfc593ec3afc9bdebdec1759a7bc96dcbe4800f40893da  90-tap-to-click.conf
 2ccec36a88003673471fcec7c0e408c24892e43701d88986c6a85a7882ac275565eb3abf566709306ddc16a62b4558ebceffbc289e7c95336ba28262719c6413  Peach-Pi-I2S-MA.conf

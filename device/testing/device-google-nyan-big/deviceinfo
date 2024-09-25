@@ -19,6 +19,7 @@ deviceinfo_screen_width="1366"
 deviceinfo_screen_height="768"
 deviceinfo_gpu_accelerated="true"
 deviceinfo_disable_dhcpd="true"
+deviceinfo_create_initfs_extra="true"
 
 # Bootloader related
 deviceinfo_flash_method="none"

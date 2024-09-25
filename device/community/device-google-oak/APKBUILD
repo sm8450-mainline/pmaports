@@ -3,7 +3,7 @@
 # Co-Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-oak
 pkgdesc="Google Oak Chromebooks"
-pkgver=6
+pkgver=7
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -15,7 +15,6 @@ depends="
 	linux-postmarketos-mediatek-mt8173
 	postmarketos-base
 	postmarketos-cros-common
-	postmarketos-initramfs-minimal
 "
 makedepends="devicepkg-dev"
 source="deviceinfo modules-initfs"
@@ -40,6 +39,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-d082e6c155347f662403f611f44c3eddb2a0548397bec4f29b882f371a18efa9c2628a88599b19c0c58c1886d0c25035367f02651a60fb6c3293faa1449b83d5  deviceinfo
+d0c595a323707f6e53cdd382a56b9d3faf4a32296e53a188361f482b752817892e74c7cf32bba0140607e266ecdb53b9c79fded45bda5e9f4d955eb4d8fe1d23  deviceinfo
 4b0197eacfeeb4b13f5abc26950f570ee762742547674ce10110ccea63eb46630a2e3b5f87e9c9a1f9deda21baf05bec248ab7a65656687ec94d296b5657dafa  modules-initfs
 "

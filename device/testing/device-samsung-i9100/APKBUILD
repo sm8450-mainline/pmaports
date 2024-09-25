@@ -1,12 +1,12 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-i9100
-pkgver=7
-pkgrel=1
+pkgver=8
+pkgrel=0
 pkgdesc="Samsung Galaxy SII"
 url="https://postmarketos.org"
 arch="armv7"
 license="MIT"
-depends="postmarketos-base postmarketos-initramfs-minimal libsamsung-ipc"
+depends="postmarketos-base libsamsung-ipc"
 makedepends="devicepkg-dev"
 install="$pkgname.post-install"
 options="!check !archcheck"
@@ -66,7 +66,7 @@ media_pipeline() {
 }
 
 sha512sums="
-bd4090078a2816d620a9cb8b91823c6ae28af3d80ccf51a9a36757ce5a4337e799bada6516ce9b1bc63bf5e0732c248cf5078b6c056cecd6c05b4659ff197847  deviceinfo
+bf3e7c046deb6f95015becd81d5e6b3eb2aa4e02e043b8323582a27b7c8de3317d22e1a33e0371d8ef206844eb4cf3b4a453dff7bdebbf166b904f694d37523b  deviceinfo
 089635daddd88eec35451bfe98dc3713035e3623c896dd21305b990ecf422e8fbb54e010cf347919bbb3a7385f639ab119280477fe0783df3228168d97d96fc6  90-android-touch-dev.rules
 d3f06476be583f095189557e5269866cfc9346ddbf8d78267d7562fad7f5eca6b09b81fd08cd9690ecf88105bafe8f3ebd9136b68ab5cdaa8bfff740a8bdf3d2  media-pipeline.initd
 "

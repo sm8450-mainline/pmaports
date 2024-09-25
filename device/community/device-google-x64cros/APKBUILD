@@ -4,8 +4,8 @@
 # Co-Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-x64cros
 pkgdesc="Google Chromebooks with x64 CPU"
-pkgver=8
-pkgrel=1
+pkgver=9
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="x86_64"
@@ -15,7 +15,6 @@ depends="
 	depthcharge-tools
 	postmarketos-base
 	postmarketos-cros-common
-	postmarketos-initramfs-minimal
 	systemd-boot
 	"
 makedepends="devicepkg-dev"
@@ -56,6 +55,6 @@ kernel_lts() {
 }
 
 sha512sums="
-6ab370ce8de6ce77d255ad347563afa8314bdde1d54ba51970de3b3739bb52098284beead99485e416c9af5c8b53811f5286c1cd561896480526a892f982bdad  deviceinfo
+9e9fd97961c2d27c9cb98adb182c3d058885d5b907180d80655ec09e983d6e66c891e8d6faf55da3569e0d0cbca8e7d3582a389bdf18afdff4cf92226cc09fb7  deviceinfo
 1b3bbfcdc6642488304653aef996dddf7a354e7279f2c735ac7aec404e598948423630fcaa2cac87e2c0aef033ecfc57a7a91154f9dac9a85411db7bad62e677  modules-initfs
 "

@@ -15,6 +15,7 @@ deviceinfo_external_storage="true"
 deviceinfo_screen_width="1080"
 deviceinfo_screen_height="1920"
 deviceinfo_dev_touchscreen="/dev/input/event3"
+deviceinfo_create_initfs_extra="true"
 
 # Bootloader related
 deviceinfo_flash_method="heimdall-bootimg"

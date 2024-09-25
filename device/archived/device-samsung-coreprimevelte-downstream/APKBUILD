@@ -3,13 +3,13 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-coreprimevelte-downstream
 pkgdesc="Samsung Galaxy Core Prime VE LTE downstream"
-pkgver=1
-pkgrel=3
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
-depends="mkbootimg linux-samsung-coreprimevelte-downstream postmarketos-base postmarketos-initramfs-minimal pxa-mkbootimg u-boot-tools"
+depends="mkbootimg linux-samsung-coreprimevelte-downstream postmarketos-base pxa-mkbootimg u-boot-tools"
 makedepends="devicepkg-dev"
 _pmb_recommends="firmware-samsung-pxa1908-downstream"
 source="deviceinfo 90-coreprimevelte.conf"
@@ -24,6 +24,6 @@ package() {
 }
 
 sha512sums="
-741f46736c2742d4a6f118a924eee89954fb14e5b1dc00f372bda41b63ec975cf960909f915fcb31ad965f136a712905bc8626cd7e530f40e110885f7c861790  deviceinfo
+ec654952ea328489ced4268a78272977cca1a9356d86ea9794f5a0aa9387d7daeb1125419388a4ade0ea86cc6893178601eb7aa18a5886970a775e5ad78a59ba  deviceinfo
 4854cc57b86e1199dbc165110514e672dabf45044fe9f7ebbde5b2b24768fb5497273b5f38612cf2dfeffc9bf0648c725114b4fa01165bf7fb02f7d741ee5806  90-coreprimevelte.conf
 "
