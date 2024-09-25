@@ -1,13 +1,13 @@
 # Maintainer: Dylan Van Assche <me@dylanvanassche.be>
 pkgname=bootmac
 pkgver=0.5.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Configure MAC addresses at boot"
 url="https://gitlab.com/postmarketOS/bootmac"
 arch="all"
 license="GPLv3-or-later"
 source="https://gitlab.com/postmarketOS/bootmac/-/archive/v$pkgver/bootmac-v$pkgver.tar.gz"
-depends="bluez-btmgmt"
+depends="bluez-btmgmt bluez-deprecated"
 options="!check"
 builddir="$srcdir/$pkgname-v$pkgver"
 
