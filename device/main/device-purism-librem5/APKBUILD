@@ -4,7 +4,7 @@
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 pkgname=device-purism-librem5
 pkgver=4
-pkgrel=0
+pkgrel=1
 _confver=64
 _purismrel=1
 # <librem5-base ver>.<purism release>
@@ -56,14 +56,15 @@ subpackages="
 	$pkgname-gnome
 	$pkgname-nonfree-firmware:nonfree_firmware
 	$pkgname-pulseaudio
+	$pkgname-openrc
 	$pkgname-smartcard
+	$pkgname-smartcard-openrc:smartcard_openrc
 	$pkgname-tinydm
 	$pkgname-usbguard
 	$pkgname-x11
 "
 # TODO: remove "replaces" when upstream ucm has proper L5 support...
 replaces="alsa-ucm-conf"
-install="$pkgname.post-install $pkgname.post-upgrade"
 
 builddir="$srcdir/librem5-base-pureos-$_purismver"
 
@@ -105,15 +106,27 @@ tinydm() {
 		"$subpkgdir"/etc/tinydm.d/env-wayland.d/70-librem5-xwayland-accel.sh
 }
 
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+
+	mkdir -p "$subpkgdir"
+}
+
 smartcard() {
 	pkgdesc="OpenPGP SmartCard support for the Librem 5"
 	depends="$pkgname ccid gnupg-scdaemon pcsc-lite pcsc-tools"
 	install_if="$pkgname pcsc-tools"
-	install="$install $subpkgname.post-install"
+
+	mkdir -p "$subpkgdir"
+}
+
+smartcard_openrc() {
+	install_if="$pkgname-smartcard=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install"
 
 	install -D -m644 "$srcdir"/pcscd-librem5-reader.conf \
 		"$subpkgdir"/etc/reader.conf.d/librem5-ttxs-reader
-
 	install -D -m755 "$srcdir"/pcscd-librem5.initd \
 		"$subpkgdir"/etc/init.d/pcscd-librem5
 }
