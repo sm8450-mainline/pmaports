@@ -1,9 +1,23 @@
+/bin/udevadm
+/etc/udev/rules.d
+/usr/lib/udev/rules.d
+/usr/lib/udev/scsi_id
 /sbin/btrfs
 /sbin/dmsetup
 /sbin/e2fsck
 /sbin/fsck.vfat
+# Full fat modprobe for compressed modules
+/sbin/modprobe
 /sbin/switch_root
+/sbin/udevd
+/usr/bin/buffyboard
+/usr/bin/iskey
+/usr/lib/libz.so.1
 /usr/sbin/fsck.f2fs
 /usr/sbin/parted
 /usr/sbin/resize.f2fs
 /usr/sbin/resize2fs
+/usr/share/consolefonts/ter-128n.psf.gz
+/usr/share/initramfs/init_2nd.sh:/init_2nd.sh
+/usr/share/initramfs/init_functions_2nd.sh:/init_functions_2nd.sh
+/usr/share/libinput/*.quirks
