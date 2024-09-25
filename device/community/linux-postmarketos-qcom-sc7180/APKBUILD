@@ -1,7 +1,7 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=linux-postmarketos-qcom-sc7180
 pkgver=6.6.28
-pkgrel=5
+pkgrel=6
 pkgdesc="Mainline kernel fork for Qualcomm Snapdragon 7c devices"
 arch="aarch64"
 _carch="arm64"
@@ -101,5 +101,5 @@ a4d8bbf39575e61d228b3b66fa692b207c1ee011e6030fdd097936a1ad28b1d5b01816d989adcb80
 08c6cace24a207f4a64a85b17e97646f62a8590b502cd5b6945489d0aeded352e21f0e1b0ec541ae2e61ec7fd4f6bc1e5bf1d5d32f2c6616eb41d39d66f0bab5  0009-platform-arm64-Add-Acer-Aspire-1-embedded-controller.patch
 69cfb699990ea7994089016b29cc248cb03483ad3f7620cbba63a779b2ed8928e6fde68484d29b6b8dfd1a8a6fa8d84c441f30180c7a257520ced442dab33876  0010-arm64-dts-qcom-acer-aspire1-Add-embedded-controller.patch
 c5edcd74f898b08bc663766668632d351aea40426b3563d53a4b8c6856dd82627f4794d60450e41171c990ebb3649056b36ef432c14c8783168e8060a2e3b094  0011-HACK-clk-Delay-disabling-unused-clocks-by-10s.patch
-a6dc8fa517667c6a03d65f849a01aaa793dfd2bde5efc844d56ae46e5f0074ce7d81a89edfe6958d2792c70549fea150f1be9c2db7c06fd04f5e13afbda9d33c  config-postmarketos-qcom-sc7180.aarch64
+2afb66ab8144320eafe373e30df59996e04563fb141f157fd9ca4098cd7182b063bcf71432aae56ad2b104ad00174826f34c6261a0fd9ecf7420a96e910f7747  config-postmarketos-qcom-sc7180.aarch64
 "

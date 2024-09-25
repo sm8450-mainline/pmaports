@@ -327,10 +327,7 @@ EFI_PARAMS_FROM_FDT = true
 EFI_ZBOOT = true
 
 ["category:libcamera".">=0.0.0"."aarch64"]
-DMABUF_HEAPS_CMA = true
-DMABUF_HEAPS = true
-DMA_CMA = true
-CMA = true
+UDMABUF = true
 
 ["category:input".">=0.0.0"."all"]
 BT_HIDP = true  # Bluetooth HID
