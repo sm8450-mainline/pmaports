@@ -1,8 +1,8 @@
 # Forked from Alpine to add phone adaptivity patches and systemd!
 
 pkgname=gnome-shell-mobile
-pkgver=99946.0
-_pkgver=46.0
+pkgver=99946.1
+_pkgver=46.1
 pkgrel=0
 pkgdesc="GNOME shell mobile"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -74,7 +74,7 @@ subpackages="
 	$pkgname-schemas::noarch
 	gnome-mobile-extensions-app:extensions_app:noarch
 	"
-_commit="46-mobile-0"
+_commit="46-mobile.1"
 _gvc_commit="8e7a5a4c3e51007ce6579292642517e3d3eb9c50"
 source="gnome-shell-mobile-$_commit.tar.gz::https://gitlab.gnome.org/verdre/gnome-shell-mobile/-/archive/$_commit/gnome-shell-mobile-$_commit.tar.gz
 	libgnome-volume-control-$_gvc_commit.tar.gz::https://gitlab.gnome.org/GNOME/libgnome-volume-control/-/archive/$_gvc_commit/gnome-shell-$_gvc_commit.tar.gz
@@ -95,6 +95,7 @@ prepare() {
 	mv "$srcdir/libgnome-volume-control-$_gvc_commit" $builddir/subprojects/gvc
 
 	sed -i "s/mutter_api_version = '.*'/mutter_api_version = '99'/g" meson.build
+	sed -i "s/version: '$_commit'/version: '$_pkgver'/g" meson.build
 }
 
 build() {
@@ -143,7 +144,7 @@ package() {
 }
 
 sha512sums="
-56ab61732f7d477af37347f2c1e5070ed4eab6b1e020f94014fdaf2e3c1d002d43830d28ff8227a9332b5f3be82eed9901fee4afce10c0c40e5e3fbff3d2e6b8  gnome-shell-mobile-46-mobile-0.tar.gz
+aeca65c373979eacf73aff169b69f3cefa8f457a04e641481f79a3a6e398a51d3ccfc6c7a94ae4a81486dd08fb7b600b2a949efc9272ab17ae9719fc7fe35740  gnome-shell-mobile-46-mobile.1.tar.gz
 ebc6985afbda5ddebcda44d8b6732a9abc2d7249aff3adf7a76a90aa681590f830dcf2e5f3534a624adc32d1f0445e261ee149d65c221f733e0c33e0690a004d  libgnome-volume-control-8e7a5a4c3e51007ce6579292642517e3d3eb9c50.tar.gz
 40cafbd0da2f2a40ff9e9db1026179d52a3b296a81fa43a98e433c0919800f0ec5231fcad32d523b8f01b8f7c0205dce1332e48493b0101ad02dae9469ac3de0  gsh.patch
 "
