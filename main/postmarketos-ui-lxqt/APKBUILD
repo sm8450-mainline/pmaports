@@ -2,7 +2,7 @@
 # Maintainer: Antoni Aloy <aaloytorrens@gmail.com>
 pkgname=postmarketos-ui-lxqt
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="(X11) Lightweight Qt Desktop Environment (stylus recommended)"
 url="https://lxqt-project.org/"
 # armhf: lxqt-desktop not available
@@ -12,6 +12,7 @@ depends="
 	dbus-x11
 	dnsmasq
 	elogind
+	font-dejavu
 	lxqt-desktop
 	lxqt-policykit
 	mesa-egl

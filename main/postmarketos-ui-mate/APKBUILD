@@ -2,7 +2,7 @@
 # Maintainer: Jakko <jahau@rocketmail.com>
 pkgname=postmarketos-ui-mate
 pkgver=7
-pkgrel=3
+pkgrel=4
 pkgdesc="(X11) MATE Desktop Environment, fork of GNOME2 (stylus recommended)"
 url="http://mate-desktop.org/"
 arch="noarch"
@@ -12,6 +12,7 @@ depends="
 	dbus-x11
 	dnsmasq
 	elogind
+	font-dejavu
 	gtk+2.0
 	lightdm
 	mate-desktop-environment
