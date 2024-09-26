@@ -1,5 +1,5 @@
 pkgname=firmware-samsung-a6lte
-pkgver=2
+pkgver=3
 pkgrel=0
 pkgdesc="Firmware files for Samsung Galaxy A6 (2018)"
 url="https://github.com/fw-dumps/samsung_a6lte_dump"
@@ -7,6 +7,7 @@ arch="aarch64"
 license="proprietary"
 options="!strip !check !archcheck !spdx !tracedeps pmb:cross-native"
 depends="linux-firmware-brcm"
+makedepends="zstd"
 
 # Source
 _commit="2ea1f7e1dfbe56d6ca085c9eb4061aca8909172c"
@@ -19,13 +20,13 @@ source="
 
 package() {
 	mkdir -p "$pkgdir$_install_wifi_path"
-	ln -s /lib/firmware/brcm/brcmfmac43456-sdio.bin "$pkgdir$_install_wifi_path/bcmdhd_apsta.bin_c5"
-	ln -s /lib/firmware/brcm/brcmfmac43456-sdio.bin "$pkgdir$_install_wifi_path/bcmdhd_apsta.bin_c5_blob"
-	ln -s /lib/firmware/brcm/brcmfmac43456-sdio.clm_blob "$pkgdir$_install_wifi_path/bcmdhd_clm.blob"
-	ln -s /lib/firmware/brcm/brcmfmac43456-sdio.bin "$pkgdir$_install_wifi_path/bcmdhd_mfg.bin_c5"
-	ln -s /lib/firmware/brcm/brcmfmac43456-sdio.bin "$pkgdir$_install_wifi_path/bcmdhd_mfg.bin_c5_blob"
-	ln -s /lib/firmware/brcm/brcmfmac43456-sdio.bin "$pkgdir$_install_wifi_path/bcmdhd_sta.bin_c5"
-	ln -s /lib/firmware/brcm/brcmfmac43456-sdio.bin "$pkgdir$_install_wifi_path/bcmdhd_sta.bin_c5_blob"
+	unzstd < /lib/firmware/brcm/brcmfmac43456-sdio.bin.zst > "$pkgdir$_install_wifi_path/bcmdhd_apsta.bin_c5"
+	unzstd < /lib/firmware/brcm/brcmfmac43456-sdio.clm_blob.zst > "$pkgdir$_install_wifi_path/bcmdhd_clm.blob"
+	ln -s bcmdhd_apsta.bin_c5 "$pkgdir$_install_wifi_path/bcmdhd_apsta.bin_c5_blob"
+	ln -s bcmdhd_apsta.bin_c5 "$pkgdir$_install_wifi_path/bcmdhd_mfg.bin_c5"
+	ln -s bcmdhd_apsta.bin_c5 "$pkgdir$_install_wifi_path/bcmdhd_mfg.bin_c5_blob"
+	ln -s bcmdhd_apsta.bin_c5 "$pkgdir$_install_wifi_path/bcmdhd_sta.bin_c5"
+	ln -s bcmdhd_apsta.bin_c5 "$pkgdir$_install_wifi_path/bcmdhd_sta.bin_c5_blob"
 	install -Dm644 "$srcdir/nvram.txt_c5" -t "$pkgdir$_install_wifi_path"
 }
 
