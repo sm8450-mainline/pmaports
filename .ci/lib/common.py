@@ -47,8 +47,7 @@ def commit_message_has_string(needle):
 def run_pmbootstrap(parameters):
     """ Run pmbootstrap with the pmaports dir as --aports """
     cmd = ["pmbootstrap", "--aports", get_pmaports_dir()] + parameters
-    result = subprocess.run(cmd, universal_newlines=True)
-    result.check_returncode()
+    subprocess.run(cmd, universal_newlines=True, check=True)
 
 
 def get_upstream_branch():
