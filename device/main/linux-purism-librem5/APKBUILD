@@ -3,12 +3,13 @@
 # Co-Maintainer: Newbyte <newbyte@postmarketos.org>
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 pkgname=linux-purism-librem5
-pkgver=6.6.40
-pkgrel=5
+pkgver=6.6.52
+pkgrel=0
 # NOTE: Don't forget to rebase the config! See prepare() for instructions.
-_purismrel=2
-# <kernel ver>.<purism kernel release>
-_purismver=${pkgver}pureos$_purismrel
+_purismrel=1
+_pureosrel=cri1
+# <kernel ver> + <purism kernel release> + <PureOS release>
+_purismver=${pkgver}pureos${_purismrel}_$_pureosrel
 pkgdesc="Purism Librem 5 phone kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -89,6 +90,6 @@ package() {
 }
 
 sha512sums="
-b16f6d040024d826d4ac7a33ad23137fafbf1ac7ac8adeef3fd80a80dc308b70cf572de6e4a451eb607b1d18ad58c03493108c7a1ff9b26fa2bd03a475002903  linux-purism-librem5-6.6.40pureos2.tar.gz
-8b1d9d3562f77e5492a27d850461f0fe2674b0522def624033e63b82d2c4c04c7d23b95a3447ac97dc1689494449683d8a545a2b4a9c7046017f89e2a62575fe  config-purism-librem5.aarch64
+82ead153d2dc8e7fa24791f4e6748b293c800947d54f50ca9cebaa33d75f95907d86ae91e95098fd7d934c7ba256d7b79d77d619cff16c87883273d7fcba7902  linux-purism-librem5-6.6.52pureos1_cri1.tar.gz
+eeb7641aa3e87e3063f28fa5de4e12b4e99c877cc58588340ba0b5a65deefd34d9ebe3a365bf1c11cc6c87a9d9634640dcdbc9a565073e18ca58ee2c47bda045  config-purism-librem5.aarch64
 "
