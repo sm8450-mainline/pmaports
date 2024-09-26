@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-base-ui
 pkgver=28
-pkgrel=4
+pkgrel=5
 pkgdesc="Meta package for minimal postmarketOS UI base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -50,7 +50,8 @@ replaces="
 	"
 replaces_priority=100  # leave plenty for alpine
 
-_pmb_recommends="font-droid font-droid-nonlatin" # MR 5540
+# See MR 4744, MR 5352 and MR 5540 for the rationale
+_pmb_recommends="font-droid font-droid-nonlatin font-twemoji"
 
 _source644="
 	etc/chrony/chrony.conf
@@ -114,7 +115,6 @@ package() {
 
 wayland() {
 	install_if="$pkgname=$pkgver-r$pkgrel wayland-server-libs"
-	_pmb_recommends="font-twemoji" # MR 4744 and MR 5352
 
 	mkdir -p "$subpkgdir"
 }
@@ -125,7 +125,6 @@ x11() {
 		libinput
 		xf86-input-libinput
 		xf86-video-fbdev"
-	_pmb_recommends="font-twemoji" # MR 4744 and MR 5352
 	provides="postmarketos-base-x11=$pkgver-r$pkgrel"
 	amove etc/X11/Xwrapper.config
 }
