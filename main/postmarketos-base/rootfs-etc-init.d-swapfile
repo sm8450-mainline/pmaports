@@ -8,14 +8,14 @@ depend()
 start()
 {
 	ebegin "Activating swap file"
-	/sbin/swapfile
+	swapfile
 	eend $?
 }
 
 stop()
 {
 	ebegin "Deactivating swap file"
-	/sbin/swapoff -a >/dev/null
+	swapoff -a >/dev/null
 	eend $?
 }
 
