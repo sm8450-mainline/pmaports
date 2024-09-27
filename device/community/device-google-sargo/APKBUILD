@@ -3,7 +3,7 @@
 pkgname=device-google-sargo
 pkgdesc="Google Pixel 3a"
 pkgver=6
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -28,10 +28,7 @@ source="
 	no-hexagonrpcd-on-suspend.sh
 	q6voiced.conf
 "
-subpackages="
-	$pkgname-camera
-	$pkgname-nonfree-firmware:nonfree_firmware
-	"
+subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -44,12 +41,6 @@ package() {
 		-t "$pkgdir"/usr/lib/udev/rules.d
 	install -Dm644 "$srcdir"/10-unl0kr-msm.conf \
 		"$pkgdir"/etc/unl0kr.conf.d/10-unl0kr-msm.conf
-}
-
-camera() {
-	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-default-camera"
-	depends="snapshot"
-	mkdir -p "$subpkgdir"
 }
 
 nonfree_firmware() {
