@@ -1,7 +1,7 @@
 # Maintainer: Atilla Szollosi <ata2001@airmail.cc>
 pkgname=mdss-fb-init-hack
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Workaround for buggy framebuffer driver (mdss-fb)"
 url="https://gitlab.com/postmarketOS/pmaports"
 arch="noarch"
@@ -13,7 +13,7 @@ subpackages="$pkgname-openrc"
 
 package() {
 	install -Dm755 "$srcdir/$pkgname.initd" "$pkgdir/etc/init.d/$pkgname"
-	install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/sbin/mdss-fb-hack"
+	install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/mdss-fb-hack"
 }
 
 openrc() {
