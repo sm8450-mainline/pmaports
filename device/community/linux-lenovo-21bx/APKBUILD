@@ -2,9 +2,9 @@
 # Co-Maintainer: jane400 <jane400@postmarketos.org>
 # Contributor: Konrad Dybcio <konradybcio@kernel.org>
 pkgname=linux-lenovo-21bx
-pkgver=6.11
+pkgver=6.12
 pkgrel=0
-_commit="c8032fa3062e04cbb68f070959fc746b91abb16e"
+_commit="24dcd44a39079e920512fc280fa08907be2a6c31"
 pkgdesc="Lenovo ThinkPad X13s kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -67,6 +67,6 @@ package() {
 }
 
 sha512sums="
-ed4429c4db569f7a7d06b1cf776d6ab02e17a4d66e1f7a90a69456036a4540be073876108a7ee89c91e66e4f8f4fa0d5e67a5849bdb2221a6323630dfa70ddce  linux-lenovo-21bx-c8032fa3062e04cbb68f070959fc746b91abb16e.tar.gz
-6bbdb466eb7f080868154fc38a5265f64d6f404c88b23925dd0b7bf18277f08dec94f0f52eb884910e79cccd98ef40ae640905ea8694f078426219a6da45913e  config-lenovo-21bx.aarch64
+ea7adff2697334d9d746e7185676ae68fe4444d8d35861040abea9e78a9308bc73fc6583f31bc961cef8ae11b994b79b8c722d75c6eb42072fb1118de71e511e  linux-lenovo-21bx-24dcd44a39079e920512fc280fa08907be2a6c31.tar.gz
+5a29d48fe839bb1b6c16e4a5679337682318f9ec1c9e292d729f618290a9e3f1ca3dec1af7e88c70e794e99cc76399bfb13fd0bd9c1e7e8f69b08c156db33079  config-lenovo-21bx.aarch64
 "
