@@ -4,7 +4,7 @@
 pkgname=device-xiaomi-scorpio
 pkgdesc="Xiaomi Mi Note 2"
 pkgver=3
-pkgrel=12
+pkgrel=13
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -12,6 +12,7 @@ options="!check !archcheck"
 depends="
 	linux-postmarketos-qcom-msm8996
 	mesa-egl
+	megapixels
 	mkbootimg
 	postmarketos-base
 	soc-qcom-msm8996
@@ -19,7 +20,6 @@ depends="
 	"
 makedepends="devicepkg-dev"
 subpackages="
-	$pkgname-camera
 	$pkgname-phosh
 	$pkgname-nonfree-firmware:nonfree_firmware
 	"
@@ -68,11 +68,6 @@ phosh() {
 		"$subpkgdir"/etc/phosh/phoc.ini
 }
 
-camera() {
-	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-default-camera"
-	depends="megapixels"
-	mkdir -p "$subpkgdir"
-}
 
 sha512sums="
 b033e7357c4ef91ba84f6f715e96e67637c2631d4746402f8a92333ba8974bbee7736a7bc081b0f84a84dc5b555a7db4dbb4f14f628bbfc42cbfa501c4f0ed36  30-gpu-firmware.files
