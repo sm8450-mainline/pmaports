@@ -2,7 +2,7 @@
 /etc/unl0kr.conf.d
 /sbin/cryptsetup
 /usr/bin/unl0kr
-/bin/fde-unlock
+/usr/bin/fde-unlock
 /usr/share/libinput/*.quirks
 /bin/udevadm
 /sbin/udevd
