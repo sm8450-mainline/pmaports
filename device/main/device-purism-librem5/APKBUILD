@@ -4,7 +4,7 @@
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 pkgname=device-purism-librem5
 pkgver=4
-pkgrel=1
+pkgrel=2
 _confver=64
 _purismrel=1
 # <librem5-base ver>.<purism release>
@@ -24,6 +24,7 @@ depends="
 	iw
 	linux-purism-librem5>=6.3
 	mesa-egl
+	millipixels
 	postmarketos-base
 	u-boot-librem5
 	u-boot-tools
@@ -52,7 +53,6 @@ source="
 	udev/70-wifi-pm.rules
 "
 subpackages="
-	$pkgname-camera
 	$pkgname-gnome
 	$pkgname-nonfree-firmware:nonfree_firmware
 	$pkgname-pulseaudio
@@ -66,6 +66,7 @@ subpackages="
 # TODO: remove "replaces" when upstream ucm has proper L5 support...
 replaces="alsa-ucm-conf"
 
+
 builddir="$srcdir/librem5-base-pureos-$_purismver"
 
 build() {
@@ -76,16 +77,11 @@ build() {
 gnome() {
 	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-base-ui-gnome"
 	depends="
+
 		wys
 	"
 	install -D -m644 "$builddir"/default/org.freedesktop.ModemManager1.pkla \
 		"$subpkgdir"/var/lib/polkit-1/localauthority/10-vendor.d/org.freedesktop.ModemManager1.pkla
-}
-
-camera() {
-	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-default-camera"
-	depends="millipixels"
-	mkdir -p "$subpkgdir"
 }
 
 pulseaudio() {
