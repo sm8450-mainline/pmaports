@@ -1,7 +1,7 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=postmarketos-android-recovery-installer
 pkgver=1.0.7
-pkgrel=0
+pkgrel=1
 pkgdesc="TWRP compatible postmarketOS installer script"
 arch="all"
 url="https://postmarketos.org"
@@ -17,7 +17,7 @@ build() {
 
 package() {
 	install -Dm755 build_zip.sh \
-		"$pkgdir"/sbin/build-recovery-zip
+		"$pkgdir"/usr/bin/build-recovery-zip
 	install -Dm644 update-binary \
 		"$pkgdir"/var/lib/postmarketos-android-recovery-installer/META-INF/com/google/android/update-binary
 	install -Dm755 pmos_chroot \
