@@ -1,6 +1,6 @@
 pkgname=postmarketos-base-ui-gnome-mobile
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="Meta package for shared configuration for GNOME Mobile and Phosh UIs"
 url="https://postmarketos.org"
 arch="noarch"
@@ -17,7 +17,6 @@ _pmb_recommends="
 	calls
 	chatty
 	mobile-config-firefox
-	postmarketos-default-camera
 	postmarketos-tweaks
 	postmarketos-welcome
 	postprocessd
