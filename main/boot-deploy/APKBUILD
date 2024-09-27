@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=boot-deploy
 pkgver=0.18
-pkgrel=0
+pkgrel=1
 pkgdesc="tool for finalizing and deploying boot related files"
 url="https://gitlab.com/postmarketos/boot-deploy"
 arch="noarch"
@@ -16,7 +16,7 @@ check() {
 }
 
 package() {
-	install -Dm755 boot-deploy "$pkgdir"/sbin/boot-deploy
+	install -Dm755 boot-deploy "$pkgdir"/usr/bin/boot-deploy
 	install -Dm755 boot-deploy-functions.sh \
 		"$pkgdir"/usr/share/boot-deploy/boot-deploy-functions.sh
 	install -Dm644 "$srcdir"/os-customization \
