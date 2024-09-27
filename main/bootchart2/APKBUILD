@@ -1,7 +1,7 @@
 # Maintainer: Pops Dylan <popsdylan@protonmail.com>
 pkgname=bootchart2
 pkgver=0.14.8_git20170531
-pkgrel=4
+pkgrel=5
 pkgdesc="Boot Process Performance Visualization"
 url="https://github.com/xrmx/bootchart"
 arch="all"
@@ -26,7 +26,7 @@ check() {
 package() {
 	# install everything but the service
 	for target in "py-install-compile" "install-collector" "install-docs"; do
-		make PYTHON=python3 DESTDIR="$pkgdir" "$target"
+		make PYTHON=python3 EARLY_PREFIX="/usr" DESTDIR="$pkgdir" "$target"
 	done
 }
 
