@@ -4,7 +4,7 @@
 # https://gitlab.alpinelinux.org/alpine/aports/-/tree/master/main/installkernel
 pkgname=postmarketos-installkernel
 pkgver=0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="postmarketOS script for installing mainline kernels"
 url="https://gitlab.com/postmarketOS/pmaports/tree/main/postmarketos-installkernel"
 arch="noarch"
@@ -20,7 +20,7 @@ build() {
 }
 
 package() {
-	install -Dm755 "$srcdir"/installkernel-pmos "$pkgdir"/sbin/installkernel
+	install -Dm755 "$srcdir"/installkernel-pmos "$pkgdir"/usr/bin/installkernel
 }
 
 sha512sums="
