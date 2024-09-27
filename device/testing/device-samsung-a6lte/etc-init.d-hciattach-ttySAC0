@@ -21,7 +21,7 @@ start () {
 	if ! [[ -d /sys/class/bluetooth/hci0 ]]; then
 		# on the vendor kernel we have to do a manual hciattach
 		# since we unregistered the rfkill, we won't be able to restart, so this cannot be a "real" service
-		hciattach /dev/ttySAC0 bcm43xx 3000000 flow nosleep "$(bootmac -gb)"
+		hciattach /dev/ttySAC0 bcm43xx 3000000 flow nosleep "$(bootmac -g -b)"
 	fi
 	eend $?
 }
