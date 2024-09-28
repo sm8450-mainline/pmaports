@@ -1,0 +1,12 @@
+# With 87a596f7867a49fae78c05042a92bea3e5e24b0d all GNOME-based UIs have the
+# default accent color set to green.
+#
+# Phosh hasn't implemented accent colors and using green accent colors for apps
+# but not for the shell look inconsistent.
+#
+# Therefore set the blue accent color back until phosh has support for accent colors
+#
+# Ref: https://gitlab.gnome.org/World/Phosh/phosh/-/merge_requests/1533
+# Ref: https://gitlab.com/postmarketOS/pmaports/-/issues/3218
+[org.gnome.desktop.interface]
+accent-color='blue'
