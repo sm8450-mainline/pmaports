@@ -26,7 +26,7 @@ _pmb_recommends="
 	"
 subpackages="$pkgname-openrc"
 source="firefox-wayland.sh"
-options="!check"
+options="!check pmb:systemd"
 
 package() {
 	install -Dm755 \

@@ -37,7 +37,7 @@ source="
 	20_postmarketos-blue-accent.gschema.override
 	firefox-wayland.sh
 "
-options="!check"
+options="!check pmb:systemd"
 
 package() {
 	install -Dm755 \
