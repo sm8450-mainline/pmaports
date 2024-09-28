@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-base-ui
 pkgver=28
-pkgrel=2
+pkgrel=3
 pkgdesc="Meta package for minimal postmarketOS UI base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -238,7 +238,7 @@ wpa_supplicant() {
 }
 
 wpa_supplicant_openrc() {
-	install_if="$pkgname-wpa_supplicant=$pkgver-r$pkgrel openrc"
+	install_if="$pkgname-wifi-wpa_supplicant=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
 
 	depends="wpa_supplicant-openrc openrc"
@@ -261,7 +261,7 @@ iwd() {
 }
 
 iwd_openrc() {
-	install_if="$pkgname-iwd=$pkgver-r$pkgrel openrc"
+	install_if="$pkgname-wifi-iwd=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
 
 	depends="iwd-openrc openrc"
