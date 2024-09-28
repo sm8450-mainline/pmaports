@@ -2,7 +2,7 @@
 # Co-Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-mkinitfs
 pkgver=2.5.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Tool to generate initramfs images for postmarketOS"
 url="https://postmarketos.org"
 depends="
@@ -26,6 +26,7 @@ triggers="$pkgname.trigger=\
 source="
 	https://gitlab.com/postmarketOS/postmarketos-mkinitfs/-/archive/$pkgver/postmarketos-mkinitfs-$pkgver.tar.gz
 	https://gitlab.com/api/v4/projects/postmarketOS%2Fpostmarketos-mkinitfs/packages/generic/mkinitfs-vendor-$pkgver/$pkgver/mkinitfs-vendor-$pkgver.tar.gz
+	0001-add-compile-time-flag-to-disable-Go-GC-MR-56.patch
 	"
 
 install="$pkgname.post-upgrade"
@@ -47,7 +48,15 @@ prepare() {
 
 build() {
 	unset LDFLAGS  # passed to Go as linker flags, which are invalid
-	make VERSION="$pkgver"
+
+	# Go garbage collector malfunctions when running x86_64 binaries in QEMU on
+	# an aarch64 host. See: https://gitlab.com/qemu-project/qemu/-/issues/2560
+	case "$CARCH" in
+	x86_64)
+		make VERSION="$pkgver" DISABLE_GOGC=1 ;;
+	*)
+		make VERSION="$pkgver" ;;
+	esac
 }
 
 package() {
@@ -61,4 +70,5 @@ check() {
 sha512sums="
 6f2e5c8281a8e6b340f2288b31fb102dcc98480e8bf905bf57a54a81d36a5615b194f0a56f5cd3be207784278257eb6ee3dfecaccb60c3332f4d0f45bafedaa3  postmarketos-mkinitfs-2.5.1.tar.gz
 420e4bd8126f765c18b3ea48b2dc7356727958826dbe1086b753f5d46bc9b56d25ed668db8f9f4e8c9d5b1e943105850071c9c3ce442daf12eaa80516e973372  mkinitfs-vendor-2.5.1.tar.gz
+2af899c69cbdc84ca85f2a5fe609974b2b9e4c0389d9487596d86d403e55b09fdc2e7daf4452bf33b8a27a2b37339d9311b8d1f903074a1410689665425b7d68  0001-add-compile-time-flag-to-disable-Go-GC-MR-56.patch
 "

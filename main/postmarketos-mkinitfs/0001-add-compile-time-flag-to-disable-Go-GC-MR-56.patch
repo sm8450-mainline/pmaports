@@ -1,0 +1,59 @@
+From d63e60061419cb1cb1591c9f7f5f238d1201b7f1 Mon Sep 17 00:00:00 2001
+From: Clayton Craft <clayton@craftyguy.net>
+Date: Sat, 28 Sep 2024 08:11:19 -0700
+Subject: [PATCH] add compile-time flag to disable Go GC (MR 56)
+
+I hate this, but it's the only good way I could find to allow working around this ugly QEMU bug:
+https://gitlab.com/qemu-project/qemu/-/issues/2560
+---
+ Makefile             | 5 +++++
+ cmd/mkinitfs/main.go | 8 ++++++++
+ 2 files changed, 13 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index e4fbcdd..0b1e841 100644
+--- a/Makefile
++++ b/Makefile
+@@ -13,6 +13,11 @@ GOFLAGS?=
+ LDFLAGS+=-s -w -X main.Version=$(VERSION)
+ RM?=rm -f
+ GOTEST=go test -count=1 -race
++DISABLE_GOGC?=
++
++ifeq ($(DISABLE_GOGC),1)
++	LDFLAGS+=-X main.DisableGC=true
++endif
+ 
+ GOSRC!=find * -name '*.go'
+ GOSRC+=go.mod go.sum
+diff --git a/cmd/mkinitfs/main.go b/cmd/mkinitfs/main.go
+index 138667b..6494504 100644
+--- a/cmd/mkinitfs/main.go
++++ b/cmd/mkinitfs/main.go
+@@ -9,6 +9,8 @@ import (
+ 	"log"
+ 	"os"
+ 	"path/filepath"
++	"runtime/debug"
++	"strings"
+ 	"time"
+ 
+ 	"gitlab.com/postmarketOS/postmarketos-mkinitfs/internal/archive"
+@@ -26,8 +28,14 @@ import (
+ 
+ // set at build time
+ var Version string
++var DisableGC string
+ 
+ func main() {
++	// To allow working around silly GC-related issues, like https://gitlab.com/qemu-project/qemu/-/issues/2560
++	if strings.ToLower(DisableGC) == "true" {
++		debug.SetGCPercent(-1)
++	}
++
+ 	retCode := 0
+ 	defer func() { os.Exit(retCode) }()
+ 
+-- 
+2.46.2
+
