@@ -7,7 +7,7 @@
 pkgname=systemd-services
 # 1. bump pkgver
 pkgver=23
-pkgrel=0
+pkgrel=1
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
 arch="noarch"
@@ -31,16 +31,16 @@ subpackages="
 	hexagonrpcd-systemd:_service
 	iio-sensor-proxy-systemd:_service
 	iwd-systemd:_service
-	lxc-systemd:_service
+	kactivitymanagerd-systemd:_service
 	kded-systemd:_service
+	kglobalacceld-systemd:_service
+	lxc-systemd:_service
 	mmsd-tng-systemd:_service
 	modemmanager-systemd:_service
 	nftables-systemd:_service
 	openssh-server-pam-systemd:_service
 	pd-mapper-systemd:_service
 	phosh-systemd:_service
-	plasma-kactivitymanagerd:_service
-	plasma-kglobalacceld:_service
 	plasma-mobile-systemd:_service
 	q6voiced-systemd:_service
 	qbootctl-systemd:_service
@@ -50,13 +50,13 @@ subpackages="
 	sleep-inhibitor-systemd:_service
 	tqftpserv-systemd:_service
 	udisks2-systemd:_service
-	waydroid-container-systemd:_service
 	waydroid-sensors-systemd:_service
+	waydroid-systemd:_service
 	wireplumber-systemd:_service
 	wpa_supplicant-systemd:_service
-	xdg-desktop-portal-systemd:_service
-	xdg-desktop-portal-gtk-systemd:_service
 	xdg-desktop-portal-gnome-systemd:_service
+	xdg-desktop-portal-gtk-systemd:_service
+	xdg-desktop-portal-systemd:_service
 	xdg-desktop-portal-wlr-systemd:_service
 "
 # 3. Add a new entry below with the list of service files
@@ -84,16 +84,16 @@ _gnome_clocks_sources="user/gnome-clocks.service"
 _hexagonrpcd_sources="system/hexagonrpcd-sdsp.service system/iio-sensor-proxy.d/hexagonrpcd.conf"
 _iio_sensor_proxy_sources="system/iio-sensor-proxy.service"
 _iwd_sources="system/iwd.service" # From https://git.kernel.org/pub/scm/network/wireless/iwd.git/tree/src/iwd.service.in
-_lxc_sources="system/lxc@.service"
+_kactivitymanagerd_sources="user/plasma-kactivitymanagerd.service"
 _kded_sources="user/kded.service" # From https://invent.kde.org/frameworks/kded/-/blob/master/src/plasma-kded6.service.in
+_kglobalacceld_sources="user/plasma-kglobalaccel.service"
+_lxc_sources="system/lxc@.service"
 _mmsd_tng_sources="user/mmsd-tng.service"
 _modemmanager_sources="system/ModemManager.service"
 _nftables_sources="system/nftables.service"
 _openssh_server_pam_sources="system/sshd.service system/sshdgenkeys.service"
 _pd_mapper_sources="system/pd-mapper.service"
 _phosh_sources="system/phosh.service"
-_plasma_kactivitymanagerd_sources="user/plasma-kactivitymanagerd.service"
-_plasma_kglobalacceld_sources="user/plasma-kglobalaccel.service"
 _plasma_mobile_sources="system/plasma-mobile.service"
 _q6voiced_sources="system/q6voiced.service"
 _qbootctl_sources="system/qbootctl.service"
@@ -103,7 +103,7 @@ _sensorfw_sources="system/sensorfwd.service"
 _sleep_inhibitor_sources="system/sleep-inhibitor.service"
 _tqftpserv_sources="system/tqftpserv.service"
 _udisks2_sources="system/udisks2.service" # From https://github.com/storaged-project/udisks/blob/master/data/udisks2.service.in
-_waydroid_container_sources="system/waydroid-container.service"
+_waydroid_sources="system/waydroid-container.service"
 _waydroid_sensors_sources="system/waydroid-sensors.service"
 _wireplumber_sources="user/wireplumber.service"  # https://gitlab.freedesktop.org/pipewire/wireplumber/-/blob/master/src/systemd/user
 _wpa_supplicant_sources="system/wpa_supplicant.service"
@@ -138,7 +138,9 @@ source="$(flatpath \
 	$_hexagonrpcd_sources \
 	$_iio_sensor_proxy_sources \
 	$_iwd_sources \
+	$_kactivitymanagerd_sources \
 	$_kded_sources \
+	$_kglobalacceld_sources \
 	$_lxc_sources \
 	$_mmsd_tng_sources \
 	$_modemmanager_sources \
@@ -146,8 +148,6 @@ source="$(flatpath \
 	$_openssh_server_pam_sources \
 	$_pd_mapper_sources \
 	$_phosh_sources \
-	$_plasma_kactivitymanagerd_sources \
-	$_plasma_kglobalacceld_sources \
 	$_plasma_mobile_sources \
 	$_q6voiced_sources \
 	$_qbootctl_sources \
@@ -157,13 +157,13 @@ source="$(flatpath \
 	$_sleep_inhibitor_sources \
 	$_tqftpserv_sources \
 	$_udisks2_sources \
-	$_waydroid_container_sources \
 	$_waydroid_sensors_sources \
+	$_waydroid_sources \
 	$_wireplumber_sources \
 	$_wpa_supplicant_sources \
-	$_xdg_desktop_portal_sources \
-	$_xdg_desktop_portal_gtk_sources \
 	$_xdg_desktop_portal_gnome_sources \
+	$_xdg_desktop_portal_gtk_sources \
+	$_xdg_desktop_portal_sources \
 	$_xdg_desktop_portal_wlr_sources \
 )"
 
@@ -254,8 +254,8 @@ b009a1494f84705dcbea664823e24fb18f326ca84017d9c470ef55c0225d519993aacacf76b24c89
 af0e416f78ab317fe09813de58b446e5178457992ea4a2da2eb128811045201087d847e1b7ac0447a59c20129a736135e5d76b113262aa1f76b994e77b9c6b42  system-iio-sensor-proxy.d-hexagonrpcd.conf
 d12ebe6e7db2a8e34baab640dd4e2ea9cd01bc19054adf32d55528a6b27f71c2006ac2d65a58c98e21ed598e9cc66bfe79e197d20ed9d13f866a5a6cd3e247d5  system-iio-sensor-proxy.service
 df3388cb7b9d035e54b34d8f8a6594be89c3015f979fe3bdc199fb7db1ab0bef821d6b306eecdf978eb227454d5e50aab29ac02d9722b1b075ec0ce4705e3518  system-iwd.service
-f6fb4c890cbf72e344ca7a22e7f033fb4c32ce9f5edc27c03ccc5c21424d6a0ef871d79e8a89a502a707bdceb3bfbd7a5b3c8e16b1cd30e149bf2fdf8cccea9e  system-lxc@.service
 b0ecd5d413a2010d3f36285c2d35523119c29007e1e4162e51dfc746cc105f990a82a2a2d6037a8b906628c0a4f606729290525c7a53dbcfbc8147244fa403a7  user-kded.service
+f6fb4c890cbf72e344ca7a22e7f033fb4c32ce9f5edc27c03ccc5c21424d6a0ef871d79e8a89a502a707bdceb3bfbd7a5b3c8e16b1cd30e149bf2fdf8cccea9e  system-lxc@.service
 873b53592786a978659bda8d32de5ed9a9f163ca298c4f4112f10bf635a8170c4060cc15b57ff72b3afd50075cd1c5dbc10030f00b166e2540397da9e1c5e46b  user-mmsd-tng.service
 5eab6a59c81232b188df45482e325b2d1cb9e038ca147a1b6983c1c095d8194fba804793c5e291b201a820976c8f506aadd2daf7c52fe573a3af708fc9984641  system-ModemManager.service
 12bb9aa2a2ab8d4b21c72a785b41057eb16a27eca5718cd03a987a50b77d669fe90abafae48c68b41616f31b1953853b3b4a74db4bc3cdeccacc00df113de204  system-nftables.service
