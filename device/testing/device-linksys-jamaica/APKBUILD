@@ -1,8 +1,9 @@
 # Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: exkc <exkc@exkc.moe>
 pkgname=device-linksys-jamaica
 pkgdesc="Linksys EA9350 V3"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -39,7 +40,7 @@ nonfree_firmware() {
 }
 
 sha512sums="
-c5c0f00a3da2e75b3670444e47ff6893597e7afb3ebc24abf90debc608e72d6cd1071c9435ffc7d64e44ec574c35862286662d882150ddaa33c6ea65181385ad  boot-image.its
-a172a3d613fd55b95f54b891f58a3f4f6289873a861f3c21186bcc5d85166a124960e578f475f419188c5ae7b084a16a7b8a1176e1f150c5ba65f1f554d29227  deviceinfo
-401f734389592e11fc9e6bb215f8fd708d27028a68bb770ddd5697a65df38552dd57c94a1edd95e0954e5458a80291895f1aa47dd21fe3e558dfb16aa49d21f8  initfs-hook.sh
+114f469383b811ff68504262f7ddc2c7554d93dcc7aeb3bdb0be503effc3acf18aebac0fa92df73a6b01f2f7e42dcb3a15b26b39cf2a1e0af16cf39edee65f9f  boot-image.its
+565f1fa487083671cd643047054296c7d419d0d466013401141b0f991e65513e066c52c55b0cc9296f58f1623ce3df7e567bf05d1fd2e98ecfeb9177be6f4c3b  initfs-hook.sh
+ad030f57607f6b9d866039f223eaf97275ea418f0751b051630940149d3aaa08129f24f3e7fae966cb91bcf0f6276164669367b7c603e5e253e85f0ad84d3dd0  deviceinfo
 "
