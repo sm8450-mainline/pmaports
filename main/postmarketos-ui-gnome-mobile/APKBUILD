@@ -1,8 +1,8 @@
 # Reference: https://postmarketos.org/uipkg
 # Maintainer: Newbyte <newbyte@postmarketos.org>
 pkgname=postmarketos-ui-gnome-mobile
-pkgver=2
-pkgrel=7
+pkgver=3
+pkgrel=0
 pkgdesc="(Wayland) Gnome Shell patched to adapt better to phones (Experimental)"
 url="https://gnome.org/"
 arch="noarch !armhf !riscv64" # gnome-shell / riscv64: mutter-mobile
@@ -34,13 +34,20 @@ _pmb_recommends="
 	gnome-extensions-app
 	"
 subpackages="$pkgname-openrc"
-source="firefox-wayland.sh"
+source="
+	20_postmarketos-blue-accent.gschema.override
+	firefox-wayland.sh
+"
 options="!check"
 
 package() {
 	install -Dm755 \
 		"$srcdir"/firefox-wayland.sh \
 		-t "$pkgdir"/etc/profile.d/
+
+	# TODO: Remove once gnome-mobile is upgraded to 47
+	install -Dm644 "$srcdir"/20_postmarketos-blue-accent.gschema.override \
+		-t "$pkgdir"/usr/share/glib-2.0/schemas/
 }
 
 openrc() {
@@ -52,5 +59,6 @@ openrc() {
 }
 
 sha512sums="
+224019eb563b62ce3c0cff46f1a4b875b916bd91d3ef866afe4a79da2d4d8b41b86df0e39a598a5dd4dd96483527916b499a66a0b4fddb08e94a7436d6620d5e  20_postmarketos-blue-accent.gschema.override
 0d9ec58be7dc354e181989c7f08e7d4dd93fefd06a99e784b87fe898479dd47a40dfa9689c6a63ebdc04bf87883a270686aec27f7cc34cb21ec0f370a4afe2d8  firefox-wayland.sh
 "
