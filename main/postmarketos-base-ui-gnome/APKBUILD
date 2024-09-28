@@ -1,7 +1,7 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=postmarketos-base-ui-gnome
-pkgver=3
-pkgrel=13
+pkgver=4
+pkgrel=0
 pkgdesc="Meta package for shared configuration for GNOME-based UIs"
 url="https://postmarketos.org"
 arch="noarch"
@@ -25,6 +25,7 @@ depends="
 	"
 source="
 	00_postmarketos-base-ui-gnome.gschema.override
+	10_postmarketos-green-accent.gschema.override
 	"
 options="!check"
 subpackages="$pkgname-openrc"
@@ -71,4 +72,5 @@ openrc() {
 
 sha512sums="
 1f68138876f2270943c88fd6f914f156692397a840f4945564cce0ed6e5d56943661fee025e0e4e0881b5df18a4f5f290086eb67be945e59abd5fe4c71cf5e67  00_postmarketos-base-ui-gnome.gschema.override
+ac597d87ab0502a54481d4c0640cba7cd7fbf6380fe429ec85aefa77b796744a64c1b98fb91eb15e4e75b8781fa3c67809803d07bed085b1ff176c5aacbc5090  10_postmarketos-green-accent.gschema.override
 "
