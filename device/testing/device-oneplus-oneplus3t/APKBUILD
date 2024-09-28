@@ -2,7 +2,7 @@
 pkgname=device-oneplus-oneplus3t
 pkgdesc="OnePlus 3T"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -38,7 +38,7 @@ package() {
 	devicepkg_package $startdir $pkgname
 
 	install -D -m644 "$srcdir"/10-local-powersave.rules \
-		-t "$pkgdir"/lib/udev/rules.d
+		-t "$pkgdir"/usr/lib/udev/rules.d
 	install -D -m644 "$srcdir"/gpu-nobin.sh \
 		-t "$pkgdir"/etc/profile.d
 }
