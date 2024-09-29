@@ -3,7 +3,7 @@
 pkgname=libcamera
 pkgver=9999
 _pkgver=0.3.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Linux camera framework"
 url="https://libcamera.org/"
 arch="all"
@@ -97,7 +97,7 @@ package() {
 	done
 
 	install -Dm644 "$srcdir"/90-libcamera.rules \
-		-t "$pkgdir"/lib/udev/rules.d/
+		-t "$pkgdir"/usr/lib/udev/rules.d/
 }
 
 ipa() {
