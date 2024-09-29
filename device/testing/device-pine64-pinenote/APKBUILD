@@ -2,7 +2,7 @@
 pkgname=device-pine64-pinenote
 pkgdesc="Pine64 PineNote"
 pkgver=2
-pkgrel=5
+pkgrel=6
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -40,9 +40,9 @@ package() {
 	install -Dm644 "$srcdir"/50-touchscreen.conf \
 		-t "$pkgdir"/etc/X11/xorg.conf.d
 	install -Dm644 "$srcdir"/81-libinput-pinenote.rules \
-		-t "$pkgdir"/lib/udev/rules.d
+		-t "$pkgdir"/usr/lib/udev/rules.d
 	install -Dm644 "$srcdir"/82-ebc-rockchip.rules \
-		"$pkgdir"/lib/udev/rules.d
+		"$pkgdir"/usr/lib/udev/rules.d
 }
 
 gnome() {
