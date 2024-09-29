@@ -5,7 +5,7 @@
 pkgname=systemd
 pkgver=256.5
 _pkgver="musl-v${pkgver//_/-}"
-pkgrel=0
+pkgrel=1
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !armhf !s390x" # blocked by pmboostrap not supporting
@@ -124,6 +124,7 @@ subpackages="
 
 source="
 	https://gitlab.com/postmarketOS/systemd/-/archive/$_pkgver/systemd-$_pkgver.tar.gz
+	4.patch
 	systemd-apk-macros.sh
 	wired.network
 	"
@@ -155,6 +156,8 @@ _default_zshcomp() {
 build() {
 	abuild-meson \
 		-Dmode=release \
+		-Dsplit-bin=true \
+		-Dsplit-usr=true \
 		\
 		-Dkmod-path=/bin/kmod \
 		-Dsulogin-path=/sbin/sulogin \
@@ -248,10 +251,16 @@ udevd() {
 	amove usr/lib/systemd/system/sysinit.target.wants/systemd-udev*
 	amove usr/lib/systemd/system/systemd-udev*
 	amove usr/lib/systemd/systemd-udevd
-	amove usr/lib/udev
+	amove lib/udev
+
+	mkdir -p "$subpkgdir"/sbin "$subpkgdir"/bin
 
 	# Install a symlink to /usr/bin to be compatible with eudev
 	ln -sf /usr/lib/systemd/systemd-udevd "$subpkgdir"/usr/bin/udevd
+	# Install split-user symlinks
+	ln -sf /usr/lib/systemd/systemd-udevd "$subpkgdir"/sbin/udevd
+	ln -sf /usr/lib/systemd/systemd-udevd "$subpkgdir"/bin/udevadm
+	ln -sf /usr/lib/systemd/systemd-udevd "$subpkgdir"/sbin/udevadm
 }
 
 udevd_bcomp() {
@@ -328,9 +337,9 @@ resolved() {
 	provides="resolvconf"
 
 	amove etc/systemd/resolved.conf
+	amove usr/sbin/resolvconf
 	amove usr/lib/systemd/system/systemd-resolved.service
 	amove usr/lib/systemd/systemd-resolved
-	amove usr/bin/resolvconf
 	amove usr/bin/resolvectl
 	amove usr/bin/systemd-resolve
 	amove usr/lib/tmpfiles.d/systemd-resolve.conf
@@ -420,6 +429,7 @@ dev() {
 
 sha512sums="
 5d1f4625b75b6637afa71519bc7048fe899b4f5785ce26316524ac78941e43cf6ba83391dae68497cfa4f8aaa35d953ec0c04ee581307ffc7007cf4b9d9c4454  systemd-musl-v256.5.tar.gz
+e8ced12eb67a261a5c2788487053451c352e0b2ebe3d72aaf84a3011dc92981affe4f036f693260fc8ee4a49f02de4522fd022e5783dba939023f13891ab228e  4.patch
 73d10e72413c6b688c847c667ccb42ef1f273d498e4b4ff5344dc98432e05aab92bbcd42725935b15f3ebcc627729318ac592c3372cf22465f39ea93a5dedc8b  systemd-apk-macros.sh
 81c897fed8a3fbfb67ec591b2398a5d65e4af1b3ef379376c157c98d71f085b707f8ebc896d5571a94f99f8fc84fd6b43e3b879ca9b0d57fc6c4596034c7a777  wired.network
 "
