@@ -1,7 +1,7 @@
 # Maintainer: sleirsgoevy <sleirsgoevy@gmail.com>
 pkgname=samsungipcd
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="AT modem emulation using libsamsung-ipc"
 url="https://gitlab.com/sleirsgoevy/samsungipcd"
 arch="all"
@@ -25,7 +25,7 @@ build() {
 package() {
 	make PREFIX="$pkgdir/usr" install
 	install -Dm755 "$srcdir/samsungipcd.sh" "$pkgdir/etc/init.d/samsungipcd"
-	install -Dm644 "$srcdir/90-ttywc.rules" "$pkgdir/lib/udev/rules.d/90-ttywc.rules"
+	install -Dm644 "$srcdir/90-ttywc.rules" "$pkgdir/usr/lib/udev/rules.d/90-ttywc.rules"
 }
 
 openrc() {
