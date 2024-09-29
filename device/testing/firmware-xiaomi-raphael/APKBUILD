@@ -1,6 +1,6 @@
 pkgname=firmware-xiaomi-raphael
-pkgver=20240820
-pkgrel=2
+pkgver=20240929
+pkgrel=0
 pkgdesc="Firmware for Xiaomi Mi 9T Pro / Redmi K20 Pro"
 arch="aarch64"
 _carch="arm64"
@@ -20,11 +20,10 @@ subpackages="
 url="https://github.com/dabao1955/pmos_firmware_xiaomi_raphael"
 license="proprietary"
 options="!check !strip !archcheck !tracedeps pmb:cross-native"
-_commit="45b6e993cf5d6fec447d924cf773783a8dbfb596"
+_commit="89149ad98c7c8443946a518e9fb2ff2e2c83d54d"
 source="
 	https://github.com/dabao1955/pmos_firmware_xiaomi_raphael/archive/$_commit.tar.gz
-	30-gpu-firmware.files
-	"
+	30-gpu-firmware.files"
 builddir="$srcdir/pmos_firmware_xiaomi_raphael-$_commit"
 
 package() {
@@ -38,7 +37,6 @@ package() {
 adreno() {
 	pkgdesc="Xiaomi raphael adreno firmware"
 	depends="firmware-qcom-adreno-a650"
-	ls "$builddir"
 	install -Dm644 "$builddir"/sm8150/raphael/a6* -t \
 		"$subpkgdir/lib/firmware/qcom/sm8150/Xiaomi/raphael/"
 }
@@ -106,5 +104,5 @@ wlan() {
 }
 
 sha512sums="
-6e1b7d49846fa9834ccd8ee3bb64751c844bdfff52a4501a048f9055e59afb1f31b69bd5b2cd8296d86b89064c86cabb9c7e9dc9db9cd9fb43db9e4b4b478a39 45b6e993cf5d6fec447d924cf773783a8dbfb596.tar.gz
-84f75192d6e9c413c2c583b034fcd87e44e39197883047cd77d976b47e8d31e6429db24110addfeed348712773163af69492fb0687a770f3994d697b740875c9  30-gpu-firmware.files"
+6a0305e70ffb581b957e5b987048931d3900416753189e967d2f2a5a5826ab30a929ebbd6f79fb64a80c00cef5bc6583bbd1c6825044b03f5d6fc352f84e318b  89149ad98c7c8443946a518e9fb2ff2e2c83d54d.tar.gz
+cbfb62e7890e87d2dd06b54edb0df90904a62d6f6e34c48a86e784a6277f5472760ac7775b2feea91abbb30ba26fd810719250618b91b23a8913a759c681d6cb  30-gpu-firmware.files"
