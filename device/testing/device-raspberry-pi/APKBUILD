@@ -2,7 +2,7 @@
 pkgname=device-raspberry-pi
 pkgdesc="Raspberry Pi"
 pkgver=1
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="armhf"
@@ -11,7 +11,9 @@ depends="postmarketos-base raspberrypi-bootloader"
 makedepends="devicepkg-dev"
 subpackages="
 	$pkgname-kernel-rpi:kernel_rpi
+	$pkgname-kernel-rpi-openrc:kernel_rpi_openrc
 	$pkgname-kernel-rpi2:kernel_rpi2
+	$pkgname-kernel-rpi2-openrc:kernel_rpi2_openrc
 	$pkgname-sway
 	$pkgname-phosh
 "
@@ -38,15 +40,25 @@ package() {
 kernel_rpi() {
 	pkgdesc="Kernel for the Raspberry Pi 1 (from Alpine, depends on non free firmware!)"
 	depends="$pkgname linux-rpi"
-	install="$subpkgname.post-install $subpkgname.post-upgrade"
 	mkdir "$subpkgdir"
+}
+
+kernel_rpi_openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel $pkgname-kernel-rpi openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	mkdir -p "$subpkgdir"
 }
 
 kernel_rpi2() {
 	pkgdesc="Kernel for the Raspberry Pi 2 (from Alpine, depends on non free firmware!)"
-	depends="$pkgname linux-rpi"
-	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="$pkgname linux-rpi2"
 	mkdir "$subpkgdir"
+}
+
+kernel_rpi2_openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel $pkgname-kernel-rpi2 openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	mkdir -p "$subpkgdir"
 }
 
 sway() {
