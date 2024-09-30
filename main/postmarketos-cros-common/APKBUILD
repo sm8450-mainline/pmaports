@@ -2,7 +2,7 @@
 pkgname=postmarketos-cros-common
 pkgdesc="Common package for Chrome OS devices"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64 armv7 x86_64 x86" # there are no cros devices of other arches
@@ -10,7 +10,7 @@ options="!check !archcheck !tracedeps"
 subpackages="
 	$pkgname-gnome
 	$pkgname-sway
-	postmarketos-cros-keymap:_keymap
+	postmarketos-cros-keymap-openrc:_keymap_openrc
 "
 source="
 	00_postmarketos-cros-common-gnome.gschema.override
@@ -60,9 +60,10 @@ sway() {
 
 # Custom keyboard layout documented on
 # https://wiki.postmarketos.org/wiki/Category:ChromeOS#Keyboard_mapping
-_keymap() {
+_keymap_openrc() {
 	depends="cros-keyboard-map cros-keyboard-map-openrc keyd-openrc"
-	install="postmarketos-cros-keymap.post-install"
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="postmarketos-cros-keymap-openrc.post-install"
 	mkdir -p "$subpkgdir"
 }
 
