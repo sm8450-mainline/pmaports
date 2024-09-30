@@ -3,7 +3,7 @@
 pkgname=soc-qcom-msm8916
 pkgdesc="Common package for Qualcomm MSM8916 devices"
 pkgver=21
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64 armv7"
@@ -15,6 +15,7 @@ subpackages="
 	$pkgname-rproc-none:rproc_none
 	$pkgname-rproc-no-modem:rproc_no_modem
 	$pkgname-rproc-all:rproc_all
+	$pkgname-rproc-all-openrc:rproc_all_openrc
 	soc-samsung-msm8916-modem-workaround:samsung_modem_workaround
 "
 
@@ -70,11 +71,16 @@ rproc_all() {
 	provider_priority=100
 
 	depends="msm-modem msm-modem-uim-selection q6voiced"
-	install="$subpkgname.post-install"
 	replaces="soc-qcom-msm8916-modem"
 
 	mkdir -p "$subpkgdir"/boot
 	echo all > "$subpkgdir"/boot/lk2nd_rproc_mode
+}
+
+rproc_all_openrc() {
+	install_if="$pkgname-rproc-all=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install"
+
 	install -Dm644 q6voiced.conf "$subpkgdir"/etc/conf.d/q6voiced
 }
 
