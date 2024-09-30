@@ -3,7 +3,7 @@
 pkgname=device-google-sargo
 pkgdesc="Google Pixel 3a"
 pkgver=6
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -28,7 +28,10 @@ source="
 	no-hexagonrpcd-on-suspend.sh
 	q6voiced.conf
 "
-subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
+subpackages="
+	$pkgname-nonfree-firmware:nonfree_firmware
+	$pkgname-nonfree-firmware-openrc:nonfree_firmware_openrc
+	"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -55,27 +58,25 @@ nonfree_firmware() {
 		soc-qcom-sdm845-modem
 		soc-qcom-sdm845-nonfree-firmware
 	"
-	# Enable HexagonRPCD by default, but not if the user installed this
-	# package then disabled it.
-	install="
-		device-google-sargo-nonfree-firmware.post-install
-	"
-
-	# The q6voiced configuration can only be used if the ADSP is brought up
-	# via non-free firmware.
-	install -Dm644 "$srcdir"/q6voiced.conf "$subpkgdir"/etc/conf.d/q6voiced
-
-	# Sensors depend on ADSP firmware and the sensors registry served over FastRPC.
-	install -Dm644 "$srcdir"/hexagonrpcd-adsp-sensorspd.confd \
-		"$subpkgdir"/etc/conf.d/hexagonrpcd-adsp-sensorspd
-
 	# Sensors depend on ADSP firmware and the sensors registry served over FastRPC.
 	install -Dm644 "$srcdir"/81-libssc-google-sargo.rules \
 		"$subpkgdir"/usr/lib/udev/rules.d/81-libssc-google-sargo.rules
+}
 
+nonfree_firmware_openrc() {
+	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel openrc"
+	# Enable HexagonRPCD by default, but not if the user installed this
+	# package then disabled it.
+	install="$subpkgname.post-install"
 	# The FastRPC service is only enabled when non-free firmware is installed.
 	install -Dm755 "$srcdir"/no-hexagonrpcd-on-suspend.sh \
 		"$subpkgdir"/etc/elogind/system-sleep/no-hexagonrpcd-on-suspend.sh
+	# The q6voiced configuration can only be used if the ADSP is brought up
+	# via non-free firmware.
+	install -Dm644 "$srcdir"/q6voiced.conf "$subpkgdir"/etc/conf.d/q6voiced
+	# Sensors depend on ADSP firmware and the sensors registry served over FastRPC.
+	install -Dm644 "$srcdir"/hexagonrpcd-adsp-sensorspd.confd \
+		"$subpkgdir"/etc/conf.d/hexagonrpcd-adsp-sensorspd
 }
 
 sha512sums="
