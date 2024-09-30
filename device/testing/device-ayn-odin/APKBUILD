@@ -3,7 +3,7 @@
 pkgname=device-ayn-odin
 pkgdesc="AYN Odin"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -31,10 +31,11 @@ source="
 subpackages="
 	$pkgname-kernel-odin:kernel_odin
 	$pkgname-kernel-odin-m2:kernel_odin_m2
+	$pkgname-openrc
 	$pkgname-phosh:_phosh
 	$pkgname-phosh-m2:_phosh_m2
 "
-install="$pkgname.post-install"
+
 replaces="hexagonrpcd-openrc"
 
 build() {
@@ -57,6 +58,13 @@ kernel_odin_m2() {
 	pkgdesc="AYN Odin M2"
 	depends="linux-ayn-odin"
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install"
+
+	mkdir -p "$subpkgdir"
 }
 
 _phosh() {
