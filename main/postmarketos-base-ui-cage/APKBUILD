@@ -2,7 +2,7 @@
 # Co-Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=postmarketos-base-ui-cage
 pkgver=3
-pkgrel=0
+pkgrel=1
 pkgdesc="Meta package for shared configuration for cage UIs"
 arch="all"
 url="https://postmarketos.org/"
@@ -34,11 +34,19 @@ depends="
 	tinydm-openrc
 	jq
 "
+subpackages="$pkgname-openrc"
 
 package() {
 	install -Dm755 "$srcdir"/cage-ui-session.sh -t "$pkgdir"/usr/share/cage-ui/
 	install -Dm755 "$srcdir"/cage-ui-autorotate.sh -t "$pkgdir"/usr/share/cage-ui/
 	install -Dm644 "$srcdir"/cage-ui.desktop -t "$pkgdir"/usr/share/wayland-sessions/
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+
+	mkdir -p "$subpkgdir"
 }
 
 sha512sums="
