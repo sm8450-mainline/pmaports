@@ -3,7 +3,7 @@
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-nokia-n900
 pkgver=30
-pkgrel=0
+pkgrel=1
 pkgdesc="Nokia N900"
 url="https://postmarketos.org"
 arch="armv7"
@@ -22,13 +22,14 @@ depends="
 	wl1251-cal-openrc
 "
 makedepends="devicepkg-dev u-boot-tools kbd kbd-bkeymaps"
-install="$pkgname.pre-upgrade $pkgname.post-install"
+install="$pkgname.post-install $pkgname.pre-upgrade"
 subpackages="
 	$pkgname-x11
 	$pkgname-xkeyboard-config:xkeyboard_config
 	$pkgname-i3wm
 	$pkgname-upower
 	$pkgname-sxmo
+	$pkgname-openrc
 "
 source="
 	10-initfs-keymap.files
@@ -204,6 +205,13 @@ upower() {
 	replaces="upower"
 	install -Dm644 "$srcdir"/upower.conf \
 		"$subpkgdir"/etc/UPower/UPower.conf
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install"
+
+	mkdir -p "$subpkgdir"
 }
 
 sha512sums="
