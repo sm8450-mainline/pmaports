@@ -1,19 +1,18 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=msm-cros-efs-loader
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="EFS loader for Qualcomm-based Chrome OS devices"
 url="https://gitlab.postmarketos.org/postmarketOS/msm-cros-efs-loader"
 arch="aarch64"
 license="GPL-3.0-or-later"
-install="$pkgname.post-install"
 _tag="v$pkgver"
 source="$pkgname-$pkgver.tar.gz::$url/-/archive/$_tag/msm-cros-efs-loader-$_tag.tar.gz
 	$pkgname.initd
 	rmtfs.confd
 "
 options="!check !archcheck"
-subpackages="$pkgname-rmtfs"
+subpackages="$pkgname-rmtfs $pkgname-openrc"
 builddir="$srcdir/$pkgname-$_tag"
 
 package() {
@@ -27,6 +26,13 @@ rmtfs() {
 	replaces="rmtfs-openrc"
 
 	install -Dm644 "$srcdir"/rmtfs.confd "$subpkgdir"/etc/conf.d/rmtfs
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install"
+
+	mkdir -p "$subpkgdir"
 }
 
 
