@@ -3,7 +3,7 @@
 pkgname=device-lenovo-q706f
 pkgdesc="Lenovo Xiaoxin Pad Pro 12.6 (Lenovo Tab P12 Pro)"
 pkgver=3
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -21,7 +21,6 @@ depends="
 "
 makedepends="devicepkg-dev"
 replaces="hexagonrpcd-openrc"
-install="$pkgname.post-install $pkgname.post-upgrade"
 source="
 	81-libssc-lenovo-q706f.rules
 	alsa-ucm-conf/q706f.conf
@@ -33,6 +32,8 @@ source="
 
 subpackages="
 	$pkgname-nonfree-firmware:nonfree_firmware
+	$pkgname-nonfree-firmware-openrc:nonfree_firmware_openrc
+	$pkgname-openrc
 "
 
 build() {
@@ -55,8 +56,6 @@ package() {
 
 	install -Dm644 "$srcdir"/81-libssc-lenovo-q706f.rules \
 		"$pkgdir"/usr/lib/udev/rules.d/81-libssc-lenovo-q706f.rules
-	install -Dm644 "$srcdir"/hexagonrpcd.confd \
-		"$pkgdir"/etc/conf.d/hexagonrpcd-sdsp
 }
 
 nonfree_firmware() {
@@ -74,8 +73,22 @@ nonfree_firmware() {
 		pd-mapper
 		tqftpserv
 		"
-	install="$subpkgname.post-install $subpkgname.post-upgrade"
 	mkdir "$subpkgdir"
+}
+
+nonfree_firmware_openrc() {
+	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+
+	mkdir "$subpkgdir"
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+
+	install -Dm644 "$srcdir"/hexagonrpcd.confd \
+		"$subpkgdir"/etc/conf.d/hexagonrpcd-sdsp
 }
 
 sha512sums="
