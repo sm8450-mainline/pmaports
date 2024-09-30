@@ -1,6 +1,6 @@
 pkgname=postmarketos-base
 pkgver=36
-pkgrel=4
+pkgrel=5
 pkgdesc="Meta package for minimal postmarketOS base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -22,7 +22,7 @@ depends="
 _pmb_recommends="
 	doas
 "
-install="$pkgname.post-install $pkgname.post-upgrade"
+install="$pkgname.post-install"
 triggers="$pkgname.trigger=/usr/share/deviceinfo"
 subpackages="
 	$pkgname-doas
@@ -148,7 +148,7 @@ nofde() {
 
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
-	install="$subpkgname.post-install"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
 	replaces="
 		busybox-openrc
 		openrc
