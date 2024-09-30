@@ -2,14 +2,16 @@
 pkgname=soc-qcom-sc7180
 pkgdesc="Common package for Qualcomm Snapdragon 7cx devices"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
 options="!check !archcheck !tracedeps"
 subpackages="
 	$pkgname-nonfree-firmware:nonfree_firmware
+	$pkgname-nonfree-firmware-openrc:nonfree_firmware_openrc
 	$pkgname-nonfree-firmware-woa:nonfree_firmware_woa
+	$pkgname-nonfree-firmware-woa-openrc:nonfree_firmware_woa_openrc
 	$pkgname-vulkan
 "
 source="00-sc7180-nonstrict-iommu.sh"
@@ -23,7 +25,13 @@ package() {
 
 nonfree_firmware() {
 	pkgdesc="Modem, WiFi firmware"
-	depends="rmtfs rmtfs-openrc"
+	depends="rmtfs"
+	mkdir "$subpkgdir"
+}
+
+nonfree_firmware_openrc() {
+	depends="rmtfs-openrc"
+	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
 	mkdir "$subpkgdir"
 }
@@ -33,14 +41,20 @@ nonfree_firmware_woa() {
 	depends="
 		$pkgname-nonfree-firmware
 		pd-mapper
-		pd-mapper-openrc
 		tqftpserv
-		tqftpserv-openrc
 	"
-	install="$subpkgname.post-install $subpkgname.post-upgrade"
 	mkdir "$subpkgdir"
 }
 
+nonfree_firmware_woa_openrc() {
+	depends="
+		pd-mapper-openrc
+		tqftpserv-openrc
+	"
+	install_if="$pkgname-nonfree-firmware-woa=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	mkdir "$subpkgdir"
+}
 
 vulkan() {
 	pkgdesc="Vulkan support for freedreno"
