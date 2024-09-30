@@ -3,7 +3,7 @@
 pkgname=device-pine64-pinephonepro
 pkgdesc="PINE64 PinePhone Pro"
 pkgver=4
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -25,12 +25,9 @@ makedepends="
 subpackages="
 	$pkgname-nonfree-firmware:nonfree_firmware
 	$pkgname-gnome
+	$pkgname-openrc
 	$pkgname-sway
 	$pkgname-x11
-	"
-install="
-	$pkgname.post-install
-	$pkgname.post-upgrade
 	"
 source="
 	51_keyboard.gschema.override
@@ -121,6 +118,13 @@ gnome() {
 	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-base-ui-gnome"
 	install -Dm644 "$srcdir"/51_keyboard.gschema.override -t \
 		"$subpkgdir"/usr/share/glib-2.0/schemas
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+
+	mkdir -p "$subpkgdir"
 }
 
 sway() {
