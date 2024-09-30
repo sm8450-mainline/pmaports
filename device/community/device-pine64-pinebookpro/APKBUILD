@@ -3,7 +3,7 @@
 pkgname=device-pine64-pinebookpro
 pkgdesc="PINE64 Pinebook Pro"
 pkgver=16
-pkgrel=6
+pkgrel=7
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -19,13 +19,7 @@ depends="
 	iw
 	"
 makedepends="devicepkg-dev"
-subpackages="$pkgname-nonfree-firmware:nonfree_firmware $pkgname-elogind"
-install="
-	$pkgname.post-install
-	$pkgname.post-upgrade
-	$pkgname-elogind.post-install
-	$pkgname-elogind.post-upgrade
-"
+subpackages="$pkgname-nonfree-firmware:nonfree_firmware $pkgname-elogind $pkgname-openrc"
 source="
 	deviceinfo
 	modules-initfs
@@ -50,6 +44,7 @@ package() {
 
 elogind() {
 	install_if="$pkgname=$pkgver-r$pkgrel elogind"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
 	install -D -m644 "$srcdir"/enable-s2idle.conf \
 		"$subpkgdir"/usr/lib/elogind/sleep.conf.d/enable-s2idle.conf
 }
@@ -59,6 +54,14 @@ nonfree_firmware() {
 	depends="linux-firmware-brcm linux-firmware-rockchip"
 	mkdir "$subpkgdir"
 }
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+
+	mkdir -p "$subpkgdir"
+}
+
 sha512sums="
 7b3cd3ff2af954d07e88cca043a9975e74236bb49454bbcff8eaed23d822560ba2200adc88373dc2a0e5f130b8f90fd1c522f7b25171325d8e41e75c4b7bfba5  deviceinfo
 6e3d97855a1f898db46b87ae1eb190d23d841fcb72332fcac4d11cd27c8f7d50eb8fd73007ed0447f106d19ff2e0fc1f34da1baf890e1465135dd692d65df2ba  modules-initfs
