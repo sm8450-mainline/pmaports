@@ -2,15 +2,17 @@
 pkgname=device-xiaomi-armani
 pkgdesc="Redmi 1S"
 pkgver=1
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="armhf"
 options="!check !archcheck"
 depends="postmarketos-base linux-xiaomi-armani mkbootimg msm-fb-refresher"
 makedepends="devicepkg-dev"
-install="$pkgname.post-install $pkgname.pre-deinstall $pkgname.post-upgrade"
-subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
+subpackages="
+	$pkgname-nonfree-firmware:nonfree_firmware
+	$pkgname-openrc
+	"
 source="deviceinfo
 	90-touchscreen.rules
 	100-charging.rules
@@ -37,6 +39,13 @@ nonfree_firmware() {
 	pkgdesc="Wifi firmware"
 	depends="firmware-xiaomi-armani"
 	mkdir "$subpkgdir"
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.pre-deinstall $subpkgname.post-upgrade"
+
+	mkdir -p "$subpkgdir"
 }
 
 sha512sums="
