@@ -4,7 +4,7 @@
 pkgname=device-xiaomi-natrium
 pkgdesc="Xiaomi Mi 5s Plus"
 pkgver=1
-pkgrel=6
+pkgrel=7
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -18,7 +18,11 @@ depends="
 	soc-qcom-msm8996-ucm
 "
 makedepends="devicepkg-dev"
-subpackages="$pkgname-nonfree-firmware:nonfree_firmware $pkgname-phosh"
+subpackages="
+	$pkgname-nonfree-firmware:nonfree_firmware
+	$pkgname-nonfree-firmware-openrc:nonfree_firmware_openrc
+	$pkgname-phosh
+	"
 
 source="
 	deviceinfo
@@ -47,11 +51,16 @@ nonfree_firmware() {
 		linux-firmware-qca
 		soc-qcom-msm8996-nonfree-firmware
 		"
-	install="$subpkgname.post-install"
-	mkdir "$subpkgdir"
 
 	install -Dm644 "$srcdir/30-gpu-firmware.files" -t \
 		"$subpkgdir/usr/share/mkinitfs/files"
+}
+
+nonfree_firmware_openrc() {
+	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install"
+
+	mkdir -p "$subpkgdir"
 }
 
 phosh() {
