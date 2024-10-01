@@ -1,15 +1,23 @@
 # Maintainer: Alexey Minnekhanov <alexeymin@postmarketos.org>
 pkgname=lk2nd
-pkgver=0.16.0
+pkgver=19.0
 pkgrel=0
 pkgdesc="Secondary little kernel (lk) bootloader for several Qualcomm devices"
 arch="armv7 aarch64"
 url="https://github.com/msm8916-mainline/lk2nd"
 license="MIT AND BSD-3-Clause AND GPL-2.0-only"
-makedepends="dtc dtc-dev gcc-arm-none-eabi python3 py3-libfdt"
+makedepends="
+	dtc
+	dtc-dev
+	gcc-arm-none-eabi
+	python3
+	py3-asn1-modules
+	py3-libfdt
+	py3-pycryptodome
+"
 source="
 	$pkgname-$pkgver.tar.gz::https://github.com/msm8916-mainline/lk2nd/archive/refs/tags/$pkgver.tar.gz
-	0001-build-fixes.patch
+	0001-doc-dts-msm8974-Remove-hammerhead-from-qcdtbs-and-do.patch
 	"
 options="!check !archcheck !tracedeps !strip pmb:cross-native"
 # This APKBUILD builds bare metal executable; options are very specific!
@@ -21,17 +29,19 @@ options="!check !archcheck !tracedeps !strip pmb:cross-native"
 
 subpackages="
 	$pkgname-msm8916
-	$pkgname-msm8916-appended:msm8916_appended
+	$pkgname-msm8952
+	$pkgname-msm8952-xiaomi-land:msm8952_xiaomi_land
+	$pkgname-msm8953
+	$pkgname-msm8953-signed:msm8953_signed
 "
 
 if [ "$CARCH" = "armv7" ]; then
 	subpackages="
 		$subpackages
 		$pkgname-msm8226
-		$pkgname-msm8226-appended:msm8226_appended
 		$pkgname-msm8226-htc-memul:msm8226_htc_memul
 		$pkgname-msm8974
-		$pkgname-msm8974-appended:msm8974_appended
+		$pkgname-msm8974-lg-hammerhead:msm8974_lg_hammerhead
 	"
 fi
 
@@ -58,8 +68,13 @@ _build() {
 
 build() {
 	_build lk2nd-msm8916
+	_build lk2nd-msm8952
+	_build lk2nd-msm8952 BOOTLOADER_OUT=xiaomi-land LK2ND_DTBS="" LK2ND_ADTBS="msm8937-xiaomi-land.dtb"
+	_build lk2nd-msm8953
+	_build lk2nd-msm8953 BOOTLOADER_OUT=msm8953-signed SIGN_BOOTIMG=1
 	if [ "$CARCH" = "armv7" ]; then
 		_build lk2nd-msm8974
+		_build lk2nd-msm8974 BOOTLOADER_OUT=lg-hammerhead LK2ND_QCDTBS=""
 		_build lk2nd-msm8226
 		_build lk2nd-msm8226 BOOTLOADER_OUT=htc-memul SCRATCH_ADDR=0x20000000 SCRATCH_ADDR_512MAP=0x20000000 SCRATCH_SIZE_512MAP=0x10000000
 	fi
@@ -75,9 +90,24 @@ msm8916() {
 		"$subpkgdir"/boot
 }
 
-msm8916_appended() {
-	install -Dm644 "$builddir"/build-lk2nd-msm8916/lk2nd-appended-dtb.img \
-		"$subpkgdir"/boot/lk2nd.img
+msm8952() {
+	install -Dm644 "$builddir"/build-lk2nd-msm8952/lk2nd.img -t \
+		"$subpkgdir"/boot
+}
+
+msm8952_xiaomi_land() {
+	install -Dm644 "$builddir"/xiaomi-land/build-lk2nd-msm8952/lk2nd.img -t \
+		"$subpkgdir"/boot
+}
+
+msm8953() {
+	install -Dm644 "$builddir"/build-lk2nd-msm8953/lk2nd.img -t \
+		"$subpkgdir"/boot
+}
+
+msm8953_signed() {
+	install -Dm644 "$builddir"/msm8953-signed/build-lk2nd-msm8953/lk2nd.img -t \
+		"$subpkgdir"/boot
 }
 
 msm8974() {
@@ -85,18 +115,13 @@ msm8974() {
 		"$subpkgdir"/boot
 }
 
-msm8974_appended() {
-	install -Dm644 "$builddir"/build-lk2nd-msm8974/lk2nd-appended-dtb.img \
-		"$subpkgdir"/boot/lk2nd.img
+msm8974_lg_hammerhead() {
+	install -Dm644 "$builddir"/lg-hammerhead/build-lk2nd-msm8974/lk2nd.img -t \
+		"$subpkgdir"/boot
 }
 
 msm8226() {
 	install -Dm644 "$builddir"/build-lk2nd-msm8226/lk2nd.img \
-		"$subpkgdir"/boot/lk2nd.img
-}
-
-msm8226_appended() {
-	install -Dm644 "$builddir"/build-lk2nd-msm8226/lk2nd-appended-dtb.img \
 		"$subpkgdir"/boot/lk2nd.img
 }
 
@@ -106,6 +131,6 @@ msm8226_htc_memul() {
 }
 
 sha512sums="
-e3708b02f7bf677c60b9f09e75d70c05438466c62378294b31109c9085bfaf5e25598c91a841dc2756367b5cb069e10d9df56c1d1b174ba07b8fd2017487c5c2  lk2nd-0.16.0.tar.gz
-e0ff876f69950cd3026d0168edc7e32d1f671a448153ee3c1dcf8906aed3c67b91bdd3e1ea73e789c7d85fbf2bebd42054dd89ae486d1921df456f606a7e82d2  0001-build-fixes.patch
+5c7b69277b255b4e29849940b9eca90de8d21c5851719bdb519c1323844014ac6519995c43ed5ea874a64df5845305df3fcf56b141e782d77a4c2cac3deda82a  lk2nd-19.0.tar.gz
+7aa4b7c98e990d3f2f44be2e24873829b75aa72b423966fb20b26d8c4fede9ce04495f8f37df54ae817297986bcb86ae7879174ca1d255c12b25656dbacaa62b  0001-doc-dts-msm8974-Remove-hammerhead-from-qcdtbs-and-do.patch
 "
