@@ -2,8 +2,9 @@
 
 _flavor=samsung-coreprimevelte
 pkgname=linux-$_flavor
-pkgver=6.10_rc5
-pkgrel=2
+pkgver=6.11.0
+_pkgver=6.11
+pkgrel=0
 pkgdesc="Samsung Galaxy Core Prime VE LTE mainline kernel"
 arch="aarch64"
 _carch="arm64"
@@ -17,10 +18,10 @@ mpfr-dev openssl-dev perl postmarketos-installkernel pxa-mkbootimg dtc"
 # Source
 _config="config-$_flavor.$arch"
 source="
-	$pkgname-${pkgver/_/-}.tar.gz::$url/-/archive/v${pkgver/_/-}-pxa1908/linux-v${pkgver/_/-}-pxa1908.tar.gz
+	$pkgname-${pkgver/_/-}.tar.gz::$url/-/archive/v${_pkgver/_/-}-pxa1908/linux-v${_pkgver/_/-}-pxa1908.tar.gz
 	$_config
 "
-builddir="$srcdir/linux-v${pkgver/_/-}-pxa1908"
+builddir="$srcdir/linux-v${_pkgver/_/-}-pxa1908"
 
 prepare() {
 	default_prepare
@@ -51,6 +52,6 @@ package() {
 }
 
 sha512sums="
-e7b1980d55e981b4af20ab2079f77aee28f38023afff259c7fad6694f6faf5ce000bfb0ae56a76dd3d208888bdaf5e783bd0cdf85dd80f2317a2decdeee04298  linux-samsung-coreprimevelte-6.10-rc5.tar.gz
-0690317db9caf60d75aba4d2eaa98507fbd639dce4bb1e31f3a2b8b2706915000b5177b2cdb55aaade1b807811c3a67223079643eea90b2f575a864991596538  config-samsung-coreprimevelte.aarch64
+665128c8ac7054d82cbc047303e7e60a1669f1b5ac166e1155e8defd48a341e504905920bc949831b9b7c0dfc39c6c1c8e482fdb75bc73bea396e736b3b49810  linux-samsung-coreprimevelte-6.11.0.tar.gz
+c78ff38350dc9d9138fbd06ccfe3d4cd46c0899179449254626cf3a00c16ad0c68ef03254ec8b63584fe3b10d658a8c470bbdec43ae422790ba9f0a93a8980e3  config-samsung-coreprimevelte.aarch64
 "
