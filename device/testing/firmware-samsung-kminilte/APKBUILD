@@ -1,16 +1,16 @@
 pkgname=firmware-samsung-kminilte
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Samsung Galaxy S5 Mini firmware"
 url="https://github.com/Spookcity/android_vendor_samsung_kminilte"
 arch="armv7"
 license="proprietary"
 options="!check !strip !archcheck !spdx !tracedeps pmb:cross-native"
-install="$pkgname.post-install"
 
 _repository="android_vendor_samsung_kminilte"
 _commit="987649e9667dd11bb2a2b5ec7a5f23c9037adcf5"
 
+subpackages="$pkgname-openrc"
 source="
 	$pkgname-$_commit.tar.gz::https://github.com/Spookcity/$_repository/archive/$_commit.tar.gz
 "
@@ -31,6 +31,13 @@ package() {
 		_filename=$(basename $_f)
 		install -Dm644 $_f "$pkgdir"/lib/firmware/postmarketos/$_filename
 	done
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install"
+
+	mkdir -p "$subpkgdir"
 }
 
 sha512sums="
