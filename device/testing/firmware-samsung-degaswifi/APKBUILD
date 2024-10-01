@@ -1,18 +1,17 @@
 pkgname=firmware-samsung-degaswifi
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware for Samsung Galaxy Tab 4 7.0 WiFi"
 url="https://postmarketos.org"
 arch="armv7"
 license="proprietary"
 options="!strip !check !archcheck !spdx pmb:cross-native !tracedeps"
-install="$pkgname.post-install"
 _repo="samsung-degaswifi-fw"
 _commit="84e7cba373327cb6c8a3e428aa6fc5f90eda6201"
-source="
-	$pkgname-$_commit.tar.gz::https://github.com/vishalbala-nps/$_repo/archive/$_commit.tar.gz
+subpackages="$pkgname-openrc"
+source="$pkgname-$_commit.tar.gz::https://github.com/vishalbala-nps/$_repo/archive/$_commit.tar.gz
 	sd8887-init.initd
-"
+	"
 _files="SDIO8887_SDIO_SDIO.bin WlanCalData_ext.conf txpwrlimit_cfg.bin bt_cal_data.conf bt_init_cfg.conf reg_alpha2 sd8887_uapsta.bin"
 builddir="$srcdir/$_repo-$_commit/wifi/mrvl"
 
@@ -21,8 +20,13 @@ package() {
 		install -Dm644 "$_i" \
 			-t "$pkgdir/lib/firmware/mrvl"
 	done
+}
 
-	install -Dm755 "$srcdir"/sd8887-init.initd "$pkgdir"/etc/init.d/sd8887-init
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install"
+
+	install -Dm755 "$srcdir"/sd8887-init.initd "$subpkgdir"/etc/init.d/sd8887-init
 }
 
 sha512sums="
