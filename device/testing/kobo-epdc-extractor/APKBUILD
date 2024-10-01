@@ -1,19 +1,19 @@
 # Maintainer: Andreas Kemnade <andreas@kemnade.info>
 pkgname=kobo-epdc-extractor
 pkgver=1.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Extractor for waveform on the kobo devices"
 arch="armv7"
 license="MIT"
 url="https://github.com/akemnade/kobo-firmware-extractor"
-install="$pkgname.post-install"
 source="
 	kobo-firmware-extractor-$pkgver.tar.gz::https://github.com/akemnade/kobo-firmware-extractor/archive/refs/tags/$pkgver.tar.gz
 	start-epd.sh
 	kobo-epdc-extractor.files
 	extract-waveform.initd
 	"
-builddir="$srcdir"/kobo-firmware-extractor-$pkgver
+subpackages="$pkgname-openrc"
+builddir="$srcdir"/kobo-firmware-extractor-"$pkgver"
 
 build() {
 	make
@@ -31,7 +31,13 @@ package() {
 
 	install -Dm644 "$srcdir"/kobo-epdc-extractor.files \
 		"$pkgdir"/usr/share/mkinitfs/files/01-kobo-epdc-extractor.files
-	install -Dm755 "$srcdir"/extract-waveform.initd "$pkgdir"/etc/init.d/extract-waveform
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install"
+
+	install -Dm755 "$srcdir"/extract-waveform.initd "$subpkgdir"/etc/init.d/extract-waveform
 }
 
 sha512sums="
