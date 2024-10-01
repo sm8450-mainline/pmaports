@@ -1,6 +1,6 @@
 pkgname=firmware-fxtec-qx1050
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware for F(x)tec Pro1x (QX1050)"
 subpackages="
 	$pkgname-adreno
@@ -9,6 +9,7 @@ subpackages="
 	$pkgname-ipa
 	$pkgname-radio
 	$pkgname-rproc
+	$pkgname-rproc-openrc:rproc_openrc
 	$pkgname-venus
 	"
 url="https://github.com/zstas/fxtec-pro1x-firmware"
@@ -70,11 +71,18 @@ rproc() {
 	depends="
 		rmtfs
 		tqftpserv
-		tqftpserv-openrc
 		pd-mapper
-		pd-mapper-openrc
 	"
+	mkdir "$subpkgdir"
+}
+
+rproc_openrc() {
+	install_if="$pkgname-rproc openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="
+	tqftpserv-openrc
+	pd-mapper-openrc
+	"
 	mkdir "$subpkgdir"
 }
 
