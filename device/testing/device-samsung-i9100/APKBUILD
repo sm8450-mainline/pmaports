@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-i9100
 pkgver=8
-pkgrel=0
+pkgrel=1
 pkgdesc="Samsung Galaxy SII"
 url="https://postmarketos.org"
 arch="armv7"
@@ -16,6 +16,7 @@ subpackages="
 	$pkgname-nonfree-firmware:nonfree_firmware
 	$pkgname-nonfree-firmware-front-camera:nonfree_firmware_front_camera
 	$pkgname-media-pipeline:media_pipeline
+	$pkgname-media-pipeline-openrc:media_pipeline_openrc
 "
 source="
 	deviceinfo
@@ -61,6 +62,11 @@ nonfree_firmware_front_camera() {
 media_pipeline() {
 	install_if="$pkgname-kernel-mainline"
 	depends="v4l-utils"
+	mkdir "$subpkgdir"
+}
+
+media_pipeline_openrc() {
+	install_if="$pkgname-media-pipeline=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install"
 	install -Dm755 "$srcdir"/media-pipeline.initd "$subpkgdir"/etc/init.d/media-pipeline
 }
