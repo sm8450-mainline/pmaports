@@ -3,7 +3,7 @@
 pkgname=device-motorola-potter
 pkgdesc="Motorola Moto G5 Plus"
 pkgver=2
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -19,9 +19,9 @@ depends="
 	soc-qcom-msm8953
 	soc-qcom-msm8953-modem
 	tqftpserv
-	tqftpserv-openrc
 "
 makedepends="devicepkg-dev"
+subpackages="$pkgname-openrc"
 source="deviceinfo modules-initfs"
 
 build() {
@@ -30,6 +30,12 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
+}
+
+openrc() {
+	depends="tqftpserv-openrc"
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	mkdir "$subpkgdir"
 }
 
 sha512sums="
