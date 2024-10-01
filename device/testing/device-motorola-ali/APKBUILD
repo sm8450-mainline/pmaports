@@ -2,7 +2,7 @@
 pkgname=device-motorola-ali
 pkgdesc="Motorola Moto G6"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -11,7 +11,7 @@ depends="
 	firmware-motorola-ali
 	firmware-qcom-adreno-a530
 	linux-postmarketos-qcom-msm8953
-	lk2nd-msm8953-motorola-ali
+	lk2nd-msm8953
 	mkbootimg
 	msm-firmware-loader
 	postmarketos-base
