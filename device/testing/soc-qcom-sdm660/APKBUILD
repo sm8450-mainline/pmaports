@@ -2,7 +2,7 @@
 pkgname=soc-qcom-sdm660
 pkgdesc="Common package for Qualcomm SDM630/636/660 devices"
 pkgver=3
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
@@ -10,6 +10,7 @@ options="!check !archcheck !tracedeps pmb:cross-native"
 depends="swclock-offset"
 subpackages="
 	$pkgname-rproc
+	$pkgname-rproc-openrc:rproc_openrc
 	$pkgname-nonfree-firmware:nonfree_firmware
 "
 source="sdm660-adreno-quirks.sh"
@@ -26,14 +27,23 @@ rproc() {
 		bootmac
 		msm-modem
 		qcom-diag
-		qcom-diag-openrc
 		rmtfs
-		rmtfs-openrc
 		tqftpserv
-		tqftpserv-openrc
 	"
+
+	mkdir -p "$subpkgdir"
+}
+
+rproc_openrc() {
+	install_if="$pkgname-rproc=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
-	mkdir "$subpkgdir"
+	depends="
+		qcom-diag-openrc
+		rmtfs-openrc
+		tqftpserv-openrc
+		"
+
+	mkdir -p "$subpkgdir"
 }
 
 nonfree_firmware() {
