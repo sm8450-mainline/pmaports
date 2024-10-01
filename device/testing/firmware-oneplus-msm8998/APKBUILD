@@ -1,7 +1,7 @@
 # Maintainer: Jami Kettunen <jami.kettunen@protonmail.com>
 pkgname=firmware-oneplus-msm8998
 pkgver=10.0.1
-pkgrel=3
+pkgrel=4
 _commit="a1a0dfd9be6fe250559c01678569e5295a4c335d"
 pkgdesc="Firmware for OnePlus 5/5T"
 url="https://github.com/JamiKettunen/firmware-mainline-oneplus5"
@@ -10,7 +10,6 @@ url="https://github.com/JamiKettunen/firmware-mainline-oneplus5"
 replaces="linux-firmware-ath10k"
 arch="aarch64"
 depends="firmware-qcom-adreno-a530 linux-firmware-qca soc-qcom-msm8998-nonfree-firmware"
-install="$pkgname.post-install"
 license="proprietary"
 options="!check !archcheck !strip !tracedeps"
 source="
@@ -18,7 +17,10 @@ source="
 	30-gpu-firmware.files
 	firmware.files
 "
-subpackages="$pkgname-initramfs:firmware_initramfs"
+subpackages="
+	$pkgname-initramfs:firmware_initramfs
+	$pkgname-openrc
+	"
 builddir="$srcdir/firmware-mainline-oneplus5-$_commit"
 
 package() {
@@ -32,6 +34,13 @@ firmware_initramfs() {
 
 	install -Dm644 "$srcdir"/30-gpu-firmware.files \
 		"$subpkgdir"/usr/share/mkinitfs/files/30-gpu-firmware.files
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install"
+
+	mkdir -p "$subpkgdir"
 }
 
 sha512sums="
