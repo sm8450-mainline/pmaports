@@ -3,7 +3,7 @@
 pkgname=device-samsung-j7y17lte
 pkgdesc="Samsung Galaxy J7 2017"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -24,6 +24,7 @@ replaces="
 "
 makedepends="devicepkg-dev"
 install="$pkgname.post-install"
+subpackages="$pkgname-openrc"
 source="
 	deviceinfo
 	etc-conf.d-samsungipcd
@@ -45,14 +46,20 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
-	install -Dm644 etc-conf.d-samsungipcd "$pkgdir"/etc/conf.d/samsungipcd
-	install -Dm755 etc-init.d-udev-settle "$pkgdir"/etc/init.d/udev-settle
-	install -Dm755 etc-init.d-wlan0-up "$pkgdir"/etc/init.d/wlan0-up
 	install -Dm644 NetworkManager-conf.d-wlan0-unmanaged.conf "$pkgdir"/usr/lib/NetworkManager/conf.d/swlan0-unmanaged.conf
 	install -Dm755 usr-libexec-samsungipcd-voicecall.sh "$pkgdir"/usr/libexec/samsungipcd/voicecall.sh
 	install -Dm644 usr-share-alsa-ucm2-conf.d-Universal7870-I-HiFi.conf "$pkgdir"/usr/share/alsa/ucm2/conf.d/Universal7870-I/HiFi.conf
 	install -Dm644 usr-share-alsa-ucm2-conf.d-Universal7870-I-Universal7870-I.conf "$pkgdir"/usr/share/alsa/ucm2/conf.d/Universal7870-I/Universal7870-I.conf
 	install -Dm644 usr-share-alsa-ucm2-conf.d-Universal7870-I-VoiceCall.conf "$pkgdir"/usr/share/alsa/ucm2/conf.d/Universal7870-I/VoiceCall.conf
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install"
+
+	install -Dm644 etc-conf.d-samsungipcd "$subpkgdir"/etc/conf.d/samsungipcd
+	install -Dm755 etc-init.d-udev-settle "$subpkgdir"/etc/init.d/udev-settle
+	install -Dm755 etc-init.d-wlan0-up "$subpkgdir"/etc/init.d/wlan0-up
 }
 
 sha512sums="
