@@ -2,7 +2,7 @@
 pkgname=soc-qcom-sc7280
 pkgdesc="Common package for Qualcomm SC7280/SM7325/QCM6490 devices"
 pkgver=1
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
@@ -13,14 +13,13 @@ depends="
 	msm-modem
 	msm-modem-uim-selection
 	pd-mapper
-	pd-mapper-openrc
 	swclock-offset
 	tqftpserv
-	tqftpserv-openrc
 "
-install="$pkgname.post-install $pkgname.post-upgrade"
 subpackages="
+	$pkgname-openrc
 	$pkgname-qbootctl
+	$pkgname-qbootctl-openrc:qbootctl_openrc
 	$pkgname-vulkan
 "
 
@@ -28,14 +27,30 @@ package() {
 	mkdir -p "$pkgdir"
 }
 
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="
+		pd-mapper-openrc
+		tqftpserv-openrc
+		"
+
+	mkdir -p "$subpkgdir"
+}
+
 qbootctl() {
 	pkgdesc="Enable qbootctl mark-boot-successful service"
-	depends="
-		qbootctl
-		qbootctl-openrc
-	"
+	depends="qbootctl"
+
+	mkdir -p "$subpkgdir"
+}
+
+qbootctl_openrc() {
+	install_if="$pkgname-qbootctl=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
-	mkdir "$subpkgdir"
+	depends="qbootctl-openrc"
+
+	mkdir -p "$subpkgdir"
 }
 
 vulkan() {
