@@ -1,4 +1,4 @@
-From 4b4c85b0a093be28ec9a8a72ef3a3f764fb28e03 Mon Sep 17 00:00:00 2001
+From b346724c85c5d7852eab9b9902fd2f761185df7c Mon Sep 17 00:00:00 2001
 From: JuniorJPDJ <git@juniorjpdj.pl>
 Date: Thu, 25 Mar 2021 19:18:58 +0100
 Subject: [PATCH] ARM: dts: sun6i: Add Lark FreeMe 70.2S tablet
@@ -10,7 +10,7 @@ Subject: [PATCH] ARM: dts: sun6i: Add Lark FreeMe 70.2S tablet
  create mode 100644 arch/arm/boot/dts/allwinner/sun4i-a10-lark-freeme-70-2s.dts
 
 diff --git a/arch/arm/boot/dts/allwinner/Makefile b/arch/arm/boot/dts/allwinner/Makefile
-index 097614b95ff2..902b8f6752a0 100644
+index 77593039273c..ddc3b0deab8c 100644
 --- a/arch/arm/boot/dts/allwinner/Makefile
 +++ b/arch/arm/boot/dts/allwinner/Makefile
 @@ -36,6 +36,7 @@ dtb-$(CONFIG_MACH_SUN4I) += \
@@ -274,5 +274,5 @@ index 000000000000..5f17902410c1
 +	status = "okay";
 +};
 -- 
-2.45.0
+2.46.1
 

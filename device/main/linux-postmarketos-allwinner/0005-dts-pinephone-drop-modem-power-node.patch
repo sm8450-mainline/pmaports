@@ -1,4 +1,4 @@
-From 2ee09f1d8da9d5fcf7b2579525c87151ee0896a2 Mon Sep 17 00:00:00 2001
+From 48e55b423aa0347751c58c90c5d6846943736122 Mon Sep 17 00:00:00 2001
 From: Clayton Craft <clayton@craftyguy.net>
 Date: Wed, 16 Dec 2020 20:16:14 -0800
 Subject: [PATCH] dts: pinephone: drop modem-power node
@@ -139,7 +139,7 @@ index ec4927dfe9dc..57b651d695af 100644
 +	gpios = <&r_pio 0 6 GPIO_ACTIVE_LOW>; /* PL6 */
 +};
 diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi
-index fe7f2113a727..68392dee4407 100644
+index dcd392fe6027..24b7f01fd901 100644
 --- a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi
 +++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi
 @@ -310,6 +310,17 @@ ec25_codec: ec25-codec {
@@ -160,7 +160,7 @@ index fe7f2113a727..68392dee4407 100644
  	i2c_csi: i2c-csi {
  		compatible = "i2c-gpio";
  		sda-gpios = <&pio 4 13 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>; /* PE13 */
-@@ -382,6 +393,7 @@ reg_usb_5v: usb-5v {
+@@ -389,6 +400,7 @@ reg_usb_5v: usb-5v {
  	reg_vbat_bb: vbat-bb {
  		compatible = "regulator-fixed";
  		regulator-name = "vbat-bb";
@@ -169,5 +169,5 @@ index fe7f2113a727..68392dee4407 100644
  		regulator-max-microvolt = <3500000>;
  		gpio = <&r_pio 0 7 GPIO_ACTIVE_HIGH>; /* PL7 */
 -- 
-2.45.0
+2.46.1
 
