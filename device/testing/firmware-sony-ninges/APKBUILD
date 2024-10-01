@@ -1,17 +1,24 @@
 pkgname=firmware-sony-ninges
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware for Sony Xperia XA2/Plus/Ultra & 10/10 Plus"
 url="postmarketos.org"
 arch="aarch64"
 license="BSD-3-Clause"
-install="$pkgname.post-install"
 options="!check !archcheck !strip !tracedeps pmb:cross-native"
 depends="rsync"
+subpackages="$pkgname-openrc"
 source="copy-firmware.initd"
 
 package() {
-	install -Dm755 "$srcdir/copy-firmware.initd" "$pkgdir/etc/init.d/copy-firmware"
+	mkdir -p "$pkgdir"
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install"
+
+	install -Dm755 "$srcdir/copy-firmware.initd" "$subpkgdir/etc/init.d/copy-firmware"
 }
 
 sha512sums="
