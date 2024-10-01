@@ -1,13 +1,13 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-oneplus-bacon
 pkgver=4
-pkgrel=0
+pkgrel=1
 pkgdesc="OnePlus One"
 url="https://postmarketos.org"
 arch="armv7"
 license="MIT"
 depends="
-	lk2nd-msm8974-appended
+	lk2nd-msm8974
 	mkbootimg
 	postmarketos-base
 	"
