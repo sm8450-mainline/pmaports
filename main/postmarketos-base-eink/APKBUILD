@@ -1,7 +1,7 @@
 # Maintainer: Petr Hodina <phodina@protonmail.com>
 pkgname=postmarketos-base-eink
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Base package with some opinionated default for e-ink devices"
 # It's worth emphasising the word "opinionated" here, e-ink has some
 # obvious differences compared to regular displays, there are cases
@@ -28,7 +28,7 @@ builddir="$srcdir/"
 package() {
 	mkdir -p "$pkgdir"
 	install -Dm644 "$srcdir"/83-backlight.rules \
-		"$pkgdir"/lib/udev/rules.d
+		"$pkgdir"/usr/lib/udev/rules.d
 }
 
 gnome() {
