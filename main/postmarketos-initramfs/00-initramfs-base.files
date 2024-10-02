@@ -19,4 +19,5 @@
 /sbin/udevd
 /etc/udev/rules.d
 /lib/udev/rules.d
-/lib/udev/scsi_id
+/usr/lib/udev/rules.d
+/usr/lib/udev/scsi_id
