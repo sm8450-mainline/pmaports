@@ -1,6 +1,6 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lg-hammerhead
-pkgver=8
+pkgver=9
 pkgrel=0
 pkgdesc="Google Nexus 5"
 url="https://postmarketos.org"
@@ -8,7 +8,7 @@ arch="armv7"
 license="MIT"
 depends="
 	linux-postmarketos-qcom-msm8974
-	lk2nd-msm8974
+	lk2nd-msm8974-lg-hammerhead
 	mkbootimg
 	postmarketos-base
 	swclock-offset
@@ -86,7 +86,7 @@ sha512sums="
 f700af3145b79d1ef9edfb22982899b25cabfb212f9620dcbd3a2e6f44b5ad591e0a66056c6fcd66c3fde89a2b5f551e8a8fe2e65cf0e2a48adec57c027d7825  10-unl0kr.conf
 b0ff3cf868380481638cce975688eb622e50d4a45a877892e087789ad7f292f8723de1fbf3da2af445adad31df99d7976c31dcf4f685a046b644b38aa109067d  20-gsk-gpu-workaround.sh
 6cef5f8ae1785ac16e6fe84bfc861ac50cdfb94db35d764f44a25c960e123cb82f6e56f45362a5340c62a3d5ac225f2689afd4f6964cb88305a0892ba44214f0  bt-module-deps.conf
-a4cc185a61fd0657783ee3f3a1bb897ea5adced032b71e8fc84e0211bf91a194d2c9651211cf4f6a6e4309358466d708503643e15d316198294109c599ad749e  deviceinfo
+8d7f99d6b498dce2e61a7c1632770172c81d9be9a9b178d1742e17ca738ec301468e35cb24e1eeac6dcc23a16f3d5c64bbeaa1520908134d90adabc468661911  deviceinfo
 fd639faebbee2c0c2c227710678376e0d039b7d96a62103f7ba7e6304d7060023f09064918e93a125465d20d125c0334225680521a7aeae5a43d77d7360c180c  modules-initfs
 ee1deae3c21de4dfcf9842abc7ba984229fd37bff058cb630a9bd44e787484ddfa3e5d4d85dbd30850d3ac34822aa91c82c3a5d7c107a990f202fb7da2f4db98  phoc.ini
 0a9da551fa9d48d8a663f6bc74e8a7d6e2d2a6e009bd163fa46cd302e75656ad7ae57402a0bd70614ec253e0f2445b4c6999df07104f4c657ed630305c7f40d4  xorg.conf
