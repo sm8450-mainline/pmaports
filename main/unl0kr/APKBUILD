@@ -1,7 +1,7 @@
 # Maintainer: Johannes Marbach <n0-0ne+gitlab@mailbox.org>
 pkgname=unl0kr
 pkgver=3.2.0
-pkgrel=0
+pkgrel=1
 _commit_lvgl=ceadda8a468b7d5fa6ba973bd82cf610166278d8
 pkgdesc="Framebuffer-based disk unlocker for the initramfs based on LVGL"
 url="https://gitlab.com/postmarketOS/buffybox"
@@ -82,12 +82,11 @@ pmtest() {
 	install -Dm644 "$srcdir"/unl0kr.files \
 		"$subpkgdir"/usr/share/mkinitfs/files/30-unl0kr.files
 }
-
 sha512sums="
 83d6724750e6f7e048063863e78251d32a23b1c7aa9e3529a0b176c415bda70c91b83924f6a71cc7f5ca29f019e7a974b406f6e83ff038dae92430b53183d5fa  buffybox-3.2.0.tar.gz
 d3611fe9d55ed105d9567b6019dc49fc0510ac4ed6ca6e15ba0c1bae47f2833d8784b3e008a4dec76dce55bf3809531d07c62e4ba24bafad69c6c54fdd0b70c0  lvgl-ceadda8a468b7d5fa6ba973bd82cf610166278d8.tar.gz
 7155c2f95dcf3716c0f392cf5717e96f1414c383a1f7c2ed30a1f8518dfe0b17c3c0e0e93f6476a342504aa855404099e2f5444eeb099023491c9a9a26fa3d90  unl0kr.conf
-521379c06843d31304c7317d083472bb0105da7e9360d7a303cb98c84112919278fa8b50c3781d9cf43bb057b7eb7d52a4f4d900be69a0c0d70f97f2e9843140  unl0kr.files
+9e3cb41a430f042c59a8a41ee6697a6c85f492092c43b442f720d447f961ea1e0043450283a97e12b982c701654bed4f5ac5d08f4ea4c8e4d365282f72f4f360  unl0kr.files
 5386f434cd4f1fb9e0d561a8689e5e85d6a8b3c562823122c082d4932d2fb0ad4edcd635f14f0c61e5c8b5e53648c9937b042409c21683007700faea8894c750  unlock.sh
 407180b49c1a05f12bd6ee6e59dca0a6e74fe7b01f195087dcf2865598c47827d0bb569afdba55defa2f9a16437230fa62aa64f35111508b906bcbf9537acba4  30-unl0kr-test.sh
 "
