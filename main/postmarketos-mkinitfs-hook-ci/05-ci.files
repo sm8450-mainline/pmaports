@@ -5,5 +5,4 @@
 /sbin/udevd
 /bin/udevadm
 /etc/udev/rules.d
-/lib/udev/rules.d
 /usr/lib/udev/rules.d
