@@ -7,6 +7,5 @@
 /bin/udevadm
 /sbin/udevd
 /etc/udev/rules.d
-/lib/udev/rules.d
 /usr/lib/udev/rules.d
 /usr/share/X11/xkb
