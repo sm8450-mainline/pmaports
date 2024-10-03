@@ -4,7 +4,7 @@
 pkgname=device-oneplus-enchilada
 pkgdesc="OnePlus 6"
 pkgver=14
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -27,8 +27,8 @@ source="
 	81-libssc-oneplus-enchilada.rules
 "
 subpackages="
-	$pkgname-nonfree-firmware-openrc:nonfree_firmware_openrc
 	$pkgname-nonfree-firmware:nonfree_firmware
+	$pkgname-nonfree-firmware-openrc:nonfree_firmware_openrc
 	$pkgname-pmtest
 "
 
