@@ -3,7 +3,7 @@
 pkgname=device-fairphone-fp5
 pkgdesc="Fairphone 5"
 pkgver=4
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -30,7 +30,7 @@ depends="
 "
 makedepends="devicepkg-dev"
 replaces="hexagonrpcd-openrc"
-install="$pkgname.post-install $pkgname.post-upgrade"
+subpackages="$pkgname-openrc"
 source="
 	81-libssc-fairphone-fp5.rules
 	deviceinfo
@@ -48,8 +48,6 @@ package() {
 
 	install -Dm644 "$srcdir"/81-libssc-fairphone-fp5.rules \
 		"$pkgdir"/usr/lib/udev/rules.d/81-libssc-fairphone-fp5.rules
-	install -Dm644 "$srcdir"/hexagonrpcd.confd \
-		"$pkgdir"/etc/conf.d/hexagonrpcd-adsp-sensorspd
 
 	# ALSA Use Case Manager configuration
 	install -Dm644 -t "$pkgdir"/usr/share/alsa/ucm2/Fairphone/fp5 \
@@ -58,6 +56,14 @@ package() {
 	mkdir -p "$pkgdir"/usr/share/alsa/ucm2/conf.d/qcm6490
 	ln -s /usr/share/alsa/ucm2/Fairphone/fp5/fp5.conf \
 		"$pkgdir"/usr/share/alsa/ucm2/conf.d/qcm6490/Fairphone\ 5.conf
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+
+	install -Dm644 "$srcdir"/hexagonrpcd.confd \
+		"$subpkgdir"/etc/conf.d/hexagonrpcd-adsp-sensorspd
 }
 
 sha512sums="
