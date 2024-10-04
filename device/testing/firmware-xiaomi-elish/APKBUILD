@@ -1,7 +1,7 @@
 # Maintainer: Jianhua Lu <lujianhua000@gmail.com>
 pkgname=firmware-xiaomi-elish
 pkgver=20240917
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware for Xiaomi Mi Pad 5 Pro"
 subpackages="
 	$pkgname-adreno
@@ -9,6 +9,7 @@ subpackages="
 	$pkgname-cdsp
 	$pkgname-cirrus
 	$pkgname-hexagonfs
+	$pkgname-initramfs
 	$pkgname-slpi
 	$pkgname-touchscreen
 	$pkgname-venus
@@ -18,7 +19,10 @@ arch="aarch64"
 license="proprietary"
 options="!check !strip !archcheck !tracedeps pmb:cross-native"
 _commit="51e9ac8cd91d88de43fb016530b9421a2713467a"
-source="https://github.com/lujianhua/xiaomi-elish-firmware/archive/$_commit/xiaomi-elish-firmware-$_commit.tar.gz"
+source="
+	https://github.com/lujianhua/xiaomi-elish-firmware/archive/$_commit/xiaomi-elish-firmware-$_commit.tar.gz
+	30-dsp-firmware.files
+"
 builddir="$srcdir/xiaomi-elish-firmware-$_commit"
 
 package() {
@@ -68,6 +72,13 @@ hexagonfs() {
 	rm -r "$subpkgdir"/usr/share/qcom/sm8250/xiaomi/elish/dsp/
 }
 
+initramfs() {
+	pkgdesc="Xiaomi elish firmware to be included in the initramfs"
+
+	install -Dm644 "$srcdir/30-dsp-firmware.files" \
+		"$subpkgdir/usr/share/mkinitfs/files/30-dsp-firmware.files"
+}
+
 slpi() {
 	pkgdesc="Xiaomi elish slpi firmware"
 
@@ -91,4 +102,5 @@ venus() {
 
 sha512sums="
 c1ebaf280313a00a64c9bc9ebf820574f0bffe26cdf0652a9897068d46e251ae03853e684bf7b26591d557d218c56eb10c36e50358778bcffb36caea948466b5  xiaomi-elish-firmware-51e9ac8cd91d88de43fb016530b9421a2713467a.tar.gz
+6faf55b7804e4cc0ceda959b3c19010d0052c18cc1bc1fc4364ddc65ec6d8715175d754b8d4aa837e23a66150b48ebc94c1c16a9ee0b405e824fae1fb6e5ae32  30-dsp-firmware.files
 "
