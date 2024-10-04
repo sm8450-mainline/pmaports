@@ -101,11 +101,10 @@ if __name__ == "__main__":
     # No packages: skip build
     if len(packages) == 0:
         print(f"no packages changed, which can be built for {arch}")
-        sys.exit(0)
-
-    # Build packages
-    print(f"building in strict mode for {arch}: {', '.join(packages)}")
-    build_strict(packages, arch)
+    else:
+        # Build packages
+        print(f"building in strict mode for {arch}: {', '.join(packages)}")
+        build_strict(packages, arch)
 
     # Build packages in extra-repos/systemd
     # FIXME: this should probably be more generic, if other repos are added later?
