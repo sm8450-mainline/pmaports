@@ -2,8 +2,8 @@
 # Maintainer: Jianhua Lu <lujianhua000@gmail.com>
 pkgname=device-xiaomi-elish
 pkgdesc="Xiaomi Mi Pad 5 Pro"
-pkgver=3
-pkgrel=1
+pkgver=4
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -78,6 +78,7 @@ nonfree_firmware() {
 		firmware-xiaomi-elish-cdsp
 		firmware-xiaomi-elish-cirrus
 		firmware-xiaomi-elish-hexagonfs
+		firmware-xiaomi-elish-initramfs
 		firmware-xiaomi-elish-slpi
 		firmware-xiaomi-elish-touchscreen
 		firmware-xiaomi-elish-venus
@@ -101,5 +102,5 @@ d0e8f2e378130130ac72703aed957f7638e2dd75acf4aa421e1b4592c6cb6d296b652db0d9c242be
 ed9a509f70715fd6c6614ee5fddbdb0ed2aa69f4a2983af9dbec26bdeb18fe93e3d1a65e03c618550c61da1416c79eb9440fb1bcd4961f85059b27904c4395cc  HiFi.conf
 c8130d9a740437608c0ed56263ff5424e12f78ca71dd71c683fdcafe856b980fc14b492e964e177d06dcc4048466da6f29dd6f0dc85d021a0f963fdbf33e26c5  deviceinfo
 7d5a1b8c43b15d1711225f4680a67f365ca6515ddbf8239902c7886a20cf06d7da0f195760108ddeb4b039866e1c415981d413dee15eed4423a256d40a46a516  hexagonrpcd.confd
-08429bea885350e34c4d7f7aec02e440080a78db3ac10d8a757012ffa5dcafe93a12db24e37201d02cd423db9c33cf0bafcd0c03935dfa159a2e89ccafe93f3e  modules-initfs
+c76604b9449dd471645eed22fdfbf167c64336e1833fbd5d37efe1ae331afe608f36099e045fdf0b3b72d62d57bc8fa15a07f6300d167963ecbe4eac6ebff83c  modules-initfs
 "
