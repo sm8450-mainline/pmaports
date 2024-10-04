@@ -1,0 +1,39 @@
+# Maintainer: Barnabas Czeman <trabarni@gmail.com>
+# Reference: <https://postmarketos.org/devicepkg>
+
+pkgname=device-qcom-msm8953
+pkgdesc="Generic device package for various Qualcomm MSM8953/SDM450/SDM632-based devices"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	firmware-qcom-adreno-a530
+	linux-postmarketos-qcom-msm8953
+	lk2nd-msm8953
+	mkbootimg
+	msm-firmware-loader
+	postmarketos-base
+	soc-qcom-msm8953
+	soc-qcom-msm8953-modem
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+	modules-initfs
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+b624c27c7e87cc57c20f79682ca119765b826e0f95bec94f18617d67a832cd2869475fa212d7c21e36a9b448312cb98c497007e0081e1a3c64bf3d60b40bb87a  deviceinfo
+bd17b9384a4aba90d3938b170e47349b98f5e035715abac6ae8cb2e65431159e20e5324c72e69f8f0492d12dd45813615850f1f83a48327fd1a7313e82183d43  modules-initfs
+"
