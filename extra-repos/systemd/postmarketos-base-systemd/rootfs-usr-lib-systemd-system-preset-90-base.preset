@@ -52,6 +52,8 @@ enable waydroid-sensors.service
 enable adsp-audio.service
 enable gesture.service
 enable gnss-share
+enable swclock-offset-boot.service
+enable swclock-offset-shutdown.service
 
 ## sensors
 enable hexagonrpcd-sdsp.service
