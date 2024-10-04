@@ -2,7 +2,7 @@
 pkgname=device-nokia-weeknd
 pkgdesc="Nokia 2780 Flip"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="GPL-2.0-only"
 arch="aarch64"
@@ -15,6 +15,7 @@ depends="
 	"
 subpackages="
 	$pkgname-modem
+	$pkgname-modem-openrc:modem_openrc
 	$pkgname-nonfree-firmware:nonfree_firmware
 	"
 makedepends="devicepkg-dev mipi-dbi-cmd"
@@ -59,8 +60,14 @@ nonfree_firmware() {
 }
 
 modem() {
-	depends="qrtr rmtfs rmtfs-openrc msm-modem-uim-selection"
+	depends="qrtr rmtfs msm-modem-uim-selection"
 	install_if="$pkgname=$pkgver-r$pkgrel $pkgname-nonfree-firmware"
+	mkdir "$subpkgdir"
+}
+
+modem_openrc() {
+	depends="rmtfs-openrc"
+	install_if="$pkgname-modem=$pkgver-r$pkgrel openrc"
 	mkdir "$subpkgdir"
 }
 
