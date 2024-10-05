@@ -2,8 +2,8 @@
 # Co-Maintainer: Joel Selvaraj <joelselvaraj.oss@gmail.com>
 pkgname=soc-qcom-sdm845
 pkgdesc="Common package for Qualcomm SDM845 devices"
-pkgver=22
-pkgrel=3
+pkgver=23
+pkgrel=0
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
@@ -25,7 +25,7 @@ subpackages="
 	$pkgname-vulkan
 "
 
-_ucm_commit="aaa7889f7a6de640b4d78300e118457335ad16c0"
+_ucm_commit="45cb4c634e534ddfb255e85162fe705f94a23015"
 source="
 	10-initramfs-sdm845.files
 	51-qcom-sdm845.conf
@@ -153,7 +153,7 @@ sha512sums="
 28c14f47eaedec577d152001c51753537c98f267ac4a0acf78a304efebe5f6a1b4dc6d501497da9a0a925806a1d9c80b25e001cf9b1eb21efa22cd6a41ff753b  51-qcom-sdm845.conf
 4f2c22a3a3fc7d380e200ad977578107d81f0e7ade7918e03bdb15b60a564e8db5f47e13cce22f636d38fd3722696bb46076b8872dae0ca2d8a3838522a1f025  90-feedbackd-pmi8998.rules
 9d455b56558d453d501a1ad869ffa79f9952ed43485a9847d506db6a78bfcd9f9c9d855660ee1d368eb74f4429385ec166addc30d802261c75562e785fe84c52  UPower.conf
-62e85ff4d983bd58078633088a6506b8ed9dab88b13adb1af72abd324386a3614ad4af6b3a9594c5a1d1fbdb1891ad906d360764081c83318e9970c94838dfb8  alsa-ucm-conf-aaa7889f7a6de640b4d78300e118457335ad16c0.tar.gz
+af58c9dfcbeb9fe01e433c36e869bef1f2fe03e1087fb28fb6752008d5320b5ac19c32aa64bb88f7d3a619d8e20ab001ec36f11960957d806cc3b14eb30b377d  alsa-ucm-conf-45cb4c634e534ddfb255e85162fe705f94a23015.tar.gz
 6fb4c0bd8b7ed534d855a6732ccff783960e3cfa0e0cc7effcbb93afa00798dec15361a37a3200081bc114c8d266b7a0851cc4e819ad36eabdb47a50c72620d9  call_audio_idle_suspend_workaround.confd
 5a58475b6e2ee1d655f3f23d8dc19e1cb2f32f1dfff3b9a9337d9c5baad1ec24bfaec0fb9cc03f00e5a291bee27c6b8bffbc65157e2bee5d65ef6d1adcb0910b  call_audio_idle_suspend_workaround.initd
 6da0a9209f114354aa2aa1185ec3896a8e0bb1bfce0dc3fc4c0de339cf1389feaa2d724e733c251ff032a5e86d37d9549e94f8f7c7a5accfedbd8a4d6316bbfd  call_audio_idle_suspend_workaround.sh
