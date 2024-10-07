@@ -1,9 +1,9 @@
 # Maintainer Attila Szollosi <ata2001@airmail.cc>
 pkgname=wcnss-wlan
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Init script for enabling wcnss wlan driver (downstream Android kernels)"
-url="https://gitlab.com/postmarketOS/pmaports"
+url="https://gitlab.postmarketos.org/postmarketOS/pmaports"
 arch="noarch"
 license="GPL-3.0-or-later"
 source="$pkgname.initd"

@@ -5,7 +5,7 @@
 # - 50% of RAM for devices with between 2GB and 6GB of RAM
 # - 25% of RAM for devices with greater 6GB of RAM
 # This is loosely based on some data here:
-# https://gitlab.com/postmarketOS/pmaports/-/merge_requests/3752#note_1229631449
+# https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/3752#note_1229631449
 
 _mem_size_mb="$(LC_ALL=C free -m | awk '/^Mem:/{print $2}')"
 

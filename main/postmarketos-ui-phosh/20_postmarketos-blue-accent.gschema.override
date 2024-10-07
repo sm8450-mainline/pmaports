@@ -7,6 +7,6 @@
 # Therefore set the blue accent color back until phosh has support for accent colors
 #
 # Ref: https://gitlab.gnome.org/World/Phosh/phosh/-/merge_requests/1533
-# Ref: https://gitlab.com/postmarketOS/pmaports/-/issues/3218
+# Ref: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/3218
 [org.gnome.desktop.interface]
 accent-color='blue'

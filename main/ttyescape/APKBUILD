@@ -1,15 +1,15 @@
 # Maintainer: Caleb Connolly <caleb@connolly.tech>
 pkgname=ttyescape
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Daemon to allow users to escape to a tty"
-url="https://gitlab.com/postmarketOS/ttyescape"
+url="https://gitlab.postmarketos.org/postmarketOS/ttyescape"
 arch="noarch"
 license="GPL-2.0"
 depends="hkdm buffyboard terminus-font kbd"
 subpackages="$pkgname-openrc"
 source="
-	https://gitlab.com/postmarketOS/ttyescape/-/archive/$pkgver/ttyescape-$pkgver.tar.gz
+	https://gitlab.postmarketos.org/postmarketOS/ttyescape/-/archive/$pkgver/ttyescape-$pkgver.tar.gz
 	etc-conf-d-ttyescape.conf
 "
 options="!check"

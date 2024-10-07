@@ -673,7 +673,7 @@ setup_usb_configfs_udc() {
 	# Remove any existing UDC to avoid "write error: Resource busy" when setting UDC again
 	echo "" > /config/usb_gadget/g1/UDC || echo "  Couldn't write to clear UDC"
 	# Link the gadget instance to an USB Device Controller. This activates the gadget.
-	# See also: https://gitlab.com/postmarketOS/pmbootstrap/issues/338
+	# See also: https://gitlab.postmarketos.org/postmarketOS/pmbootstrap/issues/338
 	echo "$_udc_dev" > /config/usb_gadget/g1/UDC || echo "  Couldn't write new UDC"
 }
 
@@ -929,7 +929,7 @@ create_logs_disk() {
 	Something went wrong and your device did not boot properly. If this was unexpected
 	then please open a new issue by visiting
 
-	https://gitlab.com/postmarketOS/pmaports/-/issues/new
+	https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/new
 
 	and attach the following file by dragging it onto the page:
 

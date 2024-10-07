@@ -1,12 +1,12 @@
 pkgname=postmarketos-theme
 pkgver=0.6.0
-pkgrel=0
+pkgrel=1
 pkgdesc="GTK themes adjusted for postmarketOS"
-url="https://gitlab.com/postmarketOS/postmarketos-theme"
+url="https://gitlab.postmarketos.org/postmarketOS/postmarketos-theme"
 arch="all"
 license="GPL-2.0-only"
 makedepends="meson sassc"
-source="https://gitlab.com/postmarketOS/postmarketos-theme/-/archive/$pkgver/postmarketos-theme-$pkgver.tar.gz"
+source="https://gitlab.postmarketos.org/postmarketOS/postmarketos-theme/-/archive/$pkgver/postmarketos-theme-$pkgver.tar.gz"
 options="!check" # There's no testsuite
 
 build() {

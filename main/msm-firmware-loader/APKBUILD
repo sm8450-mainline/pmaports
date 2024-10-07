@@ -1,13 +1,13 @@
 pkgname=msm-firmware-loader
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of init services to automatically load firmware from device partitions"
 url="https://postmarketos.org/"
 subpackages="$pkgname-openrc $pkgname-wcnss"
 arch="armhf armv7 aarch64"
 license="MIT"
 source="
-	https://gitlab.com/postmarketOS/msm-firmware-loader/-/archive/$pkgver/msm-firmware-loader-$pkgver.tar.gz
+	https://gitlab.postmarketos.org/postmarketOS/msm-firmware-loader/-/archive/$pkgver/msm-firmware-loader-$pkgver.tar.gz
 	msm-firmware-loader.initd
 	msm-firmware-loader-unpack.initd
 "

@@ -38,7 +38,7 @@ index 138667b..6494504 100644
 +	"strings"
  	"time"
  
- 	"gitlab.com/postmarketOS/postmarketos-mkinitfs/internal/archive"
+ 	"gitlab.postmarketos.org/postmarketOS/postmarketos-mkinitfs/internal/archive"
 @@ -26,8 +28,14 @@ import (
  
  // set at build time

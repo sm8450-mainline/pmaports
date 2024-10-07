@@ -4,8 +4,8 @@
 # supported by NetworkManager's "Primary Connection". The script requires that
 # NetworkManager is configured to use/manage dnsmasq.
 # For more information about *why* this is necessary, see:
-#  - https://gitlab.com/postmarketOS/pmaports/-/issues/1430
-#  - https://gitlab.com/postmarketOS/pmaports/-/merge_requests/3823
+#  - https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/1430
+#  - https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/3823
 # Related:
 #  - https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/1279
 

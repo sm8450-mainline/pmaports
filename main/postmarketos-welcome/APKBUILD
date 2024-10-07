@@ -1,9 +1,9 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=postmarketos-welcome
 pkgver=0.8.0
-pkgrel=0
+pkgrel=1
 pkgdesc="postmarketOS welcome app"
-url="https://gitlab.com/postmarketOS/postmarketos-welcome"
+url="https://gitlab.postmarketos.org/postmarketOS/postmarketos-welcome"
 arch="all"
 license="GPL-3.0-or-later"
 makedepends="
@@ -14,7 +14,7 @@ makedepends="
 	meson
 	"
 source="
-	https://gitlab.com/postmarketOS/postmarketos-welcome/-/archive/$pkgver/postmarketos-welcome-$pkgver.tar.bz2
+	https://gitlab.postmarketos.org/postmarketOS/postmarketos-welcome/-/archive/$pkgver/postmarketos-welcome-$pkgver.tar.bz2
 	org.postmarketos.Welcome.desktop
 	"
 options="!check" # No tests
