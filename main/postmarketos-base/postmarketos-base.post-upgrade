@@ -27,7 +27,7 @@ fi
 # Fixup old pmOS installations that run setup-timezone without "-i" option
 # and those later installations that run with it, but have missing
 # https://gitlab.alpinelinux.org/alpine/alpine-conf/-/merge_requests/157
-# See https://gitlab.com/postmarketOS/pmaports/-/issues/2168 for context
+# See https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/2168 for context
 # This is probably safe to remove after a couple of releases of the alpine-conf
 # fix having been merged
 [ -L /etc/localtime ] || exit 0

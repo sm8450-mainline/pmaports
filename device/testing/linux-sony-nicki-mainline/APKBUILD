@@ -1,6 +1,6 @@
 # Kernel config based on: arch/arm/configs/qcom_defconfig
 # APKBUILD based on linux-postmarketos-mainline
-# See: https://gitlab.com/postmarketOS/pmaports/issues/184
+# See: https://gitlab.postmarketos.org/postmarketOS/pmaports/issues/184
 
 _flavor=sony-nicki-mainline
 _config="config-$_flavor.$CARCH"

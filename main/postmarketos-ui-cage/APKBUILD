@@ -9,7 +9,7 @@ url="https://postmarketos.org/"
 license="GPL-3.0-or-later"
 options="!check"
 depends="postmarketos-base-ui-cage"
-# https://gitlab.com/postmarketOS/pmbootstrap/-/issues/2347
+# https://gitlab.postmarketos.org/postmarketOS/pmbootstrap/-/issues/2347
 _pmb_groups="seat"
 _pmb_recommends="postmarketos-demos"
 

@@ -39,7 +39,7 @@ package() {
 	#
 	# Ref:
 	#
-	# - https://gitlab.com/postmarketOS/pmaports/-/issues/3179
+	# - https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/3179
 	#
 	# - https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/commit/?id=ed9c1349f8ebae720f3572ad3e74af59bfe345d7
 

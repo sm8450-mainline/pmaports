@@ -1,5 +1,5 @@
 # Maintainer: Timbz <timon.baetz@protonmail.com>
-# See https://gitlab.com/postmarketOS/pmaports/-/merge_requests/2248#note_605868837
+# See https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/2248#note_605868837
 pkgname=firmware-samsung-s5k5baf
 pkgver=1.0
 pkgrel=0

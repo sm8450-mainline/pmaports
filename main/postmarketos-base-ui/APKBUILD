@@ -244,7 +244,7 @@ iwd() {
 	pkgdesc="Use iwd as the WiFi backend (but may not work with all devices)"
 	provides="postmarketos-base-ui-wifi=$pkgver-r$pkgrel"
 	# Lower than wpa_supplicant for now, see:
-	# https://gitlab.com/postmarketOS/pmaports/-/issues/1379
+	# https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/1379
 	provider_priority=90
 
 	depends="iwd"

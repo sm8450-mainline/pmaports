@@ -304,7 +304,7 @@ NETFILTER_XT_TARGET_TCPMSS = true  # change MTU e.g. for Wireguard
 # PM_WAKELOCKS = true  # Sxmo
 UCLAMP_TASK = true  # Scheduler hints
 UCLAMP_TASK_GROUP = true  # Scheduler hints
-RT_GROUP_SCHED = false  # https://gitlab.com/postmarketOS/pmaports/-/issues/2652
+RT_GROUP_SCHED = false  # https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/2652
 DM_INTEGRITY = true  # Device-mapper integrity target
 
 # uefi: proper modern booting

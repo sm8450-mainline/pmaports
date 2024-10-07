@@ -1,6 +1,6 @@
 # Kernel config based on: arch/arm64/configs/defconfig
 # APKBUILD based on linux-postmarketos-mainline
-# See: https://gitlab.com/postmarketOS/pmaports/issues/153
+# See: https://gitlab.postmarketos.org/postmarketOS/pmaports/issues/153
 
 _flavor=google-crosshatch-mainline
 _config="config-$_flavor.$CARCH"

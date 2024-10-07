@@ -10,7 +10,7 @@ license="GPL-3.0-or-later"
 options="!check"
 depends="postmarketos-base-ui-cage"
 source="10-moonlight-qt.sh"
-# https://gitlab.com/postmarketOS/pmbootstrap/-/issues/2347
+# https://gitlab.postmarketos.org/postmarketOS/pmbootstrap/-/issues/2347
 _pmb_groups="seat"
 # TODO: use flatpak version here for aarch64, as it uses forked ffmpeg with
 # v4l2-request support.

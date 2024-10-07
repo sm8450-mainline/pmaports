@@ -6,7 +6,7 @@ pkgrel=2
 _commit_configs="a8bd93e279c222be6058ef46b065c11e88aa8400"
 pkgdesc="(Wayland) 10-feet variant of Plasma, made for big screen TVs"
 url="https://wiki.postmarketos.org/wiki/Plasma_Bigscreen"
-# Crashes on armhf due to https://gitlab.com/postmarketOS/pmaports/issues/75
+# Crashes on armhf due to https://gitlab.postmarketos.org/postmarketOS/pmaports/issues/75
 # riscv64: plasma-workspace, qt5-qtbase need rebuild against libcui18n in alpine edge
 arch="!armhf !riscv64"
 license="GPL-3.0-or-later"
