@@ -23,7 +23,7 @@ setenv bootargs init=/init.sh rw console=ttymxc0,115200 PMOS_FORCE_PARTITION_RES
 # Default to "-r4" if board_rev isn't set, since there are apparently Evergreen
 # boards that either 1) identify as r4, 2) identify as r5 (or something else?),
 # or 3) don't identify as anything(?).
-# See: https://gitlab.com/postmarketOS/pmaports/-/issues/1643#note_1147248594
+# See: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/1643#note_1147248594
 dtb_file=imx8mq-librem5-r4.dtb
 if itest.s "x3" == "x$board_rev" ; then
         dtb_file=imx8mq-librem5-r3.dtb
