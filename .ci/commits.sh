@@ -11,7 +11,7 @@ if [ "$(id -u)" = 0 ]; then
 	# In .gitlab-ci.yml currently .ci/pytest.sh runs before this and
 	# already downloads and runs install_pmbootstrap.sh.
 	if ! [ -e install_pmbootstrap.sh ]; then
-		wget "https://gitlab.com/postmarketOS/ci-common/-/raw/master/install_pmbootstrap.sh"
+		wget "https://gitlab.postmarketos.org/postmarketOS/ci-common/-/raw/master/install_pmbootstrap.sh"
 		sh ./install_pmbootstrap.sh
 	fi
 	exec su "${TESTUSER:-pmos}" -c "sh -e $0"

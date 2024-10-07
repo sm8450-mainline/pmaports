@@ -6,7 +6,7 @@
 if [ "$(id -u)" = 0 ]; then
 	set -x
 	apk add git openssh-keygen grep curl
-	wget "https://gitlab.com/postmarketOS/ci-common/-/raw/master/install_pmbootstrap.sh"
+	wget "https://gitlab.postmarketos.org/postmarketOS/ci-common/-/raw/master/install_pmbootstrap.sh"
 	sh ./install_pmbootstrap.sh
 	exec su "${TESTUSER:-pmos}" -c "sh -e $0 $*"
 fi
@@ -90,9 +90,9 @@ update_linux_next() {
 }
 
 # For testing
-#git remote add gitlab https://pmos-ci:"$PMAPORTS_PUSH_TOKEN"@gitlab.com/postmarketOS/pmaports-autoupdate-test.git
+#git remote add gitlab https://pmos-ci:"$PMAPORTS_PUSH_TOKEN"@gitlab.postmarketos.org/postmarketOS/pmaports-autoupdate-test.git
 
-git remote add gitlab https://pmos-ci:"$PMAPORTS_PUSH_TOKEN"@gitlab.com/postmarketOS/pmaports.git
+git remote add gitlab https://pmos-ci:"$PMAPORTS_PUSH_TOKEN"@gitlab.postmarketos.org/postmarketOS/pmaports.git
 git fetch gitlab
 git checkout --track gitlab/master
 

@@ -36,7 +36,7 @@ def run_git(parameters, check=True, stderr=None):
 def add_upstream_git_remote():
     """ Add a remote pointing to postmarketOS/pmaports. """
     run_git(["remote", "add", "upstream",
-             "https://gitlab.com/postmarketOS/pmaports.git"], False)
+             "https://gitlab.postmarketos.org/postmarketOS/pmaports.git"], False)
     run_git(["fetch", "-q", "upstream"])
 
 

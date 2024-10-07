@@ -119,7 +119,7 @@ mr-settings:
     - *global_before_scripts
     - apk -q add python3
   script:
-    - wget -q "https://gitlab.com/postmarketOS/ci-common/-/raw/master/check_mr_settings.py"
+    - wget -q "https://gitlab.postmarketos.org/postmarketOS/ci-common/-/raw/master/check_mr_settings.py"
     - python3 ./check_mr_settings.py
 
 # build changed aports

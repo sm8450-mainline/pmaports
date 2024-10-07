@@ -57,7 +57,7 @@ fi
 
 POSTMARKETOS_WALLPAPER_PATH='/usr/share/wallpapers/postmarketos.jpg'
 # The excluded devices are "grandfathered in". New devices should not be added here.
-# See https://gitlab.com/postmarketOS/pmaports/-/issues/2529
+# See https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/2529
 if grep -qr $POSTMARKETOS_WALLPAPER_PATH \
 	--exclude-dir='device-pine64-pinetab' \
 	--exclude-dir='device-oneplus-kebab' \
