@@ -43,7 +43,7 @@
 
 void exit_userfriendly()
 {
-	fprintf(stderr, "Please report this at: https://gitlab.com/postmarketOS/pmaports/issues\n");
+	fprintf(stderr, "Please report this at: https://gitlab.postmarketos.org/postmarketOS/pmaports/issues\n");
 	fprintf(stderr, "As a workaround, you can compile without crossdirect.\n");
 	fprintf(stderr, "See 'pmbootstrap -h' for related options.\n");
 	exit(1);
