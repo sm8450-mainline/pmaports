@@ -4,7 +4,7 @@
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 pkgname=device-purism-librem5
 pkgver=5
-pkgrel=0
+pkgrel=1
 _confver=65
 _purismrel=1
 # <librem5-base ver>.<purism release>
@@ -26,6 +26,7 @@ depends="
 	mesa-egl
 	millipixels
 	postmarketos-base
+	postprocessd
 	u-boot-librem5
 	u-boot-tools
 "
