@@ -44,7 +44,6 @@ _pmb_recommends="
 	imv
 	mobile-config-firefox
 	postmarketos-artwork-wallpapers
-	postprocessd
 	ttyescape
 	"
 provides="postmarketos-ui-sxmo"

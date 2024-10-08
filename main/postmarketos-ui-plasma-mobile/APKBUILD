@@ -23,7 +23,6 @@ _pmb_recommends="
 	plasma-dialer
 	plasma-mobile-sounds
 	plasma-phonebook
-	postprocessd
 	qmlkonsole
 	spacebar
 	ttyescape
