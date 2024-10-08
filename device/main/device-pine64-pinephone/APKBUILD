@@ -3,7 +3,7 @@
 # Co-Maintainer: Jan Jasper de Kroon <jajadekroon@gmail.com>
 pkgname=device-pine64-pinephone
 pkgver=4
-pkgrel=3
+pkgrel=4
 pkgdesc="PINE64 PinePhone"
 url="https://postmarketos.org"
 license="MIT"
@@ -34,6 +34,7 @@ depends="
 	pinephone-callaudiod
 	postmarketos-base
 	postmarketos-base-ui-audio-pipewire
+	postprocessd
 	u-boot-pinephone>=2021.01_git20201228-r2
 	u-boot-tools
 	fwupd>=1.8.6
