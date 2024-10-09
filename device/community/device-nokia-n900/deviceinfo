@@ -22,3 +22,4 @@ deviceinfo_swap_size_recommended="1024"
 # Bootloader related
 deviceinfo_flash_method="0xffff"
 deviceinfo_generate_legacy_uboot_initfs="true"
+deviceinfo_partition_type="msdos"
