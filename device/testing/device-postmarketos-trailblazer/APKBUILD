@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-postmarketos-trailblazer
 pkgdesc="postmarketOS Trailblazer generic ARM64"
-pkgver=8
+pkgver=9
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -17,6 +17,7 @@ depends="
 	linux-firmware-ath11k
 	linux-firmware-ath12k
 	linux-firmware-qca
+	linux-firmware-rtw88
 	rmtfs
 	pd-mapper
 	tqftpserv
@@ -42,5 +43,5 @@ package() {
 
 sha512sums="
 255f7477ad35723cdfdac91969d3facd4879cb858dbcaf990abe11a0ff2e975941ba98e5e10dd243765f15539c9aee18242cd31b9438008846867c703e98c421  deviceinfo
-2535fa423071be2ba7319b97c68ac2ca585ca7e5f0c6107f8ff1b1cf1eb7202514b0c08ca2a0ea5ea9892704fcc4ac5af901082dce087f2a43a1bca24c6802e1  modules-initfs
+74aba456b82a649e053955eb2baf3e610b9f4bc69ee5c16a798bd0934d2a984cd1a03a0b9467a6f6fec5cdb9e4cc5d2915a295679ce60cabe4f620adb3d0fe36  modules-initfs
 "

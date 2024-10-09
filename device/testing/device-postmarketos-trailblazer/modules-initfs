@@ -23,6 +23,7 @@ nvmem_qfprom
 onboard-usb-dev
 panel-samsung-s6d7aa0
 panel-samsung-sofef00
+panel_sitronix_st7703
 panel-visionox-rm69299
 phy-qcom-eusb2-repeater
 phy-qcom-qmp-combo
@@ -32,7 +33,10 @@ phy-qcom-qmp-usb
 phy-qcom-qmp-usbc
 phy-qcom-qusb2
 phy-qcom-snps-eusb2
+phy_sun6i_mipi_dphy
 pinctrl-sm6115
+pwm_bl
+pwm_sun4i
 qcom-apcs-ipc-mailbox
 qcom_glink
 qcom_glink_rpm
@@ -51,6 +55,13 @@ rpmpd
 rpmsg_core
 smd-rpm
 smem
+sun4i_drm
+sun4i_i2s
+sun4i_tcon
+sun6i_dma
+sun6i_mipi_dsi
+sun8i_mixer
+sun8i_tcon_top
 tcpm
 typec
 udc-core
