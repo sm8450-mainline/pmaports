@@ -3,9 +3,9 @@
 # Co-Maintainer: Newbyte <newbyte@postmarketos.org>
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 pkgname=device-purism-librem5
-pkgver=4
-pkgrel=3
-_confver=64
+pkgver=5
+pkgrel=0
+_confver=65
 _purismrel=1
 # <librem5-base ver>.<purism release>
 _purismver=${_confver}pureos$_purismrel
@@ -203,7 +203,7 @@ nonfree_firmware() {
 }
 
 sha512sums="
-46bff1208af87c9b6b2c61daaeeb95c3ff30617dce548a5877ea279ff9ced5338caaa32827bfbd98f3cb7c92d3535c27224c55bf1c03bf82f99e8ca53fe4cf6c  librem5-base-pureos-64pureos1.tar.gz
+4ce01a78016475873535927330a26143170153968cb22214ca606929ffc73ff2df2fcdd044c44d1cd9c514e989c267b5267402f0c047a240d01192d9b29ed57b  librem5-base-pureos-65pureos1.tar.gz
 2e72d9a084ecd6c96cafbbd8fda461ae8b2ebd14ffda601d9f36d73f08f04088213de17da078293ddd958d4c76d33148c7af6e252eb0709f6934855a55578509  00-mesa.sh
 703d12826464eb2bdb6bf4a7d10adb73b37564d3792794523b252f0f7cb66184add150a6938580cc33615281d1c0abd7ff158ae2143b89fa28c0cd3dc367e5ff  deviceinfo
 138ed85e6509e4611bf21a0061c312e6c2ce60f722ee9e4565d19c5f025301d4df3fa321343524219a54b20c5288dc6ed1b058ac66f4d608af22eb5bc83e84c6  modules-initfs
