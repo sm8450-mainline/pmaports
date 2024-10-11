@@ -1,6 +1,6 @@
 # Maintainer: Richard Acayan <mailingradian@gmail.com>
 pkgname=alsa-ucm-conf-qcom-sdm670
-pkgver=1.2.9_git20240801
+pkgver=1.2.9_git20241012
 pkgrel=0
 pkgdesc="ALSA UCM configuration for SDM670 devices"
 url="https://gitlab.com/sdm670-mainline/alsa-ucm-conf"
@@ -8,7 +8,7 @@ arch="aarch64"
 license="BSD-3-Clause"
 provides="alsa-ucm-conf"
 provider_priority=1
-_commit="4712327133bcf730a35ce2c80ffb2dfc06b43df1"
+_commit="437f49545593a3e285feff1820bc1a282213af45"
 source="https://gitlab.com/sdm670-mainline/alsa-ucm-conf/-/archive/$_commit/alsa-ucm-conf-$_commit.tar.gz"
 options="!check"
 
@@ -19,5 +19,5 @@ package() {
 }
 
 sha512sums="
-2401dce746edfef9c025b6e291de42262376839ea0556649b43cce995dbedb71f58574c1654bc05e3b80f19aca4789661f67a5503eb3308fddb6e057fa7c2d2d  alsa-ucm-conf-4712327133bcf730a35ce2c80ffb2dfc06b43df1.tar.gz
+4e0edfaf6451bc0177e2115f21ef00504abf2b974e7f8eb8e5f4089f11ff6d2692ff07965946eb9086b1dce7016ab14bdc998bbf6f72ae9da00d83678ed5c956  alsa-ucm-conf-437f49545593a3e285feff1820bc1a282213af45.tar.gz
 "
