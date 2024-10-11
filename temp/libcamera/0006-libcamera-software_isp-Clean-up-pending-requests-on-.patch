@@ -1,0 +1,81 @@
+From 36c6eb6e9b665830f11876c125780af08b6217d0 Mon Sep 17 00:00:00 2001
+From: Milan Zamazal <mzamazal@redhat.com>
+Date: Wed, 9 Oct 2024 19:21:08 +0200
+Subject: [PATCH 2/3] libcamera: software_isp: Clean up pending requests on
+ stop
+
+PipelineHandler::stop() calls stopDevice() method to perform pipeline
+specific cleanup and then completes waiting requests.  If any queued
+requests remain, an assertion error is raised.
+
+Software ISP stores request buffers in
+SimpleCameraData::conversionQueue_ and queues them as V4L2 signals
+bufferReady.  stopDevice() cleanup forgets to clean up the buffers and
+their requests from conversionQueue_, possibly resulting in the
+assertion error.  This patch fixes the omission.
+
+The problem wasn't very visible when
+SimplePipelineHandler::kNumInternalBuffers (the number of buffers
+allocated in V4L2) was equal to the number of buffers exported from
+software ISP.  But when the number of the exported buffers was increased
+by one in commit abe2ec64f9e4e97bbdfe3a50372611bd7b5315c2, the assertion
+error started pop up in some environments.  Increasing the number of the
+buffers much more, e.g. to 9, makes the problem very reproducible.
+
+Each pipeline uses its own mechanism to track the requests to clean up
+and it can't be excluded that similar omissions are present in other
+places.  But there is no obvious way to make a common cleanup for all
+the pipelines (except for doing it instead of raising the assertion
+error, which is probably undesirable, in order not to hide incomplete
+pipeline specific cleanups).
+
+Bug: https://bugs.libcamera.org/show_bug.cgi?id=234
+Signed-off-by: Milan Zamazal <mzamazal@redhat.com>
+Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
+---
+ src/libcamera/pipeline/simple/simple.cpp | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/src/libcamera/pipeline/simple/simple.cpp b/src/libcamera/pipeline/simple/simple.cpp
+index 29320a26..5ee6a5c3 100644
+--- a/src/libcamera/pipeline/simple/simple.cpp
++++ b/src/libcamera/pipeline/simple/simple.cpp
+@@ -281,6 +281,7 @@ public:
+ 	std::vector<std::unique_ptr<FrameBuffer>> conversionBuffers_;
+ 	std::queue<std::map<const Stream *, FrameBuffer *>> conversionQueue_;
+ 	bool useConversion_;
++	void clearIncompleteRequests();
+ 
+ 	std::unique_ptr<Converter> converter_;
+ 	std::unique_ptr<SoftwareIsp> swIsp_;
+@@ -886,6 +887,19 @@ void SimpleCameraData::conversionOutputDone(FrameBuffer *buffer)
+ 		pipe->completeRequest(request);
+ }
+ 
++void SimpleCameraData::clearIncompleteRequests()
++{
++	while (!conversionQueue_.empty()) {
++		for (auto &item : conversionQueue_.front()) {
++			FrameBuffer *outputBuffer = item.second;
++			Request *request = outputBuffer->request();
++			if (request->status() == Request::RequestPending)
++				pipe()->cancelRequest(request);
++		}
++		conversionQueue_.pop();
++	}
++}
++
+ void SimpleCameraData::ispStatsReady()
+ {
+ 	/* \todo Use the DelayedControls class */
+@@ -1382,6 +1396,7 @@ void SimplePipelineHandler::stopDevice(Camera *camera)
+ 
+ 	video->bufferReady.disconnect(data, &SimpleCameraData::bufferReady);
+ 
++	data->clearIncompleteRequests();
+ 	data->conversionBuffers_.clear();
+ 
+ 	releasePipeline(data);
+-- 
+2.47.0
+

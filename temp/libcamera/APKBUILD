@@ -3,7 +3,7 @@
 pkgname=libcamera
 pkgver=9999
 _pkgver=0.3.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Linux camera framework"
 url="https://libcamera.org/"
 arch="all"
@@ -46,6 +46,11 @@ source="https://gitlab.freedesktop.org/camera/libcamera/-/archive/v$_pkgver/libc
 	0002-libcamera-simple-Force-disable-softwareISP-for-milli.patch
 	0003-libcamera-simple-Enable-softISP-for-the-Pinephone.patch
 	0004-libcamera-simple-Skip-hwISP-formats-if-swISP-is-acti.patch
+	0005-libcamera-pipeline_handler-Provide-cancelRequest.patch
+	0006-libcamera-software_isp-Clean-up-pending-requests-on-.patch
+	0007-pipeline-simple-Consider-output-sizes-when-choosing-.patch
+	0008-pipeline-simple-Increase-buffer-count-to-four.patch
+	0009-pipeline-simple-Increase-internal-buffer-count-to-fo.patch
 	qcam.desktop
 	90-libcamera.rules
 	"
@@ -150,6 +155,11 @@ ac7df3e4509ae874199810057f4d8416da71720c15534578cc352608a8ae228dfa4814f9eb995d55
 9b6da8bd11ff9d8400ed721fbbeb960ac8753c078fdd971d786a446a9f96fea19dfc55be2705dc44a152e11de996f88139c1d24637bffc257da5083d19fe80c9  0002-libcamera-simple-Force-disable-softwareISP-for-milli.patch
 0fc6a1108c4e905d2d422a664622dc25ec459f13765b5711ad009d4df0fd0cceda8cd067a18e5e54eb2346b292481952161e72deb03d416ba80b300256c25e40  0003-libcamera-simple-Enable-softISP-for-the-Pinephone.patch
 35c74746453f4c2e24a2185331afabcf64e3af01bec2462ec09940518cda0e91c4a1f33853b4b009e1f8352af3c606fbd4b4d3791ffbba0f610f19538380c4c8  0004-libcamera-simple-Skip-hwISP-formats-if-swISP-is-acti.patch
+d8460cb16ad7787f90450bd8bc85b18af14ec5b9add09b246ffd8737275b4681e670e5ce98e2151ba9343f51ecf10e3100846ca480e75654ba2989c28498e702  0005-libcamera-pipeline_handler-Provide-cancelRequest.patch
+caa441737da9dc1e9eaa2e27d23ae8d02a16b412deb4b75e144c75dd57ae2bb73b22e2062c593a247ade38a38992945e406679b7a69b7885a109b396808fb37f  0006-libcamera-software_isp-Clean-up-pending-requests-on-.patch
+3a969bb728c4d73f1bc99d97b749ae657ef5e4ff5f1e5f0ec73a470ec362b9d9039070a9eac52ccfcf0bf0a000b4149055fc3053d3bb4bbcc1633a373c041de1  0007-pipeline-simple-Consider-output-sizes-when-choosing-.patch
+396f741d6cbec8ba316f4651a912d45eb3b4ee8be79f653d2eab24be8dbb0b08e59d4b603d418cb9cc86251d22c151aef5cc5658a012c9b8d7c83862ae232cb1  0008-pipeline-simple-Increase-buffer-count-to-four.patch
+dbdaf5fdcd250d6591ce7981256cce3c1dc901b395b797b785602ceef5e3f0bf110ca2ec7edba6abdb6f6b434b8ff376c1121cf6f5c8d204d6eb4369684be627  0009-pipeline-simple-Increase-internal-buffer-count-to-fo.patch
 22167a4eceb6d1b40b0b7c45fdf116c71684f5340de7f767535cb8e160ad9d2ae0f00cb3d461f73a344520a48a4641cf46226841d78bee06bfbfd2a91337f754  qcam.desktop
 cb4eb19eec766f1b8667a8b7c9d5f7d44a2dce79fddfdf3b6e3d1849066cebe79f82566bdcf6659c7ddf4faaf233d5adac10cda636935785e5305e2b7e9b34a9  90-libcamera.rules
 "

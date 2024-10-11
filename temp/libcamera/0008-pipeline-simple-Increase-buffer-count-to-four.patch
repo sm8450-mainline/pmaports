@@ -1,0 +1,50 @@
+From 08a845788faeb8e38e54aca14ef739349771438e Mon Sep 17 00:00:00 2001
+From: Robert Mader <robert.mader@collabora.com>
+Date: Thu, 26 Sep 2024 23:07:39 +0200
+Subject: [PATCH 1/2] pipeline: simple: Increase buffer count to four
+
+Which is not only what many other pipeline handlers use, but also a good
+lower limit when dealing with DRM and similar APIs. Even Mesas EGL and
+Vulkan WSI implementations use for the reason outlined in mesa commit
+992a2dbba80aba35efe83202e1013bd6143f0dba:
+> When the compositor is directly scanning out from the application's buffer it
+> may end up holding on to three buffers. These are the one that is is currently
+> scanning out from, one that has been given to DRM as the next buffer to flip
+> to, and one that has been attached and will be given to DRM as soon as the
+> previous flip completes. When we attach a fourth buffer to the compositor it
+> should replace that third buffer so we should get a release event immediately
+> after that. This patch therefore also changes the number of buffer slots to 4
+> so that we can accomodate that situation.
+
+Given the popularity of this buffer number the bump should be unlikely
+to cause problems. At the same time it may help with performance or
+even work around glitches.
+
+The previous number was introduced in commit
+a8964c28c80fb520ee3c7b10143371081d41405a without mentioning a specific
+reason against the change at hand.
+
+Signed-off-by: Robert Mader <robert.mader@collabora.com>
+Reviewed-by: Umang Jain <umang.jain@ideasonboard.com>
+Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Signed-off-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
+---
+ src/libcamera/pipeline/simple/simple.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libcamera/pipeline/simple/simple.cpp b/src/libcamera/pipeline/simple/simple.cpp
+index ffb59473..931a3c7d 100644
+--- a/src/libcamera/pipeline/simple/simple.cpp
++++ b/src/libcamera/pipeline/simple/simple.cpp
+@@ -1149,7 +1149,7 @@ CameraConfiguration::Status SimpleCameraConfiguration::validate()
+ 			cfg.frameSize = format.planes[0].size;
+ 		}
+ 
+-		cfg.bufferCount = 3;
++		cfg.bufferCount = 4;
+ 	}
+ 
+ 	return status;
+-- 
+2.47.0
+

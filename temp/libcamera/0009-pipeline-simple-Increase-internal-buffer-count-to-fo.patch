@@ -1,0 +1,27 @@
+From e1ec2833fc7320eb9c6258fa17022cd920ba5cc1 Mon Sep 17 00:00:00 2001
+From: Robert Mader <robert.mader@collabora.com>
+Date: Sun, 13 Oct 2024 14:13:44 +0200
+Subject: [PATCH 2/2] pipeline: simple: Increase internal buffer count to four
+ aswell
+
+Signed-off-by: Robert Mader <robert.mader@collabora.com>
+---
+ src/libcamera/pipeline/simple/simple.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libcamera/pipeline/simple/simple.cpp b/src/libcamera/pipeline/simple/simple.cpp
+index 931a3c7d..855a4de4 100644
+--- a/src/libcamera/pipeline/simple/simple.cpp
++++ b/src/libcamera/pipeline/simple/simple.cpp
+@@ -352,7 +352,7 @@ protected:
+ 	int queueRequestDevice(Camera *camera, Request *request) override;
+ 
+ private:
+-	static constexpr unsigned int kNumInternalBuffers = 3;
++	static constexpr unsigned int kNumInternalBuffers = 4;
+ 
+ 	struct EntityData {
+ 		std::unique_ptr<V4L2VideoDevice> video;
+-- 
+2.47.0
+

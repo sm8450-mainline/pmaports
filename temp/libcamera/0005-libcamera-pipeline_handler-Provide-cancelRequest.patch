@@ -1,0 +1,79 @@
+From f74131fa00580e69776215a631217c8b20cc8189 Mon Sep 17 00:00:00 2001
+From: Milan Zamazal <mzamazal@redhat.com>
+Date: Wed, 9 Oct 2024 19:21:07 +0200
+Subject: [PATCH 1/3] libcamera: pipeline_handler: Provide cancelRequest
+
+Let's extract the two occurrences of canceling a request to a common
+helper.  This is especially useful for the followup patch, which needs
+to cancel a request from outside.
+
+Signed-off-by: Milan Zamazal <mzamazal@redhat.com>
+Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
+---
+ include/libcamera/internal/pipeline_handler.h |  1 +
+ src/libcamera/pipeline_handler.cpp            | 23 +++++++++++++------
+ 2 files changed, 17 insertions(+), 7 deletions(-)
+
+diff --git a/include/libcamera/internal/pipeline_handler.h b/include/libcamera/internal/pipeline_handler.h
+index 0d380803..fb28a18d 100644
+--- a/include/libcamera/internal/pipeline_handler.h
++++ b/include/libcamera/internal/pipeline_handler.h
+@@ -60,6 +60,7 @@ public:
+ 
+ 	bool completeBuffer(Request *request, FrameBuffer *buffer);
+ 	void completeRequest(Request *request);
++	void cancelRequest(Request *request);
+ 
+ 	std::string configurationFile(const std::string &subdir,
+ 				      const std::string &name) const;
+diff --git a/src/libcamera/pipeline_handler.cpp b/src/libcamera/pipeline_handler.cpp
+index e5940469..c9cb11f0 100644
+--- a/src/libcamera/pipeline_handler.cpp
++++ b/src/libcamera/pipeline_handler.cpp
+@@ -367,9 +367,7 @@ void PipelineHandler::stop(Camera *camera)
+ 	while (!waitingRequests_.empty()) {
+ 		Request *request = waitingRequests_.front();
+ 		waitingRequests_.pop();
+-
+-		request->_d()->cancel();
+-		completeRequest(request);
++		cancelRequest(request);
+ 	}
+ 
+ 	/* Make sure no requests are pending. */
+@@ -470,10 +468,8 @@ void PipelineHandler::doQueueRequest(Request *request)
+ 	}
+ 
+ 	int ret = queueRequestDevice(camera, request);
+-	if (ret) {
+-		request->_d()->cancel();
+-		completeRequest(request);
+-	}
++	if (ret)
++		cancelRequest(request);
+ }
+ 
+ /**
+@@ -568,6 +564,19 @@ void PipelineHandler::completeRequest(Request *request)
+ 	}
+ }
+ 
++/**
++ * \brief Cancel request and signal its completion
++ * \param[in] request The request to cancel
++ *
++ * This function cancels the request in addition to its completion. The same
++ * rules as for completeRequest() apply.
++ */
++void PipelineHandler::cancelRequest(Request *request)
++{
++	request->_d()->cancel();
++	completeRequest(request);
++}
++
+ /**
+  * \brief Retrieve the absolute path to a platform configuration file
+  * \param[in] subdir The pipeline handler specific subdirectory name
+-- 
+2.47.0
+
