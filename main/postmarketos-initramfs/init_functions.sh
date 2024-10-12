@@ -95,7 +95,6 @@ setup_firmware_path() {
 	# This should be sufficient on kernel 3.10+, before that we need
 	# the kernel calling udev (and in our case /usr/lib/firmwareload.sh)
 	# to load the firmware for the kernel.
-	echo "Configuring kernel firmware image search path"
 	SYS=/sys/module/firmware_class/parameters/path
 	if ! [ -e "$SYS" ]; then
 		echo "Kernel does not support setting the firmware image search path. Skipping."
@@ -124,12 +123,7 @@ jump_init_2nd() {
 		return
 	fi
 
-	local _reason="(Second stage already loaded)"
-	if [ "$deviceinfo_create_initfs_extra" = "true" ]; then
-		_reason="(Loaded initramfs-extra)"
-	fi
-
-	echo "Jumping to /init_2nd.sh $_reason"
+	echo "  ❬❬ PMOS STAGE 2 ❭❭"
 	exec /init_2nd.sh
 }
 
@@ -437,13 +431,11 @@ mount_boot_partition() {
 	type="$(get_partition_type "$partition")"
 	case "$type" in
 		ext*)
-			echo "Detected ext filesystem"
 			modprobe ext4
 			# ext2 might be handled by the ext2 or ext4 kernel module
 			# so let mount detect that automatically by omitting -t
 			;;
 		vfat)
-			echo "Detected vfat filesystem"
 			modprobe vfat
 			mount_opts="-t vfat $mount_opts,umask=0077,nosymfollow,codepage=437,iocharset=ascii"
 			;;
@@ -615,11 +607,10 @@ setup_usb_network_android() {
 	# Only run, when we have the android usb driver
 	SYS=/sys/class/android_usb/android0
 	if ! [ -e "$SYS" ]; then
-		echo "  /sys/class/android_usb does not exist, skipping android_usb"
 		return
 	fi
 
-	echo "  Setting up an USB gadget through android_usb"
+	echo "  Setting up USB gadget through android_usb"
 
 	usb_idVendor="$(echo "${deviceinfo_usb_idVendor:-0x18D1}" | sed "s/0x//g")"	# default: Google Inc.
 	usb_idProduct="$(echo "${deviceinfo_usb_idProduct:-0xD001}" | sed "s/0x//g")"	# default: Nexus 4 (fastboot)
@@ -632,17 +623,20 @@ setup_usb_network_android() {
 	echo "1" >"$SYS/enable"
 }
 
+get_usb_udc() {
+	local _udc_dev="${deviceinfo_usb_network_udc:-}"
+	if [ -z "$_udc_dev" ]; then
+		# shellcheck disable=SC2012
+		_udc_dev=$(ls /sys/class/udc | head -1)
+	fi
+
+	echo "$_udc_dev"
+}
 
 setup_usb_configfs_udc() {
 	# Check if there's an USB Device Controller
-	local _udc_dev="${deviceinfo_usb_network_udc:-}"
-	if [ -z "$_udc_dev" ]; then
-		_udc_dev=$(ls /sys/class/udc)
-		if [ -z "$_udc_dev" ]; then
-			echo "  No USB Device Controller available"
-			return
-		fi
-	fi
+	local _udc_dev
+	_udc_dev="$(get_usb_udc)"
 
 	# Remove any existing UDC to avoid "write error: Resource busy" when setting UDC again
 	if [ "$(wc -w <$CONFIGFS/g1/UDC)" -gt 0 ]; then
@@ -663,6 +657,11 @@ setup_usb_network_configfs() {
 		return
 	fi
 
+	if [ -z "$(get_usb_udc)" ]; then
+		echo "  No UDC found, skipping usb gadget"
+		return
+	fi
+
 	# Default values for USB-related deviceinfo variables
 	usb_idVendor="${deviceinfo_usb_idVendor:-0x18D1}"   # default: Google Inc.
 	usb_idProduct="${deviceinfo_usb_idProduct:-0xD001}" # default: Nexus 4 (fastboot)
@@ -670,7 +669,7 @@ setup_usb_network_configfs() {
 	usb_network_function="${deviceinfo_usb_network_function:-ncm.usb0}"
 	usb_network_function_fallback="rndis.usb0"
 
-	echo "  Setting up an USB gadget through configfs"
+	echo "  Setting up USB gadget through configfs"
 	# Create an usb gadet configuration
 	mkdir $CONFIGFS/g1 || echo "  Couldn't create $CONFIGFS/g1"
 	echo "$usb_idVendor"  > "$CONFIGFS/g1/idVendor"
@@ -687,12 +686,9 @@ setup_usb_network_configfs() {
 
 	# Create network function.
 	if ! mkdir $CONFIGFS/g1/functions/"$usb_network_function"; then
-		echo "  Couldn't create $CONFIGFS/g1/functions/$usb_network_function"
 		# Try the fallback function next
 		if mkdir $CONFIGFS/g1/functions/"$usb_network_function_fallback"; then
 			usb_network_function="$usb_network_function_fallback"
-		else
-			echo "  Couldn't create $CONFIGFS/g1/functions/$usb_network_function_fallback"
 		fi
 	fi
 
@@ -734,7 +730,6 @@ start_unudhcpd() {
 	# Skip if disabled
 	# shellcheck disable=SC2154
 	if [ "$deviceinfo_disable_dhcpd" = "true" ]; then
-		echo "NOTE: start of dhcpd is disabled (deviceinfo_disable_dhcpd)"
 		return
 	fi
 

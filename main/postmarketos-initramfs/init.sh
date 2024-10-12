@@ -28,6 +28,8 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 # Mount everything, set up logging, modules, mdev
 mount_proc_sys_dev
 setup_log
+echo "  ❬❬ PMOS STAGE 1 ❭❭"
+echo "initramfs version: $INITRAMFS_PKG_VERSION"
 setup_firmware_path
 
 setup_usb_network
