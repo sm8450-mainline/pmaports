@@ -8,7 +8,6 @@ edt-ft5x06
 gcc-sm6115
 goodix
 gpi
-gpi
 gpio_vibra
 i2c-hid-of
 i2c-qcom-geni
@@ -27,14 +26,12 @@ panel-samsung-sofef00
 panel-visionox-rm69299
 phy-qcom-eusb2-repeater
 phy-qcom-qmp-combo
-phy-qcom-snps-eusb2
 phy-qcom-qmp-pcie
 phy-qcom-qmp-ufs
 phy-qcom-qmp-usb
-phy-qcom-qmp-usb
 phy-qcom-qmp-usbc
 phy-qcom-qusb2
-phy-qcom-qusb2
+phy-qcom-snps-eusb2
 pinctrl-sm6115
 qcom-apcs-ipc-mailbox
 qcom_glink
@@ -49,8 +46,8 @@ qnoc-qcm2290
 qnoc-sm6115
 rmi_core
 rmi_i2c
-rpmpd
 rpm-proc
+rpmpd
 rpmsg_core
 smd-rpm
 smem
