@@ -2,8 +2,8 @@
 # Maintainer: Minecrell <minecrell@minecrell.net>
 # Co-Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=device-qemu-aarch64
-pkgver=5
-pkgrel=1
+pkgver=6
+pkgrel=0
 pkgdesc="Simulated device in QEMU (aarch64)"
 url="https://postmarketos.org"
 arch="aarch64"
@@ -16,12 +16,14 @@ subpackages="
 	$pkgname-kernel-edge:kernel_edge
 	$pkgname-mce
 	$pkgname-sway
+	$pkgname-x11
 	"
 
 source="
 	deviceinfo
 	modules-initfs
 	mce-display-blanking.conf
+	resolution-qemu-X11.conf
 	"
 options="!check !archcheck"
 
@@ -46,6 +48,12 @@ sway() {
 	mkdir "$subpkgdir"
 }
 
+x11() {
+	install_if="$pkgname=$pkgver-r$pkgrel xorg-server"
+	install -Dm644 "$srcdir"/resolution-qemu-X11.conf \
+		"$subpkgdir"/etc/X11/xorg.conf.d/10-resolution-qemu-X11.conf
+}
+
 kernel_virt() {
 	pkgdesc="Alpine Virt kernel (minimal, no audio)"
 	depends="linux-virt"
@@ -68,4 +76,5 @@ sha512sums="
 90527c2be00f97172f8e9b7508aba706c62e9067c50c93cfa69fbe5940462e9a165f35b9c8dd0efe2b690a839c6069b26d0c8706b7c4114219ef3004ea3dda3e  deviceinfo
 8129439ec53e76e714b2d3dac97bbe702822d6f6642ea6b631aa26001fec85ca310fbe9eeb04c2bd849145a1137b7934c21b704524f3a98b96b7c6f71c2ca992  modules-initfs
 99d32eed6c5cda59e91516e982c5bd5165ff718133e2411a0dbba04e2057d1dfad49a75e5cc67140d0e0adcbe1383671bd2892335929b782a5b19f5472e635ad  mce-display-blanking.conf
+bfff3ebf11abb43d8ea45e778c19554b1bc8ef9e694d8160daaac0ef906b4d8eda772e5f984033cce52ebddfbbe76e5340c6805e68f967994a3240c1e10c8b5b  resolution-qemu-X11.conf
 "

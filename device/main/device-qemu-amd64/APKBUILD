@@ -2,8 +2,8 @@
 # Maintainer: Minecrell <minecrell@minecrell.net>
 # Co-Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=device-qemu-amd64
-pkgver=6
-pkgrel=4
+pkgver=7
+pkgrel=0
 pkgdesc="Simulated device in QEMU (x86_64)"
 url="https://postmarketos.org"
 arch="x86_64"
@@ -18,11 +18,13 @@ subpackages="
 	$pkgname-kernel-none:kernel_none
 	$pkgname-mce
 	$pkgname-sway
+	$pkgname-x11
 	"
 source="
 	deviceinfo
 	modules-initfs
 	mce-display-blanking.conf
+	resolution-qemu-X11.conf
 	"
 options="!check !archcheck"
 
@@ -45,6 +47,12 @@ sway() {
 	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-ui-sway"
 	depends="postmarketos-ui-sway-logo-key-alt"
 	mkdir "$subpkgdir"
+}
+
+x11() {
+	install_if="$pkgname=$pkgver-r$pkgrel xorg-server"
+	install -Dm644 "$srcdir"/resolution-qemu-X11.conf \
+		"$subpkgdir"/etc/X11/xorg.conf.d/10-resolution-qemu-X11.conf
 }
 
 kernel_none() {
@@ -74,4 +82,5 @@ sha512sums="
 74dd746b16f17ce67f6d58b6b86878b6eebaaa473fa36f475074c2c14ed738386c1b5cfcf15ad07b58f94d303799e8a9ed356143061e7854cf38170bef999a0b  deviceinfo
 29766094e64a7ce881c8e96433203ea538057b8fd1d577fc69b9add6bc1217af04ddf60cbcf82333811c627897eda7537b0b1f862899e1fdfd93403b3f6425d7  modules-initfs
 99d32eed6c5cda59e91516e982c5bd5165ff718133e2411a0dbba04e2057d1dfad49a75e5cc67140d0e0adcbe1383671bd2892335929b782a5b19f5472e635ad  mce-display-blanking.conf
+bfff3ebf11abb43d8ea45e778c19554b1bc8ef9e694d8160daaac0ef906b4d8eda772e5f984033cce52ebddfbbe76e5340c6805e68f967994a3240c1e10c8b5b  resolution-qemu-X11.conf
 "
