@@ -1,11 +1,10 @@
 pkgname=unixbench
-pkgver=5.1.3_git20180129
-_commit="070030e09f6effdf0c6721e8fcc3a5c6fb5bed1a"
-pkgrel=2
+pkgver=5.1.3_git20230411
+_commit="a07fcc03264915c624f0e4818993c5b4df3fa703"
+pkgrel=0
 pkgdesc="The original BYTE UNIX benchmark suite"
 url="https://github.com/kdlucas/byte-unixbench"
-# riscv64: doesn't build
-arch="all !riscv64"
+arch="all"
 license="GPL-2.0-or-later"
 depends="perl make"
 options="!check"
@@ -26,5 +25,7 @@ package() {
 	cp -a pgms testdir Makefile src "$pkgdir"/usr/share/unixbench
 }
 
-sha512sums="ca4b7ab21eaacddcb99f9237998c42e2179d8e136e23dc0e4d9b2774f460588bc1851dbf0cdb9ad99bd485eb67434a74408f878f76a8ea5672615495ea074124  unixbench-070030e09f6effdf0c6721e8fcc3a5c6fb5bed1a.tar.gz
-91590bfaac3b118ad9a7ec66200ecc7b5ff88b84f5e8552c6b30fcc4436669eb4467d6b9a89d0be8682903e88b843fc4e40e3c7f90406c398449edb187ad6771  ubench"
+sha512sums="
+43bb6cbbb4ed1c1e564c6b17cb1b8f0ee3852a5ef9133200e1cb0891c4809615cf9a3b69cf4ffe62bdee6ef9ecc0f05dc9d3d83bbff929013d17199eaad11a4a  unixbench-a07fcc03264915c624f0e4818993c5b4df3fa703.tar.gz
+91590bfaac3b118ad9a7ec66200ecc7b5ff88b84f5e8552c6b30fcc4436669eb4467d6b9a89d0be8682903e88b843fc4e40e3c7f90406c398449edb187ad6771  ubench
+"
