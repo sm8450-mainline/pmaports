@@ -10,7 +10,12 @@ stages:
   - lint
   - build
   - autoupdate
-
+variables:
+  # Default of 20 is pretty small, sometimes MRs have >20 commits in them. 100
+  # seems like a reasonable balance. If this is too low, git merge-base (from ci/
+  # common.py) can fail
+  GIT_DEPTH: 100
+  
 # This defines the rules for when a pipeline should run.
 workflow:
   rules:
