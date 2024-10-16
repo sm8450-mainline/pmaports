@@ -100,7 +100,7 @@ def get_changed_files(removed=True):
     commit_head = run_git(["rev-parse", "HEAD"])[:-1]
     commit_upstream = run_git(["rev-parse", branch_upstream])[:-1]
     print("commit HEAD: " + commit_head)
-    print(f"commit {branch_upstream}: f{commit_upstream}")
+    print(f"commit {branch_upstream}: {commit_upstream}")
 
     # Check if we are HEAD on the upstream branch
     if commit_head == commit_upstream:
