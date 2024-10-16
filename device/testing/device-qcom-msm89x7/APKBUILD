@@ -1,0 +1,38 @@
+# Maintainer: Barnabas Czeman <barnabas.czeman@postmarketos.org>
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-qcom-msm89x7
+pkgdesc="Generic device package for various Qualcomm MSM8917/MSM8937/MSM8940-based devices"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	firmware-qcom-adreno-a300
+	firmware-qcom-adreno-a530
+	linux-postmarketos-qcom-msm89x7
+	lk2nd-msm8952
+	mkbootimg
+	msm-firmware-loader
+	postmarketos-base
+	soc-qcom-msm89x7
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+	modules-initfs
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+525fb2e6cc7fc01d6a8bd0d1e865b0d038de7294a6824661cb564afaafb37af0bd1bbf96c48c22e72aa4502c19e9f5167e411653a9eb7989dbf54e07fd49ea7c  deviceinfo
+8f0e17ddcbbb7421c5ebb78c2342d636b58301a842d488f50c48470399a5d96e6ed7bd0958c2b8a5eb34856209bac210476b1d379a5a6536ea2523dab7f793ff  modules-initfs
+"
