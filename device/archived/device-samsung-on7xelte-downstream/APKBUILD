@@ -3,13 +3,13 @@
 pkgname=device-samsung-on7xelte-downstream
 pkgdesc="Samsung Galaxy J7 Prime"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
-	linux-samsung-on7xelte
+	linux-samsung-on7xelte-downstream
 	mkbootimg
 	msm-fb-refresher
 	postmarketos-base
