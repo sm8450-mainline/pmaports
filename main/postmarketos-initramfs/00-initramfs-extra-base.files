@@ -1,6 +1,13 @@
 /bin/udevadm
-/etc/udev/rules.d
-/usr/lib/udev/rules.d
+/usr/lib/udev/rules.d/50-udev-default.rules
+/usr/lib/udev/rules.d/60-evdev.rules
+/usr/lib/udev/rules.d/60-input-id.rules
+/usr/lib/udev/rules.d/60-persistent-input.rules
+/usr/lib/udev/rules.d/60-persistent-storage.rules
+/usr/lib/udev/rules.d/64-btrfs.rules
+/usr/lib/udev/rules.d/70-mouse.rules
+/usr/lib/udev/rules.d/70-touchpad.rules
+/usr/lib/udev/rules.d/80-drivers.rules
 /usr/lib/udev/scsi_id
 /sbin/btrfs
 /sbin/dmsetup
