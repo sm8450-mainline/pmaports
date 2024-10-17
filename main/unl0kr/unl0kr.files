@@ -6,6 +6,9 @@
 /usr/share/libinput/*.quirks
 /bin/udevadm
 /sbin/udevd
-/etc/udev/rules.d
-/usr/lib/udev/rules.d
 /usr/share/X11/xkb
+/usr/lib/udev/libinput-device-group
+/usr/lib/udev/libinput-fuzz-extract
+/usr/lib/udev/libinput-fuzz-to-zero
+/usr/lib/udev/rules.d/80-libinput-device-groups.rules
+/usr/lib/udev/rules.d/90-libinput-fuzz-override.rules
