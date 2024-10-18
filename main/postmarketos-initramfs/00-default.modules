@@ -17,8 +17,10 @@ nls_cp437
 nls_iso8859_1
 nls_utf8
 uinput
-usb_f_rndis
+usb_f_acm
 usb_f_ncm
+usb_f_mass_storage
+usb_f_rndis
 usb-storage
 vfat
 xts
