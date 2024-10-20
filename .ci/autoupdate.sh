@@ -1,7 +1,4 @@
 #!/bin/sh -e
-# Description: update a list of packages
-# Options: native slow
-# https://postmarketos.org/pmb-ci
 
 if [ "$(id -u)" = 0 ]; then
 	set -x
@@ -14,11 +11,7 @@ fi
 git config --global --add safe.directory "$CI_PROJECT_DIR"
 git config --global user.name "postmarketOS CI"
 # pmaports
-# The email address is the username of the bot (from the GitLab group members page) @noreply.gitlab.com
-git config --global user.email "project_8065375_bot_13cf44ca4cd2c938688af6e3d500d9cb@noreply.gitlab.com"
-
-# For testing with pmaports-autoupdate-test repo
-# git config --global user.email "project_58002231_bot_be2d4e9e7aba929855726aafe12940d6@noreply.gitlab.com"
+git config --global user.email "project_226_bot_a365eaa0c380d1bee0af03adf42ebea3@noreply.gitlab.postmarketos.org"
 
 # Configure SSH key for signing
 mkdir -p ~/.ssh
