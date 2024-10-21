@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-base-ui
-pkgver=28
-pkgrel=6
+pkgver=29
+pkgrel=0
 pkgdesc="Meta package for minimal postmarketOS UI base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -56,6 +56,7 @@ _pmb_recommends="font-droid font-droid-nonlatin font-twemoji"
 _source644="
 	etc/chrony/chrony.conf
 	etc/elogind/logind.conf
+	etc/flatpak/remotes.d/flathub.flatpakrepo
 	etc/conf.d/bluetooth
 	etc/conf.d/openrc-settingsd
 	etc/conf.d/tinydm
@@ -289,14 +290,14 @@ _audio_pulseaudio() {
 
 flatpak() {
 	install_if="$pkgname=$pkgver-r$pkgrel flatpak"
-	install="$subpkgname.post-install"
 
-	mkdir "$subpkgdir"
+	amove etc/flatpak/remotes.d/flathub.flatpakrepo
 }
 
 sha512sums="
 187baa4a2b77e1e97a13536553ef2e1f64c3968f07ab2a372b550e4eee10a801a3b9797766d0d9f566148230335f3d4d150cd335bc40050322313a195874d608  rootfs-etc-chrony-chrony.conf
 8d2c54fe3ca62c62f8337fb6be28479d0e02ea63f32abae81907f2768631e65c9e17485f8bc0854a013377f729b06dd1873e2b75f86f657ece866d00aecbbdb4  rootfs-etc-elogind-logind.conf
+54620e508a5070ec8819e3661e592acfcfd26c52170b0ecc4dbbc1c61998963ce20bf9d9b051a608b76d6fc17e61c65decc16602b7d58061b9149667a968d258  rootfs-etc-flatpak-remotes.d-flathub.flatpakrepo
 b841282b96110ec59a7aa539db0737327b09549d55c78dc4b2c3b28b4a6ad1facf015b3175cb6d3a38f13e47aa6314ef3dc1514a4e60dd653a97409ec54ba706  rootfs-etc-conf.d-bluetooth
 49fb494b659fe0149a93eafe109609acce6a470bb8acea160638d07e0e4b11af2544f34549d5ef2deb2914a7ef13d0d470b04ad62981f14f96999af02a5f24cf  rootfs-etc-conf.d-openrc-settingsd
 44e4283c6f77de83915977dd3bc2d8e2d96b3ed6cc68d3cc156304359ae649b5a8b0bac843e517ec6faa2066dd43ba85e313899b1eda04862f864fb9eb508aa0  rootfs-etc-conf.d-tinydm
