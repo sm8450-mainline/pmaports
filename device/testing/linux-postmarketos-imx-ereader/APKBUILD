@@ -2,8 +2,8 @@
 # Kernel config based on: arch/arm/configs/kobo_defconfig
 
 pkgname=linux-postmarketos-imx-ereader
-pkgver=6.9.0
-pkgrel=1
+pkgver=6.11.2
+pkgrel=0
 pkgdesc="i.MX E-Book reader kernel fork, close to mainline"
 replaces="linux-kobo-clara-mainline"
 provides="linux-kobo-clara-mainline=$pkgver-r$pkgrel"
@@ -30,7 +30,7 @@ makedepends="
 
 # Source
 _repository="linux"
-_commit="4b0c49001732b93f6787c44e090b8e8f72e6fe6a"
+_commit="df1ce7a11941cd64297bc861b0aa30e1009c2b80"
 _rtl8189fs_repository="rtl8189ES_linux"
 _rtl8189fs_commit="9a82349c2c40515f9d20b9f6721670f76b4e1c7a"
 _config="config-$_flavor.$arch"
@@ -70,7 +70,7 @@ package() {
 }
 
 sha512sums="
-cb42f542ba1ddd7abefd54dd6e289173ae3cc10c808b3af1f11ba7e0e28c81cc27b7d05071fc9038bd6b56c6b42dbad4b96980bb105a0318dc7b43a1f7120cd9  linux-postmarketos-imx-ereader-4b0c49001732b93f6787c44e090b8e8f72e6fe6a.tar.gz
+7744aa06656d5d5e882323b322f0b94e33a3af8d04a156dd57da2a3e0aea9e9bf29e43b676fa300f2841b7cf50b0b5a14f624abd76582cbca9a77f87bc6471c1  linux-postmarketos-imx-ereader-df1ce7a11941cd64297bc861b0aa30e1009c2b80.tar.gz
 f02f35ce3f4b3fc86c867099c04ee0e6755e8eb17e048aba3b8749fe1adb689619cb340724fdb95d395c30dc055846f4e0b170fea6e7c8add2dd5a39ba733104  rtl8189ES_linux-9a82349c2c40515f9d20b9f6721670f76b4e1c7a.tar.gz
-e8e738e95229896da7dd093c00a561e7e624126b8b7d66893a2ae20cbb02548d2cef32dbc2b132b490547ea569121194e52619d81ab3b2ef62fbc0167afbb263  config-postmarketos-imx-ereader.armv7
+f77b4f0ecf0edda7c8b092b2375f92aa4afa0e80056bff6469a31b48942ac213c6f423a799ef6e219385998b512426195cd2969554ba59445925018752f8e84a  config-postmarketos-imx-ereader.armv7
 "
