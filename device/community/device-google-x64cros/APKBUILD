@@ -4,7 +4,7 @@
 # Co-Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-x64cros
 pkgdesc="Google Chromebooks with x64 CPU"
-pkgver=9
+pkgver=10
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -55,6 +55,6 @@ kernel_lts() {
 }
 
 sha512sums="
-9e9fd97961c2d27c9cb98adb182c3d058885d5b907180d80655ec09e983d6e66c891e8d6faf55da3569e0d0cbca8e7d3582a389bdf18afdff4cf92226cc09fb7  deviceinfo
+321fc9e39cfffe88439ddd9530637a8f5c50304374f99161b8029bb13757ac46bf8e82db585698ec8f0b5e5bad2e800de7fec3608e71d161b3f17aa24d7db8a4  deviceinfo
 1b3bbfcdc6642488304653aef996dddf7a354e7279f2c735ac7aec404e598948423630fcaa2cac87e2c0aef033ecfc57a7a91154f9dac9a85411db7bad62e677  modules-initfs
 "
