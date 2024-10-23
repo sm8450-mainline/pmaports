@@ -10,6 +10,7 @@ depends="
 	lk2nd-msm8974
 	mkbootimg
 	postmarketos-base
+	soc-qcom-msm8974
 	"
 makedepends="devicepkg-dev"
 subpackages="

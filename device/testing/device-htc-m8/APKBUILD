@@ -2,7 +2,7 @@
 pkgname=device-htc-m8
 pkgdesc="HTC One M8"
 pkgver=1
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -10,6 +10,7 @@ options="!check !archcheck"
 depends="
 	mkbootimg
 	postmarketos-base
+	soc-qcom-msm8974
 "
 makedepends="devicepkg-dev"
 subpackages="
