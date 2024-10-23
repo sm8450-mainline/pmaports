@@ -4,7 +4,7 @@
 # Co-Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-x64cros
 pkgdesc="Google Chromebooks with x64 CPU"
-pkgver=10
+pkgver=11
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -22,17 +22,27 @@ install="$pkgname.post-install $pkgname.post-upgrade"
 subpackages="
 	$pkgname-kernel-lts:kernel_lts
 	$pkgname-kernel-edge:kernel_edge
+	$pkgname-firmware-intel:firmware_intel
+	$pkgname-firmware-amd:firmware_amd
 	"
-source="deviceinfo modules-initfs"
+source="
+	00-amdgpu-firmware.files
+	00-i915-firmware.files
+	deviceinfo
+	modules-initfs
+	"
 # TODO: package iwlwifi-7265D-29.ucode separetely, so we don't depend
 # on linux-firmware-other
 _pmb_recommends="
+	amd-ucode
+	intel-ucode
+	linux-firmware-amdgpu
+	linux-firmware-i915
+	linux-firmware-intel
 	linux-firmware-other
 	linux-firmware-rtl_nic
 	linux-firmware-rtw88
-	oem-intel
-	oem-amd
-"
+	"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -54,7 +64,22 @@ kernel_lts() {
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
+firmware_amd() {
+	install_if="$pkgname=$pkgver-r$pkgrel linux-firmware-amdgpu"
+
+	install -Dm644 00-amdgpu-firmware.files \
+		-t "$subpkgdir"/usr/share/mkinitfs/files-extra
+}
+firmware_intel() {
+	install_if="$pkgname=$pkgver-r$pkgrel linux-firmware-i915"
+
+	install -Dm644 00-i915-firmware.files \
+		-t "$subpkgdir"/usr/share/mkinitfs/files-extra
+}
+
 sha512sums="
-321fc9e39cfffe88439ddd9530637a8f5c50304374f99161b8029bb13757ac46bf8e82db585698ec8f0b5e5bad2e800de7fec3608e71d161b3f17aa24d7db8a4  deviceinfo
+38c53d91a60d0402d4cc5428d65e1e8c26360c481c70b34593b1812c87241c32e91904a3bd31fbfe507f7fdb8b50c909eaad8c4c3a37ca962760567329f7f6ee  00-amdgpu-firmware.files
+c17f5c505e0e280a9e51ac1b4264e7703b744fd3831d75ce95f41be4755ae4ccd24b7ca09ba1e236df499a5e748c64a0d2054c9d55d8c8c713fa8c5646ed9a3c  00-i915-firmware.files
+514ff5c946633dccaa569fed51743c669ea9942af4dd891ad001ba08bba07fca92503e29304f3eb71c16bc2f2436e1879ff0bf56d99666e4dcf9635c8605da2e  deviceinfo
 1b3bbfcdc6642488304653aef996dddf7a354e7279f2c735ac7aec404e598948423630fcaa2cac87e2c0aef033ecfc57a7a91154f9dac9a85411db7bad62e677  modules-initfs
 "
