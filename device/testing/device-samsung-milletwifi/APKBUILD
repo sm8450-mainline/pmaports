@@ -2,12 +2,17 @@
 pkgname=device-samsung-milletwifi
 pkgdesc="Samsung Galaxy Tab 4 8.0 Wi-Fi"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
-depends="linux-postmarketos-qcom-msm8226 mkbootimg postmarketos-base"
+depends="
+	linux-postmarketos-qcom-msm8226
+	mkbootimg
+	postmarketos-base
+	soc-qcom-msm8226
+	"
 makedepends="devicepkg-dev"
 source="deviceinfo modules-initfs"
 subpackages="$pkgname-nonfree-firmware:nonfree_firmware"

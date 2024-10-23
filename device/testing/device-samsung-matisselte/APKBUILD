@@ -2,12 +2,17 @@
 pkgname=device-samsung-matisselte
 pkgdesc="Samsung Galaxy Tab 4 10.1 LTE"
 pkgver=2
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
-depends="postmarketos-base linux-postmarketos-qcom-msm8226 mkbootimg"
+depends="
+	linux-postmarketos-qcom-msm8226
+	mkbootimg
+	postmarketos-base
+	soc-qcom-msm8226
+	"
 makedepends="devicepkg-dev"
 source="deviceinfo"
 
