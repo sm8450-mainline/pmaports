@@ -1,0 +1,33 @@
+# Maintainer: Barnabas Czeman <trabarni@gmail.com>
+pkgname=soc-qcom-msm8226
+pkgdesc="Common package for Qualcomm MSM8226 devices"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="BSD-3-Clause"
+arch="armv7"
+options="!check !archcheck !tracedeps pmb:cross-native"
+depends="swclock-offset"
+subpackages="
+	$pkgname-gpu
+"
+
+source="
+	adreno-a305-quirks.sh
+"
+
+package() {
+	mkdir -p $pkgdir
+}
+
+gpu() {
+	pkgdesc="Various GPU workarounds for Adreno a305"
+	install_if="$pkgname=$pkgver-r$pkgrel mesa-dri-gallium"
+
+	install -Dm644 "$srcdir"/adreno-a305-quirks.sh \
+		"$subpkgdir"/etc/profile.d/adreno-a305-quirks.sh
+}
+
+sha512sums="
+fc55aa63c6706758bc0cebf3cc9eb572a77b740cba9705875297170e819d27c83c44cef42924a9eb0e5cbfec95adaf515c64b9916140d15496f580acc4a18525  adreno-a305-quirks.sh
+"
