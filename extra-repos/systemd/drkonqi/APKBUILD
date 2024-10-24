@@ -1,8 +1,8 @@
 # Forked from Alpine to add systemd!
 
 pkgname=drkonqi
-pkgver=99996.1.4
-_pkgver=6.1.4
+pkgver=99996.2.2
+_pkgver=6.2.2
 pkgrel=0
 pkgdesc="The KDE crash handler"
 # armhf blocked by extra-cmake-modules
@@ -72,5 +72,5 @@ package() {
 }
 
 sha512sums="
-ef79b3b4b31d1d8329a699a8b9d2a1dc28e7faf88ac7a3c11aa7361dc77adab3293d069d178da3e6d2117496736b30c7b092a7b27185381209ea2ce3aae4ab7c  drkonqi-6.1.4.tar.xz
+a81031392fde0ed348c599036c62f64652442b1761924137d8909da941e9dbac562816fc083248c262ce9e8ff556cf70cd1177ae49489cbf91d0e0397198dcef  drkonqi-6.2.2.tar.xz
 "
