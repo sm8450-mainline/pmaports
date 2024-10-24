@@ -3,7 +3,7 @@
 # Maintainer: Robert Eckelmann <longnoserob@postmarketos.org>
 
 pkgname=linux-postmarketos-marvell-dove
-pkgver=6.10.10
+pkgver=6.11.5
 pkgrel=0
 pkgdesc="mainline (stable) for Marvell Dove SoC"
 arch="armv7"
@@ -61,6 +61,6 @@ package() {
 
 
 sha512sums="
-affaa3690150ca13f0ee14f91f0e09a5ad3340a7ea6404e34286dfb4bd4fdfe12fcac47e83da7878681bf28a8a8b78e0b315e1563408885dbb07aac5bd2e4dce  linux-postmarketos-marvell-dove-6.10.10.tar.xz
-01ab20589f333750232f25fc116409d96c519dc3254fc30d486ae91b77165e3912440d2acd73a0efc00dc4f273554682faf4da2e35f5bfe4230ee5a849390c7e  config-postmarketos-marvell-dove.armv7
+532432967a1b343408be7764be67fd47dea28f41385efb6cba93f7039bf19e75027a59c53eb3752b32863d20f334e25d8dfe68237bc5449682d18eb2b7d0ea86  linux-postmarketos-marvell-dove-6.11.5.tar.xz
+71fcf6461f4ca88b14a02d1df7b90bad3bdcdf2c56e037c34d7b3f564162b63e9487a65ab13e63fa180e1a4512eb5037831a210f738e63d04f3e230ac68db8b9  config-postmarketos-marvell-dove.armv7
 "
