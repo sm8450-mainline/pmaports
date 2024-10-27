@@ -2,7 +2,7 @@
 # Maintainer: Jakko <jahau@rocketmail.com>
 pkgname=postmarketos-ui-mate
 pkgver=7
-pkgrel=4
+pkgrel=5
 pkgdesc="(X11) MATE Desktop Environment, fork of GNOME2 (stylus recommended)"
 url="http://mate-desktop.org/"
 arch="noarch"
@@ -32,6 +32,7 @@ _pmb_recommends="
 	onboard
 	unclutter-xfixes
 	"
+install="$pkgname.post-install $pkgname.post-upgrade"
 subpackages="$pkgname-openrc"
 source="
 	000-system-background.gschema.override
