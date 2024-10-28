@@ -3,7 +3,7 @@
 pkgname=gnome-shell-mobile
 pkgver=99946.1
 _pkgver=46.1
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME shell mobile"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 # gjs / riscv64: mutter-mobile
@@ -24,7 +24,6 @@ depends="
 	gstreamer
 	ibus
 	librsvg
-	networkmanager-common
 	polkit
 	systemd
 	tecla

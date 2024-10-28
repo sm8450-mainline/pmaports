@@ -3,7 +3,7 @@
 pkgname=gnome-shell
 pkgver=99946.2
 _pkgver=46.2
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME shell"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
 # gjs -> mozjs
@@ -24,7 +24,6 @@ depends="
 	gstreamer
 	ibus
 	librsvg
-	networkmanager-common
 	systemd
 	tecla
 	unzip
