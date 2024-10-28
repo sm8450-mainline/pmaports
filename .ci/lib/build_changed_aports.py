@@ -55,14 +55,6 @@ if __name__ == "__main__":
     # Package count sanity check
     common.get_changed_packages_sanity_check(len(packages))
 
-    # [ci:skip-build]: verify checksums and stop
-    verify_only = common.commit_message_has_string("[ci:skip-build]")
-    if verify_only:
-        print("WARNING: not building changed packages ([ci:skip-build])!")
-        print("verifying checksums: " + ", ".join(packages))
-        verify_checksums(packages, arch)
-        sys.exit(0)
-
     # Load context
     sys.argv = ["pmbootstrap.py", "chroot"]
     args = pmb.parse.arguments()
@@ -101,14 +93,31 @@ if __name__ == "__main__":
     # No packages: skip build
     if len(packages) == 0:
         print(f"no packages changed, which can be built for {arch}")
+
     else:
-        # Build packages
-        print(f"building in strict mode for {arch}: {', '.join(packages)}")
-        build_strict(packages, arch)
+        verify_only = common.commit_message_has_string("[ci:skip-build]")
+        if verify_only:
+            # [ci:skip-build]: verify checksums and stop
+            print("WARNING: not building changed packages ([ci:skip-build])!")
+            print("verifying checksums: " + ", ".join(packages))
+            verify_checksums(packages, arch)
+        else:
+            # Build packages
+            print(f"building in strict mode for {arch}: {', '.join(packages)}")
+            build_strict(packages, arch)
 
     # Build packages in extra-repos/systemd
     # FIXME: this should probably be more generic, if other repos are added later?
     if systemd_pkgs:
-        print(f"building in strict mode for {arch}, from extra-repos/systemd: {', '.join(packages)}")
         common.run_pmbootstrap(["config", "systemd", "always"])
-        build_strict(systemd_pkgs, arch)
+
+        verify_only = common.commit_message_has_string("[ci:skip-build]")
+        if verify_only:
+            # [ci:skip-build]: verify checksums
+            print("WARNING: not building changed packages for extra-repos/systemd: ([ci:skip-build])!")
+            print("verifying checksums: " + ", ".join(packages))
+            verify_checksums(systemd_pkgs, arch)
+        else:
+            # Build packages
+            print(f"building in strict mode for {arch}, from extra-repos/systemd: {', '.join(packages)}")
+            build_strict(systemd_pkgs, arch)
