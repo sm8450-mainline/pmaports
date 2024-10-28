@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-mobile
 pkgver=46.1
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 # gjs / riscv64: mutter-mobile
@@ -25,7 +25,6 @@ depends="
 	ibus
 	librsvg
 	mutter-mobile>=46
-	networkmanager-common
 	tecla
 	unzip
 	upower
