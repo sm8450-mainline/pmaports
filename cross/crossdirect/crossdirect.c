@@ -44,8 +44,7 @@
 void exit_userfriendly()
 {
 	fprintf(stderr, "Please report this at: https://gitlab.postmarketos.org/postmarketOS/pmaports/issues\n");
-	fprintf(stderr, "As a workaround, you can compile without crossdirect.\n");
-	fprintf(stderr, "See 'pmbootstrap -h' for related options.\n");
+	fprintf(stderr, "As a workaround, you can compile without crossdirect with options=\"!pmb:crossdirect\".\n");
 	exit(1);
 }
 
@@ -118,11 +117,17 @@ int main(int argc, char **argv)
 		NULL };
 	char *ldPreload = getenv("LD_PRELOAD");
 	if (ldPreload) {
-		if (strcmp(ldPreload, "/usr/lib/libfakeroot.so") == 0) {
-			env[0] = "LD_PRELOAD=/native/usr/lib/libfakeroot.so";
-		} else {
-			fprintf(stderr, "ERROR: crossdirect: can't handle LD_PRELOAD: %s\n", ldPreload);
-			exit_userfriendly();
+		if (strstr(ldPreload, "libfakeroot.so")) {
+			fprintf(stderr, "============================================================================================\n");
+			fprintf(stderr, "ERROR: crossdirect was called with: LD_PRELOAD=%s\n", ldPreload);
+			fprintf(stderr, "This means your package tried to run a compiler during package().\n");
+			fprintf(stderr, "This is not supported by crossdirect, and usually not a good idea.\n");
+			fprintf(stderr, "* Try to fix your APKBUILD so it does not run the compiler during package(), only in build()\n");
+			fprintf(stderr, "  * If you're using 'meson install', try to add '--no-rebuild'\n");
+			fprintf(stderr, "* If this is not possible, you can work around it by setting options=\"!pmb:crossdirect\"\n");
+			fprintf(stderr, "  (compilation will be slower!)\n");
+			fprintf(stderr, "============================================================================================\n");
+			exit(1);
 		}
 	}
 
