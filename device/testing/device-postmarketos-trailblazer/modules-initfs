@@ -13,6 +13,7 @@ gpio_vibra
 i2c-hid-of
 i2c-qcom-geni
 icc-bwmon
+icc-osm-l3
 icc-smd-rpm
 led_bl
 libcomposite

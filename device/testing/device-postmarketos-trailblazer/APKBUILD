@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-postmarketos-trailblazer
 pkgdesc="postmarketOS Trailblazer generic ARM64"
-pkgver=7
+pkgver=8
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -42,5 +42,5 @@ package() {
 
 sha512sums="
 255f7477ad35723cdfdac91969d3facd4879cb858dbcaf990abe11a0ff2e975941ba98e5e10dd243765f15539c9aee18242cd31b9438008846867c703e98c421  deviceinfo
-885193050b7e2366e9c2234e2004cf16825b8747d66be32dd5c049100ab16be6933ac1838e44b750fea7d0ef4f42703cee096232df436078cd9fb97b0bc21412  modules-initfs
+031f635b0cd4a9b9789c332a7677496c2ea68b138cba03a5bfea2d98d5241b05c99343600018a221fbfd61af63e048ba13ddf0d016b15429af89eeb5e21ea404  modules-initfs
 "
