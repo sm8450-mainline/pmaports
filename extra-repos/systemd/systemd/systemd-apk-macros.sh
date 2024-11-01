@@ -76,9 +76,9 @@ systemd_service_pre_deinstall() {
 			;;
 		"system")
 			if is_systemd_running; then
-				systemctl --no-reload disable --now --no-warn $system_preset
+				systemctl --no-reload disable --now --no-warn "$@"
 			else
-				systemctl --no-reload disable --no-warn $system_preset
+				systemctl --no-reload disable --no-warn "$@"
 			fi
 			;;
 		*)
