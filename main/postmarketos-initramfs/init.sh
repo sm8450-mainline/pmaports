@@ -59,6 +59,8 @@ mount_subpartitions
 wait_boot_partition
 mount_boot_partition /boot
 extract_initramfs_extra /boot/initramfs-extra
+# /boot is mounted later into the rootfs
+umount /boot
 
 # Kill mdev, since it's replaced by udev in the
 # second stage init
