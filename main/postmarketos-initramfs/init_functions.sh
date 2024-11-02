@@ -22,7 +22,6 @@ deviceinfo_create_initfs_extra="${deviceinfo_create_initfs_extra:-}"
 setup_log() {
 	local console
 	console="$(cat /sys/devices/virtual/tty/console/active)"
-	local warn_null_console=""
 
 	# Stash fd1/2 so we can restore them before switch_root, but only if the
 	# console is not null
@@ -34,14 +33,14 @@ setup_log() {
 	else
 		# Setting console=null is a trick used on quite a few pmOS devices. However it is generally a really
 		# bad idea since it makes it impossible to debug kernel panics, and it makes our job logging in the
-		# initramfs a lot harder. Let's encourage people to stop using this by printing a warning to dmesg
-		# and logging to every console we can.
-		# Instead folks should add 'quiet' or 'silent' to the kernel cmdline to disable logging.
+		# initramfs a lot harder. We ban this in pmaports but some (usually android) bootloaders like to add it
+		# anyway. We ought to have some special handling here to use /dev/zero for stdin instead
+		# to avoid weird bugs in daemons that read from stdin (e.g. syslog)
+		# See related: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/2989
 		console="/dev/$(echo "$deviceinfo_getty" | cut -d';' -f1)"
 		if ! [ -e "$console" ]; then
 			console="/dev/null"
 		fi
-		warn_null_console="true"
 	fi
 
 	# Disable kmsg ratelimiting for userspace (it gets re-enabled again before switch_root)
@@ -61,15 +60,6 @@ setup_log() {
 	# Process substitution is technically non-POSIX, but is supported by busybox
 	# shellcheck disable=SC3001
 	exec > >(tee /pmOS_init.log "$pmsg" "$console" | logger -t "$LOG_PREFIX" -p user.info) 2>&1
-
-	if [ -n "$warn_null_console" ]; then
-		# Log to the display as well just to be sure.
-		echo "postmarketOS: ****************************************************"  | tee /dev/tty1
-		echo "WARNING: 'console=null' on kernel cmdline. This is NOT supported!"   | tee /dev/tty1
-		echo "WARNING: Use 'quiet' instead if you want to disable logging."        | tee /dev/tty1
-		echo "WARNING: Logging initramfs output to $console, as a fallback."       | tee /dev/tty1
-		echo "postmarketOS: ****************************************************"  | tee /dev/tty1
-	fi
 }
 
 mount_proc_sys_dev() {
