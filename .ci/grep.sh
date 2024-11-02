@@ -87,4 +87,11 @@ if grep -qEr 'PMOS_NO_OUTPUT_REDIRECT' -- *; then
 	exit_code=1
 fi
 
+if grep -qEr '^deviceinfo_kernel_cmdline.*[\"\s]console=null' -- device/; then
+	echo "ERROR: Do not use console=null in the kernel command line."
+	echo "Use these params to quiet console on boot: quiet loglevel=2"
+	echo "For more information, see: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/2989"
+	exit_code=1
+fi
+
 exit "$exit_code"
