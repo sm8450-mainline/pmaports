@@ -3,9 +3,9 @@
 _flavor=postmarketos-allwinner
 _config="config-$_flavor.$CARCH"
 pkgname=linux-$_flavor
-pkgver=6.11.0_git20240915
+pkgver=6.11.5_git20241029
 pkgrel=0
-_tag="orange-pi-6.11-20240915-2344"
+_tag="orange-pi-6.11-20241029-1901"
 pkgdesc="Kernel fork with Pine64 patches (megi's tree, slightly patched)"
 arch="aarch64 armv7"
 url="https://megous.com/git/linux/"
@@ -79,9 +79,9 @@ package() {
 		INSTALL_DTBS_PATH="$pkgdir/boot/dtbs"
 }
 sha512sums="
-8ade8d4c15c9cd1e27a2cc5a93d98e50597824d98995d69ab1b428677ad9e8232704184f9eafd36986f88b783d39735c16210b542aa346d37679a2ccfcfca835  linux-postmarketos-allwinner-orange-pi-6.11-20240915-2344.tar.gz
-d6b6ac843e93aa26c0d9ec1c03d2d3d71200bc802119d7e7bd76efabeb30fd2cfdfabb22a60ee5e078a13f9a56bd09531ee8acc43e293565f9bd24383ae8573f  config-postmarketos-allwinner.aarch64
-8d918a9f28a3e47feebcf53732b0c20d9c0f1068ccda01cbd5d1d2c8c41183899d8fbfb95f773ad9468d863ceaeaf9d35cfb09603d4b5c52f55673efad98bf2b  config-postmarketos-allwinner.armv7
+95a3a4fd30b53ac43e1d5f181bfb415e66fdf3eb9e2265ace36c9e099ce26e6dfc4509a721f56bf1bbd25ae3f97e255838ffbf84fe24bb89c54054c22c961855  linux-postmarketos-allwinner-orange-pi-6.11-20241029-1901.tar.gz
+a306025dcc859e8f3001734704b89206de26b92c88af035eb08f0c041d47bad5ff6c597405fbf0d4f9d1672c156eac6bd0189ecdf7d8a565c9cc7c6b948888dd  config-postmarketos-allwinner.aarch64
+51106cf76390a68e84ac3c7e9e92d3b8d4009fb65b001e0dd0fe12f722f07dd47f26af63cf9170dd08dc20c07467b974639aca93d2f4333f595a41a26200aa27  config-postmarketos-allwinner.armv7
 54bb653f2eec755d831e4c3c7d5a202c09e8d738335d79664879fea6783c54ea74a935259e77bbbe748138a17e92f421ab3e6bd5b07f7e970fd7b22deebcb84b  0001-dts-add-dontbeevil-pinephone-devkit.patch
 1bfff7c0bd3c6761520c444968b9d61b9c43a733d398628dbe12134858a2803b4761117cd2946e86595a3dd2cbffb395c075502dafa40d9fa97e298f49701eb2  0002-dts-add-pinetab-dev-old-display-panel.patch
 91d10d8d377e3f957f76b634a2e075a8927462621610a12be3fbb7e233580bfbb41e0bc5dab06d16eb59fda54a61c4d0415de7b07a7a3de4b46c7f33d7c00aa3  0003-dts-pinetab-add-missing-ohci1.patch
