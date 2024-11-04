@@ -1,7 +1,7 @@
 # Kernel config based on defconfig and exynos7870.config
 pkgname=linux-postmarketos-exynos7870
-pkgver=6.8.1
-pkgrel=2
+pkgver=6.11.6
+pkgrel=0
 pkgdesc="Close-to-mainline kernel for Samsung Exynos 7870 devices"
 arch="aarch64"
 _carch="arm64"
@@ -21,13 +21,14 @@ makedepends="
 
 _owner="exynos7870-mainline"
 _repo="mainline-patches"
-_commit="6608cbe5d3b29c44a177d12c14c7f1b070584363"
+_commit="5e7613fc57598f3755592febff2a907e3dbca4fb"
 _config="config-$_flavor.aarch64"
+_kmajver="$(echo "$pkgver" | sed 's/\..*$//')"
 
 # Source
 source="
 	$_config
-	linux-$pkgver.tar.gz::https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.gz
+	linux-$pkgver.tar.gz::https://cdn.kernel.org/pub/linux/kernel/v$_kmajver.x/linux-$pkgver.tar.gz
 	patches-$_commit.tar.gz::https://gitlab.com/$_owner/$_repo/-/archive/$_commit/$_repo-$_commit.tar.gz
 "
 builddir="$srcdir/linux-$pkgver"
@@ -37,24 +38,23 @@ prepare() {
 	cp "$srcdir/$_config" .config
 
 	# Apply the patches to the mainline kernel.
-	for i in "$srcdir"/$_repo-*/patches/*; do
-		patch -p1 < "$i"
+	for patchfile in "$srcdir/$_repo"-*/patches/*; do
+		patch -p1 < "$patchfile"
 	done
 
-	# Delete the minimal devicetrees
-	rm -f "$srcdir"/$_repo-*/*-minimal-dts.dts
+	makefile="$builddir/arch/arm64/boot/dts/exynos/Makefile"
 
-	# Move the devicetrees in the kernel tree
-	for i in "$srcdir"/$_repo-*/*dts*; do
-		cp $i "arch/arm64/boot/dts/exynos/"
-	done
+	for dts in "$srcdir/$_repo"-*/devicetrees/*dts*; do
+		dtb="$(basename "$dts" | sed 's/\.dts$/.dtb/')"
 
-	# Add the devicetrees in the Makefile
-	for i in "$srcdir"/$_repo-*/*.dts; do
-		# Get the file name, and change .dts to .dtb
-		i="$(echo $(basename $i) | sed 's/.$/b/')"
-		echo "dtb-\$(CONFIG_ARCH_EXYNOS) += $i" >> \
-			"$builddir/arch/arm64/boot/dts/exynos/Makefile"
+		# Move the devicetree sources in the kernel tree.
+		cp "$dts" "arch/arm64/boot/dts/exynos/"
+
+		# Mention the devicetree blobs in the Makefile for
+		# compilation if they're absent.
+		if ! grep -q "$dtb" "$makefile"; then
+			echo "dtb-\$(CONFIG_ARCH_EXYNOS) += $dtb" >> "$makefile"
+		fi
 	done
 }
 
@@ -73,8 +73,8 @@ package() {
 		INSTALL_PATH="$pkgdir/boot" \
 		INSTALL_MOD_PATH="$pkgdir" \
 		INSTALL_MOD_STRIP=1 \
-		INSTALL_DTBS_PATH="$pkgdir"/boot/dtbs
-	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
+		INSTALL_DTBS_PATH="$pkgdir/boot/dtbs"
+	rm -f "$pkgdir"/usr/lib/modules/*/build "$pkgdir"/usr/lib/modules/*/source
 
 	install -D "$builddir/include/config/kernel.release" \
 		"$pkgdir/usr/share/kernel/$_flavor/kernel.release"
@@ -84,7 +84,7 @@ package() {
 }
 
 sha512sums="
-eb4426424d2d8e1b00dd0606f3ad78d0ba3791e92cba0eeff8df925eab254464ca70c63fe08a0fa293cf2bda58f1c440f25296f375f4e76fa9a828b01057be7e  config-postmarketos-exynos7870.aarch64
-a08c966b4c3cce22fa4963b2b17b42966ceb959ccb0280f83a67fa84abed773ec5e155df7678df121c7825772a9ba82df71fa142734754d3847e73b7e65488f7  linux-6.8.1.tar.gz
-275b3a8be2e089348ed18d12ff07118bf66574be46aeb0004950f8a46e46609e5312a2e792ab85a9a8eef0ace9fec7eb4066f839f76efd688e0ee5e09623cdc6  patches-6608cbe5d3b29c44a177d12c14c7f1b070584363.tar.gz
+1a42aa6f005ed9c1d821803dbd77c992990bb2d671b60748ac9abeda87ca064d04296fbe01d83cba4f653fb805669b9837e6688bbc06ee6a5878d0e0da91fefe  config-postmarketos-exynos7870.aarch64
+1fa9b602d67f13b0324bb44612f48476d7ae609d627ec4ac9280769f5b410c2e158acc45be9624ac7115fa1b424a27e4a54e07527cbac18b40aeb37880ad80e6  linux-6.11.6.tar.gz
+ff5d524a5fa949d0774bf6b3e6fb4deb882b3c0e4fbe14f15867ae2beafe195a8d27e55540c811d946d7ab5186ddebbdc5a8ee26125e528c0a0a22dbb609c39a  patches-5e7613fc57598f3755592febff2a907e3dbca4fb.tar.gz
 "
