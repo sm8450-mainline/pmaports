@@ -2,7 +2,7 @@
 # Maintainer: Ferass El Hafidi <funderscore@postmarketos.org>
 pkgname=device-librecomputer-lafrite
 pkgdesc="Libre Computer AML-S805X-AC-V1.0"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -36,6 +36,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-df70b3bf040500ee8579f0a7ed1aef7691fc36b2e682f052bc6d502c0bc23338f1b96579a3ced77c8635a9f9198316fff8589c8588709410ca566f11e01ed855  deviceinfo
+604613ffd6b9cabafacc868fb13e4a70849070df534ed646d517af721ffc9b7cbb73638b4934924b366cc9f7bdb05d10a664e3c88855ee52ba78c01895e11069  deviceinfo
 52948c2884a6f6384e12b7a598f70878526d0d3293c214425170145231144ec7de805c038641741a4a5d75b50e554f6a3fa3769784a674217ed032f9b6a233c8  modules-initfs
 "

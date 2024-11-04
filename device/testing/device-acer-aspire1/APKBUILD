@@ -2,7 +2,7 @@
 # Maintainer: Nikita Travkin <nikita@trvn.ru>
 pkgname=device-acer-aspire1
 pkgdesc="Acer Aspire 1"
-pkgver=4
+pkgver=5
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -68,7 +68,7 @@ nonfree_firmware() {
 }
 
 sha512sums="
-9f0aafaea32377cc8a9ed05c82dacf237f3149f325d34cc7784565596cca0ca2f0858dbe37573872c96b3264dbd9e8ceeb3a7af614aa0fccf501880d4ea38083  deviceinfo
+9506c0095105a9d0d1107dd561790b304001b6759f22f0beb0857528e4af90017c40a1cc394e695c46290ddec7f5358d7257429f124e242c8fd50f93bb327947  deviceinfo
 99b3c6fee1e4088ad0246170b6884c5f342893efa4d4846c4e9fa47fbf58f2dc655b8379f465e7d690621630804634533392254fc4305fea6d292a9d5eb4795a  modules-initfs
 0626518d52fb56b80115e333030abe409fb5ca13aa7c13387e3f41e7d34c3b7c7da3ff06dd7062b79b5472f93119100bffa98f32f05f530623ccca7282777302  sc7180.conf
 ee33efa68a091f47ecaf51fc05f43fb7d5c62ec3eeaacb917dc1438edc4636eaba52c336645bf8a555b68b366a7dc40baf55895595ac7ac66cdeaa7ede86a72f  init.conf

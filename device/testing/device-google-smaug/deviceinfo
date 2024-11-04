@@ -20,7 +20,7 @@ deviceinfo_disable_dhcpd="true"
 
 # Bootloader related
 deviceinfo_flash_method="fastboot"
-deviceinfo_kernel_cmdline="console=null"
+deviceinfo_kernel_cmdline="quiet loglevel=2"
 deviceinfo_cgpt_kpart="/boot/boot.img"
 deviceinfo_cgpt_kpart_start="8192"
 deviceinfo_cgpt_kpart_size="65536"

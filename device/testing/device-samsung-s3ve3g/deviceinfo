@@ -17,7 +17,7 @@ deviceinfo_screen_height="1280"
 
 # Bootloader related
 deviceinfo_flash_method="heimdall-bootimg"
-deviceinfo_kernel_cmdline="console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x37 zcache.enabled=1 zcache.compressor=lz4 buildvariant=userdebug"
+deviceinfo_kernel_cmdline="quiet loglevel=2 androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x37 zcache.enabled=1 zcache.compressor=lz4 buildvariant=userdebug"
 deviceinfo_generate_bootimg="true"
 deviceinfo_bootimg_qcdt="true"
 deviceinfo_bootimg_dtb_second="false"

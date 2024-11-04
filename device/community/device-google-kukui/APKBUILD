@@ -2,7 +2,7 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-kukui
 pkgdesc="Google Kukui Chromebooks"
-pkgver=8
+pkgver=9
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -73,6 +73,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-ecd503069ecf272ddc238bd49dc257a1f3e0f4c20b322238e2da83104b94b331c22886d1591b6fe0b78c986e15ac6251e364ec1b750f9125ea722a6b1a79e2b8  deviceinfo
+563b0c9ee35c90f2be74e30fa6d490a351e5e114f946c21556f00b621bfd5c756599eef5228dad8cf74c258eb8eb9e12f8012058da285ddff7834820cad5fc7e  deviceinfo
 8e95624610dae7d18684056396c9e82635ddce7303d6770e965f9372ffa101fdfd5f8337bc7368004890e9836798663a98c142c52ed63795877ea37ac8da56af  modules-initfs
 "

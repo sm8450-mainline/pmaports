@@ -2,8 +2,8 @@
 # Maintainer: Marco Loletti <marco.loletti@zohomail.eu>
 pkgname=device-xunlong-orangepi-pc
 pkgdesc="Xunlong Orange Pi PC"
-pkgver=1
-pkgrel=2
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="GPL-3.0-or-later"
 arch="armv7"
@@ -21,5 +21,5 @@ package() {
 }
 
 sha512sums="
-f03f27dbb76cb5e4946a8290c9778074aeb86d15897334c8f75901a9593a4d783ab0d585df9ce62935eedeba2f9bfc30ebf139035ffe8240436b24bffdf6f756  deviceinfo
+829df4ec2f443aef872031501c88935d3f3afb7b09c505ca25e96931a0f10774b3682bdb7e9883a6aa71b9488606a2ad747cb49a08cbd84d73119d62a6ee9f6a  deviceinfo
 "

@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-a5lte-downstream
 pkgdesc="Samsung Galaxy A5 (SM-A500F)"
-pkgver=1
-pkgrel=2
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -21,5 +21,5 @@ package() {
 }
 
 sha512sums="
-09f28323fac82a8f8495af89de94449100e0f9233e22e33af807e559803bf3d9114aedc6d21626c7d5d736e93025de812292a0ee47c3639ac704696995c3d675  deviceinfo
+410b5caac31e2af65ebfe1f3312fc2106c681430b75dfa8f4412f5727cd7db669dc3f46b1b2c20ece1b438052c36cbd3ff7b212ea03d9fea5af0b3c5bb14ff9b  deviceinfo
 "

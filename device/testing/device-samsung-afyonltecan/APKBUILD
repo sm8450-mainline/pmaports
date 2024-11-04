@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-afyonltecan
 pkgdesc="Samsung Galaxy Core LTE"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -20,5 +20,5 @@ package() {
 }
 
 sha512sums="
-7f5dee60dc8a12b2cc7cfbb438e3ddf57bb2afc0c9759956f15841e67dcfe8956a01e4137ceb6193c7be593b32dfbf54ad10b3dbf420f1838593f2a8ce495487  deviceinfo
+f6950361dfc10c471d2324a67a86b8e684358f9b4f78360d2b508bec01ad5f52bc3a8c46cea5420ecef265209704e39a9e0a6347705829acf1c2794352f87f45  deviceinfo
 "

@@ -2,8 +2,8 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-samsung-w767
 pkgdesc="Samsung Galaxy Book S"
-pkgver=2
-pkgrel=2
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -34,6 +34,6 @@ nonfree_firmware() {
 
 
 sha512sums="
-3cec42f2018ed1694101d7c4be03c1e1b518a8ce422b1c840cf7b030a882236e521906afa60626b34c3d0d579b7d43ea315ff8942fea65c32ac09dc5706c3e16  deviceinfo
+e2f78541f5788020864daf9b6247e198aa7ea510518b0948938e3f551a26a0e17002f736c42e7a4b1d0cef5e271e64e71f0204da41ee714d7bf41fb1091e8ea5  deviceinfo
 23ade4e4526fa1445240219d227f34a445a3298b63c15fca751eea7c5ba0306ce3a76e4ddee341f9aa6f0e02a7f9d3d0ebb4dda0aec8ae0585dd8f6de7483c85  modules-initfs
 "

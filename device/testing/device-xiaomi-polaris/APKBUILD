@@ -3,8 +3,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-polaris
 pkgdesc="Xiaomi Mi Mix 2S"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -49,7 +49,7 @@ phosh() {
 }
 
 sha512sums="
-1dc7d05cb7a1404c5e44a5b024889359a69477170017958e879a7c04d694757f49865a06e0ae989b1912b7d5e6b258a95e92ffa92ccfafd16527fe330631cb58  deviceinfo
+9667fbc18d44008b4b1fed22455071dcdf2902c0f13b9a70498038463b493245c29349117d6f41f13c3ad2575824530ad2e92dc6212fdd1a6d3fbd3631bdcbcb  deviceinfo
 c1efa00cbfae95c2b0713b4c481f27cba1424b3def1d10ca682424a945adc52435564d917e791f63eda3b6a42acba1453a1c61ab7c15b0dac1678d5e54e1d739  modules-initfs
 e2e417169345c86a5dd34ac0afac4b2b983a755f4c7ba5698c385a01f96b9bd2c3ace1ce5a0569c121675e8b87e88e1cf5c648e995d9c50cba66e52bbc83753c  phoc.ini
 "

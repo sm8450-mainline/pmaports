@@ -2,8 +2,8 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-lenovo-yoga-5g
 pkgdesc="Lenovo Yoga 5G"
-pkgver=2
-pkgrel=2
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -34,6 +34,6 @@ nonfree_firmware() {
 
 
 sha512sums="
-6ce114352091fe995d47496e36c1aeca2b47e73b7991c0a9c5f8e315f8f0d3b122d3da0ef4ee0e355fc850d076abb0ee861c2fc4dcff596cf4b3d20df5251d86  deviceinfo
+7601e33a77407ddb6e9745242f4a4df108943040e69dc33286d809e4f6ad45f8aeba2012dbdd5ec1b3bcb841776e19c6df5cace3c8465ef26e2a4ac04cb0697d  deviceinfo
 438f30d14ad15fa87e5fa3b5127e5430af35cdddc400d2a01acbba6487792a602fcf3400e2c42ee991e6785fe62b083030ea977292efa88dacb3fcbe03bc32d7  modules-initfs
 "

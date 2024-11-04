@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-inet-a33
 pkgdesc="iNet Tek D70 A33"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="GPL-3.0-or-later"
@@ -20,5 +20,5 @@ package() {
 }
 
 sha512sums="
-193989891fc9eb720006685281051fa36270e6043387317527d4a82630cb623eb43d4355bfb2ac3b9fb13a18a09ac38f6fe60cc5cb8ca7b0bf4ce4cec85dfe31  deviceinfo
+2e6afc5b5adc3e5fb68e3eb6bb9f33a470ceb4a17a2dc445eb5253c627dd7e8583b259a16c0b0d6e4e46b1973aca5a5d96b57ee697bfa57d3965976f09adad70  deviceinfo
 "

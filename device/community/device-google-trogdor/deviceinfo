@@ -20,7 +20,7 @@ deviceinfo_disable_dhcpd="true"
 
 # Bootloader related
 deviceinfo_flash_method="none"
-deviceinfo_kernel_cmdline="console=null deferred_probe_timeout=30"
+deviceinfo_kernel_cmdline="quiet loglevel=2 deferred_probe_timeout=30"
 deviceinfo_cgpt_kpart="/boot/vmlinuz.kpart"
 deviceinfo_cgpt_kpart_start="8192"
 # 128M kernel partition

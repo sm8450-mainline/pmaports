@@ -2,7 +2,7 @@
 # Maintainer: Ferass El Hafidi <funderscore@postmarketos.org>
 pkgname=device-librecomputer-lepotato
 pkgdesc="Libre Computer AML-S905X-CC-V1.0"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -36,6 +36,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-ea97f80d58c69fa31d0260ab1f6d827508d393677a0533ed75f9139212d2da2ee7b656cf9a4d4c5ea1a9d5d03fa8f818c22ec52b2131d3024577522009bac442  deviceinfo
+b5005b9546c95275c9370a0ec808fbb80b0c46adfc5e3819c364df662ee88d8483b3ec150fb0b2a5a20fb13500f8c34ad19e5b68dd662eeac9d3f421feb5529f  deviceinfo
 52948c2884a6f6384e12b7a598f70878526d0d3293c214425170145231144ec7de805c038641741a4a5d75b50e554f6a3fa3769784a674217ed032f9b6a233c8  modules-initfs
 "

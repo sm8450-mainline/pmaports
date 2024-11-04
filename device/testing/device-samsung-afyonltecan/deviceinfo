@@ -16,7 +16,7 @@ deviceinfo_external_storage="true"
 
 # Bootloader related
 deviceinfo_flash_method="heimdall-bootimg"
-deviceinfo_kernel_cmdline="console=null androidboot.console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 zcache.enabled=1 zcache.compressor=lz4 androidboot.selinux=permissive buildvariant=eng"
+deviceinfo_kernel_cmdline="quiet loglevel=2 androidboot.console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 zcache.enabled=1 zcache.compressor=lz4 androidboot.selinux=permissive buildvariant=eng"
 deviceinfo_generate_bootimg="true"
 deviceinfo_bootimg_qcdt="true"
 deviceinfo_bootimg_dtb_second="false"

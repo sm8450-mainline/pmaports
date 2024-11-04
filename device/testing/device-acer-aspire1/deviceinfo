@@ -18,7 +18,7 @@ deviceinfo_screen_height="1080"
 
 # Bootloader related
 deviceinfo_flash_method="none"
-deviceinfo_kernel_cmdline="efi=novamap,noruntime deferred_probe_timeout=30 console=null"
+deviceinfo_kernel_cmdline="efi=novamap,noruntime deferred_probe_timeout=30 quiet loglevel=2"
 deviceinfo_generate_systemd_boot="true"
 deviceinfo_boot_filesystem="fat32"
 deviceinfo_partition_type="gpt"

@@ -2,8 +2,8 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-lenovo-flex-5g
 pkgdesc="Lenovo Flex 5G"
-pkgver=2
-pkgrel=2
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -27,6 +27,6 @@ package() {
 
 
 sha512sums="
-2fed2ff7cba1c0c19842b9bae7d75e41a1e03c19ca64ee5dba7f47a2273c4f0a226c05b0a62e2a7af991c1ef15e125dbac4ccdc4bcee6465a26c46f2127c6df2  deviceinfo
+a855111b436b3c7dac9db6e1a7a9eb5e76b48293de06ab2eb4fcfd119fb16b4bd463624b24f2ffffe890c2cf8df7febecd057f0f03c4260a5db74746bfdad3d9  deviceinfo
 438f30d14ad15fa87e5fa3b5127e5430af35cdddc400d2a01acbba6487792a602fcf3400e2c42ee991e6785fe62b083030ea977292efa88dacb3fcbe03bc32d7  modules-initfs
 "

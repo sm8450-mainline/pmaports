@@ -2,7 +2,7 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-cherry
 pkgdesc="Google Cherry Chromebooks"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -35,6 +35,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-6661b7c7a880dc3991921b1395ea48023a641b2d3f8e46d005b5778fed1bc5b5c0d55fa5d43499f00bb7453fde8d644ba3ae50d98de10f2daa62ad34bd1580c9  deviceinfo
+a48ef8e74b8aa39dfbedd2a516ce83b2a8399df969adf8bef2830071d844bbc75b9680099cf37c90e47e01be993ba1d403573ae0b349223b07cf0c788fe56126  deviceinfo
 bb7f9a426bfa151c53089f07fd4e874b1fb69fd8180a584b4c9824e2d5ea1e7678602d74eb641b2640b692fec73b88acc78ca26ba9c9f3b8ac8366c6fb63dd5f  modules-initfs
 "

@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-starqltechn
 pkgdesc="Samsung Galaxy S9 SM-G9600"
-pkgver=5
+pkgver=6
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -31,7 +31,7 @@ package() {
 
 
 sha512sums="
-1036bd1f5df082a542c27097e628a81bd89543f376b968cd4331ec7d7d5b028590b3562f3734b6ee08958d69d47048647c0489a4c568b4f7bb1365be5b753864  deviceinfo
+3e156438c0630f830bcde96e13a003a15e399f5bd610707a099aa8d936e1bafb4a92560b4e69a3ebff8371c3f35bce502a34f5ee6221cbbcd6d96f9c20a258b3  deviceinfo
 f45c72e77a97a8ec78da25df17682e86767672b2024ae9455a5a8db4dde95e5f9b0519361ab950b9dd77134054b2754e90ea844ceb5fccffa79d5bb51ff0c583  boot_image.its
 ba782c324c14cf0947c752b51a607ae1b08def885b0cf0afe89d1fcade3491ab2f547551eb08bd8074f608dac46bdcdf75c5c633bd7a15e6eb63a10f30994c82  payload_mock.dts
 1ae956562df26c458654c178efcba4862ff9a8b55d5f27bb74f1667bb2434f4bf95ec4f3ffc54d7bc84a6d075e9caadf46716dd72bc9d6b7b623ec4f25940f36  bootscript.sh

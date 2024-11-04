@@ -2,7 +2,7 @@
 # Maintainer: David Wronek <david@mainlining.org>
 pkgname=device-xiaomi-miatoll
 pkgdesc="Xiaomi Redmi Note 9 Pro / Redmi Note 9S"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -43,5 +43,5 @@ kernel_joyeuse() {
 }
 
 sha512sums="
-8127f706f04c9e57902c3287ef088441fa3efd3d922805ef4957897f4b193e6c1b022b933834684b3db3d0d9739769dcb5084a556ef3cda77e80e8443401bccf  deviceinfo
+02b8892ef150e7985a894b8d63fc83484b5e2d9516a9ec28a5275e56ef4e3b7da845867e1a8617222b0d0d99bf08cbd3cc1ebc7f525f6fb65648d425e44962aa  deviceinfo
 "

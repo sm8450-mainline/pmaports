@@ -2,7 +2,7 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-snow
 pkgdesc="Samsung Chromebook"
-pkgver=8
+pkgver=9
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -55,7 +55,7 @@ sway() {
 }
 
 sha512sums="
-beaad602312b0bbadbf4232848674d351e34bacebeb43e8db8b20dd78b8a4fc26acd6a1e67da2a6281e89499bc481638eafa1b01cd134dc149cef580afe056e0  deviceinfo
+1ead9cae78b4e269d0bd54fc8da938171cb294125509049997a844b4769cd2419421f64bbcfa5fc4da991a77ed124155ec6613abe7a2ba8ba9e7e19440a801e5  deviceinfo
 e12a68f919182cb4e6812a5dd13fce8dc15266d2ac16aa5f0a31034f111cb403c020ebaaa4d94309f4baf2f71379327c57c08029e27c506d152695e9a2b04b2b  modules-initfs
 8a8f593694528a9323ef4a0aff7e9c6ad45608957eb042d425663f682885c2f95eb01db4fe87b7c43a90de48f3e5f8b10cab4b13c547b5b0d31b924fcb083cad  HiFi.conf
 b163535da7626e3866faa45768c3888f69f90c98d694650e16a7594a03eb91391e166931eb487901217d983bb2dc4e49b99a2a5531740a7d87f8f4f5c3d0cf59  Snow-I2S-MAX98090.conf

@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-gts210velte
 pkgdesc="Samsung Galaxy Tab S2 9.7 LTE (SM-T819)"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -23,6 +23,6 @@ package() {
 
 
 sha512sums="
-353972b4587a74ded0ec4d2ed11932255207a58337fb104b1f7bbad303ddc03c8fa46e30e7ddf53a8913cabfb3485cc2aed74835fb1e96238bd499c30140a10e  deviceinfo
+fd315ecd9606fa52c8392c42c1d1d8dc37ab83758b0f73c9197c357bf2fbdda5482687129a085817f1132cf42f33704510d82df38131286e518d8daffd2d093e  deviceinfo
 0d23fae6de9b04a36f395068278b8a9054c33e435b24de943da1e55a0ee2d88ee932a3fd2f660596377b14474483edecb8357684f9b7bc2c53979c7f863fae52  90-sec_touchscreen.rules
 "
