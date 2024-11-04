@@ -1,4 +1,5 @@
 /bin/udevadm
+/etc/udev/udev.conf
 /usr/lib/udev/rules.d/10-dm.rules
 /usr/lib/udev/rules.d/50-udev-default.rules
 /usr/lib/udev/rules.d/60-evdev.rules
