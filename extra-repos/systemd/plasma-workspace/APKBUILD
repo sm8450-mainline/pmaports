@@ -3,7 +3,7 @@
 pkgname=plasma-workspace
 pkgver=99996.2.2
 _pkgver=6.2.2
-pkgrel=0
+pkgrel=1
 pkgdesc="KDE Plasma Workspace"
 # armhf blocked by extra-cmake-modules
 arch="all !armhf !armv7"
@@ -24,6 +24,7 @@ depends="
 	plasma-integration
 	qt6-qttools
 	tzdata
+	xdg-desktop-portal-gtk
 	"
 depends_dev="
 	baloo-dev
@@ -80,6 +81,7 @@ depends_dev="
 	plasma5support-dev
 	prison-dev
 	qcoro-dev
+	qt6-qtpositioning-dev
 	qt6-qtwayland-dev
 	wayland-dev
 	wayland-protocols
@@ -95,8 +97,10 @@ makedepends="$depends_dev
 	xdotool
 	systemd
 	"
-checkdepends="xvfb-run"
-
+checkdepends="
+	dbus
+	xvfb-run
+	"
 case "$_pkgver" in
 	*.90*) _rel=unstable;;
 	*) _rel=stable;;
@@ -109,10 +113,13 @@ subpackages="
 	$pkgname-lang
 	$pkgname-zsh-completion
 	$pkgname-systemd
+	$pkgname-x11
 	"
 _repo_url="https://invent.kde.org/plasma/plasma-workspace.git"
 source="https://download.kde.org/$_rel/plasma/$_pkgver/plasma-workspace-$_pkgver.tar.xz"
 builddir="$srcdir/$pkgname-$_pkgver"
+
+replaces="xdg-desktop-portal-kde<=6.1.5-r0"
 
 # secfixes:
 #   6.0.5.1:
@@ -138,20 +145,33 @@ build() {
 }
 
 check() {
-	# nightcolortest requires running dbus
-	# testdesktop, lookandfeel-kcmTest, test_kio_fonts, servicerunnertest systemtraymodeltest are broken
-	# tst_triangleFilter requires plasma-workspace to be installed
-	# locationsrunnertest requires a running Wayland environment
-	local skipped_tests="("
+	local skipped_tests="(tasktoolstest"
 	local tests="
-		nightcolortest
-		testdesktop
-		lookandfeel-kcmTest
-		test_kio_fonts
+		dbusmethodcalltest
+		dbusservicewatchertest
+		fetchinitialplayertest
+		keystatetest
+		klipper-testHistoryModel
+		lockedtest
+		mediakeystest
+		mprisdeclarativetest
 		servicerunnertest
-		systemtraymodeltest
+		shelltest
+		tasksmodeltest
+		testdesktop
+		testimagebackend
+		testimagefinder
+		testimagefrontend
+		testimagelistmodel
+		testimageproxymodel
+		testmediametadatafinder
+		testpackageimagelistmodel
+		testrunnermodel
+		testslidefiltermodel
+		testslidemodel
 		tst_triangleFilter
-		locationsrunnertest
+		waylandtasksmodeltest
+		xwindowtasksmodeltest
 		"
 	case "$CARCH" in
 		arm*|aarch64|ppc64le) tests="$tests calculatorrunnertest" ;;
@@ -160,11 +180,19 @@ check() {
 		skipped_tests="$skipped_tests|$test"
 	done
 	skipped_tests="$skipped_tests)"
-	xvfb-run -a ctest --test-dir build --output-on-failure -E "$skipped_tests"
+	dbus-run-session -- xvfb-run -a ctest --test-dir build --output-on-failure -E "$skipped_tests"
 }
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
+}
+
+x11() {
+	pkgdesc="X11 desktop launcher for $pkgname"
+	depends="xorg-server"
+	install_if="$pkgname=$pkgver-r$pkgrel xorg-server"
+
+	amove usr/bin/startplasma-x11 usr/share/xsessions/plasmax11.desktop
 }
 
 sha512sums="
