@@ -2,9 +2,9 @@
 # integrates with logind for sleepmonitor and sessionmonitor.
 
 pkgname=networkmanager
-pkgver=9991.48.2
-_pkgver=1.48.2
-pkgrel=2
+pkgver=9991.50.0
+_pkgver=1.50.0
+pkgrel=1
 pkgdesc="Network Management daemon"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch="all"
@@ -41,6 +41,7 @@ makedepends="
 	systemd-dev
 	util-linux-dev
 	vala
+	wireless-regdb
 	"
 checkdepends="
 	bash
@@ -52,12 +53,15 @@ checkdepends="
 install="
 	$pkgname.pre-install
 	$pkgname.pre-upgrade
+	$pkgname.post-install
+	$pkgname.post-upgrade
 	"
 subpackages="
 	$pkgname-dbg
 	libnm
 	$pkgname-dev
-	$pkgname-elogind
+	$pkgname-gtkdoc
+	$pkgname-doc
 	$pkgname-lang
 	$pkgname-systemd
 	$pkgname-adsl
@@ -86,16 +90,6 @@ _plugindir="usr/lib/NetworkManager/$_pkgver"
 
 build() {
 	msg 'Building with systemd'
-	_build output \
-		-Dsession_tracking=systemd \
-		-Dsuspend_resume=systemd \
-		-Dsystemd_journal=true \
-		-Dtests="$(want_check && echo yes || echo no)"
-}
-
-_build() {
-	local outdir=$1; shift
-
 	abuild-meson \
 		-Db_lto=true \
 		-Dconfig_dhcp_default=internal \
@@ -104,7 +98,7 @@ _build() {
 		-Ddbus_conf_dir=/usr/share/dbus-1/system.d \
 		-Ddhcpcd=true \
 		-Ddnsmasq=/usr/sbin/dnsmasq \
-		-Ddocs=false \
+		-Ddocs=true \
 		-Difupdown=true \
 		-Diptables=/sbin/iptables \
 		-Diwd=true \
@@ -114,23 +108,24 @@ _build() {
 		-Dofono=true \
 		-Dpolkit=true \
 		-Dpppd=/usr/sbin/pppd \
-		-Dpppd_plugin_dir=/usr/lib/pppd/2.5.0 \
+		-Dpppd_plugin_dir=/usr/lib/pppd/2.5.1 \
 		-Dqt=false \
 		-Dselinux=false \
 		-Dsystemdsystemunitdir=/usr/lib/systemd/system \
-		-Dtests=no \
 		-Dudev_dir=/usr/lib/udev \
 		-Dvapi=true \
-		"$@" \
-		. "$outdir"
-
-	meson compile -C "$outdir"
+		-Dsession_tracking=systemd \
+		-Dsuspend_resume=systemd \
+		-Dsystemd_journal=true \
+		-Dtests="$(want_check && echo yes || echo no)" \
+		. output
+	meson compile -C output
 }
 
 check() {
 	XDG_RUNTIME_DIR="$(mktemp -d -p "$builddir")" \
 	dbus-run-session -- \
-	meson test -t 4 --no-rebuild --print-errorlogs -C output-elogind
+	meson test -t 4 --no-rebuild --print-errorlogs -C output
 }
 
 package() {
@@ -138,8 +133,7 @@ package() {
 		libnm=$pkgver-r$pkgrel
 		dbus
 	"
-	provides="networkmanager-common"
-	provider_priority=500
+	replaces="$pkgname-common"
 
 	DESTDIR="$pkgdir" meson install --no-rebuild -C output
 
@@ -150,6 +144,16 @@ package() {
 		"$pkgdir/usr/share/polkit-1/rules.d/01-org.freedesktop.NetworkManager.settings.modify.system.rules"
 
 	mv "$pkgdir/usr/share/doc/NetworkManager" "$pkgdir/usr/share/doc/$pkgname"
+
+	# post-install message
+	cat > "$pkgdir"/usr/share/doc/$pkgname/README.alpine <<-EOF
+		To modify system network connections without the root password: add your user account to the 'plugdev' group, or use Polkit.
+
+		To use iwd instead of the default wpa_supplicant install iwd, start its service and add the following to your /etc/NetworkManager/NetworkManager.conf:
+
+		[device]
+		wifi.backend=iwd
+	EOF
 }
 
 dev() {
@@ -160,38 +164,33 @@ dev() {
 
 libnm() {
 	pkgdesc="GObject-based client library for NetworkManager"
-	replaces_priority=200
+	depends=""
+	replaces="$pkgname<1.34.0-r3 $pkgname-elogind<1.34.0-r3"
 
 	amove usr/lib/libnm.so*
-}
-
-elogind() {
-	pkgdesc="NetworkManager with logind support"
-	depends="$pkgname"
-
-	mkdir -p "$subpkgdir"
 }
 
 adsl() {
 	_default_plugin
 	pkgdesc="ADSL device plugin for NetworkManager"
+	install_if="$pkgname=$pkgver-r$pkgrel ppp-pppoe"
 }
 
 bluetooth() {
 	_default_plugin
 	pkgdesc="BlueTooth device plugin for NetworkManager"
-	depends="$depends bluez"
+	install_if="$pkgname=$pkgver-r$pkgrel bluez"
 }
 
 ovs() {
 	_default_plugin
 	pkgdesc="Open vSwitch device plugin for NetworkManager"
-	depends="$depends openvswitch"
+	install_if="$pkgname=$pkgver-r$pkgrel openvswitch"
 }
 
 ppp() {
 	pkgdesc="PPP plugin for NetworkManager"
-	depends="$pkgname=$pkgver-r$pkgrel"
+	install_if="$pkgname=$pkgver-r$pkgrel ppp"
 
 	amove $_plugindir/libnm-ppp-plugin.so
 	amove usr/lib/pppd/*/nm-pppd-plugin.so
@@ -200,13 +199,14 @@ ppp() {
 wifi() {
 	_default_plugin
 	pkgdesc="WiFi device plugin for NetworkManager"
-	depends="$depends wireless-regdb"
+	install_if="$pkgname=$pkgver-r$pkgrel wireless-regdb"
+	install="$subpkgname.post-install"
 }
 
 wwan() {
 	_default_plugin
 	pkgdesc="Mobile broadband device plugin for NetworkManager"
-	depends="$depends mobile-broadband-provider-info"
+	install_if="$pkgname=$pkgver-r$pkgrel mobile-broadband-provider-info"
 }
 
 cli() {
@@ -239,14 +239,13 @@ gtkdoc() {
 
 dnsmasq() {
 	pkgdesc="Support for NetworkManager dnsmasq features"
-	depends="$pkgname=$pkgver-r$pkgrel dnsmasq-dnssec-dbus"
+	install_if="$pkgname=$pkgver-r$pkgrel dnsmasq"
+	depends="dnsmasq-dnssec-dbus"
 
 	mkdir -p "$subpkgdir"
 }
 
 _default_plugin() {
-	depends="$pkgname=$pkgver-r$pkgrel"
-
 	amove $_plugindir/libnm*-${subpkgname#"$pkgname"-}.so
 }
 
@@ -256,7 +255,7 @@ systemd() {
 }
 
 sha512sums="
-81ed641365183a03fe06346569939b164a0f7446694eb6c2790fef0118897987e494e3d75214df3e35f77f9c0f65375d4f867e942503f5a9ef11b46e9ba6b57d  NetworkManager-1.48.2.tar.xz
+4b4cc15a13525112f0328f2b3f566f1584caa6dae6a650535dd3ea8b2df100f0d76b4d9e8ee3989afb9f7ed3fd21b175d9c3c19789318f2d1db409480fa755df  NetworkManager-1.50.0.tar.xz
 0f79016bf717dea43830962f524deae8d1cedc274376e40bd912ebe63208c5b1c3b7a5aa14379da19020c587dbd5588df2f0066ca1540070a226983a43e4159b  networkmanager.conf
 9820ed2ead0af689644842de57657bb10330a1eaff0e85b21ae9913f55e399e47d8b41b0a12956f30de80272b4424c6e55f33acbc88e156879003a260bf576f6  networkmanager.rules
 "
