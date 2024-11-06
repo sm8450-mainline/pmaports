@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-on7xelte
 pkgdesc="Samsung Galaxy J7 Prime"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -33,5 +33,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-78d6cd235ba284259ff26358b0b45a9f19d6d5e55fa3b46a2a1edd535dcfa717f0ea297a5dcd86bea03ddf001bce54b0c4c679108787d30573f7e00e66e503eb  deviceinfo
+dd7a381d684a2c8a1b82d5c6b67a2f219077bb8dd2c97a2c693d7af0e1020ef9ec4c3a3d1121bef395a26f87c3e3e580d6763ca1c9cd6d7fee19fd9fc125a7ed  deviceinfo
 "
