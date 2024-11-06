@@ -1,8 +1,8 @@
 # Forked from Alpine to adjust dependencies for systemd
 
 pkgname=xorg-server
-pkgver=9999
-_pkgver=21.1.10
+pkgver=999921.1.14
+_pkgver=21.1.14
 pkgrel=0
 pkgdesc="X.Org X servers"
 url="https://www.x.org/wiki"
@@ -23,7 +23,6 @@ depends="
 	font-cursor-misc
 	font-misc-misc
 	mesa-egl
-	xinit
 	xkbcomp
 	xkeyboard-config
 	xorg-server-common
@@ -49,7 +48,6 @@ makedepends="
 	meson
 	nettle-dev
 	pixman-dev
-	udev-dev
 	wayland-dev
 	wayland-protocols
 	xcb-util-dev
@@ -60,7 +58,8 @@ makedepends="
 	xkbcomp-dev
 	xorgproto
 	xtrans
-	xz
+
+	systemd-dev
 	"
 source="https://www.x.org/releases/individual/xserver/xorg-server-$_pkgver.tar.xz
 	ms-rotate.patch"
@@ -69,55 +68,6 @@ builddir="$srcdir/xorg-server-$_pkgver"
 # the modesetting driver is now shipped with xorg server
 provides="xf86-video-modesetting=$pkgver-r$pkgrel"
 replaces="xf86-video-modesetting"
-
-
-# secfixes:
-#   21.1.7-r0:
-#     - CVE-2023-0494
-#   21.1.5-r0:
-#     - CVE-2022-4283
-#     - CVE-2022-46340
-#     - CVE-2022-46341
-#     - CVE-2022-46342
-#     - CVE-2022-46343
-#     - CVE-2022-46344
-#   21.1.4-r0:
-#     - CVE-2022-2319
-#     - CVE-2022-2320
-#   21.1.2-r0:
-#     - CVE-2021-4008
-#     - CVE-2021-4009
-#     - CVE-2021-4010
-#     - CVE-2021-4011
-#   1.20.10-r5:
-#     - CVE-2021-3472
-#   1.20.10-r0:
-#     - CVE-2020-14360
-#     - CVE-2020-25712
-#   1.20.9-r0:
-#     - CVE-2020-14362
-#     - CVE-2020-14361
-#     - CVE-2020-14346
-#     - CVE-2020-14345
-#   1.20.8-r4:
-#     - CVE-2020-14347
-#   1.20.3-r0:
-#     - CVE-2018-14665
-#   1.19.5-r0:
-#     - CVE-2017-12176
-#     - CVE-2017-12177
-#     - CVE-2017-12178
-#     - CVE-2017-12179
-#     - CVE-2017-12180
-#     - CVE-2017-12181
-#     - CVE-2017-12182
-#     - CVE-2017-12183
-#     - CVE-2017-12184
-#     - CVE-2017-12185
-#     - CVE-2017-12186
-#     - CVE-2017-12187
-#     - CVE-2017-13721
-#     - CVE-2017-13723
 
 prepare() {
 	default_prepare
@@ -136,8 +86,9 @@ build() {
 	# 32-bit fails otherwise
 	export CFLAGS="$CFLAGS -Wno-error=array-bounds"
 
+	# b_lto fails with pmbootstrap CI
+
 	abuild-meson \
-		-Db_lto=true \
 		-Dxorg=true \
 		-Dxephyr=true \
 		-Dglamor=true \
@@ -210,6 +161,6 @@ common() {
 }
 
 sha512sums="
-8135d9b7c0c71f427ba0a3b80741fee4f6ae195779399b73261a00858882f3516e367a08e2da1403734b04eacabae9aa231e5375eff23b57a3ff764e9caf8926  xorg-server-21.1.10.tar.xz
+833d36ca4a409363dc021a50702bc29dbb32d074de319d6910a158b6e4d8f51a20c3b0de0486d9613d4e526fe4fd60ca306b3c9fcce7d014ca8cc10185afd973  xorg-server-21.1.14.tar.xz
 9ed9c731a7275a3821476eedd55f453027fdf9bcdfd8f259259a5d053c73e8b9298f048cbb009a4fb05230fb2a9ab7cc38a44d708973f09daa8570fae376236e  ms-rotate.patch
 "
