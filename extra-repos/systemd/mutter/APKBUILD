@@ -1,8 +1,8 @@
 # Forked from Alpine to add systemd!
 
 pkgname=mutter
-pkgver=99946.2
-_pkgver=46.2
+pkgver=99947.1
+_pkgver=47.1
 pkgrel=0
 pkgdesc="clutter-based window manager and compositor"
 url="https://wiki.gnome.org/Projects/Mutter/"
@@ -18,7 +18,6 @@ makedepends="
 	at-spi2-core-dev
 	cairo-dev
 	dbus-dev
-	eudev-dev
 	fribidi-dev
 	gdk-pixbuf-dev
 	glib-dev
@@ -30,6 +29,7 @@ makedepends="
 	json-glib-dev
 	lcms2-dev
 	libcanberra-dev
+	libdisplay-info-dev
 	libdrm-dev
 	libei-dev
 	libgudev-dev
@@ -57,11 +57,12 @@ makedepends="
 	pango-dev
 	pipewire-dev
 	startup-notification-dev
-	systemd-dev
 	wayland-dev
 	wayland-protocols
 	xkeyboard-config-dev
 	xwayland-dev
+
+	systemd-dev
 	"
 # TODO: crossdirect disabled due to armv7 crosscompile failure on x86_64, see
 # https://gitlab.com/postmarketOS/pmaports/-/merge_requests/5115#note_1899890119
@@ -76,13 +77,12 @@ builddir="$srcdir/$pkgname-$_pkgver"
 build() {
 	abuild-meson \
 		-Db_lto=true \
-		-Degl_device=true \
 		-Dudev=true \
 		-Dnative_backend=true \
 		-Dintrospection=true \
 		-Dremote_desktop=true \
 		-Dprofiler=false \
-		-Dtests=false \
+		-Dtests=disabled \
 		. output
 	meson compile -C output
 }
@@ -101,7 +101,7 @@ package() {
 }
 
 sha512sums="
-7d8fd3ed38266e993691ee47d9a4e314e439e3269d6b0ed73fb192efa3c29d64edc2c45c178fa99c6807c8f31aca1a3524ccf3986b3a36c5e7cc66ad89b94e53  mutter-46.2.tar.xz
+3255e5c63ac91309f0fa1b5312a4a5db07215cb9fdcfff4aacf99e8f29682c614fcf551d6a04ab3818808627d76ef7397aa7f89085356f81a4c0535ddf84aa88  mutter-47.1.tar.xz
 3e5dd59f2f2fd80edde13f64d70d52a023dec303fd8dbfa3ded0d77faf7643179f2ad74d4acd3450decb67deaf6ac85a7af5146fa96f33917b4363f884413af9  fixudev-req.patch
-670927a5528f9fec4801b7dab8a377b7280c239acb1f7a9077647deef71119738deb958a94d4ce0a99d39b29eeab3b2505698f7d19b880bbcec9f5260202d3a6  pcversion.patch
+ec94fdecb7a3213903d013c1e6f48e02f8a1972ded16c3604627984cfce0936a0276d284c20e746eb91bf97249785bcf827f6fa55f1629e5290e19423d554e4d  pcversion.patch
 "

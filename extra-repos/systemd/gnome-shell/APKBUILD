@@ -1,9 +1,9 @@
 # Forked from Alpine to add systemd!
 
 pkgname=gnome-shell
-pkgver=99946.2
-_pkgver=46.2
-pkgrel=1
+pkgver=99947.1
+_pkgver=47.1
+pkgrel=0
 pkgdesc="GNOME shell"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
 # gjs -> mozjs
@@ -46,11 +46,12 @@ makedepends="
 	libxml2-dev
 	libxml2-utils
 	meson
-	mutter-dev>=46
+	mutter-dev>=99947
 	networkmanager-dev
 	pipewire-dev
 	polkit-dev
 	pulseaudio-dev
+	py3-docutils
 	py3-setuptools
 	python3
 	sassc
@@ -72,6 +73,7 @@ subpackages="
 	"
 source="https://download.gnome.org/sources/gnome-shell/${_pkgver%.*}/gnome-shell-$_pkgver.tar.xz
 	gsh.patch
+	schemas_req.patch
 	"
 # TODO: crossdirect disabled due to armv7 crosscompile failure on x86_64, see
 # https://gitlab.com/postmarketOS/pmaports/-/merge_requests/5115#note_1899890119
@@ -120,6 +122,7 @@ schemas() {
 }
 
 sha512sums="
-9b23a23a8a9224a618ab159c653b0b0889e5097a62265210f5e71c15658f4a85fbaca8be9646da768e8acfc38eb7eecd35313f3b82d6fbfc3b45f7754479e3a8  gnome-shell-46.2.tar.xz
+451b5609f4a9a3f6acb729bb0137f1d7db7da4de956e13576402fd22c3dd7d0ba5b7cc634bf0d0923fbf0624812fb4646164bb4c0c29535acb09f30c904fd05f  gnome-shell-47.1.tar.xz
 ae4ac679bacd35948b44068e5a70407f473bd96986ee126abb1bdf066db5cbc2087a3ffae0b390286689cacbe8325870fd43663ba39f4f7543216e02bf083934  gsh.patch
+3fab1a0e141ae7c972e827935c6e4c52d927faf69dd25a5c72bbcdaa1b763d1bb58ea5cb074686145b29c3391f557b01920a8d3613bb83d15f073d661a447426  schemas_req.patch
 "
