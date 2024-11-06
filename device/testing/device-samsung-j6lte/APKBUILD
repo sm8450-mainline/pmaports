@@ -1,0 +1,37 @@
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-samsung-j6lte
+pkgdesc="Samsung Galaxy J6 (2018)"
+pkgver=2
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	dtbtool-exynos
+	linux-postmarketos-exynos7870
+	mesa-dri-simpledrm
+	mkbootimg
+	postmarketos-base
+"
+makedepends="devicepkg-dev"
+source="deviceinfo"
+subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+nonfree_firmware() {
+	pkgdesc="Proprietary firmware blobs for $pkgdesc"
+	depends="firmware-samsung-j6lte"
+	mkdir "$subpkgdir"
+}
+
+sha512sums="
+fa363c817bb6655f53ac7d3a8c349cc96c8a11d80538d1c0d38101eb67ac4452761c3a8283444c0884095495c6f127c70e8be3e004b2898e2353d41570f5e375  deviceinfo
+"
