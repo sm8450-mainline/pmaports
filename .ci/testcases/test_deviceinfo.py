@@ -36,7 +36,7 @@ def test_deviceinfo():
     # Iterate over all devices
     last_exception = None
     count = 0
-    pattern = re.compile("^deviceinfo_[a-zA-Z0-9_]*=\".*\"$")
+    pattern = re.compile("^deviceinfo_[a-zA-Z0-9_]*=\".*\"(\\s*# .*)?$")
 
     for folder in pkgrepo_iglob("device/*/device-*"):
         device = folder.name.split("-", 1)[1]
@@ -63,8 +63,8 @@ def test_deviceinfo():
                 # Check line against regex (can't use multiple lines etc.)
                 if not pattern.match(line) or line.endswith("\\\""):
                     raise RuntimeError("Line looks invalid, maybe missing"
-                                       " quotes/multi-line string/comment next"
-                                       f" to line instead of above? {line}")
+                                       " quotes/multi-line string/malformed"
+                                       f" inline comment? {line}")
 
             # Successful deviceinfo parsing / obsolete options
             info = pmb.parse.deviceinfo(device)
