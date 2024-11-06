@@ -2,7 +2,7 @@
 pkgname=postmarketos-cros-common
 pkgdesc="Common package for Chrome OS devices"
 pkgver=2
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64 armv7 x86_64 x86" # there are no cros devices of other arches
@@ -19,9 +19,9 @@ source="
 # be enough for getting it to work, but this way people will not be able to
 # uninstall it when they don't want this. Thus, making this as a subpackage of
 # "postmarketos-cros-common" and adding it to _pmb_recommends. Naming it
-# "postmarketos-cros-keymap" instead of "$pkgname-keymap", so the name is easier to
-# remember.
-_pmb_recommends="postmarketos-cros-keymap"
+# "postmarketos-cros-keymap-openrc" instead of "$pkgname-keymap", so the name
+# is easier to remember.
+_pmb_recommends="postmarketos-cros-keymap-openrc"
 
 package() {
 	mkdir -p "$pkgdir"
