@@ -1,6 +1,6 @@
 # Reference: <https://postmarketos.org/vendorkernel>
 
-pkgname=linux-samsung-j6lte
+pkgname=linux-samsung-j6lte-downstream
 pkgver=3.18.14
 pkgrel=0
 pkgdesc="Samsung Galaxy J6 kernel fork"
@@ -97,7 +97,7 @@ package() {
 }
 
 sha512sums="
-44719f2fead8c8419cb0ff2595c5325ade53b8639e13f0fa59d599e4470cf911fd2c442af2fef3529c8875a62d2469ecbfc5ef52ac4c61e1495ff335afea9412  linux-samsung-j6lte-03b26fe4bd3726b2940df395716ffc316cdff5ac.tar.gz
+44719f2fead8c8419cb0ff2595c5325ade53b8639e13f0fa59d599e4470cf911fd2c442af2fef3529c8875a62d2469ecbfc5ef52ac4c61e1495ff335afea9412  linux-samsung-j6lte-downstream-03b26fe4bd3726b2940df395716ffc316cdff5ac.tar.gz
 bb230864207ff6788a0db645d62035b51de10c0ed8057f1b61c79e46453f7bbb143c45b2bc879e936b4be0b801d5437d52316bddfc17f11a2d9d12c397a25bb9  config-samsung-j6lte.aarch64
 2b48f1bf0e3f70703d2cdafc47d5e615cc7c56c70bec56b2e3297d3fa4a7a1321d649a8679614553dde8fe52ff1051dae38d5990e3744c9ca986d92187dcdbeb  gcc10-extern_YYLOC_global_declaration.patch
 a6b6c781dd23f9a45a1605456d8c9af3ec6b5c389acd2b5d4c32280dcb59118996d794165bea2005dbdd9415297e5060bcac7579f908f7d65406a862b743fed5  replace-Sun-Solaris-style-flag-on-section-xz-supplementation.patch

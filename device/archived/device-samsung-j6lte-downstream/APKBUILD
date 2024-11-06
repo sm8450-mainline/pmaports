@@ -1,5 +1,5 @@
 # Reference: <https://postmarketos.org/devicepkg>
-pkgname=device-samsung-j6lte
+pkgname=device-samsung-j6lte-downstream
 pkgdesc="Samsung Galaxy J6 (2018)"
 pkgver=1
 pkgrel=0
@@ -8,7 +8,7 @@ license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
-	linux-samsung-j6lte
+	linux-samsung-j6lte-downstream
 	mkbootimg
 	postmarketos-base
 	postmarketos-base-downstream
@@ -30,10 +30,10 @@ package() {
 
 nonfree_firmware() {
 	pkgdesc="$pkgdesc (WiFi firmware)"
-	depends="firmware-samsung-j6lte"
+	depends="firmware-samsung-j6lte-downstream"
 	mkdir "$subpkgdir"
 }
 
 sha512sums="
-df29f639f7a0342f6180219749e060752866571a8438686955b26889091a6ceb5726f166a387c60f9f4b3ef90414a54df0d87c55e6b80ff5898e68d35411fbe8  deviceinfo
+5bbe8f6840d75c4d8693fbe62afaf071cddaef750aee2f9cae31187489a2b05873369ee06bf5292ec484a70f6d5ac7aea7862fc27f7fc3057205afda52996d7e  deviceinfo
 "

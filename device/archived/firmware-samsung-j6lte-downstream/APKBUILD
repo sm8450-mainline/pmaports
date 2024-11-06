@@ -1,4 +1,4 @@
-pkgname=firmware-samsung-j6lte
+pkgname=firmware-samsung-j6lte-downstream
 pkgver=1
 pkgrel=0
 pkgdesc="Firmware files for Samsung Galaxy J6 (2018)"
