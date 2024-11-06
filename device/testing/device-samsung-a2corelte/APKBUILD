@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-a2corelte
 pkgdesc="Samsung Galaxy A2 Core"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -33,5 +33,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-ba75ed1b002e28dee895183e91cb66d86886b04f2e9c07bd15d196fbd8435f284a05bd10385a1c50b79e8b76b99128da9b4b87622f64b146b9885460b083f355  deviceinfo
+5f70d4c77f8d7b0367d2d07c972cded1bdaee445cd270187edd73d6010736746690924a4cc613b1e3e55453e9c5da70c8fae5ce7cee55bc09f92f70758653330  deviceinfo
 "
