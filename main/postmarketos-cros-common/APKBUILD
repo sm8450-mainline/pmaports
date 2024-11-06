@@ -2,7 +2,7 @@
 pkgname=postmarketos-cros-common
 pkgdesc="Common package for Chrome OS devices"
 pkgver=2
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64 armv7 x86_64 x86" # there are no cros devices of other arches
@@ -15,13 +15,7 @@ subpackages="
 source="
 	00_postmarketos-cros-common-gnome.gschema.override
 "
-# We can just add "cros-keyboard-map" with -openrc packages to depends, and it would
-# be enough for getting it to work, but this way people will not be able to
-# uninstall it when they don't want this. Thus, making this as a subpackage of
-# "postmarketos-cros-common" and adding it to _pmb_recommends. Naming it
-# "postmarketos-cros-keymap-openrc" instead of "$pkgname-keymap", so the name
-# is easier to remember.
-_pmb_recommends="postmarketos-cros-keymap-openrc"
+_pmb_recommends="cros-keyboard-map"
 
 package() {
 	mkdir -p "$pkgdir"
@@ -61,8 +55,8 @@ sway() {
 # Custom keyboard layout documented on
 # https://wiki.postmarketos.org/wiki/Category:ChromeOS#Keyboard_mapping
 _keymap_openrc() {
-	depends="cros-keyboard-map cros-keyboard-map-openrc keyd-openrc"
-	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install_if="$pkgname=$pkgver-r$pkgrel cros-keyboard-map openrc"
+	depends="cros-keyboard-map-openrc keyd-openrc"
 	install="postmarketos-cros-keymap-openrc.post-install"
 	mkdir -p "$subpkgdir"
 }
