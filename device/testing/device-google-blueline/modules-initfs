@@ -3,4 +3,5 @@ rmi_core
 rmi_i2c
 qcom_fg
 qcom_pmi8998_charger
+gpi
 ftm5
