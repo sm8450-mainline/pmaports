@@ -1,7 +1,7 @@
 # Maintainer: Oliver Smith <ollipearanoid@postmarketos.org>
 # pmbootstrap installs this, if systemd is selected in "pmbootstrap init".
 pkgname=postmarketos-base-systemd
-pkgver=9
+pkgver=10
 pkgrel=0
 pkgdesc="Meta package for running postmarketOS with systemd"
 url="https://postmarketos.org"
@@ -14,7 +14,7 @@ depends="
 	systemd
 	systemd-timesyncd
 	tzdata
-	linux-pam=1.6.1-r1
+	linux-pam-pmos
 	systemd-services
 	"
 replaces="alpine-baselayout postmarketos-base systemd systemd-logind"

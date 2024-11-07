@@ -1,12 +1,9 @@
 # Forked from Alpine enable systemd
 # MODIFIED base-sessionl.pamd for systemd!
 
-pkgname=linux-pam
-# MUST be kept in sync to avoid accidentally pulling in the alpine version
-# we hard depend on this exact version in postmarketos-base-systemd. When updating
-# the package here it must also be updated in postmarketos-base-systemd.
+pkgname=linux-pam-pmos
 pkgver=1.6.1
-pkgrel=1
+pkgrel=0
 pkgdesc="Linux PAM (Pluggable Authentication Modules for Linux)"
 url="https://www.kernel.org/pub/linux/libs/pam"
 arch="all"
@@ -63,6 +60,8 @@ build() {
 }
 
 package() {
+	provides="linux-pam=$pkgver-r$pkgrel"
+
 	make DESTDIR="$pkgdir" install
 
 	# install our pam.d files
@@ -81,10 +80,21 @@ package() {
 		&& chmod g+s "$pkgdir"/sbin/unix_chkpwd
 }
 
+dev() {
+	default_dev
+	provides="$provides linux-pam-dev=$pkgver-r$pkgrel"
+}
+
 manual() {
+	provides="$provides linux-pam-manual=$pkgver-r$pkgrel"
 	pkgdesc="$pkgdesc (manual)"
 
 	amove usr/share/doc/Linux-PAM
+}
+
+doc() {
+	default_doc
+	provides="$provides linux-pam-doc=$pkgver-r$pkgrel"
 }
 
 sha512sums="
