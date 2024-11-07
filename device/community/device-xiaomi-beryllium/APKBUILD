@@ -1,10 +1,9 @@
 # Maintainer: Joel Selvaraj <joelselvaraj.oss@gmail.com>
-
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-beryllium
 pkgdesc="Xiaomi Poco F1"
 pkgver=11
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -48,7 +47,6 @@ nonfree_firmware() {
 		soc-qcom-sdm845-modem
 		hexagonrpcd
 	"
-	replaces="hexagonrpcd-openrc"
 	mkdir "$subpkgdir"
 
 	install -Dm644 81-libssc-xiaomi-beryllium.rules \
@@ -58,6 +56,7 @@ nonfree_firmware() {
 nonfree_firmware_openrc() {
 	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	replaces="hexagonrpcd-openrc"
 	mkdir "$subpkgdir"
 
 	install -Dm644 q6voiced.conf "$subpkgdir"/etc/conf.d/q6voiced
