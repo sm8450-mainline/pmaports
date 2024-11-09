@@ -2,13 +2,14 @@
 pkgname=device-asus-zenfone3
 pkgdesc="Asus Zenfone 3"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
 	firmware-asus-zenfone3
+	firmware-qcom-adreno-a530
 	lk2nd-msm8953
 	mkbootimg
 	msm-firmware-loader
