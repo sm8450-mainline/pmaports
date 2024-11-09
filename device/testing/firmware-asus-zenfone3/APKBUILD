@@ -1,6 +1,6 @@
 # Maintainer: Antony Kurniawan S. <postmarketos@smankusors.com>
 pkgname=firmware-asus-zenfone3
-pkgver=1
+pkgver=2
 pkgrel=0
 pkgdesc="Firmware for Asus Zenfone 3 ZE520KL/ZE552KL"
 url="https://gitlab.com/Smankusors/firmware-asus-zenfone3"
@@ -11,17 +11,21 @@ _commit="f1439210719b2a1597f6390f34ae93cb1470ddf4"
 builddir="$srcdir/$pkgname-$_commit/"
 source="
 	$url/-/archive/$_commit/$pkgname-$_commit.tar.gz
-	firmware.files
 "
-_fwdir="/lib/firmware/postmarketos"
+_fwdir="/lib/firmware"
 
 package() {
-	while IFS="" read -r fw; do
-		install -Dm644 "$fw" "$pkgdir/$_fwdir/$fw"
-	done < "$srcdir"/firmware.files
+	install -Dm644 a506_zap.b02 -t "$pkgdir/$_fwdir/qcom/msm8953/asus/ze520kl"
+	install -Dm644 a506_zap.mdt -t "$pkgdir/$_fwdir/qcom/msm8953/asus/ze520kl"
+	install -Dm644 a506_zap.b02 -t "$pkgdir/$_fwdir/qcom/msm8953/asus/ze552kl"
+	install -Dm644 a506_zap.mdt -t "$pkgdir/$_fwdir/qcom/msm8953/asus/ze552kl"
+	install -Dm644 wlan/prima/WCNSS_qcom_wlan_nv.bin -t "$pkgdir/$_fwdir/postmarketos/wlan/prima/"
+
+	for i in adsp.* venus.* wcnss.*; do
+		install -Dm644 $i -t "$pkgdir/$_fwdir/postmarketos"
+	done
 }
 
 sha512sums="
 a9980ae2ab0868d7e8e2d054e72525c030fe75d66aec6eebd2e17619d5d24455de2a158ea7ed0eb0db2f7a2f4bc07701672de217f8c7274599cd92c00cb2d04e  firmware-asus-zenfone3-f1439210719b2a1597f6390f34ae93cb1470ddf4.tar.gz
-2b5ba92ec40e84294e0c1feae167274d49990545cf28a1a916440a4604d03f5a213187d753fe02f98918f7283707e353e309a7169c44d4f69464a87afb67d2b8  firmware.files
 "

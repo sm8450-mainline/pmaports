@@ -1,6 +1,6 @@
 pkgname=firmware-motorola-ali
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware for Motorola Moto G6"
 url="https://github.com/julianbraha/firmware-motorola-ali"
 arch="aarch64"
@@ -11,15 +11,15 @@ source="$pkgname-$_commit.tar.gz::https://github.com/moto-g6-mainlining/firmware
 options="!strip !check !archcheck !spdx !tracedeps"
 builddir="$srcdir/$_repository-$_commit"
 
-_fwdir="/lib/firmware/postmarketos"
+_fwdir="/lib/firmware"
 
 package() {
 	# GPU Firmware files
-	install -Dm644 a506_zap.b02 -t "$pkgdir/$_fwdir"
-	install -Dm644 a506_zap.mdt -t "$pkgdir/$_fwdir"
+	install -Dm644 a506_zap.b02 -t "$pkgdir/$_fwdir/qcom/msm8953/motorola/ali"
+	install -Dm644 a506_zap.mdt -t "$pkgdir/$_fwdir/qcom/msm8953/motorola/ali"
 
 	# WLAN Firmware
-	install -Dm644 wlan/prima/WCNSS_qcom_wlan_nv.bin -t "$pkgdir/$_fwdir/wlan/prima"
+	install -Dm644 wlan/prima/WCNSS_qcom_wlan_nv.bin -t "$pkgdir/$_fwdir/postmarketos/wlan/prima"
 }
 
 sha512sums="

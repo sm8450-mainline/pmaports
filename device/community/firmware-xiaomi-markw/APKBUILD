@@ -2,7 +2,7 @@
 
 pkgname=firmware-xiaomi-markw
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware files for Xiaomi Redmi 4 Prime (markw)"
 url="https://gitlab.com/vipaoL/firmware-xiaomi-markw"
 arch="aarch64"
@@ -13,7 +13,7 @@ _commit="8cc7f7d9e56aa9fa0193403b694115d759eafaf2"
 
 source="$pkgname-$_commit.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz"
 builddir="$srcdir/$pkgname-$_commit/lib/firmware/postmarketos"
-_fwdir="/lib/firmware/postmarketos"
+_fwdir="/lib/firmware/qcom/msm8953/xiaomi/markw"
 
 package() {
 	# GPU firmwares

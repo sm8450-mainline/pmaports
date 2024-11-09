@@ -1,7 +1,7 @@
 # Maintainer: m0rf30 <morf3089@gmail.com>
 pkgname=firmware-xiaomi-vince
 pkgver=4
-pkgrel=1
+pkgrel=2
 _commit="9acb58a25d66314700eeea15c69c4571154f19cc"
 pkgdesc="Firmware files for Xiaomi Redmi 5 Plus"
 url="https://postmarketos.org"
@@ -10,7 +10,7 @@ license="proprietary"
 source="vince-fw-$_commit.tar.gz::https://github.com/M0Rf30/postmarketos-vendor-xiaomi-vince/archive/$_commit.tar.gz"
 options="!strip !check !archcheck !spdx !tracedeps pmb:cross-native"
 builddir="$srcdir/postmarketos-vendor-xiaomi-vince-$_commit/gpu"
-_fwdir="/lib/firmware/postmarketos"
+_fwdir="/lib/firmware/qcom/msm8953/xiaomi/vince"
 
 package() {
 	# GPU firmwares

@@ -1,7 +1,7 @@
 # Maintainer: Barnabas Czeman <trabarni@gmail.com>
 pkgname=firmware-xiaomi-onclite
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware files for Xiaomi Redmi 7"
 url="https://gitlab.com/barni2000/$pkgname"
 arch="aarch64"
@@ -13,7 +13,7 @@ _commit="5ab4968ab12acb60a5e165008fdf25345e80c309"
 source="$pkgname-$_commit.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz"
 builddir="$srcdir/$pkgname-$_commit"
 
-_fwdir="/lib/firmware/postmarketos"
+_fwdir="/lib/firmware/qcom/msm8953/xiaomi/onclite"
 
 package() {
 	install -Dm644 a506_zap.b02 -t "$pkgdir/$_fwdir"

@@ -1,28 +1,30 @@
 pkgname=firmware-motorola-ocean
-pkgver=4
+pkgver=5
 pkgrel=0
 pkgdesc="Firmware for Motorola Moto G7 Power"
-url="https://gitlab.com/Ultracoolguy/firmware-motorola-ocean"
+url="https://gitlab.com/Ultra-azu/firmware-motorola-ocean"
 arch="aarch64"
 license="proprietary"
 options="!check !strip !archcheck !tracedeps pmb:cross-native"
 _commit="787dcae00d0866079c6f55dc3ddf6592279b0661"
-source="https://gitlab.com/Ultracoolguy/firmware-motorola-ocean/-/archive/$_commit/firmware-motorola-ocean-$_commit.tar.gz
+source="
+	https://gitlab.com/Ultra-azu/firmware-motorola-ocean/-/archive/$_commit/firmware-motorola-ocean-$_commit.tar.gz
 	moto-modem-rfs-setup.initd
-	firmware.files
-	$pkgname-openrc.post-install"
+	$pkgname-openrc.post-install
+"
 subpackages="$pkgname-openrc"
 
-builddir="$srcdir/$pkgname-$_commit"
+builddir="$srcdir/$pkgname-$_commit/lib/firmware/postmarketos"
+_fwdir="/lib/firmware"
 
 package() {
 	install -Dm755 $srcdir/moto-modem-rfs-setup.initd "$pkgdir"/etc/init.d/moto-modem-rfs-setup
 
-	while IFS="" read -r _i || [ -n "$_i" ]; do
-		[ ! -d $(dirname $_i) ] && mkdir -p $(dirname $_i)
-		echo $_i
-		install -Dm644 $_i "$pkgdir/$_i"
-	done < "$srcdir/firmware.files"
+	install -Dm644 a506_zap.b02 -t "$pkgdir/$_fwdir/qcom/msm8953/motorola/ocean"
+	install -Dm644 a506_zap.mdt -t "$pkgdir/$_fwdir/qcom/msm8953/motorola/ocean"
+
+	install -Dm644 wlan/prima/WCNSS_qcom_cfg.ini -t "$pkgdir/$_fwdir/postmarketos/wlan/prima"
+	install -Dm644 wlan/prima/WCNSS_qcom_wlan_nv.bin -t "$pkgdir/$_fwdir/postmarketos/wlan/prima"
 }
 
 openrc() {
@@ -33,6 +35,5 @@ openrc() {
 sha512sums="
 fd0888bb6a0beeca961d9aabd0e60be64dfd841c3c89c7cdb8e7c1284347c4f56b2bad6a73aebc81e86625a4b548b5d2417ca31de6803ea5b3b58c7c1d97be51  firmware-motorola-ocean-787dcae00d0866079c6f55dc3ddf6592279b0661.tar.gz
 d4fd0f3406c9f004e9cae7bc500c5713aab75f102f8e3ea1af820865f01eb03def01cd9ed3e8a184c7dfc22ab419628fad17957a3782885d96eb36e94461e842  moto-modem-rfs-setup.initd
-1ee06dfbf03302e9a92bfd5253bfd959d9e4f328e6df20af80c3f01993e4566ab1ec5c6b556b35a5202b879231a6a9872a0dacc6829f65b5f5508d8943edca6e  firmware.files
 784ac120a2231cfbee153fb8b2634af4ab5091eaa8fe207e66b47641d7531591ee3849e610bb66c7177822c86556f78d51c17ba8e4f3da2f946c4b8c5eaaf310  firmware-motorola-ocean-openrc.post-install
 "

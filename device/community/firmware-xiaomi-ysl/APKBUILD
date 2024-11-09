@@ -1,7 +1,7 @@
 # Maintainer: Barnabas Czeman <trabarni@gmail.com>
 pkgname=firmware-xiaomi-ysl
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware files for Xiaomi Redmi S2/Y2"
 url="https://gitlab.com/barni2000/$pkgname"
 arch="aarch64"
@@ -13,7 +13,7 @@ _commit="ccfd274b825aec2d80e834b16499a6d9ba96c3f5"
 source="$pkgname-$_commit.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz"
 builddir="$srcdir/$pkgname-$_commit/lib/firmware/postmarketos"
 
-_fwdir="/lib/firmware/postmarketos"
+_fwdir="/lib/firmware/qcom/msm8953/xiaomi/ysl"
 
 package() {
 	# GPU Firmware files

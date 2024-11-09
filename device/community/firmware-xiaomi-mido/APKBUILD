@@ -1,7 +1,7 @@
 # Maintainer: Barnabas Czeman <trabarni@gmail.com>
 pkgname=firmware-xiaomi-mido
 pkgver=3
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware for Xiaomi Redmi Note 4X"
 url="https://github.com/Kiciuk/proprietary_firmware_mido"
 arch="aarch64"
@@ -11,7 +11,7 @@ _commit="bc001cbb255a0ded2b58af07b93f712cd9322483"
 source="https://github.com/Kiciuk/proprietary_firmware_mido/archive/$_commit.zip"
 builddir="$srcdir/proprietary_firmware_mido-$_commit/apnhlos"
 
-_fwdir="/lib/firmware/postmarketos"
+_fwdir="/lib/firmware/qcom/msm8953/xiaomi/mido"
 
 package() {
 	# GPU firmware

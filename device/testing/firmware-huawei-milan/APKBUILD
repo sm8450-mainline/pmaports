@@ -1,7 +1,7 @@
 # Maintainer: bzy-080408 <Bzy080408@outlook.com>
 pkgname=firmware-huawei-milan
 pkgver=0
-pkgrel=0
+pkgrel=1
 _commit="f417e07a32310ee4002ca67a3d57f9ba0a960297"
 pkgdesc="Firmware files for Huawei Maimang5 / G9 (Plus) / Nova (Plus)"
 url="https://postmarketos.org"
@@ -10,7 +10,7 @@ license="proprietary"
 source="milan-fw-$_commit.tar.gz::https://github.com/bzy-080408/postmarketos-vendor-huawei-milan/archive/$_commit.tar.gz"
 options="!strip !check !archcheck !spdx !tracedeps pmb:cross-native"
 builddir="$srcdir/postmarketos-vendor-huawei-milan-$_commit/"
-_fwdir="/lib/firmware/postmarketos"
+_fwdir="/lib/firmware/qcom/msm8953/huawei/milan"
 
 package() {
 	# GPU firmwares

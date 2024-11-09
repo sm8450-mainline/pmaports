@@ -3,7 +3,7 @@
 
 pkgname=firmware-xiaomi-tissot
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware files for Xiaomi Mi A1"
 url="https://gitlab.com/jiaxyga/firmware-xiaomi-tissot"
 arch="aarch64"
@@ -14,7 +14,7 @@ _commit="bf686895224cae33c2130932b4a5914fea415287"
 
 source="$pkgname-$_commit.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz"
 builddir="$srcdir/$pkgname-$_commit/lib/firmware/postmarketos"
-_fwdir="/lib/firmware/postmarketos"
+_fwdir="/lib/firmware/qcom/msm8953/xiaomi/tissot"
 
 package() {
 	# GPU firmwares
