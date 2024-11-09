@@ -3,23 +3,26 @@
 
 pkgname=device-samsung-j5y17lte
 pkgdesc="Samsung Galaxy J5 (2017)"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
-	linux-samsung-j5y17lte
+	linux-postmarketos-exynos7870
 	mkbootimg
 	postmarketos-base
 	postmarketos-base-downstream
 	msm-fb-refresher
+	dtbtool-exynos
 "
 makedepends="devicepkg-dev"
 source="
 	deviceinfo
 "
+
+subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -29,6 +32,12 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 
+nonfree_firmware() {
+	pkgdesc="WiFi firmware"
+	depends="firmware-samsung-j5y17lte"
+	mkdir "$subpkgdir"
+}
+
 sha512sums="
-adf750c15f4697e38e4b7d879991e917591fe0f0d1bafd006e35e5fdd0198d47420aa1afc73c1c7b3e21f678745a876bab0e7f0c5268035e72bc627e5d9f031c  deviceinfo
+ee48a888159f6a3637043f032dd364868fc6a34ce36bd7bc9ef996ddf67b6d8871254fc85a393bb7026293007cb61a237a43306994af91bc11dcb1fd541bb15b  deviceinfo
 "
