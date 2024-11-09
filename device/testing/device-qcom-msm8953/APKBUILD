@@ -4,13 +4,14 @@
 pkgname=device-qcom-msm8953
 pkgdesc="Generic device package for various Qualcomm MSM8953/SDM450/SDM632-based devices"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
 	firmware-qcom-adreno-a530
+	firmware-qcom-msm8953
 	linux-postmarketos-qcom-msm8953
 	lk2nd-msm8953
 	mkbootimg
