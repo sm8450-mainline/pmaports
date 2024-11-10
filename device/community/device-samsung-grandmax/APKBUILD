@@ -1,9 +1,9 @@
 # Reference: <https://postmarketos.org/devicepkg>
-# Maintainer: Raymond Hackley <raymondhackley@protonmail.com>
+# Maintainer: Raymond Hackley <wonderfulShrineMaidenOfParadise@postmarketos.org>
 pkgname=device-samsung-grandmax
 pkgdesc="Samsung Galaxy Grand Max"
 pkgver=2
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
