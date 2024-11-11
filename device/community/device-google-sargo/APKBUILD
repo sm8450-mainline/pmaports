@@ -3,7 +3,7 @@
 pkgname=device-google-sargo
 pkgdesc="Google Pixel 3a"
 pkgver=6
-pkgrel=4
+pkgrel=5
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -63,6 +63,7 @@ nonfree_firmware() {
 }
 
 nonfree_firmware_openrc() {
+	replaces="hexagonrpcd-openrc"
 	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel openrc"
 	# Enable HexagonRPCD by default, but not if the user installed this
 	# package then disabled it.
