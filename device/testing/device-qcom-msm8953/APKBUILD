@@ -3,8 +3,8 @@
 
 pkgname=device-qcom-msm8953
 pkgdesc="Generic device package for various Qualcomm MSM8953/SDM450/SDM632-based devices"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -36,5 +36,5 @@ package() {
 
 sha512sums="
 b624c27c7e87cc57c20f79682ca119765b826e0f95bec94f18617d67a832cd2869475fa212d7c21e36a9b448312cb98c497007e0081e1a3c64bf3d60b40bb87a  deviceinfo
-bd17b9384a4aba90d3938b170e47349b98f5e035715abac6ae8cb2e65431159e20e5324c72e69f8f0492d12dd45813615850f1f83a48327fd1a7313e82183d43  modules-initfs
+70917147c1c49f9419ff8be2a03e38c24ad7730091c53a2182797dde85fd8c2073f71187e8e583774974a1509b634433725543547e528364f41d85e63b2ace85  modules-initfs
 "
