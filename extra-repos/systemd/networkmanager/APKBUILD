@@ -4,7 +4,7 @@
 pkgname=networkmanager
 pkgver=9991.50.0
 _pkgver=1.50.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Network Management daemon"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch="all"
@@ -18,7 +18,6 @@ makedepends="
 	gettext-dev
 	gnutls-dev
 	gobject-introspection-dev
-	gtk-doc
 	jansson-dev
 	libgudev-dev
 	libndp-dev
@@ -60,8 +59,6 @@ subpackages="
 	$pkgname-dbg
 	libnm
 	$pkgname-dev
-	$pkgname-gtkdoc
-	$pkgname-doc
 	$pkgname-lang
 	$pkgname-systemd
 	$pkgname-adsl
@@ -98,7 +95,7 @@ build() {
 		-Ddbus_conf_dir=/usr/share/dbus-1/system.d \
 		-Ddhcpcd=true \
 		-Ddnsmasq=/usr/sbin/dnsmasq \
-		-Ddocs=true \
+		-Ddocs=false \
 		-Difupdown=true \
 		-Diptables=/sbin/iptables \
 		-Diwd=true \
@@ -143,17 +140,6 @@ package() {
 	install -m644 -D "$srcdir/$pkgname.rules" \
 		"$pkgdir/usr/share/polkit-1/rules.d/01-org.freedesktop.NetworkManager.settings.modify.system.rules"
 
-	mv "$pkgdir/usr/share/doc/NetworkManager" "$pkgdir/usr/share/doc/$pkgname"
-
-	# post-install message
-	cat > "$pkgdir"/usr/share/doc/$pkgname/README.alpine <<-EOF
-		To modify system network connections without the root password: add your user account to the 'plugdev' group, or use Polkit.
-
-		To use iwd instead of the default wpa_supplicant install iwd, start its service and add the following to your /etc/NetworkManager/NetworkManager.conf:
-
-		[device]
-		wifi.backend=iwd
-	EOF
 }
 
 dev() {
@@ -229,12 +215,6 @@ initrd_generator() {
 	replaces="$pkgname<1.34.0-r3"
 
 	amove usr/libexec/nm-initrd-generator
-}
-
-gtkdoc() {
-	pkgdesc="$pkgdesc (gtk docs)"
-
-	amove usr/share/gtk-doc
 }
 
 dnsmasq() {
