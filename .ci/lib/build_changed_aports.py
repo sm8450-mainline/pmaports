@@ -115,9 +115,9 @@ if __name__ == "__main__":
         if verify_only:
             # [ci:skip-build]: verify checksums
             print("WARNING: not building changed packages for extra-repos/systemd: ([ci:skip-build])!")
-            print("verifying checksums: " + ", ".join(packages))
+            print("verifying checksums: " + ", ".join(systemd_pkgs))
             verify_checksums(systemd_pkgs, arch)
         else:
             # Build packages
-            print(f"building in strict mode for {arch}, from extra-repos/systemd: {', '.join(packages)}")
+            print(f"building in strict mode for {arch}, from extra-repos/systemd: {', '.join(systemd_pkgs)}")
             build_strict(systemd_pkgs, arch)
