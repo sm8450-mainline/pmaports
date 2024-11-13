@@ -20,6 +20,7 @@ depends="
 	postmarketos-base-ui-qt-wayland
 	udiskie
 	xdg-desktop-portal-wlr
+	xdg-desktop-portal-phosh
 	"
 _pmb_recommends="
 	phosh-mobile-settings
