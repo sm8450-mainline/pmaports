@@ -4,8 +4,8 @@
 # Co-Maintainer: Maarten van Gompel <proycon@anaproy.nl>
 # Co-Maintainer: Peter John Hartman <peterjohnhartman@gmail.com>
 pkgname=postmarketos-ui-sxmo-de-sway
-pkgver=1.15.0
-pkgrel=5
+pkgver=1.16.0
+pkgrel=0
 pkgdesc="Simple Mobile: Mobile environment based on SXMO and running on sway"
 url="http://sr.ht/~mil/Sxmo"
 # riscv64: builder currently stuck, libphonenumber needs rebuild
@@ -15,7 +15,6 @@ depends="
 	postmarketos-base-ui
 	postmarketos-base-ui-networkmanager
 
-	sxmo-common
 	sxmo-utils-sway
 	sxmo-utils-audio-bluetooth
 
