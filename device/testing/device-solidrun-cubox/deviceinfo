@@ -24,7 +24,7 @@ deviceinfo_legacy_uboot_load_address="00008000"
 deviceinfo_initfs_compression="gzip"
 deviceinfo_append_dtb="true"
 deviceinfo_disable_dhcpd="true"
-# legcay uboot on device does not know gpt:
+# legacy uboot on this device cannot use gpt:
 deviceinfo_partition_type="msdos"
 
 
