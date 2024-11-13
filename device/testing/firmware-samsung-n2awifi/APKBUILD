@@ -1,11 +1,15 @@
 pkgname=firmware-samsung-n2awifi
-pkgver=0
+pkgver=1
 pkgrel=0
 pkgdesc="Firmware for Samsung n2awifi"
 url="https://github.com/exynos5420/android_vendor_samsung_n2a-common"
 arch="armv7"
 license="proprietary"
 options="!check !strip !archcheck !spdx !tracedeps pmb:cross-native"
+subpackages="
+	$pkgname-downstream:downstream
+	$pkgname-mainline:mainline
+"
 
 # Source
 _n2awifi_commit="81dc97e9d3798e1975c9dfa518f9dc573d9e101b"
@@ -21,12 +25,23 @@ _n2awifi_wifi_files="
 	nvram_net.txt
 "
 
+_n2awifi_bluetooth_files="bcm4335.hcd"
 
 for _i in $_n2awifi_wifi_files; do
 	source="$source $pkgname-$_n2awifi_commit-$_i::$_n2awifi_url/proprietary/etc/wifi/$_i";
 done
 
+for _i in $_n2awifi_bluetooth_files; do
+	source="$source $pkgname-$_n2awifi_commit-$_i::$_n2awifi_url/proprietary/vendor/firmware/$_i";
+done
+
 package() {
+	mkdir -p "$pkgdir"
+}
+
+downstream() {
+	pkgdesc="Firmware for Samsung n2awifi when using downstream kernel"
+	mkdir -p "$subpkgdir"
 	# Wifi
 	local file
 	for file in $_n2awifi_wifi_files; do
@@ -34,6 +49,22 @@ package() {
 			"$pkgdir/lib/firmware/postmarketos/$file"
 	done
 }
+
+mainline() {
+	pkgdesc="Firmware for Samsung n2awifi when using mainline kernel"
+	mkdir -p "$subpkgdir"
+
+	# Bluetooth
+	install -Dm644 "$srcdir/$pkgname-$_n2awifi_commit"-bcm4335.hcd \
+		"$subpkgdir"/lib/firmware/postmarketos/brcm/BCM4335C0.samsung,n2awifi.hcd
+
+	# Wifi
+	install -Dm644 "$srcdir/$pkgname-$_n2awifi_commit"-bcmdhd_sta.bin \
+		"$subpkgdir"/lib/firmware/postmarketos/brcm/brcmfmac4339-sdio.samsung,n2awifi.bin
+	install -Dm644 "$srcdir/$pkgname-$_n2awifi_commit"-nvram_net.txt \
+		"$subpkgdir"/lib/firmware/postmarketos/brcm/brcmfmac4339-sdio.samsung,n2awifi.txt
+}
+
 sha512sums="
 a96731cb93938dbf9c3e9deed3725140f4b814f2eb719701076b5b4ef097f20e044a447afe84b4c14ed2fb263f92d08a856a92b9816440fa309c9407af0d2761  firmware-samsung-n2awifi-81dc97e9d3798e1975c9dfa518f9dc573d9e101b-bcmdhd_apsta.bin
 1885041ec2ec2c593537fffa13a678bf79df1ecaa50be06dda53acc0196e565e30917a01301898153bbcd81cbaf26770f39bb00e0e4e0d9a6a792585dce328a3  firmware-samsung-n2awifi-81dc97e9d3798e1975c9dfa518f9dc573d9e101b-bcmdhd_ibss.bin
@@ -42,4 +73,5 @@ a93b3b6bd1bf88b4edd2321693d0d426c7cf607703f3faf82ffc16a822e66e98e623eedbad0e4ef7
 16ee43800bf7c05f550a14036ef1d648999568996854c72c1ef3965a8fd18eabfda284266fa2e2a0fee8c5fec01fd9a7e22b11b6723797742b5a6260e0b44096  firmware-samsung-n2awifi-81dc97e9d3798e1975c9dfa518f9dc573d9e101b-cred.conf
 d8815923fee3246f34b9f6aefdcd56120237d842bcafc43a51c871d35d1bddc63154233fb6d7f4afd53583e42a5c4bbbc502e053df4a061a07aa52f9fc078b86  firmware-samsung-n2awifi-81dc97e9d3798e1975c9dfa518f9dc573d9e101b-nvram_mfg.txt
 b8e92981cda6f73a877137de3081a4989b4a0a2f824c55c1b2e281489e70ad5cc5ae6e3394555e42ea083bc8ebf95656326bdba523073cbd527bfc329c1e452a  firmware-samsung-n2awifi-81dc97e9d3798e1975c9dfa518f9dc573d9e101b-nvram_net.txt
+17658b6ac3f6cfd8c3d4da1ff59ea9ade15e16c37224535cd1d47adb09586d943a025ef5fae532bdba94580c7845aeabdd941fabf4f8983f62ee2987301dd23e  firmware-samsung-n2awifi-81dc97e9d3798e1975c9dfa518f9dc573d9e101b-bcm4335.hcd
 "
