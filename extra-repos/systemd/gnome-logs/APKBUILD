@@ -1,0 +1,38 @@
+# Contributor: fossdd <fossdd@pwned.life>
+# Maintainer: fossdd <fossdd@pwned.life>
+pkgname=gnome-logs
+pkgver=45.0
+pkgrel=0
+pkgdesc="Log viewer for the systemd journal"
+url="https://apps.gnome.org/Logs"
+arch="all"
+license="GPL-3.0-or-later"
+makedepends="
+	desktop-file-utils
+	gtk4.0-dev
+	itstool
+	libadwaita-dev
+	meson
+	systemd-dev
+	"
+subpackages="$pkgname-doc $pkgname-lang"
+source="https://download.gnome.org/sources/gnome-logs/${pkgver%.*}/gnome-logs-$pkgver.tar.xz"
+
+build() {
+	abuild-meson \
+		-Dman=true \
+		output .
+	meson compile -C output
+}
+
+check() {
+	meson test --no-rebuild --print-errorlogs -C output
+}
+
+package() {
+	DESTDIR="$pkgdir" meson install --no-rebuild -C output
+}
+
+sha512sums="
+a4021b182da29fc027311b6bb18491287ba232310fe61c982af759da7b36613cab589d0ca4caadec5d03fcb3d3000591c92ae37c881a8fd95aa9273025d17fd4  gnome-logs-45.0.tar.xz
+"
