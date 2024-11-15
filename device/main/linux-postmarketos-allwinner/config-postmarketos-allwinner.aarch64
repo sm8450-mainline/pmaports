@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.11.5 Kernel Configuration
+# Linux/arm64 6.11.8 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="aarch64-alpine-linux-musl-gcc (Alpine 14.2.0) 14.2.0"
 CONFIG_CC_IS_GCC=y
@@ -514,7 +514,6 @@ CONFIG_ARM64_EPAN=y
 # end of ARMv8.7 architectural features
 
 CONFIG_ARM64_SVE=y
-CONFIG_ARM64_SME=y
 # CONFIG_ARM64_PSEUDO_NMI is not set
 CONFIG_RELOCATABLE=y
 # CONFIG_RANDOMIZE_BASE is not set
