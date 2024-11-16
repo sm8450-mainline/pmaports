@@ -1,0 +1,10 @@
+[Unit]
+Description=Portal service (Phosh implementation)
+After=graphical-session.target
+PartOf=graphical-session.target
+ConditionEnvironment=WAYLAND_DISPLAY
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.impl.portal.desktop.phosh
+ExecStart=/usr/lib/xdg-desktop-portal-phosh
