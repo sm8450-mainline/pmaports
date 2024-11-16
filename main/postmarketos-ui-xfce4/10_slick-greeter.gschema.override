@@ -1,0 +1,3 @@
+[x.dm.slick-greeter]
+onscreen-keyboard=true
+onscreen-keyboard-layout="/usr/share/onboard/layouts/Phone.onboard"

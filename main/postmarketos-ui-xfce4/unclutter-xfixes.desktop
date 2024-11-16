@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=unclutter-xfixes
-Comment=Hide cursor on touchscreen
-Exec=unclutter-xfixes --start-hidden --hide-on-touch
