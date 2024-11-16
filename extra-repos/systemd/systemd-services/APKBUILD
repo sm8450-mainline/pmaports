@@ -208,7 +208,13 @@ _service() {
 	install="" # defined later if presets are configured for the service
 
 	for f in $(eval "echo \$_${n}_sources"); do
-		install -Dm644 "$srcdir/$(flatpath "$f")" "$subpkgdir"/usr/lib/systemd/"$f"
+		prefix="$subpkgdir"
+		# If the path starts with "user" or "system", install under /usr/lib/systemd
+		# otherwise treat it as a full path
+		if echo "user system" | grep -q "${f%%/*}"; then
+			prefix="$prefix/usr/lib/systemd"
+		fi
+		install -Dm644 "$srcdir/$(flatpath "$f")" "$prefix/$f"
 	done
 
 	for t in user system; do
