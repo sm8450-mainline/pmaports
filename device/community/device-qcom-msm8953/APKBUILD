@@ -1,9 +1,12 @@
-# Maintainer: Barnabas Czeman <trabarni@gmail.com>
 # Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: Barnabas Czeman <trabarni@gmail.com>
+# Co-Maintainer: Alejandro Tafalla <alikates@dnyon.com>
+# Co-Maintainer: Victor Pavlov (vipaoL) <vipaolmail@gmail.com>
+# Co-Maintainer: Danila Tikhonov (JIaxyga) <danila@mainlining.org>
 
 pkgname=device-qcom-msm8953
 pkgdesc="Generic device package for various Qualcomm MSM8953/SDM450/SDM632-based devices"
-pkgver=4
+pkgver=5
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -22,9 +25,11 @@ depends="
 	soc-qcom-msm8953-modem
 "
 makedepends="devicepkg-dev"
+subpackages="device-xiaomi-daisy-fake-goodix:xiaomi_daisy_fake_goodix"
 source="
 	deviceinfo
 	modules-initfs
+	90-device-xiaomi-daisy.rules
 "
 
 build() {
@@ -35,7 +40,13 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 
+xiaomi_daisy_fake_goodix() {
+	pkgdesc="Calibration data for replacement goodix touch controllers"
+	install -Dm644 90-device-xiaomi-daisy.rules -t "$subpkgdir/etc/udev/rules.d/"
+}
+
 sha512sums="
 7a0f4358d041c9bdb24c1018d13d390b111d823316d7d4b94f7c41aada97d9d94162ef7610226332ec3122e04108d7e08f8a844769b262caefbe97e92df1b39d  deviceinfo
 70917147c1c49f9419ff8be2a03e38c24ad7730091c53a2182797dde85fd8c2073f71187e8e583774974a1509b634433725543547e528364f41d85e63b2ace85  modules-initfs
+a2608b01b7b6e2dade694af355ff4f0f26cad49cf54bc332c77eb75d19fdc985f7f996fedb72753de447be0391deabf5fcea52406791d1e6e0d165703b63f145  90-device-xiaomi-daisy.rules
 "

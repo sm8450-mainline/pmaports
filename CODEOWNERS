@@ -31,6 +31,7 @@ device/*/*-pine64-pinephonepro/			@PsychoGame
 device/*/*-pine64-rockpro64/			@PureTryOut
 device/*/*-purism-librem5/			@craftyguy @alistair23 @Newbyte
 device/*/*-qcom-msm8916/			@Minecrell @TravMurav
+device/*/*-qcom-msm8953/			@barni2000 @alikates @vipaoL @jiaxyga
 device/*/*-qcom-sdm670/				@flamingradian
 device/*/*-qcom-sdm845/				@sdm845-mainline
 device/*/*-qcom-sm6350/				@z3ntu
