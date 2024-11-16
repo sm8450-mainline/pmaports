@@ -4,6 +4,3 @@ rc-update add bluetooth default
 rc-update add elogind default
 rc-update add lightdm default
 rc-update add networkmanager default
-
-# Needed to fully revert pma!3887
-rc-update -qq del tinydm default || true
