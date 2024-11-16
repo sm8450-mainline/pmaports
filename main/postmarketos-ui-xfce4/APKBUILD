@@ -2,7 +2,7 @@
 # Maintainer: Jakko <jahau@rocketmail.com>
 pkgname=postmarketos-ui-xfce4
 pkgver=0.5.2
-pkgrel=6
+pkgrel=7
 pkgdesc="(X11) Lightweight desktop (stylus recommended)"
 url="https://gitlab.postmarketos.org/postmarketOS/xfce4-phone"
 arch="noarch"
@@ -58,23 +58,19 @@ package() {
 	mkdir -p "$pkgdir"/etc/xdg/xfce4-phone
 	cp -a "$builddir"/config/xfce4 "$pkgdir"/etc/xdg/xfce4-phone/xfce4
 
-	install -Dm644 "$srcdir"/10_onboard.gschema.override \
-		"$pkgdir"/usr/share/glib-2.0/schemas/10_onboard.gschema.override
+	install -Dm644 -t "$pkgdir"/etc/profile.d \
+		"$srcdir"/enable-scrollbars.sh \
+		"$srcdir"/xfce4-phone.sh
+
+	install -Dm644 -t "$pkgdir"/etc/xdg/xfce4-phone/autostart \
+		"$srcdir"/onboard-autostart.desktop \
+		"$srcdir"/unclutter-xfixes.desktop
+
+	install -Dm644 -t "$pkgdir"/usr/share/glib-2.0/schemas \
+		"$srcdir"/10_onboard.gschema.override
 
 	install -Dm644 "$srcdir"/64-lightdm-autologin.conf \
 		"$pkgdir"/usr/share/lightdm/lightdm.conf.d/64-autologin.conf
-
-	install -Dm644 "$srcdir"/enable-scrollbars.sh \
-		"$pkgdir"/etc/profile.d/enable-scrollbars.sh
-
-	install -Dm644 "$srcdir"/onboard-autostart.desktop \
-		"$pkgdir"/etc/xdg/xfce4-phone/autostart/onboard-autostart.desktop
-
-	install -Dm644 "$srcdir"/unclutter-xfixes.desktop \
-		"$pkgdir"/etc/xdg/xfce4-phone/autostart/unclutter-xfixes.desktop
-
-	install -Dm644 "$srcdir"/xfce4-phone.sh \
-		"$pkgdir"/etc/profile.d/xfce4-phone.sh
 }
 
 openrc() {
