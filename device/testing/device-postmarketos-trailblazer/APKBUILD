@@ -26,6 +26,7 @@ depends="
 	firmware-siliconlabs-rs9116
 	firmware-brcm43752
 	dtbloader
+	woa-firmware-yoinker
 "
 makedepends="devicepkg-dev"
 subpackages="
