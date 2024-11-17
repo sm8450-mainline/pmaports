@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-cprime
 pkgdesc="Samsung Galaxy Core Prime"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -37,6 +37,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-81d2f6f4fb769563b176630d38a126a45570e6237e089ae67a5d65d719eef6489fae8fc624dda18e35a6d97de122620efa1508b9378a53f7f47182ca181971b1  deviceinfo
+47bfdff2d3f8fdbcb01af2b5cc2c9c93ab251857a4f2095bcc370e0e2bccb2ba908aab971847a83bfb69a6e3f5235583c5d85add136e9cf84fcecd1e282eb897  deviceinfo
 9ead03b9e3edb69b238b25e5eecd477c99f03223237a549d124903dfb56a8be02df25ea43c8c308998d2250f9e586c8fef594007f43bc426dfb2d074a6270bba  modules-initfs
 "

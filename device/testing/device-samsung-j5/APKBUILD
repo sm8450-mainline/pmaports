@@ -2,8 +2,8 @@
 # Maintainer: Raymond Hackley <raymondhackley@protonmail.com>
 pkgname=device-samsung-j5
 pkgdesc="Samsung Galaxy J5 (2015)"
-pkgver=6
-pkgrel=2
+pkgver=7
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -35,6 +35,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-480a84da82ec9836dd5c1242d1738f278d79608ee909afd67bb9ae93eceef1a97da2ee2dfb3c69a739c68bb09a357dda50e42ef07ec52524573d636d34583dd0  deviceinfo
+d5340fb7a15e3e43759d1139147cb65165b5bdf6f0f449bb44822854de066ab93a6ed2b0dd1d9bc67fc7c9f0146b4534c1af4c0915dd515ebb095749fbc8252f  deviceinfo
 27839a3da5c8b17516f64e0f7c38af2f502379553643a23834038cebd8ef47ea8d321fe796f99715102ce92f70a9fe0cb97062624a3589b98696154bfd7a4514  modules-initfs
 "

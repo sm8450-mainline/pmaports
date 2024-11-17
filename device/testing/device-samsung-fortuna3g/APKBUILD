@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-fortuna3g
 pkgdesc="Samsung Galaxy Grand Prime 3G (G530H)"
-pkgver=3
-pkgrel=1
+pkgver=4
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -29,6 +29,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-88267937c5da2e5dccd56d8eb3b8a42d1bb7b8a576a85661e4a74744897959b62f8a1e389aaa9f5e4e05b892fe5a99d482320901863cd6dd9b2c7eeff666bc3e  deviceinfo
+82dac2964a2fa415257c3bbc226a850ba59339af728dc13369f1a92c1b2214e0116d32a82cecaae02d80439d8032a38bbdd7877c320b5d2c5756724c593096fb  deviceinfo
 02b6d383149ba2ec3a31b206767be7ead31d9f0e7ee5cab11047000c53ccad387a118cbddb06093bca5cae3e82f884c02194de47b8e7a9c76102ac46506bb111  modules-initfs
 "

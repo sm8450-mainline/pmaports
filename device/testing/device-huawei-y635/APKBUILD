@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-huawei-y635
 pkgdesc="Huawei Y635"
-pkgver=3
-pkgrel=1
+pkgver=4
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -38,7 +38,7 @@ phosh() {
 }
 
 sha512sums="
-625b8c8e037a5b27cb4579e056223d329f87129d9d51d1148123c2b55c11cba6aff36d0b332b431e4dfaded8c8f3e379d085b86d166174b9a481b96d2ca886cc  deviceinfo
+d942d052d60e7765c702e6a8b90d9a144fc43a4625ded728c8f6f039998a10422b06b8ad4c2a928e1017572654f43d9d27fc136b6e1668b1791ef69c9851651d  deviceinfo
 573feeb83028d1c7f5bce4347747e9bfa36ad927125633981a037503088786848cf1985e2d5da73f60fe534deaf05ec6ab12d55438efb3e4bf516b382e4432eb  modules-initfs
 4d43e2c8facedbf5ba98c072e8fc20197a15acb06918a02bb753b48df356be1d4cafc0383968aac2dda50d240dc8cb038370da1fd37d807a9cb832e873de2b85  pointercal
 e8f734a2f8d154813dbb493f0d58af50a7f624ffed41967a81493b975a6211efc6d30743b23825562cfd126791cbdd3348bfbed32eeece9b8acec0a37c3c51b6  phoc.ini

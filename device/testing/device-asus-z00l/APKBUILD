@@ -2,8 +2,8 @@
 # Maintainer: Antony J.R. <antonyjr@pm.me>
 pkgname=device-asus-z00l
 pkgdesc="ASUS Zenfone 2 Laser (720p)"
-pkgver=6
-pkgrel=1
+pkgver=7
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -32,6 +32,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-b090f56a03713f8bed2b28d2c9fa559b0f190bd65973a7d4d5ed103334917d39bf1235f45d3bbc5a11a50971fad64fc26f8b26acd809596dcabb6e7aba95e20e  deviceinfo
+7a343ddeb7ae5cea86c9b51b5d132b68aa7d34080ceb06ebc18242e8707db25fbd16341febc510acd8963b36e9fde30c91d74892e2b70115c2714bb778d5d316  deviceinfo
 868ea93ae3be2a9b2be7cac329b66b7be6f7e72ade7bd111d7b354dcd81a23f4e0d7f4dc617f8d1321a14bbac803778150cce1bff21cd0ed3846803f3d2ed70c  modules-initfs
 "

@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-bq-piccolo
 pkgdesc="BQ Aquaris M5"
-pkgver=6
-pkgrel=1
+pkgver=7
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -39,7 +39,7 @@ phosh() {
 }
 
 sha512sums="
-fad7d6f1289b8385889dd742ef1f3c07fdea94829eef837b03d3a8712d99bda71dd5a80cead2aa923184ab3ce1cc3a410483fec21dfd91265745490f9d09247e  deviceinfo
+0e69b6f9adf9728ae1c876e2e6e001624cff0a1d828e13bb2de9abb969e2712badcfc57e03cf619a96f3df447ec495115502c9d5eaa42b9738fb5d25bc4c5c6a  deviceinfo
 d7ba0b86dc573d0d57591399ec71c76169730b169546d1692910c3e04913100f8bfa534100dab8d5ad302d2a539fb64b040a6fb26979f41c8e7b76b596427afd  modules-initfs
 08a84d731ab0b33b8ec21001331e9c2261a039d3f137eb8bd2f580abea5cfb78706d95443b3e34f9ea3c73e15bcc75038a830402adc7e05636c03e9ce3581eb7  phoc.ini
 "

@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-gtelwifiue
 pkgdesc="Samsung Galaxy Tab E 9.6 (SM-T560NU)"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -27,6 +27,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-9fb68f52d7f0962ee03da16c3cf206a261ee9f21887f207913fc1dcb12e2a3361b982f6ebc439fe71ce78890fe6a94da40dcbff341da183efa5a49df060ee754  deviceinfo
+9472880d4b68735da1ae1b766a62aeedc90e3300ef2726f629a63046af69ba040d9c4bfb6371a1bd700f013cea872fba069ed1cf18f8a0aaa3c494c9469d00e1  deviceinfo
 8e075951dc7fe3f05a4a0a1c33fd1e5630bc20d800f3c2de578853e6249ebf4fc8d31d5752a8abb707df3f3c9f9c18adaa89a1918adf9d3a90a38364d9b93b3c  modules-initfs
 "

@@ -4,8 +4,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-generic-zhihe
 pkgdesc="A generic device package for various MSM8916-based dongles(namely zhihe)"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="GPL"
 arch="aarch64"
@@ -60,5 +60,5 @@ kernel_uz801() {
 }
 
 sha512sums="
-94713427c83db27c6523c6a022aa1b28526db05be2a6f43d9a2f22acee6dde3ca997736f1673e5962939c300f92a286aa7e2845c266bc96b4cedfd562edfc1c1  deviceinfo
+d47e04945d3fd57352278fa6df29352f0b200abd70e70fba9bd17599889c0b7fdf86cca94c9d0a60762ebc37b5f5bea9e23d43aece0b0554b0192dc25693b8e8  deviceinfo
 "

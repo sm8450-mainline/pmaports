@@ -36,3 +36,6 @@ deviceinfo_flash_sparse="true"
 deviceinfo_usb_idVendor="0x2717"
 # Mi/Redmi series (MTP)
 deviceinfo_usb_idProduct="0xFF40"
+
+# lk2nd does not support GPT for subpartitions/SD cards yet
+deviceinfo_partition_type="msdos"

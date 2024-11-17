@@ -33,3 +33,6 @@ deviceinfo_flash_offset_tags="0x01e00000"
 deviceinfo_flash_pagesize="2048"
 deviceinfo_flash_sparse="true"
 deviceinfo_flash_fastboot_partition_rootfs="rootfs"
+
+# lk2nd does not support GPT for subpartitions/SD cards yet
+deviceinfo_partition_type="msdos"

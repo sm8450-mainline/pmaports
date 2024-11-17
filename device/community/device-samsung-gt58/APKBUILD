@@ -2,8 +2,8 @@
 # Maintainer: Nikita Travkin <nikita@trvn.ru>
 pkgname=device-samsung-gt58
 pkgdesc="Samsung Galaxy Tab A 8.0 (2015)"
-pkgver=6
-pkgrel=1
+pkgver=7
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -47,7 +47,7 @@ phosh() {
 }
 
 sha512sums="
-2e7363625b58da2fe036fc70538207a490d5b93a99c3d0c2835fab3114fe09b5e90a3b7583b8f62d8eea7af7910f963d0aa994483045d570f062449cc939fb13  deviceinfo
+3597027a39462451a80eb781d17382a0fb4618eeaf61392af6998c94a68c52a85ec1df8bc2ac6a30b71e53c38ab52b640052c97b66e2e8eeb4e55c95858ce308  deviceinfo
 8071b89c832619c74d3bb50d638653aeaab99fee209cde425a7e8425d46d424bad9e8ab76d2d7360bd4c7ff093a712d51c3ca1b6086e1f70812224bbb115b04f  modules-initfs
 ed612b090c1ee512fc257368082fe0c88ca6c98a9d673ece68593739c7a41b4f9dca5d9360de6f84d206f297feba480a9f1982301132e08a14a5ff920a2675a6  phoc.ini
 "

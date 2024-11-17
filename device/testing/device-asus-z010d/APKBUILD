@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-asus-z010d
 pkgdesc="Asus Zenfone Max ZC550KL"
-pkgver=5
-pkgrel=1
+pkgver=6
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -32,5 +32,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-af36b9677baa35da3653483a35c4ce0c26b61fac60961b499fd7f24834fdb3b22ba96b95ceaea3298c12d165e2f12b5c739ca9fedc153c04e9591347f7b1c6d3  deviceinfo
+a73b2f1a7c5ec6df882a076982680960eae1eb6ae32200f9dcc0081cb99cd16ac1da4054aa047a10891b598da809cf2c7003ba0148d94a32a7e0c381dc5d0a42  deviceinfo
 "

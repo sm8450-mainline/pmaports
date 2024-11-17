@@ -2,7 +2,7 @@
 # Maintainer: Raymond Hackley <raymondhackley@protonmail.com>
 pkgname=device-qcom-msm8909
 pkgdesc="Generic device package for various Qualcomm MSM8905/MSM8909/MSM8916-based devices"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -43,6 +43,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-d77082a92edd4b2f8de2f8a3eaa395a020014c829c73e4008fbe7a2c1dfa7d8a258b10e52b288c2cfa7afc85156a6ab667561f0f4c20c32856ec6bf71b66398c  deviceinfo
+93cbd664d37f63ac142e03ab9168bc94a8cde1880d88b12d17b94fb9318a330434df427878be3af4d96c0bb156beaeb41741a9cf42f557c5a160837a62f1233c  deviceinfo
 3c4ae8aad562270a6094add613912955bafed994e0df2f8842575fb4e38db0f21a57dc61fb772af418d1423512811e7f9f533c2e9b3f8edb657ed20f12ca2fc9  modules-initfs
 "

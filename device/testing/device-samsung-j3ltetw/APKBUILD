@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-j3ltetw
 pkgdesc="Samsung Galaxy J3 (2016)"
-pkgver=3
-pkgrel=1
+pkgver=4
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -34,6 +34,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-985c203e4af9d6c9d04773233d2e38366b1101ef8c70435e1514f00522726238033ef0b6db6d901589469530ac70a78f3c582e5ae0195dcfba361e744b64d972  deviceinfo
+8525b036da879cc13147d82374c39c89d8f867b31db11ba54959e9ae4f65815a145256536533bcb492f3aece73188ace76b18e63b100bb46da8fee53c53d4d2f  deviceinfo
 27839a3da5c8b17516f64e0f7c38af2f502379553643a23834038cebd8ef47ea8d321fe796f99715102ce92f70a9fe0cb97062624a3589b98696154bfd7a4514  modules-initfs
 "

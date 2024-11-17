@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-acer-t01
 pkgdesc="Acer Liquid Z330"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -38,6 +38,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-1009145f30d70d46207a6c09571fd6d28bb909fe1d28d14c6bdcbbe45d2ee024c74aa1c083794f4d53c8616a08579d55e7a242c8a27fcc647f60fa98eae02692  deviceinfo
+ac76d059a6725c3d8a15b4d66f3c88e1f719d8f99c92b4b5d22292b5c6df3203749d5bdef1d3dba5f8daca7cf33e7e869093c86cb83593c7994821aa791abba8  deviceinfo
 a0e3f4ca9dd9bb171b021ee07a2aaf3886b3d6376bb38298128b0bf0325a2305e48ba42a37105b13f7f469fb98d8326c8ce95b6259f8974a4f04b09acb3af7f2  modules-initfs
 "

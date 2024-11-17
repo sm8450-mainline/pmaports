@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-fortunaltezt
 pkgdesc="Samsung Galaxy Grand Prime (SM-G530Y)"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -37,6 +37,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-03007cde27317649e4f9bb488fa304967922531927cc07f8b31b7feb5a04ec43629fa92e5daab415cab9621a167e364e11736b566d1971ecb9ac7587d1a27d9e  deviceinfo
+497d61341daf05a6ad2b87c8460dad0662c97e51dfd38207b8d074bec51d7beb14c5c24bc1649285d0e9e8b75eddf4d7c2f9f5e9904e740d7657509a17029964  deviceinfo
 0dcec6521708a8733aab879eb65047d3bf0ab562d4afb40fec2cff057a08b52b59940e1f9dea2f32519b2565af0399f724950c631ee45790a73199eb53c0653f  modules-initfs
 "

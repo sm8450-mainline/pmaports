@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-gprimeltexx
 pkgdesc="Samsung Galaxy Grand Prime (G530FZ)"
-pkgver=3
-pkgrel=1
+pkgver=4
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -33,6 +33,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-48a862b04c38e743760fa08b2658f30d39435f63bae07e5c273afdd107d6b1d93e1d91e45061c3426d2119305ed53b1801ad38bf3dc81a9afd1730b81f325a83  deviceinfo
+5571f8291ca4d75c6465607326d58df9220f7cf433ba338d4a36dd2082b6554d1b665c061dc07f3026d42d0dcf69069b5a420927bd7c342ca73ef44e3f3153c3  deviceinfo
 02b6d383149ba2ec3a31b206767be7ead31d9f0e7ee5cab11047000c53ccad387a118cbddb06093bca5cae3e82f884c02194de47b8e7a9c76102ac46506bb111  modules-initfs
 "

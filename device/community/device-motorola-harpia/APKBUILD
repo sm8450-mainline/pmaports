@@ -2,8 +2,8 @@
 # Maintainer: Minecrell <minecrell@minecrell.net>
 pkgname=device-motorola-harpia
 pkgdesc="Motorola Moto G4 Play"
-pkgver=9
-pkgrel=1
+pkgver=10
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -41,6 +41,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-31eba51ab586af61d0ea0efb2e0f0a8533524254e864d59bc2142ba30c6b5745a46a00314fbf86a8b5bcfeee2d42b218c27d2e8aa5ed19f24e50468860999e56  deviceinfo
+001c54115e5a4d0444c098f009bfc40a756b4044a9c1026fad0f5b0316e9540cc35ccd517689fcd298cb6481c0697e3127d46c618093a644a915ea8eb68bac27  deviceinfo
 525a3e20672a7dff26b885b99ee157e0ece33efa10db34c90aed45dc47d7f1c2e90d7082dc84f2724892f199b5adaca04d5864f0aa1d1e4b8ea695f840346d60  modules-initfs
 "

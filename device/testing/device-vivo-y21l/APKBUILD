@@ -2,8 +2,8 @@
 # Maintainer Raihan Ahamed <raihan1999ahamed@gmail.com>
 pkgname=device-vivo-y21l
 pkgdesc="Vivo Y21L"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -28,5 +28,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-2b9d2fef344d5bfdaf2459a220aabb5a718b9412806b54dc8397ca8803392faa30c6b9a8fdc3decac3ce5ec3ea7ef7ab5523f8fd675114b929d30ef54c121af6  deviceinfo
+c3c4fef9d974af48fe2c3b51f76a6093b7f959075366b4a7da20419388c851d01469c156a1d6410012a2727ef47da718d22efcef1cc919ddaa2ae20d68fb3f2f  deviceinfo
 "

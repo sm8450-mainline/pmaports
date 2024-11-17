@@ -2,8 +2,8 @@
 # Maintainer: Raymond Hackley <wonderfulShrineMaidenOfParadise@postmarketos.org>
 pkgname=device-samsung-grandmax
 pkgdesc="Samsung Galaxy Grand Max"
-pkgver=2
-pkgrel=2
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -37,6 +37,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-a7f7c5ef87b8bc6d6f8c732098342e8a91742a67978eb107e20cc839c5dedb8ce497bf1a9df143fe447e74936cfc6dfeecb4b25427c43278f0020ba1065dee2e  deviceinfo
+a632d55dd34cfe3c5e88f063335d44a7ad04d93caca641f788415e361757e37f13ec48e51e268ef3e6af27704eb4e1a0ce5b8307c7800544b469582eb5083995  deviceinfo
 24b1b199ca26d902807038faa20b44d6060c039900df5c7aa263cdb22b35930e726c2bfd86e32b1f1dd6fa8ab3b57a6c8ff430ce9aae2dd04c04565ea56c8a43  modules-initfs
 "

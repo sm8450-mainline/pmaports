@@ -3,8 +3,8 @@
 # Co-Maintainer: Alexey Min <alexey.min@gmail.com>
 pkgname=device-samsung-a5
 pkgdesc="Samsung Galaxy A5 (2015)"
-pkgver=11
-pkgrel=1
+pkgver=12
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -42,6 +42,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-2fc9ed97981cc439046475eef8eb6d358bfde571242b14763cf4223c076cbda9ee861221e6978056e65a09020bfaeeb7734e22782701a2bcb134ef113467dc9a  deviceinfo
+113af5e20f5a42870b2796e71b6533a1f330fefacbec7dd659648f9148391a8ba9a1dde4a3f8732740ff25c8334a6dbfb4352a4a82e76da45d9ce5a597fc3199  deviceinfo
 13ba472485d757332b46a21fe771ae2779d0c5f1e997b6e51a4c0acce902256f0a2c724828251acf0150d7de919b691053de59041fea0b983569a004dcb75256  modules-initfs
 "

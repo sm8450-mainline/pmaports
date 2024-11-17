@@ -2,8 +2,8 @@
 # Maintainer: Minecrell <minecrell@minecrell.net>
 pkgname=device-xiaomi-wt88047
 pkgdesc="Xiaomi Redmi 2"
-pkgver=9
-pkgrel=1
+pkgver=10
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -38,6 +38,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-088daf52e6273289e279ee5c39d170bcde6b163eed39a11f3b25c6504347d304cd09745b3eb568b56eb03b67231e6948d1a75df19fb0e24dc535dcc8ce2c2e8c  deviceinfo
+0cdcff4e49c0c4413759e12dba07810fa7d7cb2647b9b378dc26d6f5b62ba51e5c9ac3e198a6e29464c943ef0b1dedf071e0476da04a3d05f167a621b106259d  deviceinfo
 7f6892125a15fdfcfca140571073150df25a5c355eae8ae632a56a00cd9e5fc7168d435680ca83eb8a8d9ae63aef6af478f42e92815f175d26ec592941de61e6  modules-initfs
 "

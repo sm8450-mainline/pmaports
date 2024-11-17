@@ -2,8 +2,8 @@
 # Maintainer: Minecrell <minecrell@minecrell.net>
 pkgname=device-lg-c50
 pkgdesc="LG Leon LTE"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -41,7 +41,7 @@ phosh() {
 }
 
 sha512sums="
-416fbbc278b34805100fbff39521007477422a1f3acc324a787241112ea1ba11d32cea9eb17396f6da626a9459d4674edf6981c05f8dd395a3b87330a7b390c7  deviceinfo
+90614944336fcf52934d078269cc84f715bcc8f19a8725ee57f366d7d3df650b0b98546246edc804fd5c4332558e989d6c5140fc09f4feed7b5d406bb4f59615  deviceinfo
 11cd680cf30411fdb5d3036cdcd8bebfb8a7999a7386e837235b03377d521c7e5bf150da35da95aad56b4878c7af6637c738f099fe139a268dfb8a566f48b5dd  modules-initfs
 1a87b0303bb77bbe98a4100934da9a6e9533e5cefe985a73ec29bd50e1588d9a9ac9f5a126b450eecfa83fe6289013825a76fe699fce2bd3afbdc90cd83cf8d9  phoc.ini
 "

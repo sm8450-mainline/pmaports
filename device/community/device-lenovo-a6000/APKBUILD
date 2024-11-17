@@ -3,8 +3,8 @@
 # Co-Maintainer: Minecrell <minecrell@minecrell.net>
 pkgname=device-lenovo-a6000
 pkgdesc="Lenovo A6000"
-pkgver=8
-pkgrel=1
+pkgver=9
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -46,7 +46,7 @@ phosh() {
 }
 
 sha512sums="
-4939c4931addcfc05dbd5ede8083385e554c51c90ce5b375291fc57f245bfccc71054c9ae66c421bd5a39fe8f4449b58450246b667af0cda84399b5d65dc2173  deviceinfo
+4d09fab52932eec68e861ece0e1b6be8091b4834d765e533c8af9eaa0598838d11c3297fd501717af2124739c17a91be923fbefb59459e9f8f2ecbf767421069  deviceinfo
 d433b8376b6e89daf4eac2073cb33627bdcacdcd48b6d4990cc698627dcf3c951bb1874951bc4631ea6b89d22c6002b9d02b77ff24992106061fcecc22fa5f25  modules-initfs
 10d4ee62e5f7a9e4c368c460dd4c3ef282476e47d8cc40e4e3b83e971d04c493b801e5628ebdfe721f869e2fd68c521cf192cba1a973c8e03a61445534a28811  phoc.ini
 "

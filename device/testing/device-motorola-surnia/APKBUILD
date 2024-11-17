@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-motorola-surnia
 pkgdesc="Motorola Moto E (2nd Gen)"
-pkgver=3
-pkgrel=1
+pkgver=4
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -33,6 +33,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-80a650fa5b941e063f41d474ba92573188deff7bf51cb3266817736a74e6b635f533fa93cc66b8f70813c6694454e2f68e7d990bd17560fa8d9922b1daccf516  deviceinfo
+341eb5c87cef4228b3dd65c51aafa219960ad3b77ec3b21249f63317667650ab33e2c9777f460a0c64ae207f0835d8922ceb223338dc3d6680a18745275aafcb  deviceinfo
 44df8245209d15e16e5114874e22160383861988b0bd1b2e2faca27c817cc03f431a387e8cc5a708ab2cfcc67b04f204043cdaaf898552588ea8feb18755b0a9  modules-initfs
 "
