@@ -3,7 +3,7 @@
 # Co-Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=device-qemu-riscv64
 pkgver=3
-pkgrel=0
+pkgrel=1
 pkgdesc="Simulated device in QEMU (riscv64)"
 url="https://postmarketos.org"
 arch="riscv64"
@@ -49,7 +49,7 @@ sway() {
 x11() {
 	install_if="$pkgname=$pkgver-r$pkgrel xorg-server"
 	install -Dm644 "$srcdir"/resolution-qemu-X11.conf \
-		"$subpkgdir"/etc/X11/xorg.conf.d/10-resolution-qemu-X11.conf
+		"$subpkgdir"/usr/share/X11/xorg.conf.d/10-resolution-qemu-X11.conf
 }
 
 kernel_edge() {

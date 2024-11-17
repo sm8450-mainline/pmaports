@@ -3,7 +3,7 @@
 # Co-Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=device-qemu-aarch64
 pkgver=6
-pkgrel=0
+pkgrel=1
 pkgdesc="Simulated device in QEMU (aarch64)"
 url="https://postmarketos.org"
 arch="aarch64"
@@ -51,7 +51,7 @@ sway() {
 x11() {
 	install_if="$pkgname=$pkgver-r$pkgrel xorg-server"
 	install -Dm644 "$srcdir"/resolution-qemu-X11.conf \
-		"$subpkgdir"/etc/X11/xorg.conf.d/10-resolution-qemu-X11.conf
+		"$subpkgdir"/usr/share/X11/xorg.conf.d/10-resolution-qemu-X11.conf
 }
 
 kernel_virt() {
