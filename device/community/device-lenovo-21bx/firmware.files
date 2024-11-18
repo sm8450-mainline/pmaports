@@ -4,9 +4,7 @@
 
 # Bluetooth
 /lib/firmware/qca/hpbtfw21.tlv
-# TODO: replace this if/when the fixed fw makes its way into linux-firmware-qca
-#/lib/firmware/qca/hpnv21.bin
-/lib/firmware/postmarketos/qca/hpnv21.bin
+/lib/firmware/qca/hpnv21.b8c
 
 # GPU
 /lib/firmware/qcom/a660_gmu.bin
