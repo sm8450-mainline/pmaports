@@ -93,6 +93,7 @@ device/*/device-shift-axolotl/			@amartinz @calebccff @dylanvanassche
 device/*/device-solidrun-cubox/			@longnoserob
 device/*/firmware-google-sargo/			@flamingradian
 device/*/firmware-google-veyron-brcm/		@jenneron
+device/*/firmware-motorola-osprey/		@Minecrell
 device/*/firmware-odroid-xu4/			@Grimler
 device/*/firmware-oneplus-sdm845/		@calebccff
 device/*/firmware-powervr-gx6250/		@jenneron
