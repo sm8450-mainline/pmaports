@@ -18,6 +18,7 @@ deviceinfo_keyboard="false"
 # Bootloader related
 deviceinfo_flash_method="fastboot"
 deviceinfo_kernel_cmdline="quiet loglevel=2"
+deviceinfo_partition_type="msdos"
 
 # extlinux.conf
 deviceinfo_dtb="qcom/apq8053-* qcom/msm8953-* qcom/sdm450-* qcom/sdm632-*"
