@@ -7,7 +7,7 @@
 pkgname=systemd-services
 # 1. bump pkgver
 pkgver=24
-pkgrel=0
+pkgrel=1
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
 arch="noarch"
@@ -186,7 +186,7 @@ _plasma_mobile_system_presets="plasma-mobile.service"
 _q6voiced_system_presets="q6voiced.service"
 _qbootctl_system_presets="qbootctl.service"
 _rmtfs_system_presets="rmtfs.service"
-_rtkit_system_presets="rtkit-deamon.service"
+_rtkit_system_presets="rtkit-daemon.service"
 _sensorfw_system_presets="sensorfwd.service"
 _sleep_inhibitor_system_presets="sleep-inhibitor.service"
 _tqftpserv_system_presets="tqftpserv.service"
