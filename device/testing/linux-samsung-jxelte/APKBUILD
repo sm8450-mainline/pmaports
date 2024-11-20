@@ -3,14 +3,14 @@
 
 pkgname=linux-samsung-jxelte
 pkgver=3.18.14
-pkgrel=6
+pkgrel=7
 pkgdesc="Samsung Galaxy J7(2016) kernel fork"
 arch="aarch64"
 _carch="arm64"
 _flavor="samsung-jxelte"
 url="https://kernel.org"
 license="GPL-2.0-only"
-options="!strip !check !tracedeps pmb:cross-native pmb:kconfigcheck-zram"
+options="!strip !check !tracedeps pmb:cross-native"
 makedepends="bash bc bison devicepkg-dev flex openssl-dev perl dtbtool-exynos"
 
 # Source
