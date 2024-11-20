@@ -35,6 +35,7 @@ device/*/*-qcom-msm8953/			@barni2000 @alikates @vipaoL @jiaxyga
 device/*/*-qcom-sdm670/				@flamingradian
 device/*/*-qcom-sdm845/				@sdm845-mainline
 device/*/*-qcom-sm6350/				@z3ntu
+device/*/*-qcom-sm8250/				@jianhua
 device/*/*-samsung-a3/				@Mis012 @TravMurav @Minecrell
 device/*/*-samsung-a5/				@Minecrell @minlexx
 device/*/*-samsung-e7/				@wonderfulShrineMaidenOfParadise
@@ -53,6 +54,7 @@ device/*/*-videostrong-kii-pro/			@funderscore
 device/*/*-wileyfox-crackling/			@TravMurav @Minecrell
 device/*/*-xiaomi-beryllium/			@joelselvaraj
 device/*/*-xiaomi-daisy/			@joelselvaraj @alikates
+device/*/*-xiaomi-elish/			@jianhua
 device/*/*-xiaomi-markw/			@vipaoL
 device/*/*-xiaomi-mido/				@barni2000
 device/*/*-xiaomi-scorpio/			@Tooniis
