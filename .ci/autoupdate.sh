@@ -10,8 +10,9 @@ fi
 
 git config --global --add safe.directory "$CI_PROJECT_DIR"
 git config --global user.name "postmarketOS CI"
-# pmaports
-git config --global user.email "project_226_bot_a365eaa0c380d1bee0af03adf42ebea3@noreply.gitlab.postmarketos.org"
+# The username for the bot associated with the access token
+# e.g. project_226_bot_bfa19b84bf7f559c8ff7438a01fd29b9
+git config --global user.email "$PMAPORTS_TOKEN_BOT@noreply.gitlab.postmarketos.org"
 
 # Configure SSH key for signing
 mkdir -p ~/.ssh
