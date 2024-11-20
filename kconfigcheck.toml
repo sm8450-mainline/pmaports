@@ -238,12 +238,16 @@ SECCOMP = true  # Optional section
 CGROUP_PIDS = true  # Optional section
 
 # zram: RAM disk with on-the-fly compression
-["category:zram".">=3.14.0"."all"]
+["category:zram".">=0.0.0"."all"]
 ZRAM = true
 ZSMALLOC = true
-CRYPTO_LZ4 = true
-LZ4_COMPRESS = true
 SWAP = true
+
+["category:zram"."<6.12"."all"]
+CRYPTO_ZSTD = true
+
+["category:zram".">=6.12"."all"]
+ZRAM_BACKEND_ZSTD = true
 
 # netboot: https://postmarketos.org/netboot
 ["category:netboot".">=0.0.0"."all"]
