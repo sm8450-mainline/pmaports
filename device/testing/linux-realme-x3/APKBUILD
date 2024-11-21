@@ -1,0 +1,64 @@
+# Maintainer: Patriot-06 <mbmc172@gmail.com>
+# Kernel config based on: arch/arm/configs/sm8150.config
+
+pkgname=linux-realme-x3
+pkgver=6.12_rc7
+pkgrel=0
+pkgdesc="Mainline Kernel fork for Realme X3"
+arch="aarch64"
+_carch="arm64"
+_flavor="realme-x3"
+url="https://github.com/sm8150-linux-mainline/linux"
+license="GPL-2.0-only"
+options="!strip !check !tracedeps
+		pmb:cross-native
+		pmb:kconfigcheck-nftables
+		"
+makedepends="bash bc bison findutils flex installkernel openssl-dev perl zstd python3"
+
+# Source
+_repository="linux"
+_commit="91911e069acbb9d38e5dcc633d454f7b1ff9bc4b"
+_config="config-$_flavor.$arch"
+source="
+	$pkgname-$_commit.tar.gz::https://github.com/sm8150-linux-mainline/$_repository/archive/$_commit.tar.gz
+	$_config
+"
+builddir="$srcdir/$_repository-$_commit"
+_outdir="out"
+
+prepare() {
+	default_prepare
+	cp "$srcdir/config-$_flavor.$arch" .config
+}
+
+build() {
+	unset LDFLAGS
+	make ARCH="$_carch" CC="${CC:-gcc}" \
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-$_flavor"
+}
+
+package() {
+	mkdir -p "$pkgdir"/boot
+
+	install -Dm644 "$builddir/arch/$_carch/boot/Image.gz" \
+		"$pkgdir/boot/vmlinuz"
+
+	make modules_install dtbs_install \
+		ARCH="$_carch" \
+		INSTALL_PATH="$pkgdir"/boot/ \
+		INSTALL_MOD_PATH="$pkgdir" \
+		INSTALL_MOD_STRIP=1 \
+		INSTALL_DTBS_PATH="$pkgdir"/boot/dtbs
+	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
+
+	install -D "$builddir"/include/config/kernel.release \
+		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
+}
+
+
+
+sha512sums="
+0adb5b750da3cad2b95654e57f887691d8e2d63f79e350d9640fc3a6012c4b631b342934b119fc24fb3eb954ac6e3545c050b83c5db433f7bcdcd3fb54c6eadb  linux-realme-x3-91911e069acbb9d38e5dcc633d454f7b1ff9bc4b.tar.gz
+4f7252d717139f581f1b87fbc0ff634470c91cd1dfd60bc07a7532f025d13c171053bb4446c707472594dfba39d33473f751b4a741381ed94d5b673321a642ae  config-realme-x3.aarch64
+"
