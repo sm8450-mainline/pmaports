@@ -109,7 +109,6 @@ kernel-kconfig:
       changes:
         - kconfigcheck.toml
         - device/*/linux-*/config-*
-        - main/linux-*/config-*
   script:
     - .ci/lib/gitlab_prepare_ci.sh
     - .ci/kconfig.sh
