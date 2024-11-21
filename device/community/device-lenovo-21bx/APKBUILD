@@ -5,7 +5,7 @@
 pkgname=device-lenovo-21bx
 pkgdesc="Lenovo ThinkPad X13s"
 pkgver=12
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -18,7 +18,7 @@ depends="
 	linux-firmware-ath11k
 	linux-firmware-qca
 	linux-firmware-qcom
-	linux-lenovo-21bx
+	linux-postmarketos-qcom-laptop
 	postmarketos-base
 	qmi-utils
 	systemd-boot
