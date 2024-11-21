@@ -352,6 +352,11 @@ USB_SERIAL_CP210X = true  # USB serial console
 USB_STORAGE = true  # USB mass storage devices
 USB_RTL8152 = true  # USB Ethernet
 
+["category:virt".">=0.0.0"."all"]
+HW_RANDOM_VIRTIO = true
+KVM = true
+VIRTUALIZATION = true
+
 ["category:debug".">=0.0.0"."all"]
 DYNAMIC_DEBUG = true  # Enable debug dynamically
 DYNAMIC_FTRACE = true  # Enable function tracing dynamically
