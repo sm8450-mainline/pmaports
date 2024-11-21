@@ -115,6 +115,7 @@ device/*/linux-postmarketos-marvell-dove/	@longnoserob
 device/*/linux-postmarketos-mediatek-mt8173/	@jenneron @adamthiede
 device/*/linux-postmarketos-mediatek-mt8183/	@jenneron @binarycraft
 device/*/linux-postmarketos-omap/		@MightyM17 @Sicelo
+device/*/linux-postmarketos-qcom-laptop/	@craftyguy @calebccff
 device/*/linux-postmarketos-qcom-msm8939/	@Newbyte
 device/*/linux-postmarketos-qcom-msm8953/	@M0Rf30 @Ultra-azu @barni2000
 device/*/linux-postmarketos-qcom-msm8996/	@Tooniis
