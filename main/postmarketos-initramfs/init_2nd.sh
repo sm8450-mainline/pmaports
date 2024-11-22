@@ -13,6 +13,9 @@
 # loaded in time
 setup_udev
 
+setup_usb_network
+start_unudhcpd
+
 # Splash is already running if we're loaded from initramfs-extra
 if [ "$deviceinfo_create_initfs_extra" != "true" ] && [ "$IN_CI" = "false" ]; then
 	setup_framebuffer

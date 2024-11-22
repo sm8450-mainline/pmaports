@@ -32,9 +32,6 @@ echo "  ❬❬ PMOS STAGE 1 ❭❭"
 echo "initramfs version: $INITRAMFS_PKG_VERSION"
 setup_firmware_path
 
-setup_usb_network
-start_unudhcpd
-
 # Jump straight to the 2nd stage init if available
 # (no separate -extra) or no-op otherwise
 jump_init_2nd
@@ -44,12 +41,15 @@ echo "Loading initramfs-extra..."
 # We need mdev to find the boot partition
 setup_mdev
 
+load_modules /lib/modules/initramfs.load
+
+setup_usb_network
+start_unudhcpd
+
 if [ "$IN_CI" = "false" ]; then
 	setup_framebuffer
 	show_splash "Loading..."
 fi
-
-load_modules /lib/modules/initramfs.load
 
 # Discover the partitions if they're "subpartitions"
 # (where the whole disk image is flashed to a partition)
