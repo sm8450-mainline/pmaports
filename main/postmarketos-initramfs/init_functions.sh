@@ -1,6 +1,5 @@
 #!/bin/sh
 # This file will be in /init_functions.sh inside the initramfs.
-ROOT_PARTITION_UNLOCKED=0
 
 # NOTE!!! The file is sourced again in init_2nd.sh, avoid
 # clobbering variables by not setting them if they have
@@ -216,11 +215,26 @@ find_root_partition() {
 	# Short circuit all autodetection logic if pmos_root= or
 	# pmos_root_uuid= is supplied on the kernel cmdline
 	# shellcheck disable=SC2013
-	if [ "$ROOT_PARTITION_UNLOCKED" = 0 ]; then
+	for x in $(cat /proc/cmdline); do
+		if ! [ "$x" = "${x#pmos_root_uuid=}" ]; then
+			path="$(blkid --uuid "${x#pmos_root_uuid=}")"
+			if [ -n "$path" ]; then
+				PMOS_ROOT="$path"
+				break
+			else
+				# Don't fall back to anything if the given UUID wasn't
+				# found
+				return
+			fi
+		fi
+	done
+
+	if [ -z "$PMOS_ROOT" ]; then
+		# shellcheck disable=SC2013
 		for x in $(cat /proc/cmdline); do
-			if ! [ "$x" = "${x#pmos_root_uuid=}" ]; then
-				path="$(blkid --uuid "${x#pmos_root_uuid=}")"
-				if [ -n "$path" ]; then
+			if ! [ "$x" = "${x#pmos_root=}" ]; then
+				path="${x#pmos_root=}"
+				if [ -e "$path" ]; then
 					PMOS_ROOT="$path"
 					break
 				else
@@ -230,40 +244,24 @@ find_root_partition() {
 				fi
 			fi
 		done
+	fi
 
-		if [ -z "$PMOS_ROOT" ]; then
-			for x in $(cat /proc/cmdline); do
-				if ! [ "$x" = "${x#pmos_root=}" ]; then
-					path="${x#pmos_root=}"
-					if [ -e "$path" ]; then
-						PMOS_ROOT="$path"
-						break
-					else
-						# Don't fall back to anything if the given UUID wasn't
-						# found
-						return
-					fi
-				fi
-			done
-		fi
+	# On-device installer: before postmarketOS is installed,
+	# we want to use the installer partition as root. It is the
+	# partition behind pmos_root. pmos_root will either point to
+	# reserved space, or to an unfinished installation.
+	# p1: boot
+	# p2: (reserved space) <--- pmos_root
+	# p3: pmOS_install
+	# Details: https://postmarketos.org/on-device-installer
+	if [ -n "$PMOS_ROOT" ]; then
+		next="$(echo "$PMOS_ROOT" | sed 's/2$/3/')"
 
-		# On-device installer: before postmarketOS is installed,
-		# we want to use the installer partition as root. It is the
-		# partition behind pmos_root. pmos_root will either point to
-		# reserved space, or to an unfinished installation.
-		# p1: boot
-		# p2: (reserved space) <--- pmos_root
-		# p3: pmOS_install
-		# Details: https://postmarketos.org/on-device-installer
-		if [ -n "$PMOS_ROOT" ]; then
-			next="$(echo "$PMOS_ROOT" | sed 's/2$/3/')"
-
-			# If the next partition is labeled pmOS_install (and
-			# not pmOS_deleteme), then postmarketOS is not
-			# installed yet.
-			if blkid | grep "$next" | grep -q pmOS_install; then
-				PMOS_ROOT="$next"
-			fi
+		# If the next partition is labeled pmOS_install (and
+		# not pmOS_deleteme), then postmarketOS is not
+		# installed yet.
+		if blkid | grep "$next" | grep -q pmOS_install; then
+			PMOS_ROOT="$next"
 		fi
 	fi
 
@@ -534,8 +532,7 @@ unlock_root_partition() {
 			fde-unlock "$partition" "$tried"
 			tried=$((tried + 1))
 		done
-		ROOT_PARTITION_UNLOCKED=1
-		PMOS_ROOT=
+		PMOS_ROOT=/dev/mapper/root
 		# Show again the loading splashscreen
 		show_splash "Loading..."
 	fi
