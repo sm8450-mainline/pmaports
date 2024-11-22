@@ -223,6 +223,10 @@ find_root_partition() {
 				if [ -n "$path" ]; then
 					PMOS_ROOT="$path"
 					break
+				else
+					# Don't fall back to anything if the given UUID wasn't
+					# found
+					return
 				fi
 			fi
 		done
@@ -234,6 +238,10 @@ find_root_partition() {
 					if [ -e "$path" ]; then
 						PMOS_ROOT="$path"
 						break
+					else
+						# Don't fall back to anything if the given UUID wasn't
+						# found
+						return
 					fi
 				fi
 			done
