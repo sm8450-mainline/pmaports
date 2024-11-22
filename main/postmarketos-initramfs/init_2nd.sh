@@ -54,7 +54,7 @@ resize_filesystem_after_mount /sysroot
 
 # Mount boot partition into sysroot if needed since some
 # old installations don't have a proper /etc/fstab file. See #2800
-if ! cat /sysroot/etc/fstab | grep -v "#" | grep -q "/boot" ; then
+if [ -z "$(cat /sysroot/etc/fstab | grep -v "#" | tr -d '[:space:]')" ]; then
 	wait_boot_partition
 	mount_boot_partition /sysroot/boot "rw"
 fi
