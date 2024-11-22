@@ -11,6 +11,7 @@ SUBPARTITION_DEV="${SUBPARTITION_DEV:-}"
 
 CONFIGFS="/config/usb_gadget"
 CONFIGFS_ACM_FUNCTION="acm.usb0"
+CONFIGFS_MASS_STORAGE_FUNCTION="mass_storage.0"
 HOST_IP="${unudhcpd_host_ip:-172.16.42.1}"
 
 deviceinfo_getty="${deviceinfo_getty:-}"
@@ -812,6 +813,51 @@ run_getty() {
 	} &
 }
 
+setup_usb_storage_configfs() {
+	active_udc="$(cat $CONFIGFS/g1/UDC)"
+	storage_dev="$1"
+
+	if ! [ -e "$CONFIGFS" ]; then
+		echo "  $CONFIGFS does not exist, can't set up storage gadget"
+		return 1
+	fi
+
+	if [ -z "$storage_dev" ]; then
+		if [ -e "$CONFIGFS/g1/configs/c.1/$CONFIGFS_MASS_STORAGE_FUNCTION" ]; then
+			echo "Disabling USB mass storage gadget"
+			unlink "$CONFIGFS/g1/configs/c.1/$CONFIGFS_MASS_STORAGE_FUNCTION"
+			setup_usb_configfs_udc
+		fi
+		return 0
+	fi
+
+	if ! [ -b "$storage_dev" ]; then
+		echo "  Storage device '$storage_dev' is not a block device"
+		return 1
+	fi
+
+	# Set up network gadget if not already done
+	if [ -z "$active_udc" ]; then
+		setup_usb_network_configfs "skip_udc"
+	else
+		# Unset UDC before reconfiguring gadget
+		echo "" > $CONFIGFS/g1/UDC
+	fi
+
+	# Create mass storage function
+	mkdir -p "$CONFIGFS/g1/functions/$CONFIGFS_MASS_STORAGE_FUNCTION" \
+		|| echo "  Couldn't create $CONFIGFS/g1/functions/$CONFIGFS_MASS_STORAGE_FUNCTION"
+
+	echo "$storage_dev" > "$CONFIGFS/g1/functions/$CONFIGFS_MASS_STORAGE_FUNCTION/lun.0/file"
+
+	# Link the mass storage function to the configuration
+	ln -sf "$CONFIGFS/g1/functions/$CONFIGFS_MASS_STORAGE_FUNCTION" "$CONFIGFS/g1/configs/c.1" \
+		|| echo "  Couldn't symlink $CONFIGFS_MASS_STORAGE_FUNCTION"
+
+	setup_usb_configfs_udc
+	return 0
+}
+
 debug_shell() {
 	echo "Entering debug shell"
 	# if we have a UDC it's already been configured for USB networking
@@ -847,12 +893,10 @@ debug_shell() {
 	# Add pmos_logdump message only if relevant
 	if [ -n "$have_udc" ]; then
 		echo "Run 'pmos_logdump' to generate a log dump and expose it over USB." >> /README
-	fi
 
-	if [ -n "$have_udc" ] && [ -f /usr/bin/setup_usb_storage ]; then
 		cat <<-EOF >> /README
 		You can expose storage devices over USB with
-		'setup_usb_storage /dev/DEVICE'
+		'setup_usb_storage_configfs /dev/DEVICE'
 		EOF
 	fi
 
@@ -948,11 +992,13 @@ debug_shell() {
 		fi
 	done
 
-	# Remove the ACM gadget device
+	# Remove the ACM/mass storage gadget devices
 	# FIXME: would be nice to have a way to keep this on and
 	# pipe kernel/init logs to it.
 	rm -f $CONFIGFS/g1/configs/c.1/"$CONFIGFS_ACM_FUNCTION"
 	rmdir $CONFIGFS/g1/functions/"$CONFIGFS_ACM_FUNCTION"
+	rm -f "$CONFIGFS/g1/configs/c.1/$CONFIGFS_MASS_STORAGE_FUNCTION"
+	rmdir "$CONFIGFS/g1/functions/$CONFIGFS_MASS_STORAGE_FUNCTION"
 	setup_usb_configfs_udc
 
 	show_splash "Loading..."
@@ -1123,32 +1169,12 @@ create_logs_disk() {
 
 # Make logs available via mass storage gadget
 export_logs() {
-	local loop_dev=""
-	usb_mass_storage_function="mass_storage.0"
-	active_udc="$(cat $CONFIGFS/g1/UDC)"
-
+	local loop_dev
 	loop_dev="$(losetup -f)"
-
 	create_logs_disk "$loop_dev"
 
 	echo "Making logs available via mass storage"
-
-	# Set up network gadget if not already done
-	if [ -z "$active_udc" ]; then
-		setup_usb_network_configfs "skip_udc"
-	else
-		# Unset UDC
-		echo "" > $CONFIGFS/g1/UDC
-	fi
-
-	mkdir "$CONFIGFS"/g1/functions/"$usb_mass_storage_function" || return
-
-	echo "$loop_dev" > "$CONFIGFS"/g1/functions/"$usb_mass_storage_function"/lun.0/file
-
-	ln -s "$CONFIGFS"/g1/functions/"$usb_mass_storage_function" \
-		"$CONFIGFS"/g1/configs/c.1 || return
-
-	setup_usb_configfs_udc
+	setup_usb_storage_configfs "$loop_dev"
 }
 
 fail_halt_boot() {
