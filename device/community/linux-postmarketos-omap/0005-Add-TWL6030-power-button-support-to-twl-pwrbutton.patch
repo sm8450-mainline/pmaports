@@ -130,7 +130,7 @@ index b307cca17..9f6081474 100644
  	return 0;
  }
  
-+static int twl_pwrbutton_remove(struct platform_device *pdev)
++static void twl_pwrbutton_remove(struct platform_device *pdev)
 +{
 +	if (twl_class_is_6030()) {
 +		twl6030_interrupt_mask(TWL6030_PWRON_INT_MASK,
@@ -139,7 +139,7 @@ index b307cca17..9f6081474 100644
 +			REG_INT_MSK_STS_A);
 +	}
 +
-+	return 0;
++
 +}
 +
  #ifdef CONFIG_OF
