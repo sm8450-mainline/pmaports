@@ -2,7 +2,7 @@
 # Maintainer: Minecrell <minecrell@minecrell.net>
 pkgname=device-samsung-serranove
 pkgdesc="Samsung Galaxy S4 Mini Value Edition"
-pkgver=14
+pkgver=15
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -53,7 +53,7 @@ phosh() {
 }
 
 sha512sums="
-7acbdb4baa909ff0920a3a6e43da76cf6026bc45c74adbbbac1890ddfcf7d360c6f8fe13f234a1c6569923ebbaec0545ce71ab1a483ea3668c763147f0b0268f  deviceinfo
+46f7fd128002a8c348c64ad33fa5dd22623c08f393f43f73c73686ed506c64435f5a51b39ab45de9b9055389bd50c55a4d1496e6d5672ed6aafe58814e7bcbf0  deviceinfo
 0c92ace5c522d039d356e8914c0e0237e11fc38dd05390ba7a89532be659707d2b499ae77b263c5984345caac11fd007bd6d1e279d3426126bc276a0bcd9348b  modules-initfs
 1bc90a1a67309b43435039332b2a1d7e606408c6429b3cb8991a57f53dd4de36fbe471481b6481fbdb098c3819344e8093dd8eab0d34eb3c091ab6d8abd5c087  phoc.ini
 "
