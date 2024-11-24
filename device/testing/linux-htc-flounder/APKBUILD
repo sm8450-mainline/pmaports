@@ -1,7 +1,7 @@
 # Maintainer: Segfault <awarnecke002@hotmail.com>
 pkgname=linux-htc-flounder
 pkgver=6.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Google Nexus 9 kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -33,8 +33,10 @@ prepare() {
 
 build() {
 	unset LDFLAGS
+
+	# V=1: workaround for pma#1990
 	make O="$_outdir" ARCH="$_carch" CC="${CC:-gcc}" \
-		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS" V=1
 }
 
 package() {
