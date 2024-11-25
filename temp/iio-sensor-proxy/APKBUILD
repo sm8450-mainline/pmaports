@@ -2,7 +2,7 @@
 
 pkgname=iio-sensor-proxy
 pkgver=9999
-pkgrel=5
+pkgrel=6
 pkgdesc="IIO sensors to D-Bus proxy"
 url="https://gitlab.freedesktop.org/hadess/iio-sensor-proxy"
 arch="aarch64"
@@ -29,6 +29,7 @@ source="https://gitlab.freedesktop.org/hadess/iio-sensor-proxy/-/archive/$_commi
 	0006-data-add-libssc-udev-rules.patch
 	0007-CI-add-libssc-build.patch
 	0008-data-iio-sensor-proxy.service.in-add-AF_QIPCRTR.patch
+	0009-drivers-ssc-implement-set_polling-function.patch
 	"
 # tests fail on armv7 and armhf, and it seems to be due to some weird issue
 # with pmaports qemu CI (not reproducible locally with `pmb build --arch
@@ -65,4 +66,5 @@ bb8e1496411c030062eeb1bb919c9680c32d9571587540368c663b6739e3c506d21ab90836a4e83b
 651d3281fe64fb72780bdfc4f3416af6f221c5c0aebf8b9a87d2cf6b5a31ebd0816199b45c97f24810807286a4a8839b6304a12cfc23b4191261a30efd3fbe2b  0006-data-add-libssc-udev-rules.patch
 bdb8831d89f389badd5de0eb52d9eca5dbdf045dbcfab18165d43798c9e329c3e68e3209b8ad1053916cfac6c54984dd47aa379c419d46f1c25ad6a57c2bd771  0007-CI-add-libssc-build.patch
 c778168de17f86e3d50b62a4905d3940e9d69bb919fe3b9b5fc8962d8fe9b7cdb48a57dd8128ded93ff08493f65a7f602e6e7ad295e6736c74c273a2c6399c35  0008-data-iio-sensor-proxy.service.in-add-AF_QIPCRTR.patch
+d7c0d67a664d900708a1a76edaac3fc05be567abe9c5d49b11d3181ebe932c3847de4f3f89291542fe7d7f0798bde2d5a504d23350a79d93a7afe57f959380ae  0009-drivers-ssc-implement-set_polling-function.patch
 "
