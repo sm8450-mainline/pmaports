@@ -96,7 +96,7 @@ resize_root_filesystem() {
 		ext4)
 			echo "Resize 'ext4' root filesystem ($partition)"
 			modprobe ext4
-			resize2fs -f "$partition"
+			resize2fs "$partition"
 			;;
 		f2fs)
 			echo "Resize 'f2fs' root filesystem ($partition)"
