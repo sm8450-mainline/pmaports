@@ -349,6 +349,10 @@ get_partition_type() {
 	blkid "$partition" | sed 's/^.*\ TYPE="\([a-zA-z0-9_]*\)".*$/\1/'
 }
 
+get_mounted_filesystem_type() {
+	awk -v mountpoint="$1" '$2 == mountpoint {print $3}' /proc/mounts
+}
+
 # $1: partition
 check_filesystem() {
 	local partition=""

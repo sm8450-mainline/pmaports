@@ -88,7 +88,6 @@ resize_root_partition() {
 
 # resize2fs and resize.f2fs are too big
 resize_root_filesystem() {
-	show_splash "Resizing filesystem during initial boot..."
 	partition="$(find_root_partition)"
 	touch /etc/mtab # see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=673323
 	type="$(get_partition_type "$partition")"
@@ -104,15 +103,26 @@ resize_root_filesystem() {
 			resize.f2fs "$partition"
 			;;
 		btrfs)
-			echo "Resize 'btrfs' root filesystem ($partition)"
-			modprobe btrfs
-			resize_root_filesystem_tmp_btrfs="$(mktemp -d)"
-			mount -t btrfs "$partition" "$resize_root_filesystem_tmp_btrfs"
-			btrfs filesystem resize max "$resize_root_filesystem_tmp_btrfs"
-			umount "$resize_root_filesystem_tmp_btrfs"
-			unset resize_root_filesystem_tmp_btrfs
+			# Resize happens below after mount
 			;;
 		*)	echo "WARNING: Can not resize '$type' filesystem ($partition)." ;;
 	esac
-	show_splash "Loading..."
+}
+
+resize_filesystem_after_mount() {
+	mountpoint="$1"
+	type="$(get_mounted_filesystem_type "$mountpoint")"
+	case "$type" in
+		ext4)
+			# ext4 can do online resize on recent kernels, but we still do it offline
+			# for better compatibility with older kernels
+			;;
+		f2fs)
+			# f2fs does not support online resizing
+			;;
+		btrfs)
+			echo "Resize 'btrfs' filesystem ($mountpoint)"
+			btrfs filesystem resize max "$mountpoint"
+			;;
+	esac
 }

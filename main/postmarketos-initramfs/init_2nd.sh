@@ -50,6 +50,7 @@ resize_root_partition
 unlock_root_partition
 resize_root_filesystem
 mount_root_partition
+resize_filesystem_after_mount /sysroot
 
 # Mount boot partition into sysroot if needed since some
 # old installations don't have a proper /etc/fstab file. See #2800
