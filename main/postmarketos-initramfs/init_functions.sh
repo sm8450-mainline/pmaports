@@ -890,6 +890,13 @@ debug_shell() {
 	Read the initramfs log with 'cat /pmOS_init.log'.
 	EOF
 
+	# Expose storage specified on cmdline on USB
+	local storage_dev=""
+	# shellcheck disable=SC2013
+	for x in $(cat /proc/cmdline); do
+		[ "$x" = "${x#pmos.usb-storage=}" ] || storage_dev="${x#pmos.usb-storage=}"
+	done
+
 	# Add pmos_logdump message only if relevant
 	if [ -n "$have_udc" ]; then
 		echo "Run 'pmos_logdump' to generate a log dump and expose it over USB." >> /README
@@ -898,6 +905,10 @@ debug_shell() {
 		You can expose storage devices over USB with
 		'setup_usb_storage_configfs /dev/DEVICE'
 		EOF
+
+		if [ -n "$storage_dev" ]; then
+			echo "pmos.usb-storage=$storage_dev is exposed over USB by default" >> /README
+		fi
 	fi
 
 	# Display some info
@@ -982,6 +993,9 @@ debug_shell() {
 	# Spawn telnetd for those who prefer it. ACM gadget mode is not
 	# supported on some old kernels so this exists as a fallback.
 	telnetd -b "${HOST_IP}:23" -l /sbin/pmos_getty &
+
+	# Set up USB mass storage if pmos.usb-storage= was specified on cmdline
+	[ -z "$storage_dev" ] || setup_usb_storage_configfs "$storage_dev"
 
 	# wait until we get the signal to continue boot
 	while ! [ -e /tmp/continue_boot ]; do
