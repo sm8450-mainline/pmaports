@@ -3,8 +3,6 @@
 # Functions are notated with the reason they're only in
 # initramfs-extra
 
-ROOT_PARTITION_RESIZED=0
-
 # udevd is too big
 setup_udev() {
 	if ! command -v udevd > /dev/null || ! command -v udevadm > /dev/null; then
@@ -49,7 +47,6 @@ resize_root_partition() {
 			kpartx -d "$partition"
 			parted -f -s "$partition_dev" resizepart 2 100%
 			kpartx -afs "$partition_dev"
-			ROOT_PARTITION_RESIZED=1
 		else
 			echo "Not resizing root partition ($partition): no free space left"
 		fi
@@ -64,7 +61,6 @@ resize_root_partition() {
 			echo "Resize root partition ($partition)"
 			parted -f -s "$partition_dev" resizepart 2 100%
 			partprobe
-			ROOT_PARTITION_RESIZED=1
 		else
 			echo "Not resizing root partition ($partition): no free space left"
 		fi
@@ -81,7 +77,6 @@ resize_root_partition() {
 			echo "Resize root partition ($partition)"
 			parted -f -s "$partition_dev" resizepart 3 100%
 			partprobe
-			ROOT_PARTITION_RESIZED=1
 		else
 			echo "Not resizing root partition ($partition): no free space left"
 		fi
@@ -93,33 +88,31 @@ resize_root_partition() {
 
 # resize2fs and resize.f2fs are too big
 resize_root_filesystem() {
-	if [ "$ROOT_PARTITION_RESIZED" = 1 ]; then
-		show_splash "Resizing filesystem during initial boot..."
-		partition="$(find_root_partition)"
-		touch /etc/mtab # see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=673323
-		type="$(get_partition_type "$partition")"
-		case "$type" in
-			ext4)
-				echo "Resize 'ext4' root filesystem ($partition)"
-				modprobe ext4
-				resize2fs -f "$partition"
-				;;
-			f2fs)
-				echo "Resize 'f2fs' root filesystem ($partition)"
-				modprobe f2fs
-				resize.f2fs "$partition"
-				;;
-			btrfs)
-				echo "Resize 'btrfs' root filesystem ($partition)"
-				modprobe btrfs
-				resize_root_filesystem_tmp_btrfs="$(mktemp -d)"
-				mount -t btrfs "$partition" "$resize_root_filesystem_tmp_btrfs"
-				btrfs filesystem resize max "$resize_root_filesystem_tmp_btrfs"
-				umount "$resize_root_filesystem_tmp_btrfs"
-				unset resize_root_filesystem_tmp_btrfs
-				;;
-			*)	echo "WARNING: Can not resize '$type' filesystem ($partition)." ;;
-		esac
-		show_splash "Loading..."
-	fi
+	show_splash "Resizing filesystem during initial boot..."
+	partition="$(find_root_partition)"
+	touch /etc/mtab # see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=673323
+	type="$(get_partition_type "$partition")"
+	case "$type" in
+		ext4)
+			echo "Resize 'ext4' root filesystem ($partition)"
+			modprobe ext4
+			resize2fs -f "$partition"
+			;;
+		f2fs)
+			echo "Resize 'f2fs' root filesystem ($partition)"
+			modprobe f2fs
+			resize.f2fs "$partition"
+			;;
+		btrfs)
+			echo "Resize 'btrfs' root filesystem ($partition)"
+			modprobe btrfs
+			resize_root_filesystem_tmp_btrfs="$(mktemp -d)"
+			mount -t btrfs "$partition" "$resize_root_filesystem_tmp_btrfs"
+			btrfs filesystem resize max "$resize_root_filesystem_tmp_btrfs"
+			umount "$resize_root_filesystem_tmp_btrfs"
+			unset resize_root_filesystem_tmp_btrfs
+			;;
+		*)	echo "WARNING: Can not resize '$type' filesystem ($partition)." ;;
+	esac
+	show_splash "Loading..."
 }
