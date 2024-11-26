@@ -2,15 +2,15 @@
 # Maintainer: Willow Barraco <contact@willowbarraco.fr>
 # Co-Maintainer: Anjandev Momi <anjan@momi.ca>
 # Co-Maintainer: Maarten van Gompel <proycon@anaproy.nl>
-# Co-Maintainer: Peter John Hartman <peterjohnhartman@gmail.com>
+# Co-Maintainer: Aren Moynihan <aren@peacerevolution.org>
 pkgname=postmarketos-ui-sxmo-de-dwm
-pkgver=1.16.3
+pkgver=1.17.0
 pkgrel=0
 pkgdesc="Simple Mobile: Mobile environment based on SXMO and running on dwm"
 url="http://sr.ht/~mil/Sxmo"
 # riscv64: builder currently stuck, libphonenumber needs rebuild
 arch="noarch !armhf !riscv64"
-license="MIT"
+license="AGPL-3.0-only"
 depends="
 	postmarketos-base-ui
 	postmarketos-base-ui-networkmanager
@@ -22,6 +22,7 @@ depends="
 	modemmanager-openrc
 	networkmanager-openrc
 	bluez-openrc
+	iio-sensor-proxy-openrc
 
 	conky<=1.20.1-r0
 	"
