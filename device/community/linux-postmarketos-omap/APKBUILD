@@ -4,7 +4,7 @@
 
 pkgname=linux-postmarketos-omap
 pkgver=6.12.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline kernel fork for OMAP devices"
 arch="armv7"
 url="https://kernel.org/"
@@ -41,6 +41,7 @@ source="
 	0007-hsi-ssi_port-force-pio-path.patch
 	0008-n900-dts-volume-keys.patch
 	0009-ARM-dts-disable-twl-off-idle-configuration-for-N900.patch
+	0010-power-supply-bq27xxx_battery-do-not-update-cached-fl.patch
 "
 builddir="$srcdir/linux-$_kernver"
 replaces="linux-samsung-espresso3g linux-nokia-n900"
@@ -81,4 +82,5 @@ f7d1a87088c65278a114125e732d5bebebb560a6245afb34e003083d808ef3f8c5f49ff231319535
 c3af9715b3559c2d593f4fcfa078730722c7deeec132c5b83e085ff4d9815d85ef349384097c580efe1bbc37c60f42e18ef559f0abccfe236080670e4403fa77  0007-hsi-ssi_port-force-pio-path.patch
 b98ce806b3d5a0122086e4c9670639174470ff6d29851c60258cc5d699ce9a479dbf4996b24299fc075d25e9fe8f6b1250fafdff742deea0ddeaf53d342a9d72  0008-n900-dts-volume-keys.patch
 66abb5548910ad369608b08200f5835d5a8526c04cc3617221ef546f3e3d22cd944db91dc6727a5c26a102b24d8ef1306ea01254c9c382759afced91b31747ef  0009-ARM-dts-disable-twl-off-idle-configuration-for-N900.patch
+efdf7f4f718faac8b753f8aacb5f845ccab75952c53310fe1f17efb7211d0d300ca7242a0c56dcb033962ca6505341730469645f2e774559eee469211411685f  0010-power-supply-bq27xxx_battery-do-not-update-cached-fl.patch
 "
