@@ -1,4 +1,4 @@
-From e166f056c5a77c2258f8c1581d9b34de76f4a839 Mon Sep 17 00:00:00 2001
+From d330171d81af6c54930f6d8999bd225e3ebe6326 Mon Sep 17 00:00:00 2001
 From: Maxim Karasev <begs@disroot.org>
 Date: Sat, 4 Sep 2021 14:56:01 +0300
 Subject: [PATCH] arm64: dts: allwinner: orangepi-3: fix ethernet
@@ -34,5 +34,5 @@ index 332a9fe83ccd..6e53dadf543e 100644
  };
  
 -- 
-2.46.1
+2.47.0
 

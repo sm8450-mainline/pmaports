@@ -1,4 +1,4 @@
-From b346724c85c5d7852eab9b9902fd2f761185df7c Mon Sep 17 00:00:00 2001
+From 82fcf9e97dbfc4ef5b4b69f0068c9f2182ebffe6 Mon Sep 17 00:00:00 2001
 From: JuniorJPDJ <git@juniorjpdj.pl>
 Date: Thu, 25 Mar 2021 19:18:58 +0100
 Subject: [PATCH] ARM: dts: sun6i: Add Lark FreeMe 70.2S tablet
@@ -274,5 +274,5 @@ index 000000000000..5f17902410c1
 +	status = "okay";
 +};
 -- 
-2.46.1
+2.47.0
 
