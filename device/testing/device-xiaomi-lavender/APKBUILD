@@ -2,8 +2,8 @@
 # Maintainer: Alexey Min <alexey.min@gmail.com>
 pkgname=device-xiaomi-lavender
 pkgdesc="Xiaomi Redmi Note 7"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -48,7 +48,7 @@ kernel_tianma() {
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 sha512sums="
-492367ca81ca84efdd77e4cac921d99d5a152dcbacaa27b9c2194457ebc20074742c627ff1cd65a559e7d4dafb5d0374ef1c9228eaea29ca66e12986df53182b  deviceinfo
+b65e5548b4dd48246d3367c0e60029e5f17d6c4295156b1eff308c1e44793f864f2bcf45ebc52d9679e2b7d667d2eb4d58049c6897a5a6ffebf348672ec6e7fd  deviceinfo
 77f0b637ca0d6512da7964425c08f0b8c2d8ac40b784301055fc70769d15989713388dd098ee9ee89520a52ead96283f9898da6d87b6e0e70143ce5859f9b61b  modules-initfs.boe
 2985ce67fe3a5cd4cd03c9c5e7af072174775a97b4d26c40b025a82b33fead69f7cb4ac185db1b7b97d61b02ebdf56c88f77f55d2dd352ac2d7e47394563dbe2  modules-initfs.tianma
 "
