@@ -47,8 +47,7 @@ def test_aports_device():
             if "postmarketos-base" == dependency or "postmarketos-base>" in dependency:
                 depend_flag = True
         if not depend_flag:
-            raise RuntimeError("Missing 'postmarketos-base' in depends of " +
-                               path)
+            raise RuntimeError(f"Missing 'postmarketos-base' in depends of {path}")
 
         # Depends: Must not have specific packages
         for depend in apkbuild["depends"]:
@@ -61,7 +60,7 @@ def test_aports_device():
             raise RuntimeError("wrong architecture, please change to arch=\""
                                f"{deviceinfo.arch}\": {path}")
         if "!archcheck" not in apkbuild["options"]:
-            raise RuntimeError("!archcheck missing in options= line: " + path)
+            raise RuntimeError(f"!archcheck missing in options= line: {path}")
 
 
 def test_aports_device_kernel():
