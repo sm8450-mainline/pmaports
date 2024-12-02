@@ -1,4 +1,3 @@
 URxvt*foreground: White
 URxvt*background: Black
-URxvt*font: xft:DejaVu Sans Mono:style=Book:pixelsize=15:antialias=true:hinting=true
-URxvt*boldFont: xft:DejaVu Sans Mono:style=Bold:pixelsize=15:antialias=true:hinting=true
+URxvt*font: xft:Droid Sans Mono:style=Regular:pixelsize=15:antialias=true:hinting=true
