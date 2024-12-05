@@ -1,0 +1,33 @@
+From a42d5de804079c198f41d395ee8a54010f9fe039 Mon Sep 17 00:00:00 2001
+From: Willow Barraco <contact@willowbarraco.fr>
+Date: Thu, 5 Dec 2024 21:38:28 +0100
+Subject: [PATCH] Fix: build on upgrade to gcc 14
+
+According to this, we need to add headers that was previously already
+included:
+
+https://gcc.gnu.org/gcc-14/porting_to.html
+
+> Header dependency changes
+
+Signed-off-by: Willow Barraco <contact@willowbarraco.fr>
+---
+ src/x11.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/x11.cc b/src/x11.cc
+index a9146c68..ae651ce9 100644
+--- a/src/x11.cc
++++ b/src/x11.cc
+@@ -50,6 +50,8 @@
+ #include <cstring>
+ #include <string>
+ 
++#include <algorithm>
++
+ extern "C" {
+ #pragma GCC diagnostic push
+ #pragma GCC diagnostic ignored "-Wvariadic-macros"
+-- 
+2.47.1
+

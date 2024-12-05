@@ -2,7 +2,7 @@
 # https://github.com/brndnmtthws/conky/issues/1898
 pkgname=conky
 pkgver=1.20.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Advanced, highly configurable system monitor for X based on torsmo"
 url="https://github.com/brndnmtthws/conky"
 arch="all"
@@ -32,7 +32,10 @@ makedepends="
 	wireless-tools-dev
 	"
 subpackages="$pkgname-doc"
-source="$pkgname-$pkgver.tar.gz::https://github.com/brndnmtthws/conky/archive/v$pkgver.tar.gz"
+source="
+	$pkgname-$pkgver.tar.gz::https://github.com/brndnmtthws/conky/archive/v$pkgver.tar.gz
+	0001-Fix-build-on-upgrade-to-gcc-14.patch
+	"
 options="!check"
 
 build() {
@@ -59,4 +62,5 @@ package() {
 
 sha512sums="
 60b4da92a42b3ff1a2490c50c7a02eab27a5ce3e91d4e9e0a83d6f0f1089f22c20adec817011afea84bcd99ff19e8f776d852ff4c9249ef47412b58eaa9233da  conky-1.20.1.tar.gz
+9aa7854b0c2fd259ccd5845db2544a193b96559288bf5f451c63c120bf46bd9a44c5bf0bc3b98f892a6fa4f4bec5a620edfd47ca0ed5a72c6e9c1604a484137d  0001-Fix-build-on-upgrade-to-gcc-14.patch
 "
