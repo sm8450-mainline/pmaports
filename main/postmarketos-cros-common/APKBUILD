@@ -2,7 +2,7 @@
 pkgname=postmarketos-cros-common
 pkgdesc="Common package for Chrome OS devices"
 pkgver=2
-pkgrel=3
+pkgrel=4
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64 armv7 x86_64 x86" # there are no cros devices of other arches
@@ -11,6 +11,11 @@ subpackages="
 	$pkgname-gnome
 	$pkgname-sway
 	postmarketos-cros-keymap-openrc:_keymap_openrc
+"
+makedepends="
+	cros-keyboard-map-openrc
+	keyd-openrc
+	postmarketos-ui-sway-logo-key-alt
 "
 source="
 	00_postmarketos-cros-common-gnome.gschema.override
