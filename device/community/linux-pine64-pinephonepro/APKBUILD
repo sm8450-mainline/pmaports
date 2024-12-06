@@ -1,9 +1,9 @@
 # Maintainer: Jan Jasper de Kroon <jajadekroon@gmail.com>
 pkgname=linux-pine64-pinephonepro
-pkgver=6.6.0
-_pkgver=6.6
-_tagdate=20231104-22589
-pkgrel=6
+pkgver=6.11.11
+_pkgver=6.11
+_tagdate=20241206-0145
+pkgrel=0
 pkgdesc="Mainline kernel for the pinephone pro"
 arch="aarch64"
 _flavor="${pkgname#linux-}"
@@ -71,6 +71,6 @@ package() {
 
 
 sha512sums="
-d59c410ecc1a824b7b9a38f36b224693812003320220a3464a648084152023ed8be48d0448eb8054cd2b1d42befd5e8958d3ad243e50138e1c9d0269ac2917ea  linux-ppp-6.6-20231104-22589.tar.gz
-b52521c530ea185ab9953e9a22030568ac7fd25176b8eec0fb5d012171746f350f7a46606314000e0e0551e492ca7766085c09a477a424b45def846f8af65085  config-pine64-pinephonepro.aarch64
+065ceac6e0e6f3b7b939977084a1ac5aeabbff0273c61e50d0c2374825e0b1b41511592e54cb74a3d3d59a17fd5cc90018f6612062eb0f6b78dde29dd1aeade9  linux-ppp-6.11-20241206-0145.tar.gz
+e50a1db963c6b2de860a2cc3fed0dc5087a057aa5717058dd527d66f8277be3865fe7ea7d0dbed0d5e611546fcf80ac8af159c3bb95b07907625b4645d7b8f30  config-pine64-pinephonepro.aarch64
 "
