@@ -25,7 +25,7 @@ depends="
 	bluez-openrc
 	iio-sensor-proxy-openrc
 
-	conky<=1.20.1-r0
+	conky<=1.20.1-r999
 	"
 install="
 	$pkgname.post-install
