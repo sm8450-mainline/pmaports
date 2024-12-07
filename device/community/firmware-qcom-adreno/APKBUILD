@@ -1,5 +1,5 @@
 pkgname=firmware-qcom-adreno
-pkgver=20220509
+pkgver=20241110
 pkgrel=0
 pkgdesc="Qualcomm Adreno GPU firmware from linux-firmware"
 url="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/"
@@ -15,7 +15,7 @@ builddir="$srcdir/linux-firmware-$pkgver"
 replaces="linux-firmware-qcom"
 _fwdir="/lib/firmware/qcom"
 
-_gpus="a300 a330 a420 a530 a630 a650 a660"
+_gpus="a300 a330 a420 a530 a630 a650 a660 gen70500"
 for gpu in $_gpus; do
 	subpackages="$subpackages $pkgname-$gpu:_gpu"
 done
@@ -37,5 +37,5 @@ _gpu() {
 }
 
 sha512sums="
-0591a35a14a6994ac60571a8e47c00ec013afbfedd4b3326cfe1971b9bd9a07ca7622b17177b3fb57a6c244d2caae12318fcbfac5da5f78a2c085285c9d85cf6  linux-firmware-20220509.tar.gz
+b4ae2abe6eecc5e8fdc796ae75394d936fee7f7b5ed7803c51eccdbfba1f883ac567a43adc9e7c3a4e4934bf1794e37cd93478468599b542ef1327a8221f648a  linux-firmware-20241110.tar.gz
 "
