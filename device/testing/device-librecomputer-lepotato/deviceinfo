@@ -9,6 +9,7 @@ deviceinfo_codename="librecomputer-lepotato"
 deviceinfo_year="2019"
 deviceinfo_dtb="amlogic/meson-gxl-s905x-libretech-cc"
 deviceinfo_arch="aarch64"
+deviceinfo_partition_type="msdos"
 
 # Device related
 deviceinfo_chassis="embedded"

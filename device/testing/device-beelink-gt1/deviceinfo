@@ -8,6 +8,7 @@ deviceinfo_codename="beelink-gt1"
 deviceinfo_dtb="amlogic/meson-gxm-gt1-ultimate"
 deviceinfo_year="2016"
 deviceinfo_arch="aarch64"
+deviceinfo_partition_type="msdos"
 
 # Device related
 deviceinfo_gpu_accelerated="true"

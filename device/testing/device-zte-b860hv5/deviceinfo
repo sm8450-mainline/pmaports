@@ -9,6 +9,7 @@ deviceinfo_codename="zte-b860hv5"
 deviceinfo_year="2019"
 deviceinfo_dtb="amlogic/meson-g12a-b860hv5"
 deviceinfo_arch="aarch64"
+deviceinfo_partition_type="msdos"
 
 # Device related
 deviceinfo_chassis="embedded"

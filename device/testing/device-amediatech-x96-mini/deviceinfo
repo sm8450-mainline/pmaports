@@ -8,6 +8,7 @@ deviceinfo_dtb="amlogic/meson-gxl-s905w-x96-mini"
 deviceinfo_year="2017"
 deviceinfo_arch="aarch64"
 deviceinfo_disable_dhcpd="true"
+deviceinfo_partition_type="msdos"
 
 # Device related
 deviceinfo_gpu_accelerated="true"

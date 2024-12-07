@@ -12,6 +12,7 @@ deviceinfo_dtb_p212="amlogic/meson-gxl-p212"
 deviceinfo_dtb_videostrong_kii_pro="amlogic/meson-gxbb-kii-pro"
 deviceinfo_dtb_xiaomi_once="amlogic/meson-gxl-s905x-xiaomi-once"
 deviceinfo_arch="aarch64"
+deviceinfo_partition_type="msdos"
 
 # Device related
 deviceinfo_chassis="desktop"

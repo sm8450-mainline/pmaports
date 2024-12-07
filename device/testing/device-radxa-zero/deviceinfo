@@ -8,6 +8,7 @@ deviceinfo_codename="radxa-zero"
 deviceinfo_dtb="amlogic/meson-g12a-radxa-zero"
 deviceinfo_year="2021"
 deviceinfo_arch="aarch64"
+deviceinfo_partition_type="msdos"
 
 # Device related
 deviceinfo_gpu_accelerated="true"

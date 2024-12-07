@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 # Maintainer: exkc <exxxxkc@getgoogleoff.me>
 pkgname=device-amediatech-x96-mini
-pkgver=2
+pkgver=3
 pkgrel=0
 pkgdesc="Amediatech X96 mini"
 url="https://postmarketos.org"
@@ -32,6 +32,6 @@ nonfree_firmware() {
 
 sha512sums="
 981ef458837524b2b1922e7bc5abd4936d629e3f83e92062b46597cef985b65fdb90900de1ef93a7d741b9b0ac4b41cef9c3c2625181ff0e10effc22cb2fa3a3  asound.state
-c7d9003f62a5622b2bf70a2a6a9affbc803b71d687db5775ff608b69eb2eab2c8d52fe6cda93d27a0f01e2c04c9d19952ac382014319080491afc0af3ae37162  deviceinfo
+aa23fb720f9fa5ed82b809fdc1aea6500f9747ddbb553907bc4292633bd7611e6ec07310ea72ce3fd3be6ee5e8a80ddb84d51901ce29d25a7725f423f66c6b7a  deviceinfo
 b9f3e1902c17909de928c99868265a257ba5873f6ea6aa1097ad10721f59d68342d50ee51992472ecd23722f7664a13dd15f4e26071a40595c7c3e5161e533d7  modules-initfs
 "
