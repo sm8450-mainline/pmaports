@@ -38,6 +38,7 @@ device/*/*-qcom-sm6350/				@z3ntu
 device/*/*-qcom-sm8250/				@jianhua
 device/*/*-samsung-a3/				@Mis012 @TravMurav @Minecrell
 device/*/*-samsung-a5/				@Minecrell @minlexx
+device/*/*-samsung-a51/				@manoedinata
 device/*/*-samsung-e7/				@wonderfulShrineMaidenOfParadise
 device/*/*-samsung-espresso10/			@MightyM17
 device/*/*-samsung-espresso7/			@MightyM17 @antoni.aloytorrens
