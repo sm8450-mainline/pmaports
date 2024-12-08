@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-kminilte
 pkgdesc="Samsung Galaxy S5 Mini"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -36,6 +36,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-c9289a138d334048d30dafa37db395b7bb79462fc79b77b4ce4faba55ff8d1668b64b8ac85a53d32867f765f3edfea7983fcdf121a46c59957f7bd2d7d1f112e  deviceinfo
+2f35116ed45597260a60caa80f96b4bc69525d1b0546c4e62665951e02ad7010345d4233b456926fa9af7266cb2954414a35ce4f8fc2b23c053e1f8a7531c9d3  deviceinfo
 245efec73f85ef715c877d6c24eb4b7b677d250bd38167dc19b1b0ed84c3ea91049576adbbf21dd48940c08e40f0294a1a01b0ab3e56efd794109a7e7ebc1104  fb.modes
 "
