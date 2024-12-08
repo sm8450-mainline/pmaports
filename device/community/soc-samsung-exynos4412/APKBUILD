@@ -1,21 +1,29 @@
 # Maintainer: Newbyte <newbyte@disroot.org>
 pkgname=soc-samsung-exynos4412
 pkgdesc="Common package for Samsung Exynos 4412 devices"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="armv7"
 options="!check !archcheck !tracedeps"
 subpackages="
+	$pkgname-cameraflash
 	$pkgname-haptics
 "
 source="
+	60-flashlight.rules
 	90-feedbackd-max77693-haptic.rules
 "
 
 package() {
 	mkdir -p "$pkgdir"
+}
+
+cameraflash() {
+	# Rear camera flash udev rules
+	install -Dm644 "$srcdir"/60-flashlight.rules \
+		-t "$subpkgdir"/usr/lib/udev/rules.d
 }
 
 haptics() {
@@ -25,5 +33,6 @@ haptics() {
 }
 
 sha512sums="
+9170da7ac869254644f2fc8d914102f2c16e917dbeb53e33b96c76936711d0540f55fa5c2526d73d5fe244500bc2728bc9d629e2524cf52c573d11e833aee666  60-flashlight.rules
 083bd692bd52f6ea2dc80351b91c24d8856d3ecd68bb2823dd821073c31b0f2d4556a2b5d861bf4b709cb3b1a4dc4d28648834ee2dd09b795ebfa3b30182ae94  90-feedbackd-max77693-haptic.rules
 "
