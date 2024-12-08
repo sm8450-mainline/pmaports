@@ -30,6 +30,8 @@ source="
 options="!check"
 subpackages="$pkgname-openrc"
 
+# polkit-elogind is needed so apk can resolve polkit:
+# https://gitlab.alpinelinux.org/alpine/apk-tools/-/issues/11054
 _pmb_recommends="
 	decibels
 	firefox-esr
@@ -47,6 +49,7 @@ _pmb_recommends="
 	loupe
 	nautilus
 	papers
+	polkit-elogind
 	snapshot
 "
 
