@@ -2,7 +2,7 @@
 # Co-Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-initramfs
 pkgver=3.4.6
-pkgrel=0
+pkgrel=1
 pkgdesc="Base files for the postmarketOS initramfs / initramfs-extra"
 url="https://postmarketos.org"
 options="!check"  # no tests
@@ -35,6 +35,9 @@ depends="
 	util-linux-misc
 	xz
 	"
+makedepends="
+	postmarketos-base-nofde
+"
 source="
 	00-default.modules
 	00-initramfs-base.dirs
