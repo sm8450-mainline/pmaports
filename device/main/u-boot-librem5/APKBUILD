@@ -4,7 +4,7 @@
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 pkgname=u-boot-librem5
 pkgver=2022.10
-pkgrel=2
+pkgrel=3
 # 'upstream/librem5' branch in uboot repo
 _commit="c4960dade272da9d6a7f53f6956d4d6747d573e9"
 # 'librem5' branch in atf repo
@@ -35,6 +35,7 @@ source="
 	update-u-boot
 	0001-librem5-enable-console-on-UART4.patch
 	0002-libfdt-Fix-invalid-version-warning.patch
+	0003-libfdt.i_shipped-use-SWIG_AppendOutput.patch
 	"
 install="$pkgname.post-upgrade"
 install="$pkgname.post-upgrade $pkgname-devkit.post-upgrade"
@@ -119,4 +120,5 @@ d35e46b94ebf50a7ffcedf824f19bca5195cbf0bbcee1dd6cea115f090a3a963975e6eaaa33eac62
 e46a863001872943301f9712e45797553ce52d8b0c3e63dba7beb1a54b857e8f3a715863b84cd7ab784f039f82d29a2b19b581891d11a84c342b1570e5ccfed3  update-u-boot
 f5c8a49bda189639386f2367418ab492f10e0e3c0c3f4ca078c461c0cf4427e113a90f49c37f01ef4db0a6e0f55d4f0a6346777e291918866821e659077e374a  0001-librem5-enable-console-on-UART4.patch
 895a6e7794257a2b13ecd4e10426d1539338b3ed2000df99ec94c7a319154895794a60aeae2946f4ca32d37095e4142ebbdb049bbccf70f257e77e977b1cedf8  0002-libfdt-Fix-invalid-version-warning.patch
+016ef30dbbb1021dad4f58eeda3f5a5e89ff3a76dbc69e8e4cf6a3fc3983aef998cfe1087abb4b21bb2f859bd5cffe26c1da42d13f1c3d2e3c053c399f38720b  0003-libfdt.i_shipped-use-SWIG_AppendOutput.patch
 "
