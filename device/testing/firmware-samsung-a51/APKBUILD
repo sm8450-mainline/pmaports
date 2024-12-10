@@ -23,12 +23,12 @@ for _file in $_files_wifi; do
 done
 
 package() {
+	a51_dir="$pkgdir/lib/firmware/postmarketos/samsung-a51"
 	local file
 	for file in $_files_wifi; do
 		install -Dm644 "$srcdir/$pkgname-$_commit-$file" \
-			"$pkgdir/lib/firmware/postmarketos/mx140/$file"
+			"$a51_dir/mx140/$file"
 	done
-
 }
 
 sha512sums="
