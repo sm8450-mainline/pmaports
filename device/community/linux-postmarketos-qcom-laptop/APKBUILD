@@ -1,10 +1,10 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 # Co-Maintainer: Caleb Connolly <caleb@postmarketos.org>
 pkgname=linux-postmarketos-qcom-laptop
-pkgver=6.12
-pkgrel=1
+pkgver=6.13
+pkgrel=0
 # Commit from branch @ https://github.com/jhovold/linux/tree/wip/x1e80100-$pkgver
-_commit="93bd777d19aa0e8b58dee1eb837a16acf56035b0"
+_commit="0df45c8ef99147234f541062be775907b28ad768"
 pkgdesc="Generic kernel for Qualcomm laptops"
 arch="aarch64"
 _carch="arm64"
@@ -16,8 +16,8 @@ options="!strip
 	!tracedeps
 	pmb:cross-native
 	pmb:kconfigcheck-community
-	pmb:kconfigcheck-containers
 	pmb:kconfigcheck-uefi
+	pmb:kconfigcheck-virt
 "
 makedepends="
 	bash
@@ -40,6 +40,7 @@ source="
 	$pkgname-$_commit.tar.gz::https://github.com/jhovold/$_repository/archive/$_commit.tar.gz
 	misc.config
 	pmos.config
+	0001-partially-revert-arm64-dts-qcom-sc8280xp-enable-GICv.patch
 "
 builddir="$srcdir/linux-$_commit"
 _outdir="out"
@@ -81,7 +82,8 @@ package() {
 }
 
 sha512sums="
-af20b0d7e46e31de152a01e6c811c691f3866add856d4b8cc3e665fde2f10d0fa4ccb401cf3583e4975c0ccb281369fc019825ad274c4edad49f0e8069c154fc  linux-postmarketos-qcom-laptop-93bd777d19aa0e8b58dee1eb837a16acf56035b0.tar.gz
-c343baeb03f91a16994fd53e7cf1be0590be591c3a02e583d897f6b84ee9b33662cac513f84e1756fed58ab283c16471492bf227a1adb00f5bdd660ea4631ef1  misc.config
-98c3d46a83f496ed3cdb0ae97f9a891ff2acb504205d91646bed23b2efc999d77f486ec905ceebdac08a9d25f51b82caec8857311434a4d9de214f064541df96  pmos.config
+b49abf68751eb34eb83a716f03695b118eb42beaac44dc2116349475a5783d759879fedc052fe0b9d845bc4549211b302b68598c86526a75867abf35e2437fe3  linux-postmarketos-qcom-laptop-0df45c8ef99147234f541062be775907b28ad768.tar.gz
+980eefd8aaee78897cd41d039eecc11e23b8d7cc87b41c869f1e2b83cd9b5dac9813d7bd1a0e7c466303c795f234871080686921b9672983604551903004cb68  misc.config
+c761143bbdb621a1698068b2369473786638dc4b1c34c9c92466b053a7d4a5ed4e69dbdf731b57b40a1eb99b0f92a6ceaed1cc7302ab6584ef9a779cb225538e  pmos.config
+8bd939e56b3bd6e9b268fe48f3cbaf9ea48eb41cf96edc5b6facb9e0c30553c336baba57efd2f549d7d6a56e8687a4fce211b59d2bc1cf16fd92780f38406d65  0001-partially-revert-arm64-dts-qcom-sc8280xp-enable-GICv.patch
 "

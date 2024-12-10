@@ -1,0 +1,26 @@
+From 04bb92f26f477cdc0cc26b91c504020c1426ed42 Mon Sep 17 00:00:00 2001
+From: Clayton Craft <clayton@craftyguy.net>
+Date: Wed, 8 Jan 2025 14:04:56 -0800
+Subject: [PATCH] partially revert arm64: dts: qcom: sc8280xp: enable GICv3 ITS
+ for PCIe
+
+---
+ arch/arm64/boot/dts/qcom/sc8280xp.dtsi | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/sc8280xp.dtsi b/arch/arm64/boot/dts/qcom/sc8280xp.dtsi
+index 82fbdf395adc..ae5043df9de7 100644
+--- a/arch/arm64/boot/dts/qcom/sc8280xp.dtsi
++++ b/arch/arm64/boot/dts/qcom/sc8280xp.dtsi
+@@ -1776,8 +1776,6 @@ pcie4: pcie@1c00000 {
+ 			linux,pci-domain = <6>;
+ 			num-lanes = <1>;
+ 
+-			msi-map = <0x0 &its 0xe0000 0x10000>;
+-
+ 			interrupts = <GIC_SPI 141 IRQ_TYPE_LEVEL_HIGH>,
+ 				     <GIC_SPI 142 IRQ_TYPE_LEVEL_HIGH>,
+ 				     <GIC_SPI 143 IRQ_TYPE_LEVEL_HIGH>,
+-- 
+2.47.1
+
