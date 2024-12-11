@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.6.57 Kernel Configuration
+# Linux/arm64 6.6.63 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="aarch64-alpine-linux-musl-gcc (Alpine 14.2.0) 14.2.0"
 CONFIG_CC_IS_GCC=y
@@ -1984,6 +1984,7 @@ CONFIG_BLK_DEV=y
 # CONFIG_BLK_DEV_PCIESSD_MTIP32XX is not set
 CONFIG_ZRAM=m
 CONFIG_ZRAM_DEF_COMP_LZORLE=y
+# CONFIG_ZRAM_DEF_COMP_ZSTD is not set
 # CONFIG_ZRAM_DEF_COMP_LZ4 is not set
 # CONFIG_ZRAM_DEF_COMP_LZO is not set
 CONFIG_ZRAM_DEF_COMP="lzo-rle"
