@@ -1,7 +1,7 @@
 # Maintainer: Alexey Minnekhanov <alexeymin@postmarketos.org>
 pkgname=lk2nd
 pkgver=20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Secondary little kernel (lk) bootloader for several Qualcomm devices"
 arch="armv7 aarch64"
 url="https://github.com/msm8916-mainline/lk2nd"
@@ -46,6 +46,7 @@ if [ "$CARCH" = "armv7" ]; then
 		$pkgname-msm8226
 		$pkgname-msm8226-htc-memul:msm8226_htc_memul
 		$pkgname-msm8974
+		$pkgname-msm8974-htc-m8:msm8974_htc_m8
 		$pkgname-msm8974-lg-hammerhead:msm8974_lg_hammerhead
 	"
 fi
@@ -84,6 +85,7 @@ build() {
 
 	if [ "$CARCH" = "armv7" ]; then
 		_build lk2nd-msm8974
+		_build lk2nd-msm8974 BOOTLOADER_OUT=htc-m8 MKBOOTIMG_ARGS="--ramdisk_offset=0x2000000 --tags_offset=0x1e00000"
 		_build lk2nd-msm8974 BOOTLOADER_OUT=lg-hammerhead LK2ND_QCDTBS=""
 		_build lk2nd-msm8226
 		_build lk2nd-msm8226 BOOTLOADER_OUT=htc-memul SCRATCH_ADDR=0x20000000 SCRATCH_ADDR_512MAP=0x20000000 SCRATCH_SIZE_512MAP=0x10000000
@@ -122,6 +124,11 @@ msm8953_signed() {
 
 msm8974() {
 	install -Dm644 "$builddir"/build-lk2nd-msm8974/lk2nd.img -t \
+		"$subpkgdir"/boot
+}
+
+msm8974_htc_m8() {
+	install -Dm644 "$builddir"/htc-m8/build-lk2nd-msm8974/lk2nd.img -t \
 		"$subpkgdir"/boot
 }
 
