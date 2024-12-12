@@ -78,8 +78,6 @@ source="gnome-shell-mobile-$_commit.tar.gz::https://gitlab.gnome.org/verdre/gnom
 	gsh.patch"
 builddir="$srcdir/gnome-shell-mobile-$_commit"
 options="!check" # Tests have circular dependency 'gnome-shell <-> gdm'
-# To make sure pmb_recommends installs the correct one
-_pmb_recommends="gnome-mobile-extensions-app"
 
 prepare() {
 	default_prepare

@@ -30,7 +30,7 @@ depends="
 	udisks2
 	"
 _pmb_recommends="
-	gnome-extensions-app
+	gnome-mobile-extensions-app
 	"
 subpackages="$pkgname-openrc"
 source="
