@@ -1,12 +1,12 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=postmarketos-artwork
-pkgver=5
-pkgrel=4
+pkgver=24.12
+pkgrel=0
 pkgdesc="Meta package for the postmarketOS artwork"
 url="https://postmarketos.org/"
 arch="noarch"
 license="CC-BY-SA-4.0"
-_hash="f28dd5fef287c970f50ca49bc44814ee1e3b229d"
+_hash="4a2738629df7853f66b7c93d80417ba32d787589"
 source="postmarketos-artwork-$_hash.tar.gz::https://gitlab.postmarketos.org/postmarketOS/artwork/-/archive/$_hash/artwork-$_hash.tar.gz
 	10_pmOS-wallpaper.gschema.override
 	postmarketos-gnome.xml
@@ -47,13 +47,13 @@ wallpapers() {
 	#     - postmarketos-gnome.xml
 	#     - 10_pmOS-wallpaper.gschema.override
 	for i in contents metadata.json; do
-		cp -r "$builddir"/wallpapers/2024/meadow/"$i" \
+		cp -r "$builddir"/wallpapers/2024/dawning/"$i" \
 			"$subpkgdir"/usr/share/wallpapers/postmarketos/"$i"
 	done
 
 	# /usr/share/wallpapers/postmarketos.jpg should always point to the
 	# current wallpaper so we don't break configs
-	convert "$subpkgdir"/usr/share/wallpapers/postmarketos/contents/images/2707x2707.png \
+	convert "$subpkgdir"/usr/share/wallpapers/postmarketos/contents/images/1660x1660.png \
 		-format jpeg \
 		"$subpkgdir"/usr/share/wallpapers/postmarketos.jpg
 }
@@ -120,9 +120,9 @@ sounds() {
 }
 
 sha512sums="
-cef2326a28dbd597f3d679329aaac17031bf1fdc60f634bc25cf20b23e62028961c5f228570df824615b21616a18ab2fd290a770cfd4f3ca1d929ac552a34ea8  postmarketos-artwork-f28dd5fef287c970f50ca49bc44814ee1e3b229d.tar.gz
-6464a9246d1c9cac5cd2f55345f1659e872377f941160132c897c8c08955bb61083fec6daa8993a34bffdcc900a29f7ae6438fe86a476242447ddccf4e937d06  10_pmOS-wallpaper.gschema.override
-0bcdfb41adb02b657ee0f9938d134d551fa8c3ef166e8a7895908d1dd355119143088641196505b3e2018896ae39a5392032de114aa602f4911b3aeadddd7b60  postmarketos-gnome.xml
+9e5fdd480c0a895e98b8962297397f818dc69cbc9ec812c301ce1371b436b65567499edb36992590f8f331d193163aca62291e5c8d0d8eb206f9f05701c02a70  postmarketos-artwork-4a2738629df7853f66b7c93d80417ba32d787589.tar.gz
+232d969214dff279790ece15d5039746c7f1221d4d53a938c83eae64bf1179173d390531cf7313cd9c0ee23cbf5865bdd64e579563c575aca9079b149b594d67  10_pmOS-wallpaper.gschema.override
+e2dff8eed5bebe77c01704c2b3bbfa630f9d65c2b100057996f63f9b588c704655ab672db25d6481a79d78989df671d7016090ee018e399ce15c702b51f9fbee  postmarketos-gnome.xml
 a2fe87907a0fc6eb2b18305c7f183ac57bae7223d9fdeb992c93947576480c6a2fdb073ea2746407e227531c84aaa0acd0c27abb7fb272bc58433b3a02c260f4  set-plasma-wallpaper.desktop
 770bf87c4629327b4c7b35ee42587cdcd6100103640cce1894be66d1346b7220df919371935f3288e00f99b652f223ad578f1e93c5d43556e7c4ddd50f87f739  set-plasma-wallpaper.sh
 "
