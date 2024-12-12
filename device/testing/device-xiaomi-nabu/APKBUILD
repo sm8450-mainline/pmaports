@@ -1,0 +1,119 @@
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-xiaomi-nabu
+pkgdesc="Xiaomi Pad 5"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check	!archcheck"
+depends="
+	linux-postmarketos-qcom-sm8150-nabu
+	hexagonrpcd
+	make-dynpart-mappings
+	mesa-vulkan-freedreno
+	mkbootimg
+	postmarketos-base
+	swclock-offset
+"
+makedepends="devicepkg-dev"
+replaces="hexagonrpcd-openrc"
+source="
+	deviceinfo
+	30-gpu-firmware.files
+	XiaomiPad5.conf
+	HiFi.conf
+	pulse-xiaomi_nabu.conf
+	nabu.pa
+	hexagonrpcd.confd
+	81-libssc-xiaomi-nabu.rules
+	no-hexagonrpcd-on-suspend.sh
+"
+
+subpackages="
+	$pkgname-nonfree-firmware:nonfree_firmware
+	$pkgname-nonfree-firmware-openrc:nonfree_firmware_openrc
+	$pkgname-mainline-firmware:mainline_firmware
+	$pkgname-alsa:alsa
+	$pkgname-pulseaudio:pulseaudio
+"
+
+build() {
+	devicepkg_build	$startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+	install -Dm644 "$srcdir"/81-libssc-xiaomi-nabu.rules \
+		"$pkgdir"/usr/lib/udev/rules.d/81-libssc-xiaomi-nabu.rules
+}
+
+mainline_firmware() {
+	pkgdesc="Firmware support packages for mainline kernel"
+	depends="firmware-xiaomi-nabu-adreno"
+	install_if="linux-postmarketos-qcom-sm8150-nabu $pkgname-nonfree-firmware"
+	mkdir "$subpkgdir"
+	install -Dm64 "$srcdir/30-gpu-firmware.files" \
+		"$subpkgdir/usr/share/mkinitfs/files/30-gpu-firmware.files"
+}
+
+nonfree_firmware() {
+	pkgdesc="Firmware for GPU, Touschreen, Audio, Bluetooth, WiFi, etc."
+	depends="
+		firmware-xiaomi-nabu-adreno
+		firmware-xiaomi-nabu-adsp
+		firmware-xiaomi-nabu-cdsp
+		firmware-xiaomi-nabu-cirrus
+		firmware-xiaomi-nabu-modem
+		firmware-xiaomi-nabu-wlan
+		firmware-xiaomi-nabu-hexagonfs
+		firmware-xiaomi-nabu-slpi
+		firmware-xiaomi-nabu-venus
+		firmware-xiaomi-nabu-touchscreen
+		linux-firmware-qca
+		msm-modem
+		hexagonrpcd
+		tqftpserv
+		"
+		mkdir "$subpkgdir"
+}
+
+nonfree_firmware_openrc() {
+	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install"
+	replaces="hexagonrpcd-openrc"
+	install -Dm755 "$srcdir"/no-hexagonrpcd-on-suspend.sh \
+		"$subpkgdir"/etc/elogind/system-sleep/no-hexagonrpcd-on-suspend.sh
+	install -Dm644 "$srcdir"/hexagonrpcd.confd \
+		"$subpkgdir"/etc/conf.d/hexagonrpcd-sdsp
+}
+
+alsa() {
+	pkgdesc="Audio configuration files"
+	depends="alsa-ucm-conf"
+	install_if="linux-postmarketos-qcom-sm8150-nabu $pkgname-nonfree-firmware"
+	mkdir "$subpkgdir"
+	install	-Dm644 "$srcdir/XiaomiPad5.conf" "$subpkgdir/usr/share/alsa/ucm2/conf.d/sm8150/Xiaomi Pad 5.conf"
+	install	-Dm644 "$srcdir/HiFi.conf" "$subpkgdir/usr/share/alsa/ucm2/Xiaomi/nabu/HiFi.conf"
+}
+
+pulseaudio() {
+	pkgdesc="Pulseaudio configuration files"
+	depends="pulseaudio"
+	install_if="linux-postmarketos-qcom-sm8150-nabu $pkgname-nonfree-firmware"
+	mkdir "$subpkgdir"
+	install -Dm644 "$srcdir/pulse-xiaomi_nabu.conf" "$subpkgdir/etc/pulse/daemon.conf.d/89-xiaomi_nabu.conf"
+	install -Dm644 "$srcdir/nabu.pa" "$subpkgdir/etc/pulse/default.pa.d/nabu.pa"
+}
+
+sha512sums="
+9c99b80f35e17298ca5848bcb0ae1a9d612b34a8479c8959de351fb785cb3bd60261d74f998a49ca3a933c6f74f82d586a9606d4a82aa8b414d6a52f87e8deaf  deviceinfo
+ed5788faaa0b70b0fd1d7702ce9e1991749aae4226ae1aac12c73c705541880c8fd7715b3da1abbdb8b0e469081744e92822e0ec3f56ad0160405a6fdfac5806  30-gpu-firmware.files
+7b0b16f02b59b74cef7d82ae4e33f8d0c4ea12515824abb3392891eb75c365d19efec685f6f6248b7fec1e2698caca741bba01687673914d0f9de188444e0b37  XiaomiPad5.conf
+2f493f47aa0fc421a467fd16e878f2a40963111a4581fd0ceb9606c9c529ed017cb29045961780d9785afe1fcc8aa476b6c954dabbf63b8b2309e686476f5036  HiFi.conf
+02e2600514fc29ab83d056ada3d1fb0b8a598dc47c9848aebdeef3f0f67bb78cd45c5b23d3158fb3a0826f47061161bbc7ee8cd9ac5c408c1de37cdbe5d8e9ba  pulse-xiaomi_nabu.conf
+d66d6f2129f8aef4449137a1506fb3b3a1275c98502238537ac4dd0c174145706bac971e7e100d3599c9b8aa9c62319c302884d39aad5ba99c9bdcbe1e54bc23  nabu.pa
+76c563e54842b46ce534e04f3d4838ec75c5a86a850ffaf423902be3db77fbf1bcb3aaf1534bce5b6ae60fe99630b2db1a5389a7dcc185bf5d84a7e4a20d95fc  hexagonrpcd.confd
+8b36861501e089a2e60deae27f56b58496ffef49e91677cf61b404abc2bf77fb0325c897b513a0d3962a0d3436b250e4408daf67b7dd6640bc0e0a1031d3a2d4  81-libssc-xiaomi-nabu.rules
+0795934d0d572e5785051b89acd5dc7aa36831121424c330886e8068c8709ec6a2477b6b63b54cac10f344511271fe617f8240b7bcfde3297129b3b21198fffb  no-hexagonrpcd-on-suspend.sh
+"
