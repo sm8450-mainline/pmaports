@@ -68,8 +68,8 @@ disable_tethering() {
 	nmcli connection modify "$con_uuid" ipv6.method "link-local"
 	nmcli connection modify "$con_uuid" connection.autoconnect "true"
 
-	# Restart unudhpcd and configure it similar to initfs
-	killall unudhpcd || true
+	# Restart unudhcpd and configure it similar to initfs
+	killall unudhcpd || true
 	(unudhcpd -i "$interface" -s "$host_ip" -c "$client_ip") &
 	logger -t nm-tethering "unudhcpd started"
 
