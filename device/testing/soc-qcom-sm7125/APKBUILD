@@ -1,8 +1,7 @@
-# Maintainer: Leandro Friedrich <email@leandrofriedrich.de>
-# Co-Maintainer: map220v <map220v300@gmail.com>
+# Maintainer: Nikroks <nikroksm@mail.ru>
 pkgname=soc-qcom-sm7125
-pkgver=1.0
-pkgrel=2
+pkgver=2
+pkgrel=0
 pkgdesc="Common package for Qualcomm SM7125 devices"
 url="https://postmarketos.org"
 license="BSD-3-Clause"
@@ -16,9 +15,13 @@ replaces="upower"
 subpackages="
 	$pkgname-nonfree-firmware:nonfree_firmware
 	$pkgname-nonfree-firmware-openrc:nonfree_firmware_openrc
+	$pkgname-ucm
 	"
+
+_ucm_commit="8d0fa9c235c397ed80256786942f96cf51687377"
 source="
 	30-gpu-firmware.files
+	alsa-ucm-conf-$_ucm_commit.tar.gz::https://github.com/sm7125-mainline/alsa-ucm-conf/archive/$_ucm_commit/alsa-ucm-conf-$_ucm_commit.tar.gz
 	UPower.conf
 "
 
@@ -30,7 +33,7 @@ package() {
 
 nonfree_firmware() {
 	pkgdesc="Modem, WiFi and GPU Firmware"
-	depends="msm-modem pd-mapper tqftpserv"
+	depends="msm-modem tqftpserv"
 	install -Dm644 "$srcdir/30-gpu-firmware.files" \
 		"$subpkgdir/usr/share/mkinitfs/files/30-gpu-firmware.files"
 }
@@ -38,11 +41,24 @@ nonfree_firmware() {
 nonfree_firmware_openrc() {
 	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install"
+	depends="
+		tqftpserv-openrc
+	"
 
 	mkdir -p "$subpkgdir"
 }
 
+ucm() {
+	provides="alsa-ucm-conf"
+	provider_priority=1
+
+	# install audio config files
+	mkdir -p "$subpkgdir"/usr/share/alsa/ucm2
+	cp -r "$srcdir/alsa-ucm-conf-$_ucm_commit"/ucm2 "$subpkgdir"/usr/share/alsa/
+}
+
 sha512sums="
+18058e4ed1a2416841d63269d262ae1cbe9be828882580d934501fc842340b6e8641c3a79202c7c27ddad81ef3f2efffdf5dbc24e39fd7282700fd1bd5ba1454  30-gpu-firmware.files
+b5ce02e16caa57664f7add2c76b9dabb85e9a9fd2b11f5fcc73dae337bfbaacef9280874ff0560bf3ee86012bdc00f9633a1f62db306ec3225397dd52abdf059  alsa-ucm-conf-8d0fa9c235c397ed80256786942f96cf51687377.tar.gz
 9d455b56558d453d501a1ad869ffa79f9952ed43485a9847d506db6a78bfcd9f9c9d855660ee1d368eb74f4429385ec166addc30d802261c75562e785fe84c52  UPower.conf
-fa300fb92e3b375cd802a6243510d2a092d75ced7f62d044485566f4b76240259426eed6be91028c80e3a7f6894492f748a1dfd7122f90dc84253deb063338de  30-gpu-firmware.files
 "
