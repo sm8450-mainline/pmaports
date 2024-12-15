@@ -1,6 +1,6 @@
 pkgname=firmware-samsung-fortuna
 pkgver=2
-pkgrel=0
+pkgrel=1
 _name="Samsung Galaxy Grand Prime"
 pkgdesc="Firmware for $_name"
 url="https://postmarketos.org"
@@ -68,12 +68,6 @@ wcnss_nv_gprimeltecan() {
 
 wcnss_nv_grandprimelte() {
 	pkgdesc="$_name (SM-G530FZ) WiFi/BT firmware configuration"
-
-	# Backwards compatibility for old device package name
-	local _old_pkgname="firmware-samsung-gprimeltexx"
-	replaces="$_old_pkgname-wcnss-nv"
-	provides="$_old_pkgname-wcnss-nv=$pkgver-r$pkgrel"
-
 	install -Dm644 "$srcdir"/grandprimelte-$_wcnss_nv_bin -t \
 		"$subpkgdir/$_fwdir"/wlan/prima
 }

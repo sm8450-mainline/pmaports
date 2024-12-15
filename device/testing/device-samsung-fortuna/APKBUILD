@@ -3,7 +3,7 @@
 pkgname=device-samsung-fortuna
 pkgdesc="Samsung Galaxy Grand Prime"
 pkgver=5
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -123,7 +123,6 @@ nonfree_firmware_grandprimelte() {
 
 	# Backwards compatibility for old device package name
 	local _old_pkgname="device-samsung-gprimeltexx-nonfree-firmware"
-	replaces="$_old_pkgname"
 	provides="$_old_pkgname=$pkgver-r$pkgrel"
 
 	mkdir "$subpkgdir"
