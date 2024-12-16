@@ -19,8 +19,10 @@ deviceinfo_screen_width="1080"
 deviceinfo_screen_height="2400"
 
 # Kernel options
-deviceinfo_dtb_curtana="qcom/sm7125-xiaomi-curtana"
-deviceinfo_dtb_joyeuse="qcom/sm7125-xiaomi-joyeuse"
+deviceinfo_dtb_joyeuse_tianma="qcom/sm7125-xiaomi-joyeuse-tianma"
+deviceinfo_dtb_joyeuse_huaxing="qcom/sm7125-xiaomi-joyeuse-huaxing"
+deviceinfo_dtb_curtana_tianma="qcom/sm7125-xiaomi-curtana-tianma"
+deviceinfo_dtb_curtana_huaxing="qcom/sm7125-xiaomi-curtana-huaxing"
 deviceinfo_append_dtb="true"
 
 # Bootloader related
