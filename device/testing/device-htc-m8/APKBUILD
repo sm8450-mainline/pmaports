@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-htc-m8
 pkgdesc="HTC One M8"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -53,7 +53,7 @@ nonfree_firmware() {
 }
 
 sha512sums="
-697e5942ee2f900e4827495cc4deb4e2eaf76329146c554410d1e9c234d10026bf1a1bb655048d099753dc270d0c4cba2207f592c49bf06a5153dee7fa65c8e4  deviceinfo
+e3432d0710a78e49fdb7b0bfadb4bee8dbe30f733c6c9040560c61a8f9423a48407da723a85cb5e13ea614f0038bd4ac160de4311f5faaa0e4d109b301b00504  deviceinfo
 765abaad5fda0dfda5e62e1e48414d3eea822198f39d0792171a04d73f86f6273a6e562afab430cbfcdd084412568a0ad03d012e9c40c5564f5cd1b9c0f181eb  initfs-hook.sh
 f0f69ab3b5b3fed11ec5049f37c71c4e9dcf87dc1f238199a3917dd61957d46783a8798d63d400cc5d3983987e750e3fec6d7117561ad5005f28131ae4821d66  90-android-touch-dev.rules
 "
