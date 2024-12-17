@@ -1,8 +1,8 @@
 # Forked from Alpine for systemd support
 
 pkgname=gnome-settings-daemon
-pkgver=99947.1
-_pkgver=47.1
+pkgver=99947.2
+_pkgver=47.2
 pkgrel=0
 pkgdesc="GNOME settings daemon"
 url="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
@@ -73,5 +73,5 @@ package() {
 }
 
 sha512sums="
-39de5d67d51f751717b9c7dae4742981a7215a780e13e75ba5321351bcf129e265be12f60b01522d29301ef14049e88d217bdf1e800f16b4493566b927da35e4  gnome-settings-daemon-47.1.tar.xz
+fd3e358aa1f6a317dc49436965135dde204bd55fee9c96127d1208aafb60af3667fcc344a1667be1596892987f67ebab3fc7eefaeeefce82e1c65635e36c126f  gnome-settings-daemon-47.2.tar.xz
 "
