@@ -2,8 +2,8 @@
 
 pkgname=upower
 pkgver=9999
-_pkgver=1.90.2
-pkgrel=3
+_pkgver=1.90.6
+pkgrel=4
 pkgdesc="Power Management Services"
 url="https://upower.freedesktop.org"
 arch="all"
@@ -28,6 +28,11 @@ checkdepends="
 	"
 subpackages="$pkgname-dev $pkgname-lang $pkgname-doc $pkgname-systemd"
 source="https://gitlab.freedesktop.org/upower/upower/-/archive/v$_pkgver/upower-v$_pkgver.tar.bz2
+	0001-disable-test-charge-control-polkit.patch
+	0002-fix-test-sibling-priority-no-overwrite.patch
+	0003-fix-race-test-bluetooth-mouse.patch
+	0004-fix-self-test-sleep-duration.patch
+	0005-fix-test-charge-cycles.patch
 	"
 builddir="$srcdir/$pkgname-v$_pkgver"
 
@@ -46,6 +51,7 @@ build() {
 		-Dudevhwdbdir=/usr/lib/udev/hwdb.d/ \
 		-Dudevrulesdir=/usr/lib/udev/rules.d \
 		-Dsystemdsystemunitdir=/usr/lib/systemd/system \
+		-Dman=true \
 		. output
 	meson compile -C output
 }
@@ -59,5 +65,10 @@ package() {
 }
 
 sha512sums="
-9cdaea76d604e79bb385c2d7d8df26ab74d8fbbd5ddd271d7dc3323ae4f98ce9504ce807638e008869fdec0e1fcaf8d4be53e486714913616b8df73d8e4ac396  upower-v1.90.2.tar.bz2
+8ac1c0685b73efece0ecfbee7a37cb7c47601d252210cf3ecc32d1e44cabdde4c8b59b9a93d8bf21e25b3ecbbb95fb952958b37a53f878128747231d4334e5a6  upower-v1.90.6.tar.bz2
+01afab0fefc2fbcf6b49cec2ab07ce1b37fe7c35c3fc23e983b7206d2b37e4f9d564f4dd46dce8cb32ddd1f36d534adea8703fb8bbe8c80c7c8fd0fcd716ca7a  0001-disable-test-charge-control-polkit.patch
+6c7df958e6841a0799f31c8bb8d6dffa431c336ac13dab3141e3a90d4f11a6d5c6e10ab653f039aae0029552ba05417b6d2d4b4829b1444880f58e1b74446fa1  0002-fix-test-sibling-priority-no-overwrite.patch
+d8403210f1f5bb87d3a77498fd1d6684327aed8a624d4c2606dc07882450552ab14fbd5fec3f0b7c409bb09a248d563a140a18cb1c8f91b8a55c2f6d72d01adb  0003-fix-race-test-bluetooth-mouse.patch
+1b582f31660b82444682b6786913a6eb4e8e13c8370205b31da1bf9328e0d2e62c2596bfb4e82faf25e658f379ddb92d7f3f97ec8ddfdb512339d4d3d663f708  0004-fix-self-test-sleep-duration.patch
+860c8592a11ea760e01842986e3d83dfd547ec09411c61201500e773af1abba28e9e8ac04be2c9d0940097da4cbdfda7e3b6dce8df19ee88ade67ad6a9a8aa72  0005-fix-test-charge-cycles.patch
 "
