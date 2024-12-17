@@ -1,0 +1,27 @@
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-apple-tonga
+pkgdesc="Apple Macbook Air M1"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	linux-asahi
+	postmarketos-base
+	systemd-boot
+"
+makedepends="devicepkg-dev systemd-boot"
+source="deviceinfo"
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+40ac79bdcbf6ef40cb23ff63b1cca19c9207bf6324ce0652d877d3cbfcef0a52273f9a182b7dcc7a8d25178e07e2b34f45ab2105628bb86a91496a4dc15d3ace  deviceinfo
+"
