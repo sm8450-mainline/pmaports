@@ -1,9 +1,9 @@
 # Forked from Alpine to enable systemd
 
 pkgname=dbus
-pkgver=9991.14.10
-_pkgver=1.14.10
-pkgrel=3
+pkgver=9991.16.0
+_pkgver=1.16.0
+pkgrel=0
 pkgdesc="Freedesktop.org message bus system"
 url="https://www.freedesktop.org/Software/dbus"
 arch="all"
@@ -47,36 +47,23 @@ builddir="$srcdir/dbus-$_pkgver"
 #     - CVE-2019-12749
 
 build() {
-	CFLAGS="$CFLAGS -flto=auto" \
-	./configure \
-		--build=$CBUILD \
-		--host=$CHOST \
-		--prefix=/usr \
-		--localstatedir=/var \
-		--sysconfdir=/etc \
-		--with-system-pid-file=/run/dbus/dbus.pid \
-		--enable-checks \
-		--disable-assertions \
-		--enable-systemd \
-		--enable-inotify \
-		--enable-libaudit \
-		--enable-user-session \
-		--disable-static
-
-	make
+	abuild-meson \
+		-Dsystem_pid_file=/run/dbus/dbus.pid \
+		output .
+	meson compile -C output
 }
 
 check() {
-	make check
+	meson test --no-rebuild --print-errorlogs -C output
 }
 
 package() {
 	depends="$pkgname-libs=$pkgver-r$pkgrel"
 
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" meson install --no-rebuild -C output
 
-	# can't  install tmpfs
-	rm -r "$pkgdir"/var/run
+	# can't install tmpfs
+	rm -r "$pkgdir"/run
 }
 
 libs() {
@@ -98,6 +85,9 @@ launchhelper() {
 	install_if="$pkgname=$pkgver-r$pkgrel"
 
 	amove usr/libexec/dbus-daemon-launch-helper
+
+	chmod 4750 "$subpkgdir"/usr/libexec/dbus-daemon-launch-helper
+	chown root:messagebus "$subpkgdir"/usr/libexec/dbus-daemon-launch-helper
 }
 
 dev() {
@@ -105,5 +95,5 @@ dev() {
 }
 
 sha512sums="
-775b708326059692937acb69d4ce1a89e69878501166655b5d1b1628ac31b50dd53d979d93c84e57f95e90b15e25aa33893e51a7421d3537e9c2f02b1b91bfae  dbus-1.14.10.tar.xz
+9206bf4e41575f379e4c615212d137600967311f3c8feac94692aadf4dca9df9169ae52c404ec8ed31a9b2bc718792be920ac0130f1159f082e4b6c66f3f233e  dbus-1.16.0.tar.xz
 "
