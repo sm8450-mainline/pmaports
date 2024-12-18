@@ -1,5 +1,5 @@
 pkgname=postmarketos-base
-pkgver=41
+pkgver=42
 pkgrel=0
 pkgdesc="Meta package for minimal postmarketOS base"
 url="https://postmarketos.org"
@@ -49,6 +49,7 @@ _source440="
 	etc/doas.d/10-postmarketos.conf
 	"
 _source644="
+	etc/apk/config
 	etc/conf.d/swapfile
 	etc/conf.d/zram-init
 	etc/conf.d/syslog
@@ -163,6 +164,7 @@ openrc() {
 sha512sums="
 e529f5cef1f31481b577f99b8917704f2cfefb963d98bf40a14b017938e55a00134d2033f81d2cb0b8489c5e9b4a92fdc0a788013f1adb4cd46d9580c9988186  rootfs-etc-sudoers
 ab09e67203bb82226b0c9e600c8bc231a5c0111977b80edb355e55be101d008ac3c06798c263f0ca50e203758e1bfbf25767ad12f2654d082fb007c0411bbd1f  rootfs-etc-doas.d-10-postmarketos.conf
+224d58717f7f95851c91914753f4aefaf8964a2e62350ed898783c295c509cdadd85c325ee00baceb21ff2763ca2f4c7b1478a5638eb7d86836f91336b739376  rootfs-etc-apk-config
 e0d2d48b82a03239a4c0a00acaf83e00d397c23a8d7c71053d4e2a383357c22dcedef9e81b0e12a1d7514e1fdbe0bb3eb82613d18b29034a7ce5447f13c84a53  rootfs-etc-conf.d-swapfile
 a286c261dbab800b4bd2891c679cae1fbbf3e3169014bf7e89451961bbd3cbe0f6e34465cd1409aa4373f32ed74f38eb042b166767512be9ee7104e26cd712fa  rootfs-etc-conf.d-zram-init
 e4576c58c35f80bedddb1e89e186f37d31a186d3e9eb046581b8c5d7b7d435e18924539e851d3e67dc0ede80f9d44d16bd9ef52e73350d3f13224edc31d73a34  rootfs-etc-conf.d-syslog
