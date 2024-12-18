@@ -3,13 +3,12 @@
 pkgname=device-postmarketos-trailblazer
 pkgdesc="postmarketOS Trailblazer generic ARM64"
 pkgver=9
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
-	linux-next
 	postmarketos-base
 	soc-qcom-sdm845-qbootctl
 	linux-firmware-qcom
@@ -28,6 +27,13 @@ depends="
 	dtbloader
 "
 makedepends="devicepkg-dev"
+subpackages="
+	$pkgname-kernel-next:kernel_next
+	$pkgname-kernel-lts:kernel_lts
+	$pkgname-kernel-edge:kernel_edge
+	$pkgname-kernel-postmarketos-qcom-laptop:kernel_postmarketos_qcom_laptop
+	$pkgname-kernel-postmarketos-amlogic:kernel_postmarketos_amlogic
+"
 source="
 	deviceinfo
 	modules-initfs
@@ -39,6 +45,36 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
+}
+
+kernel_next() {
+	pkgdesc="Unstable next kernel (linux-next)"
+	depends="linux-next"
+	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
+}
+
+kernel_lts() {
+	pkgdesc="Long term support (LTS) kernel from Alpine Linux (linux-lts)"
+	depends="linux-lts"
+	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
+}
+
+kernel_edge() {
+	pkgdesc="Mainline kernel from Alpine Linux (linux-edge)"
+	depends="linux-edge"
+	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
+}
+
+kernel_postmarketos_qcom_laptop() {
+	pkgdesc="Mainline kernel with additional patches for Qualcomm Snapdragon-based laptops (linux-postmarketos-qcom-laptop)"
+	depends="linux-postmarketos-qcom-laptop"
+	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
+}
+
+kernel_postmarketos_amlogic() {
+	pkgdesc="Mainline kernel with additional patches for Amlogic AArch64-based devices (linux-postmarketos-amlogic)"
+	depends="linux-postmarketos-amlogic"
+	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
 sha512sums="
