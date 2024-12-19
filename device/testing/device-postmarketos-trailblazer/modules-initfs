@@ -2,6 +2,7 @@ atmel_mxt_ts
 aux-hpd-bridge
 bq25890_charger
 clk-smd-rpm
+display_connector
 dwc3
 dwc3-qcom
 edt-ft5x06
@@ -17,6 +18,8 @@ icc-smd-rpm
 led_bl
 libcomposite
 lmh
+meson_drm
+meson_dw_hdmi
 msm
 nvme
 nvmem_qfprom
