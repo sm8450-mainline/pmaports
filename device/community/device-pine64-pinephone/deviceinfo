@@ -25,4 +25,4 @@ deviceinfo_dev_internal_storage_repartition="true"
 # Bootloader related
 deviceinfo_flash_method="none"
 deviceinfo_sd_embed_firmware="u-boot/pine64-pinephone/u-boot-sunxi-with-spl-528.bin:8"
-
+deviceinfo_partition_type="msdos"
