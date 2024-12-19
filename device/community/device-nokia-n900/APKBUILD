@@ -2,7 +2,7 @@
 # Maintainer: Sicelo <absicsz@gmail.com>
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-nokia-n900
-pkgver=36
+pkgver=37
 pkgrel=0
 pkgdesc="Nokia N900"
 url="https://postmarketos.org"
@@ -162,6 +162,8 @@ x11() {
 		"$pkgdir"/usr/bin/lock.sh
 	install -Dm755 "$srcdir"/proxishot.sh \
 		"$pkgdir"/usr/bin/proxishot.sh
+	install -D -m644 "$srcdir"/xdefaults \
+		"$subpkgdir"/etc/skel/.Xdefaults
 }
 
 xkeyboard_config() {
@@ -188,8 +190,6 @@ i3wm() {
 		"$subpkgdir"/etc/skel/.config/i3blocks/wifi
 	install -D -m755 "$srcdir"/protip_shell.sh \
 		"$subpkgdir"/etc/skel/.protip_shell.sh
-	install -D -m644 "$srcdir"/xdefaults \
-		"$subpkgdir"/etc/skel/.Xdefaults
 }
 
 upower() {
