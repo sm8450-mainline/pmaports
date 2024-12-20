@@ -1,16 +1,13 @@
 #!/bin/sh
 
-display=off
-if xset q | grep -iq "monitor is on"; then
-	display=on
-fi
+touch_state=$(xinput list-props "TSC2005 touchscreen" | grep "Device Enabled" | tr -d "\t" | cut -d ":" -f 2)
 
-case "$display" in
-	off)
+case "$touch_state" in
+	0)
 		xinput enable "TSC2005 touchscreen"
 		xset dpms force on
 		;;
-	on)
+	1)
 		xinput disable "TSC2005 touchscreen"
 		xset dpms force off
 		;;
