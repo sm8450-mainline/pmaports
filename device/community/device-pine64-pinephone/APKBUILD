@@ -2,7 +2,7 @@
 # Maintainer: Arnav Singh <me@arnavion.dev>
 # Co-Maintainer: Jan Jasper de Kroon <jajadekroon@gmail.com>
 pkgname=device-pine64-pinephone
-pkgver=6
+pkgver=7
 pkgrel=0
 pkgdesc="PINE64 PinePhone"
 url="https://postmarketos.org"
@@ -51,7 +51,6 @@ source="
 	60-flashlight.rules
 	70-wifi-pm.rules
 	90-modem-eg25.rules
-	90-modem-eg25-openrc.rules
 	UPower.conf
 	deviceinfo
 	modules-initfs
@@ -177,9 +176,7 @@ nonfree_firmware() {
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel eg25-manager-openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
-	depends="eg25-manager-openrc"
-	install -Dm644 "$srcdir"/90-modem-eg25-openrc.rules -t \
-		"$subpkgdir"/usr/lib/udev/rules.d/
+	mkdir "$subpkgdir"
 }
 
 kirigami() {
@@ -250,7 +247,6 @@ bac664c504d9a3adc6e3d25f24ac63cf7c449a82374544a5b56c259dc25af580897b9dc992865ac8
 9170da7ac869254644f2fc8d914102f2c16e917dbeb53e33b96c76936711d0540f55fa5c2526d73d5fe244500bc2728bc9d629e2524cf52c573d11e833aee666  60-flashlight.rules
 8b6fa7b12c15f439c561901f3ffe24a1ef2a0c343401c0a79281060854ab29e08a1fb5e7adae8684b12aa9f535ed99e2dad993dce9724822cb0fbf2497dd86e5  70-wifi-pm.rules
 7dc2b7c20b4a2b15f597a6417bd01797643dad84a3683b0dee648e030fb6326e9d020307643fdcdf1bb43fc44af9975697e417003bd359610bae2d8ce614fc00  90-modem-eg25.rules
-c6d9b65100072687df11ed2231edf3a007a6a54941e321fc5416131e881291eaf5853a4f6f7819510c460adcc487fce59bfd4eeb001363ddc87cae7ef85e3e98  90-modem-eg25-openrc.rules
 ed0e03f7e1c0348c06be9a7922414469245604ce813bbf0c8910ef211cb993bbb0d0d4615c9c961d50712415f85d6b73e0cf02780ac784666aac56e4889341e4  UPower.conf
 4de159d376f288e2c493a4d5864d0b1de0cb85f7bfaf21d62e44cd2a7ee27d7f52f96eeb77ff1371c36385394a7364a94be43f1b2712c461260c9c3271336061  deviceinfo
 b8482111e6fa805779c5c8d56c83ccf9ad360fe6481ea4e8e1fa3b71c82fe0c8de948c6f69d2b53fbcf43b4420a976f783f5d52947eccca95f24034bd4f3e32a  modules-initfs
