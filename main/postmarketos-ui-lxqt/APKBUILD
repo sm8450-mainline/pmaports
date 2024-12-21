@@ -2,7 +2,7 @@
 # Maintainer: Antoni Aloy <aaloytorrens@gmail.com>
 pkgname=postmarketos-ui-lxqt
 pkgver=0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="(X11) Lightweight Qt Desktop Environment (stylus recommended)"
 url="https://lxqt-project.org/"
 # armhf: lxqt-desktop not available
@@ -44,6 +44,7 @@ _pmb_recommends="
 	screengrab
 	unclutter-xfixes
 	"
+install="$pkgname.post-install $pkgname.post-upgrade"
 subpackages="$pkgname-openrc"
 source="
 	$pkgname-$pkgver.tar.gz::https://gitlab.com/antoni.aloytorrens/lxqt-tablet/-/archive/$pkgver/lxqt-tablet-$pkgver.tar.gz
