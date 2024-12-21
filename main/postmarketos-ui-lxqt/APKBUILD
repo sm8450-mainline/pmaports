@@ -2,13 +2,14 @@
 # Maintainer: Antoni Aloy <aaloytorrens@gmail.com>
 pkgname=postmarketos-ui-lxqt
 pkgver=0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="(X11) Lightweight Qt Desktop Environment (stylus recommended)"
 url="https://lxqt-project.org/"
 # armhf: lxqt-desktop not available
 arch="noarch !armhf"
 license="GPL-3.0-or-later"
 depends="
+	brightnessctl
 	dbus-x11
 	dnsmasq
 	elogind
@@ -85,6 +86,7 @@ openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
 	depends="
+		brightnessctl-openrc
 		elogind-openrc
 		networkmanager-openrc
 		tinydm-openrc
