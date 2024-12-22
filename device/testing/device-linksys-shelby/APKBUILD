@@ -1,0 +1,32 @@
+# Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: exkc <exkc@exkc.moe>
+
+pkgname=device-linksys-shelby
+pkgdesc="Linksys WRT1900ACS/WRT1900ACS V2"
+pkgver=0
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="armv7"
+options="!check !archcheck"
+depends="
+	linux-postmarketos-marvell
+	postmarketos-base
+	u-boot-tools
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+d6d1ca8cfe681c739e5511dd71fa1f12240712ab59d2bb2f52dc5737bfad315d04e01fdcc567092640a3b8f3f8f9e4140302bcaba5dfb646a6fa570ea043ca6f  deviceinfo
+"
