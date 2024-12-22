@@ -119,6 +119,7 @@ CRYPTO_CMAC = true
 CRYPTO_DES = true
 CRYPTO_ECB = true
 CRYPTO_HMAC = true
+CRYPTO_MD4 = true
 CRYPTO_MD5 = true
 CRYPTO_SHA1 = true
 CRYPTO_SHA256 = true
