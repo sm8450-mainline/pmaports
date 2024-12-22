@@ -4,13 +4,13 @@
 pkgname=device-solidrun-cubox
 pkgdesc="SolidRun CuBox"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
 depends="
-	linux-postmarketos-marvell-dove
+	linux-postmarketos-marvell
 	postmarketos-base
 	u-boot-tools
 "
