@@ -1,7 +1,7 @@
 # Maintainer: Oliver Smith <ollipearanoid@postmarketos.org>
 # pmbootstrap installs this, if systemd is selected in "pmbootstrap init".
 pkgname=postmarketos-base-systemd
-pkgver=10
+pkgver=11
 pkgrel=0
 pkgdesc="Meta package for running postmarketOS with systemd"
 url="https://postmarketos.org"
@@ -10,7 +10,7 @@ license="GPL-3.0-or-later"
 options="!check"
 depends="
 	openssh-server-pam
-	polkit
+	polkit>9990
 	systemd
 	systemd-timesyncd
 	tzdata
