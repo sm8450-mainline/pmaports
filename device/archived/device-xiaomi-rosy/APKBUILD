@@ -3,7 +3,7 @@
 
 pkgname=device-xiaomi-rosy
 pkgdesc="Xiaomi Redmi 5"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -32,6 +32,6 @@ package() {
 }
 
 sha512sums="
-7492d71babd34e34d3e69e82b538b8369cf46bd83da3ceb39ee1a36f7ecfaf09b01621acc23417041b4fd0ce8115e1364bafa051c75a04767f7c6e1d84858425  deviceinfo
+7c8cb91b8b5e2405e371f614791a7354cafe81427c8f2ee190282edfbdfe0be6df37621f950a8040de29d9e5bee9379f05c3ef3681dc383db1b49d1432856e57  deviceinfo
 ddc4e788c7cf62a1f0d6228f3bb59b89cba8f30c06d99c945477b0c1931721aefa3dc77e9f90ae3f0ad78979b9c7b228984e0bfd961b3e5eac62961830682939  modules-initfs
 "

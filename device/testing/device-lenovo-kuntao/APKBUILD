@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lenovo-kuntao
 pkgdesc="Lenovo P2"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -29,6 +29,6 @@ package() {
 }
 
 sha512sums="
-0eb7a1a0b10e79d4d8b64b22cda74ccd6f8ef1d5f30ac75dd08e3eb6858ac730f4cba4561adb74d23dc5cf118df6708ea4508c1fc4d347a7dd0ae510fb8b7f60  deviceinfo
+5e0a1e6315c1bc85af7bc0c4ae58c817cfe4a373b1f65fe8a133310868e1ccb974d9648d5397a2a1566cf174b935e8b1717f23ede6096e77caa86f8fba29fe3f  deviceinfo
 2ce6911ef54351f46819b3323e361ce60297b30f94e81a77e2d20b1bc294e51e3a0fa859ad8e257fa3fdef404a47dd3b64c247222cb7ca73f03cb4dcd083d1f8  modules-initfs
 "

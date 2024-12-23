@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-motorola-ocean
 pkgdesc="Motorola Moto G7 Power"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -30,6 +30,6 @@ package() {
 }
 
 sha512sums="
-6c2c4244319a5c24b888c5c30c28b42a7514c2ffcdddcdb2d87bccb37da1eed6722fa66ff865d4d31855b9d9fca4ab6012532fb65127928a74becb228625d0a1  deviceinfo
+9dfe084b5394dc7bf1617f0396c5d853965a3bddaba438644d29e5fbbe95d6b704b98b89a0d7f233f6b677bb3e68b016eb55732ed9e22e56f93a32586f306663  deviceinfo
 f627d473ccfc01f39ed7b1345c2795af0cd358b4738d202e53fbae07c605d239f9139b034c5a29411bafe368b92a44c756e2bd029246b385d6397f519af8ff7c  modules-initfs
 "

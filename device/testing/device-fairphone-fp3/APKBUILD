@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-fairphone-fp3
 pkgdesc="Fairphone 3"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -72,6 +72,6 @@ mainline_firmware() {
 }
 
 sha512sums="
-4253b71640a1b4ff150c14f4d36352bc3e6ed48ffa8cee65ae923f1c279ae7346fdd607f48f10b27c0ef8fc8f1c3b95a952a5d7db4b057677a10e04ba874a54a  deviceinfo
+c00ac239649dda6d639f7ba47d1b539361d31a7683820e00ab56f6729dde6f7f8d35c8b4a2258b14f53b176e0000c26ca081541f5f1ce633d7c4f4238d6b9568  deviceinfo
 c56e5b11dc5ecaba8bb5ff0e06a1f2746942eebb0336257e44e673e849f440a6800e5b30e297e5827fb540778e4400daa31b76f521b3e804279c0c2b3329267f  modules-initfs.mainline
 "

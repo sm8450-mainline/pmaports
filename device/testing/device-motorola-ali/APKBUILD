@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-motorola-ali
 pkgdesc="Motorola Moto G6"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -28,6 +28,6 @@ package() {
 }
 
 sha512sums="
-3d4c2cbf443c03de418cc4d072b84053d64d324bc8b2c5a88c88b137fccc647c676f7a2e33bbf8d403dc1b6f6fa8e4d3b22aa0200f3d5680fc426b0f7e4c321b  deviceinfo
+705416801d6633e09aa79438175065aff5c50277c9359cdd1d9399ad80eb9b46f3c98e78d60098c4788212188be2b22072cfd5e703da988d6686d8c96f51eb78  deviceinfo
 097ac4b7c82a984d3e71309b015ba161ab5d851cc3a7bac11afced39d762112d1ad1df64a26c9128a4d3f8338ecbd75820170f873ac28a4684c2d6b83562a8a7  modules-initfs
 "

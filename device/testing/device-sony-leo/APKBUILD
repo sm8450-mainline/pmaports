@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-sony-leo
 pkgdesc="Sony Xperia Z3"
-pkgver=2
-pkgrel=2
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -67,5 +67,5 @@ nonfree_firmware_openrc() {
 }
 
 sha512sums="
-6a3c544e9044c560af3cb2342b3c61d0c22a5e7e099e0a92dab4ed94b8ec3eae263f08209218d24c16382529a13f52d5bb0428a2a6730a3978823cb9f7a86094  deviceinfo
+fd34804dd7e5e7228085d37e78bba0cc0dbcd7842b6ebffedbb6ae1a955652e3cfdb08665324df0b3d3650f28f3980d90981ece80d00258e53805db6ea36af11  deviceinfo
 "

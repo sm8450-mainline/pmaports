@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-markw
 pkgdesc="Xiaomi Redmi 4 Prime"
-pkgver=7
+pkgver=8
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -31,6 +31,6 @@ package() {
 }
 
 sha512sums="
-d5ecef8983110624e0cd69feed5f105204f8323e718435b19ffafa37cbe73d1c37a4d1d1cfb53d338dfeffa91ade137b3cf7c7b9f48408002c04260bbd3b5e65  deviceinfo
+a31f4e9612407662e3f0de56ed892073449d3d39452026f8f73d3e300ea01636a966970c7c93ec748c468876d232a54c18e6fe2ec0e967093b166db60705f764  deviceinfo
 0cba88d7ede62dc7c47feefb27d10e58e4c93498bec97cd274a1d10c4f16dff06c5472ed555170e0392a57c9269cc50bf550523f41bf1ba6c600af533302574b  modules-initfs
 "

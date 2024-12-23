@@ -32,3 +32,5 @@ deviceinfo_flash_offset_tags="0x02700000"
 deviceinfo_kernel_cmdline="console=ttyMSM0,115200,n8 msm.vram=192m msm.allow_vram_carveout=1"
 deviceinfo_flash_pagesize="2048"
 
+# lk2nd does not support GPT for subpartitions/SD cards yet
+deviceinfo_partition_type="msdos"

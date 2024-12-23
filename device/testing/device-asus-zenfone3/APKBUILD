@@ -1,8 +1,8 @@
 # Maintainer: Antony Kurniawan S. <postmarketos@smankusors.com>
 pkgname=device-asus-zenfone3
 pkgdesc="Asus Zenfone 3"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -48,6 +48,6 @@ kernel_ze552kl() {
 }
 
 sha512sums="
-7070801470fe2e7ba2ea5cee79ec52d65ad7ff6bdc995283061aeb4967102082602bacb342d38bfa6589bb2e0140cbd71063803039b1e4eb861867c05232f588  deviceinfo
+80ea516cae70fb414115a3d4877b0df8f4ec8236fe7b01ee029a8386580b665fe3007a6354357f999d683604f16c3af439596fb01b1c41a8dbc8ea765ed36e23  deviceinfo
 a4c56173941e88434073d9980a687a82956fbcaaaf15068fd2b4fd9351011a934c82f67e62ce87440876d673784938cfdaedc70ae03e1943c95baef6205567b1  modules-initfs
 "

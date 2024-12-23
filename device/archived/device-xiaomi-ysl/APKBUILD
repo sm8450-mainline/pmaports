@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-ysl
 pkgdesc="Xiaomi Redmi S2/Y2"
-pkgver=5
+pkgver=6
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -31,6 +31,6 @@ package() {
 }
 
 sha512sums="
-a985591e27192acc03a3218ae7e419aa557b6219139058f3269ff5c3bb5f695c2af1af8157c55331d4238d9fb179c0492db660e7212a100bd3c5c31e37d623fe  deviceinfo
+2348d7622b6638a3c2beb6a5ba9eee3375614e2a63f5e1474740d9cf4c822c9963b6fbbec17354c4a3d14eeaeec5644f75f939e80d551adeb1b2455280406220  deviceinfo
 b5e4f6dec04a9a7d7231a62d8b60e17a9a5265768eb80050225c0f57b8188ec108d8b7155ccb70ba95201906b653d19ef33a0ff04072da040b0242d7032b103d  modules-initfs
 "

@@ -4,7 +4,7 @@
 
 pkgname=device-xiaomi-tissot
 pkgdesc="Xiaomi Mi A1"
-pkgver=8
+pkgver=9
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -34,6 +34,6 @@ package() {
 }
 
 sha512sums="
-4ea529e8822f268773e043dec4af4c419803e3220bc0bc85def1c07ee480efd5f33b2f8f74007aaf7d608926048c49d4dfc1d529f6501cebf5aba0f183ac9cd0  deviceinfo
+a20e73d01823cfa5a5796c4a3725ab7a594bd8ae8cb46c3d2326d5f15fd19086b37dac1f5d5e19b222215d3275df585537ef26f15bfced2dd007975d14eb4968  deviceinfo
 4284d7c184f364d81a06de962808cb240b713cda11381ddcec5acdfbb4d4962922b64b2f2675ab463961c0510352211ec439a6b9e4ebdc47bf73980133e9626a  modules-initfs
 "
