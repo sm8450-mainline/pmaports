@@ -15,7 +15,6 @@ deviceinfo_external_storage="true"
 
 # Bootloader related
 deviceinfo_flash_method="heimdall-bootimg"
-deviceinfo_kernel_cmdline="androidboot.selinux=permissive androidboot.selinux=permissive"
 deviceinfo_generate_bootimg="true"
 deviceinfo_bootimg_qcdt="true"
 deviceinfo_flash_pagesize="2048"
