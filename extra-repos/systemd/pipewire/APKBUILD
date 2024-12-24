@@ -3,7 +3,7 @@
 pkgname=pipewire
 pkgver=9991.2.7
 _pkgver=1.2.7
-pkgrel=0
+pkgrel=1
 _so_ver=0.3
 pkgdesc="Multimedia processing graphs"
 url="https://pipewire.org/"
@@ -233,7 +233,8 @@ spa_tools() {
 
 jackdev() {
 	pkgdesc="JACK development files (from pipewire)"
-	provides="jack-dev=$pkgver-r$pkgrel"
+	# our version gets picked in the dependency resolver in pmbootstrap, due to the higher version
+	# provides="jack-dev=$_pkgver-r$pkgrel"
 
 	amove usr/lib/libjack*.so
 	amove usr/include/jack
