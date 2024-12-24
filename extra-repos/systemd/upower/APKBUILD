@@ -3,7 +3,7 @@
 pkgname=upower
 pkgver=9999
 _pkgver=1.90.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Power Management Services"
 url="https://upower.freedesktop.org"
 arch="all"

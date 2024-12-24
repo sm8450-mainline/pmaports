@@ -3,7 +3,7 @@
 pkgname=pipewire
 pkgver=9991.2.7
 _pkgver=1.2.7
-pkgrel=1
+pkgrel=2
 _so_ver=0.3
 pkgdesc="Multimedia processing graphs"
 url="https://pipewire.org/"
