@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=linux-valve-jupiter
 pkgver=6.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Valve Steam Deck kernel fork"
 arch="x86_64"
 _flavor="valve-jupiter"
@@ -86,7 +86,7 @@ package() {
 
 sha512sums="
 53fa166da1dda6460402c6a49ba1fb2d5940e4845fa1cd853e6450761d144cbe778b73e4a4724f8a2e3156c4e0ef18a4cc3c029ae9f26a4f881129ba3ec115c1  linux-6.11.tar.gz
-e53475eaf63bcc544d3eefe672dba1eff2ec752a66f42c49fbbfd4583bb8853329627548632ce70e1fa3230420edbc34c17fec4fc39b5b84b39e5f6bf81fc7b8  config-valve-jupiter.x86_64
+ca784d9ca8b8b04e54b78f89771d4785952af1491666b04c42e790576cc7c34b5a485dcbe88e0198f74226b40d76dc649faa405ef7afd2beb2a40eddb05be2a2  config-valve-jupiter.x86_64
 221d8de25b902d66c5f22fec1da627be7bfe23305d2bbf5bbedb9859748e9614f4ae90339e4a779c725e2683032877e8544234ac22b354cd9f0f0d2490f86be6  0001-ACPICA-Limit-error-message-flood-caused-by-firmware-.patch
 2f3f207498feba34eec85deb9962d35ce06d4145088a0cf34480eab30f94de0af27d9befa5061354d241ab0807152166208f7c22e689dcea3fa37d1756fb108e  0002-drivers-video-backlight-Disable-backlight-notificati.patch
 289066f4535dbd52d750e90f5a6b573aebebcbdddafb2e50e18f3f0a67148ac2f2372acd2bc2e2bdac4363ead325ea8edfd4c323b4765054741e3a3ce3af2994  0003-iio-light-ltrf216a-Return-floating-point-values.patch
