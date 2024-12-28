@@ -212,12 +212,19 @@ _service() {
 
 	for f in $(eval "echo \$_${n}_sources"); do
 		prefix="$subpkgdir"
-		# If the path starts with "user" or "system", install under /usr/lib/systemd
+		# If the path starts with a systemd subdir, install it under /usr/lib/systemd
+		# if it's some other default dir, install at specifc path
 		# otherwise treat it as a full path
+		mode=644
 		if echo "user system" | grep -q "${f%%/*}"; then
 			prefix="$prefix/usr/lib/systemd"
+		elif echo "tmpfiles.d" | grep -q "${f%%/*}"; then
+			prefix="$prefix/usr/lib/tmpfiles.d"
+		elif echo "user-environment-generators system-environment-generators" | grep -q "${f%%/*}"; then
+			prefix="$prefix/usr/lib/systemd"
+			mode=755
 		fi
-		install -Dm644 "$srcdir/$(flatpath "$f")" "$prefix/$f"
+		install -Dm$mode "$srcdir/$(flatpath "$f")" "$prefix/$f"
 	done
 
 	for t in user system; do
