@@ -117,6 +117,7 @@ device/*/linux-postmarketos-exynos4/		@Newbyte @Grimler @knuxify
 device/*/linux-postmarketos-exynos5/		@jenneron @Grimler
 device/*/linux-postmarketos-grate/		@clamor-s @jenneron @jethrob
 device/*/linux-postmarketos-imx-ereader/	@akemnade
+device/*/linux-postmarketos-marvell/		@longnoserob @exkc
 device/*/linux-postmarketos-marvell-dove/	@longnoserob
 device/*/linux-postmarketos-mediatek-mt8173/	@jenneron @adamthiede
 device/*/linux-postmarketos-mediatek-mt8183/	@jenneron @binarycraft
