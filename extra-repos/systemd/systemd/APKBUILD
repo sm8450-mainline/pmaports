@@ -5,7 +5,7 @@
 pkgname=systemd
 pkgver=256.5
 _pkgver="musl-v${pkgver//_/-}"
-pkgrel=3
+pkgrel=4
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !armhf !s390x" # blocked by pmboostrap not supporting
@@ -211,17 +211,11 @@ check() {
 }
 
 package() {
-	# NOTE: as we can't parse .note.dlopen yet, we specify so:libkmod.so.2 here.
-	# This wouldn't be needed for a container or similiar, but this doesn't apply to us.
-	#
 	# FIXME: For some reason .note.dlopen isn't placed in the binary. Investigate!
 	# https://github.com/systemd/systemd/blob/main/docs/ELF_DLOPEN_METADATA.md
 	depends="
 		$pkgname-journald=$pkgver-r$pkgrel
 		$pkgname-udevd=$pkgver-r$pkgrel
-		less
-		so:libkmod.so.2
-		util-linux-login
 		!openrc
 		"
 
