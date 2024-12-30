@@ -1,6 +1,6 @@
 pkgname=firmware-samsung-fortuna
 pkgver=2
-pkgrel=1
+pkgrel=2
 _name="Samsung Galaxy Grand Prime"
 pkgdesc="Firmware for $_name"
 url="https://postmarketos.org"
@@ -50,26 +50,26 @@ package() {
 
 wcnss_nv_fortuna3g() {
 	pkgdesc="$_name (SM-G530H) WiFi/BT firmware configuration"
-	install -Dm644 "$srcdir"/fortuna3g-$_wcnss_nv_bin -t \
-		"$subpkgdir/$_fwdir"/wlan/prima
+	install -Dm644 "$srcdir"/fortuna3g-$_wcnss_nv_bin \
+		"$subpkgdir/$_fwdir"/wlan/prima/$_wcnss_nv_bin
 }
 
 wcnss_nv_fortunaltezt() {
 	pkgdesc="$_name (SM-G530Y) WiFi/BT firmware configuration"
-	install -Dm644 "$srcdir"/fortunaltezt-$_wcnss_nv_bin -t \
-		"$subpkgdir/$_fwdir"/wlan/prima
+	install -Dm644 "$srcdir"/fortunaltezt-$_wcnss_nv_bin \
+		"$subpkgdir/$_fwdir"/wlan/prima/$_wcnss_nv_bin
 }
 
 wcnss_nv_gprimeltecan() {
 	pkgdesc="$_name (SM-G530W) WiFi/BT firmware configuration"
-	install -Dm644 "$srcdir"/gprimeltecan-$_wcnss_nv_bin -t \
-		"$subpkgdir/$_fwdir"/wlan/prima
+	install -Dm644 "$srcdir"/gprimeltecan-$_wcnss_nv_bin \
+		"$subpkgdir/$_fwdir"/wlan/prima/$_wcnss_nv_bin
 }
 
 wcnss_nv_grandprimelte() {
 	pkgdesc="$_name (SM-G530FZ) WiFi/BT firmware configuration"
-	install -Dm644 "$srcdir"/grandprimelte-$_wcnss_nv_bin -t \
-		"$subpkgdir/$_fwdir"/wlan/prima
+	install -Dm644 "$srcdir"/grandprimelte-$_wcnss_nv_bin \
+		"$subpkgdir/$_fwdir"/wlan/prima/$_wcnss_nv_bin
 }
 
 sha512sums="
