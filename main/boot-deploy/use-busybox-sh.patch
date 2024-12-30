@@ -1,0 +1,20 @@
+diff --git boot-deploy boot-deploy
+index df0c7b9..4f2ecfc 100755
+--- a/boot-deploy
++++ b/boot-deploy
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/busybox sh
+ # Copyright 2021 Clayton Craft <clayton@craftyguy.net>
+ # SPDX-License-Identifier: GPL-3.0-or-later
+ set -eu
+diff --git boot-deploy-functions.sh boot-deploy-functions.sh
+index fb50e61..32de0ef 100644
+--- a/boot-deploy-functions.sh
++++ b/boot-deploy-functions.sh
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/busybox sh
+ # Copyright 2021 postmarketOS Contributors
+ # Copyright 2021 Clayton Craft <clayton@craftyguy.net>
+ # SPDX-License-Identifier: GPL-3.0-or-later
