@@ -6,7 +6,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=33
+pkgver=34
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -59,6 +59,7 @@ subpackages="
 	wpa_supplicant-systemd:_service
 	xdg-desktop-portal-gnome-systemd:_service
 	xdg-desktop-portal-gtk-systemd:_service
+	xdg-desktop-portal-kde-systemd:_service
 	xdg-desktop-portal-phosh-systemd:_service
 	xdg-desktop-portal-systemd:_service
 	xdg-desktop-portal-wlr-systemd:_service
@@ -135,6 +136,7 @@ _xdg_desktop_portal_sources="
 _xdg_desktop_portal_gtk_sources="user/xdg-desktop-portal-gtk.service"
 _xdg_desktop_portal_phosh_sources="user/xdg-desktop-portal-phosh.service"
 _xdg_desktop_portal_gnome_sources="user/xdg-desktop-portal-gnome.service"
+_xdg_desktop_portal_kde_sources="user/plasma-xdg-desktop-portal-kde.service" # From https://invent.kde.org/plasma/xdg-desktop-portal-kde/-/blob/master/data/plasma-xdg-desktop-portal-kde.service.in
 _xdg_desktop_portal_wlr_sources="user/xdg-desktop-portal-wlr.service"
 
 flatpath() {
@@ -186,6 +188,7 @@ source="$(flatpath \
 	$_wpa_supplicant_sources \
 	$_xdg_desktop_portal_gnome_sources \
 	$_xdg_desktop_portal_gtk_sources \
+	$_xdg_desktop_portal_kde_sources \
 	$_xdg_desktop_portal_phosh_sources \
 	$_xdg_desktop_portal_sources \
 	$_xdg_desktop_portal_wlr_sources \
@@ -324,6 +327,7 @@ c7ea2b18c9d8f82306fbaca6d07b7019de3819d7898c3f50c3d0aceef4da4d311ed3bf31385e2f89
 d55edea6983ad73b1817dfac3e6d418113c8e0fbd6cb2835dedcad2e5c76c8889c09348a184ed4ab38397d7d539831ef6a7ce08037e12c7ab6dc274519dc5812  system-wpa_supplicant.service
 0ee2f844819c5f954d269d3703c17b5e51888bb89bd4376d3960f97735b1ba9769c932817270fdb75b8ddf291c21ab6eb78d1a8bde14aac83564881b36914066  user-xdg-desktop-portal-gnome.service
 eb01dd32fc598e49cbae31847aee4c3e28ee5014df052d65ad02c9a943a9e3399a4a119aa136630efef1157e31f6adc2d8420f8e72dc9da4c0b72645e4c84faa  user-xdg-desktop-portal-gtk.service
+8b7992b88fbccd4be77b7b8094349a27bde66a19585b97c40c441858a70d033b1a8fa146dd85bef5a08eed0ab08bd868ec9512ca72dbaea29ffa7038cf915605  user-plasma-xdg-desktop-portal-kde.service
 7d45e305a54417a0afdcc7553dec2d43930b07c12fdbce240bd7d5b89a7653b16baabdf2d7c6dd38649925224f0d73cccf2b8024657b62d47b75c6d9ce46ac20  user-xdg-desktop-portal-phosh.service
 9a3620d3df53540a91efa48df322288d96ec887415f538877a979be40eb5239b95917b9ac57fda2c699fe3f1c6500f7de09a4ce6625b0818f5786e125713552f  user-xdg-desktop-portal.service
 e09a3c76f3be961dce9f564bb654ea84d1d7fb59907a2168c0569bf6c17a5ebe9fbe4d1f94f1d014433757bb721bc443d5962deb540cacbd5547b1dd47717f92  user-xdg-desktop-portal-rewrite-launchers.service
