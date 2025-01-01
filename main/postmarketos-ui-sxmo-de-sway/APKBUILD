@@ -5,7 +5,7 @@
 # Co-Maintainer: Aren Moynihan <aren@peacerevolution.org>
 pkgname=postmarketos-ui-sxmo-de-sway
 pkgver=1.17.1 # Bump this so the file names in bpo are correct
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Mobile: Mobile environment based on SXMO and running on sway"
 url="http://sr.ht/~mil/Sxmo"
 # riscv64: builder currently stuck, libphonenumber needs rebuild
@@ -24,8 +24,6 @@ depends="
 	networkmanager-openrc
 	bluez-openrc
 	iio-sensor-proxy-openrc
-
-	conky<=1.20.1-r999
 	"
 install="
 	$pkgname.post-install
