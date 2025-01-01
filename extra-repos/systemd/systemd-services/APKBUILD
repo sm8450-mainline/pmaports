@@ -7,8 +7,8 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=63
-pkgrel=3
+pkgver=64
+pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
 arch="noarch"
@@ -33,6 +33,7 @@ subpackages="
 	cosmic-greeter-systemd:_service
 	eg25-manager-systemd:_service
 	evolution-data-server-systemd:_service
+	feedbackd-systemd:_service
 	flatpak-systemd:_service
 	fnott-systemd:_service
 	fprintd-systemd:_service
@@ -119,6 +120,7 @@ _evolution_data_server_sources="
 	user/evolution-source-registry.service
 	user/evolution-user-prompter.service
 " # From https://gitlab.gnome.org/GNOME/evolution-data-server/-/blob/master/src/services
+_feedbackd_sources="user/fbd-alert-slider.service" # From https://source.puri.sm/Librem5/feedbackd/-/blob/main/data/fbd-alert-slider.service.in
 _flatpak_sources="
 	system/flatpak-system-helper.service
 	user/flatpak-oci-authenticator.service
@@ -215,6 +217,7 @@ source="$(flatpath \
 	$_dconf_sources \
 	$_eg25_manager_sources \
 	$_evolution_data_server_sources \
+	$_feedbackd_sources \
 	$_flatpak_sources \
 	$_fnott_sources \
 	$_fprintd_sources \
@@ -331,6 +334,7 @@ e4de73d12abd046c8683e3be6e3aab40a5db3f5d6246cedbb3ff099bcc8037a167b23ac957d30f11
 c648760e50e0c47970cce8fdd1972864af74bbc979ed4366973bf1c923ee624779bea95cf1e54260c55fa8a069090a367ceabe9b240842e20959bca42f2f8043  user-evolution-calendar-factory.service
 0e5d1d1cd0e7c9942dcc0c0742beb85f0c1c61338f0b637835f347579601ff7fe93214041306b69db2162aafb677a1d7111130c0f7dab646e5b5cd9f2dda3b33  user-evolution-source-registry.service
 fda84bb8dc10fa613790ff3ac9d50a03f21fb32f793ba3641740be93136800f0f07ba53d6e4843d0912f802955cc26719333d1dc2877610eff12354e8538ad5b  user-evolution-user-prompter.service
+a2e58f1988efdda4eee7d34ea264e4d2bf9dfa552fbbb0a32bc11a6d7c997369869e2c23565f9d796b08df287c1ac8666d3d8986c14d045d3a9ff1733876849c  user-fbd-alert-slider.service
 fe2fd936cafc22a1bea7c4c0d9135866395cf537fc7a030350ef7ea427a8d3dd658fb608974c67d224c7471a8ccb7d621d12c4df5eb5c421c5de2f22bf22dd64  system-flatpak-system-helper.service
 c4dcaa578bbe9e0023cff139a6857a0df28fb81c9814577348e9996122945e26f8ec2760189a312ba46b14a6553afe12af8acd6fc77ea534ff2a632b2e2c2043  user-flatpak-oci-authenticator.service
 31c13c8774d35dc22c153787488b7764b0585f904f555ab578deba1fc18704080694dffd2794b4bf69f07cadeaf63ed5f384c97129ccce4962a59defd331899f  user-flatpak-portal.service
