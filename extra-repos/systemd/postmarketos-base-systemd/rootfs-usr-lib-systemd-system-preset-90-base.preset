@@ -56,6 +56,8 @@ enable gesture.service
 enable gnss-share
 enable swclock-offset-boot.service
 enable swclock-offset-shutdown.service
+enable msm-firmware-loader.service
+enable msm-firmware-loader-unpack.service
 
 ## sensors
 enable hexagonrpcd-sdsp.service

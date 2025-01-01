@@ -24,7 +24,6 @@ sh_files="
 	./main/postmarketos-mkinitfs-hook-netboot/netboot.sh
 	./main/ttyescape/*.post-install
 	./main/unl0kr/unlock.sh
-	./main/msm-firmware-loader/*.post-install
 	./device/community/soc-qcom-sdm845/call_audio_idle_suspend_workaround.sh
 
 	$(find . -path './main/postmarketos-ui-*/*.sh')

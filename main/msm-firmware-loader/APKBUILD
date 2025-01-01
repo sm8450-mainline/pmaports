@@ -1,9 +1,9 @@
 pkgname=msm-firmware-loader
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Set of init services to automatically load firmware from device partitions"
 url="https://postmarketos.org/"
-subpackages="$pkgname-openrc $pkgname-wcnss"
+subpackages="$pkgname-openrc $pkgname-systemd $pkgname-wcnss"
 arch="armhf armv7 aarch64"
 license="MIT"
 source="
@@ -28,11 +28,21 @@ package() {
 		"$pkgdir/usr/sbin/msm-firmware-loader.sh"
 	install -Dm755 msm-firmware-loader-unpack.sh \
 		"$pkgdir/usr/sbin/msm-firmware-loader-unpack.sh"
+
+	install -Dm644 msm-firmware-loader.service \
+		"$pkgdir/usr/lib/systemd/system/msm-firmware-loader.service"
+	install -Dm644 msm-firmware-loader-unpack.service \
+		"$pkgdir/usr/lib/systemd/system/msm-firmware-loader-unpack.service"
 }
 
 openrc() {
 	install="$subpkgname.post-install"
 	default_openrc
+}
+
+systemd() {
+	install="$subpkgname.post-install $subpkgname.pre-deinstall"
+	default_systemd
 }
 
 wcnss() {
