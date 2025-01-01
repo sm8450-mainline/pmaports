@@ -3,12 +3,12 @@
 pkgname=device-odroid-c4
 pkgdesc="ODROID C4"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
-depends="postmarketos-base u-boot-odroid-c4 soc-amlogic-s905 linux-postmarketos-amlogic"
+depends="postmarketos-base u-boot-amlogic-odroid-c4 soc-amlogic-s905 linux-postmarketos-amlogic"
 makedepends="devicepkg-dev"
 subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
 source="deviceinfo modules-initfs"

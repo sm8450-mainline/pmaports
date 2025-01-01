@@ -2,13 +2,13 @@
 # Maintainer:
 pkgname=device-beelink-gt1
 pkgver=2
-pkgrel=0
+pkgrel=1
 pkgdesc="Beelink gt1 (Ultimate)"
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
-depends="postmarketos-base u-boot-beelink-gt1 soc-amlogic-s905"
+depends="postmarketos-base u-boot-amlogic-beelink-gt1 soc-amlogic-s905"
 makedepends="devicepkg-dev"
 subpackages="
 	$pkgname-kernel-alpine:kernel_alpine
