@@ -1,9 +1,11 @@
 # Forked from Alpine enable systemd
 # MODIFIED base-sessionl.pamd for systemd!
 
+maintainer="Jane Rachinger <jane400+pmaports@postmarketos.org>"
 pkgname=linux-pam-pmos
+_pkgname=linux-pam
 pkgver=1.6.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Linux PAM (Pluggable Authentication Modules for Linux)"
 url="https://www.kernel.org/pub/linux/libs/pam"
 arch="all"
