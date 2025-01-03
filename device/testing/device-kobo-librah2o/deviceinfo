@@ -25,5 +25,9 @@ deviceinfo_getty="ttymxc0;115200"
 deviceinfo_generate_legacy_uboot_initfs="true"
 deviceinfo_no_framebuffer="true"
 
+# GPT is supported, but bootloader location conflict with default GPT header
+# location and specifying a custom location is not supported here yet
+deviceinfo_partition_type="msdos"
+
 deviceinfo_sd_embed_firmware_step_size="512"
 deviceinfo_sd_embed_firmware="u-boot/kobo-librah2o/u-boot.imx:2,u-boot/kobo-librah2o/u-boot-env.bin:1536"

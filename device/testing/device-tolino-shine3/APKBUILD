@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-tolino-shine3
 pkgdesc="Tolino Shine 3"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -30,6 +30,6 @@ package() {
 }
 
 sha512sums="
-73515b117808d883ce54c7526fdc9a63c67f5ecedc4be6fff6022dca1df9a4f3bdfae95184078368ce5962dd2538083ae6a27c877f77079abba9694a3feeb5b0  deviceinfo
+d77b979f694c8bcb672267800bc276d7888da73cb6fb666558789fd44030af00caf1aee75b82a216d496b2690c98392ef00dc8bc33f5e24755ba0fdab80100ae  deviceinfo
 5d53ee902538e53c4fe79eaef8e3800b9d3f73ec70d2a9887ddb11a6715ca76ce17128e3c02c2b6f2f575fb86f15c2415c24466d4b1a031f7a346d0db186dcb1  modules-initfs
 "

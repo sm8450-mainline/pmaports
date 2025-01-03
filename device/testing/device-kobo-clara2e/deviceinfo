@@ -25,5 +25,9 @@ deviceinfo_boot_part_start="49152"
 deviceinfo_getty="ttymxc0;115200"
 deviceinfo_no_framebuffer="true"
 
+# GPT is supported, but bootloader location conflict with default GPT header
+# location and specifying a custom location is not supported here yet
+deviceinfo_partition_type="msdos"
+
 deviceinfo_sd_embed_firmware_step_size="512"
 deviceinfo_sd_embed_firmware="u-boot/kobo-clara2e/u-boot.imx:2"

@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-kobo-clara
 pkgdesc="Kobo Clara HD"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -30,6 +30,6 @@ package() {
 }
 
 sha512sums="
-b4b294767cf54299ae20b2f0a9520bd53ebae57e968f213f3f6216b3405868fa8bd78193d4e7652a7d3809f8d81343a2642cce1d85afbf4ec47c783e75629dbc  deviceinfo
+7235e7c690715b1a1fa508307b5051efbe46349d3b21812924105bf136d0420550b2cfaf5c22e3241b55c91438f35bf56b452b7afe84b31b44c4b89744c60efa  deviceinfo
 5d53ee902538e53c4fe79eaef8e3800b9d3f73ec70d2a9887ddb11a6715ca76ce17128e3c02c2b6f2f575fb86f15c2415c24466d4b1a031f7a346d0db186dcb1  modules-initfs
 "

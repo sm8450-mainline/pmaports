@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-tolino-shine2hd
 pkgdesc="Tolino Shine 2 HD"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -37,6 +37,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-5cd2564af554277cfa5ec5d191ed3841ca15c1a5eeb34cfba3ae3e4f8d8eb3dea5ab4c1b7382344bcb2dc782475690b3b78b62ecf7e2eb1d563a40ea587e665d  deviceinfo
+f34e4efe2b36bf8dfc4aa8e5fcd34d3561e4fc39783429e030635617041cce26f1b8ac8ee36e6eb37579386faa02f964c2119549ed02ab09092b47b9a52e6669  deviceinfo
 5d53ee902538e53c4fe79eaef8e3800b9d3f73ec70d2a9887ddb11a6715ca76ce17128e3c02c2b6f2f575fb86f15c2415c24466d4b1a031f7a346d0db186dcb1  modules-initfs
 "
