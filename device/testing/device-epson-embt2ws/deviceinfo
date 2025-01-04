@@ -24,5 +24,9 @@ deviceinfo_boot_filesystem="fat32"
 deviceinfo_getty="ttyS2;115200"
 deviceinfo_no_framebuffer="true"
 
+# for using the sdboot.scr mechanism to chainload stuff from internal u-boot,
+# GPT does not work, if a standalone u-boot install is used, GPT is ok.
+deviceinfo_partition_type="msdos"
+
 deviceinfo_sd_embed_firmware_step_size="512"
 deviceinfo_sd_embed_firmware="u-boot/epson-embt2ws/MLO:256,u-boot/epson-embt2ws/u-boot.img:512"
