@@ -1,8 +1,9 @@
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on: arch/arm64/configs/defconfig
+# Maintainer: Aster Boese <asterboese@mailbox.org>
 pkgname=linux-postmarketos-apple
 pkgver=6.1.0_rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mainline kernel fork for Apple iPhone and iPad devices"
 arch="aarch64"
 _carch="arm64"
