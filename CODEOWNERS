@@ -68,6 +68,7 @@ device/*/*-xiaomi-wt88047/			@Minecrell
 device/*/*-xiaomi-ysl/				@barni2000
 device/*/alsa-ucm-conf-cros/			@WeirdTreeThing
 device/*/alsa-ucm-conf-qcom-sdm670/		@flamingradian
+device/*/device-apple-n61/			@JustSoup321
 device/*/device-fairphone-*/			@z3ntu
 device/*/device-generic-x86_64/			@craftyguy @ollieparanoid
 device/*/device-google-nyan-big/		@jenneron
