@@ -51,7 +51,7 @@ gpio set 115
 
 
 echo Loading user script
-setenv user_scriptaddr 0x50700000
+setenv user_scriptaddr 0x50f00000
 load mmc ${mmc_bootdev}:1 ${user_scriptaddr} user.scr
 if test $? -eq 0; then source ${user_scriptaddr}; else echo No user script found; fi
 
