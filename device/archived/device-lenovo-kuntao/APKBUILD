@@ -1,3 +1,4 @@
+# Archived: unmaintained port, only for testing. Use generic/mainline port (qcom-msm8953)
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lenovo-kuntao
 pkgdesc="Lenovo P2"
