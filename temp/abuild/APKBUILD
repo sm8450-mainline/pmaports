@@ -3,7 +3,7 @@
 pkgname=abuild
 pkgver=99993.12.0
 _pkgver=3.12.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Script to build Alpine Packages"
 url="https://git.alpinelinux.org/cgit/abuild/"
 arch="all"
