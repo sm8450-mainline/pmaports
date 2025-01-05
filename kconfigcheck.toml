@@ -330,6 +330,10 @@ EFI_PARAMS_FROM_FDT = true
 ["category:uefi".">=6.1.0"."aarch64"]
 # Required EFI booting compressed kernels on this arch
 EFI_ZBOOT = true
+# Devices that used to run windows may still want to access
+# the windows partition (e.g. to retrieve firmware on WoA)
+["category:uefi".">=5.15"."aarch64 x86_64"]
+NTFS3_FS = true
 
 ["category:libcamera".">=0.0.0"."aarch64"]
 UDMABUF = true
