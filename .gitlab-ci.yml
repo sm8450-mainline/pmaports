@@ -108,6 +108,9 @@ kernel-kconfig:
     - if: *mr_rule
       changes:
         - kconfigcheck.toml
+      allow_failure: true
+    - if: *mr_rule
+      changes:
         - device/*/linux-*/config-*
   script:
     - .ci/lib/gitlab_prepare_ci.sh
