@@ -31,7 +31,7 @@ workflow:
 wiki:
   stage: lint
   rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_PROTECTED == "false"
+    - if: &mr_rule $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_PROTECTED == "false"
       changes:
         - .ci/**/*
         - .gitlab-ci.yml
@@ -44,7 +44,7 @@ wiki:
 ruff:
   stage: lint
   rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_PROTECTED == "false"
+    - if: *mr_rule
       changes:
         - .ci/*
         - .ci/*/*
@@ -58,7 +58,7 @@ shellcheck-grep:
   stage: lint
   image: alpine:edge
   rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_PROTECTED == "false"
+    - if: *mr_rule
   script:
     - .ci/lib/gitlab_prepare_ci.sh
     - .ci/shellcheck.sh
@@ -69,7 +69,7 @@ editor-config:
   stage: lint
   image: alpine:edge
   rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_PROTECTED == "false"
+    - if: *mr_rule
   script:
     - .ci/lib/gitlab_prepare_ci.sh
     - .ci/ec.sh
@@ -78,7 +78,7 @@ editor-config:
 pytest-commits:
   stage: lint
   rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_PROTECTED == "false"
+    - if: *mr_rule
   script:
     - .ci/lib/gitlab_prepare_ci.sh
     - .ci/pytest.sh
@@ -95,7 +95,7 @@ pytest-commits:
 aport-lint:
   stage: lint
   rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_PROTECTED == "false"
+    - if: *mr_rule
   script:
     - .ci/lib/gitlab_prepare_ci.sh
     - .ci/apkbuild-lint.sh
@@ -105,7 +105,7 @@ aport-lint:
 kernel-kconfig:
   stage: lint
   rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_PROTECTED == "false"
+    - if: *mr_rule
       changes:
         - kconfigcheck.toml
         - device/*/linux-*/config-*
@@ -130,7 +130,7 @@ mr-settings:
 .build:
   stage: build
   rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_PROTECTED == "false"
+    - if: *mr_rule
   before_script:
     - *global_before_scripts
     - .ci/lib/gitlab_prepare_ci.sh
