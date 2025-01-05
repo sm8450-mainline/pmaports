@@ -3,7 +3,7 @@
 
 pkgname=grub-efi-x86
 pkgver=2.12
-pkgrel=6
+pkgrel=7
 
 _arch="x86"
 _mirror="http://dl-4.alpinelinux.org/alpine/"
@@ -22,5 +22,5 @@ package() {
 }
 
 sha512sums="
-bad54187b4fbb9f78f2d619ff9a652a4927c557070c2c39334fd9900ae5aeb956144055602ca56295d7966c2d10090ef142a073dd67eb14f7b41ba0d54c78d4d  grub-efi-2.12-r6-x86-edge.apk
+8a44b4d48c804fb2c62c3d75c85f86a108f1446d3b1f194cde3c1b3ce7653825379d5733fdf8e08013afcea0d9c879438556d8cbbfb7d5cd6c41b98ab7216492  grub-efi-2.12-r7-x86-edge.apk
 "
