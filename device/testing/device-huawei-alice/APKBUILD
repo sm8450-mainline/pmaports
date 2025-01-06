@@ -1,13 +1,13 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-huawei-alice
 pkgdesc="Huawei P8 Lite"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
-depends="postmarketos-base linux-huawei-alice mkbootimg msm-fb-refresher"
+depends="postmarketos-base linux-huawei-alice mkbootimg msm-fb-refresher postmarketos-base-downstream"
 makedepends="devicepkg-dev"
 source="deviceinfo"
 
@@ -28,5 +28,5 @@ package() {
 }
 
 sha512sums="
-7e6ef16d5f2e75f9299f88a0223853a12fccaf178803bb3f6d97921982cb316d1dfd4599f190fa26e83fead57d2d1ef4ac1a7549d0d69b24977cd541a1b3e2cc  deviceinfo
+5430865c8531590622e1adda2828a040694ad03f9cc6959a628aa32c77293d2aea7f6ffccaea3cac28e4c7f20f98e0293977a666ae13108ff2f8c20fdd545d3f  deviceinfo
 "
