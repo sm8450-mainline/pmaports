@@ -58,7 +58,6 @@
                         data = /incbin/("initramfs");
                         type = "ramdisk";
                         arch = "arm64";
-                        load = <0x82800000>;
                         os = "linux";
                         hash {
                                 algo = "sha1";
