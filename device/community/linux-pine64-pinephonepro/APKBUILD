@@ -12,6 +12,7 @@ license="GPL-2.0-only"
 options="!strip !check !tracedeps
 	pmb:cross-native
 	pmb:kconfigcheck-community
+	pmb:kconfigcheck-pinephonepro
 	"
 makedepends="
 	bash

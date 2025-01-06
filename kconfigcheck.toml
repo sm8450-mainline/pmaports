@@ -490,6 +490,8 @@ VIRTUALIZATION = true
 DYNAMIC_DEBUG = true  # Enable debug dynamically
 DYNAMIC_FTRACE = true  # Enable function tracing dynamically
 
-# librem5: Specific to the Purism Librem 5
+# Device specific settings to prevent regressions
 ["category:librem5".">=0.0.0"."aarch64"]
-RS9116_FLASH_MODE = false
+RS9116_FLASH_MODE = false  # pma!2059
+["category:pinephonepro".">=0.0.0"."aarch64"]
+LEDS_GROUP_MULTICOLOR = true  # pma!5991
