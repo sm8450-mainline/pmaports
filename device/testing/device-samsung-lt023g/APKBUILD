@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-lt023g
 pkgdesc="Galaxy Tab 3 7.0"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -20,5 +20,5 @@ package() {
 }
 
 sha512sums="
-3314566340192dfb1e27581c5bc88ae98551f13ddad72a613424e07d94f509550af701354163d55faa324309a3c9c1e1b9caa42e1317056eacdcaa74d85cbf0a  deviceinfo
+ad66b88e9fc39e30cb205a5d203eac7a20c67b6e1233d52651e0596f8dc2e10b358baba054cd168d9f30e1a0477d738520b7ff04b993b9c9938e2f3f45853339  deviceinfo
 "
