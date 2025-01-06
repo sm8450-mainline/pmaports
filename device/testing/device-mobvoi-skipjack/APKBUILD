@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-mobvoi-skipjack
 pkgdesc="Mobvoi Ticwatch C2"
-pkgver=2
-pkgrel=4
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -48,5 +48,5 @@ nonfree_firmware_wcnss() {
 }
 
 sha512sums="
-8ec2903bf1c6ebd955fd22fdf1883b7bfdef2d9c58d8f68a81c46de2b2554e10f45671f0de0b35165aa53b270fd6938d78040c2a74b9044b5d32c05afef4f9f5  deviceinfo
+455443ca487a0fabd1a53bddfe41872adf814c86f8b0eefe2ed2cc9afcf59ee985dd42ac34fa3458dfe395d002c9b3b40a126c1ac331a4be32ee4437a8ffd41d  deviceinfo
 "

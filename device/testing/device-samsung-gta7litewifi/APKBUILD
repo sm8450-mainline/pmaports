@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-gta7litewifi
 pkgdesc="Samsung Galaxy Tab A7 Lite"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -27,5 +27,5 @@ package() {
 }
 
 sha512sums="
-2008c6bf8567f72f0dd8bc93d807fe9857a1ea16ebb3f26f5a886fa6b487379579e373adb537cc28439ce39c6a88dc89be8ffbb22d168c977b6bbaf7ae579d34  deviceinfo
+17990064e352dca2125ae696125e5b826a495c56d43cc1e337c1f6e1e959009a6e131ffeb83af3ab3847ce0c31312b6ebde39a46033cb1a2b44c41283854d622  deviceinfo
 "

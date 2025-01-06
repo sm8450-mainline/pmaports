@@ -2,8 +2,8 @@
 # Maintainer: Newbyte <newbyte@disroot.org>
 pkgname=device-samsung-m0
 pkgdesc="Samsung Galaxy S III"
-pkgver=8
-pkgrel=1
+pkgver=9
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -53,7 +53,7 @@ nonfree_firmware() {
 }
 
 sha512sums="
-768ec2afc4a8b782fdfece54f4ddc9898f3b24a30b45ff0d3f7ef5f5a26fdcca2028d3fd4449029ea09f195cbcd7291318b835b0236e0ae70396c9d5741c326f  deviceinfo
+dacebfb86685b67476a6046b1c979530de97a9471c218349bc3b2b02fdd640b4cc2c54656c40c58731164bb06e90f53edca2200762262a3094f3ba5381e05dee  deviceinfo
 caa81e8ab6753c0ca24c22fb6742288765dfbf2469b8b8c35c5789edfcee546ef1c3b14ad6e540c417f434258399300f17d312b58157635eafab134587ef94cc  Midas.conf
 21f64c9104ec5780fffde8ba7ce57583592469694d07dd5e2de4173d7c9f99ba57fb28bb5bcfbbce921be9c4ead9d31980e948533162fe12424c2037145debb1  HiFi.conf
 56a2bdffc273cb0a581192e65378ff50e71c7bc8a696af7d5e7c165a53c005aae104c4514c68afb668454c5a94ce78bd509f8a40e3401d67e16636b1ed81d051  modules-load.conf

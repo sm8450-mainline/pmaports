@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-huawei-frd
 pkgdesc="Huawei Honor 8"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -25,5 +25,5 @@ package() {
 }
 
 sha512sums="
-cf6af64febe077479dc8e9443299e985df672f417df2d1484ee6a3c2cde60238c2538a87cc81a51e284783d6884f83a03cd2d780be5ef6646b302865e1bce6ac  deviceinfo
+b13e4f87842c14ea7cd4f1e0a260e5879524a1bf0d5a86cadf84f42d873fe67a689f2d5db3c9e82fa2507844299e85dfcf85ec72a6e9d7520008f602eb7f2090  deviceinfo
 "

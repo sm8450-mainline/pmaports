@@ -22,7 +22,6 @@ deviceinfo_kernel_cmdline_downstream="androidboot.console=ttyMSM0 androidboot.ha
 deviceinfo_kernel_cmdline_mainline="clk_ignore_unused pd_ignore_unused"
 deviceinfo_generate_bootimg="true"
 deviceinfo_bootimg_qcdt="false"
-deviceinfo_bootimg_mtk_mkimage="false"
 deviceinfo_bootimg_dtb_second="false"
 deviceinfo_flash_pagesize="4096"
 deviceinfo_header_version_downstream="0"

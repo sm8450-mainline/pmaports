@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-arubaslim
 pkgdesc="Samsung Galaxy Core"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -25,5 +25,5 @@ package() {
 }
 
 sha512sums="
-6221ceb1a640006fbaee2950a717c116dbc1452aef2f4682e65008f828d0d78ef6e181ed026a6c5b70979a2ae972ddf2b8b485a415da6f8300d6009c0723d1f7  deviceinfo
+841298512ab1197cb8802d2c1c72b6693dabda2e30f5685033bf78381c170a19dbe72e3b5249ba8cd836146963e3c1178c2329c12f8b4ed9799521a6865ee156  deviceinfo
 "

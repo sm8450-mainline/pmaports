@@ -2,7 +2,7 @@
 # Maintainer: Lux Aliaga <they@mint.lgbt>
 pkgname=device-xiaomi-laurel
 pkgdesc="Xiaomi Mi A3"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -25,5 +25,5 @@ package() {
 }
 
 sha512sums="
-ba617e02048c55ade31fc6be3fd4b90675068511cc811c75ec0d26cfb52636df48077adb1d10dc46b3c084d0e8fbcd0d2e1cc4dd7eb72acf1a71cbbcb41b6f81  deviceinfo
+6d8f5083e2e27b25f18ed9095afa3bfe016c02710afa4dfe5219385526d1280383ccd7d375a8125ea339dbdfa9a164332ffd846259990da73191b4c6e0aff6de  deviceinfo
 "

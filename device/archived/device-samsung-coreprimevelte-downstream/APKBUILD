@@ -3,7 +3,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-coreprimevelte-downstream
 pkgdesc="Samsung Galaxy Core Prime VE LTE downstream"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -24,6 +24,6 @@ package() {
 }
 
 sha512sums="
-ec654952ea328489ced4268a78272977cca1a9356d86ea9794f5a0aa9387d7daeb1125419388a4ade0ea86cc6893178601eb7aa18a5886970a775e5ad78a59ba  deviceinfo
+00c8780dbc77e62e7d57a2b3e879881076204f3e58d50555778aa68feb0157f5b4207fdabbb4627888eeeda6a35182e8e199e49e4050244a60ce4e9e2d84bd99  deviceinfo
 4854cc57b86e1199dbc165110514e672dabf45044fe9f7ebbde5b2b24768fb5497273b5f38612cf2dfeffc9bf0648c725114b4fa01165bf7fb02f7d741ee5806  90-coreprimevelte.conf
 "

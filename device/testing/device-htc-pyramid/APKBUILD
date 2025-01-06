@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-htc-pyramid
 pkgdesc="HTC Sensation"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -26,5 +26,5 @@ package() {
 }
 
 sha512sums="
-1819ed9dc0aa105378def778c7dd63ab8c9d3cfdcfcc6f090e804d47d8ff7a10ef73437618311353ddd2d305de43547e7781a8b7389640d0bef445c89f571673  deviceinfo
+037e7780379510b8c23c67660b5c67102b8a61bf1c6f6c71d7904fb1a90022064183b090e7fd4dd2947127460ac36a3c300c0117c37f765933f4160f9f6e560f  deviceinfo
 "

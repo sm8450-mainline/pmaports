@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-superior
 pkgdesc="Samsung Galaxy Premier"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -30,6 +30,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-c64055aae2b2154b1a4bca02a1711fd58ee54e70bba61664fa2de4073f04f6bd8ea994cdb544e12d5fdc0aa35c1af2ce28663a298e7ac0a08d28e1380528ad36  deviceinfo
+b7e909e847ce53a5230c4896310e3b757de51db447b8524f170b0303abce23edc77f076a3765dfeecd4f549f133910956ebc0001d392bba855149561a6e286c5  deviceinfo
 761387a44a2280589336a69b24a24bc33e81aebc441f4033ffd992820edee6b386cc817d7b8519cbf52467a56180ec6b9a88929ee54e73f01217107ef206cab4  modules-load.conf
 "

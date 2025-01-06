@@ -2,7 +2,7 @@
 
 pkgname=device-oneplus-hotdogb
 pkgdesc="OnePlus 7T"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -25,5 +25,5 @@ package() {
 }
 
 sha512sums="
-047e6e9a072bcbbef2ac8be7813784d1e1776495734df3e0c3b116cb599908cb970dd3f98089298032eeb7870013cd4521d7be71e65b67f02e8d436238581d2b  deviceinfo
+821d7ecbbb0e9820df3269311b4264681c5777b9637390fc07675a06fd79ed2d14b256cdf46efe03449d584915ffa531fd6d8e22411dbd45d7cbf86227ad011e  deviceinfo
 "

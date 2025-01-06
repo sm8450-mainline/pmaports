@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-beyond1lte
 pkgdesc="Samsung Galaxy S10"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -32,6 +32,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-4112a8990d144de04c004b0457f3769d9426f40793381e4b3562d1591ee9b52d4d7f0f6560e5afd003671d6239bb2140022bff5305ea6d391b4b42aa47110933  deviceinfo
+8913beded8a64191ca2f2244722bce32f67a34ce98aec820f663c3d1b81e1c0d29c1eb3d710b977e0d1cc12424333d72c0b4a400c5b75bda1dd435abe6f697fc  deviceinfo
 03deb65563f4b4421491643854927e88b2d5880b8b19ee6baa4d3fa1ec3f7d7a1c2977fd2c3c41270254efea6fa0c5fdae0a382e7c427d5a3bf6fad34c25375e  initfs-hook.sh
 "

@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-k3gxx
 pkgdesc="Samsung Galaxy S5 (International 3G)"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -25,5 +25,5 @@ package() {
 }
 
 sha512sums="
-ad52bcc820936c49af0a4ebea05370d2c36dc355f61fe1f9025f452422faae4543f4c30d9340b8ec10407739e26dcba12b13746d706ec6e68d5d2854612a363e  deviceinfo
+189925d6caa595983f1beff028facf6c7de82156d55ca77aa19a89ff58b6db6a33d7610762594fbb54bb691406d179c1657cf5d6f4ecfe133f544e8c2b5cca47  deviceinfo
 "

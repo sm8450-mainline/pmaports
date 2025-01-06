@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-amazon-tate
 pkgdesc="Amazon Kindle Fire HD (2nd Generation)"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -29,7 +29,7 @@ package() {
 }
 
 sha512sums="
-2e06c09046be664bbba5d55aafb06aceafbf41777bf116caa508d461190d546cc7ceae5160f0582dee20d88b5998837c00ffc3de928d1e5892bb32485523ce79  deviceinfo
+c252950bbe603045e3eb76a19f70c6590365b6324050cf7d00ee048321bac67ebfc6fb7d2b24a5798d197259acd29ec55ebc466f8a848ee93f8c09b6483146e0  deviceinfo
 1aca985770246b9ca140996a498815b5c9ca3458a6cb84db85825344f01deda8b1de7c88e2e0c610df636ad2179faac7fd90d9992add51186a6449f2d43a3f71  initfs-hook.sh
 a5027ac9f113018d55e4c5fc065b0498d0a50df099a348fe38d6b841087aa285a8d67b400b9fe88007f41d0fd79c2fe69d62300af6963ecb40c5fb2353cbabf1  amazon-omap-boot-hack.sh
 "

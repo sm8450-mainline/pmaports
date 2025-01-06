@@ -4,8 +4,8 @@
 
 pkgname=device-oneplus-guacamole
 pkgdesc="OnePlus 7 Pro"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -27,5 +27,5 @@ package() {
 }
 
 sha512sums="
-fe7aa3481235cd608642c71413fb288fbe4dc9e3ffdaf9f1375506be6f662dd7c13699e66e14cb23aedc752694bd0cccb9cc5af385aaa94fea4971f1a03fb18f  deviceinfo
+d0cb362e0277024ccafd6ed982654b34f439253d63392e8a458274f7fc3b1ce65676630a6e702f31597d479bbaa31a16f620ad771104f30097fd585529171b7b  deviceinfo
 "

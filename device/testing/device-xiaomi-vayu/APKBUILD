@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-vayu
 pkgdesc="Xiaomi POCO X3 Pro"
-pkgver=1
-pkgrel=2
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -64,6 +64,6 @@ phosh() {
 }
 
 sha512sums="
-c33f838120dc3c2588287aa3fc6a5180b94445456ea6efaf221f88366a42fdf7daa8c373c8ac20e6c5bdab025e13328227ffb1394d4fd1077eb95203fbeb477e  deviceinfo
+593e27a91376866698c8c37f4aec4f3ef6866179d363b71649161faa6421d13f88bdfc26f398838723a840de81a2de25e133046b09d60801ddcad87a79dffb3c  deviceinfo
 eef80842915acfa8d8bcbd9ac9fcb057ad912d582e4a78b8ddd9774ef688971d2878b83f4a54adaa1d613dce8645a85ffb25e8a98c55e32a91dfe73002e91fe0  phoc.ini
 "

@@ -2,7 +2,7 @@
 # Maintainer: Newbyte <newbie13xd@gmail.com>
 pkgname=device-lg-judyln
 pkgdesc="LG G7 ThinQ"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -21,6 +21,6 @@ package() {
 }
 
 sha512sums="
-e0119fc37e68e700ddd0863ebf7d54430abdacd5deefe59c08020e6548afd5d15dd81710712f3f78eb1acc253a530b2b220e6466e3b94a92d05decaa844f9e42  deviceinfo
+d608e0e0ee2ca85beb5b64715b2e7e2b39edd7d2cd8f3788a4fa21a86ff7ef1a1345cd0512d377e8c8420e0efe03b2de4484818f2119089db2bcb4b8ca856c7e  deviceinfo
 09fb39b4698e3fd433e35f94b4c39787a4ff9af258e8a85b5a197fb2676f993da2666ffb4ae98c41f35446d52b3578e1e6ebd06cc7010287ca140bf207c3a8af  modules-initfs
 "

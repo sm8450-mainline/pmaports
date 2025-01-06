@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-j8y18lte
 pkgdesc="Samsung Galaxy J8 (2018)"
-pkgver=1
-pkgrel=6
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -38,7 +38,7 @@ nonfree_firmware() {
 }
 
 sha512sums="
-b82b37ae056eb53434e6b98dc31fbab86deafa439b6a1ca69eae953acd4814b99e453d657a22922318b82b3c08893bf7b08fe3d7d5d5f9dd4a72f9984ec42cb7  deviceinfo
+45ebf363ec4de61c91cb42f359be57f8cfeb7b2e414d50a8203bf53ee003cc54c751c577c514ab9a5824e471b31090b1ac2de894f37f46fb5e8baff962963023  deviceinfo
 c11610ccfbb2a46a4b721d64f8a2dbc4315768dbae52f1b675fce0ad0ab3b24d8685f944d914f6c37acc480e01b16ae8a2d280655f028f2ac577a68dee7aef7d  initfs-hook.sh
 3db3ec596e159be926ea2b5b2496c18e9bc7be24a64a232a56c89a0c9ee710aa2efb2b6fa9fc08efa34759e8242e6c629d08a4ce688ec8aa125830717c191515  directfbrc
 070eb0e3716d1a13517667d6cc6db720cc865f56f7619b1d4d864157567656128523cfa935236fff30a211a011b5c53b66d0cc28c256ba115a86aac82f4dffe9  fb.modes

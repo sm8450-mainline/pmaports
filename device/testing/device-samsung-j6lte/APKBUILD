@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-j6lte
 pkgdesc="Samsung Galaxy J6 (2018)"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -33,5 +33,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-fa363c817bb6655f53ac7d3a8c349cc96c8a11d80538d1c0d38101eb67ac4452761c3a8283444c0884095495c6f127c70e8be3e004b2898e2353d41570f5e375  deviceinfo
+ecc8c18a90c95dd9bdb15440ef9847b65f0900a7be9abd03d40d91fe4455a26f6670f358c3c34fc1b2a621c2c4cad775ff7bcccdf03dd29be527344fa13978cd  deviceinfo
 "

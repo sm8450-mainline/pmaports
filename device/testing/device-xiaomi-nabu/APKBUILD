@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-nabu
 pkgdesc="Xiaomi Pad 5"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -107,7 +107,7 @@ pulseaudio() {
 }
 
 sha512sums="
-9c99b80f35e17298ca5848bcb0ae1a9d612b34a8479c8959de351fb785cb3bd60261d74f998a49ca3a933c6f74f82d586a9606d4a82aa8b414d6a52f87e8deaf  deviceinfo
+cc3bdbf0be335ce932f45147fc60db251228f765024391015582fb98b2a31189827ab9f88fc92483077e62e6a5b11b772ffa2967ce40604442bc212f2e83f922  deviceinfo
 ed5788faaa0b70b0fd1d7702ce9e1991749aae4226ae1aac12c73c705541880c8fd7715b3da1abbdb8b0e469081744e92822e0ec3f56ad0160405a6fdfac5806  30-gpu-firmware.files
 7b0b16f02b59b74cef7d82ae4e33f8d0c4ea12515824abb3392891eb75c365d19efec685f6f6248b7fec1e2698caca741bba01687673914d0f9de188444e0b37  XiaomiPad5.conf
 2f493f47aa0fc421a467fd16e878f2a40963111a4581fd0ceb9606c9c529ed017cb29045961780d9785afe1fcc8aa476b6c954dabbf63b8b2309e686476f5036  HiFi.conf

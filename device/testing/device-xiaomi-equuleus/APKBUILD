@@ -3,8 +3,8 @@
 
 pkgname=device-xiaomi-equuleus
 pkgdesc="Xiaomi Mi 8 Pro"
-pkgver=1
-pkgrel=5
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -27,5 +27,5 @@ package() {
 }
 
 sha512sums="
-028b848fba7732b6efc8abd00f629db658d6a6f59e4fd1838c865df550233d6e1cb83eeaa856dee7569a6c5a5368d83102b7e0854a92b94fba722f041160e8c9  deviceinfo
+d5aa5de92e25c88962b3bcc869d71702c7971475854a116501e92a6682e527e509b0aefa9c427b2281d4812c5417c0d7bed69c779a5cdf8939f7480e061e3b99  deviceinfo
 "

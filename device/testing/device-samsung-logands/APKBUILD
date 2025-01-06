@@ -2,7 +2,7 @@
 # Maintainer: AppleCross <ijiki16@freeuni.edu.ge>
 pkgname=device-samsung-logands
 pkgdesc="Samsung Galaxy Ace 3 Duos"
-pkgver=5
+pkgver=6
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -39,6 +39,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-55dbb75748b0818ed51eaa6b2f1b355440cb75a2bf9e82a68d0c3c48f056f7aacf4fb017a470d71ea6e7fec97c0bb5ed53bb47aa61241faf6e277d3ec0b020d3  deviceinfo
+15943cbbe9421d663d5a6f6cfe2e4af2135cec675c4ffaeca16b28b0a1b39a6ff3b0059676f862d0474eb8cc6cfa54703d9f36e021b91d1ac7e6210890c48222  deviceinfo
 d7ab8040186524169440cb8264757943d47015f1ebfa1decc416d8bda7c2de8cfebef1b714421f86f37e23b6004482d6cb9b7f1ca83da9a73d11e5fd38b105f7  modules-load.conf
 "

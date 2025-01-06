@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-leeco-x3
 pkgdesc="LeEco Le 1s"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -20,5 +20,5 @@ package() {
 }
 
 sha512sums="
-8d69c04a3ab09a32403b7c069ac616753864a25dec886c48946decdb4798fec1ce05868090a6bce0a265c9aadc66d54ef0b3582f0cac53ba4f73e774179132d2  deviceinfo
+ab6f9b149268a0924312fa615c3f03a0dab35d6a54181c53a1be91a023b30c2f43a5963fe998dbeca7059837eac720ab07caf0501eda8e191ec93880c6f903fc  deviceinfo
 "

@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-a7y18lte
 pkgdesc="Samsung Galaxy A7 (2018)"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -27,6 +27,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-3cf7f06ce97edb70320cb4e6fc6abe2e94ce96731d93855ff782fa5ca49ee7bbe40dc2d28a613f5af10af737b10b6d120a97478ff17c5faca7d2ce4068897240  deviceinfo
+cccfe1d9ee963bc9a0415dc2bd088f63e7df980ce82c4e3d55072ebf32707f849d79b016273acb73098db0eec6be1febb16d4237cfde420027a9dbf23199d76c  deviceinfo
 04445194a5245d08fcf1b425bff1d8dd6a8fdacafdc151223634299a35f1eb20fbd733979b58bcfd854e16fde02629c28453f840d6c9dc34fc15d4fcc8aa4302  initfs-hook.sh
 "

@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lg-madai
 pkgdesc="LG Fx0"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -27,5 +27,5 @@ package() {
 }
 
 sha512sums="
-08a8ccb85acce23196b6439ec599cf530da679f1dc68df69b1237f6c7a59b62cc47eb9e40086dbddbed1e28e66da0ceae58d2bdd12aa17236b65c52cab68ec3b  deviceinfo
+52b780e5dc71998b1f386c687a163cf196aafd104385ae12106cbe449f0a5c3cbb8dfe819eab9c63094cb03cb929bc4d60b22ccc930891f1c25cb1c08e05b985  deviceinfo
 "

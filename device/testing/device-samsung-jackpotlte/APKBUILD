@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-jackpotlte
 pkgdesc="Samsung Galaxy A8 (2018)"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -27,5 +27,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-cd1161c58bac5164cb614bbf31aa2e8ce9e0e96302fc9e8db8e045d080a38c629400e1ef1e3f408dd905e27db8b675dd1ef68486c2714931654870b7275f324f  deviceinfo
+cd43527591bcc9b91697b59c6793659696f9baf416bd68823d4479a37fab8f02c443564c3161d0f7570f5d1a516f6c56e48e34b923dada4d5dd58fdaffe4370a  deviceinfo
 "

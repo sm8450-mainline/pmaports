@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-a6lte
 pkgdesc="Samsung Galaxy A6 2018"
-pkgver=6
+pkgver=7
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -107,7 +107,7 @@ downstream_quirks_openrc() {
 }
 
 sha512sums="
-95b46ef54f2b92edefcdc3742a1d36b7c52066daeeb5002f25b4de144d52e3cda8e3981c8b44d608dcfaf6ec5a89066d1e53e9c1eccbaf03c262b6c162efe532  deviceinfo
+4dc62ad42527dd0ff687c4279e94c37d534de8a29e8ea42e69cc29fc65dc96604bfd32a3e848135c37a4a86d9d78b5da9adce7fd9230814748b6324058ea32df  deviceinfo
 3e5bb764529010d2b6b1f2759a7799f665d140aebcee2dd63433e68cd4282e09b5d3b34fb7c21e737595b406501e7f02ece4592651c60e4c2b9419de4aedb438  etc-conf.d-samsungipcd
 f9716fc70bf3508d2f9e83d908f1c13103403f01ebb784acec6cdf3e959e92b63c75e49b0120abe1ada5a50d768dcf30b8472630da1172fc826485e97024d85e  etc-init.d-hciattach-ttySAC0
 203b832a7080d5f1351c5e024e444f9fe509f6e0fd4b376a60c7d73359b7e356863a4f15caf9b2e4e733dc44d2971722083e7c69ca94a012eb004b4b8ded9d09  etc-init.d-udev-settle

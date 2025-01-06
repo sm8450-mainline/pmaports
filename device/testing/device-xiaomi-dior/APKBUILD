@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-dior
 pkgdesc="Xiaomi Redmi Note 4G"
-pkgver=1
-pkgrel=5
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -27,5 +27,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-eef6ed437a027968deb9d26146be806909dc354377082a62f4353e0556c433537ff5a9a2fbfae19c82e9a5d2e10dd6bcddd1ecf4a431ac662f9894c524a6f578  deviceinfo
+09a636d433b47c7cbe94b2f663c430308b52ed5ee3a7f5ff0920f2dab1d8d4f745115af15f0b223f36936986a93e62b4a5b0e15ef088ae12993a11a270f536c8  deviceinfo
 "

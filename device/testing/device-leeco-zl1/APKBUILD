@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-leeco-zl1
 pkgdesc="LeEco Le Pro3"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -25,5 +25,5 @@ package() {
 }
 
 sha512sums="
-3a81a4dcfb26f5b1d5fbab856adb8ff7ecd6f2e31749ecfa1f26a1fce815c1e04a8015425753e4b00046979f60d46f35cf0c7f6dee70915444374ffb0257d556  deviceinfo
+8e1543132d9bc3b3079e43336113942348df3e7dedf1476306d7327d5f50067c9fdd1e9d7dd988dac1d4e4ea0cf315f5fa7e1bc861e8b7a408b1bddf0326c018  deviceinfo
 "

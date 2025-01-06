@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-amazon-austin
 pkgdesc="Amazon Fire 7 (2017)"
-pkgver=1
-pkgrel=3
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -25,5 +25,5 @@ package() {
 }
 
 sha512sums="
-7996497bcd36f7c49ffc83392bc7528f9c8e911356e8eb890d537be2fd3bbef13a678b53b8f57a955503b128a0182db3ed5c95182c616a317d2e43ad6e603640  deviceinfo
+60f7d369b40daa351c27759f633680997017c5808c0469e012e20050db4d70ecb9c7071d383fb7f3e5bcada35435cd31ab77251a8a2a80ef3eee5fe9c38f5b56  deviceinfo
 "

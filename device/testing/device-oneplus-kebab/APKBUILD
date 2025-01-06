@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-oneplus-kebab
 pkgdesc="OnePlus 8T"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -37,6 +37,6 @@ weston() {
 
 
 sha512sums="
-1b56a3311821c4b9711d146cb5a0e6ac96a96020b29f2cd63bf545a8302b2ecf1139a65899aa984163885d7685a1f02388df2ea0f23ae235bec1a84479f8adff  deviceinfo
+538e17ec6855924865cf1bb2650667232bf6c384e1e8918f40e660ad61c001bace4cc16b46609b067dad5bbf6e9d33339340c273d81aa0550dffe05fdb2f106c  deviceinfo
 4fdc188f9cd5c0316959322568916a6e36e67ff316e90fa7bd7c7b642cb137a9ff7002b0475728c6ba53abcbfe8c50d82112e4943460ee424aee4bbfd0efecfe  weston.ini
 "

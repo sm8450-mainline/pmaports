@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-amazon-ford
 pkgdesc="Amazon Fire 7 (2015)"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -30,6 +30,6 @@ package() {
 }
 
 sha512sums="
-7c716707290d3589ae9d01b2e8c4e25fbce94499e2341601ee72520c17fa84e4ab21ce024647a30f6eebb55a6b0fea564a050a1d68287b5388779b9e28c28ef1  deviceinfo
+a88bef0bd60a4cfbb79bc6f3f821c92653d3afddc880e68ca40ee245b63a8819776102a2131382287dbbe58da3ddb83147dd95c3b63fa4d51f671a6166e129fa  deviceinfo
 f3d0b7d44f549100b3402fb287e80654279ae962a6b7721f3dc676324bdcf5c104391f9e4f3c5eac5733eff0ad467aa959a5f66553e7668c08124a1609ed3145  90-android-touch-dev.rules
 "

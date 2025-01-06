@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-goyavewifi
 pkgdesc="Samsung Galaxy Tab 3 Lite"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -25,5 +25,5 @@ package() {
 }
 
 sha512sums="
-9ce7daa6a5583f4424f0e9610b246bdd8ba0e42c887966eca0535e1fab3fe80214878a32fbe590ca49e16766ebec3bac74d0f3496a2029e6a139fcc9271a5674  deviceinfo
+11380f9ff5382e5e0ccc6dff62048ef6e1d2ea3626311217a6f41b3c2c502cd5a380bbe2fd8f9a064bc381b6c2e3fb74501dfc95f3e415ece2073ad0883d4e17  deviceinfo
 "

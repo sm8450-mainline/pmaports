@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-a5xelte
 pkgdesc="Samsung Galaxy A5 (2016)"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -25,5 +25,5 @@ package() {
 }
 
 sha512sums="
-a95f805d8bcbec66ea992f7e958b75cbea20f292daadd92053ea27ffa6f0d7af6042386f545d1cc97313487df4d0aa8d075c25c9fa7ab53b8c174307d14c53e4  deviceinfo
+b02bd5d912ab7f0e0c7130746f616f19665ff6eddfa2a41ab508744fbec2414606afa897cde9068a3cbdce0a159fa715b86bcda8b03763a83d1f5a314e63302f  deviceinfo
 "

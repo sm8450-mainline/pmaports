@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-wiko-lenny5
 pkgdesc="Wiko Lenny 5"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -24,5 +24,5 @@ package() {
 }
 
 sha512sums="
-6387db4a981364585ab917ee01ca9eddf7e0a222828e63dadd54e200b9b1cdb9959f681566c7f31d8f78a0d360acacd966635a0e607857ee9869f24c6bb142aa  deviceinfo
+6f51ea8b36666f58924af904a25eb3e86a228aeb5456b9f4ef261cf59c177b53f87ea7e7fed5ff175986b1548624de628bd90d1a7f4bdb286513589427e2e02f  deviceinfo
 "

@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-gts28velte
 pkgdesc="Samsung Galaxy Tab S2 8.0 LTE"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -20,5 +20,5 @@ package() {
 }
 
 sha512sums="
-4eaf3e36d6f830953eb6ffcb76413f992ccdd1cdedae3ec475c0365dcd17b730a26af438344b31307d06cf24f64ee381c3f5edaa5334a5f43d6b0c8e0aedff23  deviceinfo
+7622d724ae24c090560503b6bc16dfa0a18196f2002cd1fe8f67124c0e567162a5ac66c53d4444798ce22cae2bb689fef8e8a80a2b1ad854311c539dfffaf8aa  deviceinfo
 "

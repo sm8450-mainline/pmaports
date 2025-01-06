@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-huawei-plank
 pkgdesc="Huawei Honor 7"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -24,5 +24,5 @@ package() {
 }
 
 sha512sums="
-b987d515eafaa324d9096529e6b8efbadfc2a73fe0f5e6b3626aa04cd5292386a9743ddde6f4443211ee52b3b8198157a3382c33ecbeba6baa05e0cd9bb93707  deviceinfo
+f02ba5e67bb20df6fe660ae6744bf2c46359cb4bae42f5266d643666c7d96a468f3436332f1fba9a45951dca9cb83f5d553d0191086c88436e9048defe4832a7  deviceinfo
 "

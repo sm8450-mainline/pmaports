@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-motorola-odessa
 pkgdesc="Motorola Moto G9 Plus"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -28,5 +28,5 @@ package() {
 }
 
 sha512sums="
-3664144db89bd3451a485e60b976577f4c0d4a838b8fdc7884789fe3cc9f988216d6eacd5ccd023d51e5625f971661373b798143e4d7cd21418a4717c13b61ad  deviceinfo
+7d57ed45485749f67fdb7e069834dc12823f3bd51a51961d79cb56a56bef9b8f18ab16fbc9a77ce5d279d42dcdd4332c7ae25295b068ea43f6e4d37ae84a50b2  deviceinfo
 "

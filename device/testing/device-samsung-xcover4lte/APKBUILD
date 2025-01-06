@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-xcover4lte
 pkgdesc="Samsung Galaxy Xcover 4"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -20,5 +20,5 @@ package() {
 }
 
 sha512sums="
-e10ecdeab81ec080af2f6377710cff8d83c17c02b16ad87c9a1c343ac2b8905b8020dfa3f518d654dc1072292e662557bdfa9f5df42fa11fc583ffb056a85d5c  deviceinfo
+1c16bc2e36b095d53822c2019c387bb3d1856ed0dd5d0cc009493fa875ecd01c98d2391d2d50720ad8e9581de0fb5053b54c700a21195041159bebba7f18d075  deviceinfo
 "

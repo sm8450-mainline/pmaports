@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-a20
 pkgdesc="Samsung Galaxy A20"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -27,6 +27,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-babce76aafb5471cec3ec61adce13391f4249218d1d659a613d9df6173008653da11b6852d94de2e375df0bfeaf1a0cbf0f72a9f40e187fd7ffcd3bfcf6b4e35  deviceinfo
+b6f2c1be2ed9006a98271fefd6073913a70a0830f29fd1e5108cb9efad2bac6e69833aacdf08b55b19d6ac98d9eff4ea2c680be25ba292ad84c901ba4cfc7764  deviceinfo
 04445194a5245d08fcf1b425bff1d8dd6a8fdacafdc151223634299a35f1eb20fbd733979b58bcfd854e16fde02629c28453f840d6c9dc34fc15d4fcc8aa4302  initfs-hook.sh
 "

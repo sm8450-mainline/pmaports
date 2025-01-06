@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-n2awifi
 pkgdesc="Samsung Galaxy Tab PRO 10.1 (WiFi)"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -49,5 +49,5 @@ kernel_mainline() {
 }
 
 sha512sums="
-bf657a12b8c3d07b71ad0c8b463dd5baa88ef8692f56d3d8be6dd8a2fe2db2357f91b85a8dfbdabb02699f04c05f3311bcc084aa19eabb770937b70011c07eb6  deviceinfo
+5c1097b8c9188c4fb339c0f03b7df98f4441e40e2de82decb06a03ed7c76c8cd9981d0b16fbabaec618ea620e4c085ca547ce1d7c9e243d9c5c4e5507342ce14  deviceinfo
 "

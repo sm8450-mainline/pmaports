@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-j7eltetmo
 pkgdesc="Samsung Galaxy J7 (T-Mobile)"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -30,5 +30,5 @@ package() {
 
 
 sha512sums="
-6b8e11fbb398f52908c4bc350aad57e384115231f2cabe18badad692101a5317a502160aafe56a752551e30c78f6543f41ce30f09dcf7df1aa183be29f937341  deviceinfo
+9458930b91433e47d893f5f4d7a13e199f9927d0f154227c4c63ffb3773851a751ca0085e9e6a08a1e8cf8dcb55afb264d4a6607e1f227e3c4ca578d6c6597f4  deviceinfo
 "

@@ -3,7 +3,7 @@
 
 pkgname=device-xiaomi-davinci
 pkgdesc="Xiaomi Mi 9T / Redmi K20"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -50,6 +50,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-fdfd0d4262570da657bb26c549d34a94250b1b11813b84813857d66ab4fc967f9a3e1e5a63cada12e22c5a576823303266dd13f775b7adbad8bf6f0c96527fad  deviceinfo
+2350ec38791799ab0cd0ec12256669e421ad716870956c08885b14dac5bfd05b170314175671cb35bdb9f58a5737e35824be0007ccf0a1f7f671d033d1c948ee  deviceinfo
 474485963fb4ff97982894be2e024de09e6b3e7b324aceebde0480200998cfa92d68415752d59802bb63aebf7f2a343415d281938f2e308e5066ba08f3d79606  modules-initfs
 "

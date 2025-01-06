@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-bq-frieza
 pkgdesc="BQ Aquarius M10 FHD"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -24,5 +24,5 @@ package() {
 }
 
 sha512sums="
-9f1ef103e8debbd9ee230b37e1b977ccf00b9dd873c158d91cb2bdcf6c97d6e6a9573725cc898d1ef5520f5e12ae40eb9e855906db90174947e5a4859b3a9cc5  deviceinfo
+30913b0deacc0891c143da4be3d05957544a2c3c2be545876c24a78de2006f1a95e8db184e031688e3e9aaec38747d6902ea1e55acbd84bc8cc5afdf016c3164  deviceinfo
 "

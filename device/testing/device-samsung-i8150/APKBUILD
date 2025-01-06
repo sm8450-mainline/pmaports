@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-i8150
 pkgdesc="Samsung Galaxy W"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -24,5 +24,5 @@ package() {
 }
 
 sha512sums="
-400c5e9f7cd9e0716827015947076228ba0ee1f19a0dd9d69c26b614f5f9705934a6462f8e6f8e3041447124cbc100ec439c894e86c910252f3620a69928b5a6  deviceinfo
+b4e3253ac59335ddf72a3f6a167d19d477aa261c3f5987deee8c347e8a2e36657cfe537e082df055120850d013346c1754ca2e937e6777e365bdd05c5529a032  deviceinfo
 "

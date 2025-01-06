@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-degaswifi
 pkgdesc="Samsung Galaxy Tab 4 7.0 WiFi"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -55,7 +55,7 @@ nonfree_firmware() {
 
 
 sha512sums="
-bc670878872b17e809c264b5074d69decbb95ff50811444128fab5fcc0822ec8038b9750b5057f2c4670bd21b8db9e19b39675692e515011e6c1f3c908321f64  deviceinfo
+de3b1c0923f17eb76031a3270bd483397720e88cfda81bbb34d0f2383a11638d1581d2bcf2ab0788d41a536d63cc5657adb5b6cde43ba4ef2ff6600eaa1c4094  deviceinfo
 12ce6c1d9ff73d97835b5f794f1a4a7d1ff796cc3913a3fbb65d579ec798f5bba108b5ed7d15b53db8a814fd71f3bd2553d868754a3dd3fd258250a99b657c8c  modules-initfs
 40a732897f27711c2e83dcc1e1295b38ac286362cc36eddc147960506522a036c1528e5c08893b1e2a459307cb7c09fd88dfa1bc70ea798694404a04974791e3  HiFi.conf
 9491be2f6f9145a1314206eb12d679ee0a9a82e2db73253ebd76e386e3c3bab4080f317a59b6065a14519fb8b156feba4af96662aa04fa0497dfded01b88f0a1  pxa-88pm805-dkb-hifi.conf

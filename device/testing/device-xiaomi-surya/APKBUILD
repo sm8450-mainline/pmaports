@@ -4,7 +4,7 @@
 
 pkgname=device-xiaomi-surya
 pkgdesc="Xiaomi POCO X3 NFC"
-pkgver=4
+pkgver=5
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -65,6 +65,6 @@ kernel_tianma() {
 }
 
 sha512sums="
-aa2e9a2a48b934a88122c605439119f2fa12ac060732465f389e0812447b939206211555f036f486aa32cc901ef01206cdd60ed918b957b07ac27f57998720e2  deviceinfo
+09cca64d70ab5b9350d4ca645d8f868906b5a9e90d7fd75bf7b9769b7b9ba18f98526675af2cf01b6369c1f36abf8ce47aea9fde6195927bb7735b151cf51bba  deviceinfo
 6d86b9211d4adf237ef2961f304655331287c186bba56b1af32185401b01b506949557ce6e70dc70e3c9997b4f5684c9f4cdfd11c79ccbc7a869147b6fb9bb53  modules-initfs
 "

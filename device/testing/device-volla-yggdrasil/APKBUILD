@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-volla-yggdrasil
 pkgdesc="Volla Phone"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -25,5 +25,5 @@ package() {
 }
 
 sha512sums="
-36d82e33787a11872f539943ef154d19591baefda003087d3ba4d947faccf07231ebf76a072ce7183f2a572a59c4064922f67e875e887619c849f7a9e3418e7a  deviceinfo
+d2f8cb1d266c91be98732b622e9d2060a93df59b8dec3cd5d1086dec61ca902e2e5b4cea4bebbf29a70ccb1e6f4955f5fee210ad44479f9f5d6b11c7999dc4c3  deviceinfo
 "

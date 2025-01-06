@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-wt88047-downstream
 pkgdesc="Xiaomi Redmi 2 (Downstream)"
-pkgver=1
-pkgrel=3
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -21,5 +21,5 @@ package() {
 }
 
 sha512sums="
-30d1e79a3cafe22a307ace6a4897077e21e93a3433a8c2c636368fb037328d82a22009f6631c8c74481fe030fff9fef846b90a93ecadbc44484558ceb1a4b78f  deviceinfo
+2b101a3143cf3201bb20e8896ecf432bb4b7e6127eb82dd598f9e225338f7b510fe6658701656a5eed5969d691ff699424bda5f27b8a112115f3ab7e33439a68  deviceinfo
 "

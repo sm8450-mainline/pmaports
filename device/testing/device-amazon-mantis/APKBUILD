@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-amazon-mantis
 pkgdesc="Amazon Fire TV Stick 4K"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -24,5 +24,5 @@ package() {
 }
 
 sha512sums="
-2e2da6fe61efcb17b9ccd0512843db924f0b2eca98e0b1e92d76a667b2ceecfb4c52402122fe6c584dcf3a43f33dc47c6a51371548a741420e2f35d481f65fa1  deviceinfo
+56da9bba99d1c16a18ae1dbabdf7a38b9d6f28f12fd3c2c9a938abf11cdd1fcc281c0a735144e93d79288574eff1ac5f6ec51907dc3625b99697ea435d920bd8  deviceinfo
 "

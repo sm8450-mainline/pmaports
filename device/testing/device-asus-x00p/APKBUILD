@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-asus-x00p
 pkgdesc="Asus Max M1"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -28,6 +28,6 @@ package() {
 }
 
 sha512sums="
-ece85df3931736b933e934a46ec6aa2a84fb7511d2c6000a60b5f9064f4d8a0d53b11c7356de6bee3d57e29776b67000c50c5a88311ce0490857effcbb60aebd  deviceinfo
+c403a7bd0f352cf6f9e3fba653a3d45d53341d9b23e0f09442fdd4695210aff3063382bc163f85c2731d87125d67c33f3a6155aaf78487bc4499f9b9d787bd07  deviceinfo
 23d8031d87e3e01a76886d0ad091c51f3146cd2ded947f32e47bcf84413882c3be0fcbdd559a7fc3d3372c42510c276d37741e836ca9aa4549142e43a625cc79  initfs-hook.sh
 "

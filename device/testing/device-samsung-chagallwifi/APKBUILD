@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-chagallwifi
 pkgdesc="Samsung Galaxy Tab S 10.5"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -67,5 +67,5 @@ nonfree_firmware_mainline() {
 }
 
 sha512sums="
-73c1fa71021e8a3e804feb47f8723f428a76a43a06b7ae94d5d328f412a3120aa05c428f216d714ed58f595224de6ec8c5e57e340e08efca8110e129d89fc156  deviceinfo
+9b74483d6a95b3eb9eea5bee659314e3fd96fcbcf13800ff3a154e69572d2629bd7c1f199a01034b981c0a337a18ad95ff247cd0c484a7e07bfabcfd54d782eb  deviceinfo
 "

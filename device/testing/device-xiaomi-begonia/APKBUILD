@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-begonia
 pkgdesc="Xiaomi Redmi Note 8 Pro"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -20,5 +20,5 @@ package() {
 }
 
 sha512sums="
-b83685bf20015bc9e6e6d7fdd82db7bca17a23e8a22a611df217d2ea2de9d69bb77065f23a1679b1a173b28196001486509fa097bb181cc139bd1dcc72978d1c  deviceinfo
+3587ef42441db6c65448cd073a4d65382ef4ff87b6082b7b9c57d3a8736a97e9e11c25b3426a2225d16113d8ebf14734f9e541bdaf01a6f187a1b869c5aa76dc  deviceinfo
 "

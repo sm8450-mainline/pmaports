@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-amazon-karnak
 pkgdesc="Amazon Fire HD 8 (2018)"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -24,5 +24,5 @@ package() {
 }
 
 sha512sums="
-d9c4201c928e7cfd6fa1c178b4d1159c889511a35d90486c103ffd2d5ac9d1666883fceab02babf4bf8dce34263a46b0f9f53f39b219d0c57c80751e2d86a329  deviceinfo
+8c6c875ee69d2e935221735612689de8b947f3ce56a46898cb4389b1938f4fc3833c3a681124229f40edfcf6d4bf88eeaf7a8df1b09ae6fce28a95bf9d3ded6c  deviceinfo
 "

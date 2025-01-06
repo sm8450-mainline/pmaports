@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-klimtlte
 pkgdesc="Samsung Galaxy Tab S 8.4 LTE"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -66,5 +66,5 @@ nonfree_firmware_mainline() {
 }
 
 sha512sums="
-a2a81549e781a0ccc0312b31c60f8d396e5e40e89127c1f03a0adc18e35b2208f9b7a2f961237cdac389f28d7cb7284c3ee81009ef329bac3ed992d7e0e67ba3  deviceinfo
+1d90ff9d62176f063c8ca13d7a492002269726e438e16e76d6be29609fa6aef5e1d8e4414482f068c8e0223d220c2af7c87c8c94876d621d62b2fbc4e7bb7e92  deviceinfo
 "

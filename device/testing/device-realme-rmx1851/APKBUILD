@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-realme-rmx1851
 pkgdesc="Realme 3 Pro"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -33,5 +33,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-8f83b5b8fe8c901a9c403f88fee2afdcd8d8e0c84d551fb373a5fcf6149943616229f8ea78fa2d14640a62d96db646bb7544a06b4573bf4b5357c111154da598  deviceinfo
+581e34926dc74fe29cb6f1704f4e5c0d9e38a2757b3d0fac7eddd1a4b35d9b1a9f9e944c6b6edc558e86792eb52d379ee5c529c7a20b525ddc00d6fe69362e8e  deviceinfo
 "

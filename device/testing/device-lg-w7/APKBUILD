@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lg-w7
 pkgdesc="LG Optimus L90"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -24,5 +24,5 @@ package() {
 }
 
 sha512sums="
-13d8884114b71066d2e630282ea95f9c696166ca023578d889dfe2476705b77b6e62d0c0d3a7bc132f58942f2ebe35fc0b8230dbf4e11fdac32096f72b0005e1  deviceinfo
+fb487c64f8ec0246349c705f4ff79b58fead19a9b8529448e8700520ded91fc2b090aac695fc64a5c47384f75f14be24b58fc04678be7dd63f9e24f62e0dfa92  deviceinfo
 "

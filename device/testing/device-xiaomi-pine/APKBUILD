@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-pine
 pkgdesc="Xiaomi Redmi 7A"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -49,6 +49,6 @@ fix_lightdm() {
 		"$subpkgdir"/etc/lightdm/lightdm.conf
 }
 sha512sums="
-13d394f6cf0050034dc4bc996865d7a68369a3c0111fdb6af4987756c68a7921dc92cfa1d1086d269871d7a127f298b597b91d453fcce5809d3d232d6a7d70ce  deviceinfo
+a61f1d0205fd478c76954ef4785e685dcad493287f5569c227e4f05a00cc4243342a9a7e4e800438584340e44bf05231548d261e96e83bba62f354207b0760cd  deviceinfo
 861270c6bc0b2a3e6cd389c21c8c895e62de8cf8bec6fcf23c178f8cbaae855d62b0ee98692671ab4f518d84cb43dd0b2fe46f5a609f65af6a6c06e0fdbb6d0c  etc-lightdm-lightdm.conf
 "

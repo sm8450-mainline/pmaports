@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-treltexx
 pkgdesc="Samsung Galaxy Note 4"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -26,5 +26,5 @@ package() {
 }
 
 sha512sums="
-ec604c2688b3dcfebbb2d19e3570babf00f55e343ee43d67becaf2ca24264647f0f88ea7c8714d961dbea5721c24d67c2fe739b28b979732591a6b337a5d4b22  deviceinfo
+babba8e1a9b38040173aa8a288f6dc99f179c9dac7090ff83e8783bbd3652196433ae8343fca5d52f548a49ba3c598d09b5105ba3848bbf0ce0b67f324cb1dc2  deviceinfo
 "

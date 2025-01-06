@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-m0-downstream
 pkgdesc="Samsung Galaxy S III"
-pkgver=4
+pkgver=5
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -39,6 +39,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-8e72ed82c9cfa5e1a95aa480392264a69a9fe5a6e0b3e40dde4fdd7ca157b20ea673d2183fc02d0e98d4971a94fc625c0df6a8065527173d1653b1c90d1ed232  deviceinfo
+e43ad5a25aa5b0c499a8f7001feb236e428a185df0e51bf0b72f82550965e3050d10f8a4e6b0f92b11feec6f4bee734fac78bcbe8f55d8290d2544bd7ec3e811  deviceinfo
 1376f0eb7c6ba459ca5c44b3eb7e9919d9c5f48d71ec30c006d1b4843e31cdade9f980415a166e977b2567b26f4e87d4554ee1143fdc62453d60a93bed129d06  90-android-touch-dev.rules
 "

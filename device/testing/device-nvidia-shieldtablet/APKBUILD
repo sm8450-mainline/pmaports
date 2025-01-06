@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-nvidia-shieldtablet
 pkgdesc="Nvidia Shield Tablet"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -23,4 +23,6 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 
-sha512sums="16f798ae9004e7f0cda2f1955376732ed8040b4f73a27edb1350cc43da295dc0144b28677ce6a19f1e666f9717c240eaf19fe4b44ec574f8ae9403c12db1de99  deviceinfo"
+sha512sums="
+086744363d70975a06f463b2ad93dd6ef044db460503a97d83fcab28d83c8422f603567214cc97e2393c2e76a07b51567f2a8dca328f0e6986b052b304cf7bd3  deviceinfo
+"

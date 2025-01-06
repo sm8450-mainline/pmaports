@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-cepheus-downstream
 pkgdesc="Xiaomi Mi 9"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -25,5 +25,5 @@ package() {
 }
 
 sha512sums="
-ee52ac16542a599f397fba5ddbb82028d666dec7f509a4b9298df248ac98a129c7f2eb4452282c5de38f7f97516da6ba70ea027a0fea075881f6a7f5d2ca10c7  deviceinfo
+f71fef16c5a10a49b5ff56971a50224bc4a3c59075276ce2c4fc4f94307d3e39e006942d9f5fe4711058b0ce83b1df44e491efb9b67781662e042878556fe03d  deviceinfo
 "

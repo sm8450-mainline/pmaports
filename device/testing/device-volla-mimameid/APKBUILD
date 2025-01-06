@@ -2,8 +2,8 @@
 # Maintainer: Jami Kettunen <jami.kettunen@protonmail.com>
 pkgname=device-volla-mimameid
 pkgdesc="Volla Phone 22"
-pkgver=1
-pkgrel=5
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -40,5 +40,5 @@ kernel_mainline() {
 }
 
 sha512sums="
-5adf0f4b14a6b7ae644d84b0777d14c79aa9cfef0b652f31fd3239a7a4e8f9d8638806bd64a2ab0550798aaffd55b827c325644f5a31cbebae7d17c995a1aa69  deviceinfo
+78f8c0980e9fa4747668b439c75daa490a610517028c28777b421164d87e3f537a37b3545b9f27dbed94856915988ea332cd4eada6bba8127df23c5359af0939  deviceinfo
 "

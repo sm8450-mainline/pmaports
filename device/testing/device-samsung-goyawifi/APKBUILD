@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-goyawifi
 pkgdesc="Samsung Galaxy Tab 3 Lite"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -86,7 +86,7 @@ fix_lightdm() {
 }
 
 sha512sums="
-10fd6444d5d8a9a67eca2fa063f135aa25e992c137291bc38e200fb7d1772efa98dbeea94648ee87a73c871c5d06abe65ca495618f8103b7f79b77326a351838  deviceinfo
+fbc53409572ee20fef082d6a4773dcc31bba0505397297586b4d026924de37315eb0d44d75d31efdfc7ce3fec6a55d69a2820af3884bd043ecc5f364dfa60d1c  deviceinfo
 73d03f53e08a650b3073e33653d3bcfa6951042203dde7104ffddbe59e29bafbb26c0e41cd9357ede8f01abe0049b190a2acae82e5a5b92868129ab66b118a8d  goyawifi.conf
 33f81e747f68472709c9933837809853d2786df627b1f3e41b5a0524577097cf0fadcdbaf403cbe1e16f3480f5b1924ea6d1c0b67e37340e9a0f51bd154a1dc4  sd8xxx.conf
 2be76a8208a5d7244aa975d122e73ad76d8ca4f6ef0776fb84c2e1ac075d5f4e810338c09009ef3317bf447b42f3b6657ba762e73d6ae7392a756c37ba5b34d4  galcore.conf

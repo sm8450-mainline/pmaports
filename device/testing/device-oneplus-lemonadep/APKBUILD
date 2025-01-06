@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-oneplus-lemonadep
 pkgdesc="OnePlus 9 Pro"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -38,5 +38,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-fae1807f2e5a254cfc35a5b5ee8443bdde8d5449bdb33338d5a3cd8335dedd9fe3cd3a5c2465baa52e5e4aec60762a067f66122fcf2f0fa17b896235f966f69b  deviceinfo
+d98a66b0c3de6dfc791e731c5ef139596a8585eda6c62ae07ed72ba0df3d87cbf1200f6e7e2c63034b569fde6dbef0d66c200aa83b6baffdd462eb91c5bbb2fa  deviceinfo
 "

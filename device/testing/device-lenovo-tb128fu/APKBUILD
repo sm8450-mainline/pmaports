@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lenovo-tb128fu
 pkgdesc="Lenovo Xiaoxin Pad 2022"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -24,5 +24,5 @@ package() {
 }
 
 sha512sums="
-a803f47dd0713e4e3cd3c84240f310bad3484ff88882b280010cfe89a4d415fdc0c992de8cb32f49b6a06a799b75d69af860673f5d4d9eea92324033842af6a0  deviceinfo
+8caffa77317da7b22527ff164179d6a8fa944c3b1fde562fb4c302cc83bd8eb6ce713762b43f259fea1ff03912569a953078ee7b184d6e1c92ff8be7d70e001b  deviceinfo
 "

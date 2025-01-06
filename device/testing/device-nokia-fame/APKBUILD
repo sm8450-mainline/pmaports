@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-nokia-fame
 pkgdesc="Nokia Lumia 520"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -25,5 +25,5 @@ package() {
 }
 
 sha512sums="
-a8e0dd95b968490a4cf046c33184c7bb3d2e27a1e1f47456cff89bf9934f1036f6f117387cafdc0772d9f6d2b128a0b3b53d4d8030f7774acfe462418b20aadb  deviceinfo
+5561075dd69233fc8f22de84fad6936327a8bd5cabd581fb8e45255a3ab3f81e8fc4fe0b7ae6d5a186c894eca2058d94cb6a43b4f30ef0f114a7f3928d2e9af8  deviceinfo
 "

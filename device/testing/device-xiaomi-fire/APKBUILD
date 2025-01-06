@@ -2,8 +2,8 @@
 # Maintainer: Eray Tutmaz <tarkanttmz261@gmail.com>
 pkgname=device-xiaomi-fire
 pkgdesc="Xiaomi Redmi 12"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -28,5 +28,5 @@ package() {
 }
 
 sha512sums="
-6857f3cf8723ad8126923135b6349c4cbd82d5e1444a63707eb5d744e8439ebe54dec110ef342599efe47c2a87dc76c302c63a502b3af886acb37369354f157d  deviceinfo
+6e5b62fa19132d84a3660ea5c40c81f082f72b71df03f37a19989054f0f64976bbd72d919d50ab4a7595ebd990e88a41ef4cfa08624c47c5b6602e8aec6d9f66  deviceinfo
 "

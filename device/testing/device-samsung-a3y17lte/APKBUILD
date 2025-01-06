@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-a3y17lte
 pkgdesc="Samsung Galaxy A3 (2017)"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -20,5 +20,5 @@ package() {
 }
 
 sha512sums="
-b578f6b120d98583599478a3d02d447c40e28626edaafbd91436d011a4729bf2faa4a3eb60acf9452d320cfdc0570fc73d27b44c5f63dc93d7063c3784edf13a  deviceinfo
+8648ea1d7ce6957328828e4a15f3c83e1e6cef5000760b7e8542547a9428ff13f15477857209a0a7efd84611a2e8256d3f0bbc984355455202baff196152eac3  deviceinfo
 "

@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-klipad-rel
 pkgdesc="KLIPAD Klipad Tablet"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -23,4 +23,6 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 
-sha512sums="6622168d2bc68367c8f0e43c7d8eb993c54c7f02d2283eb7d6039b8e2e9ccd38bb6055b390dc84a2976bc4951bedf790bd336e3d02e785da72421d7451214f94  deviceinfo"
+sha512sums="
+77d26d205c953e6e191d32747388cbb43c024c21de3f40289235fec397459212fb2007ac935915cc453e703c5526cb11f344fc0529fddaf5a25927670e1cbcfb  deviceinfo
+"

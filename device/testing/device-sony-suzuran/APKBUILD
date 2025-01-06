@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-sony-suzuran
 pkgdesc="Sony Xperia Z5 Compact"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -31,6 +31,6 @@ package() {
 }
 
 sha512sums="
-2d3997c04beb36af6882be3f7936d285e2e30ef95bc4e34337be91b40976f7aba8251fc091cbd821876db2faadfbc3a0c49db1c3bd4ee01eb9a9c73aae79c826  deviceinfo
+b501f5831dccf30e0bc7af0219f9097a74b509d5371e6276fa2168760d99e015e3d243861b236c30bb3b1f09f43d6aa8dde99020071c0e945a28d2bfdf6a6d71  deviceinfo
 ad75ee1f07de8a413d98b0a28be58df80bf08b454aad80b265ca86dcb3370ec8f47c1246e4379d036d8f98ae3292b89d74988d6f8bafea100860615feaee17d2  90-android-touch-dev.rules
 "

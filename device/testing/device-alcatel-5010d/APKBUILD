@@ -3,7 +3,7 @@
 
 pkgname=device-alcatel-5010d
 pkgdesc="Alcatel OneTouch Pixi 4 (5) 5010D"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -26,5 +26,5 @@ package() {
 }
 
 sha512sums="
-7116820f1b172f6d478d6155f6ff39dfe94237e6641f769eea11314185bc6d5aafc6197b36be99477191eb208dd4edf6c91953f9c64c538152a61b7b61af6980  deviceinfo
+85aecca5fd8867154718359b34d2d833329966c053fa454c55a3f241cd1c9fc963ff5f94eeff53d5513d435fd06f8c88837bf2959ee64feae6a9daeaa0eb8360  deviceinfo
 "

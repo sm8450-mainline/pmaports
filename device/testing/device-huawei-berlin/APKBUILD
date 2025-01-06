@@ -2,7 +2,7 @@
 # Maintainer: markochk <markochk@proton.me>
 pkgname=device-huawei-berlin
 pkgdesc="Huawei Honor 6X"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -33,5 +33,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-21fc9dbd9c7da1549e9204e0512a3fa5b55348f671d40a7d4d1e22577605c48e1867bf0a96d637cbe2bb48b6b1dfcd9c113c8a3fde727fb7483e5e242d1d81b6  deviceinfo
+10ee185580a1032f076d740a34861773c47a4d8202933a04bffe5d5344c78a1513cfd0d32b9e8b0dd722915ce42b1f1c7925a688c1cfeaaff241bd63c7295263  deviceinfo
 "

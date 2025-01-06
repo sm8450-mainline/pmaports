@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lenovo-achilles
 pkgdesc="Lenovo Tab2 A10-30L"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -34,5 +34,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-9248cf9f86d0ee6a4247a7f5f582f949b31516037655c4ee468bdcbcddd666170fceb84c25f87d0e30987a824f8ee0325a6baf6660a7f177636d66dfcc8605ab  deviceinfo
+c3c74c7776b2d1763847d7ec41ee2f4b7b00b5aa36b8b09cbeb92279e3f867b4c933e1dd2e214dbb1748cef69a105915884ccafb9d22093cc3b1d4857132f1c4  deviceinfo
 "

@@ -2,8 +2,8 @@
 # Maintainer: Henrik Grimler <henrik@grimler.se>
 pkgname=device-samsung-m3
 pkgdesc="Samsung Galaxy S III LTE"
-pkgver=8
-pkgrel=1
+pkgver=9
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -53,7 +53,7 @@ nonfree_firmware() {
 }
 
 sha512sums="
-bea0306ba06408dc4e6d2e8c9c36d99f79aefb4690bc02fd33a00097a3d204c63cfc22eb37273c50d6032e1dd33b2828013382937d68ce4d720e2e053c83eec9  deviceinfo
+7f13c7960a9a68af17a31361d6eab8a54bcf3ecdc14473938e467d0889e7992913481d1fee3e509dbd9ecd35103d680af5769806ffb35356af77231f33b6212d  deviceinfo
 caa81e8ab6753c0ca24c22fb6742288765dfbf2469b8b8c35c5789edfcee546ef1c3b14ad6e540c417f434258399300f17d312b58157635eafab134587ef94cc  Midas.conf
 21f64c9104ec5780fffde8ba7ce57583592469694d07dd5e2de4173d7c9f99ba57fb28bb5bcfbbce921be9c4ead9d31980e948533162fe12424c2037145debb1  HiFi.conf
 56a2bdffc273cb0a581192e65378ff50e71c7bc8a696af7d5e7c165a53c005aae104c4514c68afb668454c5a94ce78bd509f8a40e3401d67e16636b1ed81d051  modules-load.conf

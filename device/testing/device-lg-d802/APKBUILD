@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lg-d802
 pkgdesc="LG G2"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -20,5 +20,5 @@ package() {
 }
 
 sha512sums="
-6865b4956e147c007cd62e6ff64857948c83c2c660a93215dfa22f35ef4432078f0976426ea103ca3cd4bcea3316371186ce09eec47f4a8fd486b0e8d07c5809  deviceinfo
+e3978ec4f85ee3fe5c44f82a7dc85f7f309db1f315d1ddb23cf8eebadcf517b84cf91a274f846feaa8a35a98c98a605a3b546e2ffd68c9d3d50049b1d80b3e72  deviceinfo
 "

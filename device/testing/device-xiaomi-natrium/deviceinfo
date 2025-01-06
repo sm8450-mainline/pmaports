@@ -27,7 +27,6 @@ deviceinfo_flash_method="fastboot"
 
 deviceinfo_generate_bootimg="true"
 deviceinfo_bootimg_qcdt="false"
-deviceinfo_bootimg_mtk_mkimage="false"
 deviceinfo_bootimg_dtb_second="false"
 deviceinfo_flash_pagesize="4096"
 deviceinfo_flash_offset_base="0x80000000"

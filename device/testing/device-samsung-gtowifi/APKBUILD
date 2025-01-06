@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-gtowifi
 pkgdesc="Samsung Galaxy Tab A 8.0 2019"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -33,5 +33,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-34934f61db9cc4d05c5a8538bbe78955d98a804aed9c072e5a4aa2a36fa17ec4466e88c7fb4a3fa97a9a225a3b5d17b4770dc58e2e47feec7d3d5fe23d454b9e  deviceinfo
+729b71259a38847ae5b58761b1fd70ce825ba9adac893c8fc2c2c052d9f760c8f1a86b276ebaa4b6d6b5d073da0907ad0cc41991e7a94f6606f737db03619ca3  deviceinfo
 "

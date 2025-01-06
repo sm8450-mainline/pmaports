@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lg-vee3e
 pkgdesc="LG Optimus L3 II"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -19,4 +19,6 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 
-sha512sums="a530628db623e2f0d8428379c0e340d03ba78bd38e760a4df01e6f4623245ce2ea7c0daf92db5203ac46e08799ea8a96aa793b0355514e30691517f83ec017a6  deviceinfo"
+sha512sums="
+3396ccc8e4287a5c75522dcc830a0114e50249c905e3b940d12cd09500a342a3b3834fa22fa9159b3edbc33b7e3f387c8c78cf0929b11cf16edf0876cfbc0955  deviceinfo
+"

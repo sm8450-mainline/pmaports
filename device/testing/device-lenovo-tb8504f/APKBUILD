@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lenovo-tb8504f
 pkgdesc="Lenovo Tab 4 8"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -20,5 +20,5 @@ package() {
 }
 
 sha512sums="
-8bde53e63f1c5975ff0a02368f2b6ab4b791d4ff9a1889770325d655fc626e83739ade14a67c8fe49ce9515c41d0c5c5a5bbbe3e31e86b06e17de8e7dc457851  deviceinfo
+6668eacd0f842d6d476e99fb09629a7920e867f6f82d8f55b8f58f8120f66542fc3449635de7299fd37f352010509eb99935eb845fe20117690947562f61a3d2  deviceinfo
 "

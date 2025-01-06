@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-jxelte
 pkgdesc="Samsung Galaxy J7(2016)"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -27,5 +27,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-d496a683197cec642434f9e588e73dff86d3750d5366dfca0e70fa5e255fd96749649a27e65c01b3d8cf8f09e431ac53a7105e1215a6ae9e4a74596a86a3a537  deviceinfo
+d0633ca7079b52ea9d1bf80c1d6257a5067a54b53a478396a0496875efb06b557bc16bfe0fe890183fb48dc260d05c4be99a404e269390061816ecec9bea2836  deviceinfo
 "

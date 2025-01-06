@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-huawei-sturgeon
 pkgdesc="Huawei Watch"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -53,6 +53,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-37eecfb41db305882acb599afee61c9b067816780716e3615dda0cbfd5a72a335cc09f5acb14504178a946d26e37531b9569d4296749235864711fb6eea1da94  deviceinfo
+a0f3452f7a0012e0f4b5eb0677f459b26813b5bac06c0cbdfb62d89d9aae8d00461829b41ce11e898f4c79a696ab4d0991e36b00b7690f4848a62d644e793282  deviceinfo
 a19923f30ac1d328a85ab1162e44442da28dd1ae45529fb73e21d8004594487f61c8f5372e5bbaadfefd27fe27c8a22ce430b81891ac1965e5704bbfec108b82  networkmanager.conf
 "

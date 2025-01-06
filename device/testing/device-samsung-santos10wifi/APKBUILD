@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-santos10wifi
 pkgdesc="Samsung Galaxy Tab 3 10.1 Wi-Fi"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -41,6 +41,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-4ec6257f7221528359510c6468773352215d50a8e1b0b79560a24391a686ffa766f69b09d6550898d9e4708d79d3df6f50f3be7d62ff2778d48aa76ad00e5b8d  deviceinfo
+0346e85fe618c1e24e164c6fc754bf739c14e736ad3d222e1ddea092777b68d145e35d787ba41fda585145798d76b1713d483964fd27056075ee8d1f6f2d8494  deviceinfo
 2511fa519813061531757996fbbbb9eecae1a136d2e13149fd7afe04d19982c7eaa5ced8df57860bb816186f206915fcbd4a9e34fdf92b2c6efe3320a223c328  xorg.conf
 "

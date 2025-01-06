@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-n1awifi
 pkgdesc="Samsung Galaxy Note 10.1 (2014 edition)"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -33,5 +33,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-54a851440835fc82754b5f83b33b4763dccef2be22e1bf5c182f60bcad7c65c67c353a02e91316679263c6b726d77c2f789a268242c3e8ff90c916fe447feb49  deviceinfo
+d64cac0a49e06dde5f15a9edda2d171773d7e9f5043773a847b85d6b90a5d9cc6e68e3e2c2932a3ed0dccad4d2b040b9c192054332cdd5a65ee9da3f060c76c9  deviceinfo
 "

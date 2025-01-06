@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-meizu-mblu2
 pkgdesc="Meizu M2"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -25,5 +25,5 @@ package() {
 }
 
 sha512sums="
-f0c1f051fc71ddfb0078aef23585a2cbfd4410ab150e381e092bbefca1eeeff47833d5e7a04ff95443b6193a2660a5afdd564b098a4545d084694ba39633da68  deviceinfo
+f3d3c665d446956077823a73b0e7bc242d9db90eee18523a95af71fd363fd9e17db412dbda565b3fec7a71d9f1c93472e0c8ff75e5e9f26d6c59bc24465baa5e  deviceinfo
 "

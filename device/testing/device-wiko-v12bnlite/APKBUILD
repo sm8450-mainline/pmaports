@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-wiko-v12bnlite
 pkgdesc="Wiko View"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -25,5 +25,5 @@ package() {
 }
 
 sha512sums="
-a14d8103fddbb2fa14b96dacb3d6df3df9a87e6e18abef123c5a576351a6a5279d4787f9368abe9efb9892e8436c607a5f67db94dcbe8fac1d71247efe922fa6  deviceinfo
+3f7dbf035c0ab791548172b1a883c6b2a4d541d64947cae05b8ffb47b6b4633a6a7e7b4c7e2208500f9fc388ceb5a1e47889eaca6909eeacf73a2041d3eff13d  deviceinfo
 "

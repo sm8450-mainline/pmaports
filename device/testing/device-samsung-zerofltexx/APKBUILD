@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-zerofltexx
 pkgdesc="Samsung Galaxy S6"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -44,5 +44,5 @@ openrc() {
 
 
 sha512sums="
-a47d9534b3493898c07b396fa70a6b4885697dc1bc1415d48d9f7b2c1ee914a0ea2220d4f440415f40a43c0091fc5d71420fedbf48831ac41a54ee4d420ea468  deviceinfo
+6ea0c4f6dd88c7b29dd78dff516caab50b4c4aee4e359b0e3b1a06ab174dad23de46b5a13bc2f3ada88495377afae7cf10a62841a4de9819db5709c29e03f5ef  deviceinfo
 "

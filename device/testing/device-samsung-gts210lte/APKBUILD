@@ -2,7 +2,7 @@
 # Maintainer: Henrik Grimler <henrik@grimler.se>
 pkgname=device-samsung-gts210lte
 pkgdesc="Samsung Galaxy Tab S2 9.7 LTE (2015)"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -35,6 +35,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-5b95cae85ce4111682369700f528a17df2835cf4c69bdc08a5bedd6b381149556d20b53d83974da4269010056c48180c9079799ece77b0c3930bc0cb473238db  deviceinfo
+5273aa03e972c777c1c01fd7f2d60ae70e9159c689d21a9dc288e35fec379d795fb34d74400204a1ac5c0c93c802ec9fc3bd6296929dc11824ea275c9d82425b  deviceinfo
 0d23fae6de9b04a36f395068278b8a9054c33e435b24de943da1e55a0ee2d88ee932a3fd2f660596377b14474483edecb8357684f9b7bc2c53979c7f863fae52  90-sec_touchscreen.rules
 "

@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-asus-p024
 pkgdesc="ASUS ZenPad 8.0"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -29,6 +29,6 @@ package() {
 }
 
 sha512sums="
-efedbf63729981da4ed75477be062ce9f2fe77eb0ed1f8586cc8abf093fabad5a1f962c37eee125237e3706a3f9b643b079c843aaba4efbd02b35e26edb54246  deviceinfo
+56b44a131a7555f5a8b178856419baefae7ae924f30ebebb396b9a119cacfd3affc03dae330f93570400fb2dcf5b1a0f6fe0ff490414120903ff8b479425f9c8  deviceinfo
 b0086498d472a02c9ef806d46bae3791ccaf8f94359bca2a420dd578e596b24ced3c089b631952f2b4379e067260a4ee8c424d6f94edd94245b94d3f79f5c9b4  brightness
 "

@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-v1awifi
 pkgdesc="Samsung Galaxy Note Pro 12.2 WiFi"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -34,5 +34,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-0a74e7a14dfea8dcc69795afbb0ee60a2da522becd282bba63af8f14b2327833914fbb6ba95c33fbc94f6cd07ff87f563896d5dbef4af06bc00e8a76ba127743  deviceinfo
+31bfd9df3dd636252ee60556da2228529fc2cb6cce1c932a4ff274d274474344217d6588f1daaa5a1ae2289f33ddc787a9d40b6caf0da3f0a780630059adf3b1  deviceinfo
 "

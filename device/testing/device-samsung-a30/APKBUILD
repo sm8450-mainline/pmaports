@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-a30
 pkgdesc="Samsung Galaxy A30"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -28,6 +28,6 @@ nonfree_firmware() {
 
 
 sha512sums="
-dffaf05dc5f932ef73bf633bf6e6438bd5ed33cb65b0d7df5bd68756cce92e95f794f229b42cfa20db5db5c9693bba2c4636e1dd303c92c8a54e5ab9fc7722b1  deviceinfo
+110d381091c27ce02f1766f36ce3bb86d35eb8d8e22c2b06b03c60c7c15b98d0a434daa09215b56f1d2faf8aaf5704abe04d9d58fcb60054c79f309f97bd1f36  deviceinfo
 04445194a5245d08fcf1b425bff1d8dd6a8fdacafdc151223634299a35f1eb20fbd733979b58bcfd854e16fde02629c28453f840d6c9dc34fc15d4fcc8aa4302  initfs-hook.sh
 "
