@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-bq-vegetahd
 pkgdesc="BQ Aquaris E5 HD"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -29,5 +29,5 @@ package() {
 }
 
 sha512sums="
-575bca5e9012f045096a99e0c1ef617dde0002201856cecf37ebb222acfdd5b7d912e42b115e6ff80dfdeac7ad9d3e6d24a91d0c780cc8e5cd9a7c4a458a4dea  deviceinfo
+c746b4547c89e1359c5c4da933db049e9ec766081f08b73f6ef4b1942ae670ee4ae8abf38c15756ade22602575543a73738a780fcfb0e178cf7dba5ba4e08896  deviceinfo
 "

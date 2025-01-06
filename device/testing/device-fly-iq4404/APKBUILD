@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-fly-iq4404
 pkgdesc="Fly Spark"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -21,5 +21,5 @@ package() {
 
 
 sha512sums="
-ca6e7d9b3e234007b7a7fbfd2cfcfd2a796d89619735dda8db87377c9c098e3931cdb35004f87f2391d8f275f6bcfdae58db2f45cb39366e40a5503af0732967  deviceinfo
+58cf8cdbfc8aa5cb6420d19247b1c9e4edbebc585974bffbf5f7146c9eb315c1960d4fdc1db42bfd8b4eea0e8a82a686cfd1257fdde27f2414f8b3fb833355ae  deviceinfo
 "
