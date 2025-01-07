@@ -1,13 +1,14 @@
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on: arch/arm64/configs/defconfig
 # Maintainer: Aster Boese <asterboese@mailbox.org>
-pkgname=linux-postmarketos-apple
-pkgver=6.1.0_rc1
-pkgrel=2
+
+_flavor="postmarketos-apple"
+pkgname=linux-$_flavor
+pkgver=6.13.0_rc6
+pkgrel=0
 pkgdesc="Mainline kernel fork for Apple iPhone and iPad devices"
 arch="aarch64"
 _carch="arm64"
-_flavor="apple-iphone6"
 url="https://kernel.org"
 license="GPL-2.0-only"
 options="!strip !check !tracedeps pmb:cross-native"
@@ -24,33 +25,45 @@ makedepends="
 
 # Source
 _repository="linux-apple"
-_commit="bdffb36db88ab94ee624af340fef87cdb2b4aef3"
-_config="config-$_flavor.$arch"
+_commit="b5dbbf9007e8774e27ca9cd485f0483a2f4bb4e5"
+_config="config-$_flavor.$_carch"
 source="
 	http://github.com/konradybcio/linux-apple/archive/$_commit.tar.gz
 	$_config
 "
 builddir="$srcdir/$_repository-$_commit"
-_outdir="out"
 
 prepare() {
-	make ARCH=arm64 mrproper
 	default_prepare
-	REPLACE_GCCH=0 . downstreamkernel_prepare
+	cp "$srcdir/config-$_flavor.$_carch" .config
 }
 
 build() {
 	unset LDFLAGS
-	make O="$_outdir" ARCH="$_carch" CC="${CC:-gcc}" \
-		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
+	make ARCH="$_carch" \
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS" \
+		Image.gz dtbs
 }
 
 package() {
-	downstreamkernel_package "$builddir" "$pkgdir" "$_carch" \
-		"$_flavor" "$_outdir"
+	mkdir -p "$pkgdir"/boot
+
+	install -Dm644 "$builddir/arch/$_carch/boot/Image.gz" \
+		"$pkgdir/boot/vmlinuz"
+
+	make dtbs_install \
+		ARCH="$_carch" \
+		INSTALL_PATH="$pkgdir"/boot/ \
+		INSTALL_MOD_PATH="$pkgdir" \
+		INSTALL_MOD_STRIP=1 \
+		INSTALL_DTBS_PATH="$pkgdir/boot/dtbs"
+	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
+
+	install -D "$builddir"/include/config/kernel.release \
+		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
 }
 
 sha512sums="
-96c339d32c602f68700755d9aa7f7f867d5d89639d9126023fd7eca7f12c55a700308addefde95023b5847277c8506dc3f091118d1ff15fad7f2a3d0edd9f1f1  bdffb36db88ab94ee624af340fef87cdb2b4aef3.tar.gz
-61e666d28ddc027a27ecb9f7f43741f960e3c8fb097b12dc28801d057d8aa86fb14d2832aced00ea75e0115714d9afc89766a628fc32c11e548cb034c5195fe3  config-apple-iphone6.aarch64
+2d5aa659f5e3f1d0ecc8be710436c976ce77a78ba142e138a061ac7ff61c80d268d50e0b758f69caad2ab509235dc82d2a58f5d00553b0f37e290e56efea4c60  b5dbbf9007e8774e27ca9cd485f0483a2f4bb4e5.tar.gz
+e397e3634b603d3041de8ed01bde39c67d546f754b173f89c6b7c8ff53e52f5f8224534230e20a462a130797c1edd4786107276d667f98519923f2668c086692  config-postmarketos-apple.arm64
 "
