@@ -1,5 +1,5 @@
 # Reference: <https://postmarketos.org/devicepkg>
-# Maintainer: Clayton Craft <clayton@craftyguy.net>
+# Archived: Not actively maintained, hw is very rare/unlikely to be used by anyone, and port is outdated/broken
 pkgname=device-purism-librem5dev
 pkgdesc="Purism Librem 5 Devkit"
 pkgver=2
