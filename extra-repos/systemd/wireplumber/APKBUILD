@@ -1,0 +1,69 @@
+# Forked from Alpine for systemd support
+
+pkgname=wireplumber
+pkgver=9990.5.7
+_pkgver=0.5.7
+pkgrel=0
+pkgdesc="Session / policy manager implementation for PipeWire"
+url="https://pipewire.org/"
+arch="all"
+license="LGPL-2.1-or-later"
+depends_dev="
+	systemd-dev
+	glib-dev
+	lua5.4-dev
+	pipewire-dev>=0.3.39
+	"
+makedepends="$depends_dev
+	doxygen
+	graphviz
+	meson
+	"
+checkdepends="
+	dbus
+	pipewire
+	"
+subpackages="
+	$pkgname-dbg
+	$pkgname-libs
+	$pkgname-dev
+	$pkgname-lang
+	$pkgname-zsh-completion
+	$pkgname-doc
+	"
+source="https://gitlab.freedesktop.org/PipeWire/wireplumber/-/archive/$_pkgver/wireplumber-$_pkgver.tar.gz"
+
+provides="pipewire-session-manager"
+provider_priority=50
+install="$pkgname.post-install $pkgname.pre-deinstall"
+builddir="$srcdir/$pkgname-$_pkgver"
+
+case "$CARCH" in
+s390x)
+	# probably broken here, but we want this just so pipewire is installable
+	options="$options !check"
+	;;
+esac
+
+build() {
+	abuild-meson \
+		-Db_lto=true \
+		-Dsystem-lua=true \
+		-Dsystemd=enabled \
+		-Dsystemd-user-service=true\
+		-Dtests="$(want_check && echo true || echo false)" \
+		. output
+	meson compile -C output
+}
+
+check() {
+	meson test --no-rebuild -t 10 --print-errorlogs -C output
+}
+
+package() {
+	DESTDIR="$pkgdir" meson install --no-rebuild -C output
+}
+
+sha512sums="
+10460cdd7e34b2ef0bd5b08d0a513382527f727a3f8f5fcfd9f8aab4771a60ef149326990056bcfc9220afcbb7c453dd2d33de318dd7be1be07a3731e3a3aa7e  wireplumber-0.5.7.tar.gz
+"
