@@ -379,7 +379,6 @@ HID_GEMBIRD = true
 HID_GENERIC = true
 HID_GFRM = true
 HID_GLORIOUS = true
-HID_GOODIX_SPI = true
 HID_GOOGLE_STADIA_FF = true
 HID_GREENASIA = true
 HID_GT683R = true
@@ -472,6 +471,8 @@ HID_XIAOMI = true
 HID_XINMO = true
 HID_ZEROPLUS = true
 HID_ZYDACRON = true
+["category:input".">=6.12"."all"]
+HID_GOODIX_SPI = true
 
 ["category:usb".">=0.0.0"."all"]
 DRM_UDL = true  # DisplayLink - connecting displays via USB
