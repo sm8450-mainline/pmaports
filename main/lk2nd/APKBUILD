@@ -1,7 +1,7 @@
 # Maintainer: Alexey Minnekhanov <alexeymin@postmarketos.org>
 pkgname=lk2nd
 pkgver=20.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Secondary little kernel (lk) bootloader for several Qualcomm devices"
 arch="armv7 aarch64"
 url="https://github.com/msm8916-mainline/lk2nd"
@@ -33,7 +33,6 @@ subpackages="
 if [ "$CARCH" = "aarch64" ]; then
 	subpackages="
 		$subpackages
-		$pkgname-msm8952-xiaomi-land:msm8952_xiaomi_land
 		$pkgname-msm8953
 		$pkgname-msm8953-signed:msm8953_signed
 		$pkgname-msm8996
@@ -77,7 +76,6 @@ build() {
 	_build lk2nd-msm8952
 
 	if [ "$CARCH" = "aarch64" ]; then
-		_build lk2nd-msm8952 BOOTLOADER_OUT=xiaomi-land LK2ND_DTBS="" LK2ND_ADTBS="msm8937-xiaomi-land.dtb"
 		_build lk2nd-msm8953
 		_build lk2nd-msm8953 BOOTLOADER_OUT=msm8953-signed SIGN_BOOTIMG=1
 		_build lk2nd-msm8996
@@ -104,11 +102,6 @@ msm8916() {
 
 msm8952() {
 	install -Dm644 "$builddir"/build-lk2nd-msm8952/lk2nd.img -t \
-		"$subpkgdir"/boot
-}
-
-msm8952_xiaomi_land() {
-	install -Dm644 "$builddir"/xiaomi-land/build-lk2nd-msm8952/lk2nd.img -t \
 		"$subpkgdir"/boot
 }
 
