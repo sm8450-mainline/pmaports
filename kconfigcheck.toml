@@ -73,6 +73,10 @@ SAMSUNG_TUI = false
 TZDEV = false
 ["category:default"."<5.2.0"."armhf armv7 x86"]
 LBDAF = true
+["category:default".">=5.2.0"."all"]
+# Provide a proper dummy null console to improve compatibility
+# on devices that like to coerce console=null
+NULL_TTY = true
 ["category:default".">=5.19.0"."all"]
 FW_LOADER_COMPRESS_ZSTD = true
 
