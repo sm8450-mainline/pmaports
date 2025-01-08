@@ -1,7 +1,7 @@
 # Maintainer: Barnabas Czeman <barnabas.czeman@postmarketos.org>
 pkgname=firmware-qcom-msm8953
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 pkgdesc="Firmware files for Qualcomm MSM8953 devices"
 url="https://postmarketos.org"
 arch="aarch64"
@@ -11,6 +11,7 @@ options="!strip !check !archcheck !spdx !tracedeps pmb:cross-native"
 _asus_ze520kl_commit="f1439210719b2a1597f6390f34ae93cb1470ddf4"
 _fairphone_fp3_commit="ee529820bb874ab1b52873f0b144c3786f01ee4c"
 _huawei_milan_commit="f417e07a32310ee4002ca67a3d57f9ba0a960297"
+_lenovo_cd18781y_commit="337032e864fd6abe29375997fc3683398a4d27c4"
 _lenovo_kuntao_commit="009a366625c413aee2cc827ae94ed8ca75a3cebb"
 _motorola_ali_commit="153ba76124497fb7ce22d87a90149a15bcf67942"
 _motorola_ocean_commit="787dcae00d0866079c6f55dc3ddf6592279b0661"
@@ -28,6 +29,7 @@ source="
 	firmware-asus-ze520kl-$_asus_ze520kl_commit.tar.gz::https://gitlab.com/Smankusors/firmware-asus-zenfone3/-/archive/$_asus_ze520kl_commit/firmware-asus-zenfone3-$_asus_ze520kl_commit.tar.gz
 	firmware-fairphone-fp3-$_fairphone_fp3_commit.tar.gz::https://github.com/FairBlobs/FP3-firmware/archive/$_fairphone_fp3_commit/FP3-firmware-$_fairphone_fp3_commit.tar.gz
 	firmware-huawei-milan-$_huawei_milan_commit.tar.gz::https://github.com/bzy-080408/postmarketos-vendor-huawei-milan/archive/$_huawei_milan_commit.tar.gz
+	firmware-lenovo-cd18781y-$_lenovo_cd18781y_commit.tar.gz::https://gitlab.com/kaechele/postmarketos-vendor-lenovo-cd-18781y/-/archive/$_lenovo_cd18781y_commit/firmware-lenovo-cd18781y-$_lenovo_cd18781y_commit.tar.gz
 	firmware-lenovo-kuntao-$_lenovo_kuntao_commit.tar.gz::https://gitlab.com/raihan2000/firmware-lenovo-kuntao/-/archive/$_lenovo_kuntao_commit/firmware-lenovo-kuntao-$_lenovo_kuntao_commit.tar.gz
 	firmware-motorola-ali-$_motorola_ali_commit.tar.gz::https://github.com/moto-g6-mainlining/firmware-blobs/archive/$_motorola_ali_commit.tar.gz
 	firmware-motorola-ocean-$_motorola_ocean_commit.tar.gz::https://gitlab.com/Ultra-azu/firmware-motorola-ocean/-/archive/$_motorola_ocean_commit/firmware-motorola-ocean-$_motorola_ocean_commit.tar.gz
@@ -42,7 +44,8 @@ source="
 	firmware-xiaomi-ysl-$_xiaomi_ysl_commit.tar.gz::https://gitlab.com/barni2000/firmware-xiaomi-ysl/-/archive/$_xiaomi_ysl_commit/firmware-xiaomi-ysl-$_xiaomi_ysl_commit.tar.gz
 "
 
-_fwdir="/lib/firmware/qcom/msm8953"
+_basefwdir="/lib/firmware"
+_fwdir="$_basefwdir/qcom/msm8953"
 
 package() {
 	asus_ze520kl_dir="$srcdir/firmware-asus-zenfone3-$_asus_ze520kl_commit"
@@ -58,6 +61,15 @@ package() {
 	huawei_milan_dir="$srcdir/postmarketos-vendor-huawei-milan-$_huawei_milan_commit"
 	install -Dm644 "$huawei_milan_dir/a506_zap.b02" -t "$pkgdir/$_fwdir/huawei/milan"
 	install -Dm644 "$huawei_milan_dir/a506_zap.mdt" -t "$pkgdir/$_fwdir/huawei/milan"
+
+	lenovo_cd18781y_dir="$srcdir/postmarketos-vendor-lenovo-cd-18781y-$_lenovo_cd18781y_commit"
+	install -Dm644 "$lenovo_cd18781y_dir/bt/nvm_00150100.bin" -t "$pkgdir/$_basefwdir/qca"
+	install -Dm644 "$lenovo_cd18781y_dir/bt/rampatch_00150100.bin" -t "$pkgdir/$_basefwdir/qca"
+	install -Dm644 "$lenovo_cd18781y_dir/gpu/a506_zap.b02" -t "$pkgdir/$_fwdir/lenovo/cd-18781y"
+	install -Dm644 "$lenovo_cd18781y_dir/gpu/a506_zap.mdt" -t "$pkgdir/$_fwdir/lenovo/cd-18781y"
+	install -Dm644 "$lenovo_cd18781y_dir/sound/tas5728m_dsp_lenovo_cd-18781y.bin" -t "$pkgdir/$_basefwdir"
+	install -Dm644 "$lenovo_cd18781y_dir/wifi/board-2.bin" -t "$pkgdir/$_basefwdir/ath10k/QCA9379/hw1.0"
+	install -Dm644 "$lenovo_cd18781y_dir/wifi/firmware-sdio-6.bin" -t "$pkgdir/$_basefwdir/ath10k/QCA9379/hw1.0"
 
 	lenovo_kuntao_dir="$srcdir/firmware-lenovo-kuntao-$_lenovo_kuntao_commit"
 	install -Dm644 "$lenovo_kuntao_dir/a506_zap.b02" -t "$pkgdir/$_fwdir/lenovo/kuntao"
@@ -115,6 +127,7 @@ sha512sums="
 a9980ae2ab0868d7e8e2d054e72525c030fe75d66aec6eebd2e17619d5d24455de2a158ea7ed0eb0db2f7a2f4bc07701672de217f8c7274599cd92c00cb2d04e  firmware-asus-ze520kl-f1439210719b2a1597f6390f34ae93cb1470ddf4.tar.gz
 efa827787814ff4a59a0a61ca66410e46ce0add29b1451b4962b2d8af1d52b7035a0550b188fd442358702252964e4b64b16f836c5dcb1f748102cd0550aff7b  firmware-fairphone-fp3-ee529820bb874ab1b52873f0b144c3786f01ee4c.tar.gz
 f04a54bd81e389001e95357ffe301a10285c54782f70bb8ac9aed30173a6c9594b3568649d287234769b413cc3f93dbc982b3c596d287947d4630eaf98954451  firmware-huawei-milan-f417e07a32310ee4002ca67a3d57f9ba0a960297.tar.gz
+ed6ac4faa37312924de5498c4319338f842e69bd79f9ebfbf9c5dc9ce5d9cf7ca4d81e5ade31bc8ffc31f5489f7d752605d04a438e813966e0096d0d09c31e63  firmware-lenovo-cd18781y-337032e864fd6abe29375997fc3683398a4d27c4.tar.gz
 ebf5a43df59ec99ae63483cff1d0cfd25fa754e30910d8f9130bf43cc5c44278b5a23652585c44902fca943b022b858e3c6d55822aea45930a999dcce16285ee  firmware-lenovo-kuntao-009a366625c413aee2cc827ae94ed8ca75a3cebb.tar.gz
 269ac182806e9128557ac614142bfd6a2feab2cc3d2555268064df7ad1880de0d5e85b781a34ca57693d9c32ffe7d31da7fd34f9fd6364bc2b7cc2fdb90edc80  firmware-motorola-ali-153ba76124497fb7ce22d87a90149a15bcf67942.tar.gz
 fd0888bb6a0beeca961d9aabd0e60be64dfd841c3c89c7cdb8e7c1284347c4f56b2bad6a73aebc81e86625a4b548b5d2417ca31de6803ea5b3b58c7c1d97be51  firmware-motorola-ocean-787dcae00d0866079c6f55dc3ddf6592279b0661.tar.gz
