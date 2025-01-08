@@ -19,6 +19,7 @@ enable hkdm.service
 enable kill-pbsplash.service
 enable nftables.service
 enable postmarketos-tweakd.service
+enable rtkit-daemon.service
 enable sshd.service
 enable systemd-rfkill.service
 enable udisks2.service
