@@ -1,18 +1,18 @@
-From 3153e2edb2b97117284e046b9cb9b846569b77df Mon Sep 17 00:00:00 2001
+From 32f9f6919206f7385a66d711f9644aaacf533181 Mon Sep 17 00:00:00 2001
 From: Clayton Craft <clayton@craftyguy.net>
-Date: Fri, 6 Oct 2023 08:30:52 -0700
+Date: Tue, 7 Jan 2025 20:21:29 -0800
 Subject: [PATCH 2/2] fix wchar for compiling on musl
 
 ---
- src/boot/efi/efi-string.c | 10 +++++-----
- src/boot/efi/efi.h        |  5 +----
+ src/boot/efi-string.c | 10 +++++-----
+ src/boot/efi.h        |  5 +----
  2 files changed, 6 insertions(+), 9 deletions(-)
 
-diff --git a/src/boot/efi/efi-string.c b/src/boot/efi/efi-string.c
-index 4144c0d497..40e8d1f3b0 100644
---- a/src/boot/efi/efi-string.c
-+++ b/src/boot/efi/efi-string.c
-@@ -569,7 +569,7 @@ typedef struct {
+diff --git a/src/boot/efi-string.c b/src/boot/efi-string.c
+index aee98a81e1..314d14d3e5 100644
+--- a/src/boot/efi-string.c
++++ b/src/boot/efi-string.c
+@@ -570,7 +570,7 @@ typedef struct {
          bool have_field_width;
  
          const char *str;
@@ -21,7 +21,7 @@ index 4144c0d497..40e8d1f3b0 100644
  
          /* For numbers. */
          bool is_signed;
-@@ -630,7 +630,7 @@ static bool push_str(FormatContext *ctx, SpecifierContext *sp) {
+@@ -631,7 +631,7 @@ static bool push_str(FormatContext *ctx, SpecifierContext *sp) {
                  push_padding(ctx, ' ', sp->padded_len);
  
          /* In userspace unit tests we cannot just memcpy() the wide string. */
@@ -30,7 +30,7 @@ index 4144c0d497..40e8d1f3b0 100644
                  memcpy(ctx->buf + ctx->n, sp->wstr, sp->len * sizeof(*sp->wstr));
                  ctx->n += sp->len;
          } else {
-@@ -724,7 +724,7 @@ static bool handle_format_specifier(FormatContext *ctx, SpecifierContext *sp) {
+@@ -725,7 +725,7 @@ static bool handle_format_specifier(FormatContext *ctx, SpecifierContext *sp) {
           * int in vararg functions, which is why we fetch only ints for any such types. The compiler would
           * otherwise warn about fetching smaller types. */
          assert_cc(sizeof(int) == 4);
@@ -39,7 +39,7 @@ index 4144c0d497..40e8d1f3b0 100644
          assert_cc(sizeof(intmax_t) <= sizeof(long long));
  
          assert(ctx);
-@@ -819,13 +819,13 @@ static bool handle_format_specifier(FormatContext *ctx, SpecifierContext *sp) {
+@@ -820,13 +820,13 @@ static bool handle_format_specifier(FormatContext *ctx, SpecifierContext *sp) {
                  return push_str(ctx, sp);
  
          case 'c':
@@ -55,10 +55,10 @@ index 4144c0d497..40e8d1f3b0 100644
                          sp->len = wcsnlen(sp->wstr, sp->len);
                  } else {
                          sp->str = va_arg(ctx->ap, const char *) ?: "(null)";
-diff --git a/src/boot/efi/efi.h b/src/boot/efi/efi.h
-index fbc5d10565..23ccdc5dd5 100644
---- a/src/boot/efi/efi.h
-+++ b/src/boot/efi/efi.h
+diff --git a/src/boot/efi.h b/src/boot/efi.h
+index e1042635b9..1c191d49e7 100644
+--- a/src/boot/efi.h
++++ b/src/boot/efi.h
 @@ -10,7 +10,7 @@
  
  #if SD_BOOT
@@ -93,5 +93,5 @@ index fbc5d10565..23ccdc5dd5 100644
  
  /* We use size_t/ssize_t to represent UEFI UINTN/INTN. */
 -- 
-2.43.0
+2.47.1
 
