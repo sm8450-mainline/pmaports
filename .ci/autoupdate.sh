@@ -71,6 +71,7 @@ update_linux_next() {
 
 	echo "Updating linux-next from $pkgver to $new_pkgver..."
 	sed -i -e "s/pkgver=$pkgver/pkgver=$new_pkgver/" device/testing/linux-next/APKBUILD
+	sed -i -e "s/^pkgrel=.*/pkgrel=0/" device/testing/linux-next/APKBUILD
 
 	# Update the checksums
 	pmbootstrap checksum linux-next
