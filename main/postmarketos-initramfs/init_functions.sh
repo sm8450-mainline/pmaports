@@ -47,7 +47,10 @@ setup_log() {
 	echo on > /proc/sys/kernel/printk_devkmsg
 
 	# Spawn syslogd to log to the kernel
-	syslogd -K
+	# syslog will try to read from stdin over and over which can pin a cpu when stdin is /dev/null
+	# By connecting /dev/zero to stdin/stdout/stderr, we make sure that syslogd
+	# isn't blocked when a console isn't available.
+	syslogd -K < /dev/zero >/dev/zero 2>&1
 
 	local pmsg="/dev/pmsg0"
 
