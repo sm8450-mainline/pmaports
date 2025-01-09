@@ -1,9 +1,9 @@
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on: arch/arm64/configs/pinenote_defconfig
-
+# Maintainer: Antoine Martin (ayakael) <dev@ayakael.net>
 pkgname=linux-pine64-pinenote
-pkgver=6.3.10
-pkgrel=1
+pkgver=6.12.0
+pkgrel=0
 pkgdesc="Pine64 PineNote close to mainline fork"
 arch="aarch64"
 _carch="arm64"
@@ -11,14 +11,21 @@ _flavor="pine64-pinenote"
 url="https://kernel.org"
 license="GPL-2.0-only"
 options="!strip !check !tracedeps pmb:cross-native"
-makedepends="bison findutils flex installkernel openssl-dev perl"
+makedepends="
+	bash
+	bc
+	bison
+	findutils
+	flex
+	openssl-dev
+	perl
+"
 
 # Source
 _config="config-$_flavor.$arch"
-_commit="616dc3bce5598d47a42e6987199c07e5d3ce7729"
-
+_commit="9d066a65f5cbaa8cd3bfc73a1b54fbac2d0f76ac"
 source="
-	$pkgname-$pkgver.tar.gz::https://github.com/m-weigand/linux/archive/$_commit.tar.gz
+	$pkgname-$_commit.tar.gz::https://github.com/m-weigand/linux/archive/$_commit.tar.gz
 	$_config
 "
 builddir="$srcdir/linux-$_commit"
@@ -31,7 +38,7 @@ prepare() {
 build() {
 	unset LDFLAGS
 	make ARCH="$_carch" CC="${CC:-gcc}" \
-		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-$_flavor"
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
 }
 
 package() {
@@ -53,6 +60,6 @@ package() {
 }
 
 sha512sums="
-7ce7e734e31eaad89fb719b2a43600df1ffafca2c9db37df2a30df1b0df9f524585e2cd7ba89fb50f4278497abd2c1704038badcc6ce9d079929e042622a5882  linux-pine64-pinenote-6.3.10.tar.gz
-a05ccc590de8e907dcdb7326a21791e85bd9bae5de2ce67e14e51dc4f8628f2c54dd315f84f6521911054a8130de752c1cc87fde0d03ea128ae1557b5e1c7f7d  config-pine64-pinenote.aarch64
+d3c2510f9f835a0570fbb812cec2f9e12e402878c1f9f214364ae1918bc4c00f69a1fc5e005cf6b85c0690e6fd5f6ce9e61efd88145a83725ed12b6b8c07b97e  linux-pine64-pinenote-9d066a65f5cbaa8cd3bfc73a1b54fbac2d0f76ac.tar.gz
+99294bd6c53b1cf3832addbc80ea23b9089bb03463e2a9ebe93ab5feb1b2ff9ee38f158032705429230765bae2df23bb3401ec14902134c80d9dd6e58e188be5  config-pine64-pinenote.aarch64
 "
