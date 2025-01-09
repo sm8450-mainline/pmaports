@@ -2,6 +2,7 @@
 
 description="Launch DBus service for driver aspects"
 command="/usr/bin/pinenote_dbus_service"
+command_background=yes
 pidfile="/run/${RC_SVCNAME}.pid"
 
 depend() {
