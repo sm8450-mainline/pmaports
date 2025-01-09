@@ -1,26 +1,29 @@
-# Maintainer: Petr Hodina <phodina@protonmail.com>
+# Maintainer: Antoine Martin (ayakael) <dev@ayakael.net>
 pkgname=device-pine64-pinenote
 pkgdesc="Pine64 PineNote"
-pkgver=2
-pkgrel=7
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
-	u-boot-pine64-pinenote
 	linux-pine64-pinenote
+	pinenote-dbus-service<20221207
 	postmarketos-base
+	u-boot-pine64-pinenote
 "
 makedepends="devicepkg-dev"
 source="
-	deviceinfo
-	modules-initfs
-	phoc.ini
-	local-overrides.quirks
 	50-touchscreen.conf
 	81-libinput-pinenote.rules
 	82-ebc-rockchip.rules
+	deviceinfo
+	local-overrides.quirks
+	modules-initfs
+	panfrost.conf
+	phoc.ini
+	rockchip_ebc.conf
 "
 subpackages="
 	$pkgname-nonfree-firmware:nonfree_firmware
@@ -42,6 +45,10 @@ package() {
 		-t "$pkgdir"/usr/lib/udev/rules.d
 	install -Dm644 "$srcdir"/82-ebc-rockchip.rules \
 		"$pkgdir"/usr/lib/udev/rules.d
+	install -Dm644 "$srcdir"/panfrost.conf \
+		-t "$pkgdir"/etc/modprobe.d
+	install -Dm644 "$srcdir"/rockchip_ebc.conf \
+		-t "$pkgdir"/etc/modprobe.d
 }
 
 phosh() {
@@ -65,5 +72,7 @@ sha512sums="
 1123720962c9c8fec3c50302ca6a3dd56e2907dc9eea361a7b8eb4201b042476633d41a0ee4f6ab61d9c60eeccc894f83491ba9fa309a9bce2f1db0b0341d79d  local-overrides.quirks
 ac433eebbc35a48561837495997aee4e55510b979bc0d8e3bafb761bc1be5b4bdeed2f456369dcbc582688aefd07c63966b0d72b6ffa99e84cfd868e677f02c8  50-touchscreen.conf
 2bc51f200baefc37abfaaad368a911244999e906bdca4b728ac233f49a8fb3ae7206ee3c95cdb20d7dceae2a31d25a57f4e1da4fd67057fd64724b8232e42aed  81-libinput-pinenote.rules
-7c418cebf336df96cd484d7f0243cf27e859b11a7f2e7fb54dd2b4afedc4f570588bee08a5de8075db7c7d6d56b7971d19dc09909ebe68247505a3e37427e312  82-ebc-rockchip.rules
+19e922eec89dba419798c4e1dc9b39c040db33986d0969a39a8220c642fa081763f15ff2418115d5a748af4054a1be0784927d1712ea79942c2b237ebab47728  82-ebc-rockchip.rules
+6ba6638754e00908243de2f73ed6898dac03638a200dcf7b7cd9684757355ee1eb0ac874af0f971ad2e054c1a8c471867bdaea4d9aaf7eea6d3cf81ac7dd73a2  panfrost.conf
+b52d2e7f0c62d7c313b6db9aeb706cdb2596b6aa637aeddb862abf1e256103377fb6267e38cd4285e25d32112acf8d03bbf32ecff7be3dfbb9176209ea7ae283  rockchip_ebc.conf
 "
