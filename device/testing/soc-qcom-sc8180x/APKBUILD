@@ -2,7 +2,7 @@
 pkgname=soc-qcom-sc8180x
 pkgdesc="Common package for Qualcomm 8cx devices"
 pkgver=1
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
@@ -35,7 +35,6 @@ nonfree_firmware_openrc() {
 		pd-mapper-openrc
 		rmtfs-openrc
 		tqftpserv-openrc
-		qrtr-openrc
 		"
 
 	mkdir "$subpkgdir"
