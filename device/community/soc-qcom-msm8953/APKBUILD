@@ -2,7 +2,7 @@
 pkgname=soc-qcom-msm8953
 pkgdesc="Common package for Qualcomm MSM8953 devices"
 pkgver=11
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
@@ -45,7 +45,7 @@ modem() {
 		rmtfs
 	"
 
-	mkdir -p "$subpkgdir"
+	install -Dm644 "$srcdir"/q6voiced.conf "$subpkgdir"/etc/conf.d/q6voiced
 }
 
 modem_openrc() {
@@ -56,7 +56,7 @@ modem_openrc() {
 		rmtfs-openrc
 	"
 
-	install -Dm644 "$srcdir"/q6voiced.conf "$subpkgdir"/etc/conf.d/q6voiced
+	mkdir -p "$subpkgdir"
 }
 
 gpu() {
