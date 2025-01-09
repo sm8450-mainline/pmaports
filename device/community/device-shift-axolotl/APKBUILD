@@ -5,7 +5,7 @@
 pkgname=device-shift-axolotl
 pkgdesc="SHIFT6mq"
 pkgver=15
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -52,6 +52,7 @@ nonfree_firmware() {
 	"
 
 	install -Dm644 "$srcdir"/81-libssc-shift-axolotl.rules -t "$subpkgdir"/usr/lib/udev/rules.d/
+	install -Dm644 q6voiced.conf "$subpkgdir"/etc/conf.d/q6voiced
 }
 
 nonfree_firmware_openrc() {
@@ -59,7 +60,6 @@ nonfree_firmware_openrc() {
 	replaces="hexagonrpcd-openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
 
-	install -Dm644 q6voiced.conf "$subpkgdir"/etc/conf.d/q6voiced
 	install -Dm644 "$srcdir"/hexagonrpcd.confd "$subpkgdir"/etc/conf.d/hexagonrpcd-sdsp
 }
 
