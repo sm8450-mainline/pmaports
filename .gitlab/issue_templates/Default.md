@@ -39,6 +39,9 @@
 * [ ] Plasma Mobile
 * [ ] Sxmo (Wayland/Sway) **Please post the output of `sxmo_version.sh`**
 * [ ] Other: **Please fill out**
+### Which init system are you using?
+* [ ] OpenRC
+* [ ] systemd
 ### How did you get postmarketOS image?
 * [ ] from https://images.postmarketos.org
 * [ ] I built it using pmbootstrap
