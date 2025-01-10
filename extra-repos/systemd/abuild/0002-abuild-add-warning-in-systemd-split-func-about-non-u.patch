@@ -1,0 +1,28 @@
+From d27596cd67928e4795dc99dbc139b231354c3381 Mon Sep 17 00:00:00 2001
+From: Clayton Craft <clayton@craftyguy.net>
+Date: Fri, 5 Jul 2024 10:38:50 -0700
+Subject: [PATCH 2/2] abuild: add warning in -systemd split func about
+ non-usr-merged birs
+
+---
+ abuild.in | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/abuild.in b/abuild.in
+index 74e47f1..e5f9be0 100644
+--- a/abuild.in
++++ b/abuild.in
+@@ -2165,6 +2165,10 @@ default_systemd() {
+ 	fi
+ 
+ 	amove usr/lib/systemd
++
++	if [ -d bin ] || [ -d lib ] || [ -d usr/sbin ]; then
++		warning "Files should be installed to /usr/bin or /usr/lib, not /bin, /lib, or /usr/sbin"
++	fi
+ }
+ 
+ systemd() {
+-- 
+2.45.2
+
