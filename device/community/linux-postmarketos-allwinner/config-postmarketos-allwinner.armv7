@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm 6.12.1 Kernel Configuration
+# Linux/arm 6.12.8 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="armv7-alpine-linux-musleabihf-gcc (Alpine 14.2.0) 14.2.0"
 CONFIG_CC_IS_GCC=y
@@ -1495,6 +1495,7 @@ CONFIG_SUNXI_RSB=y
 # CONFIG_FW_CFG_SYSFS is not set
 # CONFIG_TRUSTED_FOUNDATIONS is not set
 # CONFIG_GOOGLE_FIRMWARE is not set
+# CONFIG_IMX_SCMI_MISC_DRV is not set
 CONFIG_ARM_PSCI_FW=y
 
 #
@@ -3778,6 +3779,7 @@ CONFIG_FB_SYS_IMAGEBLIT=y
 CONFIG_FB_SYSMEM_FOPS=y
 CONFIG_FB_DEFERRED_IO=y
 CONFIG_FB_DMAMEM_HELPERS=y
+CONFIG_FB_DMAMEM_HELPERS_DEFERRED=y
 CONFIG_FB_IOMEM_FOPS=y
 CONFIG_FB_IOMEM_HELPERS=y
 CONFIG_FB_SYSMEM_HELPERS=y
@@ -4999,6 +5001,7 @@ CONFIG_SUN4I_TIMER=y
 CONFIG_SUN5I_HSTIMER=y
 CONFIG_ARM_ARCH_TIMER=y
 CONFIG_ARM_ARCH_TIMER_EVTSTREAM=y
+# CONFIG_ARM_TIMER_SP804 is not set
 # CONFIG_MICROCHIP_PIT64B is not set
 # end of Clock Source drivers
 
@@ -6598,8 +6601,6 @@ CONFIG_HAVE_HARDLOCKUP_DETECTOR_BUDDY=y
 #
 # CONFIG_SCHEDSTATS is not set
 # end of Scheduler Debugging
-
-# CONFIG_DEBUG_TIMEKEEPING is not set
 
 #
 # Lock Debugging (spinlocks, mutexes, etc...)
