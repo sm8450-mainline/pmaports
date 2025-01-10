@@ -9,6 +9,11 @@ url="https://www.freedesktop.org/Software/dbus"
 arch="all"
 license="AFL-2.1 OR GPL-2.0-or-later"
 depends_dev="util-linux-dev"
+pkggroups="messagebus"
+provider_priority=1
+install="$pkgname.pre-install"
+triggers="$pkgname.trigger=/usr/share/dbus-1/system.d"
+options="!check" # Borked in pmbootstrap...
 makedepends="
 	$depends_dev
 	expat-dev
@@ -16,23 +21,20 @@ makedepends="
 	libsm-dev
 	libx11-dev
 	meson
-	systemd-dev
 	xmlto
 	libcap-getcap
 	"
-pkggroups="messagebus"
-provider_priority=1
-install="$pkgname.pre-install"
-triggers="$pkgname.trigger=/usr/share/dbus-1/system.d"
-options="!check" # Borked in pmbootstrap...
 subpackages="
 	$pkgname-daemon-launch-helper:launchhelper
 	$pkgname-dev
 	$pkgname-doc
 	$pkgname-libs
 	$pkgname-x11
-	$pkgname-systemd
 	"
+if [ -z "$BOOTSTRAP" ] || [ "$BOOTSTRAP" -gt 3 ]; then
+	makedepends="$makedepends systemd-dev"
+	subpackages="$subpackages $pkgname-systemd"
+fi
 source="https://dbus.freedesktop.org/releases/dbus/dbus-$_pkgver.tar.xz"
 builddir="$srcdir/dbus-$_pkgver"
 
