@@ -3,9 +3,15 @@
 
 maintainer="Jane Rachinger <jane400+pmaports@postmarketos.org>"
 pkgname=linux-pam-pmos
-_pkgname=linux-pam
+# we're misusing semver in some provides to ensure ordering
 pkgver=1.6.1
-pkgrel=1
+pkgrel=0
+# we use the pkgrel in pmOS to specify bumps to our version.
+# _pkgrel is the aports pkgrel, which we want to match
+# we hence provide="linux-pam=$pkgver-r$_pkgrel"
+_pkgname=linux-pam
+_pkgrel=1
+
 pkgdesc="Linux PAM (Pluggable Authentication Modules for Linux)"
 url="https://www.kernel.org/pub/linux/libs/pam"
 arch="all"
@@ -19,11 +25,14 @@ makedepends="
 	flex-dev
 	libtool
 	linux-headers
-	systemd-dev
 "
+subpackages="$pkgname-dev $pkgname-manual::noarch $pkgname-doc"
+if [ -z "$BOOTSTRAP" ] || [ "$BOOTSTRAP" -gt 3 ]; then
+	makedepends="$makedepends systemd-dev"
+	subpackages="$subpackages $pkgname-systemd"
+fi
 options="pmb:strict suid !check"
 provider_priority=100
-subpackages="$pkgname-dev $pkgname-manual::noarch $pkgname-doc $pkgname-systemd"
 source="https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver.tar.xz
 	https://github.com/linux-pam/linux-pam/releases/download/v$pkgver/Linux-PAM-$pkgver-docs.tar.xz
 
@@ -62,7 +71,7 @@ build() {
 }
 
 package() {
-	provides="linux-pam=$pkgver-r$pkgrel"
+	provides="linux-pam=$pkgver-r$_pkgrel"
 
 	make DESTDIR="$pkgdir" install
 
@@ -83,20 +92,25 @@ package() {
 }
 
 dev() {
+	# this ensures that linux-pam-pmos-dev is picked via linux-pam-dev with abuild on a user system
+	# and pmbootstrap builds pick linux-pam from aports (as pmbootstrap builds don't include postmarketos-base-systemd -> linux-pam-pmos)
+	# as pmaports/linux-pam-dev is always of lower version then aports/linux-pam-dev
+	provides="linux-pam-dev=0.$pkgver-r$pkgrel"
 	default_dev
-	provides="$provides linux-pam-dev=$pkgver-r$pkgrel"
 }
 
 manual() {
-	provides="$provides linux-pam-manual=$pkgver-r$pkgrel"
+	# this isn't techncally needed, but make sure a user installs our subpackage
+	provides="linux-pam-manual=9999.$pkgver-r$pkgrel"
 	pkgdesc="$pkgdesc (manual)"
 
 	amove usr/share/doc/Linux-PAM
 }
 
 doc() {
+	# this isn't techncally needed, but make sure a user installs our subpackage
+	provides="linux-pam-doc=9999.$pkgver-r$pkgrel"
 	default_doc
-	provides="$provides linux-pam-doc=$pkgver-r$pkgrel"
 }
 
 sha512sums="
