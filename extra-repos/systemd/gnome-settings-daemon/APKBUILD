@@ -3,7 +3,7 @@
 pkgname=gnome-settings-daemon
 pkgver=99947.2
 _pkgver=47.2
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME settings daemon"
 url="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
 arch="all"
@@ -40,13 +40,13 @@ makedepends="
 	libxml2-utils
 	meson
 	"
-checkdepends="
-	gnome-session
-	gnome-shell
-	py3-dbusmock
-	py3-gobject3
-	umockdev-dev
-	"
+# checkdepends="
+# 	gnome-session
+# 	gnome-shell
+# 	py3-dbusmock
+# 	py3-gobject3
+# 	umockdev-dev
+# 	"
 subpackages="
 	$pkgname-dev
 	$pkgname-lang

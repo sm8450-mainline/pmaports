@@ -3,7 +3,7 @@
 pkgname=gnome-settings-daemon-mobile
 pkgver=99946.0
 _pkgver=46.0
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME settings daemon"
 url="https://gitlab.gnome.org/verdre/gnome-settings-daemon-mobile"
 arch="all"
@@ -42,13 +42,13 @@ makedepends="
 	libxml2-utils
 	meson
 	"
-checkdepends="
-	gnome-session
-	gnome-shell
-	py3-dbusmock
-	py3-gobject3
-	umockdev-dev
-	"
+# checkdepends="
+# 	gnome-session
+# 	gnome-shell
+# 	py3-dbusmock
+# 	py3-gobject3
+# 	umockdev-dev
+# 	"
 subpackages="$pkgname-dev $pkgname-lang"
 _commit=46-mobile-0
 _gvc_commit="8e7a5a4c3e51007ce6579292642517e3d3eb9c50"
