@@ -6,7 +6,7 @@
 _flavor="postmarketos-qcom-sdm845"
 pkgname=linux-$_flavor
 pkgver=6.13.0_rc2
-pkgrel=2
+pkgrel=3
 pkgdesc="Mainline Kernel fork for SDM845 devices"
 arch="aarch64"
 _carch="arm64"
@@ -24,7 +24,6 @@ _tag="sdm845-6.13-rc2-r2"
 source="
 	linux-$_tag.tar.gz::https://gitlab.com/sdm845-mainline/linux/-/archive/$_tag/linux-$_tag.tar.gz
 	$_config
-	0001-HACK-remoteproc-qcom-disable-in-kernel-PD-mapper.patch
 "
 builddir="$srcdir/linux-$_tag"
 
@@ -73,6 +72,5 @@ package() {
 
 sha512sums="
 af8b5e960248adf5da95571e964e664c8e329bf610a567b43fa22fc8a853b6e321192cb39667492ac86d8ac48e75b1e47eb546017937c9d0aeb11485e70797d3  linux-sdm845-6.13-rc2-r2.tar.gz
-4c663896c0bc76858a91cbe6d64461ebebe5beb42a14320479e2291761dd9bfb01fd68047b2813df24f697f1f7465f63c3ca5777f5bca9d26552366e851400d6  config-postmarketos-qcom-sdm845.aarch64
-a107cada98c5902aaf193bbc80d19276cf286c5094c7e8587a6d5756929d91f46b555efbf48f4b7b85c1feb8c71b989fbb49b26b2c7a8f7ec2ee1385c20b9d03  0001-HACK-remoteproc-qcom-disable-in-kernel-PD-mapper.patch
+44c36dbf9596d33a6aca7705f3a7912718b730c59ca4a198406b7f005c11916348367306ab436637ae912c44f5209c10508fbf59f12705af0876b810f52bbbc6  config-postmarketos-qcom-sdm845.aarch64
 "
