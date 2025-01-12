@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-kyleprods
 pkgdesc="Samsung Galaxy S Duos 2"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -20,5 +20,5 @@ package() {
 }
 
 sha512sums="
-5ad0ab1bc6dd31902108eb1ec472e689de56d47a31c192b542bcc269842d273b3ca495415844411e6775e3eeac78ef64cfcc33cc11787d7998e8935818a90c50  deviceinfo
+0c491bb675e608a2f0e072e4045e750298997500011c151b5131b05b290b81b159a014780549a1972ad6f70eac94786428f18bfae8ab8b67b6946bf94723eade  deviceinfo
 "
