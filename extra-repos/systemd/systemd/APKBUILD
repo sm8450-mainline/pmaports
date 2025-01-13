@@ -5,7 +5,7 @@
 pkgname=systemd
 pkgver=256.5
 _pkgver="musl-v${pkgver//_/-}"
-pkgrel=5
+pkgrel=6
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !s390x" # blocked by pmboostrap not supporting
@@ -57,7 +57,6 @@ makedepends="
 	util-linux-dev
 	xz-dev
 	zstd-dev
-	gnu-efi-dev
 	"
 
 # We add these as explicit dependencies to ensure we get the systemd variants
@@ -164,6 +163,7 @@ build() {
 		-Dpamlibdir=/usr/lib/security \
 		-Dpamconfdir=/etc/pam.d \
 		\
+		-Dbootloader=disabled \
 		-Dutmp=false \
 		-Dldconfig=false \
 		-Duserdb=false \
