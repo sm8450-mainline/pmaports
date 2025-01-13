@@ -1,7 +1,7 @@
-From c70950f1e33aba5c58c337e8dfb73d40efed5b5d Mon Sep 17 00:00:00 2001
+From 4522c9a8e07e6645c0c460d93cd57c67768fae71 Mon Sep 17 00:00:00 2001
 From: Dylan Van Assche <me@dylanvanassche.be>
 Date: Sat, 1 Jun 2024 21:15:15 +0200
-Subject: [PATCH 8/8] data: iio-sensor-proxy.service.in: add AF_QIPCRTR
+Subject: [PATCH 07/10] data: iio-sensor-proxy.service.in: add AF_QIPCRTR
 
 Allow AF_QIPCRTR in lockdown for libssc.
 Libssc uses the QMI protocol over QRTR in the kernel.
@@ -25,5 +25,5 @@ index 4bc921b..29ea3c0 100644
  MemoryDenyWriteExecute=true
  RestrictRealtime=true
 -- 
-2.45.1
+2.47.1
 

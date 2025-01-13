@@ -1,7 +1,7 @@
-From 313d84bd57ba0bd240e6ac2d75ed3184212c9911 Mon Sep 17 00:00:00 2001
+From 630eab1d4a0773f1126a5e3dc56a95cece71a69d Mon Sep 17 00:00:00 2001
 From: Dylan Van Assche <me@dylanvanassche.be>
 Date: Wed, 26 Apr 2023 18:54:07 +0200
-Subject: [PATCH 6/8] data: add libssc udev rules
+Subject: [PATCH 06/10] data: add libssc udev rules
 
 Add udev rules to indicate possible sensor types like
 ssc-accel, ssc-light, ssc-proximity, and ssc-compass
@@ -51,5 +51,5 @@ index 97dbc07..8b78125 100644
  )
  
 -- 
-2.45.1
+2.47.1
 

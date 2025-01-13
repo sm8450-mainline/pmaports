@@ -2,7 +2,7 @@
 
 pkgname=iio-sensor-proxy
 pkgver=9999
-pkgrel=7
+pkgrel=8
 pkgdesc="IIO sensors to D-Bus proxy"
 url="https://gitlab.freedesktop.org/hadess/iio-sensor-proxy"
 arch="aarch64"
@@ -14,10 +14,10 @@ makedepends="
 	libgudev-dev
 	meson
 	polkit-dev
-	libssc-dev>=0.1.6
+	libssc-dev>=0.2.1
 	"
 subpackages="$pkgname-openrc"
-_commit="fe56bdba1243cc5f6a652eb75d11ae1d1957ff7e"
+_commit="882879b14c3bf430d88bce558f47242d4e94ed5f"
 builddir="$srcdir/$pkgname-$_commit"
 source="https://gitlab.freedesktop.org/hadess/iio-sensor-proxy/-/archive/$_commit/iio-sensor-proxy-$_commit.tar.gz
 	iio-sensor-proxy.initd
@@ -27,9 +27,9 @@ source="https://gitlab.freedesktop.org/hadess/iio-sensor-proxy/-/archive/$_commi
 	0004-accelerometer-support-SSC-accelerometer-sensor.patch
 	0005-compass-support-SSC-compass-sensor.patch
 	0006-data-add-libssc-udev-rules.patch
-	0007-CI-add-libssc-build.patch
-	0008-data-iio-sensor-proxy.service.in-add-AF_QIPCRTR.patch
-	0009-drivers-ssc-implement-set_polling-function.patch
+	0007-data-iio-sensor-proxy.service.in-add-AF_QIPCRTR.patch
+	0008-drv-ssc-implement-set_polling.patch
+	0009-tests-integration-test-add-SSC-sensors.patch
 	"
 # tests fail on armv7 and armhf, and it seems to be due to some weird issue
 # with pmaports qemu CI (not reproducible locally with `pmb build --arch
@@ -56,15 +56,15 @@ package() {
 }
 
 sha512sums="
-49b96fefbcfabb706fc6189d3f40e6e1a1e847ec6e4101398bf639db9e844c5c5057f2267f3e541d302d002d0042a84fdd56191207ed0e911f80342cd1d416c4  iio-sensor-proxy-fe56bdba1243cc5f6a652eb75d11ae1d1957ff7e.tar.gz
+94e1d990f7cd89803c75c8a831eb2db60b851c88566c46dc4478347e0d894a26ca8eac155f64d1a4fd9873cfbd7a4c20279fecf7687909fa327776960ae3a39e  iio-sensor-proxy-882879b14c3bf430d88bce558f47242d4e94ed5f.tar.gz
 1efbd03f7ee8c1eac4695647aa9931a0b0806779fb96e1c8e03f7deb6e8507aa6092e66f8ef796c68beb0b16b8624ef70c59231884a0fbb3ffdf46db72959f23  iio-sensor-proxy.initd
-3d1be8e5a932ca6ca0b908caaa7f16dcdbbc6e48a75183c1b7c225689f309203f7008f53ed4276c93790dc7dc0b2cb3c9b3f00cef84305657f279369f1307d89  0001-iio-sensor-proxy-depend-on-libssc.patch
-bb8e1496411c030062eeb1bb919c9680c32d9571587540368c663b6739e3c506d21ab90836a4e83be526019e654af393dc849031ab81bb8aadff623873232d58  0002-proximity-support-SSC-proximity-sensor.patch
-465f4296778b3c0269b00badd11f841c2ea9dbc14b7489b21f2e4d8e45a628fa59327c91692f8e350c926776de05173e2abc9bef54e51bf0378866ace3891152  0003-light-support-SSC-light-sensor.patch
-4f6a3b76fc10eb42a4824cc49b063acc1c54a762637f7ff37a1ac42adb1410fbfe5e17b5277bb8fcb4d232b94971cf96c61925f4c207c9b4b56c78321b1b7d69  0004-accelerometer-support-SSC-accelerometer-sensor.patch
-80d59825dde8ff8bcc92b3d6d659968f88f82c8198e9576e1a77b2d38be074781926c45115e213e4c557a3dc7ba1c1391d67cb6f0c49d23aff2e0cdbfedefc87  0005-compass-support-SSC-compass-sensor.patch
-651d3281fe64fb72780bdfc4f3416af6f221c5c0aebf8b9a87d2cf6b5a31ebd0816199b45c97f24810807286a4a8839b6304a12cfc23b4191261a30efd3fbe2b  0006-data-add-libssc-udev-rules.patch
-bdb8831d89f389badd5de0eb52d9eca5dbdf045dbcfab18165d43798c9e329c3e68e3209b8ad1053916cfac6c54984dd47aa379c419d46f1c25ad6a57c2bd771  0007-CI-add-libssc-build.patch
-c778168de17f86e3d50b62a4905d3940e9d69bb919fe3b9b5fc8962d8fe9b7cdb48a57dd8128ded93ff08493f65a7f602e6e7ad295e6736c74c273a2c6399c35  0008-data-iio-sensor-proxy.service.in-add-AF_QIPCRTR.patch
-d7c0d67a664d900708a1a76edaac3fc05be567abe9c5d49b11d3181ebe932c3847de4f3f89291542fe7d7f0798bde2d5a504d23350a79d93a7afe57f959380ae  0009-drivers-ssc-implement-set_polling-function.patch
+d46eeb1deabb6ee6017b86f573fcb717d8b992979bfd447e52c6dabc95d9e6c986ab937f602c2f0a731d10d87d67578aa59930d7faff69b2f42a0eab25f4c60c  0001-iio-sensor-proxy-depend-on-libssc.patch
+59800fbd73abd77c6cf86ab1bcdce85abefb07e3cd28d58c3e91a4b3cdd9d893a9671e8f0f3dc212064d5744a62b0b24c54fa91ce8f3ac84e361f7ba8cc64ded  0002-proximity-support-SSC-proximity-sensor.patch
+7cdcd1d78629f662fa588c90e657c6abed7e43f1462c43f0d14e7756933ea927435077e193429d069b7360ba2d1c16b608226e1707858e56460c82595f054080  0003-light-support-SSC-light-sensor.patch
+a956d28d55ee0e0a03bea63caf06881ead7511ac60000a5def61d482b3575006575edd6b0b30ae7874ffd9b2268fd8008a273d6ede561cc44aad46f18233d789  0004-accelerometer-support-SSC-accelerometer-sensor.patch
+d4379f8e53eea02f53640752bef883870a44d0169cf821d3f5bb3245309cac1d1502a7848d5cce60d40bcdd484c9baa1f63f60d887613ad25a5ca88721d7c4c8  0005-compass-support-SSC-compass-sensor.patch
+4651572ada878fd07ba281426b4cf4b9baf19d8464fd3af1a1c1a98765bcf358d1d445bdef53acd3bf30b1d2c8c234489e96f728d9228e3681e5038f10059573  0006-data-add-libssc-udev-rules.patch
+376999144da2c5a6374de73bfaaf0eb605c5c686640f4de8cbcabbe3e78f3fce4675d5bfdc2dd60dacaa84447a039cf22cc4e5fcda478ea77a00001f052a3d85  0007-data-iio-sensor-proxy.service.in-add-AF_QIPCRTR.patch
+bf0ea8a078eb168937645a661fea5b979bf1747ee0c1cd556a238c25f4f26eefd6b2f7a1da1eb0b7d66dcafe24ce31521d71e1a188a324671b08178b392206af  0008-drv-ssc-implement-set_polling.patch
+2a208aa064e4f3d6cb24701f65c5cdc5d35a99f61489ac0ab5f336aa8229bc1aa7571b6d7e928a3a28e53b8e35a07655ec3e8b432d7295d82606f8b1f206e7af  0009-tests-integration-test-add-SSC-sensors.patch
 "

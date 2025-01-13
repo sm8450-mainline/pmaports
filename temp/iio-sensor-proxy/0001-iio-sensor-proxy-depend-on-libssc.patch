@@ -1,7 +1,7 @@
-From e651b07633f5a9a3bd499a2e3aaf2f8b7e4f8cef Mon Sep 17 00:00:00 2001
+From 169b29cbb8232bb3ee82f8327a7ad5cdded0256c Mon Sep 17 00:00:00 2001
 From: Dylan Van Assche <me@dylanvanassche.be>
 Date: Sun, 23 Apr 2023 16:54:10 +0200
-Subject: [PATCH 1/8] iio-sensor-proxy: depend on libssc
+Subject: [PATCH 01/10] iio-sensor-proxy: depend on libssc
 
 Add libssc library to iio-sensor-proxy and discover FastRPC
 devices as possible subsystems for sensors. The presence of
@@ -15,7 +15,7 @@ Core (SSC).
  4 files changed, 28 insertions(+), 1 deletion(-)
 
 diff --git a/meson.build b/meson.build
-index 767e539..fe97a27 100644
+index 97270f8..0580d9e 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -46,6 +46,9 @@ gio_dep = dependency('gio-2.0')
@@ -23,7 +23,7 @@ index 767e539..fe97a27 100644
  polkit_gobject_dep = dependency('polkit-gobject-1', version: '>= 0.91')
  polkit_policy_directory = polkit_gobject_dep.get_pkgconfig_variable('policydir')
 +if get_option('ssc-support')
-+  libssc_dep = dependency('libssc-glib')
++  libssc_dep = dependency('libssc')
 +endif
  
  xmllint = find_program('xmllint', required: false)
@@ -44,10 +44,10 @@ index de5fbf4..2b60f82 100644
         type: 'boolean',
         value: false,
 diff --git a/src/iio-sensor-proxy.c b/src/iio-sensor-proxy.c
-index 1884839..220dc71 100644
+index 02d9ba5..342023c 100644
 --- a/src/iio-sensor-proxy.c
 +++ b/src/iio-sensor-proxy.c
-@@ -124,6 +124,11 @@ find_sensors (GUdevClient *client,
+@@ -128,6 +128,11 @@ find_sensors (GUdevClient *client,
  	platform = g_udev_client_query_by_subsystem (client, "platform");
  	devices = g_list_concat (devices, input);
  	devices = g_list_concat (devices, platform);
@@ -59,7 +59,7 @@ index 1884839..220dc71 100644
  
  	/* Find the devices */
  	for (l = devices; l != NULL; l = l->next) {
-@@ -686,7 +691,15 @@ name_acquired_handler (GDBusConnection *connection,
+@@ -721,7 +726,15 @@ name_acquired_handler (GDBusConnection *connection,
  		       gpointer         user_data)
  {
  	SensorData *data = user_data;
@@ -101,5 +101,5 @@ index 4b822fc..3e503de 100644
      'iio-sensor-proxy-resources', 'iio-sensor-proxy.gresource.xml',
      c_name: 'iio_sensor_proxy',
 -- 
-2.45.1
+2.47.1
 

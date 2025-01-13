@@ -1,15 +1,15 @@
-From 27b5c9e0dba5601447b21816e8ee7063c6154268 Mon Sep 17 00:00:00 2001
+From 176a35a40b639be7d0cdbc4fd67eb681586978dc Mon Sep 17 00:00:00 2001
 From: Dylan Van Assche <me@dylanvanassche.be>
 Date: Sun, 23 Apr 2023 17:54:46 +0200
-Subject: [PATCH 2/8] proximity: support SSC proximity sensor
+Subject: [PATCH 02/10] proximity: support SSC proximity sensor
 
 Add driver for the proximity sensor exposed by libssc.
 ---
  src/drivers.h           |   4 ++
- src/drv-ssc-proximity.c | 122 ++++++++++++++++++++++++++++++++++++++++
+ src/drv-ssc-proximity.c | 128 ++++++++++++++++++++++++++++++++++++++++
  src/iio-sensor-proxy.c  |   3 +
  src/meson.build         |   6 ++
- 4 files changed, 135 insertions(+)
+ 4 files changed, 141 insertions(+)
  create mode 100644 src/drv-ssc-proximity.c
 
 diff --git a/src/drivers.h b/src/drivers.h
@@ -27,12 +27,12 @@ index 33ad667..464e801 100644
  gboolean drv_check_udev_sensor_type (GUdevDevice *device, const gchar *match, const char *name);
 diff --git a/src/drv-ssc-proximity.c b/src/drv-ssc-proximity.c
 new file mode 100644
-index 0000000..0ec8b08
+index 0000000..f4aa897
 --- /dev/null
 +++ b/src/drv-ssc-proximity.c
-@@ -0,0 +1,122 @@
+@@ -0,0 +1,128 @@
 +/*
-+ * Copyright (c) 2023 Dylan Van Assche
++ * Copyright (c) 2023-2025 Dylan Van Assche
 + *
 + * This program is free software; you can redistribute it and/or modify it
 + * under the terms of the GNU General Public License version 3 as published by
@@ -70,8 +70,10 @@ index 0000000..0ec8b08
 +	if (!sensor)
 +		return FALSE;
 +
-+	if (!ssc_sensor_proximity_close_sync (sensor, NULL, NULL))
++	if (!ssc_sensor_proximity_close_sync (sensor, NULL, NULL)) {
++		g_clear_object (&sensor);
 +		return FALSE;
++	}
 +
 +	g_clear_object (&sensor);
 +
@@ -103,7 +105,9 @@ index 0000000..0ec8b08
 +	/* Create sensor */
 +	drv_data->sensor = ssc_sensor_proximity_new_sync (NULL, &error);
 +	if (!drv_data->sensor) {
-+		g_warning ("Creating SSC proximity sensor failed: %s", error ? error->message : "UNKNOWN");
++		g_warning ("Creating SSC proximity sensor failed: %s", error->message);
++		g_clear_pointer (&sensor_device->priv, g_free);
++		g_free (sensor_device);
 +		return NULL;
 +	}
 +	g_object_get (drv_data->sensor,
@@ -118,8 +122,10 @@ index 0000000..0ec8b08
 +
 +	/* Enable sensor */
 +	if (!ssc_sensor_proximity_open_sync (drv_data->sensor, NULL, &error)) {
-+		g_warning ("Opening SSC proximity sensor failed: %s", error ? error->message : "UNKNOWN");
-+		g_object_unref (sensor_device);
++		g_warning ("Opening SSC proximity sensor failed: %s", error->message);
++		g_clear_object (&drv_data->sensor);
++		g_clear_pointer (&sensor_device->priv, g_free);
++		g_free (sensor_device);
 +		return NULL;
 +	}
 +
@@ -138,7 +144,7 @@ index 0000000..0ec8b08
 +
 +	/* Disable sensor */
 +	if (!ssc_sensor_proximity_close_sync (drv_data->sensor, NULL, &error))
-+		g_warning ("Closing SSC proximity sensor failed: %s", error ? error->message : "UNKNOWN");
++		g_warning ("Closing SSC proximity sensor failed: %s", error->message);
 +
 +	g_clear_object (&drv_data->sensor);
 +	g_clear_pointer (&sensor_device->priv, g_free);
@@ -154,10 +160,10 @@ index 0000000..0ec8b08
 +	.close = ssc_proximity_close,
 +};
 diff --git a/src/iio-sensor-proxy.c b/src/iio-sensor-proxy.c
-index 220dc71..257c822 100644
+index 342023c..18263c5 100644
 --- a/src/iio-sensor-proxy.c
 +++ b/src/iio-sensor-proxy.c
-@@ -75,6 +75,9 @@ static const SensorDriver * const drivers[] = {
+@@ -79,6 +79,9 @@ static const SensorDriver * const drivers[] = {
  	&iio_buffer_compass,
  	&iio_poll_proximity,
  	&input_proximity,
@@ -185,5 +191,5 @@ index 3e503de..9a74481 100644
    sources,
    dependencies: deps,
 -- 
-2.45.1
+2.47.1
 
