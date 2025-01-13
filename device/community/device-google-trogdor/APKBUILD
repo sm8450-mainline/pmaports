@@ -3,7 +3,7 @@
 pkgname=device-google-trogdor
 pkgdesc="Google Trogdor Chromebooks"
 pkgver=4
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -11,7 +11,6 @@ options="!check !archcheck"
 depends="
 	alsa-ucm-conf
 	depthcharge-tools
-	eudev-hwids
 	linux-postmarketos-qcom-sc7180
 	postmarketos-base
 	postmarketos-cros-common
@@ -42,6 +41,11 @@ nonfree_firmware() {
 	mkdir "$subpkgdir"
 }
 
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	depends="eudev-hwids"
+	mkdir "$subpkgdir"
+}
 
 sha512sums="
 f94dcb175e49cbaadce524586ed1c3e3b0182e414c84c495a5585b49ed40ca6f7fa9c73544d19cbad236333f9fd997f150f836452b47a271f99b7b059972c4bc  deviceinfo
