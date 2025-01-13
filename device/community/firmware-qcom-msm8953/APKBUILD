@@ -1,7 +1,7 @@
-# Maintainer: Barnabas Czeman <trabarni@gmail.com>
+# Maintainer: Barnabas Czeman <barnabas.czeman@postmarketos.org>
 pkgname=firmware-qcom-msm8953
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware files for Qualcomm MSM8953 devices"
 url="https://postmarketos.org"
 arch="aarch64"
@@ -66,14 +66,17 @@ package() {
 	motorola_ali_dir="$srcdir/firmware-blobs-$_motorola_ali_commit"
 	install -Dm644 "$motorola_ali_dir/a506_zap.b02" -t "$pkgdir/$_fwdir/motorola/ali"
 	install -Dm644 "$motorola_ali_dir/a506_zap.mdt" -t "$pkgdir/$_fwdir/motorola/ali"
+	install -Dm644 "$motorola_ali_dir/wlan/prima/WCNSS_qcom_wlan_nv.bin" -t "$pkgdir/$_fwdir/motorola/ali"
 
 	motorola_potter_dir="$srcdir/firmware-motorola-potter-$_motorola_potter_commit/lib/firmware/postmarketos"
 	install -Dm644 "$motorola_potter_dir/a506_zap.b02" -t "$pkgdir/$_fwdir/motorola/potter"
 	install -Dm644 "$motorola_potter_dir/a506_zap.mdt" -t "$pkgdir/$_fwdir/motorola/potter"
+	install -Dm644 "$motorola_potter_dir/wlan/prima/WCNSS_qcom_wlan_nv.bin" -t "$pkgdir/$_fwdir/motorola/potter"
 
 	motorola_ocean_dir="$srcdir/firmware-motorola-ocean-$_motorola_ocean_commit/lib/firmware/postmarketos"
 	install -Dm644 "$motorola_ocean_dir/a506_zap.b02" -t "$pkgdir/$_fwdir/motorola/ocean"
 	install -Dm644 "$motorola_ocean_dir/a506_zap.mdt" -t "$pkgdir/$_fwdir/motorola/ocean"
+	install -Dm644 "$motorola_ocean_dir/wlan/prima/WCNSS_qcom_wlan_nv.bin" -t "$pkgdir/$_fwdir/motorola/ocean"
 
 	xiaomi_daisy_dir="$srcdir/firmware-xiaomi-daisy-$_xiaomi_daisy_commit/gpu"
 	install -Dm644 "$xiaomi_daisy_dir/a506_zap.b02" -t "$pkgdir/$_fwdir/xiaomi/daisy"
