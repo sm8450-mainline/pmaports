@@ -3,14 +3,13 @@
 pkgname=device-pine64-pinebookpro
 pkgdesc="PINE64 Pinebook Pro"
 pkgver=16
-pkgrel=7
+pkgrel=8
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
 	alsa-ucm-conf>=1.2.7
-	eudev-hwids
 	linux-postmarketos-rockchip>=5.14
 	nvme-cli
 	postmarketos-base>=25-r1
@@ -58,6 +57,7 @@ nonfree_firmware() {
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="eudev-hwids"
 
 	mkdir -p "$subpkgdir"
 }
