@@ -3,14 +3,6 @@
 supervisor=supervise-daemon
 command="/usr/libexec/iio-sensor-proxy"
 
-# In some devices like OP6T/AYN Odin/Miatoll hexagonrpcd might take longer time to get initialized
-# and iio-sensor-proxy may die before that. Let's workaround it by adding a 15 seconds delay.
-# It doesnt break other devices and makes it work in devices like the OP6T, AYN Odin and Miatoll.
-# This is just a temporary workaround.
-start_pre() {
-	sleep 15
-}
-
 depend() {
 	need dbus
 }
