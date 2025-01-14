@@ -43,9 +43,9 @@ s390x)
 	# probably broken here, but we want this just so pipewire is installable
 	options="$options !check"
 	;;
-armv7)
+armv7|armhf)
 	# Tests fail in BPO, probably related to QEMU since they seem to pass
-	# for the pipewire package in Alpine for this arch.
+	# for the pipewire package in Alpine for these arches.
 	options="$options !check"
 	;;
 esac
