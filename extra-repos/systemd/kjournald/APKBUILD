@@ -1,10 +1,9 @@
-# Contributor: Bart Ribbers <bribbers@disroot.org>
-# Maintainer: Bart Ribbers <bribbers@disroot.org>
+maintainer="Bart Ribbers <bribbers@disroot.org>"
 pkgname=kjournald
-pkgver=24.08.2
+pkgver=24.12.1
 pkgrel=0
 pkgdesc="Framework for interacting with systemd-journald"
-# armhf blocked by extra-cmake-modules
+# armhf blocked by qt6-qtdeclarative
 arch="all !armhf"
 url="https://invent.kde.org/system/kjournald"
 license="BSD-3-Clause AND LGPL-2.1-or-later AND MIT"
@@ -38,7 +37,7 @@ build() {
 }
 
 check() {
-	ctest --test-dir build --output-on-failure -E "test_(viewmodel|filtercriteriamodel|remotejournal)"
+	ctest --test-dir build -E "test_(viewmodel|filtercriteriamodel|remotejournal)"
 }
 
 package() {
@@ -46,5 +45,5 @@ package() {
 }
 
 sha512sums="
-5bd8a122362c20dd3cb10bb9a28596d31686782c309834a1c596f80f515574c3d6f3937163008c02191666e8be465ff64784a99deb7ef886daf1e54e947256ae  kjournald-24.08.2.tar.xz
+11e5e9e15038c79c677d942d0e6f98d870e2e7feb5cf7154dcea2a759af68a194cc13a606778c949ae88820f3d4d3d3384746fcac9b974712f3c2e1486466efc  kjournald-24.12.1.tar.xz
 "
