@@ -1,6 +1,6 @@
 pkgname=postmarketos-base
 pkgver=40
-pkgrel=0
+pkgrel=1
 pkgdesc="Meta package for minimal postmarketOS base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -10,7 +10,6 @@ depends="
 	alpine-base
 	devicepkg-utils>=0.2.0
 	eudev
-	logbookd
 	openssh
 	postmarketos-bootsplash
 	postmarketos-ramdisk
@@ -144,6 +143,7 @@ openrc() {
 		"
 	depends="
 		eudev-openrc
+		logbookd
 		logbookd-openrc
 		openssh-server-common-openrc
 		udev-init-scripts-openrc
