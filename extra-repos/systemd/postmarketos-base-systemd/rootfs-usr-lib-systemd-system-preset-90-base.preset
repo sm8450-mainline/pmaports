@@ -57,6 +57,7 @@ enable waydroid-sensors.service
 # Device specifics:
 # TODO: i like the idea of device/soc specific presets, we should move this out of here
 enable adsp-audio.service
+enable bootmac-bluetooth.service
 enable gesture.service
 enable gnss-share
 enable swclock-offset-boot.service
