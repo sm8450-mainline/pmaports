@@ -1,0 +1,12 @@
+[Unit]
+Description=Kanshi output profile management
+Documentation=man:kanshi(1)
+
+[Service]
+Type=simple
+ExecStart=kanshi
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=graphical-session.target

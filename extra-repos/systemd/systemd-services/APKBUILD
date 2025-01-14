@@ -34,6 +34,7 @@ subpackages="
 	iio-sensor-proxy-systemd:_service
 	iwd-systemd:_service
 	kactivitymanagerd-systemd:_service
+	kanshi-systemd:_service
 	kded-systemd:_service
 	kglobalacceld-systemd:_service
 	lxc-systemd:_service
@@ -104,6 +105,7 @@ _gnome_terminal_sources="user/gnome-terminal-server.service" # From https://gitl
 _hexagonrpcd_sources="system/hexagonrpcd-sdsp.service system/iio-sensor-proxy.d/hexagonrpcd.conf"
 _iio_sensor_proxy_sources="system/iio-sensor-proxy.service"
 _iwd_sources="system/iwd.service" # From https://git.kernel.org/pub/scm/network/wireless/iwd.git/tree/src/iwd.service.in
+_kanshi_sources="user/kanshi.service" # created, no unit file upstream
 _kactivitymanagerd_sources="user/plasma-kactivitymanagerd.service"
 _kded_sources="user/kded.service" # From https://invent.kde.org/frameworks/kded/-/blob/master/src/plasma-kded6.service.in
 _kglobalacceld_sources="user/plasma-kglobalaccel.service"
@@ -165,6 +167,7 @@ source="$(flatpath \
 	$_iio_sensor_proxy_sources \
 	$_iwd_sources \
 	$_kactivitymanagerd_sources \
+	$_kanshi_sources \
 	$_kded_sources \
 	$_kglobalacceld_sources \
 	$_lxc_sources \
@@ -206,6 +209,7 @@ _geoclue_system_presets="geoclue.service"
 _gnome_clocks_user_presets="gnome-clocks.service"
 _hexagonrpcd_system_presets="hexagonrpcd-sdsp.service"
 _iwd_system_presets="iwd.service"
+_kanshi_user_presets="kanshi.service"
 _mmsd_tng_user_presets="mmsd-tng.service"
 _modemmanager_system_presets="ModemManager.service"
 _nftables_system_presets="nftables.service"
@@ -304,6 +308,7 @@ af0e416f78ab317fe09813de58b446e5178457992ea4a2da2eb128811045201087d847e1b7ac0447
 d12ebe6e7db2a8e34baab640dd4e2ea9cd01bc19054adf32d55528a6b27f71c2006ac2d65a58c98e21ed598e9cc66bfe79e197d20ed9d13f866a5a6cd3e247d5  system-iio-sensor-proxy.service
 df3388cb7b9d035e54b34d8f8a6594be89c3015f979fe3bdc199fb7db1ab0bef821d6b306eecdf978eb227454d5e50aab29ac02d9722b1b075ec0ce4705e3518  system-iwd.service
 9cf877929b16f3437e65d1a0a2049799cc97cc84a7caab6a581e90139495b4febb5fb4c59ee463110866a0b60c9462d6d0fdb331d92d29b30ce6aeada365ac48  user-plasma-kactivitymanagerd.service
+fa41668288d53f8ce42a7524f10b1e03812fb11ed71bcb484dc22d0d374b453837317eb599cf61b66163a905949024509e73d5190012b664b301d48af7002a01  user-kanshi.service
 b0ecd5d413a2010d3f36285c2d35523119c29007e1e4162e51dfc746cc105f990a82a2a2d6037a8b906628c0a4f606729290525c7a53dbcfbc8147244fa403a7  user-kded.service
 acf21c4391ca62775491ba4d3b7c460b4163ef07abb195e152c98299a2d12779f3eb95f8cad0aeb3239f2d0fa8222a2483000c45aa6a47e05269876147d89839  user-plasma-kglobalaccel.service
 f6fb4c890cbf72e344ca7a22e7f033fb4c32ce9f5edc27c03ccc5c21424d6a0ef871d79e8a89a502a707bdceb3bfbd7a5b3c8e16b1cd30e149bf2fdf8cccea9e  system-lxc@.service
