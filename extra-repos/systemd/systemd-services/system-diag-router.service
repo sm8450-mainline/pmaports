@@ -1,0 +1,11 @@
+[Unit]
+Description=Qualcomm DIAG router
+Before=rmtfs.service
+
+[Service]
+ExecStart=/usr/bin/diag-router
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target

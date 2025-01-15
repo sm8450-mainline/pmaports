@@ -6,8 +6,8 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=34
-pkgrel=2
+pkgver=35
+pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
 arch="noarch"
@@ -50,6 +50,7 @@ subpackages="
 	powerdevil-systemd:_service
 	q6voiced-systemd:_service
 	qbootctl-systemd:_service
+	qcom-diag-systemd:_service
 	rmtfs-systemd:_service
 	rtkit-systemd:_service
 	sensorfw-systemd:_service
@@ -125,6 +126,7 @@ _plasma_mobile_sources="system/plasma-mobile.service"
 _powerdevil_sources="user/plasma-powerdevil.service" # From https://invent.kde.org/plasma/powerdevil/-/blob/master/daemon/plasma-powerdevil.service.in
 _q6voiced_sources="system/q6voiced.service"
 _qbootctl_sources="system/qbootctl.service"
+_qcom_diag_sources="system/diag-router.service"
 _rmtfs_sources="system/rmtfs.service"
 _rtkit_sources="system/rtkit-daemon.service"
 _sensorfw_sources="system/sensorfwd.service"
@@ -189,6 +191,7 @@ source="$(flatpath \
 	$_powerdevil_sources \
 	$_q6voiced_sources \
 	$_qbootctl_sources \
+	$_qcom_diag_sources \
 	$_rmtfs_sources \
 	$_rtkit_sources \
 	$_sensorfw_sources \
@@ -229,6 +232,7 @@ _phosh_system_presets="phosh.service"
 _plasma_mobile_system_presets="plasma-mobile.service"
 _q6voiced_system_presets="q6voiced.service"
 _qbootctl_system_presets="qbootctl.service"
+_qcom_diag_system_presets="diag-router.service"
 _rmtfs_system_presets="rmtfs.service"
 _rtkit_system_presets="rtkit-daemon.service"
 _sensorfw_system_presets="sensorfwd.service"
@@ -336,6 +340,7 @@ e12d8e98e28a795f879aebcceb32a991ee4abcb3bc5ec458aa5378bb52ff86cf39be04bc4a196925
 291ac8b09e4904da016727bcf6b08e4f371f84ad46d181c74e7e5b319b73e72500989f9fb964617f84babdec4a91307f8295b008e4c44a0e6eecb6e7bf699aa0  user-plasma-powerdevil.service
 4c4c3f1e5e829ff67dd35df59120ab59730ff1f1ca0aab93f16d670132979a99099fad59e6c736908cc19df9172c9bdfe476ec721a1cc28de8c2210da46ce1f1  system-q6voiced.service
 621189aa251655796795f4fa0cd79360bb67573e7327e545064eaadafc83cc7b382a405d6ba80662e0a4ece3876e4270e3563d859a6ba63b5e3854b39c35873e  system-qbootctl.service
+998f70776a2857b44202079ecb1ec76331f998155c8a4a15ce036b2fb916d82cba5d750d66509e562f93482c2301a262e8efc220fe54ac2ee1a445801823e465  system-diag-router.service
 11bb0ff9ab32f0f230c665db2738e37e5226fa200621b9207baf92e0632a38f840395a55ef6e827763911cf78f3bad95cd3456e77cc01b30b8abce96dc13df9d  system-rmtfs.service
 1a0958e4fe232967946e9f2b17a13434b137236ba5d18442175d648b084d82df3a9fc5723c1621be899ee290b99777ac3c0ee6ad733e72d8e70f63b37ad00036  system-rtkit-daemon.service
 d5bf5f01c0feafab4edfc39b75eded608dc3efcd3b918739e3ed2ab11340c9cc9b6fb97c0706ddd3d49b726c5f62e8cdb0048aefafd916f3ad9defc6ff9783bc  system-sensorfwd.service
