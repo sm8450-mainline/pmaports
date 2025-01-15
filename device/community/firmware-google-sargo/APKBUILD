@@ -1,12 +1,12 @@
 # Maintainer: Richard Acayan <mailingradian@gmail.com>
 pkgname=firmware-google-sargo
 pkgver=220505.008
-pkgrel=6
+pkgrel=7
 pkgdesc="Proprietary firmware blobs from the Google Pixel 3a factory image"
 url="https://github.com/TheMuppets/proprietary_vendor_google_sargo"
 arch="aarch64"
 license="proprietary"
-makedepends="pil-squasher sscregistrygen"
+makedepends="pil-squasher sscregistrygen zstd"
 _commit="c631f0f2aa24ea60cfb505d327cd4ae56ca27f16"
 _modemfw_commit="34bbe2c27f35537f13747c9eba67ece6ae141806"
 _device_android_commit="a1cd8bf2603569b8b3b450b9d7b5b595eb549df0"
@@ -17,6 +17,7 @@ source="
 "
 builddir="$srcdir/proprietary_vendor_google_sargo-$_commit"
 options="!check !archcheck !strip !tracedeps pmb:cross-native"
+_modemfw_dir="$srcdir/firmware-google-sargo-modem-$_modemfw_commit"
 
 build() {
 	pil-squasher a615_zap.mbn proprietary/vendor/firmware/a615_zap.mdt
@@ -25,33 +26,42 @@ build() {
 	# This is an OEM device. The SoC ID for SDM670 is 336.
 	mkdir sensors-registry
 	sscregistrygen -p OEM -s 336 proprietary/vendor/etc/sensors/config sensors-registry/
+
+	# Compress kernel-loaded firmware
+	zstd a615_zap.mbn
+	zstd ipa_fws.mbn
+
+	zstd proprietary/vendor/firmware/adsp.mbn
+	zstd proprietary/vendor/firmware/venus.mbn
+	zstd proprietary/vendor/firmware/wlanmdsp.mbn
+
+	zstd "$_modemfw_dir"/modemfw/mba.mbn
+	zstd "$_modemfw_dir"/modemfw/modem.mbn
 }
 
 package() {
-	_modemfw_dir="$srcdir"/firmware-google-sargo-modem-"$_modemfw_commit"
+	install -Dm644 "$builddir"/a615_zap.mbn.zst \
+		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/a615_zap.mbn.zst
+	install -Dm644 "$builddir"/ipa_fws.mbn.zst \
+		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/ipa_fws.mbn.zst
 
-	install -Dm644 "$builddir"/a615_zap.mbn \
-		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/a615_zap.mbn
-	install -Dm644 "$builddir"/ipa_fws.mbn \
-		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/ipa_fws.mbn
-
-	install -Dm644 "$builddir"/proprietary/vendor/firmware/adsp.mbn \
-		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/adsp.mbn
+	install -Dm644 "$builddir"/proprietary/vendor/firmware/adsp.mbn.zst \
+		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/adsp.mbn.zst
 	install -Dm644 "$builddir"/proprietary/vendor/firmware/adspr.jsn \
 		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/adspr.jsn
 	install -Dm644 "$builddir"/proprietary/vendor/firmware/adspua.jsn \
 		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/adspua.jsn
 	install -Dm644 "$builddir"/proprietary/vendor/firmware/modemuw.jsn \
 		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/modemuw.jsn
-	install -Dm644 "$builddir"/proprietary/vendor/firmware/venus.mbn \
-		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/venus.mbn
-	install -Dm644 "$builddir"/proprietary/vendor/firmware/wlanmdsp.mbn \
-		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/wlanmdsp.mbn
+	install -Dm644 "$builddir"/proprietary/vendor/firmware/venus.mbn.zst \
+		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/venus.mbn.zst
+	install -Dm644 "$builddir"/proprietary/vendor/firmware/wlanmdsp.mbn.zst \
+		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/wlanmdsp.mbn.zst
 
-	install -Dm644 "$_modemfw_dir"/modemfw/mba.mbn \
-		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/mba.mbn
-	install -Dm644 "$_modemfw_dir"/modemfw/modem.mbn \
-		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/modem.mbn
+	install -Dm644 "$_modemfw_dir"/modemfw/mba.mbn.zst \
+		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/mba.mbn.zst
+	install -Dm644 "$_modemfw_dir"/modemfw/modem.mbn.zst \
+		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/modem.mbn.zst
 	install -Dm644 "$_modemfw_dir"/modemfw/modemr.jsn \
 		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/modemr.jsn
 
