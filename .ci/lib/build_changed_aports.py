@@ -110,6 +110,10 @@ if __name__ == "__main__":
     # FIXME: this should probably be more generic, if other repos are added later?
     if systemd_pkgs:
         common.run_pmbootstrap(["config", "systemd", "always"])
+        # To fix the ERROR: Chroot 'native' is for the 'edge' channel, but you are on the
+        # 'systemd-edge' channel. Run 'pmbootstrap zap' to delete your chroots and try again.
+        # To do this automatically, run 'pmbootstrap config auto_zap_misconfigured_chroots yes'.
+        common.run_pmbootstrap(["config", "auto_zap_misconfigured_chroots", "yes"])
 
         verify_only = common.commit_message_has_string("[ci:skip-build]")
         if verify_only:
