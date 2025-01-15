@@ -20,7 +20,7 @@
 
 pkgname=crossdirect
 pkgver=5.2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Wrappers to launch native cross compilers in foreign chroots"
 url="https://postmarketOS.org"
 arch="all"
@@ -31,7 +31,7 @@ source="cargo.sh crossdirect.c rustc.sh rust-qemu-linker.sh"
 build() {
 	cd "$srcdir"
 	# Architectures and binaries
-	_archs="x86_64 armhf armv7 aarch64"
+	_archs="x86_64 armhf armv7 aarch64 riscv64"
 	for _arch in $_archs; do
 		[ "$_arch" == "$CARCH" ] && continue
 		_hostspec="$(arch_to_hostspec $_arch)"
@@ -48,7 +48,7 @@ build() {
 
 package() {
 	# Architectures and binaries
-	_archs="x86_64 armhf armv7 aarch64"
+	_archs="x86_64 armhf armv7 aarch64 riscv64"
 	_bins="c++ cc cpp g++ gcc clang clang++"
 
 	# Rust wrappers
