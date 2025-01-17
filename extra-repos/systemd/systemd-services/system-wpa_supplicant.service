@@ -9,7 +9,7 @@ IgnoreOnIsolate=true
 Type=dbus
 BusName=fi.w1.wpa_supplicant1
 # Hardcoded drivers from postmarketos-base-ui
-ExecStart=/sbin/wpa_supplicant -u -O /run/wpa_supplicant -Dnl80211,wext
+ExecStart=/sbin/wpa_supplicant -u -O /run/wpa_supplicant -Dnl80211,wext -q
 
 [Install]
 WantedBy=multi-user.target
