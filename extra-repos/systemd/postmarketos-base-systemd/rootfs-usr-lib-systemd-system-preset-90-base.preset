@@ -23,6 +23,7 @@ enable rtkit-daemon.service
 enable sleep-inhibitor.service
 enable sshd.service
 enable systemd-rfkill.service
+enable tinydm.service
 enable udisks2.service
 
 # Note: technically these two shouldn't be enabled at the same time, but
