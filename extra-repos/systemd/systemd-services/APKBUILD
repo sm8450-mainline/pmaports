@@ -6,7 +6,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=35
+pkgver=36
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -57,6 +57,7 @@ subpackages="
 	sleep-inhibitor-systemd:_service
 	syncthing-systemd:_service
 	tailscale-systemd:_service
+	tinydm:_service
 	tqftpserv-systemd:_service
 	udisks2-systemd:_service
 	udiskie-systemd:_service
@@ -133,6 +134,7 @@ _sensorfw_sources="system/sensorfwd.service"
 _sleep_inhibitor_sources="system/sleep-inhibitor.service"
 _syncthing_sources="user/syncthing.service"  # From https://github.com/syncthing/syncthing/blob/main/etc/linux-systemd/user/syncthing.service
 _tailscale_sources="system/tailscaled.service etc/default/tailscaled"
+_tinydm_sources="system/tinydm.service"  # see issue tinydm#11
 _tqftpserv_sources="system/tqftpserv.service"
 _udisks2_sources="system/udisks2.service" # From https://github.com/storaged-project/udisks/blob/master/data/udisks2.service.in
 _udiskie_sources="user/udiskie.service"  # created, no unit file upstream
@@ -198,6 +200,7 @@ source="$(flatpath \
 	$_sleep_inhibitor_sources \
 	$_syncthing_sources \
 	$_tailscale_sources \
+	$_tinydm_sources \
 	$_tqftpserv_sources \
 	$_udisks2_sources \
 	$_udiskie_sources \
@@ -238,6 +241,7 @@ _rtkit_system_presets="rtkit-daemon.service"
 _sensorfw_system_presets="sensorfwd.service"
 _sleep_inhibitor_system_presets="sleep-inhibitor.service"
 _syncthing_user_presets="syncthing.service"
+_tinydm_system_presets="tinydm.service"
 _tqftpserv_system_presets="tqftpserv.service"
 _udisks2_system_presets="udisks2.service"
 _udiskie_user_presets="udiskie.service"
@@ -348,6 +352,7 @@ be9df5e3fd9c88ec1a8db4aa2d9e8075d74ee3d2670aa3cfc611df3cff4d4041ac888a0338c9d5f1
 399cd971b02e4b8bdfe60808ab1beac111b8618358f89a4482cafde1d19fe0a943d2ef6c20f5ad853581a85ab2297065187ade83eac7a664bd47412d0df7b2b6  user-syncthing.service
 41547eb369937348378e898e0dda7151552056107f4daab5a8a137a1b846560afa923cd345037b4f96bc9cdf2a7f66211a346b77229cc07ce2d0b634ff40dfe7  system-tailscaled.service
 324935213f1600e345acdfa70eae29181e9ee02e3aca6a03776ea4856137f72b5791e23aea46210cc756065cadd88fd1b8eb4b26a608fec94f662d683fcb9320  etc-default-tailscaled
+23f854fa2d0e0cb4de54db8605e549bb32061470ea7fa8ac16d474149be635e2b20a815c4ea8088e583693d7f515651ad2872b45f3b38a762f686b977d4fc49d  system-tinydm.service
 c569b27925297672c479e12a6425abdf5791886fff77c2c2b67b7aa9277eb0a22e7b95b52dbc225870c97460d0988a4dae18ed864e19096c704c0895de55b699  system-tqftpserv.service
 c7ea2b18c9d8f82306fbaca6d07b7019de3819d7898c3f50c3d0aceef4da4d311ed3bf31385e2f8998b8e3e326b1eb13309ffd44cf1b2d9db9b40bca00222c16  system-udisks2.service
 4c43a308e9e653914e534d92fc8caaf8c60cd21ae57bdbbf2fa591c1bd6a41e502268b6e0ff17b19cbe301fc7cfa1ad43070f13b372376fa3ddee9d11bf76f5a  user-udiskie.service
