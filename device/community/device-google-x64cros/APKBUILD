@@ -4,7 +4,7 @@
 # Co-Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-x64cros
 pkgdesc="Google Chromebooks with x64 CPU"
-pkgver=11
+pkgver=12
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -81,5 +81,5 @@ sha512sums="
 38c53d91a60d0402d4cc5428d65e1e8c26360c481c70b34593b1812c87241c32e91904a3bd31fbfe507f7fdb8b50c909eaad8c4c3a37ca962760567329f7f6ee  00-amdgpu-firmware.files
 c17f5c505e0e280a9e51ac1b4264e7703b744fd3831d75ce95f41be4755ae4ccd24b7ca09ba1e236df499a5e748c64a0d2054c9d55d8c8c713fa8c5646ed9a3c  00-i915-firmware.files
 514ff5c946633dccaa569fed51743c669ea9942af4dd891ad001ba08bba07fca92503e29304f3eb71c16bc2f2436e1879ff0bf56d99666e4dcf9635c8605da2e  deviceinfo
-1b3bbfcdc6642488304653aef996dddf7a354e7279f2c735ac7aec404e598948423630fcaa2cac87e2c0aef033ecfc57a7a91154f9dac9a85411db7bad62e677  modules-initfs
+a6e5a9de9fe010966523606f2fcab1c44004228b4e050f777dcb1160fb3e32cda8096925543522216c2eb354f8ce2f8d4e206d98b077fbd6fb840de94e84c706  modules-initfs
 "
