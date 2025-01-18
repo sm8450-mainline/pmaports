@@ -46,6 +46,9 @@ enable phosh.service
 ## gnome
 enable gdm.service
 
+## fbkeyboard
+enable fbkeyboard.service
+
 # Waydroid
 enable sensorfwd.service
 enable waydroid-container.service
