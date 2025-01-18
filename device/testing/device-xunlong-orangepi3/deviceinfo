@@ -9,7 +9,6 @@ deviceinfo_codename="xunlong-orangepi3"
 deviceinfo_year="2019"
 deviceinfo_dtb="allwinner/sun50i-h6-orangepi-3"
 deviceinfo_arch="aarch64"
-deviceinfo_disable_dhcpd="true"
 
 # Device related
 deviceinfo_gpu_accelerated="true"

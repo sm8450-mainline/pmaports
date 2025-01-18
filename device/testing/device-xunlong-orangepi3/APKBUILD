@@ -3,8 +3,8 @@
 # Co-Maintainer: exkc <exkc@exkc.moe>
 pkgname=device-xunlong-orangepi3
 pkgdesc="Xunlong Orange Pi 3"
-pkgver=1
-pkgrel=3
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -33,5 +33,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-23632206ab33cf31a8ba15b55f5fb02a0c17ccec6fdd76ef72670b9135fa3121e0c990768412780bdcb496aa29e6deb13ec1407eb98d64d11b3295e5e846e2b1  deviceinfo
+835daec2746f9d59aeb7141f4a38ce72f60fd5cc6955405e6de8d661d75360a13af9451af84d8af16b1f0fd565ddb65383fcddb8be7770f0ff70ed8fbec29781  deviceinfo
 "
