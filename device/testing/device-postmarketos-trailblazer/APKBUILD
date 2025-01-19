@@ -3,8 +3,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-postmarketos-trailblazer
 pkgdesc="postmarketOS Trailblazer generic ARM64"
-pkgver=12
-pkgrel=3
+pkgver=13
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -86,5 +86,5 @@ kernel_postmarketos_amlogic() {
 
 sha512sums="
 12e7c1af63b24a37198a73e77d45cc5cbcb3ce34bbdb32d913cb3e427896ddcf2266269f8fe0c73c15c751a34ad738bd7fc958629ad066cd3c0a9faaaae7d67f  deviceinfo
-7642e07eb1d0d24c8b1d754371394ff5a5b532fb699be5cac75431b58755adb6f550bf4cf8cddde27ef4e7f20ea90a5368298b0e44f9d145f1f6d7a4026a550e  modules-initfs
+7d2b11eb25a6d184d3ca9ffbb4c75c4da45fa4982a04a3ffddfb78bc63aab36a587f18fa56a1f36762f3a01e4b3ff667f4cee716e6c7b9f492cff9179a8dc7e7  modules-initfs
 "

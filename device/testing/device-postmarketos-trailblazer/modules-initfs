@@ -36,6 +36,7 @@ panel-samsung-s6d7aa0
 panel-samsung-sofef00
 panel_sitronix_st7703
 panel-visionox-rm69299
+phy-nxp-ptn3222
 phy_qcom_edp
 phy-qcom-eusb2-repeater
 phy-qcom-qmp-combo
@@ -45,10 +46,12 @@ phy-qcom-qmp-usb
 phy-qcom-qmp-usbc
 phy-qcom-qusb2
 phy-qcom-snps-eusb2
+phy-snps-eusb2
 phy_sun6i_mipi_dphy
 pinctrl-sm6115
 pmic-glink
 pmic-glink-altmode
+ps883x
 pwm_bl
 pwm_sun4i
 qcom-apcs-ipc-mailbox
