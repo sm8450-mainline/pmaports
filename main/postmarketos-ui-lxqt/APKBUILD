@@ -1,8 +1,8 @@
 # Reference: https://postmarketos.org/uipkg
 # Maintainer: Antoni Aloy <aaloytorrens@gmail.com>
 pkgname=postmarketos-ui-lxqt
-pkgver=0.3
-pkgrel=5
+pkgver=0.4
+pkgrel=0
 pkgdesc="(X11) Lightweight Qt Desktop Environment (stylus recommended)"
 url="https://lxqt-project.org/"
 # armhf: lxqt-desktop not available
@@ -65,6 +65,9 @@ package() {
 	mkdir -p "$pkgdir"/etc/xdg
 	cp -a "$builddir"/config "$pkgdir"/etc/xdg/lxqt-tablet
 
+	mkdir -p "$pkgdir"/usr/share/themes
+	cp -a "$builddir"/openbox-themes/* "$pkgdir"/usr/share/themes/.
+
 	install -Dm644 -t "$pkgdir"/etc/xdg/lxqt-tablet/autostart \
 		"$srcdir"/lxqt-xscreensaver-autostart.desktop \
 		"$srcdir"/onboard-autostart.desktop \
@@ -96,7 +99,7 @@ openrc() {
 }
 
 sha512sums="
-d3bfa79f4f7dbf478ea5b321918d8a733a726839ab92b02c85a53fd3102b5b2cc5c928fbdfb6bc05bb7e8038bf13d45ccd73975160046912128bcfb4e2f2909c  postmarketos-ui-lxqt-0.3.tar.gz
+f442f9aeea54e2c41efa4505a4c14c08557ab6a1a7f6dbd4bb782bc023332a647d7d957a3fb79f00aedb0767240d297f7814f46ad40c9393b4909d17da35a3ed  postmarketos-ui-lxqt-0.4.tar.gz
 ffcc518ff58d37de302bd101e57bf983800e45899645d476045d0a74096704333a0b513f45e6a5485fdbd80ac1caebce14a760cab6fcc6d5dde0d766ade8b58b  10_onboard.gschema.override
 1b5ca0c5bc6ef0c06cd60f8ca26259da42e992f9aed8918901d52d267ce3d9861c514643d33a1e45257012e28631d07c244bfb821782cf4c2eab3094bf6a32fc  lxqt-tablet.sh
 688f1920f64fa9996d598a44c4a4e7a73d7b032489cebfdb52f3cb1b410b9843a696b0de25579fd0e8436f3f72cfdb4a9b6cb491479185deac0f8ce4e95746a5  lxqt-xscreensaver-autostart.desktop
