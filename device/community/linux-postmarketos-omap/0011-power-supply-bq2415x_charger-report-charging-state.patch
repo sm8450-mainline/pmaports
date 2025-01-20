@@ -1,0 +1,61 @@
+From 5972da73f75af6002b72e5cd61002855b6b4eda3 Mon Sep 17 00:00:00 2001
+From: "Sicelo A. Mhlongo" <absicsz@gmail.com>
+Date: Thu, 28 Nov 2024 10:57:28 +0200
+Subject: power: supply: bq2415x_charger: report charging state changes to
+ userspace
+
+Continuously track the charging status register in order to send uevents
+whenever the state changes. Generate an uevent also when the chip's OTG
+line is toggled, in bq2415x_notifier_call().
+
+Signed-off-by: Sicelo A. Mhlongo <absicsz@gmail.com>
+Link: https://lore.kernel.org/r/20241128085759.11840-2-absicsz@gmail.com
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/power/supply/bq2415x_charger.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/drivers/power/supply/bq2415x_charger.c b/drivers/power/supply/bq2415x_charger.c
+index 5e174242d2dec4..18a6c3dbc75835 100644
+--- a/drivers/power/supply/bq2415x_charger.c
++++ b/drivers/power/supply/bq2415x_charger.c
+@@ -171,6 +171,7 @@ struct bq2415x_device {
+ 	char *name;
+ 	int autotimer;	/* 1 - if driver automatically reset timer, 0 - not */
+ 	int automode;	/* 1 - enabled, 0 - disabled; -1 - not supported */
++	int charge_status;
+ 	int id;
+ };
+ 
+@@ -835,6 +836,8 @@ static int bq2415x_notifier_call(struct notifier_block *nb,
+ 	if (!bq2415x_update_reported_mode(bq, prop.intval))
+ 		return NOTIFY_OK;
+ 
++	power_supply_changed(bq->charger);
++
+ 	/* if automode is not enabled do not tell about reported_mode */
+ 	if (bq->automode < 1)
+ 		return NOTIFY_OK;
+@@ -889,12 +892,19 @@ static void bq2415x_timer_work(struct work_struct *work)
+ 	int ret;
+ 	int error;
+ 	int boost;
++	int charge;
+ 
+ 	if (bq->automode > 0 && (bq->reported_mode != bq->mode)) {
+ 		sysfs_notify(&bq->charger->dev.kobj, NULL, "reported_mode");
+ 		bq2415x_set_mode(bq, bq->reported_mode);
+ 	}
+ 
++	charge = bq2415x_exec_command(bq, BQ2415X_CHARGE_STATUS);
++	if (bq->charge_status != charge) {
++		power_supply_changed(bq->charger);
++		bq->charge_status = charge;
++	}
++
+ 	if (!bq->autotimer)
+ 		return;
+ 
+-- 
+cgit 1.2.3-korg
+

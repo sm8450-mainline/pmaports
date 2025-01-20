@@ -3,8 +3,8 @@
 # Kernel config based on: arch/arm/configs/omap2plus_defconfig
 
 pkgname=linux-postmarketos-omap
-pkgver=6.12.1
-pkgrel=4
+pkgver=6.13.0
+pkgrel=0
 pkgdesc="Mainline kernel fork for OMAP devices"
 arch="armv7"
 url="https://kernel.org/"
@@ -42,6 +42,8 @@ source="
 	0008-n900-dts-volume-keys.patch
 	0009-ARM-dts-disable-twl-off-idle-configuration-for-N900.patch
 	0010-power-supply-bq27xxx_battery-do-not-update-cached-fl.patch
+	0011-power-supply-bq2415x_charger-report-charging-state.patch
+	0012-spi-fix-regression.patch
 "
 builddir="$srcdir/linux-$_kernver"
 replaces="linux-samsung-espresso3g linux-nokia-n900"
@@ -71,8 +73,8 @@ package() {
 }
 
 sha512sums="
-c7523dc5b012367301ab43a685b766dce025c4993041acd3dacd085b052b3fccc7f50c892357acf481e24ccad512770ef46a13d2da16c2a178c44a27f7022932  linux-6.12.1.tar.xz
-5bf45fb0e16e664f2811c6ca07c133bab3e1c1a49aa96607d43e75f035aab8e0afccc18b2e8798b8eb771af6557d1c1e727ee85d1aac6ec36e4fad5dc87c979c  config-postmarketos-omap.armv7
+1137e6440132b0958f89165440e99208f82b204e7245ae69dc9c808df97d13ce8f58136db92407e0e93394fa7f6283ec7a34597c6e92a5b6d9025e0960357957  linux-6.13.tar.xz
+832ef4103304005ae0ca03c05cfba6feb63c62d751edfa74d2432cd7845c3d8be3943342757d254dde38f95046c498072e136b710833fede51f6aad07fabdd9c  config-postmarketos-omap.armv7
 9a187d93885f07467ec67094621b2d762607d58622e67172bdfcd8ba5f3d6aab900ca5d233efd3d447540f9b906ba950083a35997c84b315801604e1cd5cddc3  0001-Add-TWL6032-dtsi.patch
 f7d1a87088c65278a114125e732d5bebebb560a6245afb34e003083d808ef3f8c5f49ff23131953508a6daae111ab6adfffdbcf56b79260a6d4115f859c7bb3a  0002-arm-dts-Add-common-dtsi-for-espresso.patch
 089ca0547997c7cd5d1b65924c134eb6b7703a7439729923d3639d125763412fa7e826d1cb839ac0b6cd22e614f69a3b52605a75b571e271c33f9a27ff6ac9c2  0003-arm-dts-Add-espresso7-support.patch
@@ -83,4 +85,6 @@ c3af9715b3559c2d593f4fcfa078730722c7deeec132c5b83e085ff4d9815d85ef349384097c580e
 b98ce806b3d5a0122086e4c9670639174470ff6d29851c60258cc5d699ce9a479dbf4996b24299fc075d25e9fe8f6b1250fafdff742deea0ddeaf53d342a9d72  0008-n900-dts-volume-keys.patch
 66abb5548910ad369608b08200f5835d5a8526c04cc3617221ef546f3e3d22cd944db91dc6727a5c26a102b24d8ef1306ea01254c9c382759afced91b31747ef  0009-ARM-dts-disable-twl-off-idle-configuration-for-N900.patch
 efdf7f4f718faac8b753f8aacb5f845ccab75952c53310fe1f17efb7211d0d300ca7242a0c56dcb033962ca6505341730469645f2e774559eee469211411685f  0010-power-supply-bq27xxx_battery-do-not-update-cached-fl.patch
+cee7185889f276c96bb7825842509cc6b70fe49c9fe74c7db3c5e9ce393176046ba2b6113fde7f4e5dc2dbaf9a16ee7c4349c3b575965639cb4a72bb43ac41e9  0011-power-supply-bq2415x_charger-report-charging-state.patch
+ead80c65fb56598a4799dca4a3f0a535dbf26cf8e0124d2b175fab229f8864a30be5269dc5ac17c74ccdc1e4f2370f29fb40d5ada9245a4e2a9e214c658c7b33  0012-spi-fix-regression.patch
 "
