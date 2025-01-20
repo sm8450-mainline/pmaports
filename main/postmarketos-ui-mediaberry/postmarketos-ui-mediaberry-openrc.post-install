@@ -1,0 +1,7 @@
+#!/bin/sh
+
+rc-update add networkmanager default
+rc-update add tinydm default
+rc-update add seatd default
+
+tinydm-set-session -s /usr/share/wayland-sessions/mediaberry.desktop

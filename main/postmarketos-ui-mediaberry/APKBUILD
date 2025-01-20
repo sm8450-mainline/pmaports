@@ -1,0 +1,56 @@
+# Reference: https://postmarketos.org/uipkg
+# Maintainer: hexaheximal <hexaheximal@proton.me>
+pkgname=postmarketos-ui-mediaberry
+pkgver=0.1.0
+pkgrel=0
+pkgdesc="(Wayland) An open platform for streaming boxes and smart TVs (WIP)"
+url="https://mediaberry.org"
+arch="noarch"
+license="GPL-3.0-or-later"
+depends="
+	dnsmasq
+	pam-rundir
+	postmarketos-base-ui
+	postmarketos-base-ui-networkmanager
+	postmarketos-base-ui-tinydm
+	mbwl
+	seatd
+	foot
+	wireless-tools
+	"
+options="!check pmb:systemd-never" # No testsuite
+source="
+	set-xdg-env.sh
+	start_mediaberry.sh
+	mediaberry.desktop
+"
+_pmb_groups="seat"
+subpackages="$pkgname-openrc"
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="
+		tinydm
+		tinydm-openrc
+	"
+	mkdir "$subpkgdir"
+}
+
+
+package() {
+	install -Dm644 "$srcdir"/mediaberry.desktop \
+		"$pkgdir"/usr/share/wayland-sessions/mediaberry.desktop
+
+	install -Dm755 "$srcdir"/set-xdg-env.sh \
+		"$pkgdir"/etc/profile.d/set-xdg-env.sh
+
+	install -Dm755 "$srcdir"/start_mediaberry.sh \
+		"$pkgdir"/usr/bin/start_mediaberry
+
+}
+sha512sums="
+a711689b74a9b689e4678694fada2fdb5195a88b0a7e68fc1f1d5901bdeef79fe72caf959073a81868c929c94a8fef39f049bc118c7d76b3687770be96805280  set-xdg-env.sh
+277ae85b6f6d5fd6cdc459e3dbe2845c9a8068a3b0a72ab20d2281c5e095d1d4455f1631b0ae4ff8de55f4284b8bccf08faa8981eb0f30751074bc938b02c715  start_mediaberry.sh
+bfdfc2da4e5440a5873089236b459786cc970993f2c7c2c8aa6f9eb926c1d12ebb191a68edd9dac5ad1c97627a0fa88b8b8625eb3879fdfe3147e119acadef30  mediaberry.desktop
+"
