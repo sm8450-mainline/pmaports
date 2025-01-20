@@ -1,0 +1,29 @@
+# Maintainer: hexaheximal <hexaheximal@proton.me>
+pkgname=mbwl
+pkgdesc="The tinywl-based Mediaberry Wayland compositor"
+pkgver=0.1.0
+_commit="5ec7fca6e5c362b85a51eae77790f455146cbfd5"
+pkgrel=0
+url="https://codeberg.org/mediaberry/mbwl"
+arch="all"
+options="!check" # no testsuite
+license="GPL-3.0-or-later"
+source="$pkgname-$pkgver.tar.gz::https://codeberg.org/mediaberry/mbwl/archive/${_commit}.tar.gz"
+makedepends="
+	wayland-protocols
+	wlroots0.17-dev
+"
+builddir="$srcdir/mbwl"
+
+build() {
+	make
+}
+
+package() {
+	install -Dm 755 bin/mbwl \
+		-t "$pkgdir"/usr/bin/
+}
+
+sha512sums="
+5173dc0b22489a688b01fbe5e1cb91fd4e242d2dbfc0f2099c9cde2a7a21c1dbc7e0d2c4cc51e267897fe2f380dca9bf3eedc565a821487b6541dfd296cc3827  mbwl-0.1.0.tar.gz
+"
