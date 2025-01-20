@@ -2,8 +2,8 @@
 
 _flavor="postmarketos-qcom-sc7280"
 pkgname=linux-$_flavor
-pkgver=6.12.0
-pkgrel=2
+pkgver=6.13.0
+pkgrel=0
 pkgdesc="Mainline Kernel fork for SC7280/SM7325/QCM6490 devices"
 arch="aarch64"
 _carch="arm64"
@@ -54,6 +54,6 @@ package() {
 }
 
 sha512sums="
-ce44a305f7ddd069dd834af453f9d3d7913ee81f197e0f36ed6f3599d4dafda8c1f334c2627f842a159da581f8317ceff064be8c482363106d06ce7f4d6d0752  linux-v6.12.0-sc7280.tar.gz
-7e89491c17964eb3c346724c2d243fe832e43cffea44f6629adc82621bb64d278fd291a69826ee6f766b6c24b76e51992f69286b12c848d38635963acf18e913  config-postmarketos-qcom-sc7280.aarch64
+726fce23d0395e136b7d15256c1c44805f5358bdf40b71003d810f1c7fdef2cdbbb66220bae26af6a88f7619830e066f2cd167560234e125e2b42fc8e483c41b  linux-v6.13.0-sc7280.tar.gz
+99eb06bae0780e11e102a6a2dff9f94a095c7c89be2ec76f1b88989fc15a0b185c08a94e3f3f26419fb2e38151de2ba6457a0a74fa5253a0b907368e663a1e39  config-postmarketos-qcom-sc7280.aarch64
 "
