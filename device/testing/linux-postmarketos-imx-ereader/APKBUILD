@@ -3,7 +3,7 @@
 
 pkgname=linux-postmarketos-imx-ereader
 pkgver=6.11.2
-pkgrel=0
+pkgrel=1
 pkgdesc="i.MX E-Book reader kernel fork, close to mainline"
 replaces="linux-kobo-clara-mainline"
 provides="linux-kobo-clara-mainline=$pkgver-r$pkgrel"
@@ -44,9 +44,8 @@ _outdir="out"
 _rtl8189fs_dir="$srcdir/$_rtl8189fs_repository-$_rtl8189fs_commit"
 
 prepare() {
-	REPLACE_GCCH=0
 	default_prepare
-	. downstreamkernel_prepare
+	REPLACE_GCCH=0 . downstreamkernel_prepare
 }
 
 build() {
@@ -66,7 +65,7 @@ package() {
 		O="$_outdir" ARCH="$_carch" \
 		INSTALL_MOD_PATH="$pkgdir" \
 		INSTALL_DTBS_PATH="$pkgdir/boot/dtbs"
-	install -Dm644 "$_rtl8189fs_dir"/8189fs.ko "$pkgdir/lib/modules/$(make -s O="$_outdir" ARCH="$_carch" kernelrelease)/kernel/drivers/net/wireless"
+	install -Dm644 "$_rtl8189fs_dir"/8189fs.ko -t "$pkgdir/lib/modules/$(make -s O="$_outdir" ARCH="$_carch" kernelrelease)/kernel/drivers/net/wireless"
 }
 
 sha512sums="
