@@ -1,4 +1,4 @@
-From 836cc60357f95c5edfae621d458ec64c79880557 Mon Sep 17 00:00:00 2001
+From beffb5e21b03f78dc553112f6a4156a923fe965b Mon Sep 17 00:00:00 2001
 From: Andres Rodriguez <andresx7@gmail.com>
 Date: Tue, 8 Nov 2022 17:32:25 -0500
 Subject: [PATCH 21/21] mmc: core: add safe_trim_quirk attribute
@@ -20,10 +20,10 @@ Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
  4 files changed, 7 insertions(+)
 
 diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-index 5b2f7c285461..46b7971d0a33 100644
+index 6a23be214543..d8cf810837e8 100644
 --- a/drivers/mmc/core/mmc.c
 +++ b/drivers/mmc/core/mmc.c
-@@ -820,6 +820,7 @@ MMC_DEV_ATTR(rel_sectors, "%#x\n", card->ext_csd.rel_sectors);
+@@ -806,6 +806,7 @@ MMC_DEV_ATTR(rel_sectors, "%#x\n", card->ext_csd.rel_sectors);
  MMC_DEV_ATTR(ocr, "0x%08x\n", card->ocr);
  MMC_DEV_ATTR(rca, "0x%04x\n", card->rca);
  MMC_DEV_ATTR(cmdq_en, "%d\n", card->ext_csd.cmdq_en);
@@ -31,7 +31,7 @@ index 5b2f7c285461..46b7971d0a33 100644
  
  static ssize_t mmc_fwrev_show(struct device *dev,
  			      struct device_attribute *attr,
-@@ -879,6 +880,7 @@ static struct attribute *mmc_std_attrs[] = {
+@@ -865,6 +866,7 @@ static struct attribute *mmc_std_attrs[] = {
  	&dev_attr_rca.attr,
  	&dev_attr_dsr.attr,
  	&dev_attr_cmdq_en.attr,
@@ -40,10 +40,10 @@ index 5b2f7c285461..46b7971d0a33 100644
  };
  ATTRIBUTE_GROUPS(mmc_std);
 diff --git a/drivers/mmc/core/quirks.h b/drivers/mmc/core/quirks.h
-index cca71867bc4a..6418bfdf849e 100644
+index 89b512905be1..20c022419de1 100644
 --- a/drivers/mmc/core/quirks.h
 +++ b/drivers/mmc/core/quirks.h
-@@ -241,4 +241,6 @@ static inline void mmc_fixup_device(struct mmc_card *card,
+@@ -254,4 +254,6 @@ static inline void mmc_fixup_device(struct mmc_card *card,
  		dev_dbg(&card->dev, "calling %ps\n", f->vendor_fixup);
  		f->vendor_fixup(card, f->data);
  	}
@@ -51,10 +51,10 @@ index cca71867bc4a..6418bfdf849e 100644
 +	card->safe_trim_quirk_version = 1;
  }
 diff --git a/drivers/mmc/core/sd.c b/drivers/mmc/core/sd.c
-index 1c8148cdda50..e8b99bbb4b0b 100644
+index cc757b850e79..2fe5d6c9fed7 100644
 --- a/drivers/mmc/core/sd.c
 +++ b/drivers/mmc/core/sd.c
-@@ -714,6 +714,7 @@ MMC_DEV_ATTR(oemid, "0x%04x\n", card->cid.oemid);
+@@ -710,6 +710,7 @@ MMC_DEV_ATTR(oemid, "0x%04x\n", card->cid.oemid);
  MMC_DEV_ATTR(serial, "0x%08x\n", card->cid.serial);
  MMC_DEV_ATTR(ocr, "0x%08x\n", card->ocr);
  MMC_DEV_ATTR(rca, "0x%04x\n", card->rca);
@@ -62,7 +62,7 @@ index 1c8148cdda50..e8b99bbb4b0b 100644
  
  
  static ssize_t mmc_dsr_show(struct device *dev, struct device_attribute *attr,
-@@ -776,6 +777,7 @@ static struct attribute *sd_std_attrs[] = {
+@@ -772,6 +773,7 @@ static struct attribute *sd_std_attrs[] = {
  	&dev_attr_ocr.attr,
  	&dev_attr_rca.attr,
  	&dev_attr_dsr.attr,
@@ -71,10 +71,10 @@ index 1c8148cdda50..e8b99bbb4b0b 100644
  };
  
 diff --git a/include/linux/mmc/card.h b/include/linux/mmc/card.h
-index f34407cc2788..12fdace380f0 100644
+index 526fce581657..722812713ec0 100644
 --- a/include/linux/mmc/card.h
 +++ b/include/linux/mmc/card.h
-@@ -275,6 +275,7 @@ struct mmc_card {
+@@ -309,6 +309,7 @@ struct mmc_card {
  	unsigned int		state;		/* (our) card state */
  	unsigned int		quirks; 	/* card quirks */
  	unsigned int		quirk_max_rate;	/* max rate set by quirks */
@@ -83,5 +83,5 @@ index f34407cc2788..12fdace380f0 100644
  #define MMC_QUIRK_BLKSZ_FOR_BYTE_MODE (1<<1)	/* use func->cur_blksize */
  						/* for byte mode */
 -- 
-2.46.0
+2.48.1
 

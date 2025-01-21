@@ -1,4 +1,4 @@
-From 566127db62f7c5a344b927a766de4e37174f795e Mon Sep 17 00:00:00 2001
+From d3703752d08f5aeee686781a34f865da018e510a Mon Sep 17 00:00:00 2001
 From: Steven Noonan <steven@uplinklabs.net>
 Date: Wed, 17 Nov 2021 11:55:18 -0800
 Subject: [PATCH 11/21] x86: touch clocksource watchdog after syncing TSCs
@@ -11,18 +11,18 @@ Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
  1 file changed, 4 insertions(+)
 
 diff --git a/arch/x86/kernel/smpboot.c b/arch/x86/kernel/smpboot.c
-index 0c35207320cb..eb8793b04cd1 100644
+index b5a8f0891135..6af1092a792c 100644
 --- a/arch/x86/kernel/smpboot.c
 +++ b/arch/x86/kernel/smpboot.c
-@@ -60,6 +60,7 @@
- #include <linux/stackprotector.h>
+@@ -61,6 +61,7 @@
  #include <linux/cpuhotplug.h>
  #include <linux/mc146818rtc.h>
+ #include <linux/acpi.h>
 +#include <linux/clocksource.h>
  
  #include <asm/acpi.h>
  #include <asm/cacheinfo.h>
-@@ -1120,6 +1121,7 @@ void arch_thaw_secondary_cpus_begin(void)
+@@ -1122,6 +1123,7 @@ void arch_thaw_secondary_cpus_begin(void)
  
  void arch_thaw_secondary_cpus_end(void)
  {
@@ -30,7 +30,7 @@ index 0c35207320cb..eb8793b04cd1 100644
  	cache_aps_init();
  }
  
-@@ -1141,6 +1143,8 @@ void __init native_smp_cpus_done(unsigned int max_cpus)
+@@ -1143,6 +1145,8 @@ void __init native_smp_cpus_done(unsigned int max_cpus)
  {
  	pr_debug("Boot done\n");
  
@@ -40,5 +40,5 @@ index 0c35207320cb..eb8793b04cd1 100644
  	nmi_selftest();
  	impress_friends();
 -- 
-2.46.0
+2.48.1
 

@@ -1,4 +1,4 @@
-From 88ef04b0daf0fecec2a9836360dc4c08fd128db4 Mon Sep 17 00:00:00 2001
+From 5a20c4f37f84a37ce5122256686479581e31e16e Mon Sep 17 00:00:00 2001
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 Date: Sat, 29 Oct 2022 15:25:21 -0700
 Subject: [PATCH 18/21] usb: dwc3: Drop "usb-role-swtich" from
@@ -33,5 +33,5 @@ index fee1c911d308..ac6827f4ef89 100644
  	PROPERTY_ENTRY_STRING("linux,extcon-name", "VLV0100:00"),
  	{}
 -- 
-2.46.0
+2.48.1
 

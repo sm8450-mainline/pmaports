@@ -1,4 +1,4 @@
-From fbeb4255d216bebd4335dcecf26af6ba1eb4d1df Mon Sep 17 00:00:00 2001
+From c02fbf2813518341d84b8daadcba22e66dcf1b36 Mon Sep 17 00:00:00 2001
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 Date: Sun, 27 Feb 2022 14:46:08 -0800
 Subject: [PATCH 07/21] extcon: Add driver for Steam Deck
@@ -13,10 +13,10 @@ Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
  create mode 100644 drivers/extcon/extcon-steamdeck.c
 
 diff --git a/drivers/extcon/Kconfig b/drivers/extcon/Kconfig
-index 3da94b382292..88ac6e28689c 100644
+index a6f6d467aacf..4adec844c4b4 100644
 --- a/drivers/extcon/Kconfig
 +++ b/drivers/extcon/Kconfig
-@@ -203,4 +203,11 @@ config EXTCON_RTK_TYPE_C
+@@ -214,4 +214,11 @@ config EXTCON_RTK_TYPE_C
  	  The DHC (Digital Home Hub) RTD series SoC contains a type c module.
  	  This driver will detect the status of the type-c port.
  
@@ -29,10 +29,10 @@ index 3da94b382292..88ac6e28689c 100644
 +
  endif
 diff --git a/drivers/extcon/Makefile b/drivers/extcon/Makefile
-index f779adb5e4c7..c7f3c908b329 100644
+index 0d6d23faf748..5c21eeb0e0cd 100644
 --- a/drivers/extcon/Makefile
 +++ b/drivers/extcon/Makefile
-@@ -25,4 +25,5 @@ obj-$(CONFIG_EXTCON_SM5502)	+= extcon-sm5502.o
+@@ -26,4 +26,5 @@ obj-$(CONFIG_EXTCON_SM5502)	+= extcon-sm5502.o
  obj-$(CONFIG_EXTCON_USB_GPIO)	+= extcon-usb-gpio.o
  obj-$(CONFIG_EXTCON_USBC_CROS_EC) += extcon-usbc-cros-ec.o
  obj-$(CONFIG_EXTCON_USBC_TUSB320) += extcon-usbc-tusb320.o
@@ -225,5 +225,5 @@ index 000000000000..74f190adc8ea
 +MODULE_DESCRIPTION("Steam Deck extcon driver");
 +MODULE_LICENSE("GPL");
 -- 
-2.46.0
+2.48.1
 

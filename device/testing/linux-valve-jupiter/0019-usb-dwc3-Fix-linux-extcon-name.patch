@@ -1,4 +1,4 @@
-From 02d6a2be69db32e90e004abb7d163eb7c77c0e5e Mon Sep 17 00:00:00 2001
+From 9b9fd9ebcaefb8a54d70e424392add35fc4de92f Mon Sep 17 00:00:00 2001
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 Date: Sun, 27 Feb 2022 16:34:23 -0800
 Subject: [PATCH 19/21] usb: dwc3: Fix "linux,extcon-name"
@@ -23,5 +23,5 @@ index ac6827f4ef89..23d0c29380a7 100644
  };
  
 -- 
-2.46.0
+2.48.1
 

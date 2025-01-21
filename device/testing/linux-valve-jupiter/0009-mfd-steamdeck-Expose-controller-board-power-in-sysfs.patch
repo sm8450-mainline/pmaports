@@ -1,4 +1,4 @@
-From e129992ce5b743fbcb655a61b241f014f01e6dfe Mon Sep 17 00:00:00 2001
+From 7b473c4610aa51b7114307e69a68953efd1dd398 Mon Sep 17 00:00:00 2001
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 Date: Sun, 24 Sep 2023 15:02:33 -0700
 Subject: [PATCH 09/21] mfd: steamdeck: Expose controller board power in sysfs
@@ -49,5 +49,5 @@ index 0e504b3c2796..a60fa7db9141 100644
  };
  
 -- 
-2.46.0
+2.48.1
 

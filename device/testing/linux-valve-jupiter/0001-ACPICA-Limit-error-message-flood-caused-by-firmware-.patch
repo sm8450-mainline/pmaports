@@ -1,4 +1,4 @@
-From 6139820b0cdd0e5e470d7028c5c30a8e00d51ee9 Mon Sep 17 00:00:00 2001
+From 2bae20b39c64fb8d5b1bf041508e94229d8527f8 Mon Sep 17 00:00:00 2001
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Date: Fri, 4 Mar 2022 21:20:39 +0000
 Subject: [PATCH 01/21] ACPICA: Limit error message flood caused by firmware
@@ -113,5 +113,5 @@ index 918aca7c4db4..4a482de2e55d 100644
  	acpi_os_printf(ACPI_MSG_ERROR);
  
 -- 
-2.46.0
+2.48.1
 

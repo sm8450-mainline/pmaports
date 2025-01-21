@@ -1,4 +1,4 @@
-From 350fcf62fa8d05a12b2de15cb05ba30f3b1a3aec Mon Sep 17 00:00:00 2001
+From 688370cf19ee6b29ea39dce2783ae352fb0a9306 Mon Sep 17 00:00:00 2001
 From: Andrey Smirnov <andrew.smirnov@gmail.com>
 Date: Sat, 19 Feb 2022 16:08:36 -0800
 Subject: [PATCH 04/21] mfd: Add MFD core driver for Steam Deck
@@ -17,10 +17,10 @@ Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
  create mode 100644 drivers/mfd/steamdeck.c
 
 diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
-index bc8be2e593b6..f450294fbd25 100644
+index ae23b317a64e..7417c480275a 100644
 --- a/drivers/mfd/Kconfig
 +++ b/drivers/mfd/Kconfig
-@@ -2390,5 +2390,16 @@ config MFD_RSMU_SPI
+@@ -2414,5 +2414,16 @@ config MFD_RSMU_SPI
  	  Additional drivers must be enabled in order to use the functionality
  	  of the device.
  
@@ -38,10 +38,10 @@ index bc8be2e593b6..f450294fbd25 100644
  endmenu
  endif
 diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
-index 02b651cd7535..71d992afbadd 100644
+index e057d6d6faef..2f9f8a0daf5e 100644
 --- a/drivers/mfd/Makefile
 +++ b/drivers/mfd/Makefile
-@@ -288,3 +288,5 @@ obj-$(CONFIG_MFD_ATC260X_I2C)	+= atc260x-i2c.o
+@@ -290,3 +290,5 @@ obj-$(CONFIG_MFD_ATC260X_I2C)	+= atc260x-i2c.o
  
  obj-$(CONFIG_MFD_RSMU_I2C)	+= rsmu_i2c.o rsmu_core.o
  obj-$(CONFIG_MFD_RSMU_SPI)	+= rsmu_spi.o rsmu_core.o
@@ -181,5 +181,5 @@ index 000000000000..0e504b3c2796
 +MODULE_DESCRIPTION("Steam Deck EC MFD core driver");
 +MODULE_LICENSE("GPL");
 -- 
-2.46.0
+2.48.1
 
