@@ -4,5 +4,5 @@ PartOf=graphical-session.target
 
 [Service]
 BusName=org.freedesktop.Flatpak
-ExecStart=/usr/lib/flatpak/flatpak-session-helper
+ExecStart=/usr/libexec/flatpak-session-helper
 Type=dbus
