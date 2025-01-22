@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-kylepro
 pkgdesc="Samsung Galaxy Trend Plus"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -27,5 +27,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-211694e966b6439373c1adcf43f48b2dc7563910541fd7369f07fb8a1828084ad9d949d3574f266d90bb9750679f8afb430dae6b525600126d4c6233ad6eee3f  deviceinfo
+c2b0b57031ef41d27e62866ad052fb0fed70c9719f93ed364d0b5ed6d36beb929ffdc6975aa49cd75d41c8b23a6b401856e1a2e1a581473dfa59840dafbf3506  deviceinfo
 "
