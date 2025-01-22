@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-baffinlite
 pkgdesc="Samsung Galaxy Grand Neo"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -29,6 +29,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-86ad4ae54269a33a5d1c717e29c5de4d4757778d430cbcd4ad9f26e47466a808a5333cb71a62c1ae989a5ba21c2bce6282fa3863112b1d8532a86286f56a5973  deviceinfo
+1370f768b23d17691ec66f235e7081735bd816d1f0ea390d5ffaf687ff01fcbc4368c46e715c0322f32acc8b11d79262281c5b9efa9f4117867855ccb41ba951  deviceinfo
 af036fe35011db078379dbb2e8c16c86546f0a4fcb3d1bcee3502bb1ea5b38f3ec5a9fa8cd1ca8ed8b89592a7f572d6072781289845303e0bf85fc2de4ead9fb  modules-load.conf
 "
