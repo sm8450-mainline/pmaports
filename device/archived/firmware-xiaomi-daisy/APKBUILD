@@ -1,4 +1,4 @@
-# Maintainer: Alejandro Tafalla <alikates@dnyon.com>
+# Archived: unmaintained port, only for testing. Use generic/mainline port (qcom-msm8953)
 pkgname=firmware-xiaomi-daisy
 pkgver=2
 pkgrel=2

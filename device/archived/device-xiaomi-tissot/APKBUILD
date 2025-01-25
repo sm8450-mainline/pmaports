@@ -1,5 +1,4 @@
-# Maintainer: Danila Tikhonov (JIaxyga) <danila@jiaxyga.com>
-# Co-Maintainer: Barnabas Czeman <trabarni@gmail.com>
+# Archived: unmaintained port, only for testing. Use generic/mainline port (qcom-msm8953)
 # Reference: <https://postmarketos.org/devicepkg>
 
 pkgname=device-xiaomi-tissot

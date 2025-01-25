@@ -1,6 +1,4 @@
-# Maintainer: Danila Tikhonov (JIaxyga) <danila@jiaxyga.com>
-# Co-Maintainer: Barnabas Czeman <trabarni@gmail.com>
-
+# Archived: unmaintained port, only for testing. Use generic/mainline port (qcom-msm8953)
 pkgname=firmware-xiaomi-tissot
 pkgver=2
 pkgrel=2

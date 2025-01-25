@@ -1,4 +1,4 @@
-# Maintainer: Barnabas Czeman <trabarni@gmail.com>
+# Archived: unmaintained port, only for testing. Use generic/mainline port (qcom-msm8953)
 pkgname=device-xiaomi-mido
 pkgdesc="Xiaomi Redmi Note 4X"
 pkgver=9

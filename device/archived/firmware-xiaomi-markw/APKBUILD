@@ -1,5 +1,4 @@
-# Maintainer: vipaoL <vipaolmail@gmail.com>
-
+# Archived: unmaintained port, only for testing. Use generic/mainline port (qcom-msm8953)
 pkgname=firmware-xiaomi-markw
 pkgver=2
 pkgrel=2
