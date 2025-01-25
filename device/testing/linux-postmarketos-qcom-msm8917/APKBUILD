@@ -1,7 +1,7 @@
 _flavor="postmarketos-qcom-msm8917"
 pkgname=linux-$_flavor
 pkgver=6.4_rc4_git20230719
-pkgrel=1
+pkgrel=2
 pkgdesc="Mainline kernel fork for Qualcomm QM215/MSM8917 devices"
 arch="aarch64"
 _carch="arm64"
@@ -56,5 +56,5 @@ package() {
 }
 sha512sums="
 1ee37b6a288a03fa091a64aed65a96066c72abb94087b04897cee790cf79e102a33bdc7c43320801330ac81a0d79505acc6b6b7c2510d61c9fe74fd87d2a01fe  linux-postmarketos-qcom-msm8917-2b87f9112c38c23a683acd70c8fad5471dc6f90a.tar.gz
-b6729872d33924f166bf42ef73e6939935bf7673e849a6d4d91a23cb019a11f039b002ed34628d7d7592de5d997db989e875cee4bcd34283c1c626882604b9e2  config-postmarketos-qcom-msm8917.aarch64
+28114c8825afa4eba7fc86e9f5deb406f44968202ba188f3e0f10aba7a9d4e643ea51150b0469646f9d089e5e5248b12f46ee274bfd4a5afa0cd54743045cc11  config-postmarketos-qcom-msm8917.aarch64
 "

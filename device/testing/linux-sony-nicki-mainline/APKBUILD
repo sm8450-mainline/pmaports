@@ -8,7 +8,7 @@ _config="config-$_flavor.$CARCH"
 pkgname=linux-$_flavor
 
 pkgver=5.3
-pkgrel=7
+pkgrel=8
 
 arch="armv7"
 _carch="arm"
@@ -65,6 +65,6 @@ package() {
 
 sha512sums="
 31e9ef9b3e956df38824865c291530fa5dda067bfea8b0169a3871d7876cfe192a42ae631e51a8a02f7c64319269c8af2688d8ae180805173bf2c1c84c390a59  linux-sony-nicki-mainline-ad6ab7f8c57896cb3829e6a80408e0912d6096c2.tar.gz
-c72724663ad84538441046d15f7746fae44faa0d98b51cd9359016c757c321d8ec5a8602cbccbccfad6f8e6b1b19c9be8109f9e390cb52468304a61f8bc6d2e1  config-sony-nicki-mainline.armv7
+0ba22a244b5416cf0bf0bbd0f0949f28679a30833906143800aed2cd87584dc2feeac296f99e4af2cae2d46673dbf6b12da41528aef05b94e6ffcd9e558bdf3c  config-sony-nicki-mainline.armv7
 27827877040007fc1c4c719f7e2e19e5c272d44972415cfc53feba0313d87e4074f8204bdb13cbc5fe21ea61bf595314b68f10c081e7b7bac3c888b60f008acf  linux4.17-gcc10-extern_YYLOC_global_declaration.patch
 "

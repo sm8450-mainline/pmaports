@@ -5,7 +5,7 @@
 pkgname=linux-pine64-pinetab2
 pkgver=6.12.1
 _danctnix_kernel_rel=1
-pkgrel=0
+pkgrel=1
 pkgdesc="Pine64 PineTab 2 mainline"
 arch="aarch64"
 _carch="arm64"
@@ -67,5 +67,5 @@ package() {
 
 sha512sums="
 919b7628d422b9022c366e57508b329ff63503a4f8579ca631d33cbf6a5bc0d608ba06eb3f2121824a9d237797548b8dd24dc32471e9b18dceaa2ace35b87f77  linux-pine64-pinetab2-v6.12.1-danctnix1.tar.gz
-b77fcc6bf86d7aaa49f15e5eb848d8d0f50973b7f5ecf502a9f3bf0993ed177d4ed990b439dd93fe635d8cdb3c5e6a8c66a25eb4c1834a14bea03c4ac9678245  config-pine64-pinetab2.aarch64
+c47448c8ab3c80618653cbb1e3a88766f8b372ea321cbd9c7a21967fd5bfb1a5701ddd97cbc797f86e41d83b87846845faf7922da0134b78258e5d92bdcc4e09  config-pine64-pinetab2.aarch64
 "

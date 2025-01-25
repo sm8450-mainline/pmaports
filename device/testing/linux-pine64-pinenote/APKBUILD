@@ -3,7 +3,7 @@
 # Maintainer: Antoine Martin (ayakael) <dev@ayakael.net>
 pkgname=linux-pine64-pinenote
 pkgver=6.12.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Pine64 PineNote close to mainline fork"
 arch="aarch64"
 _carch="arm64"
@@ -61,5 +61,5 @@ package() {
 
 sha512sums="
 d3c2510f9f835a0570fbb812cec2f9e12e402878c1f9f214364ae1918bc4c00f69a1fc5e005cf6b85c0690e6fd5f6ce9e61efd88145a83725ed12b6b8c07b97e  linux-pine64-pinenote-9d066a65f5cbaa8cd3bfc73a1b54fbac2d0f76ac.tar.gz
-99294bd6c53b1cf3832addbc80ea23b9089bb03463e2a9ebe93ab5feb1b2ff9ee38f158032705429230765bae2df23bb3401ec14902134c80d9dd6e58e188be5  config-pine64-pinenote.aarch64
+c9183c618318dd76ae74a0dacf7e09a6cd9d664008128fc82d7c4a3fc2510287a2f3d44ffba9ee3b8428ef7ce1c98b5a22f7da9a693de407b4746700b5283009  config-pine64-pinenote.aarch64
 "

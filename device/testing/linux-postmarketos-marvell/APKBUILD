@@ -5,7 +5,7 @@
 
 pkgname=linux-postmarketos-marvell
 pkgver=6.12.6
-pkgrel=0
+pkgrel=1
 pkgdesc="mainline (stable) for Marvell SoC"
 arch="armv7"
 _carch="arm"
@@ -64,5 +64,5 @@ package() {
 
 sha512sums="
 35fcfc5044b1bf892b6432a330df26c5601f78f78f416400359f5e08c448255bcf424de611e67ff7ac72d014884d5f3c6c2bddb20d08dd47469df5c0424832f9  linux-postmarketos-marvell-6.12.6.tar.xz
-240eb91c2bf270944d2df3e067c9a99a12b03388be50393b49373d13620786eb3bf9da488233a748d06660efaa5bafcf98a2cedd1ea3db46463aeaebca74e69f  config-postmarketos-marvell.armv7
+67e23e8c932177527b64c44b8f65ce66865fd983f705a5ae7a23d8e68214091996c2dd288c5437ab372383b7a281dc6b07b2d12a0b3bcc81b0e9792ae4af5ab2  config-postmarketos-marvell.armv7
 "

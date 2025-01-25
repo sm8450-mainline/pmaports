@@ -1,6 +1,6 @@
 pkgname=linux-google-smaug
 pkgver=6.3.13
-pkgrel=2
+pkgrel=3
 pkgdesc="Mainline kernel fork for Google Pixel C"
 arch="aarch64"
 _flavor="${pkgname#linux-}"
@@ -65,7 +65,7 @@ package() {
 
 sha512sums="
 850f56587c49c7ad3e4873a4b9d8160b0b015ac00dbe272d3fd4b661d18a6e73d1d9dea69376fa002d47b195648c617ef0143a54cdf3bf7c361f0b90cc262e16  linux-6.3.13.tar.xz
-a051d6a838111011f872c5c373a40b9d7b961df61510346e400db113b781a58936be62ade61b5b00de083f5bfd8e994dfc4abd65e72ae76c09b1f4240d6d897f  config-google-smaug.aarch64
+ca8338226db41133e6ccfe35a137eb013724bc3fc309a8b6d7749d965ab42db4d732ba2252c159def81887bcc54430d51b59bc912f59ac8ade39ffb7a62abc0f  config-google-smaug.aarch64
 e0d397f36fece6fbcdef81803bc2c694ad0a085bfa9afb20f2ff20d6981dfc5e0d931608fbdab8eddd01809ce756fae3beb59eb45ea2bff80302bdd74ae0663a  0001-Add-JDI-LPM102A188A-display-panel-support.patch
 1979cb9316c8253c500d0e21b4b6981f3028ced29ee0a609b3b4d017148afc62ade1a9dca34732d33c1fc94ed723f7d51fa4a06b1f7c8c413b012af7096b89b9  0002-arm64-dts-nvidia-tegra210-smaug-Add-touch.patch
 "

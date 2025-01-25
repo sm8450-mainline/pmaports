@@ -3,7 +3,7 @@
 # Maintainer: Lux Aliaga <they@mint.lgbt>
 pkgname=linux-postmarketos-qcom-sm6125
 pkgver=6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Mainline Kernel fork for SM6125 devices"
 arch="aarch64"
 _carch="arm64"
@@ -65,5 +65,5 @@ package() {
 
 sha512sums="
 e41aa6fa99cdb76f1748547e1b140721e30ced86d3e2aa2f94cc56be8a8f89fd0578f041061c0b6992cf49e73ee4b78cc6529943d37087c27894094730ca1e93  linux-postmarketos-qcom-sm6125-77de535b8dbd8f483b5802c8937cb714bab5b485.tar.gz
-7b7babe738d05cb2bcd84191d8da7c2132643d0cb521a161d5a9356ce661095005bb7968b710777d5a1c1ef1600858daf2a39f07cf7af9b699a88524b51bc324  config-postmarketos-qcom-sm6125.aarch64
+91fe935c15e08fbf2ab588dcefcf46eae7f515dc4c6032ef6dfcfe49a2a2611df62907ab0797175be2c56eeeb8307d80afc5d281a8bc8207b9e7ebc57ea33bea  config-postmarketos-qcom-sm6125.aarch64
 "

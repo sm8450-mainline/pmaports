@@ -5,7 +5,7 @@
 _flavor="postmarketos-apple"
 pkgname=linux-$_flavor
 pkgver=6.13.0_rc6
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline kernel fork for Apple iPhone and iPad devices"
 arch="aarch64"
 _carch="arm64"
@@ -65,5 +65,5 @@ package() {
 
 sha512sums="
 2d5aa659f5e3f1d0ecc8be710436c976ce77a78ba142e138a061ac7ff61c80d268d50e0b758f69caad2ab509235dc82d2a58f5d00553b0f37e290e56efea4c60  b5dbbf9007e8774e27ca9cd485f0483a2f4bb4e5.tar.gz
-e397e3634b603d3041de8ed01bde39c67d546f754b173f89c6b7c8ff53e52f5f8224534230e20a462a130797c1edd4786107276d667f98519923f2668c086692  config-postmarketos-apple.arm64
+bcd5a8f8bc20a11950248d6be3edaf19f8a70bc50d50c53f1e8640adaaf83d1fbce33b675e662301dd03893a1bb0b59d8b45d5d09296fe0f94f6bd52cfafc9f6  config-postmarketos-apple.arm64
 "

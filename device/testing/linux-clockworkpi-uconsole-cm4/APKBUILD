@@ -3,7 +3,7 @@
 # Maintainer: Federico Amedeo Izzo <federico@izzo.pro>
 pkgname=linux-clockworkpi-uconsole-cm4
 pkgver=6.1.74
-pkgrel=1
+pkgrel=2
 pkgdesc="Clockwork Tech ClockworkPi uConsole CM4 kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -75,7 +75,7 @@ package() {
 
 sha512sums="
 880edc35f448ae2a072706efeda064a27273a25469a63c5bd7020fca1b115c13504b4d50135b97a6102a311dfa61419ce02d9f417ec673af3d1118529b015e1c  linux-clockworkpi-uconsole-cm4-1cdbd99f402b76c61632d09a49b20ce90af0cc72.tar.gz
-1ad49be5594388ad7de05639fcff4fc0af493ce6108e7db3f87cef67fe55507a5d6dddea75a0ee44f3c790f74e7e0a9aac2ea55da0ed004e82aaa79005b2b51d  config-clockworkpi-uconsole-cm4.aarch64
+cbedf4252437241b71b6b296354e8f8842fe5552889e11c22c9276b8baee0764ba6702c9e4e2fc253a7c0617bb40a612322656420151ed112a3190708bfc2cfb  config-clockworkpi-uconsole-cm4.aarch64
 764faf249f98ba7a2299cf318bbd8e0922ab3a283dab8331710eccf83e4cc0088b4aa27894c196a2da5a08942c42ee173ca585844fa6abe36f9402095d845287  0001-video-backlight-Add-OCP8178-backlight-driver.patch
 3b4eb2cbf11d4b094d75070bd8ab7926f495c3bfc1b1ecc3ddd4b7a5e2355120eaf1fca4e4fe1884de4249808525f5271a1a8db14f583f89b096d0000ca01eac  0002-drm-panel-add-clockwork-cwu50.patch
 523ebd73d069c7e2ee55cefdcc9d2132264148dc13dfd79606cf87868ba86136d9df3dd7f54b130440544f51bbf8822a0a3c50eec34d54c996d867e260afa28c  0003-driver-staging-add-uconsole-simple-amplifier-switch.patch

@@ -4,7 +4,7 @@
 _flavor="postmarketos-mediatek-mt6768"
 pkgname=linux-$_flavor
 pkgver=6.1_rc5
-pkgrel=2
+pkgrel=3
 _commit="d8741eb21ebe5b989e69e40a058cd2d593397ae2"
 pkgdesc="Mainline Kernel fork for MT6768-based devices"
 arch="aarch64"
@@ -66,5 +66,5 @@ package() {
 
 sha512sums="
 20cd7ce324ff0a29a1ceaf0c69e77d619c0b21c924c0913214070308774cb88f1c803bef0da0a85d9bbca3797eadd7f63bb9bc6cf256350c658a8820c275c1e3  linux-d8741eb21ebe5b989e69e40a058cd2d593397ae2.tar.gz
-6f533fbcbe220bcf167f5dac73812adde52e58461695076883f1d028f89c3d32fd52aa96823a4c17a96ea1cddfb9a8a0502153b5d99943df5b714067955d5f52  config-postmarketos-mediatek-mt6768.aarch64
+deb140228aa10fd2fb56b69c9fbacb0b7ba3fcf6039453c02cc4f5a47eb7c6444672b5583931019609ac255b492700ef4ac1972c3844db71ffc2f89fa1f9356d  config-postmarketos-mediatek-mt6768.aarch64
 "

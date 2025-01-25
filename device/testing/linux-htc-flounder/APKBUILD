@@ -1,7 +1,7 @@
 # Maintainer: Segfault <awarnecke002@hotmail.com>
 pkgname=linux-htc-flounder
 pkgver=6.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Google Nexus 9 kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -55,5 +55,5 @@ package() {
 
 sha512sums="
 ee712d770cc863a6acff52ee32c5009657480864fcd748f0ccc7afb9edba912d727e56bd1d484bd391c5f3d0fed0d063ec8fca36af80c88572bcf85a6f00522e  linux-htc-flounder-1af7ece0542ef888433623a572ed8e19ca5e956a.tar.gz
-c34e15446700e58c0c8c60d4fa26fa469c7fa6310d36d92ce8443d506a6b2754f341ccd8864f0b9485da1e8c428bc28bcbbeec7a64efc03dde5b4284a308c560  config-htc-flounder.aarch64
+24cd0364ed2110f4889514eb7596c70284cafae0b311ea56dcf0e29455f86778c2dea2b92f20c1290ab5f87293e1c1d4bde025811e71dd13629c5ab4e188a8f5  config-htc-flounder.aarch64
 "

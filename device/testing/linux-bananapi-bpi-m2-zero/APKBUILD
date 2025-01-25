@@ -3,7 +3,7 @@
 
 pkgname=linux-bananapi-bpi-m2-zero
 pkgver=6.13.0_rc7
-pkgrel=0
+pkgrel=1
 pkgdesc="Banana Pi BPI-M2 Zero mainline kernel fork"
 arch="armv7"
 _carch="arm"
@@ -62,5 +62,5 @@ package() {
 
 sha512sums="
 6bf4bb3e7e6974ffb5eb21438d8ac7c651b6b4cf494133946650a95a0ca7ceac01820351e6583fc14b2aa66e6c4a4b6c2c9989d99ecff3731aef4f48a0bb2161  linux-bananapi-bpi-m2-zero-619f0b6fad524f08d493a98d55bac9ab8895e3a6.tar.gz
-eef1d6f4d1937a46307b6091d865d6607c5fb3876ad184bd61613860fe2ef88d215dfdd14946b1a4751c411a531190c78ed4c47a3fef096e3d4cef9b2c103e32  config-bananapi-bpi-m2-zero.armv7
+b538899c97489cb1c410c96f06f1f85a4f8eebcdaf4e4bcf619655aa8108bc27c6c8f46cfb2f27d205c6097f9b6d7130b9e8aac70eec6d437fdb1b9bc5f2ba81  config-bananapi-bpi-m2-zero.armv7
 "

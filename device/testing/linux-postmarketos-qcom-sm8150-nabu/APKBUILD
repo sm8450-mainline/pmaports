@@ -1,7 +1,7 @@
 _flavor="postmarketos-qcom-sm8150-nabu"
 pkgname=linux-$_flavor
 pkgver=6.12.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline Kernel fork for SM8150 devices"
 arch="aarch64"
 _carch="arm64"
@@ -62,5 +62,5 @@ package() {
 
 sha512sums="
 6f1ffea0322415b3e6a0176ad6a16a4accb7c611581ffc2bb772ddfdc04af677a5b5f955d19b29f7baf1c6a9b7297273f55c818cec981b2b8960c781dbb8bb56  sm8150-mainline-c4e7de505964a69e2757523fd25343a2bf832b98.tar.gz
-b94e0227abf1eb2fa016f2fcae935c4357fe2a61d3c0ff8131ffb45eea0be49836b8447106e4c343d081341eebe86f578566b624d92df2986dda3674d19c9ee7  config-postmarketos-qcom-sm8150-nabu.aarch64
+92006d83db7bc3fc0a6fc818fcd01ad7e021514b3b12e255a1676cd1374210b8472ebc6301b0a6a38601a138605e0135ccf7f44af5c43c43a2c2d5cf3f7ee0ab  config-postmarketos-qcom-sm8150-nabu.aarch64
 "

@@ -1,7 +1,7 @@
 # Maintainer: WeirdTreeThing <bradyn127@protonmail.com>
 pkgname=linux-postmarketos-rockchip-rk3588
 pkgver=6.10_rc1_git20240528
-pkgrel=4
+pkgrel=5
 pkgdesc="Rockchip RK3588 kernel package"
 arch="aarch64"
 url="https://kernel.org"
@@ -70,5 +70,5 @@ package() {
 sha512sums="
 85fc0d5fb4761b8a806fcaba796c73ece20bca6eb5db0e75ec909e6ac6f320989c71548890490f93991b0d485908de80bf1d545dd352f55f5b6bc007c25687b6  linux-postmarketos-rockchip-rk3588-dc492a647595f2866fb2e20ccf576bcaff42a109.tar.gz
 86b0a188df8bf90cb04e871319d92303df7c890dca0d4b411bc6ae5fd569ab4562be82703ddf772603632bd8f6a9bcb857239e3b5bc939048eb5a9faba427b88  orangepi5-plus-dt-fixups.patch
-ff5eba9a69fa4520563f8e4869e5a665f4a4e38d8167bd06aadd18e4b7e4070946602dcef4ad5e0a5c800afdb9cbe56b55229ba42e974e11480d1d057db15dc6  config-postmarketos-rockchip-rk3588.aarch64
+e1bdf15ed1502193dea6d79876de00b189d93d812d11918dc6b27153982b87df27a4dd657665a5383bed887d7a2bdeb2cd053a9fa6654c3fe0cf81616f00463f  config-postmarketos-rockchip-rk3588.aarch64
 "

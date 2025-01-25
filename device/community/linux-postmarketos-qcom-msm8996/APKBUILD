@@ -4,7 +4,7 @@
 _flavor="postmarketos-qcom-msm8996"
 pkgname=linux-$_flavor
 pkgver=6.3.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Kernel close to mainline with extra patches for Qualcomm MSM8996 devices"
 arch="aarch64"
 _carch="arm64"
@@ -52,5 +52,5 @@ package() {
 }
 sha512sums="
 3d842c6fa3e1f93875f9c8d4f51e66b267bbd6b0eabccc25b461cbc0616a632ee6f1f2001b77bef2aff6aa36a788277ab9fc930fcd6e71732e5cbffec2dcb269  linux-v6.3.1-msm8996.tar.gz
-6c58d53d0cf3dfee8500591fcfb886277131448db912ad84844d69f76eada174a045f9edb85a8bad88b6d649834b81ae6bdd6a7dbbc77dee823d5978eb92d076  config-postmarketos-qcom-msm8996.aarch64
+b531b80967460f49863bfb95821f50ae5df36066b03390cc8e00167cef7b48487cd8f6fa849347ee794c14bc14526a2287ca08a6f02089e4e7cae5a5b08e24e2  config-postmarketos-qcom-msm8996.aarch64
 "

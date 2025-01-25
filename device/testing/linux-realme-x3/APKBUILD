@@ -3,7 +3,7 @@
 
 pkgname=linux-realme-x3
 pkgver=6.12_rc7
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline Kernel fork for Realme X3"
 arch="aarch64"
 _carch="arm64"
@@ -60,5 +60,5 @@ package() {
 
 sha512sums="
 0adb5b750da3cad2b95654e57f887691d8e2d63f79e350d9640fc3a6012c4b631b342934b119fc24fb3eb954ac6e3545c050b83c5db433f7bcdcd3fb54c6eadb  linux-realme-x3-91911e069acbb9d38e5dcc633d454f7b1ff9bc4b.tar.gz
-4f7252d717139f581f1b87fbc0ff634470c91cd1dfd60bc07a7532f025d13c171053bb4446c707472594dfba39d33473f751b4a741381ed94d5b673321a642ae  config-realme-x3.aarch64
+6013af04162f50bef2f455caba979d59ff8bcd3182d61862a353d9af7f864eae322f51d67a85e998d88530cab103e5869d1471767bff4bedc5836729b7933cd7  config-realme-x3.aarch64
 "

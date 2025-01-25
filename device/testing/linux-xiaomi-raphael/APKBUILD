@@ -2,7 +2,7 @@
 # Kernel config based on: arch/arm64/configs/raphael_defconfig
 pkgname=linux-xiaomi-raphael
 pkgver=6.5.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Xiaomi Mi 9T Pro / Redmi K20 Pro kernel fork"
 arch="aarch64"
 _carch="arm64"
