@@ -6,7 +6,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=37
+pkgver=38
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -57,7 +57,7 @@ subpackages="
 	sleep-inhibitor-systemd:_service
 	syncthing-systemd:_service
 	tailscale-systemd:_service
-	tinydm:_service
+	tinydm-systemd:_service
 	tqftpserv-systemd:_service
 	udisks2-systemd:_service
 	udiskie-systemd:_service
