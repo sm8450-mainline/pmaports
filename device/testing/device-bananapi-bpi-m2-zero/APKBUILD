@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-bananapi-bpi-m2-zero
 pkgdesc="Banana Pi BPI-M2 Zero"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -15,6 +15,7 @@ depends="
 makedepends="devicepkg-dev"
 source="
 	deviceinfo
+	modules-load.conf
 "
 _pmb_recommends="
 	firmware-bananapi-bpi-m2-zero
@@ -30,4 +31,5 @@ package() {
 
 sha512sums="
 a5dcb9c56ea9225bf8cb3a0734d72b62540a8d710219eb14868c3f0f0b5a6f2c765ad01d0d2139d5a9d0469e16d444963ca7d1ce6dac582ced4e9f4160503b9e  deviceinfo
+4dc0e51a571d082212128e9a5d0cfd1a8c572253e8cf8bfdb68d656b9dd05ef68568440c3360e05c466ede33ba20a53900b5908995a775668e70783735d3ddbd  modules-load.conf
 "
