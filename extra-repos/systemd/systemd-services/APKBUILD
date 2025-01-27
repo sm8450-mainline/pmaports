@@ -6,7 +6,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=38
+pkgver=39
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -63,6 +63,7 @@ subpackages="
 	udiskie-systemd:_service
 	waydroid-sensors-systemd:_service
 	waydroid-systemd:_service
+	wireguard-tools-wg-quick-systemd:_service
 	wpa_supplicant-systemd:_service
 	xdg-desktop-portal-gnome-systemd:_service
 	xdg-desktop-portal-gtk-systemd:_service
@@ -141,6 +142,7 @@ _udisks2_sources="system/udisks2.service" # From https://github.com/storaged-pro
 _udiskie_sources="user/udiskie.service"  # created, no unit file upstream
 _waydroid_sources="system/waydroid-container.service"
 _waydroid_sensors_sources="system/waydroid-sensors.service"
+_wireguard_tools_wg_quick_sources="system/wg-quick@.service" # From https://git.zx2c4.com/wireguard-tools/tree/src/systemd/wg-quick@.service
 _wpa_supplicant_sources="system/wpa_supplicant.service"
 _xdg_desktop_portal_sources="
 	user/xdg-desktop-portal.service
@@ -207,6 +209,7 @@ source="$(flatpath \
 	$_udiskie_sources \
 	$_waydroid_sensors_sources \
 	$_waydroid_sources \
+	$_wireguard_tools_wg_quick_sources \
 	$_wpa_supplicant_sources \
 	$_xdg_desktop_portal_gnome_sources \
 	$_xdg_desktop_portal_gtk_sources \
@@ -360,6 +363,7 @@ c7ea2b18c9d8f82306fbaca6d07b7019de3819d7898c3f50c3d0aceef4da4d311ed3bf31385e2f89
 4c43a308e9e653914e534d92fc8caaf8c60cd21ae57bdbbf2fa591c1bd6a41e502268b6e0ff17b19cbe301fc7cfa1ad43070f13b372376fa3ddee9d11bf76f5a  user-udiskie.service
 841caa793d256cacea7eb651f3d77039b1c0ddb22727100d6cca74230e528aee09e945e1fdf20eaf40abbe3eaec9210eb7fa27144dc906cab65f8078b36921f9  system-waydroid-sensors.service
 023fc89481f9079ac2d2d6b8a9ab212cb13a6b309caaa92b336df4c6ee9cff05538f035f8411fd8f6b87ca73b400172f56022edbf02d3776ab6f2aa7af2eebef  system-waydroid-container.service
+1ee9be31c0122e473e51701f04072d6c66228efab626e4c037e8f393af5ce905b8549c53ee3efa656c4bc78ce992929055a8e17d6135b9bc9685d50a71bb2369  system-wg-quick@.service
 ff5e1481d00d870b39fa8f11545b1a3bff7ac0278440d329f600d4493de8628c120b95268494e6b87666c4743a6598afdf23778c7e666c12e1a5614fbff0e8ae  system-wpa_supplicant.service
 0ee2f844819c5f954d269d3703c17b5e51888bb89bd4376d3960f97735b1ba9769c932817270fdb75b8ddf291c21ab6eb78d1a8bde14aac83564881b36914066  user-xdg-desktop-portal-gnome.service
 eb01dd32fc598e49cbae31847aee4c3e28ee5014df052d65ad02c9a943a9e3399a4a119aa136630efef1157e31f6adc2d8420f8e72dc9da4c0b72645e4c84faa  user-xdg-desktop-portal-gtk.service
