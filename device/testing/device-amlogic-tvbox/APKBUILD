@@ -2,7 +2,7 @@
 # Maintainer: Ferass El Hafidi <funderscore@postmarketos.org>
 pkgname=device-amlogic-tvbox
 pkgdesc="Amlogic TV box"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -11,6 +11,7 @@ options="!check !archcheck"
 depends="
 	postmarketos-base
 	soc-amlogic-s905
+	u-boot-tools
 "
 makedepends="devicepkg-dev"
 source="
@@ -20,6 +21,7 @@ source="
 subpackages="
 	$pkgname-kernel-p201:kernel_p201
 	$pkgname-kernel-p212:kernel_p212
+	$pkgname-kernel-p241:kernel_p241
 	$pkgname-kernel-videostrong-kii-pro:kernel_videostrong_kii_pro
 	$pkgname-kernel-xiaomi-once:kernel_xiaomi_once
 "
@@ -44,6 +46,12 @@ kernel_p212() {
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
+kernel_p241() {
+	pkgdesc="Kernel for Amlogic P241-based TV box (S805X/S805Y)"
+	depends="linux-postmarketos-amlogic u-boot-amlogic-s905x-tv"
+	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
+}
+
 kernel_videostrong_kii_pro() {
 	pkgdesc="Kernel for Videostrong KII Pro (S905)"
 	depends="linux-postmarketos-amlogic u-boot-amlogic-s905-tv"
@@ -58,6 +66,6 @@ kernel_xiaomi_once() {
 }
 
 sha512sums="
-f0051118ea2948821b11bf754c55e926fd3e35be1b1682310e45cf80e174c69ea3e7f13f294deef741a6198407e9b12b366202009269f80207ca45d7130bb786  deviceinfo
+023525ee19a406b07eaea846a6c291d2e93c191c15c907a23f0d16cc17bb71e7e9b3b912d9f07b4010068202d3ca6c85c740beb451f24dadf3c7481c3bb4295e  deviceinfo
 52948c2884a6f6384e12b7a598f70878526d0d3293c214425170145231144ec7de805c038641741a4a5d75b50e554f6a3fa3769784a674217ed032f9b6a233c8  modules-initfs
 "

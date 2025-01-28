@@ -9,6 +9,7 @@ deviceinfo_codename="amlogic-tvbox"
 deviceinfo_year="2015"
 deviceinfo_dtb_p201="amlogic/meson-gxbb-p201"
 deviceinfo_dtb_p212="amlogic/meson-gxl-p212"
+deviceinfo_dtb_p241="amlogic/meson-gxl-s805x-p241"
 deviceinfo_dtb_videostrong_kii_pro="amlogic/meson-gxbb-kii-pro"
 deviceinfo_dtb_xiaomi_once="amlogic/meson-gxl-s905x-xiaomi-once"
 deviceinfo_arch="aarch64"
@@ -23,5 +24,12 @@ deviceinfo_gpu_accelerated="true"
 # Bootloader related
 deviceinfo_flash_method="none"
 deviceinfo_boot_filesystem="fat32"
-deviceinfo_generate_extlinux_config="true"
 deviceinfo_kernel_cmdline="console=ttyAML0,115200n8"
+
+# For devices where we chainload a mainline u-boot from the vendor one, we 
+# can just use extlinux.
+deviceinfo_generate_extlinux_config="true"
+
+# For the rest, generate a uImage.
+deviceinfo_generate_legacy_uboot_initfs="true"
+deviceinfo_legacy_uboot_load_address="0x1080000"
