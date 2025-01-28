@@ -1,0 +1,27 @@
+# Maintainer: Barnabas Czeman <barnabas.czeman@postmarketos.org>
+pkgname=firmware-qcom-msm89x7
+pkgver=1
+pkgrel=0
+pkgdesc="Firmware files for Qualcomm MSM89x7 devices"
+url="https://postmarketos.org"
+arch="aarch64"
+license="proprietary"
+options="!strip !check !archcheck !spdx !tracedeps pmb:cross-native"
+
+_motorola_montana_commit="6d448297f0445b029ca450c092743aaba821e6ce"
+
+source="
+	firmware-motorola-montana-$_motorola_montana_commit.tar.gz::https://gitlab.com/DolphinChips/firmware-motorola-montana/-/archive/$_motorola_montana_commit/firmware-motorola-ocean-$_motorola_montana_commit.tar.gz
+"
+
+_basefwdir="/lib/firmware"
+_fwdir="$_basefwdir/qcom/"
+
+package() {
+	motorola_montana_dir="$srcdir/firmware-motorola-montana-$_motorola_montana_commit"
+	install -Dm644 "$motorola_montana_dir/wlan/prima/WCNSS_qcom_wlan_nv.bin" -t "$pkgdir/$_fwdir/msm8937/motorola/montana"
+}
+
+sha512sums="
+934b56f7ddca76c606704952559981c9c9a812bba4561a552820de92b620f5cf3f1d0631df1507a4f3f1db8e1edc71dee643d6f5f7668d50b5b66eecb3b2213e  firmware-motorola-montana-6d448297f0445b029ca450c092743aaba821e6ce.tar.gz
+"
