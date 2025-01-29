@@ -3,7 +3,7 @@
 pkgname=soc-qcom-sdm845
 pkgdesc="Common package for Qualcomm SDM845 devices"
 pkgver=25
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
@@ -13,6 +13,8 @@ depends="
 "
 replaces="upower"
 subpackages="
+	$pkgname-gstreamer-openrc:gstreamer_openrc
+	$pkgname-gstreamer-systemd:gstreamer_systemd
 	$pkgname-modem
 	$pkgname-modem-openrc:modem_openrc
 	$pkgname-nonfree-firmware:nonfree_firmware
@@ -35,6 +37,8 @@ source="
 	call_audio_idle_suspend_workaround.confd
 	call_audio_idle_suspend_workaround.initd
 	call_audio_idle_suspend_workaround.sh
+	gstreamer.conf
+	gstreamer.sh
 	modemmanager.conf
 "
 
@@ -52,6 +56,20 @@ package() {
 
 	install -Dm644 "$srcdir"/51-qcom-sdm845.conf \
 		-t "$pkgdir"/usr/share/wireplumber/wireplumber.conf.d
+}
+
+gstreamer_openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+
+	install -Dm755 "$srcdir"/gstreamer.sh \
+		"$subpkgdir"/etc/profile.d/50-soc-qcom-sdm845-gstreamer.sh
+}
+
+gstreamer_systemd() {
+	install_if="$pkgname=$pkgver-r$pkgrel systemd"
+
+	install -Dm644 "$srcdir"/gstreamer.conf \
+		"$subpkgdir"/etc/environment.d/50-soc-qcom-sdm845-gstreamer.conf
 }
 
 modem() {
@@ -157,5 +175,7 @@ f6d03f3b03f944b29b588464e2e26f4f4cc185368714f9e623c1211174ea172efb81a765980c9a28
 6fb4c0bd8b7ed534d855a6732ccff783960e3cfa0e0cc7effcbb93afa00798dec15361a37a3200081bc114c8d266b7a0851cc4e819ad36eabdb47a50c72620d9  call_audio_idle_suspend_workaround.confd
 5a58475b6e2ee1d655f3f23d8dc19e1cb2f32f1dfff3b9a9337d9c5baad1ec24bfaec0fb9cc03f00e5a291bee27c6b8bffbc65157e2bee5d65ef6d1adcb0910b  call_audio_idle_suspend_workaround.initd
 6da0a9209f114354aa2aa1185ec3896a8e0bb1bfce0dc3fc4c0de339cf1389feaa2d724e733c251ff032a5e86d37d9549e94f8f7c7a5accfedbd8a4d6316bbfd  call_audio_idle_suspend_workaround.sh
+f86ebf68bb7e41b531e5cd8fc3e54d8fafad314fb80950277e41004303b3bf75b2ae96f0228bdf4ed67645aee8ceaf247140b4843c66365259d2908b8991b877  gstreamer.conf
+471583b91bc35608cb75d0b3ceb88fa793a4e763ea228703c50ffb1b45c0e9054646c46f710164ec3ef65a882a204fd59546f3a0ebb94b8d6c6f08c4043bcfd3  gstreamer.sh
 e33f41360ccc4900bb76a26cc7b46bde1fb90facdf45c4fbcebc80499386939948401cacd6df9f779eafab10f4ee77ee1fef3e7bd06f483f8c2a4a644c84f327  modemmanager.conf
 "
