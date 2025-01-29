@@ -3,13 +3,14 @@
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-nokia-n900
 pkgver=37
-pkgrel=0
+pkgrel=1
 pkgdesc="Nokia N900"
 url="https://postmarketos.org"
 arch="armv7"
 license="MIT"
 depends="
 	alsa-utils
+	evtest
 	kbd
 	kbd-bkeymaps
 	linux-firmware-ti-connectivity
