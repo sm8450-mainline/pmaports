@@ -4,7 +4,7 @@
 pkgname=device-oneplus-enchilada
 pkgdesc="OnePlus 6"
 pkgver=14
-pkgrel=4
+pkgrel=5
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -44,16 +44,17 @@ package() {
 		"$pkgdir"/etc/unl0kr.conf.d/10-unl0kr.conf
 	install -Dm644 "$srcdir"/81-libssc-oneplus-enchilada.rules \
 		-t "$pkgdir"/usr/lib/udev/rules.d/
-	install -Dm644 q6voiced.conf \
+	install -Dm644 "$srcdir"/q6voiced.conf \
 		"$pkgdir"/etc/conf.d/q6voiced
+	install -Dm644 "$srcdir"/hexagonrpcd.confd \
+		"$pkgdir"/etc/conf.d/hexagonrpcd-sdsp
 }
 
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	replaces="hexagonrpcd-openrc $pkgname-nonfree-firmware-openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
-
-	install -Dm644 "$srcdir"/hexagonrpcd.confd "$subpkgdir"/etc/conf.d/hexagonrpcd-sdsp
+	mkdir -p "$subpkgdir"
 }
 
 pmtest() {
