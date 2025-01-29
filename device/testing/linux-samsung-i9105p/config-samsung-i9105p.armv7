@@ -45,7 +45,7 @@ CONFIG_KERNEL_GZIP=y
 # CONFIG_KERNEL_LZMA is not set
 # CONFIG_KERNEL_LZO is not set
 CONFIG_DEFAULT_HOSTNAME="(none)"
-# CONFIG_SWAP is not set
+CONFIG_SWAP=y
 CONFIG_SYSVIPC=y
 CONFIG_SYSVIPC_SYSCTL=y
 # CONFIG_POSIX_MQUEUE is not set
@@ -1287,8 +1287,8 @@ CONFIG_BRCM_UNIFIED_DHD_SUPPORT=y
 CONFIG_BCM4330=m
 # CONFIG_BCM4334 is not set
 # CONFIG_BCM43241 is not set
-CONFIG_BCMDHD_FW_PATH="/system/etc/firmware/fw_bcmdhd.bin"
-CONFIG_BCMDHD_NVRAM_PATH="/system/etc/wifi/bcmdhd.cal"
+CONFIG_BCMDHD_FW_PATH="/lib/firmware/postmarketos/bcmdhd/bcm4330/fw_bcm4330_bg.bin"
+CONFIG_BCMDHD_NVRAM_PATH="/lib/firmware/postmarketos/bcmdhd/bcm4330/nvram_net.txt"
 CONFIG_BROADCOM_WIFI_RESERVED_MEM=y
 CONFIG_WLAN_REGION_CODE=100
 # CONFIG_HOSTAP is not set
