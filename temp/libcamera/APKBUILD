@@ -3,7 +3,7 @@
 pkgname=libcamera
 pkgver=9999
 _pkgver=0.4.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Linux camera framework"
 url="https://libcamera.org/"
 arch="all"
@@ -53,7 +53,6 @@ source="https://gitlab.freedesktop.org/camera/libcamera/-/archive/v$_pkgver/libc
 	0009-ipa-simple-Add-tuning-file-for-s5k3l6xx.patch
 	0010-ipa-simple-Add-tuning-file-for-hi846.patch
 	qcam.desktop
-	90-libcamera.rules
 	"
 builddir="$srcdir/$pkgname-v$_pkgver"
 # gstreamer tests fail
@@ -101,9 +100,6 @@ package() {
 		| while read -r file; do
 			strip "$file"
 	done
-
-	install -Dm644 "$srcdir"/90-libcamera.rules \
-		-t "$pkgdir"/usr/lib/udev/rules.d/
 }
 
 ipa() {
@@ -163,5 +159,4 @@ a803793ed16eca2563bbbae84713dab6a5f3090ae6ae5f755393c0b2203bf4471f4f37b6fc699918
 374366eeb471f2034319caa02df182d363187e4f1a0a8ec1dedfe39b3765cc19602c62df7881b99005b004395314e3f737c67a494d44a305e4afb2d0f0085115  0009-ipa-simple-Add-tuning-file-for-s5k3l6xx.patch
 6ac1989989fbc7d560948d66f59f62a4f28c8b398398d204cf4323c5db5f1eb45d5caa0f287f4f95956a1346e1346d5e1cf2d3577d46c2588b38a15bdcdb3b76  0010-ipa-simple-Add-tuning-file-for-hi846.patch
 22167a4eceb6d1b40b0b7c45fdf116c71684f5340de7f767535cb8e160ad9d2ae0f00cb3d461f73a344520a48a4641cf46226841d78bee06bfbfd2a91337f754  qcam.desktop
-cb4eb19eec766f1b8667a8b7c9d5f7d44a2dce79fddfdf3b6e3d1849066cebe79f82566bdcf6659c7ddf4faaf233d5adac10cda636935785e5305e2b7e9b34a9  90-libcamera.rules
 "
