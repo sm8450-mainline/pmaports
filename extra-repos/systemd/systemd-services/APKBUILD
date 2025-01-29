@@ -114,7 +114,7 @@ _geoclue_sources="system/geoclue.service" # From https://gitlab.freedesktop.org/
 _gnome_clocks_sources="user/gnome-clocks.service"
 _gnome_terminal_sources="user/gnome-terminal-server.service" # From https://gitlab.gnome.org/GNOME/gnome-terminal/-/blob/master/src/gnome-terminal-server.service.in
 _goimapnotify_sources="user/goimapnotify@.service" # From https://gitlab.com/shackra/goimapnotify/-/raw/master/goimapnotify@.service
-_hexagonrpcd_sources="system/hexagonrpcd-sdsp.service system/iio-sensor-proxy.d/hexagonrpcd.conf"
+_hexagonrpcd_sources="system/hexagonrpcd-adsp-rootpd.service system/hexagonrpcd-adsp-sensorspd.service system/hexagonrpcd-sdsp.service system/iio-sensor-proxy.d/hexagonrpcd.conf"
 _iio_sensor_proxy_sources="system/iio-sensor-proxy.service"
 _iwd_sources="system/iwd.service" # From https://git.kernel.org/pub/scm/network/wireless/iwd.git/tree/src/iwd.service.in
 _kanshi_sources="user/kanshi.service" # created, no unit file upstream
@@ -233,7 +233,7 @@ _bluez_system_presets="bluetooth.service"
 _fnott_user_presets="fnott.service"
 _geoclue_system_presets="geoclue.service"
 _gnome_clocks_user_presets="gnome-clocks.service"
-_hexagonrpcd_system_presets="hexagonrpcd-sdsp.service"
+_hexagonrpcd_system_presets="hexagonrpcd-adsp-rootpd.service hexagonrpcd-adsp-sensorspd.service hexagonrpcd-sdsp.service"
 _iwd_system_presets="iwd.service"
 _kanshi_user_presets="kanshi.service"
 _mmsd_tng_user_presets="mmsd-tng.service"
@@ -336,7 +336,9 @@ f3463b85ac47055b400dfd2e24694c5e1dc6ab039efac0fe54496fc027c0732cda5e52a362a497b3
 bc7987a001d2076788d904f1ea6d3e97a2ab905ee55302ffb90402133c2b9fb760d7ad94e06971d811b9d905048e164cb78355f8cd087219b5b8ff6dab2fbd9c  user-gnome-clocks.service
 ccf803ac6a764570a98845f0b0ddcde0529943472ce4cc3dc904501883a51fda482d7aef3b84fac89590e869fecdcec9142a6eac3db8ae73782a5e29f32eaae1  user-gnome-terminal-server.service
 e0c5baf8030bae74c1ddb0f6f9bc4fdf2a1febaa344de1957d9a69a01eb7e1dc143b9d324ef15214289934b3a7fd4725df26b032f9225102d9cf5633145320bc  user-goimapnotify@.service
-b009a1494f84705dcbea664823e24fb18f326ca84017d9c470ef55c0225d519993aacacf76b24c895ee926dbc2b3269ebc6b2a353cda5ad1b732af5624941a6a  system-hexagonrpcd-sdsp.service
+70daf294cf11ff3fd2016e2d6bfdfd66fa5a899df55d557a502698d3099b3ec4120bce747f6d417b1a381a8ad2520b3879d62af7e7edff40662225f853d9a094  system-hexagonrpcd-adsp-rootpd.service
+ec30d8788a55de2147cdc1d232459ec197c0234e460b983f02ff3da7e9219925eaacdefd19ff2235045eb6d512929a060b4a8f8618761e42f2d7920853d7393e  system-hexagonrpcd-adsp-sensorspd.service
+3963bb93185d6f5be332dfcb9259ce884087a9715436264acf3bc8160930f083286b9efdcbc2e0d9a74bcd0ed2d9d620a30df0319dcee83058805bb54e525795  system-hexagonrpcd-sdsp.service
 af0e416f78ab317fe09813de58b446e5178457992ea4a2da2eb128811045201087d847e1b7ac0447a59c20129a736135e5d76b113262aa1f76b994e77b9c6b42  system-iio-sensor-proxy.d-hexagonrpcd.conf
 d12ebe6e7db2a8e34baab640dd4e2ea9cd01bc19054adf32d55528a6b27f71c2006ac2d65a58c98e21ed598e9cc66bfe79e197d20ed9d13f866a5a6cd3e247d5  system-iio-sensor-proxy.service
 df3388cb7b9d035e54b34d8f8a6594be89c3015f979fe3bdc199fb7db1ab0bef821d6b306eecdf978eb227454d5e50aab29ac02d9722b1b075ec0ce4705e3518  system-iwd.service

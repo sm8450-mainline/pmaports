@@ -1,0 +1,13 @@
+[Unit]
+Description=Daemon to support Qualcomm Hexagon ADSP virtual filesystem for RootPD
+
+[Service]
+EnvironmentFile=/etc/conf.d/hexagonrpcd-adsp-rootpd
+ExecStart=/usr/bin/hexagonrpcd -f /dev/fastrpc-adsp -d adsp -R ${hexagonrpcd_fw_dir}
+Restart=always
+RestartSec=3
+User=fastrpc
+Group=fastrpc
+
+[Install]
+WantedBy=multi-user.target
