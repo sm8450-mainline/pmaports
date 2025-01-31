@@ -33,6 +33,11 @@ depends="
 	"
 replaces="alpine-baselayout postmarketos-base systemd systemd-logind"
 replaces_priority=100
+install="
+	$pkgname.post-install
+	$pkgname.post-upgrade
+	$pkgname.pre-upgrade
+	"
 
 _source644="
 	etc/motd.ansi
