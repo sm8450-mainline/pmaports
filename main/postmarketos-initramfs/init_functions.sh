@@ -356,7 +356,7 @@ find_boot_partition() {
 
 get_partition_type() {
 	partition="$1"
-	blkid "$partition" | sed 's/^.*\ TYPE="\([a-zA-z0-9_]*\)".*$/\1/'
+	blkid "$partition" | sed 's/^.*\ TYPE="\([a-zA-Z0-9_]*\)".*$/\1/'
 }
 
 get_mounted_filesystem_type() {
