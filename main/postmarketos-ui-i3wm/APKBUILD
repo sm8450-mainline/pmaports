@@ -1,7 +1,7 @@
 # Reference: https://postmarketos.org/uipkg
 # Maintainer: fossdd <fossdd@pwned.life>
 pkgname=postmarketos-ui-i3wm
-pkgver=1
+pkgver=2
 pkgrel=0
 pkgdesc="(X11) Tiling WM (keyboard required)"
 url="https://i3wm.org"
@@ -57,6 +57,6 @@ openrc() {
 }
 
 sha512sums="
-6ced3726dff7138af7739b15433e06b09876e2c8ad7ecb33d4990a0ed15181b79622117c818ce1cce9ae595c1c2766c9623dbd3ec365b081cf348e49f783cc10  i3wm-pmos
 5160619693a52a1e5d62008abb0b756efb072368120dc72a0d598083aa291fd50d39abc40465950193782467d6a7f80be9934cd058f81596038336fa07e90206  i3-exec
+0a4c8cc279b065e83810107bc09450f6c543937162fe1a9c76fc8a5dd550c2ad599346d3de188b17e8e7e297381d0aff3bf96cbe153a38cfd3fca5af83b13a99  i3wm-pmos
 "
