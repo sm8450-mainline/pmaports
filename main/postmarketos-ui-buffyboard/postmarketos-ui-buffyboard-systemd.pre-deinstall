@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# This file is forcefully included into CI shellcheck by:
+# $(find . -path './main/postmarketos-ui-*/*.pre-deinstall')
+# in .ci/shellcheck.sh. Silence it here to avoid error:
+# SC1091 (info): Not following: /usr/lib/systemd/systemd-apk-macros.sh:
+#        openBinaryFile: does not exist (No such file or directory)
+# shellcheck disable=SC1091
+. /usr/lib/systemd/systemd-apk-macros.sh
+systemd_service_pre_deinstall system buffyboard
