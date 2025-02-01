@@ -2,7 +2,7 @@
 
 pkgname=iio-sensor-proxy
 pkgver=9999
-pkgrel=8
+pkgrel=9
 pkgdesc="IIO sensors to D-Bus proxy"
 url="https://gitlab.freedesktop.org/hadess/iio-sensor-proxy"
 arch="aarch64"
@@ -31,10 +31,7 @@ source="https://gitlab.freedesktop.org/hadess/iio-sensor-proxy/-/archive/$_commi
 	0008-drv-ssc-implement-set_polling.patch
 	0009-tests-integration-test-add-SSC-sensors.patch
 	"
-# tests fail on armv7 and armhf, and it seems to be due to some weird issue
-# with pmaports qemu CI (not reproducible locally with `pmb build --arch
-# armv7`)
-options="!check"
+
 build() {
 	abuild-meson \
 		-Db_lto=true \
