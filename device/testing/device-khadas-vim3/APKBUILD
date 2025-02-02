@@ -1,0 +1,40 @@
+# Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: Mattijs Korpershoek <mattijs.korpershoek@gmail.com>
+pkgname=device-khadas-vim3
+pkgdesc="Khadas VIM3 Amlogic A311D"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	linux-postmarketos-amlogic
+	postmarketos-base
+	soc-amlogic-s905
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+	modules-initfs
+	"
+subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+nonfree_firmware() {
+	pkgdesc="vdec firmware"
+	depends="linux-firmware-meson"
+	mkdir "$subpkgdir"
+}
+
+sha512sums="
+49893fc40492c17d47097b5f103aa21400e677a5ccdc7519bb08376813748ea493771c7382e98f3994abfb39ac6eda7a618bd2766c81f2345d2df8ad255d733f  deviceinfo
+52948c2884a6f6384e12b7a598f70878526d0d3293c214425170145231144ec7de805c038641741a4a5d75b50e554f6a3fa3769784a674217ed032f9b6a233c8  modules-initfs
+"
