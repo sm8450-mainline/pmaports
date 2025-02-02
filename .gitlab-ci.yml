@@ -157,21 +157,25 @@ build-x86:
 
 build-aarch64:
   extends: .build
+  resource_group: qemu
   script:
     - .ci/build-aarch64.sh
 
 build-armv7:
   extends: .build
+  resource_group: qemu
   script:
     - .ci/build-armv7.sh
 
 build-armhf:
   extends: .build
+  resource_group: qemu
   script:
     - .ci/build-armhf.sh
 
 build-riscv64:
   extends: .build
+  resource_group: qemu
   script:
     - .ci/build-riscv64.sh
 
