@@ -10,12 +10,16 @@ license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
+	firmware-oneplus-sdm845>=9
+	hexagonrpcd
 	linux-postmarketos-qcom-sdm845
 	mkbootimg
 	postmarketos-base
 	soc-qcom-sdm845
-	soc-qcom-sdm845-ucm
+	soc-qcom-sdm845-modem
+	soc-qcom-sdm845-nonfree-firmware
 	soc-qcom-sdm845-qbootctl
+	soc-qcom-sdm845-ucm
 "
 makedepends="devicepkg-dev"
 source="
@@ -26,39 +30,27 @@ source="
 	q6voiced.conf
 	81-libssc-oneplus-enchilada.rules
 "
-subpackages="
-	$pkgname-nonfree-firmware:nonfree_firmware
-	$pkgname-nonfree-firmware-openrc:nonfree_firmware_openrc
-	$pkgname-pmtest
-"
+subpackages="$pkgname-pmtest $pkgname-openrc"
 
 build() {
 	devicepkg_build $startdir $pkgname
 }
 
 package() {
+	replaces="$pkgname-nonfree-firmware"
 	devicepkg_package $startdir $pkgname
 
 	install -Dm644 "$srcdir"/10-unl0kr.conf \
 		"$pkgdir"/etc/unl0kr.conf.d/10-unl0kr.conf
+	install -Dm644 "$srcdir"/81-libssc-oneplus-enchilada.rules \
+		-t "$pkgdir"/usr/lib/udev/rules.d/
+	install -Dm644 q6voiced.conf \
+		"$pkgdir"/etc/conf.d/q6voiced
 }
 
-nonfree_firmware() {
-	pkgdesc="Modem, WiFi and GPU Firmware, also needed for osk-sdl"
-	depends="
-		firmware-oneplus-sdm845>=9
-		hexagonrpcd
-		soc-qcom-sdm845-nonfree-firmware
-		soc-qcom-sdm845-modem
-	"
-
-	install -Dm644 "$srcdir"/81-libssc-oneplus-enchilada.rules -t "$subpkgdir"/usr/lib/udev/rules.d/
-	install -Dm644 q6voiced.conf "$subpkgdir"/etc/conf.d/q6voiced
-}
-
-nonfree_firmware_openrc() {
-	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel openrc"
-	replaces="hexagonrpcd-openrc"
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	replaces="hexagonrpcd-openrc $pkgname-nonfree-firmware-openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
 
 	install -Dm644 "$srcdir"/hexagonrpcd.confd "$subpkgdir"/etc/conf.d/hexagonrpcd-sdsp
