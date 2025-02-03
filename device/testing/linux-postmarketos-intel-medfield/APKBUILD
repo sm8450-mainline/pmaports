@@ -28,6 +28,7 @@ makedepends="
 source="
 	https://gitlab.com/julianwi/linux-intel-medfield/-/archive/$_commit/linux-$_commit.tar.gz
 	$_config
+	compile-fix.patch
 "
 builddir="$srcdir/linux-intel-medfield-$_commit"
 
@@ -58,4 +59,5 @@ package() {
 sha512sums="
 a9071335b9af05a30de32e0d02041cefb2f2c4a8d2ed09d21e39800002540444e699a7197b40dd0d7a1fe0f943aff4d7c1a9b9a07c75d1e59219862d27104d1e  linux-bd6b63fadb5fb4b1637afede0ff24e1fd2456384.tar.gz
 7aed867700a6309d847c9b8599b9c71d3e07f8258f52900700b79c915daec916b34144b88a125cf2e0a06538d8b87ea7f1b26a1325433c1daf9a6f4c1d0c97ba  config-postmarketos-intel-medfield.x86
+c2fd41f038368ad77255bca3517e18cef333e5a5a6656af8f66924926888b085044efa2d6d0884c56b8ba972489e11e853359424fddc393ea5925d9f28dd003c  compile-fix.patch
 "
