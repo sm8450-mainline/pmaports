@@ -79,6 +79,7 @@ source="
 	0058-ARM-dts-tegra20-glide-Bindings-for-new-audio-driver.patch
 	0059-drm-panel-s6e63m0-Workaround-screen-corruption-on-bo.patch
 	linux4.17-gcc10-extern_YYLOC_global_declaration.patch
+	linux5.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
 "
 builddir="$srcdir/$_repository-$pkgver"
 
@@ -171,4 +172,5 @@ e6afa8f6874020c35d17604a358ef3005b37062154967d99d0b01a45fb60cb1831878331388b1760
 15cf6ea4a27297ca24bb1c7a01abbde983b9783ce24339b59561c9aef09f3d86c36e183babeb603a20f9ca24cbf3b8274ee9d9d9467aa77450c30eeb4b3262aa  0058-ARM-dts-tegra20-glide-Bindings-for-new-audio-driver.patch
 feb09eeed8df63c732d8bd0d394d3be3524f88c77d7a5168d3ba712fe703f9063f63d2f210b600e1efd5a0139d6d4eed898a5b0b07803b1a2c11bc04c96b238d  0059-drm-panel-s6e63m0-Workaround-screen-corruption-on-bo.patch
 27827877040007fc1c4c719f7e2e19e5c272d44972415cfc53feba0313d87e4074f8204bdb13cbc5fe21ea61bf595314b68f10c081e7b7bac3c888b60f008acf  linux4.17-gcc10-extern_YYLOC_global_declaration.patch
+ee80928d83189a6b71f853c97551326e3ac74167dee3bda0ae85a034278ca69403bbfbbd9dfaf9f77426e46d7260e4fda8e8900649f1b6355bac62a8cda83776  linux5.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
 "
