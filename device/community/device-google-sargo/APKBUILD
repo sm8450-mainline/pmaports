@@ -10,11 +10,18 @@ arch="aarch64"
 options="!check !archcheck"
 depends="
 	alsa-ucm-conf-qcom-sdm670
+	firmware-google-sargo
+	hexagonrpcd
+	linux-firmware-ath10k
+	linux-firmware-qca
+	linux-firmware-qcom
 	linux-postmarketos-qcom-sdm670
 	make-dynpart-mappings
 	mkbootimg
 	postmarketos-base
 	soc-qcom-sdm845
+	soc-qcom-sdm845-modem
+	soc-qcom-sdm845-nonfree-firmware
 	soc-qcom-sdm845-qbootctl
 "
 makedepends="devicepkg-dev"
@@ -28,47 +35,31 @@ source="
 	no-hexagonrpcd-on-suspend.sh
 	q6voiced.conf
 "
-subpackages="
-	$pkgname-nonfree-firmware:nonfree_firmware
-	$pkgname-nonfree-firmware-openrc:nonfree_firmware_openrc
-	"
+subpackages="$pkgname-openrc"
 
 build() {
 	devicepkg_build $startdir $pkgname
 }
 
 package() {
+	replaces="hexagonrpcd-nonfree-firmware"
 	devicepkg_package $startdir $pkgname
 
 	install -Dm644 "$srcdir"/90-feedbackd-drv2624.rules \
 		-t "$pkgdir"/usr/lib/udev/rules.d
 	install -Dm644 "$srcdir"/10-unl0kr-msm.conf \
 		"$pkgdir"/etc/unl0kr.conf.d/10-unl0kr-msm.conf
-}
-
-nonfree_firmware() {
-	pkgdesc="Proprietary firmware blobs for the Google Pixel 3a"
-	depends="
-		firmware-google-sargo
-		hexagonrpcd
-		linux-firmware-ath10k
-		linux-firmware-qca
-		linux-firmware-qcom
-		soc-qcom-sdm845-modem
-		soc-qcom-sdm845-nonfree-firmware
-	"
 	# Sensors depend on ADSP firmware and the sensors registry served over FastRPC.
 	install -Dm644 "$srcdir"/81-libssc-google-sargo.rules \
-		"$subpkgdir"/usr/lib/udev/rules.d/81-libssc-google-sargo.rules
+		"$pkgdir"/usr/lib/udev/rules.d/81-libssc-google-sargo.rules
 }
 
-nonfree_firmware_openrc() {
-	replaces="hexagonrpcd-openrc"
-	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel openrc"
+openrc() {
+	replaces="hexagonrpcd-nonfree-firmware-openrc"
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	# Enable HexagonRPCD by default, but not if the user installed this
 	# package then disabled it.
 	install="$subpkgname.post-install"
-	replaces="hexagonrpcd-openrc"
 	# The FastRPC service is only enabled when non-free firmware is installed.
 	install -Dm755 "$srcdir"/no-hexagonrpcd-on-suspend.sh \
 		"$subpkgdir"/etc/elogind/system-sleep/no-hexagonrpcd-on-suspend.sh
