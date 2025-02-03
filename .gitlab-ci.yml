@@ -163,16 +163,19 @@ build-aarch64:
 
 build-armv7:
   extends: .build
+  tags: [qemu]
   script:
     - .ci/build-armv7.sh
 
 build-armhf:
   extends: .build
+  tags: [qemu]
   script:
     - .ci/build-armhf.sh
 
 build-riscv64:
   extends: .build
+  tags: [qemu]
   script:
     - .ci/build-riscv64.sh
 
