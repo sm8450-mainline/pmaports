@@ -151,6 +151,8 @@ main/postmarketos*gnome*/			@pabloyoyoista @Newbyte @fossdd
 main/postmarketos-initramfs/			@calebccff @craftyguy
 main/postmarketos-ui-i3wm/			@fossdd
 main/postmarketos-ui-phosh/			@pabloyoyoista @Newbyte @fossdd
+main/postmarketos-ui-plasma-bigscreen/          @PureTryOut
+main/postmarketos-ui-plasma-desktop/            @PureTryOut
 main/postmarketos-ui-plasma-mobile/		@PureTryOut
 main/shutdown-clear-rtc-wakealarm/		@Arnavion
 main/ttyescape/					@calebccff
