@@ -3,7 +3,7 @@
 pkgname=device-google-sargo
 pkgdesc="Google Pixel 3a"
 pkgver=7
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -42,7 +42,11 @@ build() {
 }
 
 package() {
-	replaces="hexagonrpcd-nonfree-firmware"
+	replaces="
+		hexagonrpcd-nonfree-firmware
+		hexagonrpcd-nonfree-firmware-openrc
+		hexagonrpcd-openrc
+		 "
 	devicepkg_package $startdir $pkgname
 
 	install -Dm644 "$srcdir"/90-feedbackd-drv2624.rules \
@@ -50,6 +54,8 @@ package() {
 	install -Dm644 "$srcdir"/10-unl0kr-msm.conf \
 		"$pkgdir"/etc/unl0kr.conf.d/10-unl0kr-msm.conf
 	# Sensors depend on ADSP firmware and the sensors registry served over FastRPC.
+	install -Dm644 "$srcdir"/hexagonrpcd-adsp-sensorspd.confd \
+		"$pkgdir"/etc/conf.d/hexagonrpcd-adsp-sensorspd
 	install -Dm644 "$srcdir"/81-libssc-google-sargo.rules \
 		"$pkgdir"/usr/lib/udev/rules.d/81-libssc-google-sargo.rules
 
@@ -59,17 +65,14 @@ package() {
 }
 
 openrc() {
-	replaces="hexagonrpcd-nonfree-firmware-openrc"
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	# Enable HexagonRPCD by default, but not if the user installed this
 	# package then disabled it.
 	install="$subpkgname.post-install"
+
 	# The FastRPC service is only enabled when non-free firmware is installed.
 	install -Dm755 "$srcdir"/no-hexagonrpcd-on-suspend.sh \
 		"$subpkgdir"/etc/elogind/system-sleep/no-hexagonrpcd-on-suspend.sh
-	# Sensors depend on ADSP firmware and the sensors registry served over FastRPC.
-	install -Dm644 "$srcdir"/hexagonrpcd-adsp-sensorspd.confd \
-		"$subpkgdir"/etc/conf.d/hexagonrpcd-adsp-sensorspd
 }
 
 sha512sums="
