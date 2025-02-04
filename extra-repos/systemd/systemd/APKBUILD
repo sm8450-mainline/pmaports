@@ -3,9 +3,10 @@
 # Co-Maintainer: jane400 <jane400@postmarketos.org>
 
 pkgname=systemd
-pkgver=256.5
-_pkgver="musl-v${pkgver//_/-}"
-pkgrel=6
+# currently tracking git MR
+pkgver=256.11
+_pkgver="musl-v${pkgver//_/-}-split-usr"
+pkgrel=0
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !s390x" # blocked by pmboostrap not supporting
@@ -13,6 +14,7 @@ license="MIT AND GPL-2.0-only AND LGPL-2.1-or-later"
 options="pmb:strict !check" # few tests fail, need to debug. We use alpine dbus for building, systemd-dbus for runtime
 
 makedepends="
+	acl
 	acl-dev
 	audit-dev
 	bash
@@ -118,8 +120,7 @@ subpackages="
 	"
 
 source="
-	https://gitlab.com/postmarketOS/systemd/-/archive/$_pkgver/systemd-$_pkgver.tar.gz
-	4.patch
+	https://gitlab.postmarketos.org/postmarketOS/systemd/-/archive/$_pkgver/systemd-$_pkgver.tar.gz
 	systemd-apk-macros.sh
 	wired.network
 	"
@@ -157,11 +158,12 @@ build() {
 		-Dkmod-path=/bin/kmod \
 		-Dsulogin-path=/sbin/sulogin \
 		\
+		-Dwheel-group=true \
 		-Ddebug-shell=/bin/ash \
 		-Dpolkit=enabled \
 		-Dpam=enabled \
 		-Dpamlibdir=/usr/lib/security \
-		-Dpamconfdir=/etc/pam.d \
+		-Dpamconfdir=/usr/lib/pam.d \
 		\
 		-Dbootloader=disabled \
 		-Dutmp=false \
@@ -223,6 +225,11 @@ package() {
 
 	install -Dm755 "$srcdir"/systemd-apk-macros.sh -t \
 		"$pkgdir"/usr/lib/systemd
+
+
+	# initramfs hardcodes /sbin/init
+	mkdir -p "$pkgdir"/sbin
+	ln -sf "../usr/lib/systemd/systemd" "$pkgdir"/sbin/init
 }
 
 udevd() {
@@ -233,7 +240,6 @@ udevd() {
 	provides="eudev udev eudev-libs"
 	provider_priority=100
 
-	amove usr/bin/udevadm
 	amove etc/udev
 	amove usr/lib/libudev*
 	amove usr/lib/systemd/system/initrd-udevadm-cleanup-db.service
@@ -243,14 +249,11 @@ udevd() {
 	amove usr/lib/systemd/systemd-udevd
 	amove usr/lib/udev
 
+	# Install symlinks to be more like eudev
+	# FIXME: systemd-udevd gets placed at /usr/bin/udevadm
 	mkdir -p "$subpkgdir"/sbin "$subpkgdir"/bin
-
-	# Install a symlink to /usr/bin to be compatible with eudev
-	ln -sf /usr/lib/systemd/systemd-udevd "$subpkgdir"/usr/bin/udevd
-	# Install split-user symlinks
-	ln -sf /usr/lib/systemd/systemd-udevd "$subpkgdir"/sbin/udevd
-	ln -sf /usr/lib/systemd/systemd-udevd "$subpkgdir"/bin/udevadm
-	ln -sf /usr/lib/systemd/systemd-udevd "$subpkgdir"/sbin/udevadm
+	ln -sf ../usr/lib/systemd/systemd-udevd "$subpkgdir"/sbin/udevd
+	ln -sf ../usr/lib/systemd/systemd-udevd "$subpkgdir"/bin/udevadm
 }
 
 udevd_bcomp() {
@@ -418,8 +421,7 @@ dev() {
 }
 
 sha512sums="
-5d1f4625b75b6637afa71519bc7048fe899b4f5785ce26316524ac78941e43cf6ba83391dae68497cfa4f8aaa35d953ec0c04ee581307ffc7007cf4b9d9c4454  systemd-musl-v256.5.tar.gz
-e8ced12eb67a261a5c2788487053451c352e0b2ebe3d72aaf84a3011dc92981affe4f036f693260fc8ee4a49f02de4522fd022e5783dba939023f13891ab228e  4.patch
+3cd75d5ba29a3994230ecbe16ea106d4fe05d7d76e7cd9b9a6a63177f09d8c362c055a1fea49e6c9a10a949afc07a6c75fe75dad2bd302d94e41a81f8ddb2a15  systemd-musl-v256.11-split-usr.tar.gz
 2f9ec875de67fc4bb401bebea88653cd34c22787a26a8122233fbb761bfbf190be72cfa0c26a433c30d703ee1e10489787d75492f0e1a76cbd5f6601e7e23d49  systemd-apk-macros.sh
 81c897fed8a3fbfb67ec591b2398a5d65e4af1b3ef379376c157c98d71f085b707f8ebc896d5571a94f99f8fc84fd6b43e3b879ca9b0d57fc6c4596034c7a777  wired.network
 "
