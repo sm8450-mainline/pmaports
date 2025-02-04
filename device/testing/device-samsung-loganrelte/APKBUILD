@@ -2,18 +2,15 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-loganrelte
 pkgdesc="Samsung Galaxy Ace 3 LTE"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
 depends="
-	linux-samsung-loganrelte
-	mkbootimg
-	msm-fb-refresher
+	linux-postmarketos-qcom-msm8930
 	postmarketos-base
-	postmarketos-base-downstream
 "
 makedepends="devicepkg-dev"
 source="
@@ -29,5 +26,5 @@ package() {
 }
 
 sha512sums="
-0e1551bd994886968e466bce4e0328a281667f06d1e863137397aac4692bb7c80363517d70c73b6ebdd6912b303646792151352d4a5b350182881c208b7caf9b  deviceinfo
+081543d99e9981c0ae81bbe98f28bf49e07c859cff6dbe11d7d52c99e97b818932efdc85dcc07f8c8e10a136ee3a5208b8ead04a3c040b6434bb72946f612e2e  deviceinfo
 "
