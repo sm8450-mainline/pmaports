@@ -52,8 +52,13 @@ replaces="
 	"
 replaces_priority=100  # leave plenty for alpine
 
-# See MR 4744, MR 5352 and MR 5540 for the rationale
-_pmb_recommends="font-droid font-droid-nonlatin font-twemoji"
+# See MR 4744, MR 5352 and MR 5540 for the rationale of the font configuration
+_pmb_recommends="
+	font-droid
+	font-droid-nonlatin
+	font-twemoji
+	lang
+	"
 
 _source644="
 	etc/chrony/chrony.conf
