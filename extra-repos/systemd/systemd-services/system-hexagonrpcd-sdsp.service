@@ -1,5 +1,7 @@
 [Unit]
 Description=Daemon to support Qualcomm Hexagon SDSP virtual filesystem
+ConditionPathExists=/etc/conf.d/hexagonrpcd-sdsp
+ConditionPathExists=/dev/fastrpc-sdsp
 
 [Service]
 EnvironmentFile=/etc/conf.d/hexagonrpcd-sdsp

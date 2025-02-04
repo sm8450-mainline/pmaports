@@ -1,5 +1,11 @@
 [Unit]
 Description=Daemon to support Qualcomm Hexagon ADSP virtual filesystem for SensorPD
+Conflicts=suspend.target
+Before=suspend.target
+ConditionPathExists=/etc/conf.d/hexagonrpcd-adsp-sensorspd
+# This service shouldn't be run on devices with an SDSP
+ConditionPathExists=!/dev/fastrpc-sdsp
+ConditionPathExists=/dev/fastrpc-adsp
 
 [Service]
 EnvironmentFile=/etc/conf.d/hexagonrpcd-adsp-sensorspd

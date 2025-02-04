@@ -1,5 +1,7 @@
 [Unit]
 Description=Daemon to support Qualcomm Hexagon ADSP virtual filesystem for RootPD
+ConditionPathExists=/etc/conf.d/hexagonrpcd-adsp-rootpd
+ConditionPathExists=/dev/fastrpc-adsp
 
 [Service]
 EnvironmentFile=/etc/conf.d/hexagonrpcd-adsp-rootpd
