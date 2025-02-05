@@ -2,6 +2,5 @@
 
 rc-update add tinydm default
 rc-update add waked default
-tinydm-set-session -s /usr/share/wayland-sessions/phosh.desktop
 
 exit 0
