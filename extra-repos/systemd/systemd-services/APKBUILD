@@ -6,7 +6,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=41
+pkgver=42
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -40,6 +40,7 @@ subpackages="
 	kanshi-systemd:_service
 	kded-systemd:_service
 	kglobalacceld-systemd:_service
+	ksystemstats-systemd:_service
 	lxc-systemd:_service
 	mmsd-tng-systemd:_service
 	modemmanager-systemd:_service
@@ -120,6 +121,7 @@ _kanshi_sources="user/kanshi.service" # created, no unit file upstream
 _kactivitymanagerd_sources="user/plasma-kactivitymanagerd.service"
 _kded_sources="user/kded.service" # From https://invent.kde.org/frameworks/kded/-/blob/master/src/plasma-kded6.service.in
 _kglobalacceld_sources="user/plasma-kglobalaccel.service"
+_ksystemstats_sources="user/plasma-ksystemstats.service"
 _lxc_sources="system/lxc@.service"
 _mmsd_tng_sources="user/mmsd-tng.service"
 _modemmanager_sources="system/ModemManager.service"
@@ -188,6 +190,7 @@ source="$(flatpath \
 	$_kanshi_sources \
 	$_kded_sources \
 	$_kglobalacceld_sources \
+	$_ksystemstats_sources \
 	$_lxc_sources \
 	$_mmsd_tng_sources \
 	$_modemmanager_sources \
@@ -341,6 +344,7 @@ df3388cb7b9d035e54b34d8f8a6594be89c3015f979fe3bdc199fb7db1ab0bef821d6b306eecdf97
 fa41668288d53f8ce42a7524f10b1e03812fb11ed71bcb484dc22d0d374b453837317eb599cf61b66163a905949024509e73d5190012b664b301d48af7002a01  user-kanshi.service
 b0ecd5d413a2010d3f36285c2d35523119c29007e1e4162e51dfc746cc105f990a82a2a2d6037a8b906628c0a4f606729290525c7a53dbcfbc8147244fa403a7  user-kded.service
 acf21c4391ca62775491ba4d3b7c460b4163ef07abb195e152c98299a2d12779f3eb95f8cad0aeb3239f2d0fa8222a2483000c45aa6a47e05269876147d89839  user-plasma-kglobalaccel.service
+bccc419b13d39c59ef6bb765dde2bef70c621995bc53d74ccc9ad4aef92931ee74c3ee0b19a0dffb8c3f133b5b0d73f5f70df269dddf5f0ed1dba1cf31d7e141  user-plasma-ksystemstats.service
 f6fb4c890cbf72e344ca7a22e7f033fb4c32ce9f5edc27c03ccc5c21424d6a0ef871d79e8a89a502a707bdceb3bfbd7a5b3c8e16b1cd30e149bf2fdf8cccea9e  system-lxc@.service
 873b53592786a978659bda8d32de5ed9a9f163ca298c4f4112f10bf635a8170c4060cc15b57ff72b3afd50075cd1c5dbc10030f00b166e2540397da9e1c5e46b  user-mmsd-tng.service
 5eab6a59c81232b188df45482e325b2d1cb9e038ca147a1b6983c1c095d8194fba804793c5e291b201a820976c8f506aadd2daf7c52fe573a3af708fc9984641  system-ModemManager.service
