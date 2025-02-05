@@ -91,6 +91,11 @@ for pid in $(pidof sh); do
 	fi
 done
 
+# cleanup after ourselves
+# switch_root does a mount --move , keeping stale filesystems like devtmpfs
+# with /dev/log in there.
+rm /dev/log 2>/dev/null || true
+
 # shellcheck disable=SC2093
 exec switch_root /sysroot "$init"
 
