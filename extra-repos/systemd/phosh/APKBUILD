@@ -1,0 +1,127 @@
+# Forked from Alpine for systemd split func
+maintainer="fossdd <fossdd@pwned.life>"
+pkgname=phosh
+_pkgver=0.44.1
+pkgver=9999$_pkgver
+pkgrel=0
+pkgdesc="Wayland shell for GNOME on mobile devices"
+# armhf: blocked by gnome-shell-schemas
+arch="all !armhf"
+url="https://gitlab.gnome.org/World/Phosh/phosh"
+license="GPL-3.0-only"
+triggers="$pkgname.trigger=/usr/lib/phosh/plugins/prefs"
+depends="
+	adwaita-icon-theme
+	bash
+	dbus-x11
+	dbus:org.freedesktop.Secrets
+	desktop-file-utils
+	font-adobe-source-code-pro
+	font-cantarell
+	gnome-control-center
+	gnome-session
+	gnome-settings-daemon
+	gnome-shell-schemas
+	gsettings-desktop-schemas
+	phoc
+	phosh-keyboard
+	xwayland
+	"
+makedepends="
+	callaudiod-dev
+	systemd-dev
+	evince-dev
+	evolution-data-server-dev
+	feedbackd-dev
+	gcr-dev
+	gettext-dev
+	glib-dev
+	gmobile-dev
+	gnome-bluetooth-dev
+	gnome-desktop-dev
+	gtk+3.0-dev
+	libadwaita-dev
+	libgudev-dev
+	libhandy1-dev
+	libsecret-dev
+	linux-pam-dev
+	meson
+	modemmanager-dev
+	networkmanager-dev
+	polkit-dev
+	pulseaudio-dev
+	py3-docutils
+	upower-dev
+	wayland-dev
+	wayland-protocols
+	"
+checkdepends="xvfb-run"
+# the ordering here is important - libphosh split functions need to run first to move the libphosh-0
+# headers/pkgconfig/lib into the libphosh packages, before the top level -dev package gobbles
+# up the rest.
+subpackages="
+	libphosh:libs
+	libphosh-dev:libphosh_dev
+	$pkgname-dbg
+	$pkgname-lang
+	$pkgname-dev
+	$pkgname-doc
+	$pkgname-portalsconf
+	$pkgname-systemd
+	"
+source="https://sources.phosh.mobi/releases/phosh/phosh-${_pkgver/_/.}.tar.xz
+	phosh.desktop
+	"
+builddir="$srcdir/$pkgname-${_pkgver/_/.}"
+options="!check" # "/var/lib/dbus/machine-id": No such file or directory
+
+prepare() {
+	default_prepare
+	sed -i 's/\.rc/_rc/' meson.build
+}
+
+build() {
+	# phoc tests need a running Wayland compositor
+	abuild-meson \
+		-Db_lto=true \
+		-Dphoc_tests=disabled \
+		-Dman=true \
+		-Dbindings-lib=true \
+		. output
+	meson compile -C output
+}
+
+check() {
+	xvfb-run -a meson test --no-rebuild --print-errorlogs -C output
+}
+
+package() {
+	DESTDIR="$pkgdir/" meson install --no-rebuild --skip-subprojects -C output
+
+	install -D -m644 "$srcdir"/phosh.desktop \
+		"$pkgdir"/usr/share/wayland-sessions/phosh.desktop
+}
+
+portalsconf() {
+	install_if="$pkgname=$pkgver-r$pkgrel xdg-desktop-portal>=1.17.1"
+	amove usr/share/xdg-desktop-portal/phosh-portals.conf
+}
+
+libphosh_dev() {
+	local _soname="libphosh-${_pkgver%.*}"
+	amove usr/include/$_soname
+	amove usr/lib/$_soname.so
+	amove usr/lib/pkgconfig/$_soname.pc
+}
+
+systemd() {
+	pkgdesc="$pkgname systemd service files"
+	install_if="systemd-services=$pkgver-r$pkgrel systemd $name"
+
+	amove usr/lib/systemd
+}
+
+sha512sums="
+dcc7a323e26e5158f53424eac23bf7fdb3c5c9b5d34216155bc167b79941882541c0e70242f7e6c9d7217c6d5add325722527404cf9b3eac2600fbf299bca086  phosh-0.44.1.tar.xz
+8ca4893a751311de326e198314669f5a276092ade99c6353c4c9ce070713fb1a5b1615e7fecb93b428dc79fd4001a9af43d24eafaf2545d7db464963fda25330  phosh.desktop
+"
