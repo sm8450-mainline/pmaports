@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=54
+pkgver=55
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -24,8 +24,9 @@ subpackages="
 	at-spi2-core-systemd:_service
 	baloo-systemd:_service
 	bluez-systemd:_service
-	dconf-systemd:_service
 	colord-systemd:_service
+	connman-systemd:_service
+	dconf-systemd:_service
 	eg25-manager-systemd:_service
 	evolution-data-server-systemd:_service
 	flatpak-systemd:_service
@@ -46,6 +47,7 @@ subpackages="
 	ksystemstats-systemd:_service
 	kwallet-pam-systemd:_service
 	lxc-systemd:_service
+	mce-systemd:_service
 	mmsd-tng-systemd:_service
 	modemmanager-systemd:_service
 	msm-modem-systemd:_service
@@ -68,6 +70,7 @@ subpackages="
 	tqftpserv-systemd:_service
 	udisks2-systemd:_service
 	udiskie-systemd:_service
+	usb-moded:_service
 	vvmd-systemd:_service
 	waydroid-sensors-systemd:_service
 	waydroid-systemd:_service
@@ -94,6 +97,11 @@ _bluez_sources="
 	user/obex.service
 " # From bluez build with --enable-systemd
 _colord_sources="system/colord.service" # From https://github.com/hughsie/colord/blob/main/data/colord.service.in
+_connman_sources="
+	system/connman-vpn.service
+	system/connman-wait-online.service
+	system/connman.service
+" # From connman upstream
 _dconf_sources="user/dconf.service"
 _eg25_manager_sources="system/eg25-manager.service" # From https://gitlab.com/mobian1/eg25-manager/-/blob/master/data/eg25-manager.service.in
 _evolution_data_server_sources="
@@ -133,6 +141,7 @@ _kglobalacceld_sources="user/plasma-kglobalaccel.service"
 _ksystemstats_sources="user/plasma-ksystemstats.service"
 _kwallet_pam_sources="user/plasma-kwallet-pam.service"
 _lxc_sources="system/lxc@.service"
+_mce_sources="system/mce.service" # From mce upstream
 _mmsd_tng_sources="user/mmsd-tng.service"
 _modemmanager_sources="system/ModemManager.service"
 _msm_modem_sources="system/msm-modem-uim-selection.service"
@@ -155,6 +164,7 @@ _tinydm_sources="system/tinydm.service"  # see issue tinydm#11
 _tqftpserv_sources="system/tqftpserv.service"
 _udisks2_sources="system/udisks2.service" # From https://github.com/storaged-project/udisks/blob/master/data/udisks2.service.in
 _udiskie_sources="user/udiskie.service"  # created, no unit file upstream
+_usb_moded_sources="system/usb_moded.service" # From usb_moded upstream
 _vvmd_sources="user/vvmd.service"  # From https://salsa.debian.org/DebianOnMobile-team/vvmd/-/blob/debian/latest/debian/vvmd.user.service
 _waydroid_sources="system/waydroid-container.service"
 _waydroid_sensors_sources="system/waydroid-sensors.service"
@@ -187,6 +197,7 @@ source="$(flatpath \
 	$_baloo_sources \
 	$_bluez_sources \
 	$_colord_sources \
+	$_connman_sources \
 	$_dconf_sources \
 	$_eg25_manager_sources \
 	$_evolution_data_server_sources \
@@ -208,6 +219,7 @@ source="$(flatpath \
 	$_ksystemstats_sources \
 	$_kwallet_pam_sources \
 	$_lxc_sources \
+	$_mce_sources \
 	$_mmsd_tng_sources \
 	$_modemmanager_sources \
 	$_msm_modem_sources \
@@ -230,6 +242,7 @@ source="$(flatpath \
 	$_tqftpserv_sources \
 	$_udisks2_sources \
 	$_udiskie_sources \
+	$_usb_moded_sources \
 	$_vvmd_sources \
 	$_waydroid_sensors_sources \
 	$_waydroid_sources \
@@ -249,6 +262,7 @@ source="$(flatpath \
 # variables with *user* unit files should use "_user_presets".
 _apk_polkit_rs_system_presets="apk-polkit-server.service"
 _bluez_system_presets="bluetooth.service"
+_connman_system_presets="connman-wait-online.service"
 _fnott_user_presets="fnott.service"
 _geoclue_system_presets="geoclue.service"
 _gnome_clocks_user_presets="gnome-clocks.service"
@@ -256,6 +270,7 @@ _hexagonrpcd_system_presets="hexagonrpcd-adsp-rootpd.service hexagonrpcd-adsp-se
 _hfd_service_system_presets="hfd-service.service"
 _iwd_system_presets="iwd.service"
 _kanshi_user_presets="kanshi.service"
+_mce_system_presets="mce.service"
 _mmsd_tng_user_presets="mmsd-tng.service"
 _modemmanager_system_presets="ModemManager.service"
 _msm_modem_system_presets="msm-modem-uim-selection.service"
@@ -275,6 +290,7 @@ _tinydm_system_presets="tinydm.service"
 _tqftpserv_system_presets="tqftpserv.service"
 _udisks2_system_presets="udisks2.service"
 _udiskie_user_presets="udiskie.service"
+_usb_moded_system_presets="usb_moded.service"
 _vvmd_user_presets="vvmd.service"
 _waydroid_system_presets="waydroid-container.service"
 _waydroid_sensors_system_presets="waydroid-sensors.service"
@@ -340,6 +356,9 @@ de133c35cf95d7c833368c9010264668e72657400ad4e5259ef046321c878507f36ef73fa7b4759f
 00049b418fab6dec7d9931a87cc64d2062efa0f7128bec1a693bfdf112703e628a2f1c98d2d5bf71554e6e576882890cef7a02de283909b1dd2f4c5ec0f6393e  user-mpris-proxy.service
 5ad5f8adcc89759e5c935a2e55803fac52a9681af3a28f5c8d46f693717afcf7c8c6394f85dd5dbc1ddb575b909b0f6feee2e9973ee177e6445d375136b932ee  user-obex.service
 c10378bac1d64c0a2c767aab439c7d71bb7706b4fdc981add3ab4d5967257c0177f07448f884aeb1ee4571c59746c3584befa95858940aed198e29fa83cf5d17  system-colord.service
+52840a212a845900ed88bd08a7b318c2b74c68a421bf1a9bbb3378e09be2b6edab1ddb87a3e410925ab0f50ab738ab3c804611bdf8101ca7896e874f9f6ba066  system-connman-vpn.service
+a7fd0c47858a10c263d9bc661dc955366a2acd79f7be5cf2571dc7ec3b3f5adf122b4e55e58d01b778aa7ed0c6981fc454295c93d29bd89d9145d5d2439e01a5  system-connman-wait-online.service
+9e2bb4153e97c11db7792b758a7a21bd352c7443dbdbde0f390d4dfe52d7495a4a01cb15097e842cfe69eb1214f9bca5a626fb54b4f8216e11efda1c55b89add  system-connman.service
 e4de73d12abd046c8683e3be6e3aab40a5db3f5d6246cedbb3ff099bcc8037a167b23ac957d30f1118db571b69cb10c042272ac2b54dacf83fa6a3e9dad13a87  user-dconf.service
 780912dbfdc7e9a350e934d46022b043edda86a393a7c107d0c855e9580240e4bce791428fdadef0a45adc6cfa24fb5d58981b6ccd80e3dad99da3e5fa3dc7b8  system-eg25-manager.service
 73e1839cec077e35ed985891f5274a09816115cc083e7a6e7e1fd98c88f4a114d7353492dee5808a28c47bf06bca32d9a6a7cc833cf4f21e501774955e93b321  user-evolution-addressbook-factory.service
@@ -374,6 +393,7 @@ bccc419b13d39c59ef6bb765dde2bef70c621995bc53d74ccc9ad4aef92931ee74c3ee0b19a0dffb
 a9358610c86fd3506e4cf02aea26e699d61268121ea3c16507b8f71446c16169a1c90c75faf126f2cf607c091e507f7e5822ea5fd8cc1f6e14f257c8007287a3  user-plasma-kwallet-pam.service
 ebd194aad645a836ba2b51bfcebd7f78a8ec703e62dd7a7e85343df4f7b60e99abfebd6de12e540e4be24e9079aee0b8ea450e5169ce9ee97e44d0b370013a07  user-plasma-polkit-agent.service
 f6fb4c890cbf72e344ca7a22e7f033fb4c32ce9f5edc27c03ccc5c21424d6a0ef871d79e8a89a502a707bdceb3bfbd7a5b3c8e16b1cd30e149bf2fdf8cccea9e  system-lxc@.service
+becb3bb17995f44b4021d05109130a00d0eba3d698eaf204a1f8d325741faa729d4ac7fedf0446b9468507a3b558a412ae9aa7f813bbb1f466395c86f66542fd  system-mce.service
 873b53592786a978659bda8d32de5ed9a9f163ca298c4f4112f10bf635a8170c4060cc15b57ff72b3afd50075cd1c5dbc10030f00b166e2540397da9e1c5e46b  user-mmsd-tng.service
 5eab6a59c81232b188df45482e325b2d1cb9e038ca147a1b6983c1c095d8194fba804793c5e291b201a820976c8f506aadd2daf7c52fe573a3af708fc9984641  system-ModemManager.service
 a12d8d6994ae6e46b0d131c9f5c475ccc70ab7aaf5839b19c1917410fb3c90a208bc0c6e07c90cf251ea6e445741af83a9f77bf9fcb30490bb0fbfc07aa8cbb9  system-msm-modem-uim-selection.service
@@ -397,6 +417,7 @@ be9df5e3fd9c88ec1a8db4aa2d9e8075d74ee3d2670aa3cfc611df3cff4d4041ac888a0338c9d5f1
 c569b27925297672c479e12a6425abdf5791886fff77c2c2b67b7aa9277eb0a22e7b95b52dbc225870c97460d0988a4dae18ed864e19096c704c0895de55b699  system-tqftpserv.service
 c7ea2b18c9d8f82306fbaca6d07b7019de3819d7898c3f50c3d0aceef4da4d311ed3bf31385e2f8998b8e3e326b1eb13309ffd44cf1b2d9db9b40bca00222c16  system-udisks2.service
 4c43a308e9e653914e534d92fc8caaf8c60cd21ae57bdbbf2fa591c1bd6a41e502268b6e0ff17b19cbe301fc7cfa1ad43070f13b372376fa3ddee9d11bf76f5a  user-udiskie.service
+be47b824125cc54d2e1c879f59421f3c549e3f42c92a53f7117968a861403edf60c9e3bf54fd54a69997ccb22dce6f891d993aec606070884e3ff6da2ac8a5b1  system-usb_moded.service
 6029a2cc1e7fbc00fea0b2abe9d4be6fa2a03cee4b7aceaecb2bbc94ddf1ed3127f1ce99a2e38c0e901261ed36aa3a616390da22364b40370b820023dc2b4a8e  user-vvmd.service
 841caa793d256cacea7eb651f3d77039b1c0ddb22727100d6cca74230e528aee09e945e1fdf20eaf40abbe3eaec9210eb7fa27144dc906cab65f8078b36921f9  system-waydroid-sensors.service
 023fc89481f9079ac2d2d6b8a9ab212cb13a6b309caaa92b336df4c6ee9cff05538f035f8411fd8f6b87ca73b400172f56022edbf02d3776ab6f2aa7af2eebef  system-waydroid-container.service
