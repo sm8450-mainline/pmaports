@@ -550,7 +550,6 @@ mount_root_partition() {
 	partition="$(find_root_partition)"
 	rootfsopts=""
 
-	check_filesystem "$partition"
 	# shellcheck disable=SC2013
 	for x in $(cat /proc/cmdline); do
 		[ "$x" = "${x#pmos_rootfsopts=}" ] && continue

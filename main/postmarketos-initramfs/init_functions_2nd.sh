@@ -90,6 +90,7 @@ resize_root_partition() {
 resize_root_filesystem() {
 	partition="$(find_root_partition)"
 	touch /etc/mtab # see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=673323
+	check_filesystem "$partition"
 	type="$(get_partition_type "$partition")"
 	case "$type" in
 		ext4)
