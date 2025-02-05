@@ -48,6 +48,12 @@ enable gdm.service
 ## fbkeyboard
 enable fbkeyboard.service
 
+## asteroid
+enable mce.service
+enable usb-moded.service
+enable connman.service
+enable dsme.service
+
 # Waydroid
 enable sensorfwd.service
 enable waydroid-container.service
