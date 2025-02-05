@@ -49,7 +49,7 @@ index c14f88893868..cb7a302497a5 100644
  static struct rockchip_hdmi *to_rockchip_hdmi(struct drm_encoder *encoder)
  {
  	struct rockchip_encoder *rkencoder = to_rockchip_encoder(encoder);
-@@ -89,118 +94,132 @@ static struct rockchip_hdmi *to_rockchip_hdmi(struct drm_encoder *encoder)
+@@ -89,126 +94,132 @@ static struct rockchip_hdmi *to_rockchip_hdmi(struct drm_encoder *encoder)
  	return container_of(rkencoder, struct rockchip_hdmi, encoder);
  }
  
@@ -194,11 +194,13 @@ index c14f88893868..cb7a302497a5 100644
 -			{ 0x0051, 0x0003},
 -			{ 0x214c, 0x0003},
 -			{ 0x4064, 0x0003}
+-		},
+-	}, {
 +	},  {
-+		340000000, {
-+			{ 0x0040, 0x0003 },
-+			{ 0x3b4c, 0x0003 },
-+			{ 0x5a64, 0x0003 },
+ 		340000000, {
+ 			{ 0x0040, 0x0003 },
+ 			{ 0x3b4c, 0x0003 },
+ 			{ 0x5a64, 0x0003 },
  		},
 -	}, {
 +	},  {
@@ -234,10 +236,11 @@ index c14f88893868..cb7a302497a5 100644
 -		83500000,  { 0x0028, 0x0038, 0x0038 },
 -	}, {
 -		146250000, { 0x0038, 0x0038, 0x0038 },
-+		600000000,  { 0x0000, 0x0000, 0x0000 },
- 	}, {
+-	}, {
 -		148500000, { 0x0000, 0x0038, 0x0038 },
 -	}, {
+ 		600000000, { 0x0000, 0x0000, 0x0000 },
+ 	}, {
 -		~0UL,      { 0x0000, 0x0000, 0x0000},
 +		~0UL,       { 0x0000, 0x0000, 0x0000},
  	}
@@ -263,7 +266,7 @@ index c14f88893868..cb7a302497a5 100644
  
  	hdmi->regmap = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
  	if (IS_ERR(hdmi->regmap)) {
-@@ -237,27 +256,55 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
+@@ -237,39 +256,51 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
  	if (IS_ERR(hdmi->avdd_1v8))
  		return PTR_ERR(hdmi->avdd_1v8);
  
@@ -291,23 +294,25 @@ index c14f88893868..cb7a302497a5 100644
  }
  
  static enum drm_mode_status
--dw_hdmi_rockchip_mode_valid(struct dw_hdmi *hdmi, void *data,
+-dw_hdmi_rockchip_mode_valid(struct dw_hdmi *dw_hdmi, void *data,
 -			    const struct drm_display_info *info,
 +dw_hdmi_rockchip_encoder_mode_valid(struct drm_encoder *encoder,
  			    const struct drm_display_mode *mode)
  {
--	const struct dw_hdmi_mpll_config *mpll_cfg = rockchip_mpll_cfg;
+-	struct rockchip_hdmi *hdmi = data;
 +	struct rockchip_hdmi *hdmi = to_rockchip_hdmi(encoder);
+-	const struct dw_hdmi_mpll_config *mpll_cfg = rockchip_mpll_cfg;
  	int pclk = mode->clock * 1000;
--	bool valid = false;
+-	bool exact_match = hdmi->plat_data->phy_force_vendor;
 +	int num_rates = hdmi->rates_cnt;
  	int i;
  
--	for (i = 0; mpll_cfg[i].mpixelclock != (~0UL); i++) {
--		if (pclk == mpll_cfg[i].mpixelclock) {
--			valid = true;
--			break;
--		}
+-	if (hdmi->ref_clk) {
+-		int rpclk = clk_round_rate(hdmi->ref_clk, pclk);
+-
+-		if (abs(rpclk - pclk) > pclk / 1000)
+-			return MODE_NOCLOCK;
+-	}
 +	/*
 +	 * Pixel clocks we support are always < 2GHz and so fit in an
 +	 * int.  We should make sure source rate does too so we don't get
@@ -315,20 +320,27 @@ index c14f88893868..cb7a302497a5 100644
 +	 */
 +	if (mode->clock > INT_MAX / 1000)
 +		return MODE_BAD;
-+
+ 
+-	for (i = 0; mpll_cfg[i].mpixelclock != (~0UL); i++) {
+-		/*
+-		 * For vendor specific phys force an exact match of the pixelclock
+-		 * to preserve the original behaviour of the driver.
+-		 */
+-		if (exact_match && pclk == mpll_cfg[i].mpixelclock)
+-			return MODE_OK;
+-		/*
+-		 * The Synopsys phy can work with pixelclocks up to the value given
+-		 * in the corresponding mpll_cfg entry.
+-		 */
+-		if (!exact_match && pclk <= mpll_cfg[i].mpixelclock)
 +	for (i = 0; i < num_rates; i++) {
 +		int slop = CLK_SLOP(pclk);
 +
 +		if ((pclk >= hdmi->rates[i] - slop) &&
 +		    (pclk <= hdmi->rates[i] + slop))
-+			return MODE_OK;
+ 			return MODE_OK;
  	}
  
--	return (valid) ? MODE_OK : MODE_BAD;
-+	return MODE_BAD;
- }
- 
- static void dw_hdmi_rockchip_encoder_disable(struct drm_encoder *encoder)
 @@ -269,7 +316,39 @@ dw_hdmi_rockchip_encoder_mode_fixup(struct drm_encoder *encoder,
  				    const struct drm_display_mode *mode,
  				    struct drm_display_mode *adj_mode)

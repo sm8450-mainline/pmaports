@@ -14,8 +14,8 @@ Signed-off-by: Urja Rannikko <urjaman@gmail.com>
 
 diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
 index aaaa61875701d..e8cb4dc8c27da 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
+--- a/arch/arm/boot/dts/rockchip/rk3288.dtsi
++++ b/arch/arm/boot/dts/rockchip/rk3288.dtsi
 @@ -865,12 +865,14 @@
  		rockchip,grf = <&grf>;
  		#clock-cells = <1>;
