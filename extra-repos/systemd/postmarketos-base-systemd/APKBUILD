@@ -1,7 +1,7 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 # pmbootstrap installs this, if systemd is selected in "pmbootstrap init".
 pkgname=postmarketos-base-systemd
-pkgver=21
+pkgver=22
 pkgrel=0
 pkgdesc="Meta package for running postmarketOS with systemd"
 url="https://postmarketos.org"
@@ -72,7 +72,7 @@ sha512sums="
 fbaa33425e507062a454f11bda48508f261c2144e5c23a20f567dc1cef14ce1dec57f8d934f418f5b6095509757f8503481aba9790a04c8f9f6995e65833d8c9  rootfs-etc-profile.d-99motd.sh
 2faac294bb632762e247b850f09ff4b544ccff6c462efd8d4faca71ba30bdfa9c460377a0dc88e92c5dbbe251017d164064a56ac0e0410f224b45d4f5f81866c  rootfs-etc-systemd-logind.conf
 15423bfda57c90ab62fe69865ca4072a0aeb83bf77d9c278257e346f4da81843d010b41003c91ae9f3fcb1c67447645e7c19078eea2bf11312051e6ad7523ad1  rootfs-usr-share-mkinitfs-files-extra-01-initramfs-base-systemd.files
-d62747928e063c956e33fc50bf994c5891c46032153829a1350ff5e1ea139c8c258e54796242fd61a58819afaa311a060f8f9c6773b864c7d04020358c2f9e68  rootfs-usr-lib-systemd-system-preset-90-base.preset
+97539aac128d423a1b33207bd99c490dffc44f2e132df9e64fdbc7468a76c4c5a1dbbac18d512b3cdc804947efea7939f46d8ca23c8752173d7b2fbff4fda7f6  rootfs-usr-lib-systemd-system-preset-90-base.preset
 aaa5af21270364495573c1e2503f8521fa1ea39ba12742d4edc459284b19dc70f7840daf0225a2e965a4f21ce2c310693e80c2e69d7b8e1b8fe477fa7c26942d  rootfs-usr-lib-systemd-user-preset-90-base.preset
 605df1f004783d2e0ec5dd99a688bca27502c8c24bc05fb4dc26589b2070b0fbd1cf9bd56e6861d7cda2f8ac8147e7eb040acfd886185c01c8cf9de8b1ce2dcd  rootfs-usr-bin-setup-timezone
 "
