@@ -3,7 +3,7 @@
 pkgname=soc-qcom-sdm845
 pkgdesc="Common package for Qualcomm SDM845 devices"
 pkgver=25
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
@@ -99,7 +99,6 @@ nonfree_firmware() {
 		tqftpserv
 		msm-modem
 		bootmac
-		alsa-utils
 	"
 
 	mkdir "$subpkgdir"
