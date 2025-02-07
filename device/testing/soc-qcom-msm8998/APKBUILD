@@ -2,12 +2,12 @@
 pkgname=soc-qcom-msm8998
 pkgdesc="Common package for Qualcomm MSM8998 devices"
 pkgver=1
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
 options="!check !archcheck !tracedeps"
-depends="soc-qcom-sdm845"
+depends="soc-qcom"
 source="iwd-main.conf"
 subpackages="
 	$pkgname-nonfree-firmware:nonfree_firmware
@@ -21,8 +21,7 @@ package() {
 nonfree_firmware() {
 	pkgdesc="Modem, WiFi and GPU Firmware"
 	depends="
-	soc-qcom-sdm845-modem
-	soc-qcom-sdm845-nonfree-firmware
+	soc-qcom-modem
 	qcom-diag
 "
 
