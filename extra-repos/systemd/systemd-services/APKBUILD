@@ -114,7 +114,7 @@ _geoclue_sources="system/geoclue.service" # From https://gitlab.freedesktop.org/
 _gnome_clocks_sources="user/gnome-clocks.service"
 _gnome_terminal_sources="user/gnome-terminal-server.service" # From https://gitlab.gnome.org/GNOME/gnome-terminal/-/blob/master/src/gnome-terminal-server.service.in
 _goimapnotify_sources="user/goimapnotify@.service" # From https://gitlab.com/shackra/goimapnotify/-/raw/master/goimapnotify@.service
-_hexagonrpcd_sources="system/hexagonrpcd-adsp-rootpd.service system/hexagonrpcd-adsp-sensorspd.service system/hexagonrpcd-sdsp.service system/iio-sensor-proxy.d/hexagonrpcd.conf"
+_hexagonrpcd_sources="system/hexagonrpcd-adsp-rootpd.service system/hexagonrpcd-adsp-sensorspd.service system/hexagonrpcd-sdsp.service system/iio-sensor-proxy.service.d/hexagonrpcd.conf"
 _iio_sensor_proxy_sources="system/iio-sensor-proxy.service"
 _iwd_sources="system/iwd.service" # From https://git.kernel.org/pub/scm/network/wireless/iwd.git/tree/src/iwd.service.in
 _kanshi_sources="user/kanshi.service" # created, no unit file upstream
@@ -339,7 +339,7 @@ e0c5baf8030bae74c1ddb0f6f9bc4fdf2a1febaa344de1957d9a69a01eb7e1dc143b9d324ef15214
 70daf294cf11ff3fd2016e2d6bfdfd66fa5a899df55d557a502698d3099b3ec4120bce747f6d417b1a381a8ad2520b3879d62af7e7edff40662225f853d9a094  system-hexagonrpcd-adsp-rootpd.service
 ec30d8788a55de2147cdc1d232459ec197c0234e460b983f02ff3da7e9219925eaacdefd19ff2235045eb6d512929a060b4a8f8618761e42f2d7920853d7393e  system-hexagonrpcd-adsp-sensorspd.service
 3963bb93185d6f5be332dfcb9259ce884087a9715436264acf3bc8160930f083286b9efdcbc2e0d9a74bcd0ed2d9d620a30df0319dcee83058805bb54e525795  system-hexagonrpcd-sdsp.service
-af0e416f78ab317fe09813de58b446e5178457992ea4a2da2eb128811045201087d847e1b7ac0447a59c20129a736135e5d76b113262aa1f76b994e77b9c6b42  system-iio-sensor-proxy.d-hexagonrpcd.conf
+af0e416f78ab317fe09813de58b446e5178457992ea4a2da2eb128811045201087d847e1b7ac0447a59c20129a736135e5d76b113262aa1f76b994e77b9c6b42  system-iio-sensor-proxy.service.d-hexagonrpcd.conf
 d12ebe6e7db2a8e34baab640dd4e2ea9cd01bc19054adf32d55528a6b27f71c2006ac2d65a58c98e21ed598e9cc66bfe79e197d20ed9d13f866a5a6cd3e247d5  system-iio-sensor-proxy.service
 df3388cb7b9d035e54b34d8f8a6594be89c3015f979fe3bdc199fb7db1ab0bef821d6b306eecdf978eb227454d5e50aab29ac02d9722b1b075ec0ce4705e3518  system-iwd.service
 9cf877929b16f3437e65d1a0a2049799cc97cc84a7caab6a581e90139495b4febb5fb4c59ee463110866a0b60c9462d6d0fdb331d92d29b30ce6aeada365ac48  user-plasma-kactivitymanagerd.service
