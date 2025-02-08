@@ -93,6 +93,12 @@ parse_cmdline_item() {
 		pmos.usb-storage)
 			usb_storage="$value"
 			;;
+		rd.info)
+			# used by init_functions_2nd.sh which is sourced
+			# after this script.
+			# shellcheck disable=SC2034
+			log_info=y
+			;;
 		[![:alpha:]_]* | [[:alpha:]_]*[![:alnum:]_]*)
 			# invalid shell variable, ignore it
 			;;
@@ -244,6 +250,14 @@ setup_log() {
 	# We are intentionally word-splitting $log_targets into multiple arguments.
 	# shellcheck disable=SC3001,SC2086
 	exec > >(tee $log_targets | logger -t "$LOG_PREFIX" -p user.info) 2>&1
+}
+
+info() {
+	if [ "$log_info" != "y" ]; then
+		return
+	fi
+
+	echo "$@"
 }
 
 mount_proc_sys_dev() {
@@ -653,7 +667,7 @@ mount_root_partition() {
 
 	echo "Mount root partition ($partition) to /sysroot (read-write) with options ${rootfsopts#,}"
 	type="$(get_partition_type "$partition")"
-	echo "Detected $type filesystem"
+	info "Detected $type filesystem"
 
 	if ! { [ "$type" = "ext4" ] || [ "$type" = "f2fs" ] || [ "$type" = "btrfs" ]; } then
 		echo "ERROR: Detected unsupported '$type' filesystem ($partition)."
@@ -662,7 +676,7 @@ mount_root_partition() {
 	fi
 
 	if ! modprobe "$type"; then
-		echo "INFO: unable to load module '$type' - maybe it's built in"
+		info "Unable to load module '$type' - assuming it's built-in"
 	fi
 	if ! mount -t "$type" -o rw"$rootfsopts" "$partition" /sysroot; then
 		echo "ERROR: unable to mount root partition!"
@@ -679,7 +693,6 @@ mount_root_partition() {
 	fi
 
 	if ! [ -e /sysroot/etc/os-release ]; then
-		echo "ERROR: root partition appeared to mount but does not contain a root filesystem!"
 		show_splash "ERROR: root partition does not contain a root filesystem\\nhttps://postmarketos.org/troubleshooting"
 		fail_halt_boot
 	fi
@@ -696,7 +709,7 @@ run_hooks() {
 	fi
 
 	for hook in "$scriptsdir"/*.sh; do
-		echo "Running initramfs hook: $hook"
+		info "Running initramfs hook: $hook"
 		sh "$hook"
 	done
 }
@@ -709,7 +722,7 @@ setup_usb_network_android() {
 		return
 	fi
 
-	echo "  Setting up USB gadget through android_usb"
+	info "  Setting up USB gadget through android_usb"
 
 	usb_idVendor="$(echo "${deviceinfo_usb_idVendor:-0x18D1}" | sed "s/0x//g")"	# default: Google Inc.
 	usb_idProduct="$(echo "${deviceinfo_usb_idProduct:-0xD001}" | sed "s/0x//g")"	# default: Nexus 4 (fastboot)
@@ -752,12 +765,12 @@ setup_usb_network_configfs() {
 	local skip_udc="$1"
 
 	if ! [ -e "$CONFIGFS" ]; then
-		echo "$CONFIGFS does not exist, skipping configfs usb gadget"
+		info "usb_gadget not found in configfs, skipping gadget setup..."
 		return
 	fi
 
 	if [ -z "$(get_usb_udc)" ]; then
-		echo "  No UDC found, skipping usb gadget"
+		info "No UDC found, skipping gadget setup..."
 		return
 	fi
 
@@ -815,7 +828,7 @@ setup_usb_network() {
 	_marker="/tmp/_setup_usb_network"
 	[ -e "$_marker" ] && return
 	touch "$_marker"
-	echo "Setup usb network"
+	info "Setup usb network"
 	modprobe libcomposite
 	# Run all usb network setup functions (add more below!)
 	setup_usb_network_android
@@ -835,7 +848,7 @@ start_unudhcpd() {
 	fi
 
 	local client_ip="${unudhcpd_client_ip:-172.16.42.2}"
-	echo "Starting unudhcpd with server ip $HOST_IP, client ip: $client_ip"
+	info "Starting unudhcpd with server ip $HOST_IP, client ip: $client_ip"
 
 	# Get usb interface
 	usb_network_function="${deviceinfo_usb_network_function:-ncm.usb0}"
@@ -866,8 +879,8 @@ start_unudhcpd() {
 		return
 	fi
 
-	echo "  Using interface $usb_iface"
-	echo "  Starting the DHCP daemon"
+	info "  Using interface $usb_iface"
+	info "  Starting the DHCP daemon"
 	(
 		unudhcpd -i "$usb_iface" -s "$HOST_IP" -c "$client_ip"
 	) &
