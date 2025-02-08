@@ -43,7 +43,7 @@ update_linux_next() {
 	# shellcheck source=/dev/null
 	pkgver=$(. device/testing/linux-next/APKBUILD; echo "$pkgver")
 
-	curl -s "https://gitlab.com/linux-kernel/linux-next/-/tags?format=atom" | grep -oP "(?<=<title>)[^<]+" | tail -n +2 > /tmp/tags
+	curl -s https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/refs/tags/ | grep -oE "<a href='.*'>(.*)</a>.*\.tar\.gz</a>" | awk -F'[<>]' '{print $3}' > /tmp/tags
 
 	latest=$(grep -v "v" < /tmp/tags | head -n1)
 	if [ -z "$latest" ]; then
