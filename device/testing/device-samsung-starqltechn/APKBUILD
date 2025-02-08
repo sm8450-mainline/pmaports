@@ -2,7 +2,7 @@
 pkgname=device-samsung-starqltechn
 pkgdesc="Samsung Galaxy S9 SM-G9600"
 pkgver=7
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -15,8 +15,8 @@ depends="
 	u-boot-tools
 	dtc
 	firmware-samsung-sdm845
-	soc-qcom-sdm845-nonfree-firmware
-	soc-qcom-sdm845-modem
+	soc-qcom
+	soc-qcom-modem
 	"
 makedepends="devicepkg-dev dtc"
 source="deviceinfo boot_image.its payload_mock.dts bootscript.sh"
