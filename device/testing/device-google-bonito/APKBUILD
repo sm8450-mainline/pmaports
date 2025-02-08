@@ -2,7 +2,7 @@
 pkgname=device-google-bonito
 pkgdesc="Google Pixel 3a XL"
 pkgver=4
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -12,8 +12,8 @@ depends="
 	make-dynpart-mappings
 	mkbootimg
 	postmarketos-base
-	soc-qcom-sdm845
-	soc-qcom-sdm845-qbootctl
+	soc-qcom
+	soc-qcom-qbootctl
 "
 makedepends="devicepkg-dev"
 source="
@@ -60,8 +60,7 @@ nonfree_firmware() {
 		linux-firmware-ath10k
 		linux-firmware-qca
 		linux-firmware-qcom
-		soc-qcom-sdm845-modem
-		soc-qcom-sdm845-nonfree-firmware
+		soc-qcom-modem
 	"
 
 	# The q6voiced configuration can only be used if the ADSP is brought up
