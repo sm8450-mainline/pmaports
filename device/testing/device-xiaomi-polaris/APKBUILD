@@ -4,7 +4,7 @@
 pkgname=device-xiaomi-polaris
 pkgdesc="Xiaomi Mi Mix 2S"
 pkgver=3
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -13,8 +13,8 @@ depends="
 	linux-postmarketos-qcom-sdm845
 	mkbootimg
 	postmarketos-base
-	soc-qcom-sdm845
-	soc-qcom-sdm845-ucm
+	alsa-ucm-conf-sdm845
+	soc-qcom
 "
 makedepends="devicepkg-dev"
 source="
@@ -37,8 +37,11 @@ package() {
 
 nonfree_firmware() {
 	pkgdesc="Modem, WiFi and GPU Firmware, also needed for osk-sdl"
-	depends="firmware-xiaomi-polaris firmware-xiaomi-polaris-initramfs
-		 soc-qcom-sdm845-nonfree-firmware soc-qcom-sdm845-modem"
+	depends="
+		firmware-xiaomi-polaris
+		firmware-xiaomi-polaris-initramfs
+		soc-qcom-modem
+	"
 	mkdir "$subpkgdir"
 }
 
