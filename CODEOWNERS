@@ -36,6 +36,7 @@ device/*/*-qcom-sdm670/				@flamingradian
 device/*/*-qcom-sdm845/				@sdm845-mainline
 device/*/*-qcom-sm6350/				@z3ntu
 device/*/*-qcom-sm8250/				@jianhua
+device/*/*-qcom/					@calebccff
 device/*/*-samsung-a3/				@Mis012 @TravMurav @Minecrell
 device/*/*-samsung-a5/				@Minecrell @minlexx
 device/*/*-samsung-a51/				@manoedinata
