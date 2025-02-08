@@ -1,0 +1,33 @@
+# Maintainer: Ermine <mustela@erminea.space>
+pkgname=device-microsoft-dempsey
+pkgdesc="Microsoft Lumia 640 LTE Dual Sim"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="armv7"
+options="!check !archcheck"
+depends="
+	linux-postmarketos-qcom-msm8226
+	lk2nd-msm8226
+	mkbootimg
+	postmarketos-base
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+	modules-initfs
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+853a0695225d0dd464a84ab343b3f34b6b93cf1a2148daf20a859ec0f491bae627e1e28748d62d345214cc71cd49d1c6dd4a0e21787a4b9428b77b33039989eb  deviceinfo
+62d380a05828ec2cf180c0fcc105c7cf492f709fed086b37a093cacadf19ee7a4ca035db238c5d2e3f1f5e4f1d928248d6f1d7957430bb2cb8529e52c773429a  modules-initfs
+"
