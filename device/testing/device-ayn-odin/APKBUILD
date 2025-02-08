@@ -3,7 +3,7 @@
 pkgname=device-ayn-odin
 pkgdesc="AYN Odin"
 pkgver=2
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -15,9 +15,8 @@ depends="
 	linux-firmware-qca
 	linux-firmware-qcom
 	postmarketos-base
-	soc-qcom-sdm845
-	soc-qcom-sdm845-nonfree-firmware
-	soc-qcom-sdm845-ucm
+	alsa-ucm-conf-sdm845
+	soc-qcom
 	systemd-boot
 "
 makedepends="devicepkg-dev"
