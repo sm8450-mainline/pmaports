@@ -1,4 +1,5 @@
 # Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=device-oneplus-bacon
 pkgver=6
 pkgrel=0

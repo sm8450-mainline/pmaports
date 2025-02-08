@@ -34,7 +34,6 @@ device/*/*-qcom-msm8916/			@Minecrell @TravMurav
 device/*/*-qcom-msm8953/			@barni2000 @alikates @vipaoL @jiaxyga
 device/*/*-qcom-sdm670/				@flamingradian
 device/*/*-qcom-sdm845/				@sdm845-mainline
-device/*/*-qcom-sm6350/				@z3ntu
 device/*/*-qcom-sm7150/				@Adrian @jiaxyga @ungeskriptet
 device/*/*-qcom-sm8250/				@jianhua
 device/*/*-qcom/					@calebccff
@@ -73,7 +72,6 @@ device/*/*-xiaomi-ysl/				@barni2000
 device/*/alsa-ucm-conf-cros/			@WeirdTreeThing
 device/*/alsa-ucm-conf-qcom-sdm670/		@flamingradian
 device/*/device-apple-n61/			@JustSoup321
-device/*/device-fairphone-*/			@z3ntu
 device/*/device-generic-x86_64/			@craftyguy @ollieparanoid
 device/*/device-google-nyan-big/		@jenneron
 device/*/device-google-nyan-blaze/		@jenneron
@@ -93,7 +91,7 @@ device/*/device-postmarketos-trailblazer/	@calebccff
 device/*/device-qcom-msm8909/			@wonderfulShrineMaidenOfParadise
 device/*/device-qemu-aarch64/			@Minecrell @ollieparanoid
 device/*/device-qemu-amd64/			@Minecrell @ollieparanoid
-device/*/device-qemu-riscv64/			@Minecrell @z3ntu
+device/*/device-qemu-riscv64/			@Minecrell
 device/*/device-qualcomm-sdm845/		@calebccff
 device/*/device-raspberry-pi3/			@fossdd
 device/*/device-samsung-chagallwifi/		@Grimler

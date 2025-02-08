@@ -1,4 +1,5 @@
 # Maintainer: Newbyte <newbie13xd@gmail.com>
+# Co-Maintainer: Luca Weiss <luca@lucaweiss.eu>
 # Kernel config based on: arch/arm/configs/qcom_defconfig
 
 _flavor="postmarketos-qcom-msm8226"

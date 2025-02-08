@@ -1,5 +1,5 @@
-# Maintainer: Audun MG <audun@gangsto.org>
 # Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=device-sony-leo
 pkgdesc="Sony Xperia Z3"
 pkgver=3

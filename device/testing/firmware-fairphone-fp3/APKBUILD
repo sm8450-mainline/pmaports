@@ -1,3 +1,4 @@
+# Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=firmware-fairphone-fp3
 pkgver=20210805
 _commit="ee529820bb874ab1b52873f0b144c3786f01ee4c"
