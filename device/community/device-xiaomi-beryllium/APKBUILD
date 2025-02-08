@@ -3,7 +3,7 @@
 pkgname=device-xiaomi-beryllium
 pkgdesc="Xiaomi Poco F1"
 pkgver=12
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -11,8 +11,8 @@ options="!check !archcheck"
 depends="
 	postmarketos-base
 	mkbootimg
-	soc-qcom-sdm845
-	soc-qcom-sdm845-ucm
+	alsa-ucm-conf-sdm845
+	soc-qcom
 "
 makedepends="devicepkg-dev"
 subpackages="
@@ -43,9 +43,9 @@ nonfree_firmware() {
 	pkgdesc="GPU, venus, modem and sensor firmware"
 	depends="
 		firmware-xiaomi-beryllium
-		soc-qcom-sdm845-nonfree-firmware
-		soc-qcom-sdm845-modem
 		hexagonrpcd>=0.3.2-r3
+		soc-qcom-modem
+		hexagonrpcd
 	"
 
 	install -Dm644 81-libssc-xiaomi-beryllium.rules \
