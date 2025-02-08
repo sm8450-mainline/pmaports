@@ -5,7 +5,7 @@
 pkgname=device-shift-axolotl
 pkgdesc="SHIFT6mq"
 pkgver=15
-pkgrel=3
+pkgrel=4
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -15,9 +15,9 @@ depends="
 	make-dynpart-mappings
 	mkbootimg
 	postmarketos-base
-	soc-qcom-sdm845
-	soc-qcom-sdm845-ucm
-	soc-qcom-sdm845-qbootctl
+	alsa-ucm-conf-sdm845
+	soc-qcom
+	soc-qcom-qbootctl
 	fwupd>=1.8.6
 "
 makedepends="devicepkg-dev postmarketos-test"
@@ -47,8 +47,8 @@ nonfree_firmware() {
 	depends="
 		firmware-shift-sdm845>=20230815-r2
 		hexagonrpcd>=0.3.2-r3
-		soc-qcom-sdm845-nonfree-firmware
-		soc-qcom-sdm845-modem
+		hexagonrpcd
+		soc-qcom-modem
 	"
 
 	install -Dm644 "$srcdir"/81-libssc-shift-axolotl.rules -t "$subpkgdir"/usr/lib/udev/rules.d/
