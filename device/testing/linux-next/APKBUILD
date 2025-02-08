@@ -3,7 +3,7 @@
 
 pkgname=linux-next
 pkgver=6.14_git20250207
-pkgrel=0
+pkgrel=1
 _nextver="${pkgver#*_git}"
 pkgdesc="Linux next kernel"
 arch="aarch64"
@@ -14,7 +14,7 @@ license="GPL-2.0-only"
 # FIXME: kconfigcheck isn't supported since we use fragments
 options="!strip !check !tracedeps pmb:cross-native"
 source="
-	https://gitlab.com/linux-kernel/linux-next/-/archive/next-$_nextver/linux-next-next-$_nextver.tar.gz
+	https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/snapshot/linux-next-next-$_nextver.tar.gz
 	devices.config
 	pmos.config
 "
