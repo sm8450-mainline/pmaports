@@ -897,7 +897,7 @@ debug_shell() {
 		EOF
 
 		if [ -n "$storage_dev" ]; then
-			echo "pmos.usb-storage=$storage_dev is exposed over USB by default" >> /README
+			echo "$storage_dev is exposed over USB by default (pmos.usb-storage)" >> /README
 		fi
 	fi
 
