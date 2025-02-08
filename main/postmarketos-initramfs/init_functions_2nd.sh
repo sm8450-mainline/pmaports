@@ -55,7 +55,7 @@ resize_root_partition() {
 	# this, except for QEMU devices and non-android devices (e.g.
 	# PinePhone). For them, it is fine to use the whole storage device and
 	# so we pass PMOS_FORCE_PARTITION_RESIZE as kernel parameter.
-	elif grep -q PMOS_FORCE_PARTITION_RESIZE /proc/cmdline; then
+	elif [ "$force_partition_resize" = "y" ]; then
 		partition_dev="$(echo "$partition" | sed -E 's/p?2$//')"
 		if has_unallocated_space "$partition_dev"; then
 			echo "Resize root partition ($partition)"

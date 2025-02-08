@@ -17,8 +17,180 @@ deviceinfo_getty="${deviceinfo_getty:-}"
 deviceinfo_name="${deviceinfo_name:-}"
 deviceinfo_codename="${deviceinfo_codename:-}"
 deviceinfo_create_initfs_extra="${deviceinfo_create_initfs_extra:-}"
+deviceinfo_no_framebuffer="${deviceinfo_no_framebuffer:-}"
 
-# Redirect stdout and stderr to logfile
+# Does word start with prefix?
+startswith() {
+	local word="$1" prefix="$2"
+
+	case "$word" in
+		$prefix*)
+			return 0
+			;;
+	esac
+
+	return 1
+}
+
+# Does word end with suffix?
+endswith() {
+	local word="$1" suffix="$2"
+
+	case "$word" in
+		*$suffix)
+			return 0
+			;;
+	esac
+
+	return 1
+}
+
+# Parse individual items from the cmdline and take appropriate
+# action (e.g. set variables).
+parse_cmdline_item() {
+	local key="$1" value="$2"
+
+	# For information on what each cmdline argument does, please refer
+	# to https://wiki.postmarketos.org/wiki/Initramfs#Kernel_cmdline
+	case "$key" in
+		pmos.boot | pmos_boot)
+			boot_path="$value"
+			;;
+		pmos.boot_uuid | pmos_boot_uuid)
+			boot_uuid="$value"
+			;;
+		pmos.bootchart2 | PMOS_BOOTCHART2)
+			bootchart2=y
+			;;
+		pmos.debug-shell)
+			# used by init_2nd.sh
+			# shellcheck disable=SC2034
+			debug_shell=y
+			;;
+		pmos.force-partition-resize | PMOS_FORCE_PARTITION_RESIZE)
+			# used by init_functions_2nd.sh which is sourced
+			# after this script.
+			# shellcheck disable=SC2034
+			force_partition_resize=y
+			;;
+		pmos.nosplash | PMOS_NOSPLASH)
+			nosplash=y
+			;;
+		pmos.root | pmos_root)
+			root_path="$value"
+			;;
+		pmos.root_uuid | pmos_root_uuid)
+			root_uuid="$value"
+			;;
+		pmos.rootfsopts | pmos_rootfsopts)
+			# Prepend a comma since this will be appended to
+			# "rw" when passed to mount
+			rootfsopts=",$value"
+			;;
+		pmos.stowaway)
+			stowaway=y
+			;;
+		pmos.usb-storage)
+			usb_storage="$value"
+			;;
+		[![:alpha:]_]* | [[:alpha:]_]*[![:alnum:]_]*)
+			# invalid shell variable, ignore it
+			;;
+		*)
+			# valid shell variable
+			# ignore these since we get all kinds of weird
+			# arguments from quirky bootloaders and we really
+			# don't want to deal with that here. Add options
+			# explicitly above instead.
+			;;
+	esac
+}
+
+process_cmdline_param() {
+	# $1: key (the cmdline parameter)
+	# $2: value (after the =)
+	local key="$1" value="$2"
+
+	# maybe unquote the value
+	# busybox ash supports string indexing
+	# shellcheck disable=SC3057
+	if startswith "$value" "[\"']" && endswith "$value" "${value:0:1}"; then
+		value="${value#?}" value="${value%?}"
+	fi
+
+	parse_cmdline_item "$key" "$value"
+}
+
+# Parse the kernel cmdline and configure the environment
+parse_cmdline() {
+	local cmdline word quoted key value
+
+	# Disable globbing so we don't accidentally expand
+	# cmdline options into paths
+	set -f
+	read -r cmdline
+	# shellcheck disable=SC2086
+	set -- $cmdline
+	set +f
+
+	# Walk over each cmdline argument
+	for word; do
+		# Handle quoted values
+		if [ -n "$quoted" ]; then
+			value="$value $word"
+		else
+			case "$word" in
+				# Easy case: key=value
+				*=*)
+					key="${word%%=*}"
+					value="${word#*=}"
+
+					if startswith "$value" "[\"']"; then
+						# busybox ash supports string indexing
+						# shellcheck disable=SC3057
+						quoted="${value:0:1}"
+					fi
+					;;
+				# A comment (only used for unit tests)
+				'#'*)
+					break
+					;;
+				# A key without a value
+				*)
+					key="$word"
+					;;
+			esac
+		fi
+
+		# If inside a quoted string, check if $value contains the closing quote
+		if [ -n "$quoted" ]; then
+			if endswith "$value" "$quoted"; then
+				unset quoted
+			else
+				# Otherwise continue reading words
+				continue
+			fi
+		fi
+
+		process_cmdline_param "$key" "$value"
+		unset key value
+	done
+
+	if [ -n "$key" ]; then
+		process_cmdline_param "$key" "$value"
+	fi
+
+	# Also set some options from deviceinfo variables
+
+	if [ "$deviceinfo_no_framebuffer" = "true" ]; then
+		nosplash=y
+	fi
+}
+
+# Redirect stdout/stderr to the log file, as well as to the kernel via
+# syslog. Additionally, if pmos.nosplash is set and there are no active
+# consoles, try to be helpful by logging to tty0 and the devices serial
+# port.
 setup_log() {
 	local console
 	local log_targets
@@ -363,7 +535,7 @@ mount_boot_partition() {
 	mount_opts="-o nodev,nosuid,noexec"
 
 	# We dont need to do this when using stowaways
-	if grep -q "pmos.stowaway" /proc/cmdline; then
+	if [ "$stowaway" = "y" ]; then
 		return
 	fi
 
@@ -478,14 +650,6 @@ mount_root_partition() {
 	local partition
 
 	partition="$(find_root_partition)"
-	rootfsopts=""
-
-	# shellcheck disable=SC2013
-	for x in $(cat /proc/cmdline); do
-		[ "$x" = "${x#pmos_rootfsopts=}" ] && continue
-		# Prepend a comma because this will be appended to "rw" below
-		rootfsopts=",${x#pmos_rootfsopts=}"
-	done
 
 	echo "Mount root partition ($partition) to /sysroot (read-write) with options ${rootfsopts#,}"
 	type="$(get_partition_type "$partition")"
@@ -835,13 +999,6 @@ debug_shell() {
 	Read the initramfs log with 'cat /pmOS_init.log'.
 	EOF
 
-	# Expose storage specified on cmdline on USB
-	local storage_dev=""
-	# shellcheck disable=SC2013
-	for x in $(cat /proc/cmdline); do
-		[ "$x" = "${x#pmos.usb-storage=}" ] || storage_dev="${x#pmos.usb-storage=}"
-	done
-
 	# Add pmos_logdump message only if relevant
 	if [ -n "$have_udc" ]; then
 		echo "Run 'pmos_logdump' to generate a log dump and expose it over USB." >> /README
@@ -851,8 +1008,8 @@ debug_shell() {
 		'setup_usb_storage_configfs /dev/DEVICE'
 		EOF
 
-		if [ -n "$storage_dev" ]; then
-			echo "$storage_dev is exposed over USB by default (pmos.usb-storage)" >> /README
+		if [ -n "$usb_storage" ]; then
+			echo "$usb_storage is exposed over USB by default (pmos.usb-storage)" >> /README
 		fi
 	fi
 
@@ -940,7 +1097,7 @@ debug_shell() {
 	telnetd -b "${HOST_IP}:23" -l /sbin/pmos_getty &
 
 	# Set up USB mass storage if pmos.usb-storage= was specified on cmdline
-	[ -z "$storage_dev" ] || setup_usb_storage_configfs "$storage_dev"
+	[ -z "$usb_storage" ] || setup_usb_storage_configfs "$usb_storage"
 
 	# wait until we get the signal to continue boot
 	while ! [ -e /tmp/continue_boot ]; do
@@ -988,15 +1145,7 @@ check_keys() {
 
 # $1: Message to show
 show_splash() {
-	# Skip for non-framebuffer devices
-	# shellcheck disable=SC2154
-	if [ "$deviceinfo_no_framebuffer" = "true" ]; then
-		echo "NOTE: Skipping framebuffer splashscreen (deviceinfo_no_framebuffer)"
-		return
-	fi
-
-	# Disable splash
-	if grep -q PMOS_NOSPLASH /proc/cmdline; then
+	if [ "$nosplash" = "y" ]; then
 		return
 	fi
 
@@ -1009,6 +1158,9 @@ show_splash() {
 }
 
 hide_splash() {
+	if [ "$nosplash" = "y" ]; then
+		return
+	fi
 	killall pbsplash 2>/dev/null
 
 	while pgrep pbsplash >/dev/null; do
@@ -1026,10 +1178,7 @@ set_framebuffer_mode() {
 }
 
 setup_framebuffer() {
-	# Skip for non-framebuffer devices
-	# shellcheck disable=SC2154
-	if [ "$deviceinfo_no_framebuffer" = "true" ]; then
-		echo "NOTE: Skipping framebuffer setup (deviceinfo_no_framebuffer)"
+	if [ "$nosplash" = "y" ]; then
 		return
 	fi
 
@@ -1049,7 +1198,7 @@ setup_framebuffer() {
 }
 
 setup_bootchart2() {
-	if grep -q PMOS_BOOTCHART2 /proc/cmdline; then
+	if [ "$bootchart2" = "y" ]; then
 		if [ -f "/sysroot/sbin/bootchartd" ]; then
 			# shellcheck disable=SC2034
 			init="/sbin/bootchartd"

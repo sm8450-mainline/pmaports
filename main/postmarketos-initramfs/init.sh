@@ -27,6 +27,7 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 # Mount everything, set up logging, modules, mdev
 mount_proc_sys_dev
+parse_cmdline < /proc/cmdline
 setup_log
 echo "  ❬❬ PMOS STAGE 1 ❭❭"
 echo "initramfs version: $INITRAMFS_PKG_VERSION"

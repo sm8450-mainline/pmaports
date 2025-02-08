@@ -32,7 +32,7 @@ if [ "$IN_CI" = "true" ]; then
 	fail_halt_boot
 fi
 
-if grep -q "pmos.debug-shell" /proc/cmdline; then
+if [ "$debug_shell" = "y" ]; then
 	debug_shell
 fi
 
@@ -71,7 +71,7 @@ echo "Switching root"
 # were stashed
 if [ -e "/proc/1/fd/3" ]; then
 	exec 1>&3 2>&4
-elif ! grep -q "pmos.debug-shell" /proc/cmdline; then
+elif [ "$debug_shell" != "y" ]; then
 	echo "$LOG_PREFIX Disabling console output again (use 'pmos.debug-shell' to keep it enabled)"
 	exec >/dev/null 2>&1
 fi
