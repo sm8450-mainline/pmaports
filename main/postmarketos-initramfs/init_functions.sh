@@ -21,14 +21,12 @@ deviceinfo_create_initfs_extra="${deviceinfo_create_initfs_extra:-}"
 # Redirect stdout and stderr to logfile
 setup_log() {
 	local console
+	local log_targets
 	console="$(cat /sys/devices/virtual/tty/console/active)"
+	log_targets="/pmOS_init.log"
 
-	# Stash fd1/2 so we can restore them before switch_root, but only if the
-	# console is not null
+	# If we have an active console, the kernel will be logging there.
 	if [ -n "$console" ] ; then
-		# The kernel logs go to the console, and we log to the kernel. Avoid printing everything
-		# twice.
-		console="/dev/null"
 		exec 3>&1 4>&2
 	else
 		# Setting console=null is a trick used on quite a few pmOS devices. However it is generally a really
@@ -38,8 +36,19 @@ setup_log() {
 		# to avoid weird bugs in daemons that read from stdin (e.g. syslog)
 		# See related: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/2989
 		console="/dev/$(echo "$deviceinfo_getty" | cut -d';' -f1)"
-		if ! [ -e "$console" ]; then
-			console="/dev/null"
+		if [ -e "$console" ]; then
+			log_targets="$log_targets $console"
+		fi
+
+		# If pmos.nosplash is set but there's no active console, let's try to be helpful by at least
+		# logging the initramfs output to the consoles we can find.
+		# TODO: This could be further improved by reading /dev/kmsg and outputting it as well which
+		# might help with debugging on bootloaders that do force console=null
+		if [ "$nosplash" = "y" ]; then
+			echo "Splash is disabled but no consoles are active, trying to log somewhere useful!" \
+				| tee "$console" > /dev/tty0
+			# Log to tty0 as well as the serial port we may have found above
+			log_targets="$log_targets /dev/tty0"
 		fi
 	fi
 
@@ -52,17 +61,17 @@ setup_log() {
 	# isn't blocked when a console isn't available.
 	syslogd -K < /dev/zero >/dev/zero 2>&1
 
-	local pmsg="/dev/pmsg0"
-
-	if ! [ -e "$pmsg" ]; then
-		pmsg="/dev/null"
+	# Log to ramoops as well
+	if [ -e "/dev/pmsg0" ]; then
+		log_targets="$log_targets /dev/pmsg0"
 	fi
 
 	# Redirect to a subshell which outputs to the logfile as well
 	# as to the kernel ringbuffer and pstore (if available).
 	# Process substitution is technically non-POSIX, but is supported by busybox
-	# shellcheck disable=SC3001
-	exec > >(tee /pmOS_init.log "$pmsg" "$console" | logger -t "$LOG_PREFIX" -p user.info) 2>&1
+	# We are intentionally word-splitting $log_targets into multiple arguments.
+	# shellcheck disable=SC3001,SC2086
+	exec > >(tee $log_targets | logger -t "$LOG_PREFIX" -p user.info) 2>&1
 }
 
 mount_proc_sys_dev() {
