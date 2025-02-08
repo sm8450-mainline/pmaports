@@ -4,7 +4,7 @@
 pkgname=device-oneplus-fajita
 pkgdesc="OnePlus 6T"
 pkgver=15
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -13,9 +13,9 @@ depends="
 	linux-postmarketos-qcom-sdm845
 	mkbootimg
 	postmarketos-base
-	soc-qcom-sdm845
-	soc-qcom-sdm845-ucm
-	soc-qcom-sdm845-qbootctl
+	alsa-ucm-conf-sdm845
+	soc-qcom
+	soc-qcom-qbootctl
 	unl0kr-fbforcerefresh
 "
 makedepends="devicepkg-dev"
@@ -46,8 +46,7 @@ nonfree_firmware() {
 	depends="
 		firmware-oneplus-sdm845>=9
 		hexagonrpcd>=0.3.2-r3
-		soc-qcom-sdm845-nonfree-firmware
-		soc-qcom-sdm845-modem
+		soc-qcom-modem
 	"
 
 	install -Dm644 "$srcdir"/81-libssc-oneplus-fajita.rules -t "$subpkgdir"/usr/lib/udev/rules.d/
