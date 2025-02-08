@@ -4,14 +4,14 @@
 pkgname=device-postmarketos-trailblazer
 pkgdesc="postmarketOS Trailblazer generic ARM64"
 pkgver=12
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
 	postmarketos-base
-	soc-qcom-sdm845-qbootctl
+	soc-qcom-qbootctl
 	linux-firmware-qcom
 	linux-firmware-ath10k
 	linux-firmware-ath11k
