@@ -4,7 +4,7 @@
 pkgname=device-oneplus-enchilada
 pkgdesc="OnePlus 6"
 pkgver=15
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -15,11 +15,10 @@ depends="
 	linux-postmarketos-qcom-sdm845
 	mkbootimg
 	postmarketos-base
-	soc-qcom-sdm845
-	soc-qcom-sdm845-modem
-	soc-qcom-sdm845-nonfree-firmware
-	soc-qcom-sdm845-qbootctl
-	soc-qcom-sdm845-ucm
+	alsa-ucm-conf-sdm845
+	soc-qcom
+	soc-qcom-modem
+	soc-qcom-qbootctl
 	unl0kr-fbforcerefresh
 "
 makedepends="devicepkg-dev"
