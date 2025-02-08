@@ -2,7 +2,7 @@
 pkgname=device-lenovo-yoga-c630
 pkgdesc="Lenovo Yoga C630"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -10,10 +10,9 @@ arch="aarch64"
 options="!check !archcheck pmb:strict"
 depends="postmarketos-base
 	linux-postmarketos-qcom-sdm845
-	soc-qcom-sdm845
 	systemd-boot
 	firmware-lenovo-yoga-c630
-	soc-qcom-sdm845-nonfree-firmware
+	soc-qcom
 "
 makedepends="devicepkg-dev"
 source="
