@@ -214,10 +214,55 @@ pretty_dm_path() {
 	echo "$name"
 }
 
+# Prints the path to the partition if found, or nothing.
+find_partition() {
+	# $1: UUID of partition if known
+	# $2: path to partition
+	# $3: label of partition
+	# $4: additional blkid token to check (e.g TYPE=crypto_LUKS)
+
+	local uuid="$1"
+	local path="$2"
+	local label="$3"
+	local extra="$4"
+	local partition
+
+	if [ -n "$uuid" ]; then
+		partition="$(blkid --uuid "$uuid")"
+		if [ -z "$partition" ]; then
+			# Don't fall back to anything if the given UUID wasn't
+			# found, it might show up later but if not we should
+			# error out.
+			return
+		fi
+	fi
+
+	if [ -z "$partition" ]; then
+		if [ -e "$path" ]; then
+			partition="$path"
+		elif [ -n "$path" ]; then
+			# Don't fall back to anything if the given path wasn't
+			# found, it might show up later but if not we should
+			# error out.
+			return
+		fi
+	fi
+
+	if [ -z "$partition" ]; then
+		partition="$(blkid --label "$label")"
+	fi
+
+	if [ -z "$partition" ] && [ -n "$extra" ]; then
+		# check for arbitrary blkid tag
+		partition="$(blkid --match-token "$extra" | cut -d ":" -f 1 | head -n 1)"
+	fi
+
+	# prettify e.g. /dev/dm-0 to /dev/mapper/userdata1
+	pretty_dm_path "$partition"
+}
+
 find_root_partition() {
 	[ -n "$PMOS_ROOT" ] && echo "$PMOS_ROOT" && return
-
-	local path
 
 	# The partition layout is one of the following:
 	# a) boot, root partitions on sdcard
@@ -227,76 +272,7 @@ find_root_partition() {
 	# mount_subpartitions() must get executed before calling
 	# find_root_partition(), so partitions from b) also get found.
 
-	# Short circuit all autodetection logic if pmos_root= or
-	# pmos_root_uuid= is supplied on the kernel cmdline
-	# shellcheck disable=SC2013
-	for x in $(cat /proc/cmdline); do
-		if ! [ "$x" = "${x#pmos_root_uuid=}" ]; then
-			path="$(blkid --uuid "${x#pmos_root_uuid=}")"
-			if [ -n "$path" ]; then
-				PMOS_ROOT="$path"
-				break
-			else
-				# Don't fall back to anything if the given UUID wasn't
-				# found
-				return
-			fi
-		fi
-	done
-
-	if [ -z "$PMOS_ROOT" ]; then
-		# shellcheck disable=SC2013
-		for x in $(cat /proc/cmdline); do
-			if ! [ "$x" = "${x#pmos_root=}" ]; then
-				path="${x#pmos_root=}"
-				if [ -e "$path" ]; then
-					PMOS_ROOT="$path"
-					break
-				else
-					# Don't fall back to anything if the given UUID wasn't
-					# found
-					return
-				fi
-			fi
-		done
-	fi
-
-	# On-device installer: before postmarketOS is installed,
-	# we want to use the installer partition as root. It is the
-	# partition behind pmos_root. pmos_root will either point to
-	# reserved space, or to an unfinished installation.
-	# p1: boot
-	# p2: (reserved space) <--- pmos_root
-	# p3: pmOS_install
-	# Details: https://postmarketos.org/on-device-installer
-	if [ -n "$PMOS_ROOT" ]; then
-		next="$(echo "$PMOS_ROOT" | sed 's/2$/3/')"
-
-		# If the next partition is labeled pmOS_install (and
-		# not pmOS_deleteme), then postmarketOS is not
-		# installed yet.
-		if blkid | grep "$next" | grep -q pmOS_install; then
-			PMOS_ROOT="$next"
-		fi
-	fi
-
-	if [ -z "$PMOS_ROOT" ]; then
-		for id in pmOS_install pmOS_root; do
-			PMOS_ROOT="$(blkid --label "$id")"
-			[ -n "$PMOS_ROOT" ] && break
-		done
-	fi
-
-	# Search for luks partition.
-	# Note: This should always be after the filesystem search, since this
-	# function may be called after the luks partition is unlocked and we don't
-	# want to keep returning the luks partition if a valid root filesystem
-	# exists
-	if [ -z "$PMOS_ROOT" ]; then
-		PMOS_ROOT="$(blkid | grep "crypto_LUKS" | cut -d ":" -f 1 | head -n 1)"
-	fi
-
-	PMOS_ROOT=$(pretty_dm_path "$PMOS_ROOT")
+	PMOS_ROOT="$(find_partition "$root_uuid" "$root_path" "pmOS_root" "TYPE=crypto_LUKS")"
 	echo "$PMOS_ROOT"
 }
 
@@ -304,7 +280,7 @@ find_boot_partition() {
 	[ -n "$PMOS_BOOT" ] && echo "$PMOS_BOOT" && return
 
 	# Before doing anything else check if we are using a stowaway
-	if grep -q "pmos.stowaway" /proc/cmdline; then
+	if [ "$stowaway" = "y" ]; then
 		mount_root_partition
 		PMOS_BOOT="/sysroot/boot"
 		mount --bind /sysroot/boot /boot
@@ -313,56 +289,7 @@ find_boot_partition() {
 		return
 	fi
 
-	# Then check for pmos_boot_uuid on the cmdline
-	# this should be set on all new installs.
-	# shellcheck disable=SC2013
-	for x in $(cat /proc/cmdline); do
-		if ! [ "$x" = "${x#pmos_boot_uuid=}" ]; then
-			# Check if there is a partition with a matching UUID
-			path="$(blkid --uuid "${x#pmos_boot_uuid=}")"
-			if [ -n "$path" ]; then
-				PMOS_BOOT="$path"
-				break
-			else
-				# Don't fall back to anything if the given UUID wasn't
-				# found
-				return
-			fi
-		fi
-	done
-
-	if [ -z "$PMOS_BOOT" ]; then
-		# shellcheck disable=SC2013
-		for x in $(cat /proc/cmdline); do
-			if ! [ "$x" = "${x#pmos_boot=}" ]; then
-				# If the boot partition is specified explicitly
-				# then we need to check if it's a valid path, and
-				# fall back if not...
-				path="${x#pmos_boot=}"
-				if [ -e "$path" ]; then
-					PMOS_BOOT="$path"
-					break
-				else
-					# Don't fall back to anything if the given path doesn't
-					# exist
-					return
-				fi
-			fi
-		done
-	fi
-
-	# Finally fall back to searching by label
-	if [ -z "$PMOS_BOOT" ]; then
-		# * "pmOS_i_boot" installer boot partition (fits 11 chars for fat32)
-		# * "pmOS_inst_boot" old installer boot partition (backwards compat)
-		# * "pmOS_boot" boot partition after installation
-		for p in pmOS_i_boot pmOS_inst_boot pmOS_boot; do
-			PMOS_BOOT="$(blkid --label "$p")"
-			[ -n "$PMOS_BOOT" ] && break
-		done
-	fi
-
-	PMOS_BOOT=$(pretty_dm_path "$PMOS_BOOT")
+	PMOS_BOOT="$(find_partition "$boot_uuid" "$boot_path" "pmOS_boot")"
 	echo "$PMOS_BOOT"
 }
 
