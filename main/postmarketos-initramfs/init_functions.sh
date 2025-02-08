@@ -1158,6 +1158,7 @@ check_keys() {
 
 # $1: Message to show
 show_splash() {
+	info "SPLASH: $1"
 	if [ "$nosplash" = "y" ]; then
 		return
 	fi
