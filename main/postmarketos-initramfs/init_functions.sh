@@ -88,13 +88,14 @@ setup_firmware_path() {
 	# This should be sufficient on kernel 3.10+, before that we need
 	# the kernel calling udev (and in our case /usr/lib/firmwareload.sh)
 	# to load the firmware for the kernel.
-	SYS=/sys/module/firmware_class/parameters/path
-	if ! [ -e "$SYS" ]; then
+	local sysfs_dir
+	sysfs_dir=/sys/module/firmware_class/parameters/path
+	if ! [ -e "$sysfs_dir" ]; then
 		echo "Kernel does not support setting the firmware image search path. Skipping."
 		return
 	fi
 	# shellcheck disable=SC3037
-	echo -n /lib/firmware/postmarketos >$SYS
+	echo -n /lib/firmware/postmarketos >$sysfs_dir
 }
 
 # shellcheck disable=SC3043
@@ -206,6 +207,8 @@ pretty_dm_path() {
 
 find_root_partition() {
 	[ -n "$PMOS_ROOT" ] && echo "$PMOS_ROOT" && return
+
+	local path
 
 	# The partition layout is one of the following:
 	# a) boot, root partitions on sdcard
@@ -355,6 +358,7 @@ find_boot_partition() {
 }
 
 get_partition_type() {
+	local partition
 	partition="$1"
 	blkid "$partition" | sed 's/^.*\ TYPE="\([a-zA-Z0-9_]*\)".*$/\1/'
 }
@@ -416,8 +420,11 @@ check_filesystem() {
 # /sysroot/boot (rw), after root has been mounted at /sysroot, so we can
 # switch_root to /sysroot and have the boot partition properly mounted.
 mount_boot_partition() {
+	local partition
+	local mount_opts
+
 	partition="$(find_boot_partition)"
-	local mount_opts="-o nodev,nosuid,noexec"
+	mount_opts="-o nodev,nosuid,noexec"
 
 	# We dont need to do this when using stowaways
 	if grep -q "pmos.stowaway" /proc/cmdline; then
@@ -452,6 +459,7 @@ mount_boot_partition() {
 
 # $1: initramfs-extra path
 extract_initramfs_extra() {
+	local initramfs_extra
 	initramfs_extra="$1"
 	if [ ! -e "$initramfs_extra" ]; then
 		echo "ERROR: initramfs-extra not found!"
@@ -503,6 +511,7 @@ wait_root_partition() {
 }
 
 delete_old_install_partition() {
+	local partition
 	# The on-device installer leaves a "pmOS_deleteme" (p3) partition after
 	# successful installation, located after "pmOS_root" (p2). Delete it,
 	# so we can use the space.
@@ -529,6 +538,8 @@ mount_root_partition() {
 	if mountpoint -q /sysroot; then
 		return
 	fi
+
+	local partition
 
 	partition="$(find_root_partition)"
 	rootfsopts=""
@@ -576,6 +587,8 @@ mount_root_partition() {
 
 # $1: path to the hooks dir
 run_hooks() {
+	local scriptsdir
+	local hook
 	scriptsdir="$1"
 
 	if [ -z "$(ls -A "$scriptsdir" 2>/dev/null)" ]; then
@@ -589,9 +602,10 @@ run_hooks() {
 }
 
 setup_usb_network_android() {
+	local sysfs_dir
 	# Only run, when we have the android usb driver
-	SYS=/sys/class/android_usb/android0
-	if ! [ -e "$SYS" ]; then
+	sysfs_dir=/sys/class/android_usb/android0
+	if ! [ -e "$sysfs_dir" ]; then
 		return
 	fi
 
@@ -601,11 +615,11 @@ setup_usb_network_android() {
 	usb_idProduct="$(echo "${deviceinfo_usb_idProduct:-0xD001}" | sed "s/0x//g")"	# default: Nexus 4 (fastboot)
 
 	# Do the setup
-	echo "0" >"$SYS/enable"
-	echo "$usb_idVendor" >"$SYS/idVendor"
-	echo "$usb_idProduct" >"$SYS/idProduct"
-	echo "rndis" >"$SYS/functions"
-	echo "1" >"$SYS/enable"
+	echo "0" >"$sysfs_dir/enable"
+	echo "$usb_idVendor" >"$sysfs_dir/idVendor"
+	echo "$usb_idProduct" >"$sysfs_dir/idProduct"
+	echo "rndis" >"$sysfs_dir/functions"
+	echo "1" >"$sysfs_dir/enable"
 }
 
 get_usb_udc() {
@@ -712,6 +726,8 @@ start_unudhcpd() {
 	# Only run once
 	[ "$(pidof unudhcpd)" ] && return
 
+	local usb_iface
+
 	# Skip if disabled
 	# shellcheck disable=SC2154
 	if [ "$deviceinfo_disable_dhcpd" = "true" ]; then
@@ -725,39 +741,40 @@ start_unudhcpd() {
 	usb_network_function="${deviceinfo_usb_network_function:-ncm.usb0}"
 	usb_network_function_fallback="rndis.usb0"
 	if [ -n "$(cat $CONFIGFS/g1/UDC)" ]; then
-		INTERFACE="$(
+		usb_iface="$(
 			cat "$CONFIGFS/g1/functions/$usb_network_function/ifname" 2>/dev/null ||
 			cat "$CONFIGFS/g1/functions/$usb_network_function_fallback/ifname" 2>/dev/null ||
 			echo ''
 		)"
 	else
-		INTERFACE=""
+		usb_iface=""
 	fi
-	if [ -n "$INTERFACE" ]; then
-		ifconfig "$INTERFACE" "$HOST_IP"
+	if [ -n "$usb_iface" ]; then
+		ifconfig "$usb_iface" "$HOST_IP"
 	elif ifconfig rndis0 "$HOST_IP" 2>/dev/null; then
-		INTERFACE=rndis0
+		usb_iface=rndis0
 	elif ifconfig usb0 "$HOST_IP" 2>/dev/null; then
-		INTERFACE=usb0
+		usb_iface=usb0
 	elif ifconfig eth0 "$HOST_IP" 2>/dev/null; then
-		INTERFACE=eth0
+		usb_iface=eth0
 	fi
 
-	if [ -z "$INTERFACE" ]; then
+	if [ -z "$usb_iface" ]; then
 		echo "  Could not find an interface to run a dhcp server on"
 		echo "  Interfaces:"
 		ip link
 		return
 	fi
 
-	echo "  Using interface $INTERFACE"
+	echo "  Using interface $usb_iface"
 	echo "  Starting the DHCP daemon"
 	(
-		unudhcpd -i "$INTERFACE" -s "$HOST_IP" -c "$client_ip"
+		unudhcpd -i "$usb_iface" -s "$HOST_IP" -c "$client_ip"
 	) &
 }
 
 setup_usb_acm_configfs() {
+	local active_udc
 	active_udc="$(cat $CONFIGFS/g1/UDC)"
 
 	if ! [ -e "$CONFIGFS" ]; then
@@ -804,6 +821,8 @@ run_getty() {
 }
 
 setup_usb_storage_configfs() {
+	local active_udc
+	local storage_dev
 	active_udc="$(cat $CONFIGFS/g1/UDC)"
 	storage_dev="$1"
 
