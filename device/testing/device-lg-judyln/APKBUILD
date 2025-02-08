@@ -3,12 +3,17 @@
 pkgname=device-lg-judyln
 pkgdesc="LG G7 ThinQ"
 pkgver=4
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
-depends="linux-postmarketos-qcom-sdm845 mkbootimg postmarketos-base soc-qcom-sdm845"
+depends="
+	linux-postmarketos-qcom-sdm845
+	mkbootimg
+	postmarketos-base
+	soc-qcom
+"
 makedepends="devicepkg-dev"
 source="deviceinfo modules-initfs"
 
