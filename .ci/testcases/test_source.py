@@ -105,7 +105,8 @@ def test_aports_unreferenced_files():
             if os.path.basename(rel_file_path) not in sources_chk \
                     and rel_file_path not in apkbuild["install"] \
                     and rel_file_path not in subpackage_installs \
-                    and rel_file_path not in trigger_sources:
+                    and rel_file_path not in trigger_sources \
+                    and not rel_file_path.startswith("tests/"):
                 raise RuntimeError(f"{apkbuild_path}: found unreferenced file: {rel_file_path}")
 
 
