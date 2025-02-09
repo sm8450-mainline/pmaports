@@ -86,6 +86,23 @@ resize_root_partition() {
 	fi
 }
 
+unlock_root_partition() {
+	command -v cryptsetup >/dev/null || return
+	partition="$(find_root_partition)"
+	if cryptsetup isLuks "$partition"; then
+		# Make sure the splash doesn't interfere
+		hide_splash
+		tried=0
+		until cryptsetup status root | grep -qwi active; do
+			fde-unlock "$partition" "$tried"
+			tried=$((tried + 1))
+		done
+		PMOS_ROOT=/dev/mapper/root
+		# Show again the loading splashscreen
+		show_splash "Loading..."
+	fi
+}
+
 # resize2fs and resize.f2fs are too big
 resize_root_filesystem() {
 	partition="$(find_root_partition)"
