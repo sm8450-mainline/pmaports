@@ -1,7 +1,7 @@
 # Maintainer: Barnabas Czeman <trabarni@gmail.com>
 pkgname=soc-qcom-msm8974
 pkgdesc="Common package for Qualcomm MSM8974 devices"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="BSD-3-Clause"
@@ -29,5 +29,5 @@ gpu() {
 }
 
 sha512sums="
-92393cb26b07e86bffed052ed2cb59ebd8096fa91173951b27f01efa92b8c9ef9a1bdc7fa054486a7e08048c4046badd3d295f6312bb209326bbf203c1112d1d  adreno-a330-quirks.sh
+c5a3fe3616cea7aa3e54a45d47ae741eb5e8528db4bf1b207ce7df6ff221ffc5126d5bbbffa630bc1dcedf6d2beeac253eb04b2167cdb7c2a21d342b13ba04c4  adreno-a330-quirks.sh
 "

@@ -1,7 +1,7 @@
 # Maintainer: Barnabas Czeman <trabarni@gmail.com>
 pkgname=soc-qcom-msm8226
 pkgdesc="Common package for Qualcomm MSM8226 devices"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="BSD-3-Clause"
@@ -29,5 +29,5 @@ gpu() {
 }
 
 sha512sums="
-fc55aa63c6706758bc0cebf3cc9eb572a77b740cba9705875297170e819d27c83c44cef42924a9eb0e5cbfec95adaf515c64b9916140d15496f580acc4a18525  adreno-a305-quirks.sh
+c204a145355da06b02500f915066cb16db256ebd860577acb9cd162990e08682d4569cc0c75bd40fb533ffeea8a3a96f77fc3cf121ab93c7c21af25b63d45e3a  adreno-a305-quirks.sh
 "

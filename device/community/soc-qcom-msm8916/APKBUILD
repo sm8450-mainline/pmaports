@@ -2,8 +2,8 @@
 # Co-Maintainer: Nikita Travkin <nikita@trvn.ru>
 pkgname=soc-qcom-msm8916
 pkgdesc="Common package for Qualcomm MSM8916 devices"
-pkgver=21
-pkgrel=3
+pkgver=22
+pkgrel=0
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64 armv7"
@@ -106,5 +106,5 @@ eee73ae7895fb6772b35a190956d17642d08af47a0fa5dfd022052c5b30c99cf9649215aef161ddc
 3a4a9322839d4b3ef9d79668a37840a9f444954759ae3c512e694051d2f9a2573db42ad6c4c1a5c75eeb861232a27ba1a8cef9b503decd54ead25a96e3dd6f98  q6voiced.conf
 bcebc36ec62140f4620d462be2b95858adae380e5d74f6b9c9b956fb76a6541f39749f4dcec6ac3c39b868dbfed6fac7a34ba357510532a3df2d39f7ea818d55  77-modem-samsung-msm8916.rules
 90fca4a3291a2c84c0b20e41308c4698374ba896e9365ca80dbfd0c0c4f7dc08317f3dd865a3c7f6707c81b02f5bb24136d1172253d2e4fdd50039bbbf02a178  90-feedbackd-pm8916.rules
-ff143f0f8654bba26087439e206b62c9f8e25f945fa299ba1b7504316f7398a0622404f2415e915ce1c96809ed9a5e93fc16ddcb2bafe410f35466510dc2d51d  adreno-a306-quirks.sh
+de35a32f697247e4a8419647b9c9fece9bc7f41c0e2377d01659ad0dc1ba21b08d3227193053d7cd1ec5006370db574472516f0d0061fb9d2d9509f27f6212d3  adreno-a306-quirks.sh
 "

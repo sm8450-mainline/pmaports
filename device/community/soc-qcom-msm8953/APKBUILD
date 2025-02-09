@@ -1,7 +1,7 @@
 # Maintainer: Barnabas Czeman <trabarni@gmail.com>
 pkgname=soc-qcom-msm8953
 pkgdesc="Common package for Qualcomm MSM8953 devices"
-pkgver=12
+pkgver=13
 pkgrel=0
 url="https://postmarketos.org"
 license="BSD-3-Clause"
@@ -73,6 +73,6 @@ sha512sums="
 8aadc874c8a334e46c7bf630874c3035070aa7b9052deba1a28ae059ab9d63dd99dfb82c1a58d09da5063ad250de813e3974e040ce938a53347e390ce2e450eb  soc-qcom-msm8953-f6dfc9b072e74b0ab2afcf452bc106242049ef28.tar.gz
 90fca4a3291a2c84c0b20e41308c4698374ba896e9365ca80dbfd0c0c4f7dc08317f3dd865a3c7f6707c81b02f5bb24136d1172253d2e4fdd50039bbbf02a178  90-feedbackd-pm8xxx-vib.rules
 3a4a9322839d4b3ef9d79668a37840a9f444954759ae3c512e694051d2f9a2573db42ad6c4c1a5c75eeb861232a27ba1a8cef9b503decd54ead25a96e3dd6f98  q6voiced.conf
-d546c99ca8d406b4e2e3901a417e4e461314a38f2f01c48525e44ca524ad57af7bfc280f416bda90573b0bfb1cca27d45cb0a0ed44e999ef8d406a380d1fdbb2  adreno-a506-quirks.sh
+4f9af3c582ae611d42fc058f949f60a96fc7cc884052e4c9f82e0292d57bba3b3cb8ace1d512b5a59535caa633be8558246a7519c2d067b7980f4088f452df6d  adreno-a506-quirks.sh
 d4fd0f3406c9f004e9cae7bc500c5713aab75f102f8e3ea1af820865f01eb03def01cd9ed3e8a184c7dfc22ab419628fad17957a3782885d96eb36e94461e842  moto-modem-rfs-setup.openrc
 "
