@@ -10,6 +10,7 @@ stages:
   - lint
   - build
   - autoupdate
+  - test
 variables:
   # Default of 20 is pretty small, sometimes MRs have >20 commits in them. 100
   # seems like a reasonable balance. If this is too low, git merge-base (from ci/
@@ -26,6 +27,10 @@ workflow:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     # Run scheduled pipeline for autoupdate or manually triggered pipeline
     - if: $CI_PIPELINE_SOURCE == "schedule" || $CI_PIPELINE_SOURCE == "web"
+
+# Some packages have their own yaml files defining tests. All of these should contain
+# only jobs which extend the .package-test job!
+include: "**/.gitlab-ci.yml"
 
 # device documentation
 wiki:
@@ -196,3 +201,11 @@ auto-update:
       - log.txt
       - log_testsuite_pmaports.txt
       - pmbootstrap.cfg
+
+# Template for package test jobs defined per-package
+.package-test:
+  stage: test
+  rules:
+    - if: *mr_rule
+  before_script:
+    - .ci/lib/gitlab_prepare_ci.sh

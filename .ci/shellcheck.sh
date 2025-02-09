@@ -38,6 +38,7 @@ sh_files="
 	$(find . -path './main/postmarketos-mvcfg/*.sh')
 
 	$(find . -path './.ci/**.sh')
+	$(find . -path '**/tests/*.sh')
 "
 
 for file in $sh_files; do
