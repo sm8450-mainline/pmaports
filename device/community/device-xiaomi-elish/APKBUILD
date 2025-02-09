@@ -3,12 +3,13 @@
 pkgname=device-xiaomi-elish
 pkgdesc="Xiaomi Mi Pad 5 Pro"
 pkgver=5
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
+	alsa-ucm-conf
 	bootmac
 	hexagonrpcd>=0.3.2-r3
 	make-dynpart-mappings
