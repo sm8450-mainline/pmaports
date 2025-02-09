@@ -21,7 +21,9 @@ setup_udev() {
 
 # parted is too big
 resize_root_partition() {
-	partition=$(find_root_partition)
+	local partition
+
+	find_root_partition partition
 
 	# Do not resize the installer partition
 	if [ "$(blkid --label pmOS_install)" = "$partition" ]; then
@@ -88,13 +90,12 @@ resize_root_partition() {
 
 unlock_root_partition() {
 	command -v cryptsetup >/dev/null || return
-	partition="$(find_root_partition)"
-	if cryptsetup isLuks "$partition"; then
+	if cryptsetup isLuks "$PMOS_ROOT"; then
 		# Make sure the splash doesn't interfere
 		hide_splash
 		tried=0
 		until cryptsetup status root | grep -qwi active; do
-			fde-unlock "$partition" "$tried"
+			fde-unlock "$PMOS_ROOT" "$tried"
 			tried=$((tried + 1))
 		done
 		PMOS_ROOT=/dev/mapper/root
@@ -105,7 +106,9 @@ unlock_root_partition() {
 
 # resize2fs and resize.f2fs are too big
 resize_root_filesystem() {
-	partition="$(find_root_partition)"
+	local partition
+
+	find_root_partition partition
 	touch /etc/mtab # see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=673323
 	check_filesystem "$partition"
 	type="$(get_partition_type "$partition")"
