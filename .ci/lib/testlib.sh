@@ -1,5 +1,5 @@
 #!/bin/sh
-# Unit tests for the postmarketOS initramfs
+# Unit testing framework for shell scripts
 # Invoke with the path to a tests/ subdir of a package and the
 # package name as arguments. Or source it with the following
 # variables set:
@@ -27,15 +27,19 @@ _test_statefile="$(mktemp)"
 results_dir="${results_dir:-}"
 
 test_log() {
-	printf "%s\n" "$*" >&2
+	# ash supports echo -e
+	# shellcheck disable=SC3037
+	echo -e "$*" >&2
 }
 
 test_info() {
-	printf "${BLUE}%s${RESET}\n" "$*" >&2
+	# shellcheck disable=SC3037
+	echo -e "${BLUE}$*${RESET}" >&2
 }
 
 test_debug() {
-	printf "${YELLOW}%s${RESET}\n" "$*" >&2
+	# shellcheck disable=SC3037
+	echo -e "${YELLOW}$*${RESET}" >&2
 }
 
 assert_strequal() {
@@ -189,6 +193,7 @@ run_tests() {
 	if [ -n "$failed" ]; then exit 1; else exit 0; fi
 }
 
+# FIXME: probably not the best way to determine if this was sourced
 if [ $# -gt 0 ]; then
 	run_tests "$1" "$2"
 fi
