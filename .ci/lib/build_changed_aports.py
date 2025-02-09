@@ -115,6 +115,15 @@ if __name__ == "__main__":
         # To do this automatically, run 'pmbootstrap config auto_zap_misconfigured_chroots yes'.
         common.run_pmbootstrap(["config", "auto_zap_misconfigured_chroots", "yes"])
 
+        # filter out packages that can't be built for arch
+        # (Iterate over copy of `systemd_pkgs`, because we modify it in this loop)
+        for package in systemd_pkgs.copy():
+            apkbuild_path = pmb.helpers.pmaports.find(package, True, True, with_extra_repos="enabled")
+            apkbuild = pmb.parse._apkbuild.apkbuild(pathlib.Path(apkbuild_path, "APKBUILD"))
+            if not pmb.helpers.pmaports.check_arches(apkbuild["arch"], arch):
+                print(f"(extra-repos/systemd) {package}: not enabled for {arch}, skipping")
+                systemd_pkgs.remove(package)
+
         verify_only = common.commit_message_has_string("[ci:skip-build]")
         if verify_only:
             # [ci:skip-build]: verify checksums
