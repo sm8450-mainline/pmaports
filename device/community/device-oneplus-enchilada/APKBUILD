@@ -3,8 +3,8 @@
 
 pkgname=device-oneplus-enchilada
 pkgdesc="OnePlus 6"
-pkgver=14
-pkgrel=6
+pkgver=15
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -20,10 +20,10 @@ depends="
 	soc-qcom-sdm845-nonfree-firmware
 	soc-qcom-sdm845-qbootctl
 	soc-qcom-sdm845-ucm
+	unl0kr-fbforcerefresh
 "
 makedepends="devicepkg-dev"
 source="
-	10-unl0kr.conf
 	deviceinfo
 	hexagonrpcd.confd
 	modules-initfs
@@ -40,8 +40,6 @@ package() {
 	replaces="$pkgname-nonfree-firmware"
 	devicepkg_package $startdir $pkgname
 
-	install -Dm644 "$srcdir"/10-unl0kr.conf \
-		"$pkgdir"/etc/unl0kr.conf.d/10-unl0kr.conf
 	install -Dm644 "$srcdir"/81-libssc-oneplus-enchilada.rules \
 		-t "$pkgdir"/usr/lib/udev/rules.d/
 	install -Dm644 "$srcdir"/q6voiced.conf \
@@ -66,7 +64,6 @@ pmtest() {
 }
 
 sha512sums="
-e957b7b0ed219eaa56be6c6b976b60886f73970703fdebf045800154ee652affee4e19654b3ac4244b29bcf6760ad3db6cb87143dc9c4673e905800d751103d1  10-unl0kr.conf
 83fc698ebeda6245abc2a653eeff97b3b996d06dd7731386a07d102937f9b005c7277e0dece05ff359d9ff109a1d9ed7791fc510b146354df179804aadb5642c  deviceinfo
 c8d3026e9f803ea823e35f83dab66fa8545e99af9655576476c194567113084d78200feab46f84983a2dad608ca55c0a4a66e36406c6d64023c0aec59307d146  hexagonrpcd.confd
 ea8709aa214cffaefb1d486c0c47044537446faebff16efb3b015623f043f730b7121e401c676e43aa8868bd6c630fc8a2d7dbf5fb082490e9b5493e0405b66d  modules-initfs
