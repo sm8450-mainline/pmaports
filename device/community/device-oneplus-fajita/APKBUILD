@@ -3,8 +3,8 @@
 
 pkgname=device-oneplus-fajita
 pkgdesc="OnePlus 6T"
-pkgver=14
-pkgrel=4
+pkgver=15
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -16,10 +16,10 @@ depends="
 	soc-qcom-sdm845
 	soc-qcom-sdm845-ucm
 	soc-qcom-sdm845-qbootctl
+	unl0kr-fbforcerefresh
 "
 makedepends="devicepkg-dev"
 source="
-	10-unl0kr.conf
 	deviceinfo
 	hexagonrpcd.confd
 	modules-initfs
@@ -39,8 +39,6 @@ build() {
 package() {
 	devicepkg_package $startdir $pkgname
 
-	install -Dm644 "$srcdir"/10-unl0kr.conf \
-		"$pkgdir"/etc/unl0kr.conf.d/10-unl0kr.conf
 }
 
 nonfree_firmware() {
@@ -75,7 +73,6 @@ pmtest() {
 }
 
 sha512sums="
-e957b7b0ed219eaa56be6c6b976b60886f73970703fdebf045800154ee652affee4e19654b3ac4244b29bcf6760ad3db6cb87143dc9c4673e905800d751103d1  10-unl0kr.conf
 07e3d79715befccd1e7393908c06f88ac8468d1ce6cb96138e3a04e6f8274889db169f5daf05b04b633bcc9e85d11ea5c2017b84bc0ae86a8fad80b05794d0d8  deviceinfo
 6b5308471fcbb938ac00d6e9a3f8e61073bda1d608f2edf1a2aba4b256dd3f76b1ccee0873dcaa8dc4a8db304d433360a56fe447d70f57ba068428b75ddea236  hexagonrpcd.confd
 ea8709aa214cffaefb1d486c0c47044537446faebff16efb3b015623f043f730b7121e401c676e43aa8868bd6c630fc8a2d7dbf5fb082490e9b5493e0405b66d  modules-initfs
