@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=47
+pkgver=48
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -47,6 +47,7 @@ subpackages="
 	lxc-systemd:_service
 	mmsd-tng-systemd:_service
 	modemmanager-systemd:_service
+	msm-modem-systemd:_service
 	nftables-systemd:_service
 	openssh-server-pam-systemd:_service
 	pd-mapper-systemd:_service
@@ -130,6 +131,7 @@ _kwallet_pam_sources="user/plasma-kwallet-pam.service"
 _lxc_sources="system/lxc@.service"
 _mmsd_tng_sources="user/mmsd-tng.service"
 _modemmanager_sources="system/ModemManager.service"
+_msm_modem_sources="system/msm-modem-uim-selection.service"
 _nftables_sources="system/nftables.service"
 _openssh_server_pam_sources="system/sshd.service system/sshdgenkeys.service"
 _pd_mapper_sources="system/pd-mapper.service"
@@ -201,6 +203,7 @@ source="$(flatpath \
 	$_lxc_sources \
 	$_mmsd_tng_sources \
 	$_modemmanager_sources \
+	$_msm_modem_sources \
 	$_nftables_sources \
 	$_openssh_server_pam_sources \
 	$_pd_mapper_sources \
@@ -246,6 +249,7 @@ _iwd_system_presets="iwd.service"
 _kanshi_user_presets="kanshi.service"
 _mmsd_tng_user_presets="mmsd-tng.service"
 _modemmanager_system_presets="ModemManager.service"
+_msm_modem_system_presets="msm-modem-uim-selection.service"
 _nftables_system_presets="nftables.service"
 _openssh_server_pam_system_presets="sshd.service"
 _pd_mapper_system_presets="pd-mapper.service"
@@ -360,6 +364,7 @@ a9358610c86fd3506e4cf02aea26e699d61268121ea3c16507b8f71446c16169a1c90c75faf126f2
 f6fb4c890cbf72e344ca7a22e7f033fb4c32ce9f5edc27c03ccc5c21424d6a0ef871d79e8a89a502a707bdceb3bfbd7a5b3c8e16b1cd30e149bf2fdf8cccea9e  system-lxc@.service
 873b53592786a978659bda8d32de5ed9a9f163ca298c4f4112f10bf635a8170c4060cc15b57ff72b3afd50075cd1c5dbc10030f00b166e2540397da9e1c5e46b  user-mmsd-tng.service
 5eab6a59c81232b188df45482e325b2d1cb9e038ca147a1b6983c1c095d8194fba804793c5e291b201a820976c8f506aadd2daf7c52fe573a3af708fc9984641  system-ModemManager.service
+a12d8d6994ae6e46b0d131c9f5c475ccc70ab7aaf5839b19c1917410fb3c90a208bc0c6e07c90cf251ea6e445741af83a9f77bf9fcb30490bb0fbfc07aa8cbb9  system-msm-modem-uim-selection.service
 12bb9aa2a2ab8d4b21c72a785b41057eb16a27eca5718cd03a987a50b77d669fe90abafae48c68b41616f31b1953853b3b4a74db4bc3cdeccacc00df113de204  system-nftables.service
 fa445c4a53214524baed4e9c52a5463592a074f88a5a286eacb60d0907c0545f725afde23abd68cf611067add80c2ccb289a381fc5ff6a5f654ea49c81f02fe8  system-sshd.service
 c0badea3905c1d53d213fbfe11d25b556a2e484fe77eb50e9f4d42e25b67b56a0804e7d8e1b7731cd280cbb3525b4c60311817609381e2308d9f2dfb7c0d7072  system-sshdgenkeys.service
@@ -369,7 +374,7 @@ e12d8e98e28a795f879aebcceb32a991ee4abcb3bc5ec458aa5378bb52ff86cf39be04bc4a196925
 4c4c3f1e5e829ff67dd35df59120ab59730ff1f1ca0aab93f16d670132979a99099fad59e6c736908cc19df9172c9bdfe476ec721a1cc28de8c2210da46ce1f1  system-q6voiced.service
 621189aa251655796795f4fa0cd79360bb67573e7327e545064eaadafc83cc7b382a405d6ba80662e0a4ece3876e4270e3563d859a6ba63b5e3854b39c35873e  system-qbootctl.service
 998f70776a2857b44202079ecb1ec76331f998155c8a4a15ce036b2fb916d82cba5d750d66509e562f93482c2301a262e8efc220fe54ac2ee1a445801823e465  system-diag-router.service
-11bb0ff9ab32f0f230c665db2738e37e5226fa200621b9207baf92e0632a38f840395a55ef6e827763911cf78f3bad95cd3456e77cc01b30b8abce96dc13df9d  system-rmtfs.service
+d937995f9f859b6c93e73b979d6e2c272c1c2835805ffcec6e0881283f01766ec976a59e13b92d8708536a88198e8fa8ca9248f4fc9f07f7709a5e283d24695c  system-rmtfs.service
 1a0958e4fe232967946e9f2b17a13434b137236ba5d18442175d648b084d82df3a9fc5723c1621be899ee290b99777ac3c0ee6ad733e72d8e70f63b37ad00036  system-rtkit-daemon.service
 d5bf5f01c0feafab4edfc39b75eded608dc3efcd3b918739e3ed2ab11340c9cc9b6fb97c0706ddd3d49b726c5f62e8cdb0048aefafd916f3ad9defc6ff9783bc  system-sensorfwd.service
 be9df5e3fd9c88ec1a8db4aa2d9e8075d74ee3d2670aa3cfc611df3cff4d4041ac888a0338c9d5f134bbc69aa32eb52ac40eb3e0981813afa18389cba14d3818  system-sleep-inhibitor.service
