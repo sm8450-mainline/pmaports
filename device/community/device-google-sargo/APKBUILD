@@ -2,7 +2,7 @@
 # Maintainer: Richard Acayan <mailingradian@gmail.com>
 pkgname=device-google-sargo
 pkgdesc="Google Pixel 3a"
-pkgver=8
+pkgver=9
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -23,10 +23,10 @@ depends="
 	soc-qcom-sdm845-modem
 	soc-qcom-sdm845-nonfree-firmware
 	soc-qcom-sdm845-qbootctl
+	unl0kr-fbforcerefresh
 "
 makedepends="devicepkg-dev"
 source="
-	10-unl0kr-msm.conf
 	81-libssc-google-sargo.rules
 	90-feedbackd-drv2624.rules
 	deviceinfo
@@ -47,8 +47,6 @@ package() {
 
 	install -Dm644 "$srcdir"/90-feedbackd-drv2624.rules \
 		-t "$pkgdir"/usr/lib/udev/rules.d
-	install -Dm644 "$srcdir"/10-unl0kr-msm.conf \
-		"$pkgdir"/etc/unl0kr.conf.d/10-unl0kr-msm.conf
 	# Sensors depend on ADSP firmware and the sensors registry served over FastRPC.
 	install -Dm644 "$srcdir"/hexagonrpcd.confd \
 		"$pkgdir"/usr/share/hexagonrpcd/hexagonrpcd-adsp-sensorspd.conf
@@ -73,7 +71,6 @@ openrc() {
 }
 
 sha512sums="
-f700af3145b79d1ef9edfb22982899b25cabfb212f9620dcbd3a2e6f44b5ad591e0a66056c6fcd66c3fde89a2b5f551e8a8fe2e65cf0e2a48adec57c027d7825  10-unl0kr-msm.conf
 089ce0acba4e1d789e337bedfca7570796a6416e7230ae9b8fc6b625747a40dbb064b1a707877cd6b7bdc73844c6571316e2ec0746a77060f13d98c52fdbfc00  81-libssc-google-sargo.rules
 016d398155f2344417f5e5649a361719ba6e53e593c501b5df39114cdd284302b9bf8686a39817aee0c08fec95b3ab613c181d6cc9596299aaf7fd05dbe0c3dd  90-feedbackd-drv2624.rules
 ad032b1a35cfcd4fc0c8df988430ee97b711e785b86cca68b7552b23a9a2e2b6b97c327e3415a575db47ad6c1f86ded18df5553acaae63010057d89b8c16135e  deviceinfo
