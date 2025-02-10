@@ -1,6 +1,6 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lg-hammerhead
-pkgver=11
+pkgver=12
 pkgrel=0
 pkgdesc="Google Nexus 5"
 url="https://postmarketos.org"
@@ -12,15 +12,14 @@ depends="
 	mkbootimg
 	postmarketos-base
 	soc-qcom-msm8974
+	unl0kr-fbforcerefresh
 "
 makedepends="devicepkg-dev"
 subpackages="
 	$pkgname-phosh
-	$pkgname-unl0kr
 	$pkgname-x11
 	$pkgname-nonfree-firmware:nonfree_firmware"
 source="
-	10-unl0kr.conf
 	bt-module-deps.conf
 	deviceinfo
 	modules-initfs
@@ -35,13 +34,6 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
-}
-
-unl0kr() {
-	install_if="$pkgname unl0kr"
-	depends=""
-	install -Dm644 "$srcdir"/10-unl0kr.conf \
-		-t "$subpkgdir"/etc/unl0kr.conf.d
 }
 
 x11() {
@@ -80,7 +72,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-f700af3145b79d1ef9edfb22982899b25cabfb212f9620dcbd3a2e6f44b5ad591e0a66056c6fcd66c3fde89a2b5f551e8a8fe2e65cf0e2a48adec57c027d7825  10-unl0kr.conf
 6cef5f8ae1785ac16e6fe84bfc861ac50cdfb94db35d764f44a25c960e123cb82f6e56f45362a5340c62a3d5ac225f2689afd4f6964cb88305a0892ba44214f0  bt-module-deps.conf
 63b0063164d00ae55be967dbc6ad429fe0249385d47e20455563d518f8f3838330978b18b576e7eb1d453257c1114ddd704136977eeaf23673d70a73e07ef779  deviceinfo
 fd639faebbee2c0c2c227710678376e0d039b7d96a62103f7ba7e6304d7060023f09064918e93a125465d20d125c0334225680521a7aeae5a43d77d7360c180c  modules-initfs
