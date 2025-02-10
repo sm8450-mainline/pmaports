@@ -3,14 +3,14 @@
 pkgname=device-xiaomi-elish
 pkgdesc="Xiaomi Mi Pad 5 Pro"
 pkgver=5
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
 	bootmac
-	hexagonrpcd
+	hexagonrpcd>=0.3.2-r3
 	make-dynpart-mappings
 	mesa-vulkan-freedreno
 	mkbootimg
@@ -19,7 +19,6 @@ depends="
 	swclock-offset
 "
 makedepends="devicepkg-dev"
-replaces="hexagonrpcd-openrc"
 source="
 	81-libssc-xiaomi-elish.rules
 	alsa-ucm-conf/elish.conf
@@ -56,6 +55,9 @@ package() {
 
 	install -Dm644 "$srcdir"/81-libssc-xiaomi-elish.rules \
 		"$pkgdir"/usr/lib/udev/rules.d/81-libssc-xiaomi-elish.rules
+
+	install -Dm644 "$srcdir"/hexagonrpcd.confd \
+		"$pkgdir"/usr/share/hexagonrpcd/hexagonrpcd-sdsp.conf
 }
 
 kernel_boe() {
@@ -91,9 +93,9 @@ nonfree_firmware() {
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="hexagonrpcd-openrc"
 
-	install -Dm644 "$srcdir"/hexagonrpcd.confd \
-		"$subpkgdir"/etc/conf.d/hexagonrpcd-sdsp
+	mkdir -p "$subpkgdir"
 }
 
 sha512sums="
