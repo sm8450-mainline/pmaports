@@ -1,7 +1,7 @@
 # Maintainer: Johannes Marbach <n0-0ne+gitlab@mailbox.org>
 pkgname=unl0kr
 pkgver=3.2.0
-pkgrel=5
+pkgrel=6
 _commit_lvgl=ceadda8a468b7d5fa6ba973bd82cf610166278d8
 pkgdesc="Framebuffer-based disk unlocker for the initramfs based on LVGL"
 url="https://gitlab.postmarketos.org/postmarketOS/buffybox"
@@ -53,8 +53,7 @@ build() {
 package() {
 	DESTDIR="$pkgdir" meson install --no-rebuild -C build
 
-	install -Dm644 "$srcdir"/unl0kr.conf \
-		"$pkgdir"/etc/unl0kr.conf
+	install -Dm644 "$srcdir"/unl0kr.conf -t "$pkgdir"/etc/
 
 	install -Dm755 "$srcdir"/unlock.sh \
 		"$pkgdir"/usr/bin/fde-unlock
@@ -63,10 +62,7 @@ package() {
 	install -Dm644 unl0kr \
 		"$pkgdir"/usr/share/mkinitfs-triggers/unl0kr
 
-	# TODO: Figure out why this is needed
-	touch dummy
-	install -Dm644 dummy \
-		"$pkgdir"/etc/unl0kr.conf.d/dummy
+	install -dm755 "$pkgdir"/etc/unl0kr.conf.d/
 
 	install -Dm644 "$srcdir"/unl0kr.files \
 		"$pkgdir"/usr/share/mkinitfs/files-extra/30-unl0kr.files
@@ -76,7 +72,7 @@ pmtest() {
 	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-mkinitfs-hook-ci"
 
 	install -Dm755 "$srcdir"/30-unl0kr-test.sh \
-		"$subpkgdir"/usr/libexec/pmos-tests-initramfs/30-unl0kr-test.sh
+		-t "$subpkgdir"/usr/libexec/pmos-tests-initramfs/
 
 	# We need the files in the core initramfs for this, no -extra in CI
 	install -Dm644 "$srcdir"/unl0kr.files \
