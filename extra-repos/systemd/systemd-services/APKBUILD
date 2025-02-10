@@ -6,7 +6,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=45
+pkgver=46
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -63,6 +63,7 @@ subpackages="
 	tqftpserv-systemd:_service
 	udisks2-systemd:_service
 	udiskie-systemd:_service
+	vvmd-systemd:_service
 	waydroid-sensors-systemd:_service
 	waydroid-systemd:_service
 	wireguard-tools-wg-quick-systemd:_service
@@ -144,6 +145,7 @@ _tinydm_sources="system/tinydm.service"  # see issue tinydm#11
 _tqftpserv_sources="system/tqftpserv.service"
 _udisks2_sources="system/udisks2.service" # From https://github.com/storaged-project/udisks/blob/master/data/udisks2.service.in
 _udiskie_sources="user/udiskie.service"  # created, no unit file upstream
+_vvmd_sources="user/vvmd.service"  # From https://salsa.debian.org/DebianOnMobile-team/vvmd/-/blob/debian/latest/debian/vvmd.user.service
 _waydroid_sources="system/waydroid-container.service"
 _waydroid_sensors_sources="system/waydroid-sensors.service"
 _wireguard_tools_wg_quick_sources="system/wg-quick@.service" # From https://git.zx2c4.com/wireguard-tools/tree/src/systemd/wg-quick@.service
@@ -213,6 +215,7 @@ source="$(flatpath \
 	$_tqftpserv_sources \
 	$_udisks2_sources \
 	$_udiskie_sources \
+	$_vvmd_sources \
 	$_waydroid_sensors_sources \
 	$_waydroid_sources \
 	$_wireguard_tools_wg_quick_sources \
@@ -255,6 +258,7 @@ _tinydm_system_presets="tinydm.service"
 _tqftpserv_system_presets="tqftpserv.service"
 _udisks2_system_presets="udisks2.service"
 _udiskie_user_presets="udiskie.service"
+_vvmd_user_presets="vvmd.service"
 _waydroid_system_presets="waydroid-container.service"
 _waydroid_sensors_system_presets="waydroid-sensors.service"
 _wireplumber_user_presets="wireplumber.service"
@@ -371,6 +375,7 @@ be9df5e3fd9c88ec1a8db4aa2d9e8075d74ee3d2670aa3cfc611df3cff4d4041ac888a0338c9d5f1
 c569b27925297672c479e12a6425abdf5791886fff77c2c2b67b7aa9277eb0a22e7b95b52dbc225870c97460d0988a4dae18ed864e19096c704c0895de55b699  system-tqftpserv.service
 c7ea2b18c9d8f82306fbaca6d07b7019de3819d7898c3f50c3d0aceef4da4d311ed3bf31385e2f8998b8e3e326b1eb13309ffd44cf1b2d9db9b40bca00222c16  system-udisks2.service
 4c43a308e9e653914e534d92fc8caaf8c60cd21ae57bdbbf2fa591c1bd6a41e502268b6e0ff17b19cbe301fc7cfa1ad43070f13b372376fa3ddee9d11bf76f5a  user-udiskie.service
+6029a2cc1e7fbc00fea0b2abe9d4be6fa2a03cee4b7aceaecb2bbc94ddf1ed3127f1ce99a2e38c0e901261ed36aa3a616390da22364b40370b820023dc2b4a8e  user-vvmd.service
 841caa793d256cacea7eb651f3d77039b1c0ddb22727100d6cca74230e528aee09e945e1fdf20eaf40abbe3eaec9210eb7fa27144dc906cab65f8078b36921f9  system-waydroid-sensors.service
 023fc89481f9079ac2d2d6b8a9ab212cb13a6b309caaa92b336df4c6ee9cff05538f035f8411fd8f6b87ca73b400172f56022edbf02d3776ab6f2aa7af2eebef  system-waydroid-container.service
 1ee9be31c0122e473e51701f04072d6c66228efab626e4c037e8f393af5ce905b8549c53ee3efa656c4bc78ce992929055a8e17d6135b9bc9685d50a71bb2369  system-wg-quick@.service
