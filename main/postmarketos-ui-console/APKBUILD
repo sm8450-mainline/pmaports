@@ -2,7 +2,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-ui-console
 pkgver=0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Console environment, with no graphical/touch UI"
 url="https://postmarketos.org/"
 arch="noarch"
@@ -15,6 +15,7 @@ depends="
 	"
 options="!check" # No testsuite
 subpackages="$pkgname-openrc:_openrc"
+_pmb_recommends="postmarketos-base-ui-audio-none"
 
 package() {
 	mkdir -p "$pkgdir"
