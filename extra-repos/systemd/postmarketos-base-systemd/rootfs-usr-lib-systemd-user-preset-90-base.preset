@@ -7,3 +7,4 @@ enable pipewire.socket
 enable pulseaudio.socket
 enable wireplumber.service
 enable fbd-alert-slider.service
+enable vvmd.service
