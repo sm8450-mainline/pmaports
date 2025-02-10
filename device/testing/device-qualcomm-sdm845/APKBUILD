@@ -1,11 +1,10 @@
-
 # Reference: <https://postmarketos.org/devicepkg>
 # Maintainer: Caleb Connolly <caleb.connolly@linaro.org>
 
 pkgname=device-qualcomm-sdm845
 pkgdesc="Generic device package for Qualcomm SDM845 devices"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -23,10 +22,10 @@ depends="
 	soc-qcom-sdm845-qbootctl
 	soc-qcom-sdm845-ucm
 	systemd-boot
+	unl0kr-fbforcerefresh
 "
 makedepends="devicepkg-dev"
 source="
-	10-unl0kr.conf
 	deviceinfo
 	q6voiced.conf
 	modules-initfs
@@ -39,14 +38,10 @@ build() {
 package() {
 	devicepkg_package $startdir $pkgname
 
-	install -Dm644 "$srcdir"/10-unl0kr.conf \
-		"$pkgdir"/etc/unl0kr.conf.d/10-unl0kr.conf
-
 	install -Dm644 q6voiced.conf "$pkgdir"/etc/conf.d/q6voiced
 }
 
 sha512sums="
-f700af3145b79d1ef9edfb22982899b25cabfb212f9620dcbd3a2e6f44b5ad591e0a66056c6fcd66c3fde89a2b5f551e8a8fe2e65cf0e2a48adec57c027d7825  10-unl0kr.conf
 269d048bbb1b7b0d199c9969f4700c9cae8a7850a5b66cd736c3e93a21a1b0caca0ddc4e97fe3703b39562e771793db9a8e13f11a84957026bc7d00f035c9a4a  deviceinfo
 5f3e1c286baea16a5b0a4a34cef7ad774d3aa5cc384e1deb4fba40d1f9372a708baf3b587e3edac69edcf04b5513f0111c1976b649b424cc721733ce4ddabc19  q6voiced.conf
 3bbacc8c260e2c0af509b9b123218f830610ac7aef82efc9b117fc62ccda4155e588be718dcb399102b5534a25900e53840083add166a7ac5b399ddc702de904  modules-initfs
