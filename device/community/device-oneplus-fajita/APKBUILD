@@ -4,7 +4,7 @@
 pkgname=device-oneplus-fajita
 pkgdesc="OnePlus 6T"
 pkgver=14
-pkgrel=3
+pkgrel=4
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -47,21 +47,23 @@ nonfree_firmware() {
 	pkgdesc="Modem, WiFi and GPU Firmware, also needed for osk-sdl"
 	depends="
 		firmware-oneplus-sdm845>=9
-		hexagonrpcd
+		hexagonrpcd>=0.3.2-r3
 		soc-qcom-sdm845-nonfree-firmware
 		soc-qcom-sdm845-modem
 	"
 
 	install -Dm644 "$srcdir"/81-libssc-oneplus-fajita.rules -t "$subpkgdir"/usr/lib/udev/rules.d/
 	install -Dm644 q6voiced.conf "$subpkgdir"/etc/conf.d/q6voiced
+	install -Dm644 "$srcdir"/hexagonrpcd.confd \
+		"$subpkgdir"/usr/share/hexagonrpcd/hexagonrpcd-sdsp.conf
 }
 
 nonfree_firmware_openrc() {
 	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
-	replaces="hexagonrpcd-openrc"
+	depends="hexagonrpcd-openrc"
 
-	install -Dm644 "$srcdir"/hexagonrpcd.confd "$subpkgdir"/etc/conf.d/hexagonrpcd-sdsp
+	mkdir -p "$subpkgdir"
 }
 
 pmtest() {
