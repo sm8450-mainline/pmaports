@@ -5,7 +5,7 @@
 
 pkgname=device-google-blueline
 pkgdesc="Google Pixel 3"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -21,10 +21,10 @@ depends="
 	soc-qcom-sdm845-ucm
 	soc-qcom-sdm845-qbootctl
 	soc-qcom-sdm845-nonfree-firmware
+	unl0kr-fbforcerefresh
 "
 makedepends="devicepkg-dev"
 source="
-	10-unl0kr.conf
 	deviceinfo
 	modules-initfs
 "
@@ -35,13 +35,9 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
-
-	install -Dm644 "$srcdir"/10-unl0kr.conf \
-		"$pkgdir"/etc/unl0kr.conf.d/10-unl0kr.conf
 }
 
 sha512sums="
-e957b7b0ed219eaa56be6c6b976b60886f73970703fdebf045800154ee652affee4e19654b3ac4244b29bcf6760ad3db6cb87143dc9c4673e905800d751103d1  10-unl0kr.conf
 1a6c56470ccf94a51d235b011d0069ed028f781eb94863759113b62646138e3a8a34936536715eb908b5bea06c360567b0f217427fc4e5b34a617388072367ec  deviceinfo
 c8b486aefd8b65676a7466d65df9c3e227efb372df3970085f01aff985ea2bb6e545bd83a91d944659b99e08e47770b066c1fdcd731e2d92767f8b35dab97c5b  modules-initfs
 "
