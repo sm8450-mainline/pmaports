@@ -14,6 +14,9 @@ deviceinfo_external_storage="false"
 deviceinfo_flash_method="fastboot"
 deviceinfo_arch="armv7"
 
+# boot.img must be <=8MB to work with ouya_bootmenu
+deviceinfo_create_initfs_extra="true"
+
 # Splash screen
 deviceinfo_screen_width="1920"
 deviceinfo_screen_height="1080"
