@@ -12,6 +12,7 @@ mbcache
 mmc_block
 mmc_core
 nvme
+psmouse
 scsi_mod
 sd
 sd_mod
