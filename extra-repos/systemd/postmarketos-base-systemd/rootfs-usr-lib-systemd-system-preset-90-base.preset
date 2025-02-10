@@ -67,6 +67,7 @@ enable hexagonrpcd-adsp-rootpd.service
 enable hexagonrpcd-adsp-sensorspd.service
 enable hexagonrpcd-sdsp.service
 enable iio-sensor-proxy.service
+enable hfd-service.service
 
 ## qcom
 enable pd-mapper.service
