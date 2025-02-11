@@ -1,0 +1,12 @@
+[Unit]
+Description=Tracker data writeback service
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.LocalSearch3.Writeback
+ExecStart=/usr/libexec/localsearch-writeback-3
+Restart=on-failure
+# Don't restart after tracker daemon -k (aka tracker-control -k)
+RestartPreventExitStatus=SIGKILL
+Slice=background.slice
+

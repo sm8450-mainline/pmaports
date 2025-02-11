@@ -1,0 +1,18 @@
+[Unit]
+Description=Tracker file system data miner
+ConditionUser=!root
+ConditionUser=!gnome-initial-setup
+After=gnome-session.target
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.LocalSearch3
+ExecStart=/usr/libexec/localsearch-3
+Restart=on-failure
+# Don't restart after tracker daemon -k (aka tracker-control -k)
+RestartPreventExitStatus=SIGKILL
+Slice=background.slice
+
+[Install]
+WantedBy=gnome-session.target
+
