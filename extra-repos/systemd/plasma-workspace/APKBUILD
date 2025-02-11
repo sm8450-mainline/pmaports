@@ -1,8 +1,8 @@
 # Forked from Alpine to add systemd!
 
 pkgname=plasma-workspace
-pkgver=99996.2.5
-_pkgver=6.2.5
+pkgver=99996.3.0
+_pkgver=6.3.0
 pkgrel=0
 pkgdesc="KDE Plasma Workspace"
 # armhf blocked by qt6-qtdeclarative
@@ -99,7 +99,7 @@ makedepends="$depends_dev
 	"
 checkdepends="
 	dbus
-	xvfb-run
+	xwayland-run
 	"
 case "$_pkgver" in
 	*.90*) _rel=unstable;;
@@ -153,6 +153,7 @@ check() {
 		keystatetest
 		klipper-testHistoryCycler
 		klipper-testHistoryModel
+		klipper_v3migrationtest
 		klippertest
 		lockedtest
 		mediakeystest
@@ -182,7 +183,7 @@ check() {
 		skipped_tests="$skipped_tests|$test"
 	done
 	skipped_tests="$skipped_tests)"
-	dbus-run-session -- xvfb-run -a ctest --test-dir build -E "$skipped_tests"
+	dbus-run-session xwfb-run -- ctest --test-dir build -E "$skipped_tests"
 }
 
 package() {
@@ -198,5 +199,5 @@ x11() {
 }
 
 sha512sums="
-228d183c9561cbf3d5630582b80c687868eaf420310010bd417de0e9f0ababaa4767805c1ce84f4eb3539ea32bfe6c2849b70d7ddd133f6095ab71f94f854dea  plasma-workspace-6.2.5.tar.xz
+eb7602ed484792729949302a616d19414591ae06536bb876bcb3694d7b43d6e0010e05c0a8c8dd93ce119f2429d1effba3729915e3afed5f3f6293373794ce78  plasma-workspace-6.3.0.tar.xz
 "

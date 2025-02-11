@@ -1,6 +1,6 @@
 maintainer="Bart Ribbers <bribbers@disroot.org>"
 pkgname=kjournald
-pkgver=24.12.1
+pkgver=24.12.2
 pkgrel=0
 pkgdesc="Framework for interacting with systemd-journald"
 # armhf blocked by qt6-qtdeclarative
@@ -45,5 +45,5 @@ package() {
 }
 
 sha512sums="
-11e5e9e15038c79c677d942d0e6f98d870e2e7feb5cf7154dcea2a759af68a194cc13a606778c949ae88820f3d4d3d3384746fcac9b974712f3c2e1486466efc  kjournald-24.12.1.tar.xz
+68b3789c86327f12374d78980c6ce6451c2008b2c1da49c598666de4d7977c93dc1b1b7bf4b825dfea7577cd05922348263ffc5edc52cb916c2466b1935d5bb1  kjournald-24.12.2.tar.xz
 "
