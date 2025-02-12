@@ -3,7 +3,7 @@
 pkgname=device-xiaomi-miatoll
 pkgdesc="Xiaomi Redmi Note 9 Pro / Redmi Note 9S"
 pkgver=4
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -46,21 +46,21 @@ nonfree_firmware() {
 	depends="
 		firmware-xiaomi-miatoll
 		soc-qcom-sm7125-nonfree-firmware
-		hexagonrpcd
+		hexagonrpcd>=0.3.2-r3
 	"
-	mkdir "$subpkgdir"
 
 	install -Dm644 81-libssc-xiaomi-miatoll.rules \
 		"$subpkgdir"/etc/udev/rules.d/81-libssc-xiaomi-miatoll.rules
+	install -Dm644 "$srcdir"/hexagonrpcd.confd \
+		"$pkgdir"/usr/share/hexagonrpcd/hexagonrpcd-adsp-sensorspd.conf
 }
 
 nonfree_firmware_openrc() {
 	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
-	replaces="hexagonrpcd-openrc"
-	mkdir "$subpkgdir"
+	depends="hexagonrpcd-openrc"
 
-	install -Dm644 "$srcdir"/hexagonrpcd.confd "$subpkgdir"/etc/conf.d/hexagonrpcd-adsp-sensorspd
+	mkdir "$subpkgdir"
 }
 
 kernel_curtana_tianma() {
