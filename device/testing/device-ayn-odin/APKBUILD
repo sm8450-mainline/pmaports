@@ -3,14 +3,14 @@
 pkgname=device-ayn-odin
 pkgdesc="AYN Odin"
 pkgver=2
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
 	firmware-ayn-odin
-	hexagonrpcd
+	hexagonrpcd>=0.3.2-r3
 	linux-firmware-ath10k
 	linux-firmware-qca
 	linux-firmware-qcom
@@ -36,8 +36,6 @@ subpackages="
 	$pkgname-phosh-m2:_phosh_m2
 "
 
-replaces="hexagonrpcd-openrc"
-
 build() {
 	devicepkg_build $startdir $pkgname
 }
@@ -45,7 +43,8 @@ build() {
 package() {
 	devicepkg_package $startdir $pkgname
 
-	install -Dm644 "$srcdir"/hexagonrpcd.confd "$pkgdir"/etc/conf.d/hexagonrpcd-sdsp
+	install -Dm644 "$srcdir"/hexagonrpcd.confd \
+		"$pkgdir"/usr/share/hexagonrpcd/hexagonrpcd-sdsp.conf
 }
 
 kernel_odin() {
@@ -63,6 +62,7 @@ kernel_odin_m2() {
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install"
+	depends="hexagonrpcd-openrc"
 
 	mkdir -p "$subpkgdir"
 }
