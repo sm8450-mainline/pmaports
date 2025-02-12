@@ -3,7 +3,7 @@
 pkgname=device-fairphone-fp5
 pkgdesc="Fairphone 5"
 pkgver=6
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -19,8 +19,7 @@ depends="
 	firmware-fairphone-fp5-venus
 	firmware-fairphone-fp5-wpss
 	firmware-qcom-adreno-a660
-	hexagonrpcd
-	hexagonrpcd-openrc
+	hexagonrpcd>=0.3.2-r3
 	linux-postmarketos-qcom-sc7280
 	make-dynpart-mappings
 	mkbootimg
@@ -29,7 +28,6 @@ depends="
 	soc-qcom-sc7280-qbootctl
 "
 makedepends="devicepkg-dev"
-replaces="hexagonrpcd-openrc"
 subpackages="$pkgname-openrc"
 source="
 	10-unl0kr.conf
@@ -60,14 +58,17 @@ package() {
 
 	install -Dm644 "$srcdir"/10-unl0kr.conf \
 		"$pkgdir"/etc/unl0kr.conf.d/10-unl0kr.conf
+
+	install -Dm644 "$srcdir"/hexagonrpcd.confd \
+		"$pkgdir"/usr/share/hexagonrpcd/hexagonrpcd-adsp-sensorspd.conf
 }
 
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="hexagonrpcd-openrc"
 
-	install -Dm644 "$srcdir"/hexagonrpcd.confd \
-		"$subpkgdir"/etc/conf.d/hexagonrpcd-adsp-sensorspd
+	mkdir -p "$subpkgdir"
 }
 
 sha512sums="
