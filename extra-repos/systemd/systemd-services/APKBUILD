@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=46
+pkgver=47
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -43,6 +43,7 @@ subpackages="
 	kded-systemd:_service
 	kglobalacceld-systemd:_service
 	ksystemstats-systemd:_service
+	kwallet-pam-systemd:_service
 	lxc-systemd:_service
 	mmsd-tng-systemd:_service
 	modemmanager-systemd:_service
@@ -125,6 +126,7 @@ _kactivitymanagerd_sources="user/plasma-kactivitymanagerd.service"
 _kded_sources="user/kded.service" # From https://invent.kde.org/frameworks/kded/-/blob/master/src/plasma-kded6.service.in
 _kglobalacceld_sources="user/plasma-kglobalaccel.service"
 _ksystemstats_sources="user/plasma-ksystemstats.service"
+_kwallet_pam_sources="user/plasma-kwallet-pam.service"
 _lxc_sources="system/lxc@.service"
 _mmsd_tng_sources="user/mmsd-tng.service"
 _modemmanager_sources="system/ModemManager.service"
@@ -195,6 +197,7 @@ source="$(flatpath \
 	$_kded_sources \
 	$_kglobalacceld_sources \
 	$_ksystemstats_sources \
+	$_kwallet_pam_sources \
 	$_lxc_sources \
 	$_mmsd_tng_sources \
 	$_modemmanager_sources \
@@ -344,8 +347,8 @@ e0c5baf8030bae74c1ddb0f6f9bc4fdf2a1febaa344de1957d9a69a01eb7e1dc143b9d324ef15214
 41476015b700642b4451c572012fc5ad248abe76ff16fd9bad35e7710b0073b76370c6ce23a183fb54fdaf1ac3be8888323fa04f6f15d3b9ce9eaadeccaa64ad  system-hexagonrpcd-adsp-rootpd.service
 03a948f31ca756af7bff4ebff1d1b447532586d290981e99802488962c530d58352a04ee59436436212a5ae3fb496e837f23b3f24c43016cd36af108569cb58a  system-hexagonrpcd-adsp-sensorspd.service
 c7eee76a471f0fd62fc78e645bcabbabb2f7a61117303fb582f502548f5849e931adf9ac11251bc765506960408c3a2f41b9eb1a5563582177b2c7517c671bfb  system-hexagonrpcd-sdsp.service
-5087ff36981b89c9bd09f96cff93d1f20d5af513e2cdebf65a85e329f458a9a2b77c12091ed31278c3b89baef79273cc818fddabbe4e1eec75faf7b9cc18cb8a  system-hfd-service.service
 af0e416f78ab317fe09813de58b446e5178457992ea4a2da2eb128811045201087d847e1b7ac0447a59c20129a736135e5d76b113262aa1f76b994e77b9c6b42  system-iio-sensor-proxy.service.d-hexagonrpcd.conf
+5087ff36981b89c9bd09f96cff93d1f20d5af513e2cdebf65a85e329f458a9a2b77c12091ed31278c3b89baef79273cc818fddabbe4e1eec75faf7b9cc18cb8a  system-hfd-service.service
 d12ebe6e7db2a8e34baab640dd4e2ea9cd01bc19054adf32d55528a6b27f71c2006ac2d65a58c98e21ed598e9cc66bfe79e197d20ed9d13f866a5a6cd3e247d5  system-iio-sensor-proxy.service
 df3388cb7b9d035e54b34d8f8a6594be89c3015f979fe3bdc199fb7db1ab0bef821d6b306eecdf978eb227454d5e50aab29ac02d9722b1b075ec0ce4705e3518  system-iwd.service
 9cf877929b16f3437e65d1a0a2049799cc97cc84a7caab6a581e90139495b4febb5fb4c59ee463110866a0b60c9462d6d0fdb331d92d29b30ce6aeada365ac48  user-plasma-kactivitymanagerd.service
@@ -353,6 +356,7 @@ fa41668288d53f8ce42a7524f10b1e03812fb11ed71bcb484dc22d0d374b453837317eb599cf61b6
 b0ecd5d413a2010d3f36285c2d35523119c29007e1e4162e51dfc746cc105f990a82a2a2d6037a8b906628c0a4f606729290525c7a53dbcfbc8147244fa403a7  user-kded.service
 acf21c4391ca62775491ba4d3b7c460b4163ef07abb195e152c98299a2d12779f3eb95f8cad0aeb3239f2d0fa8222a2483000c45aa6a47e05269876147d89839  user-plasma-kglobalaccel.service
 bccc419b13d39c59ef6bb765dde2bef70c621995bc53d74ccc9ad4aef92931ee74c3ee0b19a0dffb8c3f133b5b0d73f5f70df269dddf5f0ed1dba1cf31d7e141  user-plasma-ksystemstats.service
+a9358610c86fd3506e4cf02aea26e699d61268121ea3c16507b8f71446c16169a1c90c75faf126f2cf607c091e507f7e5822ea5fd8cc1f6e14f257c8007287a3  user-plasma-kwallet-pam.service
 f6fb4c890cbf72e344ca7a22e7f033fb4c32ce9f5edc27c03ccc5c21424d6a0ef871d79e8a89a502a707bdceb3bfbd7a5b3c8e16b1cd30e149bf2fdf8cccea9e  system-lxc@.service
 873b53592786a978659bda8d32de5ed9a9f163ca298c4f4112f10bf635a8170c4060cc15b57ff72b3afd50075cd1c5dbc10030f00b166e2540397da9e1c5e46b  user-mmsd-tng.service
 5eab6a59c81232b188df45482e325b2d1cb9e038ca147a1b6983c1c095d8194fba804793c5e291b201a820976c8f506aadd2daf7c52fe573a3af708fc9984641  system-ModemManager.service
