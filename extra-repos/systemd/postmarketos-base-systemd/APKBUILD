@@ -1,5 +1,5 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
-# Maintainer: Clayton Craft <clayton@craftyguy.net>
+# Co-maintainer: Clayton Craft <clayton@craftyguy.net>
 # pmbootstrap installs this, if systemd is selected in "pmbootstrap init".
 pkgname=postmarketos-base-systemd
 pkgver=24
