@@ -1,4 +1,4 @@
-From b7d36ebc48e833b5a3b10d6b8b8a84237a3c21ef Mon Sep 17 00:00:00 2001
+From c075e9114298bf9372653797cb4979826d743606 Mon Sep 17 00:00:00 2001
 From: Martijn Braam <martijn@brixit.nl>
 Date: Sat, 20 Apr 2019 01:19:48 +0200
 Subject: [PATCH] dts: add dontbeevil (pinephone devkit)
@@ -532,5 +532,5 @@ index 000000000000..15a91f2d6202
 +	status = "disabled";
 +};
 -- 
-2.47.0
+2.48.1
 

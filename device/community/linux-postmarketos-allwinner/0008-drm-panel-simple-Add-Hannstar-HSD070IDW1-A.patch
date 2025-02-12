@@ -1,4 +1,4 @@
-From fa3aa6991720dff1e52620c4a33d324abdfffb5f Mon Sep 17 00:00:00 2001
+From 2fb141b57bf77c012e1d5ca1c39061375d5af2a1 Mon Sep 17 00:00:00 2001
 From: JuniorJPDJ <git@juniorjpdj.pl>
 Date: Thu, 25 Mar 2021 19:11:22 +0100
 Subject: [PATCH] drm: panel: simple: Add Hannstar HSD070IDW1-A
@@ -8,7 +8,7 @@ Subject: [PATCH] drm: panel: simple: Add Hannstar HSD070IDW1-A
  1 file changed, 27 insertions(+)
 
 diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
-index 9cc62595a355..d3422731d598 100644
+index a6d4a28b8e2d..a2083d9c2552 100644
 --- a/drivers/gpu/drm/panel/panel-simple.c
 +++ b/drivers/gpu/drm/panel/panel-simple.c
 @@ -2309,6 +2309,30 @@ static const struct panel_desc giantplus_gpm940b0 = {
@@ -42,7 +42,7 @@ index 9cc62595a355..d3422731d598 100644
  static const struct display_timing hannstar_hsd070pww1_timing = {
  	.pixelclock = { 64300000, 71100000, 82000000 },
  	.hactive = { 1280, 1280, 1280 },
-@@ -4802,6 +4826,9 @@ static const struct of_device_id platform_of_match[] = {
+@@ -4827,6 +4851,9 @@ static const struct of_device_id platform_of_match[] = {
  	}, {
  		.compatible = "giantplus,gpm940b0",
  		.data = &giantplus_gpm940b0,
@@ -53,5 +53,5 @@ index 9cc62595a355..d3422731d598 100644
  		.compatible = "hannstar,hsd070pww1",
  		.data = &hannstar_hsd070pww1,
 -- 
-2.47.0
+2.48.1
 

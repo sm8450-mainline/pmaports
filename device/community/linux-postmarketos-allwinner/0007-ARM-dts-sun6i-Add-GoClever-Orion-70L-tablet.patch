@@ -1,4 +1,4 @@
-From 9e37c946105f89b7c0dd828cc46d6d8e2a1206fa Mon Sep 17 00:00:00 2001
+From ed60f6aa0e0dd95bb4243ffb7fdc41661730a00d Mon Sep 17 00:00:00 2001
 From: JuniorJPDJ <git@juniorjpdj.pl>
 Date: Tue, 23 Mar 2021 12:29:37 +0100
 Subject: [PATCH] ARM: dts: sun6i: Add GoClever Orion 70L tablet
@@ -10,7 +10,7 @@ Subject: [PATCH] ARM: dts: sun6i: Add GoClever Orion 70L tablet
  create mode 100644 arch/arm/boot/dts/allwinner/sun6i-a31s-goclever-gcta741l.dts
 
 diff --git a/arch/arm/boot/dts/allwinner/Makefile b/arch/arm/boot/dts/allwinner/Makefile
-index 54b156fca9bf..77593039273c 100644
+index 1356e9553bd6..5131a1329d63 100644
 --- a/arch/arm/boot/dts/allwinner/Makefile
 +++ b/arch/arm/boot/dts/allwinner/Makefile
 @@ -111,6 +111,7 @@ dtb-$(CONFIG_MACH_SUN6I) += \
@@ -131,5 +131,5 @@ index 000000000000..4fcba20ffe48
 +	status = "okay";
 +};
 -- 
-2.47.0
+2.48.1
 

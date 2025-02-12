@@ -1,4 +1,4 @@
-From 4637cf894ab29f1aadfe4649eeb2771fa0b087b1 Mon Sep 17 00:00:00 2001
+From 9ee0df20aa3e84bcec21f9807b8c60800366bcb2 Mon Sep 17 00:00:00 2001
 From: Martijn Braam <martijn@brixit.nl>
 Date: Tue, 20 Oct 2020 14:44:51 +0200
 Subject: [PATCH] dts: pinetab: make audio routing consistent with pinephone
@@ -31,5 +31,5 @@ index e30034a1553b..b2a3c0f97ce1 100644
  			"ADCR", "Right ADC",
  			"Internal Microphone Left", "MBIAS",
 -- 
-2.47.0
+2.48.1
 

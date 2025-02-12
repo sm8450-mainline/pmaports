@@ -1,4 +1,4 @@
-From a7d843454722a7c1459d3fde217242a9cb994415 Mon Sep 17 00:00:00 2001
+From da7dd9c1a895155148223c8add0b473517ffef6d Mon Sep 17 00:00:00 2001
 From: Martijn Braam <martijn@brixit.nl>
 Date: Tue, 20 Oct 2020 14:42:01 +0200
 Subject: [PATCH] dts: add pinetab-dev (old display panel)
@@ -57,5 +57,5 @@ index 000000000000..1e287f2fb9f3
 +	};
 +};
 -- 
-2.47.0
+2.48.1
 

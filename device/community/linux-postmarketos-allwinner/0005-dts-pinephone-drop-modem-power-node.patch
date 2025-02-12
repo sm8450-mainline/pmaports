@@ -1,4 +1,4 @@
-From e8c11d3b0599a3fa5b4e26ef2e29e14c44d7639d Mon Sep 17 00:00:00 2001
+From 79d85f9fb8db684e8d941ed792b83cfcda8675d7 Mon Sep 17 00:00:00 2001
 From: Clayton Craft <clayton@craftyguy.net>
 Date: Wed, 16 Dec 2020 20:16:14 -0800
 Subject: [PATCH] dts: pinephone: drop modem-power node
@@ -139,7 +139,7 @@ index ec4927dfe9dc..57b651d695af 100644
 +	gpios = <&r_pio 0 6 GPIO_ACTIVE_LOW>; /* PL6 */
 +};
 diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi
-index dcd392fe6027..24b7f01fd901 100644
+index 231dca430e40..f9881b9923af 100644
 --- a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi
 +++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinephone.dtsi
 @@ -310,6 +310,17 @@ ec25_codec: ec25-codec {
@@ -169,5 +169,5 @@ index dcd392fe6027..24b7f01fd901 100644
  		regulator-max-microvolt = <3500000>;
  		gpio = <&r_pio 0 7 GPIO_ACTIVE_HIGH>; /* PL7 */
 -- 
-2.47.0
+2.48.1
 
