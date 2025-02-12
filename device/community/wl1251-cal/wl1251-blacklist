@@ -1,0 +1,3 @@
+# Ensure wl1251 does not load until wl1251-cal has finished running
+blacklist wl1251_spi
+blacklist wl1251

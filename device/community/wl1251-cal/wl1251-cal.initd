@@ -3,12 +3,13 @@ description="Update wl1251 calibration data"
 
 depend()
 {
-	before modules
-	after localmount
+	need localmount
 }
 
 start()
 {
 	calibrate-wl1251
+	# Probe wl1251 once the nvs is ready
+	modprobe wl1251_spi
 	eend $?
 }
