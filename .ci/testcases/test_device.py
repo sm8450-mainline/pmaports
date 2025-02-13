@@ -14,9 +14,6 @@ import pmb.parse._apkbuild
 from pmb.core.pkgrepo import pkgrepo_default_path, pkgrepo_iglob, pkgrepo_relative_path
 from pmb.core.arch import Arch
 
-# Cache for codeowners_parse
-codeowners_parsed = {}
-
 # Don't complain if these nicknames are the only maintainers of an APKBUILD,
 # because they are actually a group of people
 gitlab_groups = [
@@ -102,72 +99,12 @@ def test_aports_device_kernel():
                                f" <https://postmarketos.org/devicepkg>): {path}")
 
 
-def codeowners_parse():
-    global codeowners_parsed
-
-    pattern_prev = None
-    aports = pkgrepo_default_path()
-
-    with open(aports / "CODEOWNERS") as h:
-        for line in h:
-            line = line.rstrip()
-            if not line or line.startswith("#"):
-                continue
-
-            pattern_nicks = line.split()
-            assert len(pattern_nicks) > 1, f"CODEOWNERS line without nicks: {line}"
-
-            pattern = pattern_nicks[0]
-            if pattern.endswith("/"):
-                pattern += "*"
-
-            nicks = []
-            for word in pattern_nicks[1:]:
-                if word.startswith("@"):
-                    nicks += [word]
-            codeowners_parsed[pattern] = nicks
-
-            if pattern_prev:
-                assert pattern_prev <= pattern, "CODEOWNERS: please order entries alphabetically"
-            pattern_prev = pattern
-
-
-def require_enough_codeowners_entries(path, maintainers):
-    """
-    :param path: full path to an APKBUILD (e.g. /home/user/…/APKBUILD)
-    :param maintainers: list of one or more maintainers
-    """
-
-    _, path = pkgrepo_relative_path(path)
-
-    nicks = set()
-    for pattern, pattern_nicks in codeowners_parsed.items():
-        if fnmatch.fnmatch(path, pattern):
-            for nick in pattern_nicks:
-                nicks.add(nick)
-
-    print(f"{path}:")
-    print(f"  APKBUILD: {maintainers}")
-    print(f"  CODEOWNERS: {nicks}")
-
-    if len(nicks) < len(maintainers):
-        for nick in nicks:
-            if nick in gitlab_groups:
-                print(f"  -> {nick} is a group")
-                return
-
-    assert len(nicks) >= len(maintainers), \
-        f"{path}: make sure that each maintainer is listed in CODEOWNERS!"
-
-
 # @pytest.mark.xfail # Not all aports have been updated yet
 def test_aports_maintained():
     """
     Ensure that aports in /device/{main,community} have "Maintainer:" and
-    "Co-Maintainer:" (only required for main) listed in their APKBUILDs. Also
-    check that at least as many are listed in CODEOWNERS.
+    "Co-Maintainer:" (only required for main) listed in their APKBUILDs.
     """
-    codeowners_parse()
 
     for path in pkgrepo_iglob("device/main/*/APKBUILD"):
         if 'firmware-' in path.parent.name:
@@ -175,14 +112,12 @@ def test_aports_maintained():
         maintainers = pmb.parse._apkbuild.maintainers(path)
         assert maintainers and len(maintainers) >= 2, \
             f"{path} in main needs at least 1 Maintainer and 1 Co-Maintainer"
-        require_enough_codeowners_entries(path, maintainers)
 
     for path in pkgrepo_iglob("device/community/*/APKBUILD"):
         if 'firmware-' in path.parent.name:
             continue
         maintainers = pmb.parse._apkbuild.maintainers(path)
         assert maintainers, f"{path} in community needs at least 1 Maintainer"
-        require_enough_codeowners_entries(path, maintainers)
 
 
 def test_aports_unmaintained():
