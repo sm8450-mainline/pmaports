@@ -124,13 +124,18 @@ if __name__ == "__main__":
                 print(f"(extra-repos/systemd) {package}: not enabled for {arch}, skipping")
                 systemd_pkgs.remove(package)
 
-        verify_only = common.commit_message_has_string("[ci:skip-build]")
-        if verify_only:
-            # [ci:skip-build]: verify checksums
-            print("WARNING: not building changed packages for extra-repos/systemd: ([ci:skip-build])!")
-            print("verifying checksums: " + ", ".join(systemd_pkgs))
-            verify_checksums(systemd_pkgs, arch)
+        # No packages: skip build
+        if len(packages) == 0:
+            print(f"no packages changed, which can be built for {arch}")
+
         else:
-            # Build packages
-            print(f"building in strict mode for {arch}, from extra-repos/systemd: {', '.join(systemd_pkgs)}")
-            build_strict(systemd_pkgs, arch)
+            verify_only = common.commit_message_has_string("[ci:skip-build]")
+            if verify_only:
+                # [ci:skip-build]: verify checksums
+                print("WARNING: not building changed packages for extra-repos/systemd: ([ci:skip-build])!")
+                print("verifying checksums: " + ", ".join(systemd_pkgs))
+                verify_checksums(systemd_pkgs, arch)
+            else:
+                # Build packages
+                print(f"building in strict mode for {arch}, from extra-repos/systemd: {', '.join(systemd_pkgs)}")
+                build_strict(systemd_pkgs, arch)
