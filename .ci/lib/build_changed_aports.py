@@ -125,7 +125,7 @@ if __name__ == "__main__":
                 systemd_pkgs.remove(package)
 
         # No packages: skip build
-        if len(packages) == 0:
+        if len(systemd_pkgs) == 0:
             print(f"no packages changed, which can be built for {arch}")
 
         else:
