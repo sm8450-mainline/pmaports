@@ -1,8 +1,8 @@
 # Forked from Alpine for systemd support
 
 pkgname=wireplumber
-pkgver=9990.5.7
-_pkgver=0.5.7
+pkgver=9990.5.8
+_pkgver=0.5.8
 pkgrel=0
 pkgdesc="Session / policy manager implementation for PipeWire"
 url="https://pipewire.org/"
