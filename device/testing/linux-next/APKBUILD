@@ -2,7 +2,7 @@
 # Kernel config based on: arch/arm64/configs/defconfig
 
 pkgname=linux-next
-pkgver=6.14_git20250212
+pkgver=6.14_git20250213
 pkgrel=0
 _nextver="${pkgver#*_git}"
 pkgdesc="Linux next kernel"
@@ -69,7 +69,7 @@ package() {
 }
 
 sha512sums="
-4010705bc55badbbbe53d328af81aaff3e046baa0919ee47e46ea6939d7e06a832d27ff3bfcb93c8c4f475580f5a5d6359a3af7fa33fa0122d0d1486faab6a3f  linux-next-next-20250212.tar.gz
+ec66e3b30a88240c3ebd04bbecee313a99ed6b9211dcf1f43cf9093982820fb07ee2334b7f593ceea8f15b04422b65179bc255858d122a79dbd5fdf2762fd764  linux-next-next-20250213.tar.gz
 8de0a3791ea671528a9fc753071683dfea68ea4f4c22060fc0ca8a4b1b3d76eaa2a3fd40bb013173f0e55da15dde91cf285902779beb35781b6c90f39244ce11  devices.config
 eaceb011997e5f19ad8c5e9b4d291ebe264d83953f9b21d5b1a0c479602edb235252657f297b1a59c7a11dd2205d40360197489a3337ba6f8e040ecf2b51f527  pmos.config
 "
