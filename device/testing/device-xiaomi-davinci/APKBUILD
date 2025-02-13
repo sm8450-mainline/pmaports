@@ -5,7 +5,7 @@
 pkgname=device-xiaomi-davinci
 pkgdesc="Xiaomi Mi 9T / Redmi K20"
 pkgver=4
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -16,12 +16,11 @@ depends="
 	make-dynpart-mappings
 	mkbootimg
 	postmarketos-base
-	soc-qcom-sm7150
+	soc-qcom-sm7150>=2-r1
 	soc-qcom-sm7150-libssc-180-degrees
 	soc-qcom-sm7150-unl0kr-quirk
 "
 makedepends="devicepkg-dev"
-replaces="hexagonrpcd-openrc"
 source="
 	deviceinfo
 	hexagonrpcd.confd
@@ -36,7 +35,7 @@ package() {
 	devicepkg_package $startdir $pkgname
 
 	install -Dm644 "$srcdir"/hexagonrpcd.confd \
-		"$pkgdir"/etc/conf.d/hexagonrpcd-adsp-sensorspd
+		"$pkgdir"/usr/share/hexagonrpcd/hexagonrpcd-adsp-sensorspd.conf
 }
 
 sha512sums="
