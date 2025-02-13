@@ -5,7 +5,7 @@
 pkgname=device-xiaomi-surya
 pkgdesc="Xiaomi POCO X3 NFC"
 pkgver=7
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -15,11 +15,10 @@ depends="
 	make-dynpart-mappings
 	mkbootimg
 	postmarketos-base
-	soc-qcom-sm7150
+	soc-qcom-sm7150>=2-r1
 	soc-qcom-sm7150-libssc-180-degrees
 "
 makedepends="devicepkg-dev"
-replaces="hexagonrpcd-openrc"
 subpackages="
 	$pkgname-kernel-huaxing:kernel_huaxing
 	$pkgname-kernel-tianma:kernel_tianma
@@ -38,7 +37,7 @@ package() {
 	devicepkg_package $startdir $pkgname
 
 	install -Dm644 "$srcdir"/hexagonrpcd.confd \
-		"$pkgdir"/etc/conf.d/hexagonrpcd-adsp-sensorspd
+		"$pkgdir"/usr/share/hexagonrpcd/hexagonrpcd-adsp-sensorspd.conf
 }
 
 kernel_huaxing() {
