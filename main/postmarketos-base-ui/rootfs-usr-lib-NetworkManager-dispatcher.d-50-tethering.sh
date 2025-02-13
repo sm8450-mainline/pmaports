@@ -13,6 +13,7 @@ con_uuid="83bd1823-feca-4c2b-9205-4b83dc792e1f"
 . /usr/share/misc/source_deviceinfo
 
 usb_network_function="${deviceinfo_usb_network_function:-ncm.usb0}"
+disable_dhcpd="${deviceinfo_disable_dhcpd:-false}"
 usb_network_function_fallback="rndis.usb0"
 if [ -n "$(cat /sys/kernel/config/usb_gadget/g1/UDC)" ]; then
 	interface="$(
@@ -70,8 +71,13 @@ disable_tethering() {
 
 	# Restart unudhcpd and configure it similar to initfs
 	killall unudhcpd || true
-	(unudhcpd -i "$interface" -s "$host_ip" -c "$client_ip") &
-	logger -t nm-tethering "unudhcpd started"
+
+	if [ "$disable_dhcpd" = "true" ]; then
+		logger -t nm-tethering "unudhcpd not restarted because it is disabled"
+	else
+		(unudhcpd -i "$interface" -s "$host_ip" -c "$client_ip") &
+		logger -t nm-tethering "unudhcpd started"
+	fi
 
 	# Reactivate gadget to apply changes
 	reactivate_gadget
