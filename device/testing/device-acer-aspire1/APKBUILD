@@ -3,12 +3,13 @@
 pkgname=device-acer-aspire1
 pkgdesc="Acer Aspire 1"
 pkgver=5
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
+	alsa-ucm-conf
 	linux-postmarketos-qcom-sc7180
 	postmarketos-base
 	soc-qcom-sc7180
