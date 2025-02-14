@@ -1,4 +1,4 @@
-# [Unit]
+[Unit]
 Description=WireGuard via wg-quick(8) for %I
 After=network-online.target nss-lookup.target
 Wants=network-online.target nss-lookup.target
