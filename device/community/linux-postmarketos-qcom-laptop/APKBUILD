@@ -1,10 +1,10 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 # Co-Maintainer: Caleb Connolly <caleb@postmarketos.org>
 pkgname=linux-postmarketos-qcom-laptop
-pkgver=6.13
+pkgver=6.14
 pkgrel=0
 # Commit from branch @ https://github.com/jhovold/linux/tree/wip/x1e80100-$pkgver
-_commit="0df45c8ef99147234f541062be775907b28ad768"
+_commit="5f4df433497c460200adf168a50f0260c3dd4062"
 pkgdesc="Generic kernel for Qualcomm laptops"
 arch="aarch64"
 _carch="arm64"
@@ -40,7 +40,6 @@ source="
 	$pkgname-$_commit.tar.gz::https://github.com/jhovold/$_repository/archive/$_commit.tar.gz
 	misc.config
 	pmos.config
-	0001-partially-revert-arm64-dts-qcom-sc8280xp-enable-GICv.patch
 "
 builddir="$srcdir/linux-$_commit"
 _outdir="out"
@@ -82,8 +81,7 @@ package() {
 }
 
 sha512sums="
-b49abf68751eb34eb83a716f03695b118eb42beaac44dc2116349475a5783d759879fedc052fe0b9d845bc4549211b302b68598c86526a75867abf35e2437fe3  linux-postmarketos-qcom-laptop-0df45c8ef99147234f541062be775907b28ad768.tar.gz
+7259d0063ba6cb01199ff8ab4c9a0b3d184d8e9d7e355081fc48bdea229fd941e38b546e91f27cfd378c8e7ecf149bed79ca24b2e7fe3d259e89fab9cdc67d6f  linux-postmarketos-qcom-laptop-5f4df433497c460200adf168a50f0260c3dd4062.tar.gz
 980eefd8aaee78897cd41d039eecc11e23b8d7cc87b41c869f1e2b83cd9b5dac9813d7bd1a0e7c466303c795f234871080686921b9672983604551903004cb68  misc.config
-c761143bbdb621a1698068b2369473786638dc4b1c34c9c92466b053a7d4a5ed4e69dbdf731b57b40a1eb99b0f92a6ceaed1cc7302ab6584ef9a779cb225538e  pmos.config
-8bd939e56b3bd6e9b268fe48f3cbaf9ea48eb41cf96edc5b6facb9e0c30553c336baba57efd2f549d7d6a56e8687a4fce211b59d2bc1cf16fd92780f38406d65  0001-partially-revert-arm64-dts-qcom-sc8280xp-enable-GICv.patch
+89244418a7331fd89109591f2748bebdcc7c9a4a34980a551d0a42abf063cb47188758d5e22001caf10f8db893532544a3dbd1111764ddea9db6048bbde005f4  pmos.config
 "
