@@ -3,12 +3,13 @@
 pkgname=device-fairphone-fp5
 pkgdesc="Fairphone 5"
 pkgver=7
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
+	alsa-ucm-conf
 	firmware-fairphone-fp5-adreno
 	firmware-fairphone-fp5-adsp
 	firmware-fairphone-fp5-bluetooth
