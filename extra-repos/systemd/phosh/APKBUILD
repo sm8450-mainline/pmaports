@@ -73,7 +73,9 @@ source="https://sources.phosh.mobi/releases/phosh/phosh-${_pkgver/_/.}.tar.xz
 	phosh.desktop
 	"
 builddir="$srcdir/$pkgname-${_pkgver/_/.}"
-options="!check" # "/var/lib/dbus/machine-id": No such file or directory
+# TODO: crossdirect disabled due to armv7 crosscompile failure on x86_64, see
+# https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/2820
+options="!check !pmb:crossdirect" # "/var/lib/dbus/machine-id": No such file or directory
 
 prepare() {
 	default_prepare
