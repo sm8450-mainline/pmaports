@@ -16,6 +16,11 @@ deviceinfo_keyboard="false"
 deviceinfo_external_storage="true"
 deviceinfo_gpu_accelerated="true"
 deviceinfo_mesa_driver="etnaviv"
+# as long as HDMI does not work, we can disable pbsplash with:
+deviceinfo_no_framebuffer="true"
+# as this device has a hardware UART (ttyS0, see below):
+deviceinfo_disable_usb_gadget="true"
+
 
 # Bootloader related
 deviceinfo_flash_method="none"
@@ -30,4 +35,3 @@ deviceinfo_partition_type="msdos"
 
 # debugging support (could be removed later)
 deviceinfo_getty="ttyS0;115200"
-
