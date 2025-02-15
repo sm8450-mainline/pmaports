@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-crownlte
 pkgdesc="Samsung Galaxy Note 9"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -56,7 +56,7 @@ x11() {
 
 sha512sums="
 0df96b3af577611b461d80142ae6a12f1c859b16d33c6450a2faabfe6f4b10eeeda82b3aaaaebdd579ffec176cf84d030e5cae6030d157ed3ae83a04547f7f3d  deviceinfo
-cec13a1cb076a249eb94d11fb122b1f6b0c3e9558a2ed3c8da3e73a8e2db633131ec8ce838e62da8f53b5500dcb77c6f4adf3c1d2f1cda6fd23cb2ca1ccf6abc  initfs-hook.sh
+ec698b3de66b051987c5442e41309398966dfc2ad5c717940e442f67fd48f5faa6e8a0b84de1aad499e3f36747cb82b7055e2c0eda9bc3a3aa49d14d8b7fa823  initfs-hook.sh
 29c2f8fbd67f6aa95a34fc465798be71dc360087b4e4fddbcdc9b43a628de384f48c1b9e6a7b3d41c93954baee3b88f08972f0a827d663b0279b06a4b2908bd2  stylus.conf
 70c4d3b7af9e58729b5caca87c6c0032675c4adfd3852b0e3fc1f866675d503c4f08d3edaf1b1949bf15344840222c1a7ba00384c290fa5e1b7742e1198855a8  hciattach
 58f72bb12532ce23782389bf9e9eb8eb8afe004dd46d11d48b21b6da6a84660846f79d528d9968a1c1be57716577035fd0da59b3fcda4f197599e92f243dbb45  10-hciattach.rules
