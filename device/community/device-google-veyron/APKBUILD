@@ -2,7 +2,7 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-veyron
 pkgdesc="Google Veyron Chromebooks"
-pkgver=7
+pkgver=8
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -53,6 +53,6 @@ nonfree_firmware() {
 
 
 sha512sums="
-abeebda841ae33d50008b891b4a29ccf4a7cf7be240b5913b701409e8621aa7210f685543b8ab7a9778b311359a197b4429af2b559716fa130d3af8447bef61d  deviceinfo
+d6a214d98ef6502ebed97dd2b774d9d7de1ac969d6d17513f413234e9698bd860248345520eb15f6b54fb0e06a793ba974f8548d397c9a72db31ecd506038008  deviceinfo
 be3e804fa538d9d377c637094dcf95e503e8a156fa71676a9e78abc0e290595dfdaa70b5642df721ebcdd3daa04d14e0c61d9bab6f78cb1dbd669404abc3a56d  modules-initfs
 "
