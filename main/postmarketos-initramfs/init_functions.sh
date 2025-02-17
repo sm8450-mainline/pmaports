@@ -786,6 +786,7 @@ setup_usb_network_configfs() {
 	usb_serialnumber="${deviceinfo_usb_serialnumber:-postmarketOS}"
 	usb_network_function="${deviceinfo_usb_network_function:-ncm.usb0}"
 	usb_network_function_fallback="rndis.usb0"
+	usb_network_host_addr="${deviceinfo_usb_network_host_addr:-}"
 
 	echo "  Setting up USB gadget through configfs"
 	# Create an usb gadet configuration
@@ -817,6 +818,11 @@ setup_usb_network_configfs() {
 		|| echo "  Couldn't create $CONFIGFS/g1/configs/c.1/strings/0x409"
 	echo "USB network" > $CONFIGFS/g1/configs/c.1/strings/0x409/configuration \
 		|| echo "  Couldn't write configration name"
+	if [ -n "$usb_network_host_addr" ]; then
+		echo "$usb_network_host_addr" > $CONFIGFS/g1/functions/"$usb_network_function"/host_addr \
+			|| echo "  Couldn't write host addr"
+	fi
+
 
 	# Link the network instance to the configuration
 	ln -s $CONFIGFS/g1/functions/"$usb_network_function" $CONFIGFS/g1/configs/c.1 \
