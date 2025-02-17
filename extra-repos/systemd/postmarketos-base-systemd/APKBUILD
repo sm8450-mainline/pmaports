@@ -2,7 +2,7 @@
 # Co-maintainer: Clayton Craft <clayton@craftyguy.net>
 # pmbootstrap installs this, if systemd is selected in "pmbootstrap init".
 pkgname=postmarketos-base-systemd
-pkgver=35
+pkgver=36
 pkgrel=0
 pkgdesc="Meta package for running postmarketOS with systemd"
 url="https://postmarketos.org"
@@ -17,11 +17,18 @@ options="!check"
 # less
 # login-utils
 # so:libkmod.so.2
+#
+# linux-pam:
+# - pam_systemd.so is added since 1.7.0-r1
+# - pam_limits.so isn't used in alpine/pmOS, so it isn't supported and tested.
+#   Additionally pam_limits.so can be compiled with (e)logind support, which
+#   isn't currently done in aports. In the unlikely case this is changed
+#   upstream and elogind-libs are used.
 depends="
 	kbd
 	kmod
 	less
-	linux-pam-pmos
+	linux-pam>=1.7.0-r1
 	login-utils
 	polkit>9990
 	rtkit
