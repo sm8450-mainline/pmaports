@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: GPL-2.0-only
+[Unit]
+Description=swap with zram
+DefaultDependencies=no
+Before=swap.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+
+# Change the maximal number of parallel streams (-s), algorithm (-a) and
+# size (in megabytes) to your needs.
+# (In the example the size is half of the available ram.)
+# Make sure to avoid collision of devices (-d...) with
+# zram_tmp.service and zram_var_tmp.service and that
+# num_devices in modprobe.d/zram.conf contains the maximal used number + 1
+
+ExecStartPre=-/sbin/modprobe zram
+ExecStart=/bin/sh -c "exec /usr/sbin/zram-init -s2 -azstd -Lzram_swap `zram-size-calc`"
+ExecStop=/usr/sbin/zram-init 0
+
+[Install]
+WantedBy=swap.target
