@@ -26,6 +26,7 @@ enable systemd-rfkill.service
 enable tinydm.service
 enable udisks2.service
 enable cups.service
+enable zram_swap.service
 
 # Note: technically these two shouldn't be enabled at the same time, but
 # pmos-base-wifi provides should make sure that only one is installed at the
