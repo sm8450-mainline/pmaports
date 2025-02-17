@@ -3,7 +3,7 @@
 
 pkgname=linux-next
 pkgver=6.14_git20250219
-pkgrel=0
+pkgrel=1
 _nextver="${pkgver#*_git}"
 pkgdesc="Linux next kernel"
 arch="aarch64"
@@ -71,5 +71,5 @@ package() {
 sha512sums="
 febdbec2b601027a248bde095419bacc08e2839634b5aba3169de31488a223d0dcfeae6ff00bb2020b9d413ff75c7717fca1ec1e60e6c977d1ae2ed6ef6976ac  linux-next-next-20250219.tar.gz
 8de0a3791ea671528a9fc753071683dfea68ea4f4c22060fc0ca8a4b1b3d76eaa2a3fd40bb013173f0e55da15dde91cf285902779beb35781b6c90f39244ce11  devices.config
-eaceb011997e5f19ad8c5e9b4d291ebe264d83953f9b21d5b1a0c479602edb235252657f297b1a59c7a11dd2205d40360197489a3337ba6f8e040ecf2b51f527  pmos.config
+48999c505effe9be5e9394d4954691de453f01f6bf24dc9971f1d742a1c4e36133bcc4b95b82b6b1d59993ff58f53168f0019280947de6963fb4fc37c0ab1679  pmos.config
 "
