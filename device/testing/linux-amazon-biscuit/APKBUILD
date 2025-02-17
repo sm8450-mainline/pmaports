@@ -3,7 +3,7 @@
 
 pkgname=linux-amazon-biscuit
 pkgver=3.18.19
-pkgrel=0
+pkgrel=1
 pkgdesc="Amazon Echo Dot (2nd gen) kernel fork"
 arch="armv7"
 _carch="arm"
@@ -44,6 +44,7 @@ source="
 	replace-missing-code-from-mainline.patch
 	replace-solaris-style-directive.patch
 	x509-certificate-list.patch
+	biscuit-remove-dummy-audio-mmap.patch
 "
 builddir="$srcdir/$_repository-$_commit"
 _outdir="out"
@@ -73,4 +74,5 @@ f0a0591e0008fa5465f479677112b81ef3dac88c26e0aa358bb504abdb920d3682613dfc51183130
 9ae0f1ca06c6084c0577578721968cd4b154d9cb9fb82af3b30732dd4ca2e857cae58c285d0f529e0b2c827f1cc2a12426698065e2d0aab1b23e2208fee70bc5  replace-missing-code-from-mainline.patch
 a4196e0184b3bb1bc8d0cf4fae931dab623bb9cd02732758bb8ac1d0588682960f58d4dba8ccebb1377e853ca5c135d2a700750228d54ac95a33d1cd44533bca  replace-solaris-style-directive.patch
 756bfc37c903085bec2e016f146cfc795da5495d8b095124a83f9d92931882ca63c5a1c418016dbcd19a18357c1e783dc7547bb115bb186751615ce9268007f2  x509-certificate-list.patch
+99a8649fbeda1a6343e994d65b391c684e0ccfa8c5d7c3f7e584ee16bfc98e1b7dcca359fd6541f341f54f883708a8bc69a50fde459fedf05ad6ea5ab133bfc9  biscuit-remove-dummy-audio-mmap.patch
 "
