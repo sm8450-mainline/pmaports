@@ -5,7 +5,7 @@
 pkgname=device-xiaomi-davinci
 pkgdesc="Xiaomi Mi 9T / Redmi K20"
 pkgver=4
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -18,7 +18,6 @@ depends="
 	postmarketos-base
 	soc-qcom-sm7150>=2-r1
 	soc-qcom-sm7150-libssc-180-degrees
-	soc-qcom-sm7150-unl0kr-quirk
 "
 makedepends="devicepkg-dev"
 source="
