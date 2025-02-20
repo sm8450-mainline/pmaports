@@ -1,6 +1,6 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-base-ui
-pkgver=38
+pkgver=39
 pkgrel=0
 pkgdesc="Meta package for minimal postmarketOS UI base"
 url="https://postmarketos.org"
@@ -82,7 +82,6 @@ _source644="
 	usr/share/mkinitfs/files/10-wireless-regdb.files
 "
 _source600="
-	etc/ssh/sshd_config.d/50-postmarketos-ui-policy.conf
 	usr/lib/NetworkManager/system-connections/USB_Networking.nmconnection
 "
 _source755="
@@ -324,7 +323,6 @@ d4b4c4fed2dee7266f6a87ae266691377593014943e2953e4cd87a59f3110f25bfb5f3f866cc8435
 54620e508a5070ec8819e3661e592acfcfd26c52170b0ecc4dbbc1c61998963ce20bf9d9b051a608b76d6fc17e61c65decc16602b7d58061b9149667a968d258  rootfs-usr-share-flatpak-remotes.d-flathub.flatpakrepo
 92930f027626825b027f585a9be180f8a6ebae6dc44d2cf8f9d43cce00db8cbb43c33fc341fe382abacb832ea1b6414dc4c8129d265b0258d096599b2e206a93  rootfs-usr-share-wireplumber-wireplumber.conf.d-50-bluetooth.conf
 66a7a72746e822676d0ec76160e39b65c711e574a6334f3aad38c563d3104b33d0619d50b92c9201546fd81bfd10cfe0e4a59278cbcbddf20a238f6ad71c050c  rootfs-usr-share-mkinitfs-files-10-wireless-regdb.files
-824dd5cdd1353b0d4c43f6580572c804eaf8f165c3cc737901abdf1303412f68ac0192044e8d50773bdb3873e687d0ccddd433080f5f108ca5837db76f164dab  rootfs-etc-ssh-sshd_config.d-50-postmarketos-ui-policy.conf
 1b8add60574ec4644197cb93263c0653325c2e88e03673de918be5fb3280c7b81e8e97dce498850a07f2f3307771c44f3c876922e5cbd5207523ede31816296f  rootfs-usr-lib-NetworkManager-system-connections-USB_Networking.nmconnection
 ecaa57d033a119a53a6574c27636b7c89d659d75ea48a973a6a4ff6f90e5d07202529fd489bfc9dfc7430f5b60f40612f6d5c06f7fab47e681b0a3112a874058  rootfs-etc-tinydm.d-env-wayland.d-50-sdl-wayland.sh
 36e0037f6d26a99db7b47831263be610d594e2c1c4a8ee7f6fc8b41092f501d3064d80b80ddf6a82b616bd2da09aa4da896074ad9f7fd53aba7e397da4190d22  rootfs-usr-lib-NetworkManager-dispatcher.d-50-dns-filter.sh
