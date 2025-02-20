@@ -4,30 +4,35 @@
 pkgname=device-postmarketos-trailblazer
 pkgdesc="postmarketOS Trailblazer generic ARM64"
 pkgver=12
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
 	postmarketos-base
-	soc-qcom-qbootctl
+	systemd-boot
+"
+_pmb_recommends="
 	linux-firmware-qcom
 	linux-firmware-ath10k
 	linux-firmware-ath11k
 	linux-firmware-ath12k
 	linux-firmware-qca
 	linux-firmware-rtw88
+	firmware-siliconlabs-rs9116
+	firmware-brcm43752
+
+	soc-qcom-qbootctl
 	rmtfs
 	pd-mapper
 	tqftpserv
 	bootmac
-	systemd-boot
-	firmware-siliconlabs-rs9116
-	firmware-brcm43752
-	dtbloader
 	woa-firmware-yoinker
+
+	dtbloader
 "
+install="$pkgname.pre-upgrade"
 makedepends="devicepkg-dev"
 subpackages="
 	$pkgname-kernel-next:kernel_next
