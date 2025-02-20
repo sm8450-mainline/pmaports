@@ -4,7 +4,7 @@
 
 _flavor="postmarketos-qcom-msm8930"
 pkgname=linux-$_flavor
-pkgver=6.11_rc6
+pkgver=6.13.0
 pkgrel=0
 pkgdesc="Close-to-mainline kernel fork for Qualcomm MSM8930 devices"
 arch="armv7"
@@ -32,7 +32,7 @@ makedepends="
 # Source
 _repository="linux-msm8930"
 _config="config-$_flavor.$arch"
-_tag="e72efc8220c988c710b4c4f5962ba567da37b6e0"
+_tag="22b00993309e5506552ed6c7b821bbe4d9493b9a"
 source="
 	$pkgname-$_tag.tar.gz::https://github.com/user0-07161/$_repository/archive/$_tag.tar.gz
 	$_config
@@ -65,6 +65,6 @@ package() {
 }
 
 sha512sums="
-ccb3757c128f6427c77f999899e08732b4187279db7130967c7d7a02cee2e92bfd8ea4eb45fcf611a3c7d3f57db44cfeaedb513c190b792a0e5e474fc4569022  linux-postmarketos-qcom-msm8930-e72efc8220c988c710b4c4f5962ba567da37b6e0.tar.gz
-5db55e262fd4b39ea97ab9ad4fc6c1ed9e545902fecf5facdb81a64100d2cf58fcd697e1e097bfafb854148bd49f8ac5a3a40672400a454e89d3b4f261fa08e0  config-postmarketos-qcom-msm8930.armv7
+410bb44e09c72231266c408294c4ce8369c376c12e57145da1dcede4d975de380a462e10aa04fd7da6a58524b6b1efb6a43a49c3d88a7f8f5a52157147f1f305  linux-postmarketos-qcom-msm8930-22b00993309e5506552ed6c7b821bbe4d9493b9a.tar.gz
+94331ae8ae6d56f72d34b68b0b5fb229ef0331eb6418ab9b5c918954699993f73faba2c375aa57e5b932b54c8dc62df07c46d5b1dbda61c66629abe235a94123  config-postmarketos-qcom-msm8930.armv7
 "
