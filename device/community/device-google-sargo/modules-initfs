@@ -1,10 +1,4 @@
-dispcc_sdm845
-drm_exec
-gpu_sched
 i2c_qcom_geni
-mdt_loader
-msm
-panel_samsung_s6e3fa7
 rmi_core
 rmi_i2c
 gpi
