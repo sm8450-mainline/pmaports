@@ -1,23 +1,26 @@
+# Maintainer: Hendrik Noack <hendrik.noack@protonmail.com>
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-v1awifi
 pkgdesc="Samsung Galaxy Note Pro 12.2 WiFi"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
-makedepends="devicepkg-dev"
 depends="
-	postmarketos-base
-	postmarketos-base-downstream
-	postmarketos-base-downstream-disable-udev-v4l
-	linux-samsung-v1awifi
 	mkbootimg
-	msm-fb-refresher
+	postmarketos-base
 "
-subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
-source="deviceinfo"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+	modules-initfs.mainline
+"
+subpackages="
+	$pkgname-kernel-downstream:kernel_downstream
+	$pkgname-kernel-mainline:kernel_mainline
+"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -27,12 +30,30 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 
-nonfree_firmware() {
-	pkgdesc="Non-free firmware for the Samsung Galaxy Note Pro 12.2 WiFi"
-	depends="firmware-samsung-v1awifi"
-	mkdir "$subpkgdir"
+kernel_downstream() {
+	pkgdesc="Display works, wifi is broken"
+	depends="
+		linux-samsung-v1awifi
+		msm-fb-refresher
+		postmarketos-base-downstream
+		postmarketos-base-downstream-disable-udev-v4l
+	"
+	_pmb_recommends="firmware-samsung-v1awifi-downstream>=2-r0"
+	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
+}
+
+kernel_mainline() {
+	pkgdesc="Mainline WIP, touchscreen doesn't work reliably (see device table for details)"
+	depends="linux-postmarketos-exynos5"
+	_pmb_recommends="
+		firmware-samsung-v1awifi-mainline>=2-r0
+		linux-firmware-s5p-mfc
+		linux-firmware-brcm
+	"
+	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
 sha512sums="
-31bfd9df3dd636252ee60556da2228529fc2cb6cce1c932a4ff274d274474344217d6588f1daaa5a1ae2289f33ddc787a9d40b6caf0da3f0a780630059adf3b1  deviceinfo
+4a8db28fa68b94d30bb0dc57d2e382a3e272de6ffa0e453ecde2769544ec1e80c7a6c902333ca03e775fc6d5e5118d6388b1d1c6c2f4784268d4e82c287a2152  deviceinfo
+4b3cb9dca85c04f1bfc5676029a6ae225409f173c6f0fc025786c1a72326dabad4b5ad75d0dd9a41cdebe8c15db5ca9761e15f3b9f99f8bf70b19769bb116fe6  modules-initfs.mainline
 "
