@@ -1,7 +1,8 @@
+# Maintainer: Hendrik Noack <hendrik.noack@protonmail.com>
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-n2awifi
-pkgdesc="Samsung Galaxy Tab PRO 10.1 (WiFi)"
-pkgver=3
+pkgdesc="Samsung Galaxy Tab Pro 10.1 WiFi"
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -12,7 +13,10 @@ depends="
 	postmarketos-base
 "
 makedepends="devicepkg-dev"
-source="deviceinfo"
+source="
+	deviceinfo
+	modules-initfs.mainline
+"
 subpackages="
 	$pkgname-kernel-downstream:kernel_downstream
 	$pkgname-kernel-mainline:kernel_mainline
@@ -44,10 +48,12 @@ kernel_mainline() {
 	_pmb_recommends="
 		firmware-samsung-n2awifi-mainline>=1-r0
 		linux-firmware-s5p-mfc
+		linux-firmware-brcm
 		"
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
 sha512sums="
-5c1097b8c9188c4fb339c0f03b7df98f4441e40e2de82decb06a03ed7c76c8cd9981d0b16fbabaec618ea620e4c085ca547ce1d7c9e243d9c5c4e5507342ce14  deviceinfo
+1d3ef00183a2276fecd97d426e92f8296068f4f010746495e78269d69efe44ce8f93162bef13294710fb40b815210458111877f1f870ed4a4715995dfc76039f  deviceinfo
+4b3cb9dca85c04f1bfc5676029a6ae225409f173c6f0fc025786c1a72326dabad4b5ad75d0dd9a41cdebe8c15db5ca9761e15f3b9f99f8bf70b19769bb116fe6  modules-initfs.mainline
 "

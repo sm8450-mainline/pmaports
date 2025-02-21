@@ -1,7 +1,7 @@
 pkgname=firmware-samsung-n2awifi
+pkgdesc="Firmware for Samsung Galaxy Note Pro 10.1"
 pkgver=1
-pkgrel=0
-pkgdesc="Firmware for Samsung n2awifi"
+pkgrel=1
 url="https://github.com/exynos5420/android_vendor_samsung_n2a-common"
 arch="armv7"
 license="proprietary"
@@ -40,7 +40,7 @@ package() {
 }
 
 downstream() {
-	pkgdesc="Firmware for Samsung n2awifi when using downstream kernel"
+	pkgdesc="Firmware for Samsung Galaxy Note Pro 10.1 when using downstream kernel"
 	mkdir -p "$subpkgdir"
 	# Wifi
 	local file
@@ -51,7 +51,7 @@ downstream() {
 }
 
 mainline() {
-	pkgdesc="Firmware for Samsung n2awifi when using mainline kernel"
+	pkgdesc="Firmware for Samsung Galaxy Note Pro 10.1 when using mainline kernel"
 	mkdir -p "$subpkgdir"
 
 	# Bluetooth
@@ -59,8 +59,6 @@ mainline() {
 		"$subpkgdir"/lib/firmware/postmarketos/brcm/BCM4335C0.samsung,n2awifi.hcd
 
 	# Wifi
-	install -Dm644 "$srcdir/$pkgname-$_n2awifi_commit"-bcmdhd_sta.bin \
-		"$subpkgdir"/lib/firmware/postmarketos/brcm/brcmfmac4339-sdio.samsung,n2awifi.bin
 	install -Dm644 "$srcdir/$pkgname-$_n2awifi_commit"-nvram_net.txt \
 		"$subpkgdir"/lib/firmware/postmarketos/brcm/brcmfmac4339-sdio.samsung,n2awifi.txt
 }
