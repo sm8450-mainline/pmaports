@@ -7,8 +7,8 @@ deviceinfo_name="Fairphone 3"
 deviceinfo_manufacturer="Fairphone"
 deviceinfo_codename="fairphone-fp3"
 deviceinfo_year="2019"
-deviceinfo_dtb_mainline="qcom/sdm632-fairphone-fp3"
-deviceinfo_append_dtb_mainline="true"
+deviceinfo_dtb="qcom/sdm632-fairphone-fp3"
+deviceinfo_append_dtb="true"
 deviceinfo_arch="aarch64"
 
 # Device related
@@ -22,8 +22,7 @@ deviceinfo_gpu_accelerated="true"
 
 # Bootloader related
 deviceinfo_flash_method="fastboot"
-deviceinfo_kernel_cmdline_downstream="console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci earlycon=msm_serial_dm,0x78af000 androidboot.usbconfigfs=true loop.max_part=7 buildvariant=user"
-deviceinfo_kernel_cmdline_mainline="console=ttyMSM0,115200"
+deviceinfo_kernel_cmdline="console=ttyMSM0,115200"
 deviceinfo_generate_bootimg="true"
 deviceinfo_generate_extlinux_config="true"
 deviceinfo_bootimg_qcdt="false"

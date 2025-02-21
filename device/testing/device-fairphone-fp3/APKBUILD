@@ -1,27 +1,26 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-fairphone-fp3
 pkgdesc="Fairphone 3"
-pkgver=4
+pkgver=5
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
+	firmware-fairphone-fp3-adreno
+	firmware-fairphone-fp3-adsp
+	firmware-fairphone-fp3-venus
+	firmware-fairphone-fp3-wcnss
+	linux-postmarketos-qcom-msm8953
 	lk2nd-msm8953
 	mkbootimg
 	postmarketos-base
+	rmtfs
 	soc-qcom-msm8953
 "
 makedepends="devicepkg-dev"
-source="deviceinfo modules-initfs.mainline"
-subpackages="
-	$pkgname-downstream-firmware:downstream_firmware
-	$pkgname-mainline-firmware:mainline_firmware
-	$pkgname-kernel-downstream:kernel_downstream
-	$pkgname-kernel-mainline:kernel_mainline
-	$pkgname-nonfree-firmware:nonfree_firmware
-"
+source="deviceinfo modules-initfs"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -31,47 +30,7 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 
-kernel_downstream() {
-	pkgdesc="Downstream kernel (recommended)"
-	depends="linux-fairphone-fp3 msm-fb-refresher"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-kernel_mainline() {
-	pkgdesc="Mainline kernel"
-	depends="linux-postmarketos-qcom-msm8953"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-nonfree_firmware() {
-	pkgdesc="Firmware for WiFi, Audio, etc."
-	mkdir "$subpkgdir"
-}
-
-downstream_firmware() {
-	pkgdesc="Firmware support packages for downstream kernel"
-	depends="
-		firmware-fairphone-fp3-wcnss
-		wcnss-wlan
-		"
-	install_if="$pkgname-kernel-downstream $pkgname-nonfree-firmware"
-	mkdir "$subpkgdir"
-}
-
-mainline_firmware() {
-	pkgdesc="Firmware support packages for mainline kernel"
-	depends="
-		firmware-fairphone-fp3-adreno
-		firmware-fairphone-fp3-adsp
-		firmware-fairphone-fp3-venus
-		firmware-fairphone-fp3-wcnss
-		rmtfs
-		"
-	install_if="$pkgname-kernel-mainline $pkgname-nonfree-firmware"
-	mkdir "$subpkgdir"
-}
-
 sha512sums="
-f535cfa90bb2b5e6914810b9dae62136cfabcfa45d8324a5d89d41ce4876b1813a3c6d7bbec9c646177ca2641d7d3dcce2449d71ae7465fcad77d71525b81e4a  deviceinfo
-c56e5b11dc5ecaba8bb5ff0e06a1f2746942eebb0336257e44e673e849f440a6800e5b30e297e5827fb540778e4400daa31b76f521b3e804279c0c2b3329267f  modules-initfs.mainline
+085493abe7ca996dc78f4ca75e532f17a90831167cf4af4352f7c5451fc8383e3cfd5e62971c17465a2ec6b0298adb5702f869d73749f1eca048bfce6e0e8b7f  deviceinfo
+c56e5b11dc5ecaba8bb5ff0e06a1f2746942eebb0336257e44e673e849f440a6800e5b30e297e5827fb540778e4400daa31b76f521b3e804279c0c2b3329267f  modules-initfs
 "
