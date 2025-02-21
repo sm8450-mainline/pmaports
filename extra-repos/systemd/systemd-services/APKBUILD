@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=52
+pkgver=53
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -127,7 +127,7 @@ _iio_sensor_proxy_sources="system/iio-sensor-proxy.service"
 _iwd_sources="system/iwd.service" # From https://git.kernel.org/pub/scm/network/wireless/iwd.git/tree/src/iwd.service.in
 _kanshi_sources="user/kanshi.service" # created, no unit file upstream
 _kactivitymanagerd_sources="user/plasma-kactivitymanagerd.service"
-_kded_sources="user/kded.service" # From https://invent.kde.org/frameworks/kded/-/blob/master/src/plasma-kded6.service.in
+_kded_sources="user/plasma-kded6.service" # From https://invent.kde.org/frameworks/kded/-/blob/master/src/plasma-kded6.service.in
 _kglobalacceld_sources="user/plasma-kglobalaccel.service"
 _ksystemstats_sources="user/plasma-ksystemstats.service"
 _kwallet_pam_sources="user/plasma-kwallet-pam.service"
@@ -365,7 +365,7 @@ d12ebe6e7db2a8e34baab640dd4e2ea9cd01bc19054adf32d55528a6b27f71c2006ac2d65a58c98e
 df3388cb7b9d035e54b34d8f8a6594be89c3015f979fe3bdc199fb7db1ab0bef821d6b306eecdf978eb227454d5e50aab29ac02d9722b1b075ec0ce4705e3518  system-iwd.service
 9cf877929b16f3437e65d1a0a2049799cc97cc84a7caab6a581e90139495b4febb5fb4c59ee463110866a0b60c9462d6d0fdb331d92d29b30ce6aeada365ac48  user-plasma-kactivitymanagerd.service
 fa41668288d53f8ce42a7524f10b1e03812fb11ed71bcb484dc22d0d374b453837317eb599cf61b66163a905949024509e73d5190012b664b301d48af7002a01  user-kanshi.service
-b0ecd5d413a2010d3f36285c2d35523119c29007e1e4162e51dfc746cc105f990a82a2a2d6037a8b906628c0a4f606729290525c7a53dbcfbc8147244fa403a7  user-kded.service
+b0ecd5d413a2010d3f36285c2d35523119c29007e1e4162e51dfc746cc105f990a82a2a2d6037a8b906628c0a4f606729290525c7a53dbcfbc8147244fa403a7  user-plasma-kded6.service
 acf21c4391ca62775491ba4d3b7c460b4163ef07abb195e152c98299a2d12779f3eb95f8cad0aeb3239f2d0fa8222a2483000c45aa6a47e05269876147d89839  user-plasma-kglobalaccel.service
 bccc419b13d39c59ef6bb765dde2bef70c621995bc53d74ccc9ad4aef92931ee74c3ee0b19a0dffb8c3f133b5b0d73f5f70df269dddf5f0ed1dba1cf31d7e141  user-plasma-ksystemstats.service
 a9358610c86fd3506e4cf02aea26e699d61268121ea3c16507b8f71446c16169a1c90c75faf126f2cf607c091e507f7e5822ea5fd8cc1f6e14f257c8007287a3  user-plasma-kwallet-pam.service
