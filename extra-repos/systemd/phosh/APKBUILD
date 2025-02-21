@@ -3,7 +3,7 @@ maintainer="fossdd <fossdd@pwned.life>"
 pkgname=phosh
 _pkgver=0.44.1
 pkgver=9999$_pkgver
-pkgrel=0
+pkgrel=1
 pkgdesc="Wayland shell for GNOME on mobile devices"
 # armhf: blocked by gnome-shell-schemas
 arch="all !armhf"
@@ -70,7 +70,6 @@ subpackages="
 	$pkgname-systemd
 	"
 source="https://sources.phosh.mobi/releases/phosh/phosh-${_pkgver/_/.}.tar.xz
-	phosh.desktop
 	"
 builddir="$srcdir/$pkgname-${_pkgver/_/.}"
 # TODO: crossdirect disabled due to armv7 crosscompile failure on x86_64, see
@@ -99,9 +98,6 @@ check() {
 
 package() {
 	DESTDIR="$pkgdir/" meson install --no-rebuild --skip-subprojects -C output
-
-	install -D -m644 "$srcdir"/phosh.desktop \
-		"$pkgdir"/usr/share/wayland-sessions/phosh.desktop
 }
 
 portalsconf() {
@@ -116,14 +112,6 @@ libphosh_dev() {
 	amove usr/lib/pkgconfig/$_soname.pc
 }
 
-systemd() {
-	pkgdesc="$pkgname systemd service files"
-	install_if="systemd-services=$pkgver-r$pkgrel systemd $name"
-
-	amove usr/lib/systemd
-}
-
 sha512sums="
 dcc7a323e26e5158f53424eac23bf7fdb3c5c9b5d34216155bc167b79941882541c0e70242f7e6c9d7217c6d5add325722527404cf9b3eac2600fbf299bca086  phosh-0.44.1.tar.xz
-8ca4893a751311de326e198314669f5a276092ade99c6353c4c9ce070713fb1a5b1615e7fecb93b428dc79fd4001a9af43d24eafaf2545d7db464963fda25330  phosh.desktop
 "
