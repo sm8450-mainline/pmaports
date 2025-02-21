@@ -79,6 +79,10 @@ LBDAF = true
 NULL_TTY = true
 ["category:default".">=5.19.0"."all"]
 FW_LOADER_COMPRESS_ZSTD = true
+["category:default".">=4.20.0"."all"]
+# required for systemd-oomd
+PSI = true
+PSI_DEFAULT_DISABLED = false
 
 # waydroid: android compatibility layer
 ["category:waydroid".">=0.0.0"."all"]
@@ -95,8 +99,6 @@ FUSE_FS = true
 IP_NF_MANGLE = true
 NETFILTER_XTABLES = true
 NETFILTER_XT_MATCH_COMMENT = true
-PSI = true
-PSI_DEFAULT_DISABLED = false
 SQUASHFS = true
 SQUASHFS_XATTR = true
 SQUASHFS_XZ = true
