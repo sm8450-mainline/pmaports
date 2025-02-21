@@ -8,3 +8,8 @@ enable pulseaudio.socket
 enable wireplumber.service
 enable fbd-alert-slider.service
 enable vvmd.service
+enable mmsd-tng.service
+enable udiskie.service
+
+# GNOME
+enable gnome-keyring-daemon.socket
