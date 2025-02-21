@@ -6,7 +6,7 @@ pkgname=systemd
 # currently tracking git MR
 pkgver=256.11
 _pkgver="musl-v${pkgver//_/-}-split-usr"
-pkgrel=0
+pkgrel=1
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !s390x" # blocked by pmboostrap not supporting
@@ -220,8 +220,10 @@ package() {
 	DESTDIR="$pkgdir" meson install --no-rebuild -C build
 
 	# ship default policy to leave services disabled
-	mkdir -p "$pkgdir"/usr/lib/systemd/system-preset
-	echo 'disable *' > "$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
+	for type in system user; do
+		mkdir -p "$pkgdir"/usr/lib/systemd/"$type"-preset
+		echo 'disable *' > "$pkgdir"/usr/lib/systemd/"$type"-preset/99-default.preset
+	done
 
 	install -Dm755 "$srcdir"/systemd-apk-macros.sh -t \
 		"$pkgdir"/usr/lib/systemd
