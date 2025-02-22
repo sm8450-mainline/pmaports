@@ -3,7 +3,7 @@
 pkgname=device-fairphone-fp3
 pkgdesc="Fairphone 3"
 pkgver=5
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -13,6 +13,7 @@ depends="
 	firmware-fairphone-fp3-adsp
 	firmware-fairphone-fp3-venus
 	firmware-fairphone-fp3-wcnss
+	firmware-qcom-adreno-a530
 	linux-postmarketos-qcom-msm8953
 	lk2nd-msm8953
 	mkbootimg
