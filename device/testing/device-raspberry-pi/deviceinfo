@@ -8,6 +8,7 @@ deviceinfo_codename="raspberry-pi"
 deviceinfo_year="2013"
 deviceinfo_arch="armhf"
 deviceinfo_disable_dhcpd="true"
+deviceinfo_partition_type="msdos"
 
 # Device related
 deviceinfo_chassis="embedded"

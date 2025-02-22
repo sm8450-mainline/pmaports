@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-raspberry-pi0
 pkgdesc="Raspberry Pi Zero"
-pkgver=1
-pkgrel=2
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armhf"
@@ -33,7 +33,7 @@ openrc() {
 }
 
 sha512sums="
-98927951d5c1302798e5af1f79170eb4236d40978fa84f63748b8aba51eef86f5cb8597d63ca37b8bf12bbc3382d09ed8ec842261d3135734f497c22898d2ea9  deviceinfo
+b51fe37ee32b058bd585283804fea9d3c950a2bc9824365b1dfe99ac157a9097b93ecc98e6d6f9e3e20291c9493114ae6145ec164399a70908e3dbfb976f2fce  deviceinfo
 09540960017460809c091457ba9f96b0d12c8a12ef300b77017651bf1492e66440244502ccf22fb8c58d0362751366ef1acf1c5a60b0698c1dda530f0945c17f  modules-initfs
 8e9111b1c131575c372c01125a148c3326871c5789fa99f069918cb5f8ba9a57d7b0da845524a6037635808c3a4ca6d40a8861485a6ed476880106e4e4d2a660  config.txt
 f38e28c13ab50d90dfc06bfae2945aab93551f39ec3cb2a2b65cfeb14dbbf04eb8c80920491106789e9d8f2290fbdac2f5e9adab24fa5f478568df3a638dc8e4  usercfg.txt

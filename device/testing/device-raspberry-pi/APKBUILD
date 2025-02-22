@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-raspberry-pi
 pkgdesc="Raspberry Pi"
-pkgver=1
-pkgrel=2
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armhf"
@@ -76,7 +76,7 @@ phosh() {
 }
 
 sha512sums="
-f1ee1275f72805f6b04a9b7a111d0111b96c3df37dbff565add99b0007a6e4fecc781a4599b439f2c8308ec5db9db66ae2e6f0db66d9db3327b3013b347474f0  deviceinfo
+85818e2e638b7a2a965937dc1f0c818b3e894afc241f48f2827e4739628bdda57676f8dc08be2e55c6a4985964a2aff0618a024888e17636b50b93c737dbdfd8  deviceinfo
 f70469c3dca65f39ff041af9983eae3b87080fcfb1f8fddb3f58b5a477f708f758f64d46b2195a5bef8d3fa03894e1bf0a427fec5e138d57549392e5b9a6e589  config.txt
 e94c810f973eb6b6d0fb3687ea1d70612ba00e9c5d6b3608390a161e077c5591fd9d232c37b42443c05ed28bb639ca1754422ff35899c5e33d7fc266e0e1ad05  usercfg.txt
 ae3de0b8fec07d3a283dc3c06bf8678eec1e65c9faf0b7f4fdc9fb92751e324d1f8e2fb224dbbf561b7e5a6fb34769bfa1657858375f74b101a130d78e0737e2  cmdline.txt
