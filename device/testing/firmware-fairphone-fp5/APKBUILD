@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=firmware-fairphone-fp5
 pkgver=20240417
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware for Fairphone 5"
 subpackages="
 	$pkgname-adreno
@@ -39,7 +39,6 @@ adreno() {
 
 	install -Dm644 "$builddir"/a660_zap.mbn -t \
 		"$subpkgdir/lib/firmware/qcom/qcm6490/fairphone5/"
-	ln -s a660_zap.mbn "$subpkgdir/lib/firmware/qcom/qcm6490/fairphone5/a660_zap.mdt"
 }
 
 adsp() {
@@ -47,7 +46,6 @@ adsp() {
 
 	install -Dm644 "$builddir"/adsp.mbn -t \
 		"$subpkgdir/lib/firmware/qcom/qcm6490/fairphone5/"
-	ln -s adsp.mbn "$subpkgdir/lib/firmware/qcom/qcm6490/fairphone5/adsp.mdt"
 	install -Dm644 "$builddir"/adsp*.jsn -t \
 		"$subpkgdir/lib/firmware/qcom/qcm6490/fairphone5/"
 	install -Dm644 "$builddir"/battmgr.jsn -t \
@@ -68,7 +66,6 @@ cdsp() {
 
 	install -Dm644 "$builddir"/cdsp.mbn -t \
 		"$subpkgdir/lib/firmware/qcom/qcm6490/fairphone5/"
-	ln -s cdsp.mbn "$subpkgdir/lib/firmware/qcom/qcm6490/fairphone5/cdsp.mdt"
 	install -Dm644 "$builddir"/cdsp*.jsn -t \
 		"$subpkgdir/lib/firmware/qcom/qcm6490/fairphone5/"
 }
@@ -93,7 +90,6 @@ ipa() {
 
 	install -Dm644 "$builddir"/yupik_ipa_fws.mbn \
 		"$subpkgdir/lib/firmware/qcom/qcm6490/fairphone5/ipa_fws.mbn"
-	ln -s ipa_fws.mbn "$subpkgdir/lib/firmware/qcom/qcm6490/fairphone5/ipa_fws.mdt"
 }
 
 modem() {
@@ -101,7 +97,6 @@ modem() {
 
 	install -Dm644 "$builddir"/modem.mbn -t \
 		"$subpkgdir/lib/firmware/qcom/qcm6490/fairphone5/"
-	ln -s modem.mbn "$subpkgdir/lib/firmware/qcom/qcm6490/fairphone5/modem.mdt"
 	install -Dm644 "$builddir"/modem*.jsn -t \
 		"$subpkgdir/lib/firmware/qcom/qcm6490/fairphone5/"
 
@@ -123,7 +118,6 @@ wpss() {
 
 	install -Dm644 "$builddir"/wpss.mbn -t \
 		"$subpkgdir/lib/firmware/qcom/qcm6490/fairphone5/"
-	ln -s wpss.mbn "$subpkgdir/lib/firmware/qcom/qcm6490/fairphone5/wpss.mdt"
 }
 
 sha512sums="
