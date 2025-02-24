@@ -9,7 +9,7 @@ ConditionEnvironment=WAYLAND_DISPLAY
 [Service]
 Type=dbus
 BusName=org.freedesktop.Notifications
-ExecStart=/user/bin/fnott
+ExecStart=/usr/bin/fnott
 
 [Install]
 WantedBy=graphical-session.target
