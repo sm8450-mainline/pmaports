@@ -2,8 +2,8 @@
 # Maintainer: Sicelo <absicsz@gmail.com>
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-nokia-n900
-pkgver=41
-pkgrel=1
+pkgver=42
+pkgrel=0
 pkgdesc="Nokia N900"
 url="https://postmarketos.org"
 arch="armv7"
@@ -53,6 +53,7 @@ source="
 	i3wm/config-checker
 	i3wm/i3blocks.conf
 	i3wm/i3wm.conf
+	i3wm/pwr-key-handler.sh
 	i3wm/scripts/battery-bq27200
 	i3wm/scripts/calendar
 	i3wm/scripts/ofono
@@ -68,7 +69,6 @@ source="
 	modem-opts.conf
 	modules.blocklist
 	pointercal
-	proxishot.sh
 	uboot-script.cmd
 	udev/10-nokia-modem.rules
 	udev/15-bq27k.rules
@@ -155,7 +155,7 @@ package() {
 
 x11() {
 	install_if="$pkgname=$pkgver-r$pkgrel xorg-server"
-	depends="xset xinput scrot xrdb"
+	depends="unclutter-xfixes scrot xdotool xinput xrdb xset"
 	mkdir "$pkgdir"/etc/acpi
 	install -D -m755 "$srcdir"/acpi_handler.sh \
 		"$pkgdir"/etc/acpi/handler.sh
@@ -167,8 +167,6 @@ x11() {
 		"$subpkgdir"/etc/X11/xorg.conf.d/11-n900.conf
 	install -Dm755 "$srcdir"/lock.sh \
 		"$subpkgdir"/usr/bin/lock.sh
-	install -Dm755 "$srcdir"/proxishot.sh \
-		"$subpkgdir"/usr/bin/proxishot.sh
 	install -Dm644 "$srcdir"/xresources \
 		"$subpkgdir"/usr/share/X11/Xresources-mobile
 }
@@ -182,7 +180,7 @@ xkeyboard_config() {
 
 i3wm() {
 	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-ui-i3wm"
-	depends="unclutter-xfixes i3blocks rxvt-unicode upower brightnessctl"
+	depends="brightnessctl i3blocks rxvt-unicode sxmo-dmenu upower"
 	install -D -m644 "$srcdir"/i3wm.conf \
 		"$subpkgdir"/etc/xdg/i3/config
 	install -D -m644 "$srcdir"/i3blocks.conf \
@@ -197,6 +195,8 @@ i3wm() {
 		"$subpkgdir"/usr/share/i3blocks/wifi
 	install -D -m755 "$srcdir"/config-checker \
 		"$subpkgdir"/usr/bin/i3-config-checker
+	install -D -m755 "$srcdir"/pwr-key-handler.sh \
+		"$subpkgdir"/usr/bin/pwr-key-handler
 }
 
 upower() {
@@ -217,7 +217,7 @@ sha512sums="
 6b475c12eca8563be48c562a1cb4ad8ca6a05d70fc54b21288b2dd7435a80a6f53351aa870db96d5bbecf1b1c5cb00dfe35f5066e6d3fd0ad0369e66aeef5a21  10-initfs-keymap.files
 4656d3b3ced0a86e2d6315c89322899f646a689e9cb64609aa8ad5a676b23d93706d8a37f3be6f6b12c6b1e8501b7d26ecafecf27322333850513a6805c61910  10-initfs-keymap.sh
 2e6c324c2a0627fb37ee2feff249d6c828116a9c1a32d572481dddc12648c98b726eb3a475838398742f76a60e3f2249d7707502360473b8bf2e794bf22f57ce  acpi.map
-ff51909873160c2d4c6f0c0119b6d4a02751df29f571b8596b4bc8b04ce2541913c11a583b0e5dabd43f240752a8131da45db0ddff194860f4c11198599686a1  acpi_handler.sh
+b2c2033f8a77a18dc0c5192e0304f60e3c2a2a7d132c2072ab0dd6ee1a5b2a8c7e6396165411534468311a254663ae887cbaf23816f8b17893dd28e99e549790  acpi_handler.sh
 5b87071834313a389f83d29f86f6e3ea108d0921f17dc918be7a46de7e74c73a4418044ef600a0fbf72c8fad22b7730dcd5bfe3d6d01d76bf01556f8540f0b32  asound.state.headset
 67acc17a33bc75113300393b4a5bba15319014032407e774d079abf310368e75f4f697dbb4856ba2d2d8ea184b056bb33561f42918de3ee91ab6a77df89a133c  asound.state.speakers
 3d55e34b95791636e44a5f41754f3d0de039dbba41f7a556d43a95c9e64afcfa930046b4b96b40020b6f196096ffba93514682927e32fa4488686fdd19c6da5a  backlight-enable.sh
@@ -228,7 +228,8 @@ e6bbac8de1a198ba716f44ade76606e1e0adcc574156b855ac41be5eb5308389d3277fd89cc34b11
 f48b8dd7297d03008f73e1ecd55b77ace535ecb03f9bdf021123b96fb5f4fb491ff4c532e226b835c8118fa8d505cc4c635a2b604a3e42a162746021552a551c  modules-initfs
 d7d1599a9952fd02d3cfbeaa6b3307251e765f98a9eb723237c94f585831cc8f11d9d30dbc0352e3b008224dec12b820cf86fa28a5e5ac303cfd03d80b8872f5  config-checker
 a8152e94262629e11abdd8809d187c3b7ed1866a6128fb1f435e17e72120536ac8114262e66df6decb2627743027f2b923ddbe8a94e3e844099b6fad02ec252b  i3blocks.conf
-26261d6291c4cc476a36a11291a3676413ecc4fc6ee76394fead14e0c8955d28e782d4a26180034637fcf176c41f8a345886daf242eebf7e91dfd6a4bd29edbe  i3wm.conf
+c95afd02124e53f0de1ef33e7bbee12a15ae2d4d629a201157ed9d428288365241dfc3358fc7055154845f9df986fd975a2ebd4de384b8e175cb45f26b2fa38d  i3wm.conf
+63ec5a88f4385fd944477d0b7ca7061745b061337cba8d3c779826aa96a94dda79bfca4fb3456234f6adbdb483e660d3cf6ccefd8576d23a70f52e3f44f0edb4  pwr-key-handler.sh
 6c6a70667f37807089adbb343c09d1f62d47b8e6c9c0a54f44790b822f8bff3dccae73341ef736b799fd6740bbd6e1f48e6e122c2e08520f71f6ad7434a47d2c  battery-bq27200
 d9ef88c714e9fce8822f63b7a9d7fc3e1ed472c8c876b44ba524d44efea322839f13ddd2fa652420608427ecf7279bfaac302c9b67667f32796ca21da332164d  calendar
 82038d38f94cb975a8d38914afca49b64957446bef7490ab684efa1df47ede2ea1c769045789bb9fded673345eea01911fbbf85fdb54c28685cad8022bfaafac  ofono
@@ -244,7 +245,6 @@ e440ed7a3070c17e003b86b72dbe6d8194d01b577ca8dd56dd066f216b6dda32bb965c780950f178
 695feac7f69a0ec8c5e007cdb651adcc3492f1c6236e7fd183edec2a5e25cb957d3ace630ea5fdb87fd703e35ac368f1d097c2f881ecb52c9cfd433564db2a6c  modem-opts.conf
 862ebc7cd2d7a1b3d41b10701b8418308c89eb0732eb99c42ec1091d48e08db9421727f67a3272b7309549798d59afb1b8d7d2fa48d1447b208fcb2329472d4d  modules.blocklist
 143c21f0b18a016d37cb44178e9daea09f128a90769b48353c03c3f245cb9b1f7e773b9ccee084973fc78ddd7a18c2642e54888a85bda7c7daecddc9a8c62eff  pointercal
-134f51d20decc0c63ab08010931a0b410b70d2f85bf6899f2ff137b1680f59f706a6287d01f5fbb41fa5309125df75a430d0783149bd1a6a1bca07d22f4f6a21  proxishot.sh
 42f916d87dd305111028992a1107bf6fe108bebbd782ae8edd065e76505db2b3a75e57515970c3e40cb0d1b7e83097a1bba92785be13df7c3fd80959a8d9c5c1  uboot-script.cmd
 465b9a0d2b46d0981c64b47cb1f656c2456a90b91b1751a2efad10af38a96030dd99108b1fd76ce31bf1ea0f236d55bed38b114d6bd712f09f8968de034c946c  10-nokia-modem.rules
 1acc441b9f83dc91fd65fa3f89b8205bfd72a465286bc181b4e7e92dd4b8c0bc5c20a18dab46ff3ee8ae70940efd7d767b3dfb920edb4c74377bd418b838693d  15-bq27k.rules

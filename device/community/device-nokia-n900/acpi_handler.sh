@@ -19,7 +19,7 @@ case $cmd in
 		adjust_keypad_bl 0
 		;;
 	CAM_BTN_DWN)
-		USER_USER="$user" /usr/bin/proxishot.sh
+		echo "Not implemented yet"
 		;;
 	CAM_BTN_UP)
 		echo "Not implemented yet"
@@ -37,7 +37,7 @@ case $cmd in
 		echo "Not implemented yet"
 		;;
 	SCRNLCK_DWN)
-		su $user -c "DISPLAY=:0 /usr/bin/lock.sh"
+		echo "Not implemented yet"
 		;;
 	SCRNLCK_UP)
 		echo "Not implemented yet"
