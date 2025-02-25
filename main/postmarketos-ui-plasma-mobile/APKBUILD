@@ -16,7 +16,7 @@ depends="
 	"
 _pmb_recommends="
 	angelfish
-	index
+	dolphin
 	kclock
 	koko
 	krecorder
