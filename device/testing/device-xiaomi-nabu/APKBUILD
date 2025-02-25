@@ -1,14 +1,15 @@
 # Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: Pan Ortiz <panjeoc@proton.me>
 pkgname=device-xiaomi-nabu
 pkgdesc="Xiaomi Pad 5"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check	!archcheck"
 depends="
-	linux-postmarketos-qcom-sm8150-nabu
+	linux-postmarketos-qcom-sm8150
 	hexagonrpcd>=0.3.2-r3
 	make-dynpart-mappings
 	mesa-vulkan-freedreno
@@ -50,7 +51,7 @@ package() {
 mainline_firmware() {
 	pkgdesc="Firmware support packages for mainline kernel"
 	depends="firmware-xiaomi-nabu-adreno"
-	install_if="linux-postmarketos-qcom-sm8150-nabu $pkgname-nonfree-firmware"
+	install_if="linux-postmarketos-qcom-sm8150 $pkgname-nonfree-firmware"
 	mkdir "$subpkgdir"
 	install -Dm64 "$srcdir/30-gpu-firmware.files" \
 		"$subpkgdir/usr/share/mkinitfs/files/30-gpu-firmware.files"
@@ -89,7 +90,7 @@ nonfree_firmware_openrc() {
 alsa() {
 	pkgdesc="Audio configuration files"
 	depends="alsa-ucm-conf"
-	install_if="linux-postmarketos-qcom-sm8150-nabu $pkgname-nonfree-firmware"
+	install_if="linux-postmarketos-qcom-sm8150 $pkgname-nonfree-firmware"
 	mkdir "$subpkgdir"
 	install	-Dm644 "$srcdir/XiaomiPad5.conf" "$subpkgdir/usr/share/alsa/ucm2/conf.d/sm8150/Xiaomi Pad 5.conf"
 	install	-Dm644 "$srcdir/HiFi.conf" "$subpkgdir/usr/share/alsa/ucm2/Xiaomi/nabu/HiFi.conf"
@@ -98,7 +99,7 @@ alsa() {
 pulseaudio() {
 	pkgdesc="Pulseaudio configuration files"
 	depends="pulseaudio"
-	install_if="linux-postmarketos-qcom-sm8150-nabu $pkgname-nonfree-firmware"
+	install_if="linux-postmarketos-qcom-sm8150 $pkgname-nonfree-firmware"
 	mkdir "$subpkgdir"
 	install -Dm644 "$srcdir/pulse-xiaomi_nabu.conf" "$subpkgdir/etc/pulse/daemon.conf.d/89-xiaomi_nabu.conf"
 	install -Dm644 "$srcdir/nabu.pa" "$subpkgdir/etc/pulse/default.pa.d/nabu.pa"
