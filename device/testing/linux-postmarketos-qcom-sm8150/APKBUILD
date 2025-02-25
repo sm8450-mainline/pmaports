@@ -1,13 +1,9 @@
-# Maintainer: Caleb Connolly <caleb@connolly.tech>
-# Co-Maintainer: Uclydde <julianbraha@gmail.com>
-# Co-Maintainer: Alexey Min <alexeymin@postmarketos.org>
-# Stable Linux kernel with patches for SM8150 devices
-# Kernel config based on: arch/arm64/configs/defconfig and sm8150.config
-
+# Maintainer: Pan Ortiz <panjeoc@proton.me>
+# Co-Maintainer: Viola Guerrera <guerrera.nicola@gmail.com>
 _flavor="postmarketos-qcom-sm8150"
 pkgname=linux-$_flavor
-pkgver=6.4
-pkgrel=2
+pkgver=6.13.0
+pkgrel=0
 pkgdesc="Mainline Kernel fork for SM8150 devices"
 arch="aarch64"
 _carch="arm64"
@@ -18,32 +14,32 @@ options="!strip !check !tracedeps
 	pmb:kconfigcheck-nftables
 	"
 makedepends="
+	bash
 	bison
 	findutils
 	flex
 	openssl-dev
 	perl
 	postmarketos-installkernel
-	xz
-"
+	python3
+	"
 
-_repo="linux"
 _config="config-$_flavor.$arch"
-_commit="93f303701cafa17135d8ee563ffdc39f319783f1"
+_tag="v$pkgver-sm8150"
 
 # Source
 source="
-	$_repo-$_tag.tar.bz2::https://gitlab.com/sm8150-mainline/linux/-/archive/$_commit/linux-$_commit.tar.bz2
+	linux-$_tag.tar.gz::https://gitlab.com/sm8150-mainline/linux/-/archive/$_tag/linux-$_tag.tar.gz
 	$_config
 "
-builddir="$srcdir/$_repo-$_commit"
+builddir="$srcdir/linux-$_tag"
 
 prepare() {
 	default_prepare
 	cp "$srcdir/config-$_flavor.$arch" .config
 }
 
-build() {
+build()	{
 	unset LDFLAGS
 	make ARCH="$_carch" CC="${CC:-gcc}" \
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-$_flavor"
@@ -51,6 +47,7 @@ build() {
 
 package() {
 	mkdir -p "$pkgdir"/boot
+
 	make zinstall modules_install dtbs_install \
 		ARCH="$_carch" \
 		INSTALL_PATH="$pkgdir"/boot/ \
@@ -64,6 +61,6 @@ package() {
 }
 
 sha512sums="
-fde637d245fa55525763d509caeb038005b419ddddfb28bd5087826c3b38e88126cacee048cdef191c2df67cb421cda19ad125ecaa83e0668de0d848a3f38318  linux-.tar.bz2
-36c48cf9536bf81ef79c5545375fc62c2b62a0007b16af0dd3358357b89e74d4568f50bef790d77fde737b1d364933b10aeb64dafaf62bd866cebf08fa75aa2e  config-postmarketos-qcom-sm8150.aarch64
+d47d9c90ca6934bc8896283b243a8574826f72fe975a2eaea5fcbbe256849eb9c4acd66018c3af589f39c7f249b488b73c67f79b846054bce5b4758fb4a7e174  linux-v6.13.0-sm8150.tar.gz
+bb4d291b3ef04bd9a5d04369f8752f4fc1cb35eac9a314263cba3c6fe1208ce3ca5d6772d5daeb38f409bb8c7327900fc69905d2e395f7d7b887d784e4e7507b  config-postmarketos-qcom-sm8150.aarch64
 "
