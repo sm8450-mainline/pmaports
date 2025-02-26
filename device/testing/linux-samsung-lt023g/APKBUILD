@@ -2,12 +2,12 @@
 
 pkgname=linux-samsung-lt023g
 pkgver=3.4.113
-pkgrel=9
+pkgrel=10
 pkgdesc="Samsung Galaxy Tab 3 7.0 kernel fork"
 arch="armv7"
 _carch="arm"
 _flavor="samsung-lt023g"
-url="https://github.com/kumajaya/android_kernel_samsung_lt02"
+url="https://github.com/yahiashamaa/android_kernel_samsung_lt02"
 license="GPL2"
 options="!strip !check !tracedeps pmb:cross-native"
 makedepends="perl sed installkernel bash gmp-dev bc linux-headers elfutils-dev devicepkg-dev gcc6"
@@ -23,10 +23,10 @@ fi
 
 # Source
 _repository="android_kernel_samsung_lt02"
-_commit="13afd47ae79727e4cb7897f958319a3b7db638c8"
+_commit="2c66a10df2b4943cbc3b7ad72773c8d70113c609"
 _config="config-$_flavor.$arch"
 source="
-	$pkgname-$_commit.tar.gz::https://github.com/SamsungGalaxyTab3/$_repository/archive/$_commit.tar.gz
+	$pkgname-$_commit.tar.gz::https://github.com/yahiashamaa/$_repository/archive/$_commit.tar.gz
 	$_config
 	01-linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
 	02-linux3.4-fix-piggy.gzip.S.patch
@@ -54,8 +54,8 @@ package() {
 }
 
 sha512sums="
-b9e1460cf7227b8749bff6a6ad99ebbbb03b337ed80229e2326dfb5f3624ec8e3b63f15b5d35cf734dae6cbba2e9b8337f5e9e2d38f01f94a8eb37b99c7de61c  linux-samsung-lt023g-13afd47ae79727e4cb7897f958319a3b7db638c8.tar.gz
-917e7dbdafdcb21f4cbddccbe174c8481a14ef70593c5d40bd8d55ef5fa420f4179ddc4504fe7d27ea86c3538397aa3c5c6c4185d3abb9f9868156bbf1512286  config-samsung-lt023g.armv7
+ca872bc6861b21f13d885ab5ba6ee436d0ba52fb95df67591793cc0e793c562a18a92fc6108202ed62d7ad901f5dec84905d9a9c7d86aeab41718907afd69631  linux-samsung-lt023g-2c66a10df2b4943cbc3b7ad72773c8d70113c609.tar.gz
+c35a106a32cdee3513d8e3d3f16f524a3041f808a8f1539a795d22cc7064ae51187a15ac665fe2574c356f5e782606e5b89f6e5ff71ed950b822812dda00255a  config-samsung-lt023g.armv7
 9e3b067fa1b19ad02500c4fce1b6142051df3845c508e615788beb650c4f953683107ac2d80670c4e3df38f532e0e91060d2d13ec04c9ec985abd2dfa82e900b  01-linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
 080745ca4ecaa804ee1df26ea81975ca93b74372e0c08322a6c481e97807495ae6ceb6cc77653afa24f9f2df45da8ebf8e5de6b06037fbb08e0279877ce42188  02-linux3.4-fix-piggy.gzip.S.patch
 8283737ae12864dd52bcb0765a250a94a4ba2cecdbe33bbbf9ff05f5882b29dc93c3f9919ad64242dc67e41395f95ce70817e0a3e7a4a0dc4af84db0f156d29e  03-Backport-cache-the-value-of-file_inode-in-struct-file.patch
