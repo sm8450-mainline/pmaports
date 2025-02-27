@@ -58,6 +58,9 @@ enable dsme.service
 ## kodi
 enable kodi.service
 
+## COSMIC
+enable cosmic-greeter.service
+
 # Waydroid
 enable sensorfwd.service
 enable waydroid-container.service
