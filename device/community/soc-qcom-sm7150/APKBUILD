@@ -1,6 +1,6 @@
 # Maintainer: Danila Tikhonov <danila@jiaxyga.com>
 # Co-Maintainer: Jens Reidel <adrian@travitia.xyz>
-
+# Co-Maintainer: David Wronek <david@mainlining.org>
 pkgname=soc-qcom-sm7150
 pkgdesc="Common package for Qualcomm SM7150 devices"
 pkgver=3

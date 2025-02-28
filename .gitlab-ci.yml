@@ -15,7 +15,7 @@ variables:
   # seems like a reasonable balance. If this is too low, git merge-base (from ci/
   # common.py) can fail
   GIT_DEPTH: 100
-  
+
 # This defines the rules for when a pipeline should run.
 workflow:
   rules:
@@ -63,7 +63,6 @@ shellcheck-grep:
     - .ci/lib/gitlab_prepare_ci.sh
     - .ci/shellcheck.sh
     - .ci/grep.sh
-    - .ci/codeowners.sh
 
 editor-config:
   stage: lint

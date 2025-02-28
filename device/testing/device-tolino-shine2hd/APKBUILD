@@ -1,8 +1,9 @@
 # Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: Andreas Kemnade <andreas@kemnade.info>
 pkgname=device-tolino-shine2hd
 pkgdesc="Tolino Shine 2 HD"
 pkgver=3
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"

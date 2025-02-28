@@ -1,4 +1,5 @@
 # Maintainer: Doni Halim <donihaalim@gmail.com>
+# Co-Maintainer: Ferass El Hafidi <funderscore@postmarketos.org>
 pkgname=u-boot-amlogic-s905x2-tv
 pkgver=2024.01
 pkgrel=0

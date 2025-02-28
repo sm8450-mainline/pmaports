@@ -1,6 +1,7 @@
+# Maintainer: Raymond Hackley <wonderfulShrineMaidenOfParadise@postmarketos.org>
 pkgname=firmware-samsung-rossa
 pkgver=2
-pkgrel=0
+pkgrel=1
 _name="Samsung Galaxy Core Prime LTE"
 pkgdesc="Firmware for $_name"
 url="https://postmarketos.org"

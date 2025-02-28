@@ -1,6 +1,7 @@
+# Maintainer: Minecrell <minecrell@minecrell.net>
 pkgname=firmware-xiaomi-wt88047
 pkgver=9.2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Firmware for Xiaomi Redmi 2"
 url="https://androidfilehost.com/?w=files&flid=303434"
 subpackages="$pkgname-wcnss-nv:wcnss_nv"

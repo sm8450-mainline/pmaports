@@ -1,6 +1,8 @@
+# Maintainer: Minecrell <minecrell@minecrell.net>
+# Co-Maintainer: Alexey Minnekhanov <alexeymin@postmarketos.org>
 pkgname=firmware-samsung-a5
 pkgver=1
-pkgrel=1
+pkgrel=2
 _name="Samsung Galaxy A5 (2015)"
 pkgdesc="Firmware for $_name"
 url="https://postmarketos.org"

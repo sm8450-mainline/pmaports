@@ -1,6 +1,8 @@
+# Maintainer: Raymond Hackley <wonderfulShrineMaidenOfParadise@postmarketos.org>
+# Co-Maintainer: Lin, Meng-Bo <linmengbo06890@proton.me>
 pkgname=firmware-samsung-j3ltetw
 pkgver=1
-pkgrel=2
+pkgrel=3
 _name="Samsung Galaxy J3 2016 (SM-J320YZ)"
 pkgdesc="Firmware for $_name"
 url="https://postmarketos.org"

@@ -1,10 +1,10 @@
 # Reference: <https://postmarketos.org/devicepkg>
-# Maintainer: Nikita Travkin <nikitos.tr@gmail.com>
+# Maintainer: Nikita Travkin <nikita@trvn.ru>
 # Co-Maintainer: Minecrell <minecrell@minecrell.net>
 pkgname=device-wileyfox-crackling
 pkgdesc="Wileyfox Swift"
 pkgver=9
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

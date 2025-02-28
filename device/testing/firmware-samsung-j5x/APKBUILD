@@ -1,6 +1,7 @@
+# Maintainer: Raymond Hackley <wonderfulShrineMaidenOfParadise@postmarketos.org>
 pkgname=firmware-samsung-j5x
 pkgver=1
-pkgrel=1
+pkgrel=2
 _name="Samsung Galaxy J5 (2016)"
 pkgdesc="Firmware for $_name"
 url="https://postmarketos.org"

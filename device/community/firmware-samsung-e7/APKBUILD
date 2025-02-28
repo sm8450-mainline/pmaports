@@ -1,6 +1,7 @@
+# Maintainer: Raymond Hackley <wonderfulShrineMaidenOfParadise@postmarketos.org>
 pkgname=firmware-samsung-e7
 pkgver=1
-pkgrel=2
+pkgrel=3
 _name="Samsung Galaxy E7"
 pkgdesc="Firmware for $_name"
 url="https://postmarketos.org"

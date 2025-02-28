@@ -1,6 +1,6 @@
 # Reference: <https://postmarketos.org/devicepkg>
 # Maintainer: Minecrell <minecrell@minecrell.net>
-# Co-Maintainer: Alexey Min <alexey.min@gmail.com>
+# Co-Maintainer: Alexey Minnekhanov <alexeymin@postmarketos.org>
 pkgname=device-samsung-a5
 pkgdesc="Samsung Galaxy A5 (2015)"
 pkgver=12

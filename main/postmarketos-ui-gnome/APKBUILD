@@ -1,8 +1,10 @@
 # Reference: https://postmarketos.org/uipkg
-# Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
+# Maintainer: Newbyte <newbyte@postmarketos.org>
+# Co-Maintainer: Pablo Correa Gomez <pabloyoyoista@postmarketos.org>
+# Co-Maintainer: fossdd <fossdd@pwned.life>
 pkgname=postmarketos-ui-gnome
 pkgver=3
-pkgrel=10
+pkgrel=11
 pkgdesc="(Wayland) Gnome Shell"
 url="https://gnome.org/"
 # armhf blocked by gnome-shell -> gjs -> mozjs102

@@ -1,5 +1,6 @@
 # Reference: <https://postmarketos.org/devicepkg>
 # Maintainer: Nikita Travkin <nikita@trvn.ru>
+# Co-Maintainer: Minecrell <minecrell@minecrell.net>
 pkgname=device-qcom-msm8916
 pkgdesc="Generic device package for various Qualcomm MSM8916/MSM8939-based devices"
 pkgver=3

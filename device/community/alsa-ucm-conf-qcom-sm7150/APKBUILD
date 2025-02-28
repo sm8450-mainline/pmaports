@@ -1,6 +1,6 @@
 # Maintainer: Danila Tikhonov <danila@jiaxyga.com>
 # Co-Maintainer: Jens Reidel <adrian@travitia.xyz>
-
+# Co-Maintainer: David Wronek <david@mainlining.org>
 pkgname=alsa-ucm-conf-qcom-sm7150
 pkgver=1.2.11_git20240810
 pkgrel=0

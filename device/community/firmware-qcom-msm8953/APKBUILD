@@ -1,4 +1,7 @@
 # Maintainer: Barnabas Czeman <barnabas.czeman@postmarketos.org>
+# Co-Maintainer: Alejandro Tafalla <alikates@dnyon.com>
+# Co-Maintainer: Victor Pavlov (vipaoL) <vipaolmail@gmail.com>
+# Co-Maintainer: Danila Tikhonov (JIaxyga) <danila@mainlining.org>
 pkgname=firmware-qcom-msm8953
 pkgver=2
 pkgrel=0

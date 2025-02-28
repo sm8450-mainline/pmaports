@@ -1,6 +1,7 @@
+# Maintainer: Raymond Hackley <wonderfulShrineMaidenOfParadise@postmarketos.org>
 pkgname=firmware-samsung-fortuna
 pkgver=2
-pkgrel=2
+pkgrel=3
 _name="Samsung Galaxy Grand Prime"
 pkgdesc="Firmware for $_name"
 url="https://postmarketos.org"

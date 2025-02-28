@@ -1,6 +1,6 @@
 # Maintainer: M0Rf30 <morf3089@gmail.com>
 # Co-Maintainer: Ultra-azu <ultra.public@proton.me>
-# Co-Maintainer: Barnabas Czeman <trabarni@gmail.com>
+# Co-Maintainer: Barnabas Czeman <barnabas.czeman@postmarketos.org>
 # Kernel config based on: defconfig, msm8953.config, and device configs
 
 _flavor="postmarketos-qcom-msm8953"

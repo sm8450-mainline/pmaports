@@ -1,5 +1,7 @@
 # Reference: https://postmarketos.org/uipkg
 # Maintainer: Newbyte <newbyte@postmarketos.org>
+# Co-Maintainer: Pablo Correa Gomez <pabloyoyoista@postmarketos.org>
+# Co-Maintainer: fossdd <fossdd@pwned.life>
 pkgname=postmarketos-ui-phosh
 pkgver=23
 pkgrel=0

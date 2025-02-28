@@ -1,5 +1,5 @@
 # Reference: <https://postmarketos.org/devicepkg>
-# Maintainer: Barnabas Czeman <trabarni@gmail.com>
+# Maintainer: Barnabas Czeman <barnabas.czeman@postmarketos.org>
 # Co-Maintainer: Alejandro Tafalla <alikates@dnyon.com>
 # Co-Maintainer: Victor Pavlov (vipaoL) <vipaolmail@gmail.com>
 # Co-Maintainer: Danila Tikhonov (JIaxyga) <danila@mainlining.org>
@@ -7,7 +7,7 @@
 pkgname=device-qcom-msm8953
 pkgdesc="Generic device package for various Qualcomm MSM8953/SDM450/SDM632-based devices"
 pkgver=5
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

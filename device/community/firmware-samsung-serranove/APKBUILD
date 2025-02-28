@@ -1,6 +1,7 @@
+# Maintainer: Minecrell <minecrell@minecrell.net>
 pkgname=firmware-samsung-serranove
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware for Samsung Galaxy S4 Mini Value Edition"
 url="https://pepethekingprawn.gitlab.io/firmware/"
 subpackages="$pkgname-wcnss-nv:wcnss_nv"

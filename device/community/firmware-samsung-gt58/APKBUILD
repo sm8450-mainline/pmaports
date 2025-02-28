@@ -1,6 +1,7 @@
+# Maintainer: Nikita Travkin <nikita@trvn.ru>
 pkgname=firmware-samsung-gt58
 pkgver=1
-pkgrel=1
+pkgrel=2
 _name="Samsung Galaxy Tab A 8.0 (2015)"
 pkgdesc="Firmware for $_name"
 url="https://postmarketos.org"

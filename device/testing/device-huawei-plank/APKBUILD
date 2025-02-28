@@ -1,8 +1,9 @@
 # Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: gtrxAC <gtrxac2@gmail.com>
 pkgname=device-huawei-plank
 pkgdesc="Huawei Honor 7"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
