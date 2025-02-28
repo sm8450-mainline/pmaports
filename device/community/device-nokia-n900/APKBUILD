@@ -3,7 +3,7 @@
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-nokia-n900
 pkgver=41
-pkgrel=0
+pkgrel=1
 pkgdesc="Nokia N900"
 url="https://postmarketos.org"
 arch="armv7"
@@ -22,7 +22,13 @@ depends="
 	wl1251-cal
 	wl1251-cal-openrc
 "
-makedepends="devicepkg-dev u-boot-tools kbd kbd-bkeymaps"
+makedepends="
+	devicepkg-dev
+	u-boot-tools
+	kbd
+	kbd-bkeymaps
+	postmarketos-mvcfg
+"
 install="$pkgname.post-install $pkgname.pre-upgrade"
 subpackages="
 	$pkgname-x11
