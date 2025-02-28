@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=56
+pkgver=57
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -56,6 +56,7 @@ subpackages="
 	pd-mapper-systemd:_service
 	plasma-mobile-systemd:_service
 	polkit-kde-agent-1:_service
+	power-profiles-daemon-systemd:_service
 	powerdevil-systemd:_service
 	q6voiced-systemd:_service
 	qbootctl-systemd:_service
@@ -150,6 +151,7 @@ _openssh_server_pam_sources="system/sshd.service system/sshdgenkeys.service"
 _pd_mapper_sources="system/pd-mapper.service"
 _plasma_mobile_sources="system/plasma-mobile.service"
 _polkit_kde_agent_1_sources="user/plasma-polkit-agent.service" # From https://invent.kde.org/plasma/polkit-kde-agent-1/-/blob/master/plasma-polkit-agent.service.in
+_power_profiles_daemon_sources="system/power-profiles-daemon.service" # From https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/blob/main/data/power-profiles-daemon.service.in
 _powerdevil_sources="user/plasma-powerdevil.service" # From https://invent.kde.org/plasma/powerdevil/-/blob/master/daemon/plasma-powerdevil.service.in
 _q6voiced_sources="system/q6voiced.service"
 _qbootctl_sources="system/qbootctl.service"
@@ -228,6 +230,7 @@ source="$(flatpath \
 	$_pd_mapper_sources \
 	$_plasma_mobile_sources \
 	$_polkit_kde_agent_1_sources \
+	$_power_profiles_daemon_sources \
 	$_powerdevil_sources \
 	$_q6voiced_sources \
 	$_qbootctl_sources \
@@ -402,6 +405,7 @@ fa445c4a53214524baed4e9c52a5463592a074f88a5a286eacb60d0907c0545f725afde23abd68cf
 c0badea3905c1d53d213fbfe11d25b556a2e484fe77eb50e9f4d42e25b67b56a0804e7d8e1b7731cd280cbb3525b4c60311817609381e2308d9f2dfb7c0d7072  system-sshdgenkeys.service
 0bed9a8a719661609ad84d1c6fcdf2fe9213e741682b7ddebad82d9744f137c593788ed522868f10b95b599d81743d07ec3212630a7e99d333261dfa1bf1cc11  system-pd-mapper.service
 e12d8e98e28a795f879aebcceb32a991ee4abcb3bc5ec458aa5378bb52ff86cf39be04bc4a196925f532d623304b3005f561fa5e55d1c87944d718058ec4c0e6  system-plasma-mobile.service
+95a6acdc58b2ca13a92c62a36e455da9007443798c48a614a2154669de9a73e176b2f92124716f919f0088ba5b5bc4ae679138babf2c41f6e02c6a26af2da46a  system-power-profiles-daemon.service
 291ac8b09e4904da016727bcf6b08e4f371f84ad46d181c74e7e5b319b73e72500989f9fb964617f84babdec4a91307f8295b008e4c44a0e6eecb6e7bf699aa0  user-plasma-powerdevil.service
 4c4c3f1e5e829ff67dd35df59120ab59730ff1f1ca0aab93f16d670132979a99099fad59e6c736908cc19df9172c9bdfe476ec721a1cc28de8c2210da46ce1f1  system-q6voiced.service
 621189aa251655796795f4fa0cd79360bb67573e7327e545064eaadafc83cc7b382a405d6ba80662e0a4ece3876e4270e3563d859a6ba63b5e3854b39c35873e  system-qbootctl.service
