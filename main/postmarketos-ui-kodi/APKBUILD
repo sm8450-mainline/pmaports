@@ -5,8 +5,7 @@ pkgver=2
 pkgrel=9
 pkgdesc="(GBM) 10-foot UI useful on TV's"
 url="https://kodi.tv"
-# kodi does not know of other archs
-arch="x86_64 aarch64 armv7" # flatbuffers missing on armhf and x86
+arch="all !armhf !loongarch64" # kodi
 license="GPL-3.0-or-later"
 depends="
 	elogind
