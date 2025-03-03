@@ -4,7 +4,7 @@
 
 _flavor="postmarketos-qcom-sm7150"
 pkgname=linux-$_flavor
-pkgver=6.13.4
+pkgver=6.13.6
 pkgrel=0
 pkgdesc="Mainline Kernel fork for SM7150 devices"
 arch="aarch64"
@@ -38,13 +38,31 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir"/boot
-	make zinstall modules_install dtbs_install \
+	if [ -e "$builddir/arch/$_carch/boot/vmlinuz.efi" ]; then
+		# ZBOOT EFI decompressor for EFI booting
+		install -Dm644 "$builddir/arch/$_carch/boot/vmlinuz.efi" \
+			"$pkgdir/boot/linux.efi"
+
+		# Old GZIP'd kernel image for boot.img compatibility
+		install -Dm644 "$builddir/arch/$_carch/boot/vmlinuz" \
+			"$pkgdir/boot/vmlinuz"
+	else
+		echo "WARNING: CONFIG_ZBOOT not enabled!"
+		install -Dm644 "$builddir/arch/$_carch/boot/Image.gz" \
+			"$pkgdir/boot/vmlinuz"
+	fi
+
+	make modules_install dtbs_install \
 		ARCH="$_carch" \
 		INSTALL_PATH="$pkgdir"/boot/ \
 		INSTALL_MOD_PATH="$pkgdir" \
 		INSTALL_MOD_STRIP=1 \
-		INSTALL_DTBS_PATH="$pkgdir"/boot/dtbs
+		INSTALL_DTBS_PATH="$pkgdir"/boot/dtbs-tmp
+
+	mkdir -p "$pkgdir"/boot/dtbs/qcom
+	cp -r "$pkgdir"/boot/dtbs-tmp/qcom/sm7150* "$pkgdir"/boot/dtbs/qcom
+	rm -rf "$pkgdir"/boot/dtbs-tmp
+
 	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
 
 	install -D "$builddir"/include/config/kernel.release \
@@ -53,6 +71,6 @@ package() {
 
 
 sha512sums="
-77e4c940c6e6ccbe89cf4f39b0f7f95c519a3a118f2ea261216f63f5bb05e599ed375b4ee31c3349b2baa48d8cf6189a704b9e915edfe25155c5c0901648fef2  linux-postmarketos-qcom-sm7150-v6.13.4.tar.gz
-3ebb29fd962754d0c4c9653ca06c69ef438ff2e2309b85b01e67adf5ea94ea9d68de339162eade054f64ed444b4734cda280eb2a294ca92e4f7e1d8585fcb561  config-postmarketos-qcom-sm7150.aarch64
+b7ff58e18a2cf72fd9fe5a54cc5a6c226b34a07b5c2c672d346c11364b1abffdeb4c7c1fe4bb882ff0b8b7fe64835bb1ab14e35cb4441d9f8d2e26a6d861e568  linux-postmarketos-qcom-sm7150-v6.13.6.tar.gz
+05c97f3afc808184d5250619b74d1c444d262a0c771a60dd43350768f1b6b73ceae2039436c4eb59eed73839e4a8899c11f0261b2d612cc7822806b46334f14f  config-postmarketos-qcom-sm7150.aarch64
 "
