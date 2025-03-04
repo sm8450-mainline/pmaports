@@ -28,6 +28,8 @@ enable udisks2.service
 enable cups.service
 enable zram_swap.service
 enable systemd-oomd.service
+enable alsa-restore.service
+enable alsa-state.service
 
 # Note: technically these two shouldn't be enabled at the same time, but
 # pmos-base-wifi provides should make sure that only one is installed at the
