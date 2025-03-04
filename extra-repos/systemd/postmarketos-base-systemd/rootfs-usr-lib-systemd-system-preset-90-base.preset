@@ -66,6 +66,7 @@ enable adsp-audio.service
 enable bootmac-bluetooth.service
 enable gesture.service
 enable gnss-share
+enable hexagonfs-firmware-loader.service
 enable swclock-offset-boot.service
 enable swclock-offset-shutdown.service
 enable msm-firmware-loader.service
