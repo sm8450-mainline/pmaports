@@ -1,9 +1,9 @@
 # Forked from Alpine to rebuild with systemd support
 
 pkgname=pipewire
-pkgver=9991.2.7
-_pkgver=1.2.7
-pkgrel=3
+pkgver=9991.4.1
+_pkgver=1.4.1
+pkgrel=0
 _so_ver=0.3
 pkgdesc="Multimedia processing graphs"
 url="https://pipewire.org/"
@@ -38,6 +38,7 @@ makedepends="
 	roc-toolkit-dev
 	sbc-dev
 	vulkan-loader-dev
+	webrtc-audio-processing-2-dev
 	xmltoman
 
 	systemd-dev
@@ -58,12 +59,12 @@ subpackages="
 	$pkgname-tools
 	$pkgname-spa-tools:spa_tools
 	$pkgname-lang
+	$pkgname-echo-cancel:echo_cancel
 	"
 install="$pkgname.post-upgrade $pkgname.post-install $pkgname.pre-deinstall"
 source="https://gitlab.freedesktop.org/PipeWire/pipewire/-/archive/$_pkgver/pipewire-$_pkgver.tar.gz
 	pipewire.desktop
 	pipewire-launcher.sh
-	spa-init-explictly.patch
 	"
 builddir="$srcdir/$pkgname-$_pkgver"
 
@@ -73,16 +74,6 @@ case "$CARCH" in
 		;;
 	*)
 		makedepends="$makedepends libldac-dev"
-		;;
-esac
-
-case "$CARCH" in
-	ppc64le|s390x|riscv64)
-		# no webrtc-audio-processing
-		;;
-	*)
-		makedepends="$makedepends webrtc-audio-processing-1-dev"
-		subpackages="$subpackages $pkgname-echo-cancel:echo_cancel"
 		;;
 esac
 
@@ -156,7 +147,7 @@ pulse() {
 	amove usr/bin/pipewire-pulse
 	amove usr/lib/pipewire-$_so_ver/libpipewire-module-protocol-pulse.so
 	amove usr/lib/pipewire-$_so_ver/libpipewire-module-pulse-tunnel.so
-	amove usr/lib/pipewire-$_so_ver/libpipewire-module-filter-chain-lv2.so
+	amove usr/lib/pipewire-$_so_ver/libpipewire-module-filter-chain.so
 	amove usr/share/pipewire/pipewire-pulse.conf
 	amove usr/share/pipewire/pipewire-pulse.conf.avail
 	amove usr/lib/systemd/user/pipewire-pulse.service
@@ -255,8 +246,7 @@ libs() {
 }
 
 sha512sums="
-a921bcc56626a90b4195f98cb47934d1e4eeda9d2fb76ea93ef49b56bf2b080ec711d93dfd47833bcdbc9c4623bad16c93f00828d214439aee06ab9a31f21ffd  pipewire-1.2.7.tar.gz
+f14964153d2f07e70e10a1a17e53354639cab736dc4290d530a9762f739d50f812033e50718bef036b993664532fccec85bc762d8e4a887be1a10b8fb4249984  pipewire-1.4.1.tar.gz
 b70b05151bcf4b7f13d68b2731d789b9c062fadfcb91f4ed6bdb0d495390b0010f57034fb115a053e1459c7d9ea27523ca1c0c69639aeeb96c17ebac8dfc5b57  pipewire.desktop
 6f4322d306bef346187778fc0975d608fdd37d4c8e08815a0aed28ef7e07c3f21d6a80b70743d0f867bdc237f5e1dc28131c778e7a45e363e5677668ce7acdb1  pipewire-launcher.sh
-5bed0f3a41947c58b9da6cc1b1a9779ed7c3c148dff86f0e6535ae051f7cc110eeb5bc203df00a0bd51c90c3dc229f0fb8ca76c4b83490fa2ebb4bc9afa55c6c  spa-init-explictly.patch
 "
