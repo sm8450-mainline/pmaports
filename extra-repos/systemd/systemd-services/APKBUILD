@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=58
+pkgver=59
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -56,7 +56,7 @@ subpackages="
 	openssh-server-pam-systemd:_service
 	pd-mapper-systemd:_service
 	plasma-mobile-systemd:_service
-	polkit-kde-agent-1:_service
+	polkit-kde-agent-1-systemd:_service
 	power-profiles-daemon-systemd:_service
 	powerdevil-systemd:_service
 	q6voiced-systemd:_service
