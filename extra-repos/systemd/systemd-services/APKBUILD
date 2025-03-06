@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=59
+pkgver=60
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -44,6 +44,7 @@ subpackages="
 	kanshi-systemd:_service
 	kded-systemd:_service
 	kglobalacceld-systemd:_service
+	kodi-systemd:_service
 	ksystemstats-systemd:_service
 	kwallet-pam-systemd:_service
 	localsearch-systemd:_service
@@ -140,6 +141,7 @@ _kanshi_sources="user/kanshi.service" # created, no unit file upstream
 _kactivitymanagerd_sources="user/plasma-kactivitymanagerd.service"
 _kded_sources="user/plasma-kded6.service" # From https://invent.kde.org/frameworks/kded/-/blob/master/src/plasma-kded6.service.in
 _kglobalacceld_sources="user/plasma-kglobalaccel.service"
+_kodi_sources="system/kodi.service" # From https://github.com/graysky2/kodi-standalone-service/blob/master/x86/init/kodi-gbm.service
 _ksystemstats_sources="user/plasma-ksystemstats.service"
 _kwallet_pam_sources="user/plasma-kwallet-pam.service"
 _localsearch_sources="user/tracker-writeback.service user/tracker-control.service user/tracker-miner-fs.service"  # From https://gitlab.gnome.org/GNOME/localsearch
@@ -220,6 +222,7 @@ source="$(flatpath \
 	$_kanshi_sources \
 	$_kded_sources \
 	$_kglobalacceld_sources \
+	$_kodi_sources \
 	$_ksystemstats_sources \
 	$_kwallet_pam_sources \
 	$_localsearch_sources \
@@ -276,6 +279,7 @@ _hexagonrpcd_system_presets="hexagonrpcd-adsp-rootpd.service hexagonrpcd-adsp-se
 _hfd_service_system_presets="hfd-service.service"
 _iwd_system_presets="iwd.service"
 _kanshi_user_presets="kanshi.service"
+_kodi_system_presets="kodi.service"
 _mce_system_presets="mce.service"
 _mmsd_tng_user_presets="mmsd-tng.service"
 _modemmanager_system_presets="ModemManager.service"
@@ -395,9 +399,9 @@ df3388cb7b9d035e54b34d8f8a6594be89c3015f979fe3bdc199fb7db1ab0bef821d6b306eecdf97
 fa41668288d53f8ce42a7524f10b1e03812fb11ed71bcb484dc22d0d374b453837317eb599cf61b66163a905949024509e73d5190012b664b301d48af7002a01  user-kanshi.service
 b0ecd5d413a2010d3f36285c2d35523119c29007e1e4162e51dfc746cc105f990a82a2a2d6037a8b906628c0a4f606729290525c7a53dbcfbc8147244fa403a7  user-plasma-kded6.service
 acf21c4391ca62775491ba4d3b7c460b4163ef07abb195e152c98299a2d12779f3eb95f8cad0aeb3239f2d0fa8222a2483000c45aa6a47e05269876147d89839  user-plasma-kglobalaccel.service
+e7c33c889afb822ae20ebd09f3b9f8d130d1f89324006ab3a140fbf46ef7e774634d2ac13ac328c588266823e5eb52c7e0d6d6459f1f64052f9cea5a5fe9f54a  system-kodi.service
 bccc419b13d39c59ef6bb765dde2bef70c621995bc53d74ccc9ad4aef92931ee74c3ee0b19a0dffb8c3f133b5b0d73f5f70df269dddf5f0ed1dba1cf31d7e141  user-plasma-ksystemstats.service
 a9358610c86fd3506e4cf02aea26e699d61268121ea3c16507b8f71446c16169a1c90c75faf126f2cf607c091e507f7e5822ea5fd8cc1f6e14f257c8007287a3  user-plasma-kwallet-pam.service
-ebd194aad645a836ba2b51bfcebd7f78a8ec703e62dd7a7e85343df4f7b60e99abfebd6de12e540e4be24e9079aee0b8ea450e5169ce9ee97e44d0b370013a07  user-plasma-polkit-agent.service
 49010e368981fdb8f36bdfe58ed6ee00615cbee696891ce02fae7b213b451d5dfe60a5c6e0065c6d3ab588ce38948f5bee1f03200daa4fe8e234e82b249a9e15  user-tracker-writeback.service
 53777d4ba1c35d7f00294675f61d3f0a0fa632a9abd6d428d9e159419e3ae43c6bb3c12f506dca0545db889a6642bfbaee5802fc637c6a84635e5f6814c79944  user-tracker-control.service
 c5ebba42808185df86d71a0eec6d4c2122c45ea1d27123f0c0b389849e09dd8a85bd174654f3c6cb6467bd0ddb5cf25f07266ac3cdf25b888be355d07086ffed  user-tracker-miner-fs.service
@@ -411,6 +415,7 @@ fa445c4a53214524baed4e9c52a5463592a074f88a5a286eacb60d0907c0545f725afde23abd68cf
 c0badea3905c1d53d213fbfe11d25b556a2e484fe77eb50e9f4d42e25b67b56a0804e7d8e1b7731cd280cbb3525b4c60311817609381e2308d9f2dfb7c0d7072  system-sshdgenkeys.service
 0bed9a8a719661609ad84d1c6fcdf2fe9213e741682b7ddebad82d9744f137c593788ed522868f10b95b599d81743d07ec3212630a7e99d333261dfa1bf1cc11  system-pd-mapper.service
 e12d8e98e28a795f879aebcceb32a991ee4abcb3bc5ec458aa5378bb52ff86cf39be04bc4a196925f532d623304b3005f561fa5e55d1c87944d718058ec4c0e6  system-plasma-mobile.service
+ebd194aad645a836ba2b51bfcebd7f78a8ec703e62dd7a7e85343df4f7b60e99abfebd6de12e540e4be24e9079aee0b8ea450e5169ce9ee97e44d0b370013a07  user-plasma-polkit-agent.service
 95a6acdc58b2ca13a92c62a36e455da9007443798c48a614a2154669de9a73e176b2f92124716f919f0088ba5b5bc4ae679138babf2c41f6e02c6a26af2da46a  system-power-profiles-daemon.service
 291ac8b09e4904da016727bcf6b08e4f371f84ad46d181c74e7e5b319b73e72500989f9fb964617f84babdec4a91307f8295b008e4c44a0e6eecb6e7bf699aa0  user-plasma-powerdevil.service
 4c4c3f1e5e829ff67dd35df59120ab59730ff1f1ca0aab93f16d670132979a99099fad59e6c736908cc19df9172c9bdfe476ec721a1cc28de8c2210da46ce1f1  system-q6voiced.service
