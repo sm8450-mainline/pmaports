@@ -1,0 +1,35 @@
+From adadc2b690bfcb519ebc8b319d2ccc16abc5c153 Mon Sep 17 00:00:00 2001
+From: Richard Acayan <mailingradian@gmail.com>
+Date: Thu, 27 Feb 2025 17:16:07 -0500
+Subject: [PATCH] thermal: qcom-spmi-adc-tm5: Correct the voltage-code scaling
+ for HC
+
+When support was added for the HC variant, the full_scale_code_volt
+value was copied from the tm5 variant. From the downstream kernel, the
+scaling value is 0x70e4 on PMI632 (tm5 variant), but it is 0x4000 on
+PM660 and PM8998 (HC variant). Correct the ADC code to voltage
+scaling factor for the HC variant.
+
+Fixes: f6c83676c6097 ("thermal/drivers/qcom/spmi-adc-tm5: Add support for HC variant")
+Parent: dt-bindings: mfd: qcom,spmi-pmic: Allow PMIC4 thermal monitor on pm660
+Signed-off-by: Richard Acayan <mailingradian@gmail.com>
+---
+ drivers/thermal/qcom/qcom-spmi-adc-tm5.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/thermal/qcom/qcom-spmi-adc-tm5.c b/drivers/thermal/qcom/qcom-spmi-adc-tm5.c
+index d7f2e6ca92c2..6ccd02fe0e4c 100644
+--- a/drivers/thermal/qcom/qcom-spmi-adc-tm5.c
++++ b/drivers/thermal/qcom/qcom-spmi-adc-tm5.c
+@@ -909,7 +909,7 @@ static const struct adc_tm5_data adc_tm5_data_pmic = {
+ };
+ 
+ static const struct adc_tm5_data adc_tm_hc_data_pmic = {
+-	.full_scale_code_volt = 0x70e4,
++	.full_scale_code_volt = 0x4000,
+ 	.decimation = (unsigned int []) { 256, 512, 1024 },
+ 	.hw_settle = (unsigned int []) { 0, 100, 200, 300, 400, 500, 600, 700,
+ 					 1000, 2000, 4000, 6000, 8000, 10000 },
+-- 
+2.48.1
+
