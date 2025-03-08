@@ -35,6 +35,7 @@ subpackages="$pkgname-openrc"
 
 _pmb_recommends="
 	decibels
+	ffmpegthumbnailer
 	firefox-esr
 	flatpak
 	gnome-calculator
