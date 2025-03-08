@@ -41,7 +41,9 @@ def add_upstream_git_remote():
 
 
 def commit_message_has_string(needle):
-    return needle in run_git(["show", "-s", "--format=full", "HEAD"])
+    base_commit = get_base_commit()
+
+    return needle in run_git(["log", "--pretty=format:%B", f"{base_commit}..HEAD"])
 
 
 def run_pmbootstrap(parameters):
