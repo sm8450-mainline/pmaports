@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-base-ui
 pkgver=34
-pkgrel=0
+pkgrel=1
 pkgdesc="Meta package for minimal postmarketOS UI base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -11,7 +11,6 @@ depends="
 	dbus
 	haveged
 	nftables
-	openssh-server-pam
 	pipewire
 	postmarketos-artwork-icons
 	postmarketos-base
