@@ -18,6 +18,7 @@ deviceinfo_create_initfs_extra="true"
 
 # Bootloader related
 deviceinfo_flash_method="none"
+deviceinfo_kernel_cmdline="psi=1"
 deviceinfo_boot_filesystem="fat32"
 deviceinfo_cgpt_kpart="/boot/vmlinuz.kpart"
 deviceinfo_cgpt_kpart_start="8192"
