@@ -2,8 +2,8 @@
 # Co-Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=device-generic-x86_64
 pkgdesc="Generic x86_64 system, with EFI"
-pkgver=17
-pkgrel=1
+pkgver=18
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="x86_64"
@@ -70,7 +70,7 @@ kernel_lts() {
 }
 
 sha512sums="
-e9dfcd70ccfb9a0fdaa0cdc52faf3be96d6de8af8c60a758bb703c515b0648cec4552e0eaf56e5168b0004cd3fc4b28118abb05dad2c581d3579a2e9134862cb  deviceinfo
+c8a4b2dc32aa43e574e9fdb2d95ac50ee00e26703ae00f6f57cd8ab43cc16999d0da064d2af4c07f5f37a9d01691835a79a12a70cb4c09455ba276ffbbd14310  deviceinfo
 7f0e1dab2eaf0616220a06a658245a297f2627f1b6a492ccf3bb9922c5b40aa6fd320c4ec5f909557bfc9b38985ef6bc58a67dd87fc46e0d9d35addbcfb2683d  modules-initfs
 9599a10679a43929e4ed2ea22269a0716219163817574d48db4dc1cb21a0fcf17ea54d77d5fd8efd034905c421ecb3eaa600a72927d683983ce48d1159329881  30-gpu-i915-firmware.files
 "
