@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-starqltechn
 pkgdesc="Samsung Galaxy S9 SM-G9600"
-pkgver=7
-pkgrel=2
+pkgver=8
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -19,7 +19,13 @@ depends="
 	soc-qcom-modem
 	"
 makedepends="devicepkg-dev dtc"
-source="deviceinfo boot_image.its payload_mock.dts bootscript.sh"
+source="
+	deviceinfo
+	boot_image.its
+	payload_mock.dts
+	bootscript.sh
+	modules-initfs
+"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -45,4 +51,5 @@ sha512sums="
 3047ff60cb25564bec0637030917981653a5a85024b221d58f510585e5b2102dc806f4970976fef0854ea3d5803ea0b545e9b2b5b1045a9868aba2e7eff7f7c1  boot_image.its
 ba782c324c14cf0947c752b51a607ae1b08def885b0cf0afe89d1fcade3491ab2f547551eb08bd8074f608dac46bdcdf75c5c633bd7a15e6eb63a10f30994c82  payload_mock.dts
 1ae956562df26c458654c178efcba4862ff9a8b55d5f27bb74f1667bb2434f4bf95ec4f3ffc54d7bc84a6d075e9caadf46716dd72bc9d6b7b623ec4f25940f36  bootscript.sh
+daafca195c55fa4c4739cf2324ebba375ee76a2029778db8427aab9fe3f9a5c6ac4f2ec1373ccf6f1e6800bddae8fb5f113fefdcedd64799c53959f0b322de84  modules-initfs
 "
