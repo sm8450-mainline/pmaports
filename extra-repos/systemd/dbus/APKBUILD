@@ -3,7 +3,7 @@
 pkgname=dbus
 pkgver=9991.16.0
 _pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org message bus system"
 url="https://www.freedesktop.org/Software/dbus"
 arch="all"
@@ -14,6 +14,7 @@ provider_priority=1
 install="$pkgname.pre-install"
 triggers="$pkgname.trigger=/usr/share/dbus-1/system.d"
 options="!check" # Borked in pmbootstrap...
+# FIXME: systemd-dev in makedepends breaks repo_bootstrap (pma#3604)
 makedepends="
 	$depends_dev
 	expat-dev
@@ -23,6 +24,7 @@ makedepends="
 	meson
 	xmlto
 	libcap-getcap
+	systemd-dev
 	"
 subpackages="
 	$pkgname-daemon-launch-helper:launchhelper
@@ -30,11 +32,8 @@ subpackages="
 	$pkgname-doc
 	$pkgname-libs
 	$pkgname-x11
+	$pkgname-systemd
 	"
-if [ -z "$BOOTSTRAP" ] || [ "$BOOTSTRAP" -gt 3 ]; then
-	makedepends="$makedepends systemd-dev"
-	subpackages="$subpackages $pkgname-systemd"
-fi
 source="https://dbus.freedesktop.org/releases/dbus/dbus-$_pkgver.tar.xz"
 builddir="$srcdir/dbus-$_pkgver"
 
