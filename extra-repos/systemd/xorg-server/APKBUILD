@@ -1,8 +1,8 @@
 # Forked from Alpine to adjust dependencies for systemd
 
 pkgname=xorg-server
-pkgver=999921.1.15
-_pkgver=21.1.15
+pkgver=999921.1.16
+_pkgver=21.1.16
 pkgrel=0
 pkgdesc="X.Org X servers"
 url="https://www.x.org/wiki"
@@ -61,8 +61,7 @@ makedepends="
 
 	systemd-dev
 	"
-source="https://www.x.org/releases/individual/xserver/xorg-server-$_pkgver.tar.xz
-	ms-rotate.patch"
+source="https://www.x.org/releases/individual/xserver/xorg-server-$_pkgver.tar.xz"
 builddir="$srcdir/xorg-server-$_pkgver"
 
 # the modesetting driver is now shipped with xorg server
@@ -161,6 +160,5 @@ common() {
 }
 
 sha512sums="
-677bbec81ecdd1d14e1d289a00c40249988985ec636e5473b30c4f63bad03a6cc5f9168cea94969e1550370eee8863595bc9c064c3d218a96123afc7567bf363  xorg-server-21.1.15.tar.xz
-9ed9c731a7275a3821476eedd55f453027fdf9bcdfd8f259259a5d053c73e8b9298f048cbb009a4fb05230fb2a9ab7cc38a44d708973f09daa8570fae376236e  ms-rotate.patch
+38fd4232a293a497d13f8b57e85e84cf6a531453a7d8d5de1a77d67ceaf8714d5770951a8a21f1b3f519e83be1fc0926dce269846e75a8b11aa1062dd507f67d  xorg-server-21.1.16.tar.xz
 "
