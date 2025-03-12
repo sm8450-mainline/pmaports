@@ -2,8 +2,8 @@
 # Co-Maintainer: Pablo Correa Gomez <pabloyoyoista@postmarketos.org>
 # Co-Maintainer: fossdd <fossdd@pwned.life>
 pkgname=postmarketos-base-ui-gnome
-pkgver=4
-pkgrel=9
+pkgver=5
+pkgrel=0
 pkgdesc="Meta package for shared configuration for GNOME-based UIs"
 url="https://postmarketos.org"
 arch="noarch"
@@ -81,6 +81,6 @@ openrc() {
 }
 
 sha512sums="
-1f68138876f2270943c88fd6f914f156692397a840f4945564cce0ed6e5d56943661fee025e0e4e0881b5df18a4f5f290086eb67be945e59abd5fe4c71cf5e67  00_postmarketos-base-ui-gnome.gschema.override
+d4e27bf14c56c5cfa8c017bfe5b32d20031683d66dd2f3ce31834fe8a2352b6420279f550c37227c2aec8056abdd16bbfc4cb4e3f6a80d2a8d15984f71621c71  00_postmarketos-base-ui-gnome.gschema.override
 ac597d87ab0502a54481d4c0640cba7cd7fbf6380fe429ec85aefa77b796744a64c1b98fb91eb15e4e75b8781fa3c67809803d07bed085b1ff176c5aacbc5090  10_postmarketos-green-accent.gschema.override
 "
