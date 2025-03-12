@@ -1,23 +1,24 @@
 # Maintainer: Caleb Connolly <caleb@postmarketos.org>
 pkgname=postmarketos-dev
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="postmarketOS development tools"
 url="https://postmarketos.org"
 arch="noarch"
 license="MIT"
 options="!check"
 depends="
-	htop
-	coreutils
-	nano
-	psutils
-	iputils
 	alpine-sdk
-	findutils
-	gawk
 	bash
 	bash-completion
+	coreutils
+	findutils
+	gawk
+	htop
+	nano
+	iputils
+	openssh-client
+	psutils
 "
 install="$pkgname.post-install $pkgname.post-deinstall"
 
