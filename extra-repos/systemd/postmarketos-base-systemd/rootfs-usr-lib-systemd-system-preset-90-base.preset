@@ -55,6 +55,9 @@ enable usb-moded.service
 enable connman.service
 enable dsme.service
 
+## kodi
+enable kodi.service
+
 # Waydroid
 enable sensorfwd.service
 enable waydroid-container.service
