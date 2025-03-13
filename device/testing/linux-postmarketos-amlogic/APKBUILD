@@ -4,7 +4,7 @@
 # Co-Maintainer: exkc <exxxxkc@getgoogleoff.me>
 pkgname=linux-postmarketos-amlogic
 pkgver=6.10.8
-pkgrel=4
+pkgrel=5
 pkgdesc="Mainline kernel for Amlogic devices"
 arch="aarch64"
 _carch="arm64"
@@ -71,5 +71,5 @@ fc18d3402801860ffb1ac4bc897cfa3298b42ad1144c0d0466ead40f5e07e757f9a304e0fcce65f2
 2c40c1c32eec37c33034f7c11a0423ce6a752cfb98bab38198a64c20f24545436c3a53f0d50c60236518585d42489314123636395242b3d013d51d65f1977a51  0001-ARM64-dts-meson-gxl-add-support-for-the-Xiaomi-Mi-Bo.patch
 4538994c7d3bbb0c4740e8ce108b6838618be239a549e407ca239f3ceca8eed29b5a9ca75d162567dbc06b13ac7caacc61ebf55b247ce6fe122fecc7e5b275d5  0002-add-x96-mini-support.patch
 222e7c12dbeb931f325b7d4a306c2f1e835992b5503ba3ab387a0b006e0fb2226291d93f32aec8ac7b2f6cf15704f20ef3285bb9bafe7374b11a034639d786ef  0003-add-initial-support-for-zte-b860hv5.patch
-90602f3158408c81a072e868abf3d752624a14b3d0aacde7ec410a2fbb13d7d400e75e9c657ee85ffdc48d79928986f580d0ad343e6392d6b32efb1e4530f302  0004-arm64-dts-amlogic-Add-Ugoos-AM3.patch
+74af031a66bab9c52e79d3099b506ad572a075d77e673b608d7ec32c8998c769171ced2d5c863118ff6d3757be2656e5a9adfb9455396dd855014cfdb9959b50  0004-arm64-dts-amlogic-Add-Ugoos-AM3.patch
 "

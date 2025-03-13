@@ -65,7 +65,7 @@ new file mode 100644
 index 00000000000000..c413736f4096df
 --- /dev/null
 +++ b/arch/arm64/boot/dts/amlogic/meson-gxm-ugoos-am3.dts
-@@ -0,0 +1,95 @@
+@@ -0,0 +1,91 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
 + * Copyright (C) 2025 J. Neuschäfer <j.ne@posteo.net>
@@ -151,10 +151,6 @@ index 00000000000000..c413736f4096df
 +/* WLAN: Atheros 10k (QCA9377) */
 +&sd_emmc_a {
 +	max-frequency = <200000000>;
-+};
-+
-+&sdio_pwrseq {
-+	reset-gpios = <&gpio GPIOX_6 GPIO_ACTIVE_HIGH>;
 +};
 +
 +/* eMMC */
