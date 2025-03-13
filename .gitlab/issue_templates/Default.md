@@ -34,6 +34,7 @@
 
 ### On what environment did you encounter the issue?
 #### Environments
+* [ ] COSMIC
 * [ ] GNOME Shell on Mobile
 * [ ] Phosh
 * [ ] Plasma Mobile
