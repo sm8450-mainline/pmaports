@@ -1,5 +1,0 @@
-# iio-sensor-proxy with libssc: accelerometer mount matrix
-SUBSYSTEM=="misc", KERNEL=="fastrpc-*", ENV{ACCEL_MOUNT_MATRIX}+="-1, 0, 0; 0, -1, 0; 0, 0, -1"
-
-# Be compatible with the fix to CVE 2024-41024.
-SUBSYSTEM=="misc", KERNEL=="fastrpc-sdsp-secure", SYMLINK="fastrpc-sdsp"
