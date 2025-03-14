@@ -11,12 +11,4 @@ if [ "$(id -u)" = 0 ]; then
 	exec su "${TESTUSER:-pmos}" -c "sh -e $0"
 fi
 
-# Wrap pmbootstrap to use this repository for --aports
-pmaports="$(cd "$(dirname "$0")"/..; pwd -P)"
-_pmbootstrap="$(command -v pmbootstrap)"
-pmbootstrap() {
-	"$_pmbootstrap" --aports="$pmaports" "$@"
-}
-
 .ci/lib/apkbuild_linting.py
-
