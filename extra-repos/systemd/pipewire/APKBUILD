@@ -67,6 +67,7 @@ source="https://gitlab.freedesktop.org/PipeWire/pipewire/-/archive/$_pkgver/pipe
 	pipewire-launcher.sh
 	"
 builddir="$srcdir/$pkgname-$_pkgver"
+options="!check"  # fails with pmbootstrap for armhf
 
 case "$CARCH" in
 	s390x)
