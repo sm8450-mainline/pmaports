@@ -22,6 +22,8 @@ for f in /usr/libexec/pmos-tests-initramfs/*; do
 	fi
 done
 
+# FIXME: probably should be the initial loglevel.
+echo "==> re-enabling dmesg on console at loglevel 8"
 dmesg -n 8
 
 if [ $DID_FAIL -ne 0 ]; then
