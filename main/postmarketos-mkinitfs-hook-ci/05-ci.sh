@@ -1,9 +1,10 @@
 #!/bin/sh
-# shellcheck disable=SC1091
-. ./init_functions.sh
-. /usr/share/misc/source_deviceinfo
+# shellcheck shell=busybox
 
-TEST=""
+# shellcheck source=../postmarketos-initramfs/init_functions.sh
+. ./init_functions.sh
+# shellcheck source=../devicepkg-utils/source_deviceinfo
+. /usr/share/misc/source_deviceinfo
 
 DID_FAIL=0
 
@@ -12,13 +13,12 @@ echo "==> disabling dmesg on console"
 dmesg -n 2
 
 for f in /usr/libexec/pmos-tests-initramfs/*; do
-	echo -e "\n==> Running test $f\n\n"
-	$f
-	if [ $? -ne 0 ]; then
+	printf '\n==> Running test "%s"\n\n\n' "$f"
+	if $f; then
+		echo "==> OK: $f"
+	else
 		echo "==> FAIL: $f"
 		DID_FAIL=1
-	else
-		echo "==> OK: $f"
 	fi
 done
 
