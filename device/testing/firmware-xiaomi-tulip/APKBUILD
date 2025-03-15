@@ -1,6 +1,6 @@
 # Maintainer: m0rf30 <morf3089@gmail.com>
 pkgname=firmware-xiaomi-tulip
-pkgver=3
+pkgver=4
 pkgrel=0
 _commit="c8f750d4cdd8c5353c4aaa423f81774c63f87d27"
 pkgdesc="Firmware files for Xiaomi Redmi Note 6 Pro"
@@ -9,17 +9,12 @@ arch="aarch64"
 license="proprietary"
 options="!strip !check !archcheck !spdx !tracedeps pmb:cross-native"
 makedepends="qca-swiss-army-knife"
-source="$pkgname-$_commit.tar.gz::https://github.com/M0Rf30/postmarketos-vendor-xiaomi-tulip/archive/$_commit.tar.gz
-	30-gpu-firmware.files
-"
+source="$pkgname-$_commit.tar.gz::https://github.com/M0Rf30/postmarketos-vendor-xiaomi-tulip/archive/$_commit.tar.gz"
 
 builddir="$srcdir/postmarketos-vendor-xiaomi-tulip-$_commit"
 _fwdir="/lib/firmware"
 
 package() {
-	while IFS="" read -r fw; do
-		install -Dm644 "$fw" "$pkgdir/$_fwdir/$fw"
-	done < "$srcdir"/30-gpu-firmware.files
 	ath10k-fwencoder --create \
 		--features=wowlan,no-nwifi-decap-4addr-padding,allows-mesh-bcast,mgmt-tx-by-ref,non-bmi,single-chan-info-per-channel  \
 		--set-wmi-op-version=tlv --set-htt-op-version=tlv \
@@ -31,5 +26,4 @@ package() {
 
 sha512sums="
 fd36819cabb028973015587e4193642e7c36b2321181a1c3dc7631fcfe51e7e736f4679665d4e4ad2eef8ddd4fe541a8a15e93189822702e23463a43023fe549  firmware-xiaomi-tulip-c8f750d4cdd8c5353c4aaa423f81774c63f87d27.tar.gz
-4ec4f0da2d0d0aab4db5b212cdfffebc8dfa50bfc9863145a500a244fce50ab2eabbc0c24b9ab6ad6a5bdaeffeb9f61923b7967450778c3d3475a4a7ad69efe7  30-gpu-firmware.files
 "
