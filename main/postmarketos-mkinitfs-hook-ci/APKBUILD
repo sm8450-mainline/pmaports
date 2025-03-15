@@ -1,7 +1,7 @@
 # Maintainer: Caleb Connolly <caleb@connolly.tech>
 pkgname=postmarketos-mkinitfs-hook-ci
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=0
 pkgdesc="Hook for doing automated CI tests in the initramfs"
 url="https://postmarketos.org"
 source="
@@ -20,6 +20,6 @@ package() {
 }
 
 sha512sums="
-43f9d9a35a57845eb36893a3f20d8ff5f20b93b1c22c7c6e3959b07a41b3c5fe2f9941612620cf006a0018b53edae5fdc7ed3006befc6908c19a5617f322dea3  05-ci.sh
+3dfc0024370a43765081f34ae86e5289a6bd3f30daea81d8ed87e03e66e1001bb5ee02bdbabea7491c9f560cf2099968419c66090384b52890669a629246139e  05-ci.sh
 26d665b817a4978dca44e0c697d98e12c58fa7941da86b9e3bfef6ecb0791d55859c0b671c00d7f88cfca688acf0dcc3e593ca5d8dd3cc094f582b49dabea645  05-ci.files
 "
