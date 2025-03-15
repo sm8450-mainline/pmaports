@@ -2,29 +2,30 @@
 pkgname=device-samsung-starqltechn
 pkgdesc="Samsung Galaxy S9 SM-G9600"
 pkgver=8
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
-	postmarketos-base
+	alsa-ucm-conf-sdm845
+	dtc
 	linux-postmarketos-qcom-sdm845
 	mkbootimg
-	u-boot-starqltechn
-	u-boot-tools
-	dtc
 	msm-firmware-loader
+	postmarketos-base
 	soc-qcom
 	soc-qcom-modem
+	u-boot-starqltechn
+	u-boot-tools
 	"
 makedepends="devicepkg-dev dtc"
 source="
-	deviceinfo
 	boot_image.its
-	payload_mock.dts
 	bootscript.sh
+	deviceinfo
 	modules-initfs
+	payload_mock.dts
 "
 
 build() {
