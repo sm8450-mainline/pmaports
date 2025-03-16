@@ -3,10 +3,10 @@
 pkgname=libcamera
 pkgver=9999
 _pkgver=0.4.0
-pkgrel=11
+pkgrel=12
 pkgdesc="Linux camera framework"
 url="https://libcamera.org/"
-arch="all"
+arch="all !riscv64"
 license="LGPL-2.1-or-later AND GPL-2.0-or-later"
 depends_dev="
 	eudev-dev
@@ -54,6 +54,7 @@ source="https://gitlab.freedesktop.org/camera/libcamera/-/archive/v$_pkgver/libc
 	0010-ipa-simple-Add-tuning-file-for-hi846.patch
 	0011-ipa-simple-Add-tuning-file-for-IMX371.patch
 	0012-ipa-simple-Add-tuning-file-for-IMX376.patch
+	0013-libcamera-software_isp-Work-around-bug-259.patch
 	qcam.desktop
 	"
 builddir="$srcdir/$pkgname-v$_pkgver"
@@ -162,5 +163,6 @@ a803793ed16eca2563bbbae84713dab6a5f3090ae6ae5f755393c0b2203bf4471f4f37b6fc699918
 6ac1989989fbc7d560948d66f59f62a4f28c8b398398d204cf4323c5db5f1eb45d5caa0f287f4f95956a1346e1346d5e1cf2d3577d46c2588b38a15bdcdb3b76  0010-ipa-simple-Add-tuning-file-for-hi846.patch
 7bdc0d5f8904d827ad62e16f4ea5d8bf72262bbbf3260634d59884060b4b8592262fc443bd380383bbf4f1eeb4f9da1bcd7080f04a964cc008ad570bedca81c4  0011-ipa-simple-Add-tuning-file-for-IMX371.patch
 0e51325a3216dea7fabdcd329b03d2c6493f3e2665e2937e48d94e3fe28d8d01f3077417e8bf08748259aa07b7550eaa484811d17e08edf1817c5bc5c673baf5  0012-ipa-simple-Add-tuning-file-for-IMX376.patch
+4a6f970fb57e5e55c60c205846e25197c9b9f016d50fa4179e0488dd12f617a0baacbadf4e07e175a0406eec39a286e61ec833b6c22c5b58148af2da4c9196ab  0013-libcamera-software_isp-Work-around-bug-259.patch
 22167a4eceb6d1b40b0b7c45fdf116c71684f5340de7f767535cb8e160ad9d2ae0f00cb3d461f73a344520a48a4641cf46226841d78bee06bfbfd2a91337f754  qcam.desktop
 "
