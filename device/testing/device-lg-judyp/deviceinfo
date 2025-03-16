@@ -21,7 +21,7 @@ deviceinfo_rootfs_image_sector_size="4096"
 
 # Bootloader related
 deviceinfo_flash_method="fastboot"
-deviceinfo_kernel_cmdline="modprobe.blacklist=ipa"
+deviceinfo_kernel_cmdline="modprobe.blacklist=ipa console=ttyMSM0,115200"
 deviceinfo_getty="ttyMSM0;115200"
 deviceinfo_generate_bootimg="true"
 deviceinfo_bootimg_qcdt="false"

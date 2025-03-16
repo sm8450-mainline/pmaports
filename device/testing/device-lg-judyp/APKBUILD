@@ -2,7 +2,7 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-lg-judyp
 pkgdesc="LG V35 ThinQ"
-pkgver=5
+pkgver=6
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -26,6 +26,6 @@ package() {
 }
 
 sha512sums="
-798dde39d6b1bf00bc5d4f157216893d18d8478e23062b8fac80e55a6d4838bfaf9c41fdf2dc6c51e867294540daae5f6514d0c63f551379a86513d9a56fc814  deviceinfo
+01db6c7183da9bdd7b37b442551148b7d791bfb68f51acc4bbfa802bed03ea23b84c42cec4db2f56572373473e80e1744744692d0c1ca4d1b5ece0555ae821ae  deviceinfo
 09fb39b4698e3fd433e35f94b4c39787a4ff9af258e8a85b5a197fb2676f993da2666ffb4ae98c41f35446d52b3578e1e6ebd06cc7010287ca140bf207c3a8af  modules-initfs
 "

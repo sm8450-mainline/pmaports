@@ -6,7 +6,7 @@
 _flavor="postmarketos-qcom-sdm845"
 pkgname=linux-$_flavor
 pkgver=6.14.0_rc5
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline Kernel fork for SDM845 devices"
 arch="aarch64"
 _carch="arm64"
@@ -24,6 +24,7 @@ _tag="sdm845-6.14-rc5-r2"
 source="
 	linux-$_tag.tar.gz::https://gitlab.com/sdm845-mainline/linux/-/archive/$_tag/linux-$_tag.tar.gz
 	$_config
+	0001-enable-judy-uart.patch
 "
 builddir="$srcdir/linux-$_tag"
 
@@ -73,4 +74,5 @@ package() {
 sha512sums="
 e68ab4fbb912882bffb1630ebb6d90bed58ec89645e60b395672b94850bbeb8cfa98b4bf646624729ac462777544b6682554864e0fc24f9c994ea39c2feb524b  linux-sdm845-6.14-rc5-r2.tar.gz
 56d17ed221eb624ea58643a239f1225594f44126a1c6af0e6ba9b57c74c4f10e7d9089d7b7fd1a3eef375a15b3263b28e821587cee25911593c05f5bacf5caeb  config-postmarketos-qcom-sdm845.aarch64
+1c353a76129639b9df0c66d77bcda71fbea31995166054d97b9347b890809f92e2ef0ab52a04cb2008e9945790c1b8d1f4cc6a935741be3e6790c43dcea99a81  0001-enable-judy-uart.patch
 "
