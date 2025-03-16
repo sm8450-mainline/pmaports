@@ -76,7 +76,7 @@ subpackages="
 	"
 # download.gnome.org switched to a new publish model and networkmanager hasnt switch yet
 #source="https://download.gnome.org/sources/NetworkManager/${_pkgver:0:4}/NetworkManager-$_pkgver.tar.xz
-source="https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/archive/$_pkgver/NetworkManager-$_pkgver.tar.gz
+source="$pkgname-$_pkgver.tar.gz::https://github.com/NetworkManager/NetworkManager/archive/refs/tags/$_pkgver.tar.gz
 	$pkgname.conf
 	$pkgname.rules
 	"
@@ -238,7 +238,7 @@ systemd() {
 }
 
 sha512sums="
-6669467bad7a4965b92124506d25649bd6c95e90c34213edb3f854df9a163507ac5dd381ff53800254a2db703f23233f8dc5b59a75042532bd573fc8c7022158  NetworkManager-1.52.0.tar.gz
+6669467bad7a4965b92124506d25649bd6c95e90c34213edb3f854df9a163507ac5dd381ff53800254a2db703f23233f8dc5b59a75042532bd573fc8c7022158  networkmanager-1.52.0.tar.gz
 0f79016bf717dea43830962f524deae8d1cedc274376e40bd912ebe63208c5b1c3b7a5aa14379da19020c587dbd5588df2f0066ca1540070a226983a43e4159b  networkmanager.conf
 9820ed2ead0af689644842de57657bb10330a1eaff0e85b21ae9913f55e399e47d8b41b0a12956f30de80272b4424c6e55f33acbc88e156879003a260bf576f6  networkmanager.rules
 "

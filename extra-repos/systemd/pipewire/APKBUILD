@@ -62,7 +62,7 @@ subpackages="
 	$pkgname-echo-cancel:echo_cancel
 	"
 install="$pkgname.post-upgrade $pkgname.post-install $pkgname.pre-deinstall"
-source="https://gitlab.freedesktop.org/PipeWire/pipewire/-/archive/$_pkgver/pipewire-$_pkgver.tar.gz
+source="$pkgname-$_pkgver.tar.gz::https://github.com/PipeWire/pipewire/archive/refs/tags/$_pkgver.tar.gz
 	pipewire.desktop
 	pipewire-launcher.sh
 	"
