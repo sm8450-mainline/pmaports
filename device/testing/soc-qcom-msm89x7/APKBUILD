@@ -1,7 +1,7 @@
 # Maintainer: Barnabas Czeman <barnabas.czeman@postmarketos.org>
 pkgname=soc-qcom-msm89x7
 pkgdesc="Common package for Qualcomm MSM89x7 devices"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="BSD-3-Clause"
@@ -21,10 +21,13 @@ _ucm_commit="6078de44affd1023c1ba4f71ef1e21468e3282e9"
 source="
 	$pkgname-$_ucm_commit.tar.gz::https://github.com/msm89x7-mainline/alsa-ucm-conf/archive/$_ucm_commit.tar.gz
 	adreno-quirks.sh
+	51-qcom.conf
 "
 
 package() {
 	mkdir -p $pkgdir
+	install -Dm644 "$srcdir"/51-qcom.conf \
+		-t "$pkgdir"/usr/share/wireplumber/wireplumber.conf.d
 }
 
 ucm() {
@@ -47,4 +50,5 @@ gpu() {
 sha512sums="
 b3cc3ad65cf5d3fd956f4d24f36fc4324e4ee676a0cdda99f213f90c6a854b1eb9d3333402e05e1b861e404f31c72b4d5a219b6bcb6170bacedc938657e9a7c4  soc-qcom-msm89x7-6078de44affd1023c1ba4f71ef1e21468e3282e9.tar.gz
 1deebe2d0ecfd1022d3f068faf8412edd6c6cf309c0472788620778a04c274187d01204b0c39c6dd5fddd1d5beaa36f2ca693b7af0a8fb9d2c27ea1f6d696ef1  adreno-quirks.sh
+28c14f47eaedec577d152001c51753537c98f267ac4a0acf78a304efebe5f6a1b4dc6d501497da9a0a925806a1d9c80b25e001cf9b1eb21efa22cd6a41ff753b  51-qcom.conf
 "
