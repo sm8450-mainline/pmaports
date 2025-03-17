@@ -1,14 +1,13 @@
 # Maintainer: Dang Huynh <danct12@disroot.org>
 pkgname=wl1251-cal
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Retrieve wl1251 calibration data from a CAL partition and feed it to the driver"
 url="https://github.com/maemo-leste/wl1251-cal"
 arch="armv7"
 license="LGPL-2.1-only"
 makedepends="linux-headers"
 subpackages="$pkgname-openrc"
-triggers="$pkgname.trigger=/lib/firmware/ti-connectivity"
 source="$pkgname-$pkgver.tar.gz::https://github.com/maemo-leste/wl1251-cal/archive/refs/tags/$pkgver.tar.gz
 	wl1251-cal.initd
 	wl1251-blacklist
@@ -35,5 +34,5 @@ sha512sums="
 1a402553fc98fa8f2d81d34a548f96be91d13bdcb77ec8e9d8373732b27a6e908895f6044aef8e88dbcd9fa6fa04f0a3d62bed877be91ba6207f68440c3ce758  wl1251-cal-1.2.tar.gz
 39fec86cb13d34a605ad1a76eb3a6ae6e242a01427f477008a3ff066e0b59fb804f0d8379909f81d015aa053ccf9850505dbe3124062ed707a663ae5e2ccd9f1  wl1251-cal.initd
 d14fd2816a8d55592907f1cf1f702d86095c8d2581b336460eb7d5bfc6ab8cece37a53c0a181b9f75ef5050bc612ce7443992158d36fc03939b39010cd33de4c  wl1251-blacklist
-11341461c487b3d797728e5bd0883e659b8440a486d2f0bce008403da517582ba706f6ac89ee4a44217078a5e2d71c3a0b3d79c1189f83a431edc4069eddac10  calibrate-wl1251
+b6ee8ab642d2c70444851c6c57c4460f9712a423c8b655ea960563a143ea5609dc9f2bc2af5549b35c4a34ecae5597a382d0d6e4a829b72f0e76b77ab51edaf6  calibrate-wl1251
 "
