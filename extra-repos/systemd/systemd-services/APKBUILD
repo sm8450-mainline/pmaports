@@ -75,7 +75,7 @@ subpackages="
 	tqftpserv-systemd:_service
 	udisks2-systemd:_service
 	udiskie-systemd:_service
-	usb-moded:_service
+	usb-moded-systemd:_service
 	vvmd-systemd:_service
 	waydroid-sensors-systemd:_service
 	waydroid-systemd:_service
