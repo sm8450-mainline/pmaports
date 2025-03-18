@@ -7,13 +7,15 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=62
+pkgver=63
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
 arch="noarch"
 options="!check"
 license="BSD-3-Clause"
+
+makedepends="systemd-dev"
 
 # 2. Add a new entry to subpackages in the format
 #    <pkgname>-systemd:_service where pkgname is the name
@@ -272,57 +274,10 @@ source="$(flatpath \
 	$_zram_init_sources \
 )"
 
-# 5. Add any *system* or *user* unit files that should be passed to 'systemctl
-# preset'. Variables with *system* unit files should use "_system_presets" and
-# variables with *user* unit files should use "_user_presets".
-_alsa_utils_system_presets="alsa-restore.service alsa-state.service"
-_apk_polkit_rs_system_presets="apk-polkit-server.service"
-_bluez_system_presets="bluetooth.service"
-_connman_system_presets="connman-wait-online.service"
-_cosmic_greeter_presets="cosmic-greeter.service"
-_fnott_user_presets="fnott.service"
-_geoclue_system_presets="geoclue.service"
-_gnome_clocks_user_presets="gnome-clocks.service"
-_hexagonrpcd_system_presets="hexagonrpcd-adsp-rootpd.service hexagonrpcd-adsp-sensorspd.service hexagonrpcd-sdsp.service"
-_hfd_service_system_presets="hfd-service.service"
-_iwd_system_presets="iwd.service"
-_kanshi_user_presets="kanshi.service"
-_kodi_system_presets="kodi.service"
-_mce_system_presets="mce.service"
-_mmsd_tng_user_presets="mmsd-tng.service"
-_modemmanager_system_presets="ModemManager.service"
-_msm_modem_system_presets="msm-modem-uim-selection.service"
-_nftables_system_presets="nftables.service"
-_openssh_server_pam_system_presets="sshd.service"
-_pd_mapper_system_presets="pd-mapper.service"
-_plasma_mobile_system_presets="plasma-mobile.service"
-_q6voiced_system_presets="q6voiced.service"
-_qbootctl_system_presets="qbootctl.service"
-_qcom_diag_system_presets="diag-router.service"
-_rmtfs_system_presets="rmtfs.service"
-_rtkit_system_presets="rtkit-daemon.service"
-_sensorfw_system_presets="sensorfwd.service"
-_sleep_inhibitor_system_presets="sleep-inhibitor.service"
-_syncthing_user_presets="syncthing.service"
-_tinydm_system_presets="tinydm.service"
-_tqftpserv_system_presets="tqftpserv.service"
-_udisks2_system_presets="udisks2.service"
-_udiskie_user_presets="udiskie.service"
-_usb_moded_system_presets="usb_moded.service"
-_vvmd_user_presets="vvmd.service"
-_waydroid_system_presets="waydroid-container.service"
-_waydroid_sensors_system_presets="waydroid-sensors.service"
-_wireplumber_user_presets="wireplumber.service"
-_wpa_supplicant_system_presets="wpa_supplicant.service"
-_xdg_desktop_portal_user_presets="xdg-desktop-portal-rewrite-launchers.service"
-_zram_init_system_presets="zram_swap.service"
-
 _service() {
 	local name=$(echo ${subpkgname%%-systemd})
 	local n=$(echo ${subpkgname%-systemd} | sed s/-/_/g)
-	pkgdesc="$name systemd service files"
-	install_if="systemd-services=$pkgver-r$pkgrel systemd $name"
-	install="" # defined later if presets are configured for the service
+	install_if="$name systemd"
 
 	for f in $(eval "echo \$_${n}_sources"); do
 		prefix="$subpkgdir"
@@ -341,23 +296,12 @@ _service() {
 		install -Dm$mode "$srcdir/$(flatpath "$f")" "$prefix/$f"
 	done
 
-	for t in user system; do
-		local presets
-		presets="$(eval "echo \$_${n}_${t}_presets" || true)"
-		[ -z "$presets" ] && continue
-		presets="$(echo "$presets" | tr -s '[:space:]' ' ')"
-
-		if [ -z "$install" ]; then
-			cat <<- EOF > "$subpkgname.post-install"
-			#!/bin/sh
-			. /usr/lib/systemd/systemd-apk-macros.sh
-			EOF
-			cp "$subpkgname.post-install" "$subpkgname.pre-deinstall"
-			install="$subpkgname.post-install $subpkgname.pre-deinstall"
-		fi
-		echo "systemd_service_post_install "$t" $presets" >> "$subpkgname.post-install"
-		echo "systemd_service_pre_deinstall "$t" $presets" >> "$subpkgname.pre-deinstall"
-	done
+	# NOTE: we do not call default_systemd because it generates an incorrect
+	# install_if. Instead, call the relevant parts from default_systemd directly
+	# See: https://gitlab.postmarketos.org/postmarketOS/pmaports/-/merge_requests/6334#note_474497
+	depends="systemd"
+	pkgdesc="$pkgdesc (systemd files)"
+	default_systemd_install_scripts
 }
 
 package() {
