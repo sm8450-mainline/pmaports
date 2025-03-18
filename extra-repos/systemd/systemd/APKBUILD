@@ -121,8 +121,8 @@ subpackages="
 
 source="
 	https://gitlab.postmarketos.org/postmarketOS/systemd/-/archive/$_pkgver/systemd-$_pkgver.tar.gz
-	systemd-apk-macros.sh
 	wired.network
+	systemd-apk-macros.sh
 	"
 builddir="$srcdir/systemd-$_pkgver"
 
@@ -424,6 +424,6 @@ dev() {
 
 sha512sums="
 3cd75d5ba29a3994230ecbe16ea106d4fe05d7d76e7cd9b9a6a63177f09d8c362c055a1fea49e6c9a10a949afc07a6c75fe75dad2bd302d94e41a81f8ddb2a15  systemd-musl-v256.11-split-usr.tar.gz
-2f9ec875de67fc4bb401bebea88653cd34c22787a26a8122233fbb761bfbf190be72cfa0c26a433c30d703ee1e10489787d75492f0e1a76cbd5f6601e7e23d49  systemd-apk-macros.sh
 81c897fed8a3fbfb67ec591b2398a5d65e4af1b3ef379376c157c98d71f085b707f8ebc896d5571a94f99f8fc84fd6b43e3b879ca9b0d57fc6c4596034c7a777  wired.network
+cc1c8f00a0ff1c94fcebe0e6d48b3d1a74c51b9d86bf255762cecda4b4d0c08e313f817aaaa301f41133eaf73c525e36c0f48659b263a7ed990080de9f3cec6c  systemd-apk-macros.sh
 "
