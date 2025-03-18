@@ -6,12 +6,28 @@ pkgname=systemd
 # currently tracking git MR
 pkgver=256.11
 _pkgver="musl-v${pkgver//_/-}-split-usr"
-pkgrel=1
+pkgrel=2
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !s390x" # blocked by pmboostrap not supporting
 license="MIT AND GPL-2.0-only AND LGPL-2.1-or-later"
 options="pmb:strict !check" # few tests fail, need to debug. We use alpine dbus for building, systemd-dbus for runtime
+
+# FIXME: it turns out abuild doesn't let you have arbitrary triggers?! what century is this???
+# So we have to trigger everything on everything and do a bunch of reloading that
+# isn't necessary most of the time...
+triggers="$pkgname.trigger=/usr/lib/systemd/catalog:\
+/usr/lib/udev/hwdb.d:\
+/usr/lib/binfmt.d:\
+/usr/lib/sysusers.d:\
+/usr/lib/tmpfiles.d:\
+/usr/lib/udev/rules.d:\
+/usr/lib/sysctl.d:\
+/usr/lib/systemd/system:\
+/usr/lib/systemd/user:\
+/etc/systemd/system:\
+/etc/systemd/user
+"
 
 makedepends="
 	acl
@@ -269,7 +285,6 @@ udevd_zcomp() {
 timesyncd() {
 	pkgdesc="systemd Time Synchronization"
 	depends="$pkgname=$pkgver-r$pkgrel"
-	install="$subpkgname.post-install $subpkgname.pre-deinstall"
 
 	amove etc/systemd/timesyncd.conf
 	amove usr/bin/timedatectl
@@ -279,6 +294,9 @@ timesyncd() {
 	amove usr/share/dbus-1/system-services/org.freedesktop.timesync1.service
 	amove usr/share/dbus-1/system.d/org.freedesktop.timesync1.conf
 	amove usr/share/polkit-1/actions/org.freedesktop.timesync1.policy
+
+	# Generate install scripts automatically for services in this subpackage
+	default_systemd_install_scripts
 }
 
 timesyncd_bcomp() {
@@ -292,7 +310,6 @@ timesyncd_zcomp() {
 networkd() {
 	pkgdesc="systemd Network Configuration"
 	depends="$pkgname=$pkgver-r$pkgrel"
-	install="$subpkgname.post-install $subpkgname.pre-deinstall"
 
 	amove usr/bin/networkctl
 	amove etc/systemd/network
@@ -314,6 +331,9 @@ networkd() {
 	amove usr/share/polkit-1/actions/org.freedesktop.network1.policy
 
 	install -D -m0644 "$srcdir/wired.network" "$subpkgdir/usr/lib/systemd/network/80-wired.network"
+
+	# Generate install scripts automatically for services in this subpackage
+	default_systemd_install_scripts
 }
 
 networkd_bcomp() {
@@ -327,7 +347,6 @@ networkd_zcomp() {
 resolved() {
 	pkgdesc="systemd Network Name Resolution"
 	depends="$pkgname=$pkgver-r$pkgrel"
-	install="$subpkgname.post-install $subpkgname.pre-deinstall"
 	replaces="resolvconf"
 	provides="resolvconf"
 
@@ -342,6 +361,9 @@ resolved() {
 	amove usr/share/dbus-1/system-services/org.freedesktop.resolve1.service
 	amove usr/share/dbus-1/system.d/org.freedesktop.resolve1.conf
 	amove usr/share/polkit-1/actions/org.freedesktop.resolve1.policy
+
+	# Generate install scripts automatically for services in this subpackage
+	default_systemd_install_scripts
 }
 
 resolved_bcomp() {
