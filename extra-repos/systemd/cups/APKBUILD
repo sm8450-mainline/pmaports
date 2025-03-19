@@ -144,6 +144,12 @@ doc() {
 	amove usr/share/cups/help
 }
 
+systemd() {
+	systemd_system_units_restart="cups.service"
+
+	default_systemd
+}
+
 sha512sums="
 12dca4753fd340b8b54f434c88d28dd663981d3bdde100d0c88a3a8c87666fd5ec9492a938c75089ef68f1c63da597d1faa6bea47fc5f2d8793712f6a41442d1  cups-2.4.11.tar.gz
 bc2e9985b248bdf552306dcaad6ac86ada0053da97a742e57e7d65f0c2373a88edd622b326a39bb536c7aaabc449255d5597001297c9430d237379547c95caf3  cups.logrotate
