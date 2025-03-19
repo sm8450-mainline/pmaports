@@ -1,6 +1,6 @@
 pkgname=hexagonfs-firmware-loader
 pkgver=1.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Prepare the HexagonFS directory from msm-firmware-loader mounts"
 url="https://postmarketos.org/"
 subpackages="$pkgname-openrc $pkgname-systemd"
@@ -40,11 +40,6 @@ package() {
 openrc() {
 	install="$subpkgname.post-install"
 	default_openrc
-}
-
-systemd() {
-	install="$subpkgname.post-install $subpkgname.pre-deinstall"
-	default_systemd
 }
 
 sha512sums="

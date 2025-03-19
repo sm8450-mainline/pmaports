@@ -1,4 +1,0 @@
-#!/bin/sh
-
-. /usr/lib/systemd/systemd-apk-macros.sh
-systemd_service_post_install system cups.path cups.socket cups.service

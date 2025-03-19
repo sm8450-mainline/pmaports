@@ -3,7 +3,7 @@
 pkgname=wireplumber
 pkgver=9990.5.8
 _pkgver=0.5.8
-pkgrel=0
+pkgrel=1
 pkgdesc="Session / policy manager implementation for PipeWire"
 url="https://pipewire.org/"
 arch="all"
@@ -30,12 +30,12 @@ subpackages="
 	$pkgname-lang
 	$pkgname-zsh-completion
 	$pkgname-doc
+	$pkgname-systemd
 	"
 source="https://gitlab.freedesktop.org/PipeWire/wireplumber/-/archive/$_pkgver/wireplumber-$_pkgver.tar.gz"
 
 provides="pipewire-session-manager"
 provider_priority=50
-install="$pkgname.post-install $pkgname.pre-deinstall"
 builddir="$srcdir/$pkgname-$_pkgver"
 
 case "$CARCH" in

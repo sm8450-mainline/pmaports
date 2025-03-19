@@ -4,7 +4,7 @@
 pkgname=gnome-keyring
 pkgver=99946.2
 _pkgver=46.2
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME keyring"
 url="https://wiki.gnome.org//Projects/GnomeKeyring"
 arch="all"
@@ -65,11 +65,6 @@ check() {
 package() {
 	export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 	make DESTDIR="$pkgdir" install
-}
-
-systemd() {
-	install="$subpkgname.post-install $subpkgname.pre-deinstall"
-	default_systemd
 }
 
 sha512sums="

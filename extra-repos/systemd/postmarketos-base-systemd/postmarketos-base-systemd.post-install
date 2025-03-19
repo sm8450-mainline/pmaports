@@ -1,7 +1,5 @@
 #!/bin/sh
 
-. /usr/lib/systemd/systemd-apk-macros.sh
-
 system_preset_path="/usr/lib/systemd/system-preset/90-base.preset"
 user_preset_path="/usr/lib/systemd/user-preset/90-base.preset"
 
@@ -89,8 +87,10 @@ policy_changed() {
 check_and_apply_presets() {
 	local type="$1"
 	local preset_path=""
+	local extra_args=""
 	if [ "$type" = user ]; then
 		preset_path="$user_preset_path"
+		extra_args="--global"
 	else
 		preset_path="$system_preset_path"
 		type="system"
@@ -106,7 +106,7 @@ check_and_apply_presets() {
 				echo "  wildcards are not supported yet, skipping"
 			else
 				if  [ -f "/usr/lib/systemd/$type/$entry" ]; then
-					systemd_service_post_install "$type" "$entry"
+					systemctl --no-reload preset $extra_args "$entry"
 				else
 					echo "  no unit file found, skipping"
 				fi

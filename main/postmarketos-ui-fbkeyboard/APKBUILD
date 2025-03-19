@@ -1,7 +1,7 @@
 # Reference: https://postmarketos.org/uipkg
 # Maintainer: Ferenc Bakonyi <bakonyi.ferenc@gmail.com>
 pkgname=postmarketos-ui-fbkeyboard
-pkgver=4
+pkgver=5
 pkgrel=0
 pkgdesc="Plain framebuffer console with touchscreen keyboard support"
 url="https://github.com/bakonyiferenc/fbkeyboard"
@@ -30,11 +30,6 @@ openrc() {
 		"
 
 	mkdir -p "$subpkgdir"
-}
-
-systemd() {
-	install="$subpkgname.post-install $subpkgname.pre-deinstall"
-	default_systemd
 }
 
 sha512sums="

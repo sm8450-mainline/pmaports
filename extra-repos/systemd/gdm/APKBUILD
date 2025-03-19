@@ -3,7 +3,7 @@
 pkgname=gdm
 pkgver=99948.0
 _pkgver=48.0
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME display manager"
 url="https://wiki.gnome.org/Projects/GDM"
 # blocked by gnome-shell
@@ -74,11 +74,6 @@ package() {
 	#sed -i "s/pam_systemd\.so/pam_elogind.so/" "$pkgdir"/etc/pam.d/*
 
 	install -m755 -D "$srcdir/Xsession" "$pkgdir"/etc/gdm
-}
-
-systemd() {
-	install="$subpkgname.post-install $subpkgname.pre-deinstall"
-	default_systemd
 }
 
 sha512sums="

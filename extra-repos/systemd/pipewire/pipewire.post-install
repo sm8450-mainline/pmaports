@@ -1,6 +1,3 @@
 #!/bin/sh
 
 addgroup -S pipewire 2>/dev/null
-
-. /usr/lib/systemd/systemd-apk-macros.sh
-systemd_service_post_install user pipewire.socket

@@ -4,7 +4,7 @@ maintainer="Jane Rachinger <jane400+pmaports@postmarketos.org>"
 pkgname=cups
 pkgver=99992.4.11
 _pkgver=2.4.11
-pkgrel=0
+pkgrel=1
 pkgdesc="The CUPS Printing System"
 url="https://github.com/OpenPrinting/cups/"
 arch="all"
@@ -95,11 +95,6 @@ package() {
 			usr/share/applications/cups.desktop
 	fi
 	find usr/share/cups/model -name "*.ppd" -exec gzip -n9f {} +
-}
-
-systemd() {
-	install="$subpkgname.post-install $subpkgname.pre-deinstall"
-	default_systemd
 }
 
 dev() {

@@ -3,7 +3,7 @@
 pkgname=pipewire
 pkgver=9991.4.1
 _pkgver=1.4.1
-pkgrel=0
+pkgrel=1
 _so_ver=0.3
 pkgdesc="Multimedia processing graphs"
 url="https://pipewire.org/"
@@ -49,6 +49,7 @@ subpackages="
 	$pkgname-doc
 	$pkgname-alsa
 	$pkgname-pulse
+	$pkgname-pulse-systemd:pulse_systemd
 	$pkgname-jack
 	$pkgname-jack-dev:jackdev
 	$pkgname-dev
@@ -60,8 +61,9 @@ subpackages="
 	$pkgname-spa-tools:spa_tools
 	$pkgname-lang
 	$pkgname-echo-cancel:echo_cancel
+	$pkgname-systemd
 	"
-install="$pkgname.post-upgrade $pkgname.post-install $pkgname.pre-deinstall"
+install="$pkgname.post-upgrade $pkgname.post-install"
 source="$pkgname-$_pkgver.tar.gz::https://github.com/PipeWire/pipewire/archive/refs/tags/$_pkgver.tar.gz
 	pipewire.desktop
 	pipewire-launcher.sh
@@ -143,7 +145,6 @@ pulse() {
 		"
 	provides="pulseaudio=$pkgver-r$pkgrel pulseaudio-bluez=$pkgver-r$pkgrel"
 	provider_priority=1
-	install="$subpkgname.post-install $subpkgname.pre-deinstall"
 
 	amove usr/bin/pipewire-pulse
 	amove usr/lib/pipewire-$_so_ver/libpipewire-module-protocol-pulse.so
@@ -151,8 +152,15 @@ pulse() {
 	amove usr/lib/pipewire-$_so_ver/libpipewire-module-filter-chain.so
 	amove usr/share/pipewire/pipewire-pulse.conf
 	amove usr/share/pipewire/pipewire-pulse.conf.avail
+}
+
+pulse_systemd() {
 	amove usr/lib/systemd/user/pipewire-pulse.service
 	amove usr/lib/systemd/user/pipewire-pulse.socket
+
+	# We can't just call default_systemd because that would take
+	# all the systemd unit files!
+	default_systemd_install_scripts
 }
 
 jack() {

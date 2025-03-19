@@ -5,7 +5,7 @@ maintainer="Jane Rachinger <jane400+pmaports@postmarketos.org>"
 pkgname=networkmanager
 pkgver=9991.52.0
 _pkgver=1.52.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Network Management daemon"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch="all"
@@ -230,11 +230,6 @@ dnsmasq() {
 
 _default_plugin() {
 	amove $_plugindir/libnm*-${subpkgname#"$pkgname"-}.so
-}
-
-systemd() {
-	install="$subpkgname.post-install $subpkgname.pre-deinstall"
-	default_systemd
 }
 
 sha512sums="

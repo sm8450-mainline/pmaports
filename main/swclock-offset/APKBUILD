@@ -1,7 +1,7 @@
 # Maintainer: Jakko <jahau@rocketmail.com>
 pkgname=swclock-offset
 pkgver=0.2.5
-pkgrel=0
+pkgrel=1
 pkgdesc="Keep system time at an offset to a non-writable RTC"
 url="https://gitlab.postmarketos.org/postmarketOS/swclock-offset"
 arch="noarch"
@@ -13,13 +13,6 @@ options="!check" # No tests
 
 package() {
 	make DESTDIR="$pkgdir" install
-}
-
-systemd() {
-	install="$subpkgname.post-install $subpkgname.pre-deinstall"
-	install_if="$pkgname=$pkgver-r$pkgrel systemd"
-
-	amove usr/lib/systemd
 }
 
 openrc() {

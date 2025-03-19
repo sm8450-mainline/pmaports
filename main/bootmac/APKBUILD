@@ -1,7 +1,7 @@
 # Maintainer: Dylan Van Assche <me@dylanvanassche.be>
 pkgname=bootmac
 pkgver=0.6.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Configure MAC addresses at boot"
 url="https://gitlab.postmarketos.org/postmarketOS/bootmac"
 arch="all"
@@ -27,11 +27,6 @@ openrc() {
 	default_openrc
 	amove usr/lib/udev/rules.d/90-bootmac-bluetooth.rules
 	amove usr/lib/udev/rules.d/90-bootmac-wifi.rules
-}
-
-systemd() {
-	install="$subpkgname.post-install $subpkgname.pre-deinstall"
-	default_systemd
 }
 
 sha512sums="
