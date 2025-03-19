@@ -1,2 +1,5 @@
 msm
 nt36xxx
+qcom_fg
+qcom_pmi8998_charger
+qcom-spmi-rradc

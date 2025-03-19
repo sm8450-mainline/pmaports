@@ -1,2 +1,5 @@
 msm
 panel-boe-td4320
+qcom_fg
+qcom_pmi8998_charger
+qcom-spmi-rradc
