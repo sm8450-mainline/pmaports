@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-clover
 pkgdesc="Xiaomi Mi Pad 4"
-pkgver=5
+pkgver=6
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -49,6 +49,6 @@ kernel_cloverplus() {
 
 sha512sums="
 fc270073ac4f899f0ea6b6b47c63b9e44ff6ca27de757079f19e92b5169bbaf7737b34ffd25c8eda94764720a0544b8cae8ac6620d20cebe65c4552a1ec474a0  deviceinfo
-b6dbe06e0cd692ecc95d4cccd908ae675f5fe91dbe137508c85f0e24b2c5fa109b58c55a9e27b82eec2221891a139eae8f29887e8b5d77953543e155e8182f23  modules-initfs.clover
-2239eced1a2ece9c9a4094c5b8a0c1ab410356eeeb0083b6be3f32e9d375784402350d648f56c27503eb19ba4f2598ea215e1903b07a0a963b22870056fbec34  modules-initfs.cloverplus
+a4770150d0412d6531a23cddecc55081938e10aa3dc24bc8b0502d93e9ddcbb011994b9d7e9c85d3e0d36d0a57301e90fb52cb0b7fb552636b01d470f78b9f6c  modules-initfs.clover
+c2c8e8cc695247662b90ab39296980ebfa01a18e106d7de69586cb47deed2eb691738af06f9b3f3173dc095c5a113fc542fe8df0a7e539230a8df5251b6650f5  modules-initfs.cloverplus
 "
