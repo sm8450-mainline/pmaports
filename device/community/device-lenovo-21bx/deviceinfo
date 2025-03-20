@@ -15,7 +15,7 @@ deviceinfo_gpu_accelerated="true"
 deviceinfo_chassis="laptop"
 deviceinfo_keyboard="true"
 deviceinfo_external_storage="true"
-deviceinfo_kernel_cmdline="quiet loglevel=2 quiet clk_ignore_unused pd_ignore_unused arm64.nopauth"
+deviceinfo_kernel_cmdline="quiet loglevel=2 quiet clk_ignore_unused pd_ignore_unused arm64.nopauth pmos.force-partition-resize"
 
 # Bootloader related
 deviceinfo_flash_method="none"
