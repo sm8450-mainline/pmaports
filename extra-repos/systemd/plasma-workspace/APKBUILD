@@ -121,6 +121,9 @@ builddir="$srcdir/$pkgname-$_pkgver"
 
 replaces="xdg-desktop-portal-kde<=6.1.5-r0"
 
+# Fails in pmaports CI. It already passes in Alpine, so just skip checks here.
+options="!check"
+
 # secfixes:
 #   6.0.5.1:
 #     - CVE-2024-36041
