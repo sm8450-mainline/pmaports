@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-j1mini3g
 pkgdesc="Samsung Galaxy J1 mini"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -21,5 +21,5 @@ package() {
 
 
 sha512sums="
-efeaf1c701ed856aeb86fdfbf90b16eaf2385b5db27330a2acb10cdd04c129abc4063ab3242fb5315bf84f9b3ce1cc8b22984e6ef337ea23f2fb896e4dee639d  deviceinfo
+3c2d3af8812aba9c74cb62c873d1e3c6545386701567146bfc1b3eb0e7edb221f5cfab38de4ab47f28420d4f6b4a98ddf958d065fa2117ef8500716084c3f7a2  deviceinfo
 "
