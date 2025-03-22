@@ -6,3 +6,10 @@ PORT="41641"
 
 # Extra flags you might want to pass to tailscaled.
 FLAGS=""
+
+# postmarketOS uses nftables by default, and tailscale has
+# some issues with the iptables frontend for it. So just
+# tell tailscale to use the nftables backend for routing
+# configuration.
+TS_DEBUG_FIREWALL_MODE=nftables
+
