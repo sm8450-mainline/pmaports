@@ -14,7 +14,7 @@ depends="linux-edge
 	 u-boot-odroid
 	 u-boot-tools
 	"
-makedepends="devicepkg-dev"
+makedepends="devicepkg-dev u-boot-tools"
 subpackages="$pkgname-nonfree-firmware:nonfree_firmware $pkgname-tools"
 _commit="42ac93dcfbbb8a08c2bdc02e19f96eb35a81891a"
 source="deviceinfo modules-initfs uboot-script.cmd install-rootfs-hdd.sh"
