@@ -6,16 +6,13 @@ pkgname=systemd
 # currently tracking git MR
 pkgver=256.11
 _pkgver="musl-v${pkgver//_/-}-split-usr"
-pkgrel=4
+pkgrel=5
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !s390x" # blocked by pmboostrap not supporting
 license="MIT AND GPL-2.0-only AND LGPL-2.1-or-later"
 options="pmb:strict !check" # few tests fail, need to debug. We use alpine dbus for building, systemd-dbus for runtime
 
-# FIXME: it turns out abuild doesn't let you have arbitrary triggers?! what century is this???
-# So we have to trigger everything on everything and do a bunch of reloading that
-# isn't necessary most of the time...
 triggers="$pkgname.trigger=/usr/lib/systemd/catalog:\
 /usr/lib/udev/hwdb.d:\
 /usr/lib/binfmt.d:\
