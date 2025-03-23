@@ -8,7 +8,7 @@
 pkgname=systemd-services
 # 1. bump pkgver
 pkgver=63
-pkgrel=0
+pkgrel=1
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
 arch="noarch"
@@ -277,7 +277,7 @@ source="$(flatpath \
 _service() {
 	local name=$(echo ${subpkgname%%-systemd})
 	local n=$(echo ${subpkgname%-systemd} | sed s/-/_/g)
-	install_if="$name systemd"
+	install_if="$pkname=$pkgver-r$pkgrel $name systemd"
 
 	for f in $(eval "echo \$_${n}_sources"); do
 		prefix="$subpkgdir"
