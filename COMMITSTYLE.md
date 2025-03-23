@@ -42,6 +42,19 @@ commit title can opt to use the following format:
 
 	manufacturer-codename: description of change
 
+### Changes to packages inside of the systemd directory
+
+We also shorten the prefixes for packages in `extra-repos/systemd`.
+When the `systemd` package itself gets changed, use `systemd: ` as
+prefix. For example:
+
+	systemd: add triggers for reloading/restarting services
+
+When another package inside the systemd directory gets changed, use
+`systemd/$pkgname: ` as prefix. For example:
+
+	systemd/cups: restart on upgrade
+
 ### Moving devices between categories
 
 As we do not include directory prefixes in device-related commits,
