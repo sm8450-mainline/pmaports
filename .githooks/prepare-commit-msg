@@ -40,6 +40,12 @@ lcp=$(git diff-index --name-only --cached HEAD | longest_common_prefix)
 prefix=""
 
 case "$lcp" in
+	extra-repos/systemd/systemd/*)
+		prefix="systemd"
+		;;
+	extra-repos/systemd/*)
+		prefix="systemd/$(echo "$lcp" | cut -d/ -f3)"
+		;;
 	device/*/*)
 		prefix="$(echo "$lcp" | cut -d/ -f3)"
 		;;
