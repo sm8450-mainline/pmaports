@@ -3,7 +3,7 @@
 pkgname=pipewire
 pkgver=9991.4.1
 _pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 _so_ver=0.3
 pkgdesc="Multimedia processing graphs"
 url="https://pipewire.org/"
@@ -160,6 +160,7 @@ pulse_systemd() {
 
 	# We can't just call default_systemd because that would take
 	# all the systemd unit files!
+	install_if="systemd pipewire-pulse=$pkgver-r$pkgrel"
 	default_systemd_install_scripts
 }
 
