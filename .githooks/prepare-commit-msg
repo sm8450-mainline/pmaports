@@ -37,13 +37,24 @@ prepend_msg() {
 [ -z "$SOURCE" ] || exit 0
 
 lcp=$(git diff-index --name-only --cached HEAD | longest_common_prefix)
+prefix=""
 
 case "$lcp" in
-	device/*/*) prepend_msg "$(echo "$lcp" | cut -d/ -f3): ";;
-	# Multiple packages touched for same device category
-	# More logic could be added to detect if they all belong to same device
-	device/*)  ;;
-	[^.]*/*) prepend_msg "$(echo "$lcp" | cut -d/ -f1-2): ";;
+	device/*/*)
+		prefix="$(echo "$lcp" | cut -d/ -f3)"
+		;;
+	device/*)
+		# Multiple packages touched for same device category. More
+		# logic could be added to detect if they all belong to same
+		# device.
+		;;
+	[^.]*/*)
+		prefix="$(echo "$lcp" | cut -d/ -f1-2)"
+		;;
 esac
+
+if [ -n "$prefix" ]; then
+	prepend_msg "$prefix: "
+fi
 
 exit 0
