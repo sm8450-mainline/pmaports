@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-google-smaug
 pkgdesc="Google Pixel C"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -39,6 +39,6 @@ nonfree_firmware() {
 
 sha512sums="
 80d1ff3ae3045cb071d0eb7ac53cebccfe363a9584ef806e7b79309231c58d00f89612423440526a08b14fc80e96162b8f429f453f662d4c438c787fa45ef122  30-xusb-firmware.files
-1ee3d0eada4435181f8c70ead25f1dbd1afc6389819afc5c1fb0d45ee6ab936fd52352a3362697e6a8f27fe5fa8f8149b7a602eaf60f908010b4e265fd8073e7  deviceinfo
+ff89495d62b566f3442f432cd1629e0e094a142296d595da343b9a6bd6a6f202d458c556fc13c412a28bd13818bf4aa6b1effceb093fb24238edd6c398387da1  deviceinfo
 d883fa37ea89379aec31e518714adbef76d0c260929deb05c131c5df4c532344f3358a82cc39e81d06da821df81171709cd9dc20837795bee6834c34d4dfa47a  modules-initfs
 "
