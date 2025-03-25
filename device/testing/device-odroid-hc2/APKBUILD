@@ -1,5 +1,5 @@
 # Reference: <https://postmarketos.org/devicepkg>
-# Unmaintained: no maintainer
+# Maintainer: knuxify <knuxify@gmail.com>
 
 pkgname=device-odroid-hc2
 pkgdesc="ODROID HC2"
