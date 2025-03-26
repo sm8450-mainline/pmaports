@@ -1,7 +1,7 @@
 # Maintainer: Oliver Smith <ollieparaoid@postmarketos.org>
 pkgname=mobile-config-firefox
-pkgver=4.4.0
-pkgrel=1
+pkgver=4.5.0
+pkgrel=0
 pkgdesc="Firefox tweaks for mobile and privacy"
 url="https://gitlab.postmarketos.org/postmarketOS/mobile-config-firefox"
 source="
@@ -27,5 +27,5 @@ librewolf() {
 }
 
 sha512sums="
-eb9d5cffe6d57e05659da36b587c2fd77184da45fd1a629938bdf49214c885af9e62d1bcf1ae3eca1a98a6ba06602d0236d95ecdba7798f9432473580c4192ee  mobile-config-firefox-4.4.0.tar.bz2
+56a20f1aff62a7db6f97934ed6220aecf869f0fad5645ea3be4606bdb3bb9f57d2548cf546e9fa6fab3b5c4c988ce43d5564ebcbaceeba7dcf8d337e6c9932e0  mobile-config-firefox-4.5.0.tar.bz2
 "
