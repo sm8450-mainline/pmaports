@@ -16,35 +16,35 @@ makedepends="bash bc bison devicepkg-dev findutils flex gmp-dev mpc1-dev
 mpfr-dev openssl-dev perl postmarketos-installkernel dtc"
 
 # Source
-_config="config-$_flavor.$arch"
+_config=config-$_flavor.$arch
 source="
 	$pkgname-$_pkgver.tar.gz::$url/-/archive/v$_pkgver-pxa1908/linux-v$_pkgver-pxa1908.tar.gz
 	$_config
 "
-builddir="$srcdir/linux-v$_pkgver-pxa1908"
+builddir="$srcdir"/linux-v$_pkgver-pxa1908
 
 prepare() {
 	default_prepare
-	cp "$srcdir/config-$_flavor.$arch" "$builddir"/.config
+	cp "$srcdir"/$_config "$builddir"/.config
 }
 
 build() {
 	unset LDFLAGS
 	make ARCH="$_carch" CC="${CC:-gcc}" \
-		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))"-postmarketOS
 }
 
 package() {
 	mkdir -p "$pkgdir"/boot
 	make zinstall modules_install dtbs_install \
-		ARCH="$_carch" \
+		ARCH=$_carch \
 		INSTALL_MOD_STRIP=1 \
 		INSTALL_PATH="$pkgdir"/boot \
 		INSTALL_MOD_PATH="$pkgdir" \
-		INSTALL_DTBS_PATH="$pkgdir/usr/share/dtb"
+		INSTALL_DTBS_PATH="$pkgdir"/usr/share/dtb
 
-	install -D include/config/kernel.release \
-		"$pkgdir/usr/share/kernel/$_flavor/kernel.release"
+	install -D "$builddir"/include/config/kernel.release \
+		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
 }
 
 sha512sums="
