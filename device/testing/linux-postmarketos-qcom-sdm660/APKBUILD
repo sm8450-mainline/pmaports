@@ -3,7 +3,7 @@
 
 _flavor="postmarketos-qcom-sdm660"
 pkgname=linux-$_flavor
-pkgver=6.13.7
+pkgver=6.14.5
 pkgrel=0
 pkgdesc="Close to mainline linux kernel for Qualcomm Snapdragon 660 SoC"
 arch="aarch64"
@@ -64,6 +64,6 @@ package() {
 		"$pkgdir/usr/share/kernel/$_flavor/kernel.release"
 }
 sha512sums="
-f80327cc57d7567449323b1b211ecea5c4d6959a2c01baf13ffe956455f898b0b4d9e20c4ec42f4555ab684b9be3c5dbe3f6460e41c37edacb6a687121f55e18  linux-v6.13.7-sdm660.tar.gz
-84c7f607dbd99f8af84844555a334ec4293a5b21af7b99ccefa324c230df32ac8ea0b25817185e01734be258bf48bb7e5c50dfaf890bc37de726043aec8432b5  config-postmarketos-qcom-sdm660.aarch64
+cd5b08b13bdea13819deabf04d4a00dcdd63e287254189424c4dc0e0b5ea155d4dea4a5a3f591fb11b421b68cfc3ed066167a98688f3a9c49e8a016e8f45104d  linux-v6.14.5-sdm660.tar.gz
+5b077a5823ada64ebb2d896d04b56ea7937844ee880c41c8f13def61e3077dab9731d9576736faa28e685360ae5723cf3b109102bf32ba38f9b7ace8c0cb5919  config-postmarketos-qcom-sdm660.aarch64
 "
