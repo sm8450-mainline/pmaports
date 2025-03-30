@@ -1,9 +1,9 @@
 # Forked from Alpine to apply mobile adaptivity patches
 
 pkgname=mutter-mobile
-pkgver=99946.1
-_pkgver=46.1
-pkgrel=1
+pkgver=99948.0
+_pkgver=48.0
+pkgrel=0
 pkgdesc="clutter-based window manager and compositor"
 url="https://wiki.gnome.org/Projects/Mutter/"
 # ricsv64: doesn't build currently:
@@ -32,9 +32,10 @@ makedepends="
 	graphene-dev
 	gtk+3.0-dev
 	json-glib-dev
-	libei-dev
 	libcanberra-dev
+	libdisplay-info-dev
 	libdrm-dev
+	libei-dev
 	libgudev-dev
 	libice-dev
 	libinput-dev
@@ -59,25 +60,31 @@ makedepends="
 	meson
 	pango-dev
 	pipewire-dev
+	py3-argcomplete
+	py3-docutils
 	startup-notification-dev
 	wayland-dev
 	wayland-protocols
 	xorg-server
+	xwayland-dev
 	"
 options="!check" # Can't be run with release builds
 provides="mutter=$pkgver-r$pkgrel"
 subpackages="$pkgname-dbg $pkgname-dev $pkgname-doc $pkgname-lang $pkgname-schemas::noarch"
-_commit="46-mobile.1"
+_commit="48.mobile.0"
+_gvdb_commit="b54bc5da25127ef416858a3ad92e57159ff565b3"
 source="mutter-mobile-$_commit.tar.gz::https://gitlab.gnome.org/verdre/mutter-mobile/-/archive/$_commit/mutter-mobile-$_commit.tar.gz
-	pcversion.patch
+	https://gitlab.gnome.org/GNOME/gvdb/-/archive/$_gvdb_commit/gvdb-$_gvdb_commit.tar.gz
+	pcver.patch
+	fix-freeze.patch
 	"
 builddir="$srcdir/mutter-mobile-$_commit"
 
 prepare() {
 	default_prepare
 
-	sed -i "s/libmutter_api_version = '.*'/libmutter_api_version = '99'/g" meson.build
-	sed -i "s/version: '$_commit'/version: '$_pkgver'/g" meson.build
+	mkdir -p subprojects/gvdb
+	mv "$srcdir"/gvdb*/* subprojects/gvdb
 }
 
 build() {
@@ -89,7 +96,7 @@ build() {
 		-Dxwayland_path=/usr/bin/Xwayland \
 		-Dremote_desktop=true \
 		-Dprofiler=false \
-		-Dtests=false \
+		-Dtests=disabled \
 		-Dinstalled_tests=false \
 		. output
 	meson compile ${JOBS:+-j ${JOBS}} -C output
@@ -121,6 +128,8 @@ package() {
 }
 
 sha512sums="
-210266238a9cf56b77e195559a2f99574de4a52b973bad7143a88f112730dd61ebf807e6644519998f39fe5ddbcb1bfd589d0d5167c92718953d5ad22eba2ae7  mutter-mobile-46-mobile.1.tar.gz
-2f2379d1f6676c69ba182d008d44c3d216ba5044af56352c785f4c34d17aeb0ac98a539827371d06ade7c2b42b06f916753c736167d2d89c0053b0a0e738c5d5  pcversion.patch
+c1aef60e14662b373ddeab88d7b49f153165ab2bfb63906aeb64f6de9d224ed3d4c9c5b3cd8a7b12ba29b8de8a5b9fa738dfa681e83cd51e7a33d0695b6410f2  mutter-mobile-48.mobile.0.tar.gz
+1cd8d689758cda662737e5ec78d55e4f4c6934b0f429d8cadcec4a423bafd8765040f8d62c51d8797b101fff89df75a7b85e37006ea133ab81e600f205c2ef1e  gvdb-b54bc5da25127ef416858a3ad92e57159ff565b3.tar.gz
+5b4851ba1728f9d539cebdf5feb8e49dffc61c5b8f992e84145b654b0c3cadb4e585a4c1d53a4992132e4472771c97bbad2c261525fb17f91c4715da7eea799d  pcver.patch
+b7d0bea395c47558a089f75c2c30ac04da2ffc60d044364653098dcb30302aeeb839631fc51c5b5673d11f07fe85af645ea6fe9b2ebe107f8fc67541d5a8e3eb  fix-freeze.patch
 "
