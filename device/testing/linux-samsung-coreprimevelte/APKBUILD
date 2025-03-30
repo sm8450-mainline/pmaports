@@ -2,9 +2,10 @@
 
 _flavor=samsung-coreprimevelte
 pkgname=linux-$_flavor
-pkgver=6.13_rc4
-_pkgver=${pkgver/_/-}
-pkgrel=2
+pkgver=6.14.0
+#_pkgver=${pkgver/_/-}
+_pkgver=6.14
+pkgrel=0
 pkgdesc="Samsung Galaxy Core Prime VE LTE mainline kernel"
 arch="aarch64"
 _carch="arm64"
@@ -48,6 +49,6 @@ package() {
 }
 
 sha512sums="
-6709ca2571beff6a71c2da611b0f5c58b1d85a62ccfe371f9bd4cbac12e755bc338731d8091d572edb3e8c7683574693d753d9513a8b873f0be86b3400bac2d0  linux-samsung-coreprimevelte-6.13-rc4.tar.gz
-763e4712add68337aefb9fa4c31e5e9a99be9c6da7768b170c8b176dccc9ee6b1eb8bcd7ea1fd83406129a2d9da97b4472aa080e6d6da82aaf0bcaeb5d07702a  config-samsung-coreprimevelte.aarch64
+bf15ebccd9c60df5ddb47769b574e6e5be39abc663b492c814003819a56351d0a299a7e45a8f5fd13444c6fdd9be6e2206a745eedb55a2de9299a96c5bd25150  linux-samsung-coreprimevelte-6.14.tar.gz
+257a63004990c9ff997534a755ab9896902f3ed31240b0cc79322787cfc65b7feadea60903243b71e8f7b64294c33e9326fb61d2a69a9d344de93ebafb119493  config-samsung-coreprimevelte.aarch64
 "
