@@ -49,7 +49,7 @@ makedepends="
 # 	py3-gobject3
 # 	umockdev-dev
 # 	"
-subpackages="$pkgname-dev $pkgname-lang"
+subpackages="$pkgname-dev $pkgname-lang $pkgname-systemd"
 _commit=48.mobile.0
 _gvc_commit="91f3f41490666a526ed78af744507d7ee1134323"
 source="gnome-settings-daemon-mobile-$_commit.tar.gz::https://gitlab.gnome.org/verdre/gnome-settings-daemon-mobile/-/archive/$_commit/gnome-settings-daemon-mobile-$_commit.tar.gz
@@ -71,6 +71,11 @@ build() {
 dev() {
 	provides="gnome-settings-daemon-dev=$pkgver-r$pkgrel"
 	default_dev
+}
+
+systemd() {
+	provides="gnome-settings-daemon-systemd=$pkgver-r$pkgrel"
+	default_systemd
 }
 
 check() {
