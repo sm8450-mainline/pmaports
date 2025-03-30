@@ -5,7 +5,7 @@ pkgname=linux-$_flavor
 pkgver=6.14.0
 #_pkgver=${pkgver/_/-}
 _pkgver=6.14
-pkgrel=0
+pkgrel=1
 pkgdesc="Samsung Galaxy Core Prime VE LTE mainline kernel"
 arch="aarch64"
 _carch="arm64"
@@ -42,7 +42,7 @@ package() {
 		INSTALL_MOD_STRIP=1 \
 		INSTALL_PATH="$pkgdir"/boot \
 		INSTALL_MOD_PATH="$pkgdir" \
-		INSTALL_DTBS_PATH="$pkgdir"/usr/share/dtb
+		INSTALL_DTBS_PATH="$pkgdir"/boot/dtbs
 
 	install -D "$builddir"/include/config/kernel.release \
 		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
