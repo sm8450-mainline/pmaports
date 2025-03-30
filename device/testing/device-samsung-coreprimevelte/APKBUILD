@@ -2,8 +2,8 @@
 # Maintainer: Duje Mihanović <duje.mihanovic@skole.hr>
 pkgname=device-samsung-coreprimevelte
 pkgdesc="Samsung Galaxy Core Prime VE LTE"
-pkgver=4
-pkgrel=1
+pkgver=5
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -42,6 +42,6 @@ package() {
 sha512sums="
 2f19e7b805af1f58b7689f45990bf8cb97e902eec373e9420487ca9608cfd650eb37011d58597c8b8255bc6bc50b763711c57a5c711ead06b213c1df658d4b9a  boot-image.its
 82960dd68320abf6f24bd6e6a4629669617173be417d7ae1a1580f7c1239992a61829ed479e3e7cf2acc8e47cb3916afa2727694ac56f97cc82394b75bcc5713  deviceinfo
-25f0ce5118e51dc87c9a38f23eb25106619310ca4be969dca62992840fde5b1a7b65c2be617abe3821cc78c68eca9fbc39c2f580c0767aaa44bd7052f629ddbf  modules-initfs
+b1617e4b116d60abb15003c5bf7d4e8fa13e57a4a12feadd1e128946238b0922e98810289690f0466fec39f54adcc9ef08346acdef0f5a0fbb62c68438c3a063  modules-initfs
 d51facbaa99f69964786e770dc8ed500bfb2609353a25aa344701c851131cc421ef3a2663fe4422a21a5f38e01f0c34235fa4fad75739fb614109a2fb268db8a  90-mlan-to-wlan.rules
 "
