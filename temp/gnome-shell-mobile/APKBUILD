@@ -1,8 +1,8 @@
 # Forked from Alpine to add phone adaptivity patches
 
 pkgname=gnome-shell-mobile
-pkgver=46.1
-pkgrel=1
+pkgver=48.0
+pkgrel=0
 pkgdesc="GNOME shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 # gjs / riscv64: mutter-mobile
@@ -11,10 +11,9 @@ license="GPL-2.0-or-later"
 depends="
 	accountsservice
 	adwaita-icon-theme
+	adwaita-fonts
 	desktop-file-utils
 	elogind
-	font-adobe-source-code-pro
-	font-cantarell
 	gnome-bluetooth
 	gnome-control-center
 	gnome-shell-mobile-schemas
@@ -71,11 +70,13 @@ subpackages="
 	$pkgname-schemas::noarch
 	gnome-mobile-extensions-app:extensions_app:noarch
 	"
-_commit="46-mobile.1"
-_gvc_commit="91f3f41490666a526ed78af744507d7ee1134323"
+_commit="48.mobile.0"
+_gvc_commit="5f9768a2eac29c1ed56f1fbb449a77a3523683b6"
 source="gnome-shell-mobile-$_commit.tar.gz::https://gitlab.gnome.org/verdre/gnome-shell-mobile/-/archive/$_commit/gnome-shell-mobile-$_commit.tar.gz
 	libgnome-volume-control-$_gvc_commit.tar.gz::https://gitlab.gnome.org/GNOME/libgnome-volume-control/-/archive/$_gvc_commit/libgnome-volume-control-$_gvc_commit.tar.gz
-	gsh.patch"
+	gsh.patch
+	pcver.patch
+	"
 builddir="$srcdir/gnome-shell-mobile-$_commit"
 options="!check" # Tests have circular dependency 'gnome-shell <-> gdm'
 
@@ -83,10 +84,6 @@ prepare() {
 	default_prepare
 	rm -rf "$builddir/subprojects/gvc"
 	mv "$srcdir/libgnome-volume-control-$_gvc_commit" $builddir/subprojects/gvc
-
-	sed -i "s/mutter_api_version = '.*'/mutter_api_version = '99'/g" meson.build
-	# versions in the format "46-mobile.1" are considered invalid by pkg-config
-	sed -i 's/\([0-9]\+\)-mobile\.\([0-9]\+\)/\1.\2/' meson.build
 }
 
 build() {
@@ -136,7 +133,8 @@ package() {
 }
 
 sha512sums="
-aeca65c373979eacf73aff169b69f3cefa8f457a04e641481f79a3a6e398a51d3ccfc6c7a94ae4a81486dd08fb7b600b2a949efc9272ab17ae9719fc7fe35740  gnome-shell-mobile-46-mobile.1.tar.gz
-c832e99bc56ae586734d468e4e1a17f107acc76076d07ba45c46359ba751d1e6abe6108e43730fdf1dd18153cfa9f374e3e81118ae4902f0974d5b5f54f8276b  libgnome-volume-control-91f3f41490666a526ed78af744507d7ee1134323.tar.gz
+01a4beb195f48a7ce00a50453695ccc10c7a00fcda81428bf1bb07aacef70a14ffed8124faa50ac98d601d4d43f291c2cd48835bdb79d5e8e751677d877a6953  gnome-shell-mobile-48.mobile.0.tar.gz
+ef6a103ddca784db35648acd11a423a9d65173c597c6463a572834827c9812bb1be5c8113d93a28ea99ca017dd1655b8eaf417a30b6b9085677baf373395aac1  libgnome-volume-control-5f9768a2eac29c1ed56f1fbb449a77a3523683b6.tar.gz
 ae4ac679bacd35948b44068e5a70407f473bd96986ee126abb1bdf066db5cbc2087a3ffae0b390286689cacbe8325870fd43663ba39f4f7543216e02bf083934  gsh.patch
+0503440b547b78859c3bb87a66308899bcf33cc0b543e04e9c865904ff7fb86b10b66594c37a1726828ee1a497b0e034150be8cf1a9fbd06c59809619f6a31c8  pcver.patch
 "
