@@ -1,7 +1,8 @@
+# Maintainer: EDKPiepaint <2163971449v@gmail.com>
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-apple-tonga
 pkgdesc="Apple Macbook Air M1"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -11,6 +12,23 @@ depends="
 	linux-asahi
 	postmarketos-base
 	systemd-boot
+	asahi-audio
+	asahi-fwextract
+	asahi-scripts
+	alsa-ucm-conf-asahi
+	mesa-asahi
+	mesa-asahi-dri-gallium
+	mesa-asahi-egl
+	mesa-asahi-gbm
+	mesa-asahi-gl
+	mesa-asahi-glapi
+	mesa-asahi-gles
+	mesa-asahi-osmesa
+	mesa-asahi-rusticl
+	mesa-asahi-va-gallium
+	mesa-asahi-vdpau-gallium
+	mesa-asahi-vulkan-swrast
+	mesa-asahi-xatracker
 "
 makedepends="devicepkg-dev systemd-boot"
 source="deviceinfo"
@@ -23,5 +41,5 @@ package() {
 }
 
 sha512sums="
-40ac79bdcbf6ef40cb23ff63b1cca19c9207bf6324ce0652d877d3cbfcef0a52273f9a182b7dcc7a8d25178e07e2b34f45ab2105628bb86a91496a4dc15d3ace  deviceinfo
+8a007ae77cf946b2aa17f19c3f1fbf63829149ea33eea1275521b862d4a6723a1e8da85e06646f57ca59accaf754dfed546a9d0d146584bc8aa29df33bc5d9ae  deviceinfo
 "

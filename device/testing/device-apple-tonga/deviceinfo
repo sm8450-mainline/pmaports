@@ -15,7 +15,7 @@ deviceinfo_external_storage="false"
 deviceinfo_gpu_accelerated="true"
 # Bootloader related
 deviceinfo_flash_method="none"
-deviceinfo_kernel_cmdline="loglevel=7"
+deviceinfo_kernel_cmdline="loglevel=7 PMOS_NOSPLASH"
 deviceinfo_generate_bootimg="false"
 deviceinfo_generate_systemd_boot="true"
 deviceinfo_partition_type="gpt"
