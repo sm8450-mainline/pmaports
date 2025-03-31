@@ -118,3 +118,6 @@ ENV/
 
 # Allow having untracked packages in aports using a custom-something directory
 /custom-*/
+
+# child pipeline
+.ci/build-jobs.yaml

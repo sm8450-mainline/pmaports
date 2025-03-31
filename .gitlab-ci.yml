@@ -8,6 +8,7 @@ after_script:
   - .ci/lib/move_logs.sh $CI_PROJECT_DIR
 stages:
   - lint
+  - prepare
   - build
   - autoupdate
   - test
@@ -142,55 +143,44 @@ mr-settings:
     - wget -q "https://gitlab.postmarketos.org/postmarketOS/ci-common/-/raw/master/check_mr_settings.py"
     - python3 ./check_mr_settings.py
 
-# build changed aports
-.build:
-  stage: build
+# Calculate build of changed aports using a dynamic downstream pipelines:
+# https://docs.gitlab.com/ci/pipelines/downstream_pipelines/#dynamic-child-pipelines
+# For those to work, we need two jobs:
+# * First one (this one) that generates a valid yaml file with the job yaml as
+#   an artifact
+# * Second one (build-jobs) that has a "trigger" key with the yaml file from
+#   which to trigger pipelines
+# To avoid reworking the whole CI file, for now we are re-using this same file
+# to trigger the downstream pipeline. In that case, $CI_PIPELINE_SOURCE will
+# be set to "parent_pipeline", and only the jobs that extend .build will run
+generate-build-jobs:
+  stage: prepare
+  before_script:
+    - .ci/lib/gitlab_prepare_ci.sh
+  needs: []
+  script:
+    - wget "https://gitlab.postmarketos.org/postmarketOS/ci-common/-/raw/master/install_pmbootstrap.sh"
+    - sh ./install_pmbootstrap.sh py3-jinja2
+    - .ci/lib/generate_build_jobs.py .ci/build-jobs.yaml.j2 .ci/build-jobs.yaml
+
+  artifacts:
+    paths:
+      - .ci/build-jobs.yaml
   rules:
     - if: *mr_rule
-  before_script:
-    - *global_before_scripts
-    - .ci/lib/gitlab_prepare_ci.sh
-  after_script:
-    - cp -r /home/pmos/.local/var/pmbootstrap/packages/ packages/ || true
-  artifacts:
-    expire_in: 1 week
-    paths:
-      - packages/
-  timeout: 10 h
 
-build-x86_64:
-  extends: .build
-  script:
-    - .ci/build-x86_64.sh
-
-build-x86:
-  extends: .build
-  script:
-    - .ci/build-x86.sh
-
-build-aarch64:
-  extends: .build
-  tags: [arm64]
-  script:
-    - .ci/build-aarch64.sh
-
-build-armv7:
-  extends: .build
-  tags: [qemu]
-  script:
-    - .ci/build-armv7.sh
-
-build-armhf:
-  extends: .build
-  tags: [qemu]
-  script:
-    - .ci/build-armhf.sh
-
-build-riscv64:
-  extends: .build
-  tags: [qemu]
-  script:
-    - .ci/build-riscv64.sh
+build-jobs:
+  stage: build
+  trigger:
+    include:
+      - artifact: .ci/build-jobs.yaml
+        job: generate-build-jobs
+    strategy: depend
+    forward:
+      # So that we don't have to duplicate GIT_DEPTH
+      pipeline_variables: true
+  rules:
+    - if: *mr_rule
 
 auto-update:
   stage: autoupdate

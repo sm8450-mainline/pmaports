@@ -1,0 +1,80 @@
+image: alpine:latest
+stages:
+  - build
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "parent_pipeline"
+
+{% if archs|length == 0 %}
+# Needed because gitlab fails if no jobs are created, e.g: nothing should be
+# built: https://gitlab.com/gitlab-org/gitlab/-/issues/368248
+placeholder:
+  stage: build
+  script:
+    - 'true'
+{% endif %}
+
+.build:
+  stage: build
+  interruptible: true
+  before_script:
+    # upgrade is mostly needed for "qemu" runners that run edge based on a VM
+    # The other build jobs run natively in docker on latest alpine stable and
+    # those should always have whatever we need
+    - apk upgrade -U
+    - .ci/lib/gitlab_prepare_ci.sh
+  after_script:
+    - cp -r /home/pmos/.local/var/pmbootstrap/packages/ packages/ || true
+    - .ci/lib/move_logs.sh $CI_PROJECT_DIR
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - packages/
+  timeout: 10 h
+
+{% if ('x86_64' in archs) %}
+build-x86_64:
+  extends: .build
+  script:
+    - .ci/build-x86_64.sh
+{% endif %}
+
+{% if ('x86' in archs) %}
+build-x86:
+  extends: .build
+  script:
+    - .ci/build-x86.sh
+{% endif %}
+
+{% if ('aarch64' in archs) %}
+build-aarch64:
+  extends: .build
+  tags: [arm64]
+  script:
+    - .ci/build-aarch64.sh
+{% endif %}
+
+{% if ('armv7' in archs) %}
+build-armv7:
+  extends: .build
+  tags: [qemu]
+  script:
+    - .ci/build-armv7.sh
+{% endif %}
+
+{% if ('armhf' in archs) %}
+build-armhf:
+  extends: .build
+  tags: [qemu]
+  script:
+    - .ci/build-armhf.sh
+{% endif %}
+
+{% if ('riscv64' in archs) %}
+build-riscv64:
+  extends: .build
+  tags: [qemu]
+  script:
+    - .ci/build-riscv64.sh
+{% endif %}
