@@ -21,9 +21,6 @@ variables:
 # This defines the rules for when a pipeline should run.
 workflow:
   rules:
-    # Don't run branch pipeline if an MR is open (only the MR pipeline will run)
-    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS && $CI_PIPELINE_SOURCE == "push"
-      when: never
     # Run for merge requests
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     # Run scheduled pipeline for autoupdate or manually triggered pipeline
@@ -37,7 +34,7 @@ include: "**/.gitlab-ci.yml"
 wiki:
   stage: lint
   rules:
-    - if: &mr_rule $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_PROTECTED == "false"
+    - if: &mr_rule $CI_PIPELINE_SOURCE == "merge_request_event"
       changes:
         - .ci/**/*
         - .ci/build-jobs.yaml.j2
