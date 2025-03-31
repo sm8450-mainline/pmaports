@@ -19,7 +19,7 @@ depends="
 	"
 subpackages="$pkgname-openrc"
 source="automount-media.rules"
-options="!check pmb:gpu-accel"
+options="!check pmb:gpu-accel pmb:systemd"
 
 package() {
 	install -Dm 644 automount-media.rules \
