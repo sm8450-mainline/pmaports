@@ -120,6 +120,15 @@ kernel-kconfig:
     - .ci/lib/gitlab_prepare_ci.sh
     - .ci/kconfig.sh
 
+# Verify checksums
+verify-checksums:
+  stage: lint
+  rules:
+    - if: *mr_rule
+  script:
+    - .ci/lib/gitlab_prepare_ci.sh
+    - .ci/verify-checksums.sh
+
 # MR settings
 # (Checks for "Allow commits from members who can merge to the target branch")
 mr-settings:

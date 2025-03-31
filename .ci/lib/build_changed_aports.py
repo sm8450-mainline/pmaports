@@ -24,23 +24,6 @@ def build_strict(packages, arch):
                             "--arch", arch, ] + list(packages))
 
 
-def verify_checksums(packages, arch):
-    # Only do this with one build-{arch} job
-    arch_verify = "x86_64"
-    if arch != arch_verify:
-        print(f"NOTE: doing checksum verification in build-{arch_verify} job,"
-              " not here.")
-        return
-
-    if len(packages) == 0:
-        print("no packages changed, not doing any checksums verification")
-        return
-
-    common.run_pmbootstrap(["build_init"])
-    common.run_pmbootstrap(["--details-to-stdout", "checksum", "--verify"] +
-                           list(packages))
-
-
 if __name__ == "__main__":
     # Architecture to build for (as in build-{arch})
     if len(sys.argv) != 2:
@@ -93,18 +76,9 @@ if __name__ == "__main__":
     # No packages: skip build
     if len(packages) == 0:
         print(f"no packages changed, which can be built for {arch}")
+        sys.exit(0)
 
-    else:
-        verify_only = common.commit_message_has_string("[ci:skip-build]")
-        if verify_only:
-            # [ci:skip-build]: verify checksums and stop
-            print("WARNING: not building changed packages ([ci:skip-build])!")
-            print("verifying checksums: " + ", ".join(packages))
-            verify_checksums(packages, arch)
-        else:
-            # Build packages
-            print(f"building in strict mode for {arch}: {', '.join(packages)}")
-            build_strict(packages, arch)
+    build_strict(packages, arch)
 
     # Build packages in extra-repos/systemd
     # FIXME: this should probably be more generic, if other repos are added later?
@@ -127,15 +101,6 @@ if __name__ == "__main__":
         # No packages: skip build
         if len(systemd_pkgs) == 0:
             print(f"no packages changed, which can be built for {arch}")
+            sys.exit(0)
 
-        else:
-            verify_only = common.commit_message_has_string("[ci:skip-build]")
-            if verify_only:
-                # [ci:skip-build]: verify checksums
-                print("WARNING: not building changed packages for extra-repos/systemd: ([ci:skip-build])!")
-                print("verifying checksums: " + ", ".join(systemd_pkgs))
-                verify_checksums(systemd_pkgs, arch)
-            else:
-                # Build packages
-                print(f"building in strict mode for {arch}, from extra-repos/systemd: {', '.join(systemd_pkgs)}")
-                build_strict(systemd_pkgs, arch)
+        build_strict(systemd_pkgs, arch)
