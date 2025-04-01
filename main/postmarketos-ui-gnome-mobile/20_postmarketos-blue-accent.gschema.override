@@ -1,7 +1,0 @@
-# With 87a596f7867a49fae78c05042a92bea3e5e24b0d all GNOME-based UIs have the
-# default accent color set to green.
-#
-# However only GNOME 47+ supports accent colors. In order to keep consistency
-# keep blue accent color until GNOME mobile is upgraded to 47+.
-[org.gnome.desktop.interface]
-accent-color='blue'
