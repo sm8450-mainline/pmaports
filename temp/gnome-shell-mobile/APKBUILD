@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-mobile
 pkgver=48.0
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 # gjs / riscv64: mutter-mobile
@@ -51,6 +51,7 @@ makedepends="
 	pipewire-dev
 	polkit-dev
 	pulseaudio-dev
+	py3-docutils
 	py3-setuptools
 	python3
 	sassc
