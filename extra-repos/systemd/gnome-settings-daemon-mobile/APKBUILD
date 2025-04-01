@@ -78,6 +78,11 @@ systemd() {
 	default_systemd
 }
 
+lang() {
+	provides="gnome-settings-daemon-lang=$pkgver-r$pkgrel"
+	default_lang
+}
+
 check() {
 	meson test --no-rebuild --print-errorlogs -C output
 }
