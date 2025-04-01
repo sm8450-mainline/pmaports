@@ -1,7 +1,7 @@
 # Maintainer: Barnabas Czeman <barnabas.czeman@postmarketos.org>
 _flavor="postmarketos-qcom-msm89x7"
 pkgname=linux-postmarketos-qcom-msm89x7
-pkgver=6.13.6
+pkgver=6.14
 pkgrel=0
 pkgdesc="Mainline kernel fork for Qualcomm QM215/MSM8917/MSM8937/MSM8940 devices"
 arch="aarch64"
@@ -57,6 +57,6 @@ package() {
 		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
 }
 sha512sums="
-91535b9e15b269409d1e328e17611ca4e79e7c45b392f74a52d9391ce583ae48ef55857c20512d9ecc3a9efe6a0f680d6c7ccd9b2cd626d6bc56d97927845fc4  linux-postmarketos-qcom-msm89x7-v6.13.6-r0.tar.gz
-017138d5e74e99695422b6dfae94cda2e1679749f17f624a75d6989e73b2cc1d557dcac6d3a2504942ad43196a7521ca8b662b9abf4b090c20c6e9d939e6a4c7  config-postmarketos-qcom-msm89x7.aarch64
+5dde9e5176427deacf5caa64bb2f5ad3a3bcc4348a55c86cb9f31a3b85598faaab0914b494148de12b4029607210a3ee7ea9fb57b9457e358989bf7f864e7000  linux-postmarketos-qcom-msm89x7-v6.14-r0.tar.gz
+ae9a3b992ee3c650d33422f2981066cb8a053f4620631ae5de21340046dcdba81877968b40d111798330f3589b270f56b737014a7b198297dcde03821683a791  config-postmarketos-qcom-msm89x7.aarch64
 "
