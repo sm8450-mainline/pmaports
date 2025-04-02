@@ -2,8 +2,6 @@
 
 # global settings
 image: alpine:latest
-before_script: &global_before_scripts
-  - apk upgrade -U
 after_script:
   - .ci/lib/move_logs.sh $CI_PROJECT_DIR
 stages:
@@ -134,7 +132,6 @@ mr-settings:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
   before_script:
-    - *global_before_scripts
     - apk -q add python3
   script:
     - wget -q "https://gitlab.postmarketos.org/postmarketOS/ci-common/-/raw/master/check_mr_settings.py"
