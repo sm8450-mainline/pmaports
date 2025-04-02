@@ -3,8 +3,8 @@
 # Co-Maintainer: Pablo Correa Gomez <pabloyoyoista@postmarketos.org>
 # Co-Maintainer: fossdd <fossdd@pwned.life>
 pkgname=postmarketos-ui-gnome
-pkgver=3
-pkgrel=11
+pkgver=4
+pkgrel=0
 pkgdesc="(Wayland) Gnome Shell"
 url="https://gnome.org/"
 # armhf blocked by gnome-shell -> gjs -> mozjs102
@@ -27,13 +27,10 @@ _pmb_recommends="
 	snapshot
 	"
 subpackages="$pkgname-openrc"
-source="firefox-wayland.sh"
 options="!check pmb:systemd"
 
 package() {
-	install -Dm755 \
-		"$srcdir"/firefox-wayland.sh \
-		-t "$pkgdir"/etc/profile.d/
+	mkdir -p "$pkgdir"
 }
 
 openrc() {
@@ -44,6 +41,3 @@ openrc() {
 	mkdir -p "$subpkgdir"
 }
 
-sha512sums="
-0d9ec58be7dc354e181989c7f08e7d4dd93fefd06a99e784b87fe898479dd47a40dfa9689c6a63ebdc04bf87883a270686aec27f7cc34cb21ec0f370a4afe2d8  firefox-wayland.sh
-"
