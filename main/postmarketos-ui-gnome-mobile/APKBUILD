@@ -35,13 +35,10 @@ _pmb_recommends="
 	gnome-mobile-extensions-app
 	"
 subpackages="$pkgname-openrc"
-source="firefox-wayland.sh"
 options="!check pmb:systemd"
 
 package() {
-	install -Dm755 \
-		"$srcdir"/firefox-wayland.sh \
-		-t "$pkgdir"/etc/profile.d/
+	mkdir -p "$pkgdir"
 }
 
 openrc() {
@@ -52,6 +49,3 @@ openrc() {
 	mkdir -p "$subpkgdir"
 }
 
-sha512sums="
-0d9ec58be7dc354e181989c7f08e7d4dd93fefd06a99e784b87fe898479dd47a40dfa9689c6a63ebdc04bf87883a270686aec27f7cc34cb21ec0f370a4afe2d8  firefox-wayland.sh
-"
