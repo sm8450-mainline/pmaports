@@ -2,7 +2,7 @@
 # Co-Maintainer: Viola Guerrera <guerrera.nicola@gmail.com>
 _flavor="postmarketos-qcom-sm8150"
 pkgname=linux-$_flavor
-pkgver=6.13.0
+pkgver=6.14.0
 pkgrel=0
 pkgdesc="Mainline Kernel fork for SM8150 devices"
 arch="aarch64"
@@ -61,6 +61,6 @@ package() {
 }
 
 sha512sums="
-d47d9c90ca6934bc8896283b243a8574826f72fe975a2eaea5fcbbe256849eb9c4acd66018c3af589f39c7f249b488b73c67f79b846054bce5b4758fb4a7e174  linux-v6.13.0-sm8150.tar.gz
-bb4d291b3ef04bd9a5d04369f8752f4fc1cb35eac9a314263cba3c6fe1208ce3ca5d6772d5daeb38f409bb8c7327900fc69905d2e395f7d7b887d784e4e7507b  config-postmarketos-qcom-sm8150.aarch64
+55cbc56ebb68fbc6915de716eaca57ad6646495dff2a7f8bcafc7d892c285f036b32d30b3816b934a8fe2bb15cf42fa2e50e4662564b5d82573e5c21b424c05e  linux-v6.14.0-sm8150.tar.gz
+96f7c6e2facd5beeed728888228dc2711cc36dc6cba879e48f7efe3a1749d0e33911e33f5dfc7bf407d32feb3e36429ada2cf7f6d4faa4158a066ebe628514ef  config-postmarketos-qcom-sm8150.aarch64
 "
