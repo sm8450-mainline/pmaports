@@ -4,10 +4,10 @@
 # APKBUILDs at once.
 
 pkgname=abuild
-pkgver=99993.12.0
-_pkgver=3.12.0
-_commit=91b2698307ac4364b0de61e90d48b677c540a6f1
-pkgrel=5
+pkgver=99993.15.0_rc2
+_pkgver=3.15.0_rc2
+_commit="2b8b0741fb9b5605573d2efcd80fdef9492bb21f"
+pkgrel=0
 pkgdesc="Script to build Alpine Packages"
 url="https://git.alpinelinux.org/cgit/abuild/"
 arch="all"
@@ -27,7 +27,7 @@ subpackages="
 options="suid !check" # tests are SLOW in qemu
 pkggroups="abuild"
 source="
-	https://gitlab.alpinelinux.org/craftyguy/abuild/-/archive/$_commit/abuild-$_commit.tar.gz
+	https://gitlab.alpinelinux.org/postmarketOS/abuild/-/archive/$_commit/abuild-$_commit.tar.gz
 	"
 builddir="$srcdir/$pkgname-$_commit"
 
@@ -103,5 +103,5 @@ _rootbld() {
 }
 
 sha512sums="
-67bdfbc004f0d9784fb4d26426924c97a784bb717e677ff9a9f1cbfdeffa00de6cd9dbd443b01fafaad6ac75dc644a5f4bf6cf277b75e2bc0f02be1d74460818  abuild-91b2698307ac4364b0de61e90d48b677c540a6f1.tar.gz
+8ed605e07a55aa6d63db929afefd6717bc602517f57b5d9e1b6a48b2771ff4d6b9d8b7f381ee785f629f3cc71c38c009e3d2ea2dc5e80add7f6f5bccbe85e542  abuild-2b8b0741fb9b5605573d2efcd80fdef9492bb21f.tar.gz
 "
