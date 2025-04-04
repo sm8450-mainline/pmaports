@@ -1,0 +1,110 @@
+# Contributor: Jakub Panek <me@panekj.dev>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
+# Co-Maintainer: jane400 <jane400@postmarketos.org>
+# Co-Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
+
+pkgname=systemd-stage0
+# currently tracking git MR
+pkgver=257.5
+_pkgver="musl-v${pkgver//_/-}-split-usr"
+pkgrel=0
+pkgdesc="Minimal systemd bootstrap package"
+url="https://github.com/systemd/systemd"
+arch="all"
+license="MIT AND GPL-2.0-only AND LGPL-2.1-or-later"
+
+# This is only for bootstrapping other packages, make sure it does not get
+# pulled into real installations via !postmarketos-base and !tracedeps
+depends="!postmarketos-base"
+depends_libs="!postmarketos-base"
+depends_dev="!postmarketos-base"
+depends_doc="!postmarketos-base"
+options="!tracedeps !check pmb:cross-native2 pmb:strict"
+subpackages="$pkgname-doc $pkgname-dev $pkgname-libs"
+
+makedepends_build="
+	meson
+	coreutils
+	gperf
+	py3-jinja2
+	bash
+"
+# Use dbus-dev from Alpine
+makedepends_host="
+	dbus-dev<9990
+	libblkid
+	libcap
+	libcap-dev
+	libintl
+	musl-libintl
+	util-linux
+	util-linux-dev
+"
+
+# When building systemd, this will be installed at the same time as eudev-libs
+# or systemd-udevd (depending on if systemd was already built previously).
+# Let usr/lib/libudev.so.1 from systemd-stage0 be the file that gets used
+replaces="eudev-libs systemd-udevd"
+
+source="https://gitlab.postmarketos.org/postmarketOS/systemd/-/archive/$_pkgver/systemd-$_pkgver.tar.gz"
+builddir="$srcdir/systemd-$_pkgver"
+
+export CFLAGS="$CFLAGS -D__UAPI_DEF_ETHHDR=0" # see src/basic/linux/if_ether.h
+
+build() {
+	abuild-meson \
+		-Dtests=false \
+		-Ddbuspolicydir=/usr/share/dbus-1/system.d \
+		-Ddbussessionservicedir=/usr/share/dbus-1/services \
+		-Ddbussystemservicedir=/usr/share/dbus-1/system-services \
+		-Dbashcompletiondir=no \
+		-Dzshcompletiondir=no \
+		\
+		-Dmode=release \
+		-Dsplit-bin=true \
+		-Dsplit-usr=true \
+		\
+		-Dkmod-path=/bin/kmod \
+		-Dsulogin-path=/sbin/sulogin \
+		\
+		-Dwheel-group=true \
+		-Ddebug-shell=/bin/ash \
+		\
+		-Dbootloader=disabled \
+		-Dutmp=false \
+		-Dldconfig=false \
+		-Duserdb=false \
+		-Dhomed=disabled \
+		-Dnss-myhostname=false \
+		-Dnss-mymachines=disabled \
+		-Dnss-resolve=disabled \
+		-Dnss-systemd=false \
+		-Dsysext=true \
+		-Dsysusers=true \
+		-Dselinux=disabled \
+		\
+		-Dsystem-alloc-uid-min=101 \
+		-Dsystem-alloc-gid-min=101 \
+		-Dsystem-uid-max=999 \
+		-Dsystem-gid-max=999 \
+		-Dwheel-group=true \
+		-Dnobody-user=nobody \
+		-Dnobody-group=nobody \
+		\
+		-Ddefault-kill-user-processes=true \
+		-Dgshadow=false \
+		-Ddefault-locale=en_US.UTF-8 \
+		\
+		-Didn=false \
+		-Dsysvinit-path="" \
+		build .
+	meson compile ${JOBS:+-j ${JOBS}} -C build
+}
+
+package() {
+	DESTDIR="$pkgdir" meson install --no-rebuild -C build
+}
+
+sha512sums="
+fd9f6c8c3ee9c13b66fc52c94492bcb563280acd9811bc5f7e4ccf28e5d664b330b356ba77110146bece8801eb49e38aa5c85b6422cc48b1d326d8cddcf83ba8  systemd-musl-v257.5-split-usr.tar.gz
+"
