@@ -1,7 +1,7 @@
-# Maintainer: Jenneron <jenneron@protonmail.com>
+# Maintainer: WeirdTreeThing <bradyn127@protonmail.com>
 pkgname=msm-cros-efs-loader
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.2
+pkgrel=0
 pkgdesc="EFS loader for Qualcomm-based Chrome OS devices"
 url="https://gitlab.postmarketos.org/postmarketOS/msm-cros-efs-loader"
 arch="aarch64"
@@ -12,12 +12,13 @@ source="$pkgname-$pkgver.tar.gz::$url/-/archive/$_tag/msm-cros-efs-loader-$_tag.
 	rmtfs.confd
 "
 options="!check !archcheck"
-subpackages="$pkgname-rmtfs $pkgname-openrc"
+subpackages="$pkgname-rmtfs $pkgname-openrc $pkgname-systemd"
 builddir="$srcdir/$pkgname-$_tag"
 
 package() {
-	install -Dm755 "$srcdir/$pkgname.initd" "$pkgdir/etc/init.d/$pkgname"
 	install -Dm755 "$pkgname.sh" "$pkgdir/usr/sbin/$pkgname"
+	install -Dm755 "$srcdir/$pkgname.initd" "$pkgdir/etc/init.d/$pkgname"
+	install -Dm644 "$srcdir/$pkgname-v$pkgver/10-$pkgname.conf" "$pkgdir"/usr/lib/systemd/system/rmtfs.service.d/10-$pkgname.conf
 }
 
 rmtfs() {
@@ -32,12 +33,18 @@ openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install"
 
-	mkdir -p "$subpkgdir"
+	default_openrc
 }
 
+systemd() {
+	pkgdesc="Drop-in config for RMTFS to support msm-cros-efs-loader"
+	install_if="$pkgname=$pkgver-r$pkgrel rmtfs systemd"
+
+	default_systemd
+}
 
 sha512sums="
-1da390d9adddd5f9570ba05330626662e3eeb633ec1675469b2e09da454b3b2ecbf077aa4a723ad7c75ab5259fb51e2d0bc0595aca7a2b1f4bbaf10ffaec28cc  msm-cros-efs-loader-1.0.2.tar.gz
+76cb7b9b58cc81064466465bf6854879af75d7a67a1124cc9d0ab7f13052a8f86005a9bc8c6dd620c5a98115c0fa4f10ca79f7d3227cb44b1574a961bce1af26  msm-cros-efs-loader-1.2.tar.gz
 a3e902e4dec0bdc7241ea98ef016c0a761f594ac8ee4c67348a4cd5c64de256c0e201b57d4979cf1c175315255a2e35cd2db7ef05c382444511e328834bed56e  msm-cros-efs-loader.initd
 c79a441d1234b53070c356eec0493fba1af502c61e0127fd8d892b7c880571642077a29bcd712a704fd82392125c5542b373119d5f71adb3439ea1f32c17f1c8  rmtfs.confd
 "
