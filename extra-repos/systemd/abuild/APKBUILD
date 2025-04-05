@@ -4,9 +4,9 @@
 # APKBUILDs at once.
 
 pkgname=abuild
-pkgver=99993.15.0_rc2
-_pkgver=3.15.0_rc2
-_commit="2b8b0741fb9b5605573d2efcd80fdef9492bb21f"
+pkgver=99993.15.0_rc3
+_pkgver=3.15.0_rc3
+_commit="ea2f884eba612f2e27a750241501e35b2d859234"
 pkgrel=0
 pkgdesc="Script to build Alpine Packages"
 url="https://git.alpinelinux.org/cgit/abuild/"
@@ -103,5 +103,5 @@ _rootbld() {
 }
 
 sha512sums="
-8ed605e07a55aa6d63db929afefd6717bc602517f57b5d9e1b6a48b2771ff4d6b9d8b7f381ee785f629f3cc71c38c009e3d2ea2dc5e80add7f6f5bccbe85e542  abuild-2b8b0741fb9b5605573d2efcd80fdef9492bb21f.tar.gz
+fafaff1015229c42c4486461897b94e36b98c44d462c816f59a8c04dd501070f23f921a610158c8bb04e163dbb2d1588e093e82c34af70073280e4dc5691b01f  abuild-ea2f884eba612f2e27a750241501e35b2d859234.tar.gz
 "
