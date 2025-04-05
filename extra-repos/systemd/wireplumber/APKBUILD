@@ -3,7 +3,7 @@
 pkgname=wireplumber
 pkgver=9990.5.8
 _pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Session / policy manager implementation for PipeWire"
 url="https://pipewire.org/"
 arch="all"
