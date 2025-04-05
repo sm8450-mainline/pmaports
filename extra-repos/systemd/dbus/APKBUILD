@@ -3,7 +3,7 @@
 pkgname=dbus
 pkgver=9991.16.2
 _pkgver=1.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org message bus system"
 url="https://www.freedesktop.org/Software/dbus"
 arch="all"
@@ -13,8 +13,14 @@ pkggroups="messagebus"
 provider_priority=1
 install="$pkgname.pre-install"
 triggers="$pkgname.trigger=/usr/share/dbus-1/system.d"
-options="!check" # Borked in pmbootstrap...
-# FIXME: systemd-dev in makedepends breaks repo_bootstrap (pma#3604)
+# pmb:strict: force zap after building this package so we don't still have
+#             systemd-stage0 installed
+# !check: tests don't pass in pmbootstrap
+options="!check pmb:strict"
+depends="
+	dbus-libs
+	libexpat
+"
 makedepends="
 	$depends_dev
 	expat-dev
@@ -24,7 +30,8 @@ makedepends="
 	meson
 	xmlto
 	libcap-getcap
-	systemd-dev
+	systemd-stage0-dev
+	systemd-stage0-libs
 	"
 subpackages="
 	$pkgname-daemon-launch-helper:launchhelper
@@ -69,7 +76,7 @@ package() {
 
 libs() {
 	pkgdesc="D-BUS access libraries"
-	depends="systemd-libs"
+	depends="systemd-stage0-libs"
 
 	amove usr/lib/lib*.so.*
 }
