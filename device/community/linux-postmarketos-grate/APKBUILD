@@ -3,8 +3,8 @@
 # Co-Maintainer: Jethrob <jeybee@hotmail.com>
 
 pkgname=linux-postmarketos-grate
-pkgver=6.6.22
-pkgrel=7
+pkgver=6.12.5
+pkgrel=0
 pkgdesc="Linux kernel with experimental patches for Tegra"
 arch="armv7"
 url="https://gitlab.com/grate-driver/linux"
@@ -48,6 +48,6 @@ package() {
 }
 
 sha512sums="
-db25898c5c4103e12ace113de7f7eba91b41f94a4dae270c9424341e8f796a98dee8676d1d02b229b0c4b11cc79b31454a13f9f2b7b1277b5ca9bb7328d54a39  linux-postmarketos-grate-v6.6.22-lts.tar.bz2
-7355f5323655fec8da961252a42541e329c3c152937bee04e3a96b7b3a80713c58bccdcdcd044b6b8d45ad7105e9d6b9188f47e043fd9429621bb77b6964ccde  config-postmarketos-grate.armv7
+3e44a2a12a7a582517b2f4037e73b5e66778d363b993943126df33e4782ac149cb395d9c744fe5ccc3e627456654fc554861d6dc154022c80e586de3c8be4fa1  linux-postmarketos-grate-v6.12.5-lts.tar.bz2
+7065a3e96bd6e632b010edfe180b497ef9fa0869c9555b8becd2131ff2e2b9756318059468878997cd11dc6e201dd4ce624bf4c73d30e862f5a11a49734efc67  config-postmarketos-grate.armv7
 "
