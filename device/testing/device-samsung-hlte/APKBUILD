@@ -1,14 +1,15 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-hlte
 pkgdesc="Samsung Galaxy Note 3"
-pkgver=3
-pkgrel=1
+pkgver=4
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
 depends="
 	linux-postmarketos-qcom-msm8974
+	lk2nd-msm8974
 	mkbootimg
 	postmarketos-base
 	soc-qcom-msm8974
@@ -49,6 +50,6 @@ nonfree_firmware() {
 
 sha512sums="
 6cef5f8ae1785ac16e6fe84bfc861ac50cdfb94db35d764f44a25c960e123cb82f6e56f45362a5340c62a3d5ac225f2689afd4f6964cb88305a0892ba44214f0  bt-module-deps.conf
-f3c829e1845ed3cc6c1e5c42144e766b681b3c72f606f498070a60b6f1a8f9ef9d3528ea70240c115ac773407c74fe0dfc3a18559c0fcc99678bf71f7b80c58c  deviceinfo
+caf09128088895e7b1c472d5842b072693c8849acc6df25b636e45f6cc7bec9f8f28ea9b6e01d921afd428393d7f24775b2a60784ab88b7ae7cd672ef56fe071  deviceinfo
 640f11d6cdea23ae5e183468aa9873f5ce091cac721d893866d5e46c19d77bcc6f5401cc0e6488c36d4da954fe94c3d7046f0bc2d299b656a06b540fab8d5e55  modules-initfs
 "
