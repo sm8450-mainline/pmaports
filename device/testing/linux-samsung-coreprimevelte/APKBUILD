@@ -5,14 +5,13 @@ pkgname=linux-$_flavor
 pkgver=6.14.0
 #_pkgver=${pkgver/_/-}
 _pkgver=6.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Samsung Galaxy Core Prime VE LTE mainline kernel"
 arch="aarch64"
 _carch="arm64"
 url="https://gitlab.com/LegoLivesMatter/linux"
 license="GPL-2.0-only"
-options="!strip !check !tracedeps pmb:cross-native pmb:kconfigcheck-nftables
-pmb:kconfigcheck-zram"
+options="!strip !check !tracedeps pmb:cross-native pmb:kconfigcheck-community"
 makedepends="bash bc bison devicepkg-dev findutils flex gmp-dev mpc1-dev
 mpfr-dev openssl-dev perl postmarketos-installkernel dtc"
 
@@ -32,7 +31,7 @@ prepare() {
 build() {
 	unset LDFLAGS
 	make ARCH="$_carch" CC="${CC:-gcc}" \
-		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))"-postmarketOS
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))"-$_flavor
 }
 
 package() {
@@ -50,5 +49,5 @@ package() {
 
 sha512sums="
 bf15ebccd9c60df5ddb47769b574e6e5be39abc663b492c814003819a56351d0a299a7e45a8f5fd13444c6fdd9be6e2206a745eedb55a2de9299a96c5bd25150  linux-samsung-coreprimevelte-6.14.tar.gz
-257a63004990c9ff997534a755ab9896902f3ed31240b0cc79322787cfc65b7feadea60903243b71e8f7b64294c33e9326fb61d2a69a9d344de93ebafb119493  config-samsung-coreprimevelte.aarch64
+46f584fa16af8bf4cd9f3fc73d892be64aa7d006b76b4ea5a20eb18f5f6749cd7b9f0236572db41ccf46b4a62c802a09e174b4615874f7fc2d21a9f02544e205  config-samsung-coreprimevelte.aarch64
 "
