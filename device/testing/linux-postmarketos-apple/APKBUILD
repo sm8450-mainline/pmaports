@@ -4,7 +4,7 @@
 
 _flavor="postmarketos-apple"
 pkgname=linux-$_flavor
-pkgver=6.13.0_rc6
+pkgver=6.15.0_rc1
 pkgrel=1
 pkgdesc="Mainline kernel fork for Apple iPhone and iPad devices"
 arch="aarch64"
@@ -24,14 +24,14 @@ makedepends="
 "
 
 # Source
-_repository="linux-apple"
-_commit="b5dbbf9007e8774e27ca9cd485f0483a2f4bb4e5"
+_repository="HoolockLinux/linux"
+_commit="92733dd1584f122427dd9e1b5378e474b8565e07"
 _config="config-$_flavor.$_carch"
 source="
-	http://github.com/konradybcio/linux-apple/archive/$_commit.tar.gz
+	http://github.com/$_repository/archive/$_commit.tar.gz
 	$_config
 "
-builddir="$srcdir/$_repository-$_commit"
+builddir="$srcdir/linux-$_commit"
 
 prepare() {
 	default_prepare
@@ -64,6 +64,6 @@ package() {
 }
 
 sha512sums="
-2d5aa659f5e3f1d0ecc8be710436c976ce77a78ba142e138a061ac7ff61c80d268d50e0b758f69caad2ab509235dc82d2a58f5d00553b0f37e290e56efea4c60  b5dbbf9007e8774e27ca9cd485f0483a2f4bb4e5.tar.gz
+8a79a0d45e7fb329525a9267a1268d8dbc1932325bee600f862fe1014ffbe7f1c910a1b5fe8e2885bc552a227069aee13e59405806e0fce8d527b03d4ffdd6ec  92733dd1584f122427dd9e1b5378e474b8565e07.tar.gz
 bcd5a8f8bc20a11950248d6be3edaf19f8a70bc50d50c53f1e8640adaaf83d1fbce33b675e662301dd03893a1bb0b59d8b45d5d09296fe0f94f6bd52cfafc9f6  config-postmarketos-apple.arm64
 "
