@@ -3,8 +3,8 @@
 # Co-Maintainer: Newbyte <newbyte@postmarketos.org>
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 pkgname=linux-purism-librem5
-pkgver=6.6.63
-pkgrel=1
+pkgver=6.6.83
+pkgrel=0
 # NOTE: Don't forget to rebase the config! See prepare() for instructions.
 _purismrel=1
 _pureosrel=cri1
@@ -91,6 +91,6 @@ package() {
 }
 
 sha512sums="
-86c63d7bb8a40b7134d7b683d9dd94284c6594c4e1905c3063499cadc5ab5e71234ce810948916a1038b7ac124f6ebb37dbc882a9d7ab4444d93493442bc8435  linux-purism-librem5-6.6.63pureos1_cri1.tar.gz
-0990facf59e315ac1321a3e27699df4af19aee766f4dd5abef65973aa763cad7166c0e7700bb95e3dfcd255e548bfbee3d0c2773f7dfbef453dbc76c8430306f  config-purism-librem5.aarch64
+08d60042f3a314b8210f6d2ba20d85fe693f759620e54784f2e06d62036c96a93a8081dde13e7c5e1ad35fbfadc0bb2c92b744c5cd7d4faa3b21b46628961eea  linux-purism-librem5-6.6.83pureos1_cri1.tar.gz
+54fa674f73dca3f03e0e9a54075ec661a0b7d4b773b55d0ea13cb930ebe15e52c97140b689cdce44c6895954fb0b310af5f9a64143785f666ddb6586f4d096ad  config-purism-librem5.aarch64
 "
