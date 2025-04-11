@@ -7,8 +7,9 @@ workflow:
     - if: $CI_PIPELINE_SOURCE == "parent_pipeline"
 
 {% if archs|length == 0 %}
-# Needed because gitlab fails if no jobs are created, e.g: nothing should be
-# built: https://gitlab.com/gitlab-org/gitlab/-/issues/368248
+# Needed because gitlab fails if no jobs are ran:
+#  - https://gitlab.com/gitlab-org/gitlab/-/issues/368248
+# This applies to `when: manual` is used on all jobs.
 placeholder:
   stage: build
   script:
@@ -16,6 +17,9 @@ placeholder:
 {% endif %}
 
 .build:
+  # Create jobs, but don't run them unless this is
+  # overriden in jobs that extend it
+  when: manual
   stage: build
   interruptible: true
   before_script:
@@ -33,48 +37,54 @@ placeholder:
       - packages/
   timeout: 10 h
 
-{% if ('x86_64' in archs) %}
 build-x86_64:
+{% if ('x86_64' in archs) %}
+  when: always
+{% endif %}
   extends: .build
   script:
     - .ci/build-x86_64.sh
-{% endif %}
 
-{% if ('x86' in archs) %}
 build-x86:
+{% if ('x86' in archs) %}
+  when: always
+{% endif %}
   extends: .build
   script:
     - .ci/build-x86.sh
-{% endif %}
 
-{% if ('aarch64' in archs) %}
 build-aarch64:
+{% if ('aarch64' in archs) %}
+  when: always
+{% endif %}
   extends: .build
   tags: [arm64]
   script:
     - .ci/build-aarch64.sh
-{% endif %}
 
-{% if ('armv7' in archs) %}
 build-armv7:
+{% if ('armv7' in archs) %}
+  when: always
+{% endif %}
   extends: .build
   tags: [qemu]
   script:
     - .ci/build-armv7.sh
-{% endif %}
 
-{% if ('armhf' in archs) %}
 build-armhf:
+{% if ('armhf' in archs) %}
+  when: always
+{% endif %}
   extends: .build
   tags: [qemu]
   script:
     - .ci/build-armhf.sh
-{% endif %}
 
-{% if ('riscv64' in archs) %}
 build-riscv64:
+{% if ('riscv64' in archs) %}
+  when: always
+{% endif %}
   extends: .build
   tags: [qemu]
   script:
     - .ci/build-riscv64.sh
-{% endif %}
