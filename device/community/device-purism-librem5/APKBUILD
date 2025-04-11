@@ -3,9 +3,9 @@
 # Co-Maintainer: Newbyte <newbyte@postmarketos.org>
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 pkgname=device-purism-librem5
-pkgver=5
-pkgrel=1
-_confver=65
+pkgver=6
+pkgrel=0
+_confver=68
 _purismrel=1
 # <librem5-base ver>.<purism release>
 _purismver=${_confver}pureos$_purismrel
@@ -30,7 +30,7 @@ depends="
 	u-boot-librem5
 	u-boot-tools
 "
-makedepends="devicepkg-dev"
+makedepends="devicepkg-dev u-boot-tools"
 builddir=$srcdir/librem5-base-pureos-$_confver
 source="
 	https://source.puri.sm/Librem5/librem5-base/-/archive/pureos/$_purismver/librem5-base-pureos-$_purismver.tar.gz
@@ -166,9 +166,9 @@ package() {
 		"$pkgdir"/etc/init.d/l5-brcm-bt-enable
 
 	# install audio config files from Purism
-	install -Dm644 "$builddir"/default/audio/ucm2/simple-card/Librem\ 5.conf \
+	install -Dm644 "$builddir"/default/audio/ucm2/conf.d/simple-card/Librem\ 5.conf \
 		"$pkgdir"/usr/share/alsa/ucm2/NXP/iMX8/Librem_5/Librem\ 5.conf
-	install -Dm644 "$builddir"/default/audio/ucm2/simple-card/HiFi.conf \
+	install -Dm644 "$builddir"/default/audio/ucm2/conf.d/simple-card/HiFi.conf \
 		"$pkgdir"/usr/share/alsa/ucm2/NXP/iMX8/Librem_5/HiFi.conf
 	mkdir -p "$pkgdir"/usr/share/alsa/ucm2/conf.d/simple-card
 	# relative path seems to be required or else alsa-lib can't figure it out
@@ -204,7 +204,7 @@ nonfree_firmware() {
 }
 
 sha512sums="
-4ce01a78016475873535927330a26143170153968cb22214ca606929ffc73ff2df2fcdd044c44d1cd9c514e989c267b5267402f0c047a240d01192d9b29ed57b  librem5-base-pureos-65pureos1.tar.gz
+e02c1a39626311ae553f83c75cb6ef44647a40b4419eefec9e5df4f24aaa91b65b3029b919a5ad8cf5b12bf77414eb7b524e470b90220ff97c8730ea37ad7f86  librem5-base-pureos-68pureos1.tar.gz
 2e72d9a084ecd6c96cafbbd8fda461ae8b2ebd14ffda601d9f36d73f08f04088213de17da078293ddd958d4c76d33148c7af6e252eb0709f6934855a55578509  00-mesa.sh
 703d12826464eb2bdb6bf4a7d10adb73b37564d3792794523b252f0f7cb66184add150a6938580cc33615281d1c0abd7ff158ae2143b89fa28c0cd3dc367e5ff  deviceinfo
 138ed85e6509e4611bf21a0061c312e6c2ce60f722ee9e4565d19c5f025301d4df3fa321343524219a54b20c5288dc6ed1b058ac66f4d608af22eb5bc83e84c6  modules-initfs
