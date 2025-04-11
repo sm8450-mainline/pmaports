@@ -1,0 +1,32 @@
+# Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: Omar Mahboubi <omar_mahboubi@tutanota.com>
+pkgname=device-xiaomi-spes
+pkgdesc="Xiaomi Redmi Note 11"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	linux-xiaomi-spes
+	mkbootimg
+	postmarketos-base
+	postmarketos-base-downstream
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+540f3dfb2792c0717428915f1db2346ed21ccd4ac5f8fd5f7b7abd3350bcd767023c39c2db50c31be7178352e7975afa5239eed0ae6bbefe8394e605a6742339  deviceinfo
+"
