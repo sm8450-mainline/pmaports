@@ -3,7 +3,7 @@
 # Co-Maintainer: Jan Jasper de Kroon <jajadekroon@gmail.com>
 pkgname=device-pine64-pinephone
 pkgver=8
-pkgrel=1
+pkgrel=2
 pkgdesc="PINE64 PinePhone"
 url="https://postmarketos.org"
 license="MIT"
@@ -40,7 +40,11 @@ depends="
 	"
 # FIXME: use upstream alsa-ucm-conf instead, once it works the same (pma#2115)
 replaces="alsa-ucm-conf"
-makedepends="devicepkg-dev dtc"
+makedepends="
+	devicepkg-dev
+	dtc
+	u-boot-tools
+"
 install="$pkgname.pre-upgrade"
 source="
 	00_alsa_pinephone_dshare.conf
