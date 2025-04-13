@@ -15,7 +15,6 @@ depends="
 	"
 options="!check pmb:systemd" # No testsuite
 subpackages="$pkgname-openrc:_openrc"
-_pmb_recommends="postmarketos-base-ui-audio-none"
 
 package() {
 	mkdir -p "$pkgdir"
