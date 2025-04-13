@@ -173,7 +173,6 @@ build() {
 		-Dkmod-path=/bin/kmod \
 		-Dsulogin-path=/sbin/sulogin \
 		\
-		-Dwheel-group=true \
 		-Ddebug-shell=/bin/ash \
 		-Dpolkit=enabled \
 		-Dpam=enabled \
