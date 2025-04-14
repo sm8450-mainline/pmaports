@@ -2,7 +2,7 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=postmarketos-ui-sway
 pkgver=3.1
-pkgrel=8
+pkgrel=9
 pkgdesc="(Wayland) Tiling WM, drop-in replacement for i3wm (DOES NOT RUN WITHOUT HW ACCELERATION!)"
 url="https://postmarketos.org"
 arch="noarch"
@@ -14,6 +14,7 @@ depends="
 	elogind
 	polkit-elogind
 	postmarketos-base-ui
+	postmarketos-base-ui-audio
 	postmarketos-base-ui-networkmanager
 	sway
 	swaybg

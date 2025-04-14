@@ -2,7 +2,7 @@
 # Maintainer: fossdd <fossdd@pwned.life>
 pkgname=postmarketos-ui-i3wm
 pkgver=2
-pkgrel=0
+pkgrel=1
 pkgdesc="(X11) Tiling WM (keyboard required)"
 url="https://i3wm.org"
 # riscv64 has very unstable builders
@@ -23,6 +23,7 @@ depends="
 	mesa-egl
 	polkit-elogind
 	postmarketos-base-ui
+	postmarketos-base-ui-audio
 	postmarketos-base-ui-networkmanager
 	postmarketos-artwork-wallpapers
 	st-virtual

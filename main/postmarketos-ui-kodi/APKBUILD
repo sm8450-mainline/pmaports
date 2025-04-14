@@ -2,7 +2,7 @@
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=postmarketos-ui-kodi
 pkgver=2
-pkgrel=9
+pkgrel=10
 pkgdesc="(GBM) 10-foot UI useful on TV's"
 url="https://kodi.tv"
 arch="all !armhf !loongarch64" # kodi
@@ -14,6 +14,7 @@ depends="
 	kodi-polkit
 	polkit-elogind
 	postmarketos-base-ui
+	postmarketos-base-ui-audio
 	postmarketos-base-ui-networkmanager
 	upower
 	"

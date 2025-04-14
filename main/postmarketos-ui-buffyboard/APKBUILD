@@ -2,7 +2,7 @@
 # Based On: postmarketos-ui-fbkeyboard
 pkgname=postmarketos-ui-buffyboard
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Plain framebuffer console with modern touchscreen keyboard support"
 url="https://gitlab.postmarketos.org/postmarketOS/buffybox"
 arch="all"
@@ -11,6 +11,7 @@ depends="
 	dnsmasq
 	buffyboard
 	postmarketos-base-ui
+	postmarketos-base-ui-audio
 	postmarketos-base-ui-networkmanager
 	"
 subpackages="$pkgname-openrc $pkgname-systemd"

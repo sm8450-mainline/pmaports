@@ -2,7 +2,7 @@
 # Maintainer: Affe Null <affenull2345@gmail.com>
 pkgname=postmarketos-ui-bananui
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="(Wayland) Keypad controlled UI for feature phones"
 url="https://git.abscue.de/obp/bananui"
 arch="noarch"
@@ -13,6 +13,7 @@ depends="
 	dnsmasq
 	pam-rundir
 	postmarketos-base-ui
+	postmarketos-base-ui-audio
 	postmarketos-base-ui-networkmanager
 	seatd
 	tinydm

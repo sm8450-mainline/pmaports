@@ -3,13 +3,14 @@
 # Contributor: Miles Alan <m@milesalan.com>
 pkgname=postmarketos-ui-framebufferphone
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Minimalist framebuffer menu/keyboard UI accessible via touch/volume keys & compatible scripts"
 url="http://sr.ht/~hamblingreen/framebufferphone"
 arch="aarch64 x86_64" # Limited by fbp / zig in alpine support
 license="GPL-3.0-or-later"
 depends="
 	postmarketos-base-ui
+	postmarketos-base-ui-audio
 	fbp
 	"
 _pmb_recommends="

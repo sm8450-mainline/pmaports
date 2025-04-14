@@ -2,7 +2,7 @@
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=postmarketos-ui-asteroid
 pkgver=2
-pkgrel=0
+pkgrel=1
 pkgdesc="(Wayland) Smartwatch UI from AsteroidOS"
 url="https://wiki.postmarketos.org/wiki/AsteroidOS"
 # armhf blocked by asteroid-launcher
@@ -15,6 +15,7 @@ depends="
 # Required to launch
 depends="$depends
 	postmarketos-base-ui
+	postmarketos-base-ui-audio
 	tinydm
 	"
 _pmb_recommends="

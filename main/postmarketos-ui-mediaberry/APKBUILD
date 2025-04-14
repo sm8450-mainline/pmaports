@@ -2,7 +2,7 @@
 # Maintainer: hexaheximal <hexaheximal@proton.me>
 pkgname=postmarketos-ui-mediaberry
 pkgver=0.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="(Wayland) An open platform for streaming boxes and smart TVs (WIP)"
 url="https://mediaberry.org"
 arch="noarch"
@@ -11,6 +11,7 @@ depends="
 	dnsmasq
 	pam-rundir
 	postmarketos-base-ui
+	postmarketos-base-ui-audio
 	postmarketos-base-ui-networkmanager
 	postmarketos-base-ui-tinydm
 	mbwl

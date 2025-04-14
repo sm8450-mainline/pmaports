@@ -2,7 +2,7 @@
 # Maintainer: Craig Comstock <craig@unreasonablefarm.org>
 pkgname=postmarketos-ui-shelli
 pkgver=3
-pkgrel=7
+pkgrel=8
 pkgdesc="Plain console with touchscreen gesture support"
 url="https://gitlab.com/unrznbl/shelli"
 arch="all"
@@ -12,6 +12,7 @@ depends="
 	ofono
 	ofonoctl
 	postmarketos-base-ui
+	postmarketos-base-ui-audio
 	postmarketos-base-ui-networkmanager
 	shelli
 	"

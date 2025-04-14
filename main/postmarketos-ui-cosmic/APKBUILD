@@ -2,7 +2,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-ui-cosmic
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="COSMIC Desktop Environment from System76"
 url="https://system76.com/cosmic/"
 # Only tested on these archs.
@@ -14,6 +14,7 @@ depends="
 	cosmic-session
 	polkit-elogind
 	postmarketos-base-ui
+	postmarketos-base-ui-audio
 	postmarketos-base-ui-networkmanager
 	power-profiles-daemon
 	upower
