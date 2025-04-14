@@ -27,6 +27,7 @@ _pmb_recommends="
 	cosmic-term
 	firefox-esr
 	flatpak
+	gnome-keyring
 	gst-libav
 	gst-plugins-bad
 	gst-plugins-good
