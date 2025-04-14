@@ -1,6 +1,6 @@
 # Maintainer: Dylan Van Assche <dylan@postmarketos.org>
 pkgname=mobile-config-thunderbird
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=0
 pkgdesc="Thunderbird tweaks for mobile and privacy"
 url="https://gitlab.postmarketos.org/DylanVanAssche/mobile-config-thunderbird"
@@ -21,5 +21,5 @@ package() {
 	make DESTDIR="$pkgdir" VERSION=$pkgver-r$pkgrel THUNDERBIRD_DIR=/usr/lib/thunderbird-esr install
 }
 sha512sums="
-8101b8d8ce6a947c72eb7b570178666f8e74bf1ca8bd473344d441f438288cf5bcc7703fe16343589b48d9e2db67e8a881f7f74b497c944191a3720748828fd9  mobile-config-thunderbird-0.1.1.tar.bz2
+6b37eac212819618066368d9bf9b0437ae81dcea26e7a293af8864a575ffadd8dc00371d3cabfdada20f3b519b377abd04306d7a910d1d506c3a0ea0532cf423  mobile-config-thunderbird-0.1.2.tar.bz2
 "
