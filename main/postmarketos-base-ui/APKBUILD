@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-base-ui
 pkgver=36
-pkgrel=0
+pkgrel=1
 pkgdesc="Meta package for minimal postmarketOS UI base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -23,7 +23,7 @@ depends="
 	xdg-utils
 	"
 subpackages="
-	$pkgname-audio-none:_audio_none
+	$pkgname-audio
 	$pkgname-audio-pipewire:_audio_pipewire
 	$pkgname-audio-pulseaudio:_audio_pulseaudio
 	$pkgname-bluez-openrc:_bluez_openrc
@@ -108,7 +108,7 @@ package() {
 	# wifi, audio and init backends are provided by a subpackage in this
 	# APKBUILD and it won't exist when this is evaluated at the top level.
 	# It's moved into this function to work around it.
-	depends="$depends $pkgname-wifi $pkgname-audio"
+	depends="$depends $pkgname-wifi"
 
 	local i
 	for i in $_source644; do
@@ -269,10 +269,9 @@ iwd_openrc() {
 	mkdir -p "$subpkgdir"
 }
 
-_audio_none() {
-	pkgdesc="Do not install any audio backend."
-	provides="postmarketos-base-ui-audio=$pkgver-r$pkgrel"
-	provider_priority=10
+audio() {
+	pkgdesc="For UIs that require audio support"
+	depends="postmarketos-base-ui-audio-backend"
 
 	mkdir "$subpkgdir"
 }
@@ -280,7 +279,7 @@ _audio_none() {
 _audio_pipewire() {
 	pkgdesc="Use pipewire as the audio backend. (but may not work with all devices)"
 	depends="pipewire-alsa pipewire-pulse pipewire-spa-bluez pipewire-tools"
-	provides="postmarketos-base-ui-audio=$pkgver-r$pkgrel"
+	provides="postmarketos-base-ui-audio-backend=$pkgver-r$pkgrel"
 	provider_priority=90
 
 	amove usr/share/wireplumber/wireplumber.conf.d/50-bluetooth.conf
@@ -289,7 +288,7 @@ _audio_pipewire() {
 _audio_pulseaudio() {
 	pkgdesc="Use pulseaudio as the audio backend."
 	depends="alsa-plugins-pulse pulseaudio pulseaudio-alsa pulseaudio-utils !pipewire-pulse"
-	provides="postmarketos-base-ui-audio=$pkgver-r$pkgrel"
+	provides="postmarketos-base-ui-audio-backend=$pkgver-r$pkgrel"
 	provider_priority=100
 
 	amove etc/pulse/default.pa.d/postmarketos.pa
