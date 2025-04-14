@@ -2,21 +2,27 @@
 pkgname=device-oneplus-kebab
 pkgdesc="OnePlus 8T"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
-	linux-oneplus-kebab
 	mkbootimg
 	postmarketos-base
 "
-makedepends="devicepkg-dev"
-subpackages="$pkgname-weston"
+makedepends="
+	devicepkg-dev
+	dtc
+"
+subpackages="
+	$pkgname-kernel-downstream:kernel_downstream
+	$pkgname-kernel-mainline:kernel_mainline
+	device-oneplus-instantnoodlep-nonfree-firmware:nonfree_firmware
+"
 source="
 	deviceinfo
-	weston.ini
+	sm8250-oneplus-kebab-empty.dts
 "
 
 build() {
@@ -27,16 +33,29 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 
-weston() {
-	install_if="$pkgname weston"
+kernel_downstream() {
+	pkgdesc="Downstream kernel (not recommended, for debugging purposes)"
+	depends="linux-oneplus-kebab"
+	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
+}
 
-	# weston use drm backend, 2x dpi, don't use virtual output
-	install -Dm644 "$srcdir"/weston.ini \
-		"$subpkgdir"/etc/xdg/weston/weston.ini
+kernel_mainline() {
+	pkgdesc="Mainline kernel (recommended)"
+	depends="linux-postmarketos-qcom-sm8250"
+
+	dtc -O dtb -o "$srcdir/dtbo.img" -I dts "$srcdir/sm8250-oneplus-kebab-empty.dts"
+	install -Dm644 "$srcdir/dtbo.img" "$subpkgdir/boot/dtbo.img"
+	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
+}
+
+nonfree_firmware() {
+	pkgdesc="Firmware for OnePlus 8T"
+	depends="firmware-oneplus-instantnoodlep"
+	mkdir "$subpkgdir"
 }
 
 
 sha512sums="
-538e17ec6855924865cf1bb2650667232bf6c384e1e8918f40e660ad61c001bace4cc16b46609b067dad5bbf6e9d33339340c273d81aa0550dffe05fdb2f106c  deviceinfo
-4fdc188f9cd5c0316959322568916a6e36e67ff316e90fa7bd7c7b642cb137a9ff7002b0475728c6ba53abcbfe8c50d82112e4943460ee424aee4bbfd0efecfe  weston.ini
+128cbf4249fe67027c82929f021ef479990558024d418f5fc7fa2320e686ed9f2282493af41eb88b76b61627dab979b1f3f53d6be0d3bfb177e6a59f20033b9c  deviceinfo
+fa4866865dd9e6388b7ee2319954d2317245c5618a0ebd9250abae7d58e08aa4a248a6dd9a87a820b30615b8f9f6e5f66b6883a47f7f0d3d69bfffe3440f33b2  sm8250-oneplus-kebab-empty.dts
 "
