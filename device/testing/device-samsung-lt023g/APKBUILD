@@ -2,17 +2,18 @@
 pkgname=device-samsung-lt023g
 pkgdesc="Galaxy Tab 3 7.0"
 pkgver=3
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
-depends="alsa-utils alsa-ucm-conf linux-samsung-lt023g mkbootimg postmarketos-base postmarketos-base-ui-audio-pipewire"
+depends="linux-samsung-lt023g mkbootimg postmarketos-base"
 makedepends="devicepkg-dev"
 source="deviceinfo device-ssp.start HiFi.conf emei-dkb-hifi.conf"
+subpackages="$pkgname-audio"
 
 build() {
-	devicepkg_build $startdir $pkgname
+	devicepkg_build $startdi$pkgname r $pkgname
 }
 
 package() {
@@ -25,6 +26,18 @@ package() {
 		"$pkgdir"/usr/share/alsa/ucm2/conf.d/emei-dkb-hifi/HiFi.conf
 
 	install -Dm755 "$srcdir/device-ssp.start" "$pkgdir/etc/local.d/device-ssp.start"
+}
+
+audio() {
+	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-base-ui-audio"
+	depends="
+		alsa-ucm-conf
+		alsa-utils
+		postmarketos-base-ui-audio-pipewire
+	"
+
+	amove usr/share/alsa/ucm2/conf.d/emei-dkb-hifi/emei-dkb-hifi.conf
+	amove usr/share/alsa/ucm2/conf.d/emei-dkb-hifi/HiFi.conf
 }
 
 sha512sums="
