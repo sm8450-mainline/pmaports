@@ -3,7 +3,7 @@
 pkgname=device-xiaomi-nabu
 pkgdesc="Xiaomi Pad 5"
 pkgver=5
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -14,7 +14,6 @@ options="
 	"
 replaces="firmware-xiaomi-nabu"
 depends="
-	alsa-ucm-conf
 	linux-firmware-ath10k
 	linux-firmware-qcom
 	linux-firmware-qca
@@ -25,13 +24,11 @@ depends="
 	msm-firmware-loader
 	msm-modem
 	postmarketos-base
-	postmarketos-base-ui-audio-pipewire
 	qbootctl
 	swclock-offset
 	tqftpserv
 "
 makedepends="devicepkg-dev"
-replaces="alsa-ucm-conf"
 _commit="181e8e4510b28ef13d2adde3017fa87eb3eda490"
 builddir="$srcdir/nabu-firmware-$_commit"
 # nabu-firwmare is temporary a640 is not packaged yet
@@ -46,6 +43,7 @@ source="
 "
 
 subpackages="
+	$pkgname-audio
 	$pkgname-openrc
 "
 
@@ -92,6 +90,20 @@ openrc() {
 		tqftpserv-openrc
 		"
 	mkdir -p "$subpkgdir"
+}
+
+audio() {
+	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-base-ui-audio"
+	replaces="alsa-ucm-conf"
+	depends="
+		alsa-ucm-conf
+		postmarketos-base-ui-audio-pipewire
+	"
+
+	amove "usr/share/alsa/ucm2/conf.d/sm8150/Xiaomi Pad 5.conf"
+	amove etc/pulse/daemon.conf.d
+	amove etc/pulse/default.pa.d
+	amove usr/share/alsa/ucm2/Xiaomi/nabu
 }
 
 sha512sums="
