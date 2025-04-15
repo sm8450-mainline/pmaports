@@ -3,13 +3,14 @@
 # Co-Maintainer: Jan Jasper de Kroon <jajadekroon@gmail.com>
 pkgname=device-pine64-pinephone
 pkgver=8
-pkgrel=2
+pkgrel=3
 pkgdesc="PINE64 PinePhone"
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 subpackages="
+	$pkgname-audio
 	$pkgname-gnome
 	$pkgname-kirigami:kirigami
 	$pkgname-nonfree-firmware:nonfree_firmware
@@ -23,23 +24,18 @@ subpackages="
 	$pkgname-x11
 	"
 depends="
-	alsa-ucm-conf>=1.2.6.2
 	atinout
 	eg25-manager
 	iw
 	linux-postmarketos-allwinner>=5.14
 	megapixels
 	mesa-egl
-	pinephone-callaudiod
 	postmarketos-base
-	postmarketos-base-ui-audio-pipewire
 	postprocessd
 	u-boot-pinephone>=2021.01_git20201228-r2
 	u-boot-tools
 	fwupd>=1.8.6
 	"
-# FIXME: use upstream alsa-ucm-conf instead, once it works the same (pma#2115)
-replaces="alsa-ucm-conf"
 makedepends="
 	devicepkg-dev
 	dtc
@@ -139,16 +135,6 @@ package() {
 		"$pkgdir"/usr/lib/udev/rules.d/10-pinephone-proximity.rules
 	install -Dm644 "$srcdir"/60-flashlight.rules -t "$pkgdir"/usr/lib/udev/rules.d/
 
-	# Alsa usecase manager config
-	install -Dm644 -t "$pkgdir"/usr/share/alsa/ucm2/Allwinner/A64/PinePhone \
-		"$srcdir"/HiFi.conf \
-		"$srcdir"/PinePhone.conf \
-		"$srcdir"/VoiceCall.conf
-
-	# Pulseaudio config
-	install -Dm644 "$srcdir"/pulse-pinephone.conf \
-		"$pkgdir"/etc/pulse/daemon.conf.d/89-pinephone.conf
-
 	# Modem
 	install -Dm755 "$srcdir"/setup-modem.sh \
 		"$pkgdir"/usr/bin/pinephone_setup-modem
@@ -243,6 +229,28 @@ x11() {
 	install -Dm644 "$srcdir"/x11-pinephone-keyboard.conf \
 		"$subpkgdir"/etc/X11/xorg.conf.d/pinephone-keyboard.conf
 }
+
+audio() {
+	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-base-ui-audio"
+	# FIXME: use upstream alsa-ucm-conf instead, once it works the same (pma#2115)
+	replaces="alsa-ucm-conf"
+	depends="
+		alsa-ucm-conf>=1.2.6.2
+		pinephone-callaudiod
+		postmarketos-base-ui-audio-pipewire
+	"
+
+	# Alsa usecase manager config
+	install -Dm644 -t "$subpkgdir"/usr/share/alsa/ucm2/Allwinner/A64/PinePhone \
+		"$srcdir"/HiFi.conf \
+		"$srcdir"/PinePhone.conf \
+		"$srcdir"/VoiceCall.conf
+
+	# Pulseaudio config
+	install -Dm644 "$srcdir"/pulse-pinephone.conf \
+		"$subpkgdir"/etc/pulse/daemon.conf.d/89-pinephone.conf
+}
+
 sha512sums="
 5736444fd38ab4351d148ae96c479085f469bd1e51a692fb1827f8ac921a584389f7696985e1fba21c2deac88709910531f4ece282f45ff54e590c2b54b84ba3  00_alsa_pinephone_dshare.conf
 b53cc6f2531854cc9c1e4c334185a20551d64c8675ee8a8eaa03b99d80808fad421a0f6e99e5be212a974d88c85f461a71ba59ac59c29f298c82f211e3be1ef4  10-pinephone-proximity.rules
