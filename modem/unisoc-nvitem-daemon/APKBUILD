@@ -1,0 +1,47 @@
+# Maintainer: Affe Null <affenull2345@gmail.com>
+pkgname=unisoc-nvitem-daemon
+pkgver=0_git20250314
+_commit="1846027783259d3c8722c71dc43df8ef6705a380"
+pkgrel=0
+pkgdesc="NV item daemon for Unisoc modems"
+url="https://git.abscue.de/linux-mainlining/unisoc-nvitem-daemon"
+arch="aarch64"
+license="BSD-3-Clause"
+subpackages="$pkgname-openrc"
+source="$url/-/archive/$_commit/unisoc-nvitem-daemon-$_commit.tar.gz
+	unisoc-nvitem-daemon.initd
+	90-unisoc-nvitem-daemon.preset
+	"
+options="!check" # no tests
+builddir="$srcdir/unisoc-nvitem-daemon-$_commit"
+
+build() {
+	gcc -o unisoc-nvitem-daemon unisoc-nvitem-daemon.c
+}
+
+package() {
+	install -Dm755 unisoc-nvitem-daemon -t "$pkgdir"/usr/sbin
+
+	install -Dm755 "$srcdir"/unisoc-nvitem-daemon.initd \
+		"$pkgdir"/etc/init.d/unisoc-nvitem-daemon
+}
+
+openrc() {
+	install="$subpkgname.post-install"
+	default_openrc
+}
+
+systemd() {
+	install_if="$pkgname=$pkgver-r$pkgrel systemd"
+
+	install -Dm644 unisoc-nvitem-daemon.service \
+		-t "$subpkgdir"/usr/lib/systemd/system
+	install -Dm644 90-unisoc-nvitem-daemon.preset \
+		-t "$subpkgdir"/usr/lib/systemd/system-preset
+}
+
+sha512sums="
+e8bb6d03059e6055e464320ba1d4050eec1d1776bc5a241f787c7636fdb794482668d0c38bc1ca876760b4daadba71e430c6ea635a8f21a0ae2d3d2a0a82a98e  unisoc-nvitem-daemon-1846027783259d3c8722c71dc43df8ef6705a380.tar.gz
+65a6bd77e9e277afbe8940dbe9897a0ba0d07c0030a8cea8f2468e731ccaf1b1ecdddce6f9da0d316f62b4592af109808b64bf58c11ef83b4899cad265129c4a  unisoc-nvitem-daemon.initd
+af2e929ee37e919c8b9787b075d8c4f18de2d817adb97814d97b883c10c2e444e007bd01e78302993f9ea369593459b61fb87788612b99e7c7bd9d923db2d46c  90-unisoc-nvitem-daemon.preset
+"
