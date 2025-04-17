@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-oneplus-kebab
 pkgdesc="OnePlus 8T"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -10,6 +10,7 @@ options="!check !archcheck"
 depends="
 	mkbootimg
 	postmarketos-base
+	firmware-oneplus-instantnoodlep
 "
 makedepends="
 	devicepkg-dev
@@ -18,7 +19,6 @@ makedepends="
 subpackages="
 	$pkgname-kernel-downstream:kernel_downstream
 	$pkgname-kernel-mainline:kernel_mainline
-	device-oneplus-instantnoodlep-nonfree-firmware:nonfree_firmware
 "
 source="
 	deviceinfo
@@ -48,14 +48,7 @@ kernel_mainline() {
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
-nonfree_firmware() {
-	pkgdesc="Firmware for OnePlus 8T"
-	depends="firmware-oneplus-instantnoodlep"
-	mkdir "$subpkgdir"
-}
-
-
 sha512sums="
-128cbf4249fe67027c82929f021ef479990558024d418f5fc7fa2320e686ed9f2282493af41eb88b76b61627dab979b1f3f53d6be0d3bfb177e6a59f20033b9c  deviceinfo
+91ae30a82942c0e73ba19b90f27cb8dc95eb3f6b6c79f8314ded9e1ba5d4b10a2c6c3b63cba3fd5a0da518fb9a536fca1650eb0bba5f6c2e7f80136abad8de76  deviceinfo
 fa4866865dd9e6388b7ee2319954d2317245c5618a0ebd9250abae7d58e08aa4a248a6dd9a87a820b30615b8f9f6e5f66b6883a47f7f0d3d69bfffe3440f33b2  sm8250-oneplus-kebab-empty.dts
 "

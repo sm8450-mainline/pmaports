@@ -19,7 +19,6 @@ deviceinfo_screen_height="2400"
 # Bootloader related
 deviceinfo_flash_method="fastboot"
 deviceinfo_kernel_cmdline_downstream="androidboot.console=ttyMSM0 androidboot.hardware=qcom androidboot.memcg=1 androidboot.usbcontroller=a600000.dwc3 cgroup.memory=nokmem,nosocket loop.max_part=7 lpm_levels.sleep_disabled=1 msm_rtb.filter=0x237 reboot=panic_warm service_locator.enable=1 swiotlb=2048 buildvariant=userdebug printk.devkmsg=on"
-deviceinfo_kernel_cmdline_mainline="clk_ignore_unused pd_ignore_unused"
 deviceinfo_header_version_downstream="0"
 deviceinfo_header_version_mainline="2"
 deviceinfo_append_dtb="false"
