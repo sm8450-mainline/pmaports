@@ -74,7 +74,8 @@ def test_deviceinfo():
             name = info.name
             manufacturer = info.manufacturer
             if not name.startswith(manufacturer) and \
-                    not name.startswith("Google"):
+                    not name.startswith("Google") and \
+                    not name.startswith("Jolla"):
                 raise RuntimeError("Please add the manufacturer in front of"
                                    " the deviceinfo_name, e.g.: '" +
                                    manufacturer + " " + name + "'")
