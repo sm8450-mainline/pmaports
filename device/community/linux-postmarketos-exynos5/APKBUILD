@@ -4,8 +4,8 @@
 # and Hardkernel's odroidxu4_defconfig
 
 pkgname=linux-postmarketos-exynos5
-pkgver=6.6.59
-pkgrel=1
+pkgver=6.6.87
+pkgrel=0
 pkgdesc="Mainline kernel fork for Samsung Exynos5 devices"
 arch="armv7"
 _carch="arm"
@@ -69,6 +69,6 @@ package() {
 }
 
 sha512sums="
-db6976d67236b2612c7dcbb201c1f0cad403358418cf359ec9a5e02eeeaa01aebb812eaa575ff7f986e3123e9a971bfe8587dc4ce1be750a88490644dcfe9545  linux-postmarketos-exynos5-v6.6.59-exynos5-lts.tar.bz2
-a3ec96f5ad406e2d7104255038d96eb2dc842629ba78ae45623a8d8e913710b9a0b4eee663b96f9cc3b662139b73223f937aec3da01c31a919e61aa27d48c8c7  config-postmarketos-exynos5.armv7
+21d1a8c4686474f5c4e93406e886339916e4812b72374306b53bad811c2626104085ae614d5892cb1b5273a204509e849e8bf7c7e27e07be0156dbdfd5a1b0bd  linux-postmarketos-exynos5-v6.6.87-exynos5-lts.tar.bz2
+8e7febd087423e84d9e6596584836dfaa4c9f0c794fcc04131af28db0c414351429c50bd9796f6809b7049c859d3b4287b291f0b83abcbd1126b587a103c26a5  config-postmarketos-exynos5.armv7
 "
