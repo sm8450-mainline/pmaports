@@ -13,7 +13,7 @@ source="deviceinfo device-ssp.start HiFi.conf emei-dkb-hifi.conf"
 subpackages="$pkgname-audio"
 
 build() {
-	devicepkg_build $startdi$pkgname r $pkgname
+	devicepkg_build $startdir $pkgname
 }
 
 package() {
