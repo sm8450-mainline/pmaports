@@ -1,0 +1,30 @@
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-xiaomi-rosemary-downstream
+pkgdesc="Xiaomi Redmi Note 10S"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	linux-xiaomi-rosemary-downstream
+	mkbootimg
+	postmarketos-base
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+7aca9b4b3b5355db440c604801587b8c94a5645d9be12990a05d934b0679f8c12eb57edf26b69c98b44b927a6be7d80cbc445096805def5fceaaa2e6637ef88b  deviceinfo
+"
