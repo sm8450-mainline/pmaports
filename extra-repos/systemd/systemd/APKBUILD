@@ -86,7 +86,12 @@ makedepends="
 
 # provides=openrc and openrc-settingsd to prevent those packages
 # getting pulled in, as there are some conflicts (dbus)
-provides="busctl eudev openrc-settingsd=$pkgver-r$pkgrel systemd-stage0=$pkgver-r$pkgrel"
+provides="
+	busctl=$pkgver-r$pkgrel
+	eudev=$pkgver-r$pkgrel
+	openrc-settingsd=$pkgver-r$pkgrel
+	systemd-stage0=$pkgver-r$pkgrel
+	"
 provider_priority=100
 
 install="$pkgname.pre-install"
@@ -249,7 +254,11 @@ udevd() {
 	# is a dependency of systemd
 
 	# NOTE: should only be udev, but packages hardcode eudev
-	provides="eudev udev eudev-libs"
+	provides="
+		eudev=$pkgver-r$pkgrel
+		udev=$pkgver-r$pkgrel
+		eudev-libs=$pkgver-r$pkgrel
+		"
 	provider_priority=100
 
 	amove etc/udev
@@ -378,7 +387,7 @@ logind() {
 		shadow
 	"
 
-	provides="elogind"
+	provides="elogind=$pkgver-r$pkgrel"
 	provider_priority=100
 
 	amove usr/bin/loginctl
@@ -432,7 +441,12 @@ x11() {
 }
 
 dev() {
-	provides="eudev-dev udev-dev elogind-dev systemd-stage0-dev=$pkgver-r$pkgrel"
+	provides="
+		eudev-dev=$pkgver-r$pkgrel
+		udev-dev=$pkgver-r$pkgrel
+		elogind-dev=$pkgver-r$pkgrel
+		systemd-stage0-dev=$pkgver-r$pkgrel
+		"
 	provider_priority=100
 
 	default_dev
