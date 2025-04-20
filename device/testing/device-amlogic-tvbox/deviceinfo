@@ -21,6 +21,7 @@ deviceinfo_chassis="desktop"
 deviceinfo_keyboard="false"
 deviceinfo_external_storage="true"
 deviceinfo_gpu_accelerated="true"
+deviceinfo_disable_dhcpd="true"
 
 # Bootloader related
 deviceinfo_flash_method="none"
