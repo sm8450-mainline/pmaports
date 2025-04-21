@@ -10,8 +10,6 @@ if [ "$(id -u)" = 0 ]; then
 	set -x
 	wget "https://gitlab.postmarketos.org/postmarketOS/ci-common/-/raw/master/install_pmbootstrap.sh"
 	sh ./install_pmbootstrap.sh pytest
-	# FIXME: workaround for pmb init switching the branch on us...
-	su "${TESTUSER:-pmos}" -c "git -C $CI_PROJECT_DIR checkout $CI_COMMIT_SHA"
 	exec su "${TESTUSER:-pmos}" -c "sh -e $0"
 fi
 
