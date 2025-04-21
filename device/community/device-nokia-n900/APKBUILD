@@ -3,7 +3,7 @@
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-nokia-n900
 pkgver=42
-pkgrel=0
+pkgrel=1
 pkgdesc="Nokia N900"
 url="https://postmarketos.org"
 arch="armv7"
@@ -20,7 +20,6 @@ depends="
 	postmarketos-mvcfg
 	u-boot-tools
 	wl1251-cal
-	wl1251-cal-openrc
 "
 makedepends="
 	devicepkg-dev
@@ -209,6 +208,7 @@ upower() {
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install"
+	depends="wl1251-cal-openrc"
 
 	mkdir -p "$subpkgdir"
 }
