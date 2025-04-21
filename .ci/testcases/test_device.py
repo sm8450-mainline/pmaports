@@ -120,13 +120,13 @@ def test_aports_maintained():
         assert maintainers, f"{path} in community needs at least 1 Maintainer"
 
 
-def test_aports_unmaintained():
+def test_aports_archived():
     """
-    Ensure that aports in /device/unmaintained have an "Unmaintained:" comment
-    that describes why the aport is unmaintained.
+    Ensure that aports in /device/archived have an "Archived:" comment
+    that describes why the aport is archived.
     """
 
-    for path in pkgrepo_iglob("device/unmaintained/*/APKBUILD"):
-        unmaintained = pmb.parse._apkbuild.unmaintained(path)
-        assert unmaintained, f"{path} should have an Unmaintained: " +\
-            "comment that describes why the package is unmaintained"
+    for path in pkgrepo_iglob("device/archived/*/APKBUILD"):
+        archived = pmb.parse._apkbuild.archived(path)
+        assert archived, f"{path} should have an Archived: " +\
+            "comment that describes why the package is archived"
