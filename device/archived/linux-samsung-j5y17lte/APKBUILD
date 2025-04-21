@@ -1,4 +1,5 @@
 # Reference: <https://postmarketos.org/vendorkernel>
+# Archived: Downstream port, only for testing. Use mainline port (linux-postmarketos-exynos7870)!
 # Kernel config based on: arch/arm64/configs/j5y17lte_defconfig
 # Maintainer: andrisas <sebokandris2009@gmail.com>
 
