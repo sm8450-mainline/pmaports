@@ -29,3 +29,7 @@ deviceinfo_sd_embed_firmware_step_size="512"
 deviceinfo_boot_part_start="3072"
 deviceinfo_kernel_cmdline="console=tty1 loglevel=9 rw PMOS_FORCE_PARTITION_RESIZE"
 deviceinfo_generate_extlinux_config="true"
+
+# The bl1 embed location in sdcard conflicts with GPT header, so need
+# to use msdos.
+deviceinfo_partition_type="msdos"
