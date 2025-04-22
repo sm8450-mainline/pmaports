@@ -36,3 +36,6 @@ deviceinfo_flash_pagesize="2048"
 
 # Heimdall related
 deviceinfo_flash_heimdall_partition_kernel="BOOT"
+# If we use u-boot + custom bl1 embedded in sdcard, then bl1 location
+# conflicts with GPT header, so use msdos.
+deviceinfo_partition_type="msdos"
