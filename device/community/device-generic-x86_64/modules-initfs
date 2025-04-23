@@ -1,4 +1,5 @@
 ahci
+cqhci
 ehci_hcd
 ehci_pci
 hid-multitouch
@@ -16,7 +17,9 @@ psmouse
 scsi_mod
 sd
 sd_mod
+sdhci
 sdhci_acpi
+sdhci_pci
 sg
 uas
 usb
