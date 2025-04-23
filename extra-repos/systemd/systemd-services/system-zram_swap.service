@@ -16,7 +16,7 @@ RemainAfterExit=true
 # num_devices in modprobe.d/zram.conf contains the maximal used number + 1
 
 ExecStartPre=-/sbin/modprobe zram
-ExecStart=/bin/sh -c "exec /usr/sbin/zram-init -s2 -azstd -Lzram_swap `zram-size-calc`"
+ExecStart=/bin/sh -c "exec /usr/sbin/zram-init -azstd -Lzram_swap `zram-size-calc`"
 ExecStop=/usr/sbin/zram-init 0
 
 [Install]
