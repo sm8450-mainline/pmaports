@@ -3,7 +3,7 @@
 pkgname=device-google-gru
 pkgdesc="Google Gru Chromebooks"
 pkgver=8
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -51,7 +51,7 @@ nonfree_firmware() {
 }
 
 openrc() {
-	install_if="$pkgname=$pkgvar-r$pkgrel openrc"
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	depends="eudev-hwids>=3.2.12-r0"
 	mkdir "$subpkgdir"
 }
