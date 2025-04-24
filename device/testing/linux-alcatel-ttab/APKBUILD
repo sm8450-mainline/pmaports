@@ -3,7 +3,7 @@
 
 pkgname=linux-alcatel-ttab
 pkgver=3.10.108
-pkgrel=0
+pkgrel=1
 pkgdesc="Alcatel Telekom Puls kernel fork"
 arch="armv7"
 _carch="arm"
@@ -18,9 +18,11 @@ makedepends="
 	devicepkg-dev
 	findutils
 	flex
+	linux-headers
+	ncurses
 	openssl-dev
 	perl
-	ncurses
+	xz
 "
 
 # Source: backup of https://github.com/mt8127/android_kernel_alcatel_ttab
