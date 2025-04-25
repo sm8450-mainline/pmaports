@@ -2,11 +2,15 @@
 # Maintainer: Caleb Connolly <caleb@postmarketos.org>
 # Co-Maintainer: jane400 <jane400@postmarketos.org>
 
+#########################################################
+# Make sure to upgrade systemd-stage0 at the same time! #
+#########################################################
+
 pkgname=systemd
 # currently tracking git MR
 pkgver=256.11
 _pkgver="musl-v${pkgver//_/-}-split-usr"
-pkgrel=5
+pkgrel=6
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !s390x" # blocked by pmboostrap not supporting
@@ -91,7 +95,7 @@ fi
 
 # provides=openrc and openrc-settingsd to prevent those packages
 # getting pulled in, as there are some conflicts (dbus)
-provides="busctl eudev openrc-settingsd=$pkgver-r$pkgrel"
+provides="busctl eudev openrc-settingsd=$pkgver-r$pkgrel systemd-stage0=$pkgver-r$pkgrel"
 provider_priority=100
 
 install="$pkgname.pre-install"
@@ -437,10 +441,16 @@ x11() {
 }
 
 dev() {
-	provides="eudev-dev udev-dev"
+	provides="eudev-dev udev-dev systemd-stage0-dev=$pkgver-r$pkgrel"
 	provider_priority=100
 
 	default_dev
+}
+
+libs() {
+	provides="systemd-stage0-libs=$pkgver-r$pkgrel"
+
+	default_libs
 }
 
 sha512sums="
