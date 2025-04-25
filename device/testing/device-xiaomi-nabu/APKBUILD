@@ -2,8 +2,8 @@
 # Maintainer: Pan Ortiz <panjeoc@proton.me>
 pkgname=device-xiaomi-nabu
 pkgdesc="Xiaomi Pad 5"
-pkgver=5
-pkgrel=1
+pkgver=6
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -12,16 +12,12 @@ options="
 	!archcheck
 	!strip
 	"
-replaces="firmware-xiaomi-nabu"
 depends="
-	linux-firmware-ath10k
-	linux-firmware-qcom
-	linux-firmware-qca
+	firmware-xiaomi-nabu
 	linux-postmarketos-qcom-sm8150
 	make-dynpart-mappings
 	mesa-vulkan-freedreno
 	mkbootimg
-	msm-firmware-loader
 	msm-modem
 	postmarketos-base
 	qbootctl
@@ -29,9 +25,6 @@ depends="
 	tqftpserv
 "
 makedepends="devicepkg-dev"
-_commit="181e8e4510b28ef13d2adde3017fa87eb3eda490"
-builddir="$srcdir/nabu-firmware-$_commit"
-# nabu-firwmare is temporary a640 is not packaged yet
 source="
 	HiFi.conf
 	nabu.pa
@@ -39,7 +32,6 @@ source="
 	XiaomiPad5.conf
 	deviceinfo
 	30-gpu-firmware.files
-	https://gitlab.postmarketos.org/panpanpanpan/nabu-firmware/-/archive/$_commit/nabu-firmware-$_commit.tar.gz
 "
 
 subpackages="
@@ -69,17 +61,6 @@ package() {
 	install -Dm64 "$srcdir"/30-gpu-firmware.files -t \
 		"$pkgdir"/usr/share/mkinitfs/files
 
-	# This is temporary, a640 firmware is not packaged yet
-	install -Dm644 "$builddir"/a640_gmu.bin -t \
-		"$pkgdir"/lib/firmware/qcom
-
-	# For some reason, msm-firwmare-loader is only able to load this from slot_a
-	install -Dm644 "$builddir"/a640_zap.mbn -t \
-		"$pkgdir"/lib/firmware/qcom/sm8150/xiaomi/nabu/
-
-	# There were problems while loading this dynamically, hopefully i'll fix this before moving to a generic package package
-	install -Dm644 "$builddir"/novatek_nt36523_fw.bin -t \
-		"$pkgdir"/lib/firmware/novatek
 }
 
 openrc() {
@@ -113,5 +94,4 @@ d66d6f2129f8aef4449137a1506fb3b3a1275c98502238537ac4dd0c174145706bac971e7e100d35
 7b0b16f02b59b74cef7d82ae4e33f8d0c4ea12515824abb3392891eb75c365d19efec685f6f6248b7fec1e2698caca741bba01687673914d0f9de188444e0b37  XiaomiPad5.conf
 cc3bdbf0be335ce932f45147fc60db251228f765024391015582fb98b2a31189827ab9f88fc92483077e62e6a5b11b772ffa2967ce40604442bc212f2e83f922  deviceinfo
 755e266b66ca6b1ef1f7d90ed00da5ea8845113d906218123f8157893af31aaa0301fcf16be37482455e134ac07bf4d614656ea34091a921a7867e5d918aa456  30-gpu-firmware.files
-baa4dbfe7bf4f159bd4f59b2fe0cf3366ff5abd6b2690cf6ab843ca2b2efac13406d889cfc856c2fcede14ad621b749cbde85e6dff0a6b813e41dd4155dc600e  nabu-firmware-181e8e4510b28ef13d2adde3017fa87eb3eda490.tar.gz
 "
