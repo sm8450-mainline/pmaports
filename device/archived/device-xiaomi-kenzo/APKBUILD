@@ -1,3 +1,4 @@
+# Archived: unmaintained port, only for testing. Use generic/mainline port (qcom-msm8956)
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-kenzo
 pkgdesc="Xiaomi Redmi Note 3"
