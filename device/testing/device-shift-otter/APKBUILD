@@ -3,8 +3,8 @@
 # Co-Maintainer: Alexander Martinz <amartinz@shiftphones.com>
 pkgname=device-shift-otter
 pkgdesc="SHIFTphone 8"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -35,6 +35,6 @@ package() {
 }
 
 sha512sums="
-3e4ea7fa643dfa0205707dfa6ad8c12c8e35be8ae0c7684479e3981b498d33ee55b636760cb4574f99d8f88df49a4f098cb6fc3b8b248840ab9886501108f309  deviceinfo
+ab28fb1476523ddab595be8d784f9dc3f7e97b56936e21590571b1e57c149a257bc34e6ea7027fa051958b08a61584531f08d131a83142dfba4dcd29d3336a53  deviceinfo
 57316402c428390cb683f03da817308e008e246e01e88c95d60fc14d736156ce6cc7915633d973347a56c721022913192928799310f14839afe8d00de2efa14c  modules-initfs
 "
