@@ -1,7 +1,7 @@
 # Maintainer: Richard Acayan <mailingradian@gmail.com>
 pkgname=firmware-google-sargo
 pkgver=220505.008
-pkgrel=7
+pkgrel=8
 pkgdesc="Proprietary firmware blobs from the Google Pixel 3a factory image"
 url="https://github.com/TheMuppets/proprietary_vendor_google_sargo"
 arch="aarch64"
@@ -16,8 +16,11 @@ source="
 	https://raw.githubusercontent.com/LineageOS/android_device_google_bonito/$_device_android_commit/acdbdata/OEM/sdm670-intcodec-s4-snd-card/Global_cal.acdb
 "
 builddir="$srcdir/proprietary_vendor_google_sargo-$_commit"
-options="!check !archcheck !strip !tracedeps pmb:cross-native"
+options="!check !archcheck !strip !tracedeps textrels pmb:cross-native"
 _modemfw_dir="$srcdir/firmware-google-sargo-modem-$_modemfw_commit"
+subpackages="
+	$pkgname-hexagon-nn:hexagon_nn
+"
 
 build() {
 	pil-squasher a615_zap.mbn proprietary/vendor/firmware/a615_zap.mdt
@@ -32,6 +35,7 @@ build() {
 	zstd ipa_fws.mbn
 
 	zstd proprietary/vendor/firmware/adsp.mbn
+	zstd proprietary/vendor/firmware/cdsp.mbn
 	zstd proprietary/vendor/firmware/venus.mbn
 	zstd proprietary/vendor/firmware/wlanmdsp.mbn
 
@@ -51,6 +55,10 @@ package() {
 		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/adspr.jsn
 	install -Dm644 "$builddir"/proprietary/vendor/firmware/adspua.jsn \
 		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/adspua.jsn
+	install -Dm644 "$builddir"/proprietary/vendor/firmware/cdsp.mbn.zst \
+		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/cdsp.mbn.zst
+	install -Dm644 "$builddir"/proprietary/vendor/firmware/cdspr.jsn \
+		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/cdspr.jsn
 	install -Dm644 "$builddir"/proprietary/vendor/firmware/modemuw.jsn \
 		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/modemuw.jsn
 	install -Dm644 "$builddir"/proprietary/vendor/firmware/venus.mbn.zst \
@@ -71,6 +79,21 @@ package() {
 
 	install -Dm644 "$srcdir"/Global_cal.acdb \
 		       "$pkgdir"/lib/firmware/qcom/sdm670/sargo/Global_cal.acdb
+}
+
+hexagon_nn() {
+	pkgdesc="Proprietary firmware blobs from the Google Pixel 3a factory image (AI acceleration on CDSP)"
+
+	install -Dm644 "$builddir"/proprietary/vendor/dsp/cdsp/fastrpc_shell_3 \
+		       "$subpkgdir"/usr/share/qcom/sdm670/Google/sargo/dsp/cdsp/fastrpc_shell_3
+	install -Dm644 "$builddir"/proprietary/vendor/lib/rfsa/adsp/libhexagon_nn_skel.so \
+		       "$subpkgdir"/usr/share/qcom/sdm670/Google/sargo/dsp/cdsp/libhexagon_nn_skel.so
+	install -Dm644 "$builddir"/proprietary/vendor/lib/rfsa/adsp/libhexagon_nn_skel.so \
+		       "$subpkgdir"/usr/share/qcom/sdm670/Google/sargo/dsp/cdsp/testsig-0xaff19744.so
+	install -Dm644 "$builddir"/proprietary/vendor/lib/rfsa/adsp/libhexagon_nn_skel.so \
+		       "$subpkgdir"/usr/share/qcom/sdm670/Google/sargo/dsp/cdsp/testsig.so
+
+	touch "$subpkgdir"/usr/share/qcom/sdm670/Google/sargo/dsp/cdsp/oemconfig.so
 }
 
 sha512sums="
