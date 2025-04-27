@@ -4,7 +4,7 @@
 # Co-Maintainer: exkc <exkc@exkc.moe>
 
 pkgname=linux-postmarketos-marvell
-pkgver=6.13.2
+pkgver=6.14.4
 pkgrel=0
 pkgdesc="mainline (stable) for Marvell SoC"
 arch="armv7"
@@ -63,6 +63,6 @@ package() {
 
 
 sha512sums="
-c21b5d41c8983cb404a5b1747e17e900a10e09fb1a2b56f73d3c4d8ceed6af376e5149fc5484f97aacb771ca2e7def66789c6ae06eb696875f3ef89c67db302f  linux-postmarketos-marvell-6.13.2.tar.xz
-c20ea9155aa343160b944280bfebf1d504a155533c2c2c7a4e5d0edf9552a68ed12429725d3f18fe18d71d7137ef5c0a73fce45557b8a2daed6bc55e6ed47630  config-postmarketos-marvell.armv7
+e59a65d821011d559c7879c70bb14736fb357b750a4513f12a231ccd9c4f4a8cdf1f6a773b42138b6a08fdabca2f473f4fada2e9dfe6ff288de90f3161768cb9  linux-postmarketos-marvell-6.14.4.tar.xz
+bfccf94562afe35385c56992c6a1f6b6db3547f9a1b74513ed2b12b31d1a6edd425dc2b7c3e0fcb297fe0534a6577e92ac5a0e3cfc0f8b62f1a3677b302bf267  config-postmarketos-marvell.armv7
 "
