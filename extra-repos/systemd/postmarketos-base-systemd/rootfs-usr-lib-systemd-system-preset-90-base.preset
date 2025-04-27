@@ -63,6 +63,11 @@ enable kodi.service
 ## COSMIC
 enable cosmic-greeter.service
 
+## niri
+# NOTE: This is a generic greeter so it can be moved under a more generic
+# header if another UI uses it.
+enable wlgreet.service
+
 # Waydroid
 enable sensorfwd.service
 enable waydroid-container.service
