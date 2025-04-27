@@ -7,8 +7,8 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=65
-pkgrel=1
+pkgver=66
+pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
 arch="noarch"
@@ -41,6 +41,7 @@ subpackages="
 	gnome-clocks-systemd:_service
 	gnome-terminal-systemd:_service
 	goimapnotify-systemd:_service
+	greetd-wlgreet-systemd:_service
 	hexagonrpcd-systemd:_service
 	hfd-service-systemd:_service
 	iio-sensor-proxy-systemd:_service
@@ -141,6 +142,7 @@ _geoclue_sources="system/geoclue.service" # From https://gitlab.freedesktop.org/
 _gnome_clocks_sources="user/gnome-clocks.service"
 _gnome_terminal_sources="user/gnome-terminal-server.service" # From https://gitlab.gnome.org/GNOME/gnome-terminal/-/blob/master/src/gnome-terminal-server.service.in
 _goimapnotify_sources="user/goimapnotify@.service" # From https://gitlab.com/shackra/goimapnotify/-/raw/master/goimapnotify@.service
+_greetd_wlgreet_sources="system/wlgreet.service"
 _hexagonrpcd_sources="system/hexagonrpcd-adsp-rootpd.service system/hexagonrpcd-adsp-sensorspd.service system/hexagonrpcd-sdsp.service system/iio-sensor-proxy.service.d/hexagonrpcd.conf"
 _hfd_service_sources="system/hfd-service.service" # From https://gitlab.com/ubports/development/core/hfd-service/-/blob/main/init/hfd-service.service.in
 _iio_sensor_proxy_sources="system/iio-sensor-proxy.service"
@@ -225,6 +227,7 @@ source="$(flatpath \
 	$_gnome_clocks_sources \
 	$_gnome_terminal_sources \
 	$_goimapnotify_sources \
+	$_greetd_wlgreet_sources \
 	$_hexagonrpcd_sources \
 	$_hfd_service_sources \
 	$_iio_sensor_proxy_sources \
@@ -348,6 +351,7 @@ f3463b85ac47055b400dfd2e24694c5e1dc6ab039efac0fe54496fc027c0732cda5e52a362a497b3
 bc7987a001d2076788d904f1ea6d3e97a2ab905ee55302ffb90402133c2b9fb760d7ad94e06971d811b9d905048e164cb78355f8cd087219b5b8ff6dab2fbd9c  user-gnome-clocks.service
 ccf803ac6a764570a98845f0b0ddcde0529943472ce4cc3dc904501883a51fda482d7aef3b84fac89590e869fecdcec9142a6eac3db8ae73782a5e29f32eaae1  user-gnome-terminal-server.service
 e0c5baf8030bae74c1ddb0f6f9bc4fdf2a1febaa344de1957d9a69a01eb7e1dc143b9d324ef15214289934b3a7fd4725df26b032f9225102d9cf5633145320bc  user-goimapnotify@.service
+e226bdb71f6fafe92d14046dfa19ddbccb765b579c1f90687a9ece376fa12406db9f2cf8035ff07d5a78ef77dc73615d39a8790f8722585bf65872be773888ff  system-wlgreet.service
 b31259eabac94a0709c274f37f8c0ce1752964d19e63306a04bc72cc426be3c40b3743bbf7e955cfbf5871295ea00c70d9f0ecd94a9fb4b7a422439cb7d4bd2a  system-hexagonrpcd-adsp-rootpd.service
 13547507622ad1e9505ef243e972b2bfaaf13e4ebe93801df2899828033be6683768cddb16de83a09aec3c09edc8d21c0cc6b5e127ad6168f70627e0e35f0146  system-hexagonrpcd-adsp-sensorspd.service
 ac6b7ac72f8caad95e73191a3839b9d8b125c9dd315fb3dbb9c386c132972684ea65ac33fcfb2a6e26ec49079d939a05a4d8059dba19b29dd2da230ee6726378  system-hexagonrpcd-sdsp.service
