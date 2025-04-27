@@ -1,0 +1,38 @@
+From a6e97443320fca535c1b43f6dff27a41f7ac746e Mon Sep 17 00:00:00 2001
+From: Karel Balej <balejk@matfyz.cz>
+Date: Sat, 28 Oct 2023 13:04:01 +0200
+Subject: [PATCH 05/10] dt-bindings: mwifiex: document use with the SD8777
+ chipset
+
+Document the corresponding compatible string for the use of this driver
+with the Marvell SD8777 wireless chipset.
+
+Signed-off-by: Karel Balej <balejk@matfyz.cz>
+---
+ .../devicetree/bindings/net/wireless/marvell,sd8787.yaml       | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/net/wireless/marvell,sd8787.yaml b/Documentation/devicetree/bindings/net/wireless/marvell,sd8787.yaml
+index 930b700b73d0..4f1c231bae01 100644
+--- a/Documentation/devicetree/bindings/net/wireless/marvell,sd8787.yaml
++++ b/Documentation/devicetree/bindings/net/wireless/marvell,sd8787.yaml
+@@ -4,7 +4,7 @@
+ $id: http://devicetree.org/schemas/net/wireless/marvell,sd8787.yaml#
+ $schema: http://devicetree.org/meta-schemas/core.yaml#
+ 
+-title: Marvell 8787/8897/8978/8997 (sd8787/sd8897/sd8978/sd8997/pcie8997) SDIO/PCIE devices
++title: Marvell 8777/8787/8897/8978/8997 (sd8777/sd8787/sd8897/sd8978/sd8997/pcie8997) SDIO/PCIE devices
+ 
+ maintainers:
+   - Brian Norris <briannorris@chromium.org>
+@@ -18,6 +18,7 @@ description:
+ properties:
+   compatible:
+     enum:
++      - marvell,sd8777
+       - marvell,sd8787
+       - marvell,sd8897
+       - marvell,sd8978
+-- 
+2.49.0
+

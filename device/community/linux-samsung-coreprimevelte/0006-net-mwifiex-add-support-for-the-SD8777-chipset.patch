@@ -1,0 +1,117 @@
+From d573a9b9731267edd933edca7edae50b2254b777 Mon Sep 17 00:00:00 2001
+From: Karel Balej <balejk@matfyz.cz>
+Date: Sat, 28 Oct 2023 13:09:06 +0200
+Subject: [PATCH 06/10] net: mwifiex: add support for the SD8777 chipset
+
+Marvell SD8777 is a wireless chipset used for instance in the PXA1908
+SoC found for example in the samsung,coreprimevelte smartphone, with
+which this was tested. The driver seems to be compatible with this
+chipset so enable this support by adding the necessary information based
+on the downstream code.
+
+Signed-off-by: Karel Balej <balejk@matfyz.cz>
+---
+ drivers/net/wireless/marvell/mwifiex/Kconfig |  4 ++--
+ drivers/net/wireless/marvell/mwifiex/sdio.c  | 19 +++++++++++++++++++
+ drivers/net/wireless/marvell/mwifiex/sdio.h  |  1 +
+ include/linux/mmc/sdio_ids.h                 |  1 +
+ 4 files changed, 23 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/wireless/marvell/mwifiex/Kconfig b/drivers/net/wireless/marvell/mwifiex/Kconfig
+index b182f7155d66..a7bd2c5735f6 100644
+--- a/drivers/net/wireless/marvell/mwifiex/Kconfig
++++ b/drivers/net/wireless/marvell/mwifiex/Kconfig
+@@ -10,13 +10,13 @@ config MWIFIEX
+ 	  mwifiex.
+ 
+ config MWIFIEX_SDIO
+-	tristate "Marvell WiFi-Ex Driver for SD8786/SD8787/SD8797/SD8887/SD8897/SD8977/SD8978/SD8987/SD8997"
++	tristate "Marvell WiFi-Ex Driver for SD8777/SD8786/SD8787/SD8797/SD8887/SD8897/SD8977/SD8978/SD8987/SD8997"
+ 	depends on MWIFIEX && MMC
+ 	select FW_LOADER
+ 	select WANT_DEV_COREDUMP
+ 	help
+ 	  This adds support for wireless adapters based on Marvell
+-	  8786/8787/8797/8887/8897/8977/8978/8987/8997 chipsets with
++	  8777/8786/8787/8797/8887/8897/8977/8978/8987/8997 chipsets with
+ 	  SDIO interface. SD8978 is also known as NXP IW416.
+ 
+ 	  If you choose to build it as a module, it will be called
+diff --git a/drivers/net/wireless/marvell/mwifiex/sdio.c b/drivers/net/wireless/marvell/mwifiex/sdio.c
+index 490ffd981164..48a40a04f50b 100644
+--- a/drivers/net/wireless/marvell/mwifiex/sdio.c
++++ b/drivers/net/wireless/marvell/mwifiex/sdio.c
+@@ -318,6 +318,21 @@ static const struct mwifiex_sdio_card_reg mwifiex_reg_sd89xx = {
+ 				 0x68, 0x69, 0x6a},
+ };
+ 
++static const struct mwifiex_sdio_device mwifiex_sdio_sd8777 = {
++	.firmware = SD8777_DEFAULT_FW_NAME,
++	.reg = &mwifiex_reg_sd87xx,
++	.max_ports = 16,
++	.mp_agg_pkt_limit = 8,
++	.tx_buf_size = MWIFIEX_TX_DATA_BUF_SIZE_2K,
++	.mp_tx_agg_buf_size = MWIFIEX_MP_AGGR_BUF_SIZE_16K,
++	.mp_rx_agg_buf_size = MWIFIEX_MP_AGGR_BUF_SIZE_16K,
++	.supports_sdio_new_mode = false,
++	.has_control_mask = true,
++	.can_dump_fw = false,
++	.can_auto_tdls = false,
++	.can_ext_scan = true,
++};
++
+ static const struct mwifiex_sdio_device mwifiex_sdio_sd8786 = {
+ 	.firmware = SD8786_DEFAULT_FW_NAME,
+ 	.reg = &mwifiex_reg_sd87xx,
+@@ -516,6 +531,7 @@ static struct memory_type_mapping mem_type_mapping_tbl[] = {
+ };
+ 
+ static const struct of_device_id mwifiex_sdio_of_match_table[] __maybe_unused = {
++	{ .compatible = "marvell,sd8777" },
+ 	{ .compatible = "marvell,sd8787" },
+ 	{ .compatible = "marvell,sd8897" },
+ 	{ .compatible = "marvell,sd8978" },
+@@ -954,6 +970,8 @@ static void mwifiex_sdio_coredump(struct device *dev)
+ 
+ /* WLAN IDs */
+ static const struct sdio_device_id mwifiex_ids[] = {
++	{SDIO_DEVICE(SDIO_VENDOR_ID_MARVELL, SDIO_DEVICE_ID_MARVELL_8777_WLAN),
++		.driver_data = (unsigned long)&mwifiex_sdio_sd8777},
+ 	{SDIO_DEVICE(SDIO_VENDOR_ID_MARVELL, SDIO_DEVICE_ID_MARVELL_8786_WLAN),
+ 		.driver_data = (unsigned long) &mwifiex_sdio_sd8786},
+ 	{SDIO_DEVICE(SDIO_VENDOR_ID_MARVELL, SDIO_DEVICE_ID_MARVELL_8787_WLAN),
+@@ -3201,6 +3219,7 @@ MODULE_AUTHOR("Marvell International Ltd.");
+ MODULE_DESCRIPTION("Marvell WiFi-Ex SDIO Driver version " SDIO_VERSION);
+ MODULE_VERSION(SDIO_VERSION);
+ MODULE_LICENSE("GPL v2");
++MODULE_FIRMWARE(SD8777_DEFAULT_FW_NAME);
+ MODULE_FIRMWARE(SD8786_DEFAULT_FW_NAME);
+ MODULE_FIRMWARE(SD8787_DEFAULT_FW_NAME);
+ MODULE_FIRMWARE(SD8797_DEFAULT_FW_NAME);
+diff --git a/drivers/net/wireless/marvell/mwifiex/sdio.h b/drivers/net/wireless/marvell/mwifiex/sdio.h
+index 65d142286c46..c6425191ad84 100644
+--- a/drivers/net/wireless/marvell/mwifiex/sdio.h
++++ b/drivers/net/wireless/marvell/mwifiex/sdio.h
+@@ -18,6 +18,7 @@
+ 
+ #include "main.h"
+ 
++#define SD8777_DEFAULT_FW_NAME "mrvl/sd8777_uapsta.bin"
+ #define SD8786_DEFAULT_FW_NAME "mrvl/sd8786_uapsta.bin"
+ #define SD8787_DEFAULT_FW_NAME "mrvl/sd8787_uapsta.bin"
+ #define SD8797_DEFAULT_FW_NAME "mrvl/sd8797_uapsta.bin"
+diff --git a/include/linux/mmc/sdio_ids.h b/include/linux/mmc/sdio_ids.h
+index 7cddfdac2f57..c49138fcd79a 100644
+--- a/include/linux/mmc/sdio_ids.h
++++ b/include/linux/mmc/sdio_ids.h
+@@ -94,6 +94,7 @@
+ #define SDIO_DEVICE_ID_MARVELL_8797_BT		0x912a
+ #define SDIO_DEVICE_ID_MARVELL_8897_WLAN	0x912d
+ #define SDIO_DEVICE_ID_MARVELL_8897_BT		0x912e
++#define SDIO_DEVICE_ID_MARVELL_8777_WLAN	0x9131
+ #define SDIO_DEVICE_ID_MARVELL_8887_F0		0x9134
+ #define SDIO_DEVICE_ID_MARVELL_8887_WLAN	0x9135
+ #define SDIO_DEVICE_ID_MARVELL_8887_BT		0x9136
+-- 
+2.49.0
+

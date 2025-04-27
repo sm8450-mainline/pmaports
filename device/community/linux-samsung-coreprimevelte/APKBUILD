@@ -2,26 +2,39 @@
 
 _flavor=samsung-coreprimevelte
 pkgname=linux-$_flavor
-pkgver=6.14.0
-#_pkgver=${pkgver/_/-}
-_pkgver=6.14
-pkgrel=2
+pkgver=6.14.4
+pkgrel=0
 pkgdesc="Samsung Galaxy Core Prime VE LTE mainline kernel"
 arch="aarch64"
 _carch="arm64"
-url="https://gitlab.com/LegoLivesMatter/linux"
+url="https://kernel.org"
 license="GPL-2.0-only"
 options="!strip !check !tracedeps pmb:cross-native pmb:kconfigcheck-community"
 makedepends="bash bc bison devicepkg-dev findutils flex gmp-dev mpc1-dev
-mpfr-dev openssl-dev perl postmarketos-installkernel dtc"
+mpfr-dev openssl-dev perl postmarketos-installkernel dtc zstd"
 
 # Source
 _config=config-$_flavor.$arch
+
+case $pkgver in
+	*.*.*)	_kernver=${pkgver%.0};;
+	*.*)	_kernver=$pkgver;;
+esac
+
 source="
-	$pkgname-$_pkgver.tar.gz::$url/-/archive/v$_pkgver-pxa1908/linux-v$_pkgver-pxa1908.tar.gz
+	https://cdn.kernel.org/pub/linux/kernel/v${_kernver%%.*}.x/linux-$_kernver.tar.xz
+	0001-dt-bindings-marvell-Document-PXA1908-SoC.patch
+	0002-arm64-Kconfig.platforms-Add-config-for-Marvell-PXA19.patch
+	0003-arm64-dts-Add-DTS-for-Marvell-PXA1908-and-samsung-co.patch
+	0004-MAINTAINERS-add-myself-as-Marvell-PXA1908-maintainer.patch
+	0005-dt-bindings-mwifiex-document-use-with-the-SD8777-chi.patch
+	0006-net-mwifiex-add-support-for-the-SD8777-chipset.patch
+	0007-Bluetooth-btmrvl_sdio-Add-support-for-SD8777-chipset.patch
+	0008-fill-in-dt-nodes.patch
+	0009-DONOTMERGE-mmc-host-Disable-Tuning-failed-message.patch
 	$_config
 "
-builddir="$srcdir"/linux-v$_pkgver-pxa1908
+builddir="$srcdir"/linux-"$_kernver"
 
 prepare() {
 	default_prepare
@@ -30,12 +43,11 @@ prepare() {
 
 build() {
 	unset LDFLAGS
-	make ARCH="$_carch" CC="${CC:-gcc}" \
+	make ARCH="$_carch" \
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))"-$_flavor
 }
 
 package() {
-	mkdir -p "$pkgdir"/boot
 	make zinstall modules_install dtbs_install \
 		ARCH=$_carch \
 		INSTALL_MOD_STRIP=1 \
@@ -48,6 +60,15 @@ package() {
 }
 
 sha512sums="
-bf15ebccd9c60df5ddb47769b574e6e5be39abc663b492c814003819a56351d0a299a7e45a8f5fd13444c6fdd9be6e2206a745eedb55a2de9299a96c5bd25150  linux-samsung-coreprimevelte-6.14.tar.gz
-46f584fa16af8bf4cd9f3fc73d892be64aa7d006b76b4ea5a20eb18f5f6749cd7b9f0236572db41ccf46b4a62c802a09e174b4615874f7fc2d21a9f02544e205  config-samsung-coreprimevelte.aarch64
+e59a65d821011d559c7879c70bb14736fb357b750a4513f12a231ccd9c4f4a8cdf1f6a773b42138b6a08fdabca2f473f4fada2e9dfe6ff288de90f3161768cb9  linux-6.14.4.tar.xz
+e95e139fb2caea614380f2d955b6148923e401516af793b3efed8a0f7911fbb1b2f1cc7b596fb7e11b13ecd821b66beaf496501c021776bfc830c578d9351002  0001-dt-bindings-marvell-Document-PXA1908-SoC.patch
+da0c6e04d62d5a1198f5f9e08ca918b01fe2ac7d7c92d49081191018ca2565bffb46190bad844187b538903511bf75e1e602a2ff8506a0489718711c90bbcb8f  0002-arm64-Kconfig.platforms-Add-config-for-Marvell-PXA19.patch
+99e2612aade3e897c69d158977f65bbe8f35500591d7e68983337ca53d1cf06ffe3ba69c82e4321bd972a888737d4e0de06625803fb9a918b482914c5885a148  0003-arm64-dts-Add-DTS-for-Marvell-PXA1908-and-samsung-co.patch
+d15455e76dd11be47892334e81a23fb686efc5fc3c2e579bed13a765c7868991952fef28d92182e47c26e72f6647db79c2b6183ffa153ea07dc0be1c76a5c67f  0004-MAINTAINERS-add-myself-as-Marvell-PXA1908-maintainer.patch
+c50ce6639860b1067e5b6ae6171edaff4f98790de4cfc5effb875163d657e1b64c672d22fd9852e6b2f616814ad3d34e06a78d0297b5e8fd9c489ecdbc9b957c  0005-dt-bindings-mwifiex-document-use-with-the-SD8777-chi.patch
+8bdac2fa23c8015d3f6f8019f1712567c7499e20104a64263fca16cfc553062558f33b581e8dc7fd705dc1cb0d5a7149bceb471433d62341b534749368f0fc9a  0006-net-mwifiex-add-support-for-the-SD8777-chipset.patch
+92f1d45ff11c3b6ac3fd973fb40a2065154350baa214d0c76600104f340509d1b1dfbaa5ca426a14b0b0b1e0aecfbd1cf615f3f65947d6958a6befa5d5778429  0007-Bluetooth-btmrvl_sdio-Add-support-for-SD8777-chipset.patch
+85cf4c38e3f50dee01c24771557a31722d084e92d5415294d0c36e14c736ec9a86d3d53e4156246e2a2824013373234d2244463245e7617509ab55aee6990304  0008-fill-in-dt-nodes.patch
+5426f06fb0f0275694695f4ad474d73b594d6187eecd7923d10299c236bddf7525ba4a215978e84b268ad8a5d50f310688453842b3a5b03e2124b8426c4eb572  0009-DONOTMERGE-mmc-host-Disable-Tuning-failed-message.patch
+c94cccca6d053ac08d034072f113fda86fad0b2fbee6fa203681de44a61f920fb2dae973d107b98c40e5ca542444e1be3c046ed24268b4060b3a9b085639d778  config-samsung-coreprimevelte.aarch64
 "
