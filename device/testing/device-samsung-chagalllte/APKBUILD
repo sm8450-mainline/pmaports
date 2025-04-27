@@ -1,0 +1,32 @@
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-samsung-chagalllte
+pkgdesc="Samsung Galaxy Tab S 10.5 LTE"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="armv7"
+options="!check !archcheck"
+depends="
+	linux-samsung-chagalllte
+	mkbootimg
+	msm-fb-refresher
+	postmarketos-base
+	postmarketos-base-downstream
+"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+752a61821b722f0b91c95a75298dd54b83b23b91a7a9955fa568951c78696456d6198e03bbba2d8b7ed2570363b69a4af519d56371872222d503130e659eeb6d  deviceinfo
+"
