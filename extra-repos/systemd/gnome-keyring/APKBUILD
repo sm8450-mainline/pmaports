@@ -2,9 +2,9 @@
 # systemd unit activation
 
 pkgname=gnome-keyring
-pkgver=99946.2
-_pkgver=46.2
-pkgrel=1
+pkgver=99948.0
+_pkgver=48.0
+pkgrel=0
 pkgdesc="GNOME keyring"
 url="https://wiki.gnome.org//Projects/GnomeKeyring"
 arch="all"
@@ -12,8 +12,6 @@ license="GPL-2.0-only LGPL-2.0-only"
 # the gcr binaries are needed for things to open the keyring via libsecret
 depends="gcr"
 makedepends="
-	autoconf
-	automake
 	gcr-dev
 	gobject-introspection-dev
 	gtk+3.0-dev
@@ -23,51 +21,56 @@ makedepends="
 	libgcrypt-dev
 	libxslt
 	linux-pam-dev
+	meson
 	openssh-client
 	systemd-dev
 	"
 checkdepends="
-	dbus-x11
+	dbus
 	python3
-	xvfb-run
 	"
 provides="dbus:org.freedesktop.Secrets"
 # Highest priority of the bunch since it has the least deps
 provider_priority=500
-options="!check" # Failing tests on 32-bit architectures
+options="!check" # flaky
 subpackages="
 	$pkgname-doc
 	$pkgname-lang
+	$pkgname-pam
 	$pkgname-systemd
 	"
 source="https://download.gnome.org/sources/gnome-keyring/${_pkgver%.*}/gnome-keyring-$_pkgver.tar.xz
-	0001-build-Use-p11_module_configs-as-default-pkcs11-confi.patch"
+	libgkm-source-gkm-marshal.patch"
 builddir="$srcdir/gnome-keyring-$_pkgver"
 
 build() {
-	export LDFLAGS="$LDFLAGS -lintl"
-	autoreconf -vfi
-	./configure \
-		--build=$CBUILD \
-		--host=$CHOST \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--with-pam-dir=/usr/lib/security \
-		--disable-selinux \
-		--with-libcap-ng=no
-	make
+	abuild-meson \
+		-Dsystemd=enabled \
+		. output
+	meson compile -C output
 }
 
 check() {
-	xvfb-run make check -j1
+	dbus-run-session \
+	meson test --no-rebuild --print-errorlogs -C output
 }
 
 package() {
-	export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" meson install --no-rebuild -C output
+}
+
+pam() {
+	pkgdesc="PAM module for gnome-keyring"
+	depends=""
+	# Allows disabling installation of the PAM module via `apk add !gnome-keyring-pam`.
+	#
+	# See https://gitlab.alpinelinux.org/alpine/aports/-/issues/16999
+	install_if="$pkgname=$pkgver-r$pkgrel"
+
+	amove usr/lib/security/pam*
 }
 
 sha512sums="
-4229ca0606bdd1b84a3c737288df7f1fc1f8715734e3001964babd882201c3d818deabb3a7662dbf9b67316f03b234de84da3128fb991a500ef8305c2f962ba2  gnome-keyring-46.2.tar.xz
-53e04eade3579fe5d65d11d6cde6c5fdffc9f73a3a7f372b1f4dbc7437212e753123c12854d3a5a7a22f3beb1b00604eec0371615ceb0f7024cb38cf35e33065  0001-build-Use-p11_module_configs-as-default-pkcs11-confi.patch
+9eac06164c22a854a171f538467403c6764a6a6c2665959d721f5e3515bd91c8709a374c292cde93143f944b4ed7ec9b5613d28808d7e79839a9377d5aaa5daa  gnome-keyring-48.0.tar.xz
+7e2494f11423136856813349d4c0363b3cb11f0ea147048cfce10e383f93c8901b903bdcb02581268de7cd8f2513acf169f767de860134beb4716b5ee5323410  libgkm-source-gkm-marshal.patch
 "
