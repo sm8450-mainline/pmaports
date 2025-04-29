@@ -4,7 +4,7 @@
 # Co-Maintainer: Maxim Schwalm <maxim.schwalm@gmail.com>
 
 pkgname=firmware-nvidia-tegra-armv7
-pkgver=4
+pkgver=5
 pkgrel=0
 pkgdesc="Firmware files for Tegra devices supported by GRATE project"
 url="https://gitlab.com/grate-driver/firmware"
@@ -14,7 +14,7 @@ makedepends="coreutils"
 options="!check !strip !archcheck !tracedeps pmb:cross-native"
 
 # source
-_commit="1ce8924c74afc7f3bb37151d9d16295049063788"
+_commit="00988ea994efa39550cc19f3b225874a32f1c3e0"
 _repo="firmware"
 source="$pkgname-$_commit.tar.gz::$url/-/archive/$_commit/$_repo-$_commit.tar.gz"
 
@@ -25,5 +25,5 @@ package() {
 }
 
 sha512sums="
-14c3eedd90f7ce22bd2efba124a57bd673b449cdd889eb4009aa4d7f64d950bccd176acf2c05694a7ebd12ad979f4a37f12ada72331a2e142330e4b95024750c  firmware-nvidia-tegra-armv7-1ce8924c74afc7f3bb37151d9d16295049063788.tar.gz
+f5319c7f125aef008317b2ae3021fd5ee8bda9a825d18f65e424c4f52458e4a999594f284b14c19f103c47cf5f958243f910f891d1dc468df8a13a34cc0b2617  firmware-nvidia-tegra-armv7-00988ea994efa39550cc19f3b225874a32f1c3e0.tar.gz
 "
