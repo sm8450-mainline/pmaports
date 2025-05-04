@@ -111,6 +111,14 @@ def check_versions(packages):
               " HEAD against HEAD~1.")
         commit = "HEAD~1"
 
+    # Exclude linux-next from pkgrel checks, as it is updated automatically.
+    #
+    # Without this, .ci/commits.sh complains about the following:
+    # ERROR: Modified package(s) don't have an increased version or a new
+    #        package has a nonzero pkgrel!
+    if "linux-next" in packages:
+        packages.remove("linux-next")
+
     for package in packages:
         # Get versions, skip new packages
         head = get_package_version(package, "HEAD")
