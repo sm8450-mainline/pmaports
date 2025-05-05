@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-base-ui
 pkgver=36
-pkgrel=3
+pkgrel=4
 pkgdesc="Meta package for minimal postmarketOS UI base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -14,7 +14,6 @@ depends="
 	pipewire
 	postmarketos-artwork-icons
 	postmarketos-base
-	postmarketos-bootsplash
 	shadow
 	sleep-inhibitor
 	tzdata
@@ -25,16 +24,16 @@ depends="
 	"
 subpackages="
 	$pkgname-audio
-	$pkgname-audio-pipewire:audio_pipewire
-	$pkgname-audio-pulseaudio:audio_pulseaudio
-	$pkgname-bluez-openrc:bluez_openrc
-	$pkgname-bluez-obexd:obexd
+	$pkgname-audio-pipewire:_audio_pipewire
+	$pkgname-audio-pulseaudio:_audio_pulseaudio
+	$pkgname-bluez-openrc:_bluez_openrc
+	$pkgname-bluez-obexd:_obexd
 	$pkgname-elogind
 	$pkgname-flatpak
-	$pkgname-networkmanager-usb-tethering:usb_tethering
+	$pkgname-networkmanager-usb-tethering:_usb_tethering
 	$pkgname-networkmanager
-	$pkgname-openrc
-	$pkgname-openrc-settingsd:openrc_settingsd
+	$pkgname-openrc:_openrc
+	$pkgname-openrc-settingsd:_openrc_settingsd
 	$pkgname-qt-tweaks:qt_tweaks
 	$pkgname-qt-wayland:qt_wayland
 	$pkgname-tinydm
@@ -139,13 +138,13 @@ x11() {
 	amove etc/X11/Xwrapper.config
 }
 
-bluez_openrc() {
+_bluez_openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel bluez-openrc"
 
 	amove etc/conf.d/bluetooth
 }
 
-openrc() {
+_openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
 	depends="
@@ -172,7 +171,7 @@ elogind() {
 	amove etc/sleep-inhibitor.conf
 }
 
-openrc_settingsd() {
+_openrc_settingsd() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc-settingsd-openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
 	replaces="openrc-settingsd-openrc"
@@ -187,14 +186,14 @@ tinydm() {
 	amove etc/tinydm.d/env-wayland.d/50-sdl-wayland.sh
 }
 
-obexd() {
+_obexd() {
 	install_if="$pkgname=$pkgver-r$pkgrel bluez-obexd"
 	replaces="bluez-obexd"
 	depends="obex-capabilities"
 	mkdir -p "$subpkgdir"
 }
 
-usb_tethering() {
+_usb_tethering() {
 	install_if="$pkgname-networkmanager=$pkgver-r$pkgrel"
 	replaces="$pkgname-networkmanager"
 
@@ -277,7 +276,7 @@ audio() {
 	mkdir "$subpkgdir"
 }
 
-audio_pipewire() {
+_audio_pipewire() {
 	pkgdesc="Use pipewire as the audio backend. (but may not work with all devices)"
 	depends="pipewire-alsa pipewire-pulse pipewire-spa-bluez pipewire-tools"
 	provides="postmarketos-base-ui-audio-backend=$pkgver-r$pkgrel"
@@ -286,7 +285,7 @@ audio_pipewire() {
 	amove usr/share/wireplumber/wireplumber.conf.d/50-bluetooth.conf
 }
 
-audio_pulseaudio() {
+_audio_pulseaudio() {
 	pkgdesc="Use pulseaudio as the audio backend."
 	depends="alsa-plugins-pulse pulseaudio pulseaudio-alsa pulseaudio-utils !pipewire-pulse"
 	provides="postmarketos-base-ui-audio-backend=$pkgver-r$pkgrel"

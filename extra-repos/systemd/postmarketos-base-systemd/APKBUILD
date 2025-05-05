@@ -3,7 +3,7 @@
 # pmbootstrap installs this, if systemd is selected in "pmbootstrap init".
 pkgname=postmarketos-base-systemd
 pkgver=37
-pkgrel=1
+pkgrel=2
 pkgdesc="Meta package for running postmarketOS with systemd"
 url="https://postmarketos.org"
 arch="noarch"
@@ -38,8 +38,6 @@ depends="
 	systemd-timesyncd
 	tzdata
 	"
-provides="postmarketos-base-init"
-provider_priority=100
 replaces="alpine-baselayout postmarketos-base systemd systemd-logind"
 replaces_priority=100
 install="
