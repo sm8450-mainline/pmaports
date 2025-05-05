@@ -2,13 +2,14 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-lg-judyp
 pkgdesc="LG V35 ThinQ"
-pkgver=6
+pkgver=7
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
+	firmware-lg-judy
 	linux-postmarketos-qcom-sdm845
 	mkbootimg
 	postmarketos-base
@@ -26,6 +27,6 @@ package() {
 }
 
 sha512sums="
-01db6c7183da9bdd7b37b442551148b7d791bfb68f51acc4bbfa802bed03ea23b84c42cec4db2f56572373473e80e1744744692d0c1ca4d1b5ece0555ae821ae  deviceinfo
+0b90e337bee41ed580848cf2a3bb29aa283344db4d974a8673cc99ce497c92ca8d5070bd39561a469f8410cc36a420ff0d6eef1dd68cafc0389cb297a7fdb603  deviceinfo
 09fb39b4698e3fd433e35f94b4c39787a4ff9af258e8a85b5a197fb2676f993da2666ffb4ae98c41f35446d52b3578e1e6ebd06cc7010287ca140bf207c3a8af  modules-initfs
 "

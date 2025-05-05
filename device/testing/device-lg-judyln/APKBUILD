@@ -2,13 +2,14 @@
 # Maintainer: Newbyte <newbie13xd@gmail.com>
 pkgname=device-lg-judyln
 pkgdesc="LG G7 ThinQ"
-pkgver=6
+pkgver=7
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
+	firmware-lg-judy
 	linux-postmarketos-qcom-sdm845
 	mkbootimg
 	postmarketos-base
@@ -26,6 +27,6 @@ package() {
 }
 
 sha512sums="
-bbfb5ddc98f9c83eefcd2653a92d213542e3f9447e05aaab6ed214e63c06eac5cf4d56a8953000328be7a2979d0ebba8f1b5bcce1b04dc487e8bc519fad4cfa5  deviceinfo
+adbee8af0c75a5d9a52e10c61b227cf646e35be6f530e3ff98dbd40142b0c8ed18a3903ebcc047322e0c173551d854dc67747175be29f7b0c833b58fd9b254ea  deviceinfo
 09fb39b4698e3fd433e35f94b4c39787a4ff9af258e8a85b5a197fb2676f993da2666ffb4ae98c41f35446d52b3578e1e6ebd06cc7010287ca140bf207c3a8af  modules-initfs
 "
