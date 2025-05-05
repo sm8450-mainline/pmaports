@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-base-ui
-pkgver=37
-pkgrel=1
+pkgver=38
+pkgrel=0
 pkgdesc="Meta package for minimal postmarketOS UI base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -90,7 +90,6 @@ _source755="
 	usr/lib/NetworkManager/dispatcher.d/50-dns-filter.sh
 	usr/lib/NetworkManager/dispatcher.d/50-tethering.sh
 	etc/profile.d/99-mesa-mali-workaround.sh
-	etc/profile.d/99-flatpak-qcom-workaround.sh
 	etc/profile.d/qt-mobile-controls.sh
 	etc/profile.d/qt-wayland.sh
 	"
@@ -302,9 +301,6 @@ flatpak() {
 	install_if="$pkgname=$pkgver-r$pkgrel flatpak"
 
 	amove usr/share/flatpak/remotes.d/flathub.flatpakrepo
-	# Workaround for:
-	# https://postmarketos.org/edge/2025/04/13/gtk4-flatpak-apps-fail-to-start/
-	amove etc/profile.d/99-flatpak-qcom-workaround.sh
 }
 
 sha512sums="
@@ -334,7 +330,6 @@ ecaa57d033a119a53a6574c27636b7c89d659d75ea48a973a6a4ff6f90e5d07202529fd489bfc9df
 36e0037f6d26a99db7b47831263be610d594e2c1c4a8ee7f6fc8b41092f501d3064d80b80ddf6a82b616bd2da09aa4da896074ad9f7fd53aba7e397da4190d22  rootfs-usr-lib-NetworkManager-dispatcher.d-50-dns-filter.sh
 802c8ca1603c6bc536f83ea7158f9fb9cf0dd94c59cadab9d059c738ca6bc5c1deb1c982996efd3b1909d01592e5a3e32f005c043e203a83361d3c64994b713b  rootfs-usr-lib-NetworkManager-dispatcher.d-50-tethering.sh
 5d995329d329072577a3e8a75bd8b36660e68cad8972c0281ce21f093920619d77cbfee28510b77037b5586529da3653b9fcef13bc10a3d2ff964699face0183  rootfs-etc-profile.d-99-mesa-mali-workaround.sh
-896242cbf0260c96fe3d0efd717352ea51458eab83a2414e735b8443eabbc0a98980b6b99976924f0fab4cc67d5c095fc760904c7111a8dd8ae37327983fab02  rootfs-etc-profile.d-99-flatpak-qcom-workaround.sh
 bf8db527c49fa724e640a90269ba2648a2555f5867b2adbfbd88d1f685261f757339757c09ee08f590c76de4bd3d0c73a47dea9bd340644dd4707e76152cefd1  rootfs-etc-profile.d-qt-mobile-controls.sh
 6e193eca3961a78d47b4656892eae34d019d9317a255a201f5ea61e3300caff04c526a27cd98d0edc072b36e3eaf3a1768f4cd27c5e2be8b19c167d535c820a6  rootfs-etc-profile.d-qt-wayland.sh
 "
