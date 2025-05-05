@@ -3,7 +3,7 @@
 pkgname=device-fairphone-fp4
 pkgdesc="Fairphone 4"
 pkgver=4
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -20,7 +20,6 @@ depends="
 	firmware-fairphone-fp4-wlan
 	firmware-qcom-adreno-a630
 	hexagonrpcd>=0.3.2-r3
-	hexagonrpcd-openrc
 	linux-firmware-ath10k
 	linux-postmarketos-qcom-sm6350
 	make-dynpart-mappings
@@ -29,13 +28,10 @@ depends="
 	msm-modem
 	msm-modem-uim-selection
 	pd-mapper
-	pd-mapper-openrc
 	postmarketos-base
 	qbootctl
-	qbootctl-openrc
 	swclock-offset
 	tqftpserv
-	tqftpserv-openrc
 "
 makedepends="devicepkg-dev"
 subpackages="$pkgname-openrc"
@@ -65,7 +61,13 @@ package() {
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
-	depends="hexagonrpcd-openrc"
+	depends="
+		hexagonrpcd-openrc
+		openrc
+		pd-mapper-openrc
+		qbootctl-openrc
+		tqftpserv-openrc
+	"
 
 	mkdir -p "$subpkgdir"
 }

@@ -7,7 +7,7 @@
 pkgname=device-qcom-sm7150
 pkgdesc="Generic device package for Qualcomm SM7150 devices"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -75,6 +75,7 @@ openrc() {
 	install="$subpkgname.post-install"
 	depends="
 		hexagonrpcd-openrc
+		openrc
 		qbootctl-openrc
 		tqftpserv-openrc
 		"

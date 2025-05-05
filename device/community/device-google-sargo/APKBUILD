@@ -3,7 +3,7 @@
 pkgname=device-google-sargo
 pkgdesc="Google Pixel 3a"
 pkgver=10
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -62,7 +62,7 @@ openrc() {
 	# Enable HexagonRPCD by default, but not if the user installed this
 	# package then disabled it.
 	install="$subpkgname.post-install"
-	depends="hexagonrpcd-openrc"
+	depends="hexagonrpcd-openrc openrc"
 
 	# The FastRPC service is only enabled when non-free firmware is installed.
 	install -Dm755 "$srcdir"/no-hexagonrpcd-on-suspend.sh \

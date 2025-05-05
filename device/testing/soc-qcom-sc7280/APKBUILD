@@ -2,7 +2,7 @@
 pkgname=soc-qcom-sc7280
 pkgdesc="Common package for Qualcomm SC7280/SM7325/QCM6490 devices"
 pkgver=1
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
@@ -31,6 +31,7 @@ openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
 	depends="
+		openrc
 		pd-mapper-openrc
 		tqftpserv-openrc
 		"

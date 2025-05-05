@@ -2,7 +2,7 @@
 pkgname=soc-qcom
 pkgdesc="Common package for Qualcomm devices"
 pkgver=1
-pkgrel=0
+pkgrel=2
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
@@ -86,7 +86,7 @@ modem() {
 
 modem_openrc() {
 	install_if="$pkgname-modem=$pkgver-r$pkgrel openrc"
-	depends="q6voiced-openrc"
+	depends="q6voiced-openrc openrc"
 	replaces="soc-qcom-sdm845-modem-openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
 
@@ -97,6 +97,7 @@ modem_openrc() {
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	depends="
+		openrc
 		pd-mapper-openrc
 		tqftpserv-openrc
 	"
@@ -115,6 +116,7 @@ qbootctl() {
 qbootctl_openrc() {
 	install_if="$pkgname-qbootctl=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="openrc"
 
 	mkdir "$subpkgdir"
 }
@@ -139,6 +141,7 @@ pulseaudio_openrc() {
 	install_if="$pkgname-pulseaudio=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
 	replaces="soc-qcom-sdm845-pulseaudio-openrc"
+	depends="openrc"
 
 	# Call Audio idle suspend workaround init script
 	install -Dm755 "$srcdir"/call_audio_idle_suspend_workaround.initd \

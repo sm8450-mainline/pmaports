@@ -4,7 +4,7 @@
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 pkgname=device-purism-librem5
 pkgver=6
-pkgrel=0
+pkgrel=1
 _confver=68
 _purismrel=1
 # <librem5-base ver>.<purism release>
@@ -106,6 +106,7 @@ tinydm() {
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="openrc"
 
 	mkdir -p "$subpkgdir"
 }
@@ -121,6 +122,7 @@ smartcard() {
 smartcard_openrc() {
 	install_if="$pkgname-smartcard=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install"
+	depends="openrc"
 
 	install -D -m644 "$srcdir"/pcscd-librem5-reader.conf \
 		"$subpkgdir"/etc/reader.conf.d/librem5-ttxs-reader

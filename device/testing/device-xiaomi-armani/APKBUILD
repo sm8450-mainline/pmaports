@@ -2,7 +2,7 @@
 pkgname=device-xiaomi-armani
 pkgdesc="Redmi 1S"
 pkgver=1
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="armhf"
@@ -44,6 +44,7 @@ nonfree_firmware() {
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.pre-deinstall $subpkgname.post-upgrade"
+	depends="openrc"
 
 	mkdir -p "$subpkgdir"
 }

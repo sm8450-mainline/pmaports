@@ -5,7 +5,7 @@
 pkgname=soc-qcom-msm8953
 pkgdesc="Common package for Qualcomm MSM8953 devices"
 pkgver=13
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
@@ -57,6 +57,7 @@ modem_openrc() {
 	install_if="$pkgname-modem=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
 	depends="
+		openrc
 		q6voiced-openrc
 		rmtfs-openrc
 		tqftpserv-openrc

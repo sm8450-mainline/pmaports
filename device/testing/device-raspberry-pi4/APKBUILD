@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-raspberry-pi4
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Raspberry Pi 4"
 url="https://postmarketos.org"
 license="MIT"
@@ -46,6 +46,7 @@ nonfree_firmware() {
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="openrc"
 
 	mkdir -p "$subpkgdir"
 }

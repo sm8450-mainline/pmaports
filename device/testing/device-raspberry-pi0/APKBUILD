@@ -2,7 +2,7 @@
 pkgname=device-raspberry-pi0
 pkgdesc="Raspberry Pi Zero"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armhf"
@@ -28,6 +28,7 @@ package() {
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="openrc"
 
 	mkdir -p "$subpkgdir"
 }
