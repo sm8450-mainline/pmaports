@@ -2,7 +2,7 @@
 # Maintainer: Ferenc Bakonyi <bakonyi.ferenc@gmail.com>
 pkgname=postmarketos-ui-fbkeyboard
 pkgver=5
-pkgrel=1
+pkgrel=2
 pkgdesc="Plain framebuffer console with touchscreen keyboard support"
 url="https://github.com/bakonyiferenc/fbkeyboard"
 arch="all"
@@ -27,8 +27,9 @@ openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.pre-deinstall $subpkgname.post-upgrade"
 	depends="
+		openrc
 		networkmanager-openrc
-		"
+	"
 
 	mkdir -p "$subpkgdir"
 }

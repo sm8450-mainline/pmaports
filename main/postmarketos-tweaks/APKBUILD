@@ -1,7 +1,7 @@
 # Maintainer: Newbyte <newbyte@postmarketos.org>
 pkgname=postmarketos-tweaks
 pkgver=0.13.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Tweak tool for phone UIs"
 url="https://gitlab.postmarketos.org/postmarketOS/postmarketos-tweaks"
 arch="noarch"
@@ -47,6 +47,7 @@ sxmo() {
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel"
 	install="$subpkgname.post-install"
+	depends="openrc"
 
 	default_openrc
 }

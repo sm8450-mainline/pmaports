@@ -1,6 +1,6 @@
 pkgname=watchdog-kick
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Periodically kich watchdogs"
 url="https://postmarketos.org"
 arch="noarch"
@@ -22,6 +22,7 @@ package() {
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install"
+	depends="openrc"
 
 	mkdir -p "$subpkgdir"
 }

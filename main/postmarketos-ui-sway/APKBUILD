@@ -2,7 +2,7 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=postmarketos-ui-sway
 pkgver=3.1
-pkgrel=9
+pkgrel=10
 pkgdesc="(Wayland) Tiling WM, drop-in replacement for i3wm (DOES NOT RUN WITHOUT HW ACCELERATION!)"
 url="https://postmarketos.org"
 arch="noarch"
@@ -58,9 +58,10 @@ openrc() {
 		elogind-openrc
 		modemmanager-openrc
 		networkmanager-openrc
+		openrc
 		seatd-openrc
 		tinydm-openrc
-		"
+	"
 
 		mkdir -p "$subpkgdir"
 }

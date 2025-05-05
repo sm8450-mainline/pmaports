@@ -1,6 +1,6 @@
 pkgname=postmarketos-boot-hwtest
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Boot into a TTY running hwtest"
 url="https://gitlab.com/MartijnBraam/hwtest"
 arch="all"
@@ -20,6 +20,7 @@ package() {
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install"
+	depends="openrc"
 
 	mkdir -p "$subpkgdir"
 }

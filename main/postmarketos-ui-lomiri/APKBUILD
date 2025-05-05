@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=postmarketos-ui-lomiri
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="(Wayland) The convergent desktop environment (Experimental)"
 url="https://lomiri.com/"
 arch="noarch !armhf !riscv64"
@@ -98,6 +98,7 @@ openrc() {
 	install_if="$pkgname openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
 	depends="
+		openrc
 		postmarketos-base-ui-bluez-openrc
 		polkit-elogind
 		postmarketos-base-ui-elogind

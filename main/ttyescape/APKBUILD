@@ -1,7 +1,7 @@
 # Maintainer: Caleb Connolly <caleb@connolly.tech>
 pkgname=ttyescape
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Daemon to allow users to escape to a tty"
 url="https://gitlab.postmarketos.org/postmarketOS/ttyescape"
 arch="noarch"
@@ -27,7 +27,7 @@ package() {
 
 openrc() {
 	install="$subpkgname.post-install"
-	depends="hkdm-openrc"
+	depends="hkdm-openrc openrc"
 	default_openrc
 }
 

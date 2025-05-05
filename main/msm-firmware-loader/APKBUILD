@@ -1,6 +1,6 @@
 pkgname=msm-firmware-loader
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of init services to automatically load firmware from device partitions"
 url="https://postmarketos.org/"
 subpackages="$pkgname-openrc $pkgname-systemd $pkgname-wcnss"
@@ -37,6 +37,7 @@ package() {
 
 openrc() {
 	install="$subpkgname.post-install"
+	depends="openrc"
 	default_openrc
 }
 

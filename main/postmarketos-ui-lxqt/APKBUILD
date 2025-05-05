@@ -2,7 +2,7 @@
 # Maintainer: Antoni Aloy <aaloytorrens@gmail.com>
 pkgname=postmarketos-ui-lxqt
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="(X11) Lightweight Qt Desktop Environment (stylus recommended)"
 url="https://lxqt-project.org/"
 # armhf: lxqt-desktop not available
@@ -93,6 +93,7 @@ openrc() {
 		brightnessctl-openrc
 		elogind-openrc
 		networkmanager-openrc
+		openrc
 		tinydm-openrc
 		"
 

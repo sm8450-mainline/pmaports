@@ -5,7 +5,7 @@
 # Co-Maintainer: Aren Moynihan <aren@peacerevolution.org>
 pkgname=postmarketos-ui-sxmo-de-sway
 pkgver=1.17.1 # Bump this so the file names in bpo are correct
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple Mobile: Mobile environment based on SXMO and running on sway"
 url="http://sr.ht/~mil/Sxmo"
 # riscv64: builder currently stuck, libphonenumber needs rebuild
@@ -19,6 +19,7 @@ depends="
 	sxmo-utils-sway
 	sxmo-utils-audio-bluetooth
 
+	openrc
 	seatd-openrc
 	tinydm-openrc
 	modemmanager-openrc
