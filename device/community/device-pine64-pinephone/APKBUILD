@@ -3,7 +3,7 @@
 # Co-Maintainer: Jan Jasper de Kroon <jajadekroon@gmail.com>
 pkgname=device-pine64-pinephone
 pkgver=8
-pkgrel=3
+pkgrel=4
 pkgdesc="PINE64 PinePhone"
 url="https://postmarketos.org"
 license="MIT"
@@ -165,7 +165,7 @@ nonfree_firmware() {
 openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
-	depends="eg25-manager-openrc"
+	depends="eg25-manager-openrc openrc"
 	mkdir "$subpkgdir"
 }
 
