@@ -40,6 +40,7 @@ wiki:
     - if: &mr_rule $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_PROTECTED == "false"
       changes:
         - .ci/**/*
+        - .ci/build-jobs.yaml.j2
         - .gitlab-ci.yml
         - device/*/device-*/*
   script:
@@ -54,6 +55,7 @@ ruff:
       changes:
         - .ci/*
         - .ci/*/*
+        - .ci/build-jobs.yaml.j2
         - .gitlab-ci.yml
   script:
     - .ci/lib/gitlab_prepare_ci.sh
