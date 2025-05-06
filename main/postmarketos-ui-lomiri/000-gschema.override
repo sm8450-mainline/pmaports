@@ -7,7 +7,7 @@ gtk-theme='Yaru'
 icon-theme='Yaru'
 
 [org.gnome.desktop.wm.preferences]
-button-layout=''
+button-layout=':'
 
 [org.ayatana.indicator.session]
 suppress-logout-menuitem=true

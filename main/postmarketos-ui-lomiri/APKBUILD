@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=postmarketos-ui-lomiri
-pkgver=1
-pkgrel=2
+pkgver=2
+pkgrel=0
 pkgdesc="(Wayland) The convergent desktop environment (Experimental)"
 url="https://lomiri.com/"
 arch="noarch !armhf !riscv64"
@@ -118,7 +118,7 @@ openrc() {
 }
 
 sha512sums="
-2d709d90ca0d4b6b35893ad10e7da8c2b61987c27b66de092e5f937fcb9012d75f87e8d199d2ae98865a7d3c7628cea79ebbbaa2dce7a9034e0de619ec588163  000-gschema.override
+07358c4110ae6c9e76ead7fd279d2de229a2cd09fbf11aa202e89db2285935f35a7d222c807e1b76fd84d80ac6b79b12c73938e07ae644c2d93d76feb548e0c2  000-gschema.override
 f3760c336d56073cceffa807f37a353125110b9976b1f420c2cefb741fa840ec44435fd03ef72d5a0fb018bac4d1d53d579aefc62df514a29d0e05465331e462  logo.svg
 26d677d1b4e1e4d358e947bce880746b6bad6f7c4700f7e675acf126c5125004d4d6b1508810fa39526fa3a0a2e5547c64cd6d41f1dfeec09a6a549dcbdb97c8  lomiri.desktop
 2272a77324d1b04aac5f9ab47f083e5200290ec4281617f553725083f010cb359bbdd3376894cc3b8d30e428355eeedea88f22af98a59986af1b64fb97f4de27  set-xdg-env.sh
