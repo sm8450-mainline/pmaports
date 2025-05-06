@@ -7,8 +7,8 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=66
-pkgrel=1
+pkgver=67
+pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
 arch="noarch"
@@ -25,6 +25,7 @@ subpackages="
 	alsa-utils-systemd:_service
 	apk-polkit-rs-systemd:_service
 	at-spi2-core-systemd:_service
+	avahi-systemd:_service
 	baloo-systemd:_service
 	bluez-systemd:_service
 	colord-systemd:_service
@@ -98,6 +99,7 @@ subpackages="
 _alsa_utils_sources="system/alsa-restore.service system/alsa-state.service"  # Adapted from https://git.alsa-project.org/?p=alsa-utils.git;a=tree;f=alsactl
 _apk_polkit_rs_sources="system/apk-polkit-server.service"
 _at_spi2_core_sources="user/at-spi-dbus-bus.service"
+_avahi_sources="system/avahi-daemon.service system/avahi-daemon.socket"  # From: https://github.com/avahi/avahi/blob/master/avahi-daemon
 _baloo_sources="user/kde-baloo.service"
 _bluez_sources="
 	system/bluetooth.service
@@ -211,6 +213,7 @@ source="$(flatpath \
 	$_alsa_utils_sources \
 	$_apk_polkit_rs_sources \
 	$_at_spi2_core_sources \
+	$_avahi_sources \
 	$_baloo_sources \
 	$_bluez_sources \
 	$_colord_sources \
@@ -319,6 +322,8 @@ sha512sums="
 7f79adb7d523408d841d78016b86ceee1fba06fecc70ca0e4cbdf348a09ed19b9cbb9051e0457f7c52db208e4d86d2471bc4a697fec8e7e5070c01e2a0b4dfcc  system-alsa-state.service
 269dfc4748a9f1c4f49be8bab399d7412b6ff3b6d6ed9b3f2e31074b791789fb39aad450b4d43d318e7a070d1118ba79f216782b064cd106feac3eb4a8ca5581  system-apk-polkit-server.service
 12f5e008b0a41b3426b29f33556689ef88ba7184293ddb78fdaaf05cc4d029fd0b4c8fbef668aefed103a9f48c525f04a8e4e60ddc6e4329698aaf761b8e8f81  user-at-spi-dbus-bus.service
+37c2b24cf9d59c7f91b2556f7aac74d2dd2cbd7b1473432cc2eaeb1bc9b2c7cedc531e7b5b0facc3478840a516eb9cde8182714c3d5148169547554bf0810f84  system-avahi-daemon.service
+2f10490def55253edf164b26e17cf8d82fdcb19089c2dc2eac110c622c9661e0a3c4247629f924246b6c1a24faf0416bece4a6ab8729cd400ed5c3c1a7ed703b  system-avahi-daemon.socket
 c68f0c9f09f3e26a5d317792177057bbcfd83f7cd9c57b235325a836cf01c83abd4c0ab0088b2f3777d85497f35d25b1498ac5d29b717d3f5c0f0651ef1b6054  user-kde-baloo.service
 de133c35cf95d7c833368c9010264668e72657400ad4e5259ef046321c878507f36ef73fa7b4759f69c9d18cda8f8db8d7675d794d9a28f46480fb4d47ba9e0c  system-bluetooth.service
 7972e37d950d8e337f109242dc3a7689d0d6e43b80ce42decd81f8d48abaf275a50f5d980d5a40d4494608a2f88f745e1d4639688e179c95792bfb6f398b9ae4  system-bluetooth-mesh.service
