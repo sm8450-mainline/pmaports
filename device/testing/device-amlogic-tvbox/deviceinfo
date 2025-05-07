@@ -12,6 +12,7 @@ deviceinfo_dtb_p212="amlogic/meson-gxl-s905x-p212"
 deviceinfo_dtb_p241="amlogic/meson-gxl-s805x-p241"
 deviceinfo_dtb_videostrong_kii_pro="amlogic/meson-gxbb-kii-pro"
 deviceinfo_dtb_ugoos_am3="amlogic/meson-gxm-ugoos-am3"
+deviceinfo_dtb_xiaomi_aquaman="amlogic/meson-gxl-s805y-xiaomi-aquaman"
 deviceinfo_arch="aarch64"
 deviceinfo_partition_type="msdos"
 
