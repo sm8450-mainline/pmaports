@@ -4,7 +4,7 @@
 # Co-Maintainer: exkc <exxxxkc@getgoogleoff.me>
 pkgname=linux-postmarketos-amlogic
 pkgver=6.12.23
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline kernel for Amlogic devices"
 arch="aarch64"
 _carch="arm64"
@@ -37,6 +37,9 @@ source="
 	0001-add-x96-mini-support.patch
 	0002-add-initial-support-for-zte-b860hv5.patch
 	0003-arm64-dts-amlogic-Add-Ugoos-AM3.patch
+	0004-dt-bindings-arm-amlogic-add-S805Y-and-Mi-TV-Stick.patch
+	0005-arm64-dts-amlogic-add-support-for-xiaomi-aquaman-Mi-.patch
+	0006-arm64-dts-amlogic-xiaomi-aquaman-revert-to-the-old-PWM-binding.patch
 	"
 builddir="$srcdir/linux-$pkgver"
 
@@ -70,4 +73,7 @@ ffe3cef30e98d9e150e48734a2c6c6c264059fda9acd8f7ee5a8d184d262b89442477fcf53f62435
 4538994c7d3bbb0c4740e8ce108b6838618be239a549e407ca239f3ceca8eed29b5a9ca75d162567dbc06b13ac7caacc61ebf55b247ce6fe122fecc7e5b275d5  0001-add-x96-mini-support.patch
 222e7c12dbeb931f325b7d4a306c2f1e835992b5503ba3ab387a0b006e0fb2226291d93f32aec8ac7b2f6cf15704f20ef3285bb9bafe7374b11a034639d786ef  0002-add-initial-support-for-zte-b860hv5.patch
 74af031a66bab9c52e79d3099b506ad572a075d77e673b608d7ec32c8998c769171ced2d5c863118ff6d3757be2656e5a9adfb9455396dd855014cfdb9959b50  0003-arm64-dts-amlogic-Add-Ugoos-AM3.patch
+f49836388fedb8adf93a8b619c701eb13b6c96736a6293f91ec7f6a2286ecd54eaee6fd90d8872652cea12c2fc1f90473a73bfb8038edd77d94baa2e921e35c5  0004-dt-bindings-arm-amlogic-add-S805Y-and-Mi-TV-Stick.patch
+d7c1f097b32d201893942d7eb4541c5f1c17e998006c6c20501f4ab9c7c3f6bf6567658f15d1c6587d9ef31534fea296e6bec539d51bddb4615939b4c0da7b51  0005-arm64-dts-amlogic-add-support-for-xiaomi-aquaman-Mi-.patch
+a080d357c9870ffe936d41cef757e2b717d97c4593332fa8682476dc0791d07af59e2de74935bde68485ffae9554a39084151b3f1877cdf320d631dec72f735c  0006-arm64-dts-amlogic-xiaomi-aquaman-revert-to-the-old-PWM-binding.patch
 "
