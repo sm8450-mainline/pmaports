@@ -6,6 +6,7 @@ import logging
 import os
 import pytest
 import sys
+import re
 
 import add_pmbootstrap_to_import_path
 import pmb.parse
@@ -44,25 +45,29 @@ def apkbuild_check_provides(path, apkbuild, version, pkgname, subpkgname=None):
         # already replaces the variables, so we check against the inserted
         # values here.
         if not provide.endswith(f"={version}"):
-            provide_no_ver = provide.split("=", 1)[0]
-
-            error = f"error in {path}:\n"
-            if subpkgname:
-                error += f"in subpackage:\n  {subpkgname}\n"
-            else:
-                error += f"in package:\n  {pkgname}\n"
-            error += f"broken provides entry:\n  {provide_no_ver}\n"
-            error += "\n"
-            error += "This provides entry needs to be changed to"
-            error += f" '{provide_no_ver}=$pkgver-r$pkgrel'"
-            error += " (do not replace the variables, without '').\n"
-            error += "\n"
-            error += "If you know what you are doing and didn't add the"
-            error += " version on purpose, you also need to set a"
-            error += " provider_priority (pma#1766).\n"
-            error += "Reference:"
-            error += " https://wiki.alpinelinux.org/wiki/APKBUILD_Reference#provides"
-            ret += [error]
+            # Valid version strings, per the APKBUILD reference, are fine. This regex
+            # attempts to detect those.
+            pattern = r'^\d+(\.\d+)*[a-z]?(_(?:alpha|beta|pre|rc|cvs|svn|git|hg|p)\d*)*-r\d+$'
+            [provide_no_ver, provide_ver] = provide.split("=", 1)
+            if not re.match(pattern, provide_ver):
+                error = f"error in , provide_ver{path}:\n"
+                if subpkgname:
+                    error += f"in subpackage:\n  {subpkgname}\n"
+                else:
+                    error += f"in package:\n  {pkgname}\n"
+                error += f"broken provides entry:\n  {provide_no_ver}\n"
+                error += "\n"
+                error += "This provides entry needs to be changed to"
+                error += f" '{provide_no_ver}=$pkgver-r$pkgrel'"
+                error += " (do not replace the variables, without '').\n"
+                error += "\n"
+                error += "If you know what you are doing and didn't add the"
+                error += " version on purpose, you also need to set a"
+                error += " provider_priority (pma#1766).\n"
+                error += "Reference:"
+                error += " https://wiki.alpinelinux.org/wiki/APKBUILD_Reference#provides"
+                error += f"\nVERSION: {provide_no_ver}"
+                ret += [error]
     return ret
 
 
