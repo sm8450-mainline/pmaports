@@ -31,6 +31,10 @@ deviceinfo_kernel_cmdline="console=ttyAML0,115200n8"
 # can just use extlinux.
 deviceinfo_generate_extlinux_config="true"
 
+# For other devices where a FIT image is supported, generate one
+deviceinfo_generate_uboot_fit_images="true"
+deviceinfo_uboot_boardname="amlogic-tvbox"
+
 # For the rest, generate a uImage.
 deviceinfo_generate_legacy_uboot_initfs="true"
 deviceinfo_legacy_uboot_load_address="0x1080000"
