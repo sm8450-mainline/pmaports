@@ -2,7 +2,7 @@
 # Co-Maintainer: exkc <exxxxkc@getgoogleoff.me>
 pkgname=soc-amlogic-s905
 pkgdesc="Common package for devices using the Amlogic S905 SoC"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -41,6 +41,6 @@ x11() {
 }
 
 sha512sums="
-35d61396507f058c2307660b83b8c6919ed806d5c696563eca96e828cdbb944ed50b27a4548e6a5bec956ec5ddc97f7c0f41766d63d4b61bd051055000b1a5ec  s905_autoscript.cmd
+fbb3bd2198fd5d95454059b5394484172c27836b54b4a3bb7dc11c65af11aafe615eaed491bdbea34173b12c102eb2319cb491dbcdfff10bdb0ec2c3b31861c3  s905_autoscript.cmd
 72267e7bb0e3cd4a7c89d51c046c3a9c93d7ff9fe23a24357088fc94d45c6cc314cf12c8475421eadc507937ebc1ca9b1b9afdec0c78cf39977ebdd5f5eab24d  xorg.conf
 "
