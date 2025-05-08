@@ -1,10 +1,11 @@
 # Maintainer: Svyatoslav Ryhel <clamor95@gmail.com>
 # Co-Maintainer: Jenneron <jenneron@protonmail.com>
 # Co-Maintainer: Jethrob <jeybee@hotmail.com>
+# Co-Maintainer: Robert Eckelmann <longnoserob@postmarketos.org>
 
 pkgname=linux-postmarketos-grate
 pkgver=6.12.5
-pkgrel=0
+pkgrel=1
 pkgdesc="Linux kernel with experimental patches for Tegra"
 arch="armv7"
 url="https://gitlab.com/grate-driver/linux"
