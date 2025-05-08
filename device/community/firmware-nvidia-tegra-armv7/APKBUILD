@@ -2,6 +2,7 @@
 # Co-Maintainer: Ion Agorria
 # Co-Maintainer: Anton Bambura <jenneron@protonmail.com>
 # Co-Maintainer: Maxim Schwalm <maxim.schwalm@gmail.com>
+# Co-Maintainer: Robert Eckelmann <longnoserob@postmarketos.org>
 
 pkgname=firmware-nvidia-tegra-armv7
 pkgver=5
