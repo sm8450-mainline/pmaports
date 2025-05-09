@@ -34,19 +34,19 @@ _pkgsnap="${pkgver##*_git}"
 [ "$CHOST" != "$CTARGET" ] && _target="-$CTARGET_ARCH" || _target=""
 
 pkgname=gcc-aarch64
-pkgrel=5
+pkgrel=6
 pkgdesc="Stage2 cross-compiler for aarch64"
 url="https://gcc.gnu.org"
 arch="x86_64"
 license="GPL-2.0-or-later AND LGPL-2.1-or-later"
 _gccrel=$pkgver-r$pkgrel
-depends="binutils-aarch64 mpc1 so:libc.musl-x86_64.so.1 so:libgcc_s.so.1 so:libgmp.so.10 so:libisl.so.23 so:libmpc.so.3 so:libmpfr.so.6 so:libstdc++.so.6 so:libz.so.1"
+depends="binutils-aarch64 mpc1"
 makedepends_build="gcc g++ bison flex texinfo gawk zip gmp-dev mpfr-dev mpc1-dev zlib-dev"
 makedepends_host="linux-headers gmp-dev mpfr-dev mpc1-dev isl-dev zlib-dev musl-dev-aarch64 binutils-aarch64"
 subpackages="g++-aarch64:gpp libstdc++-dev-aarch64:libcxx_dev"
 [ "$CHOST" = "$CTARGET" ] && subpackages="gcc-gdb gcc-doc"
 replaces="libstdc++ binutils"
-options="!strip !tracedeps"
+options="!strip"
 
 : "${LANG_CXX:=true}"
 : "${LANG_D:=true}"
@@ -229,7 +229,6 @@ fi
 if $LANG_JIT; then
 	subpackages="$subpackages libgccjit:jit libgccjit-dev:jitdev"
 fi
-makedepends="$makedepends_build $makedepends_host"
 
 # when using upstream releases, use this URI template
 # https://gcc.gnu.org/pub/gcc/releases/gcc-$_pkgbase/gcc-$_pkgbase.tar.xz
@@ -279,6 +278,7 @@ source="https://gcc.gnu.org/pub/gcc/releases/gcc-$_pkgbase/gcc-$_pkgbase.tar.xz
 	0034-libgo-fix-lfs64-use.patch
 	0035-loongarch-disable-multilib-support.patch
 	0036-libphobos-add-riscv64-and-loongarch64-support.patch
+	0037-arm-fix-signedness-of-vld1q-intrinsic-parms.patch
 	fix-arm64.patch
 	ppc64le-quadmath.patch
 	riscv64-improve-build-time.patch
@@ -487,6 +487,9 @@ package() {
 		# libcc1 does not depend on target, don't ship it
 		rm -rf "$pkgdir"/usr/lib/libcc1.so*
 
+		# These are moved into packages with arch=$CTARGET_ARCH so remove
+		# cross prefix (doesn't exist when BOOTSTRAP=nolibc)
+		[ "$BOOTSTRAP" != nolibc ] && mv "$pkgdir"/usr/$CTARGET/lib/*.so.* "$pkgdir"/usr/lib/
 
 		# fixup gcc library symlinks to be linker scripts so
 		# linker finds the libs from relocated sysroot
@@ -569,8 +572,6 @@ gpp() {
 	pkgdesc="GNU C++ standard library and compiler"
 	depends="libstdc++-dev$_target=$_gccrel gcc$_target=$_gccrel musl-dev"
 	[ "$CHOST" = "$CTARGET" ] && depends="$depends libstdc++=$_gccrel"
-
-	depends="$depends so:libc.musl-x86_64.so.1 so:libgmp.so.10 so:libisl.so.23 so:libmpc.so.3 so:libmpfr.so.6 so:libz.so.1"
 
 	amove $_gcclibexec/cc1plus
 	amove usr/bin/*++
@@ -782,6 +783,7 @@ c474f34e6f9a4239d486a65141a133dbe8ce91427d502a57a9fd6eb403478a2b5715ba74f24c1cc0
 c4482ffc36e7894b2140800159f4cbc9a3e9011e43a69b69f4fa92d5a11e2ee645c7e21df4423dd1e0636e8890849a5719647bfbdf84f951d638f8f488cb718c  0034-libgo-fix-lfs64-use.patch
 65df1d489e8d07a811f39e27fd29e3b2b4164fbc2c5fdc16a5142886d94a96e3fb28ccf4f20dd297ba6540ef8ea1ac3eb65a4279494639bf2f0f8376a3896cc3  0035-loongarch-disable-multilib-support.patch
 06f64544fd8bc4b6c8b06410c5198aa8fb4e82c232afc0cad83b2c69ac5d39399968206defa78297222700cd18e7fd7e8244afa76d343406a01f657c86306453  0036-libphobos-add-riscv64-and-loongarch64-support.patch
+a30148fb2cfa9a5800df4aed73f6b1b3b5d5817d768835a2574216f5818e6d6070199bacfe964f0d15b70eab7e2310c40b55e354f65360efce90e15d40287639  0037-arm-fix-signedness-of-vld1q-intrinsic-parms.patch
 00319c9770362520e8e93bd03fda1769dfa3622eba77d620e11d8af45a38e6d804a5e924046ae388e1cfaea605696e89c343fca507aaaa5edd58d80744fff14f  fix-arm64.patch
 815265826742400f86336f0c2d3e4edc37398dbc6505ee81107c0103c13ac0f406cff851438d2323033c6c6d0c0323765ee15b975eab8d1dd465f9e988168fb9  ppc64le-quadmath.patch
 ea55e0fa6813fc95c4ca2e87f059182edc54dc61515ebb92bf6eb31dbbd176d0fe81edcc7ea28d32f84ca37e8d48a544623d3d9bc94aa41ffc0859326a616aa2  riscv64-improve-build-time.patch
