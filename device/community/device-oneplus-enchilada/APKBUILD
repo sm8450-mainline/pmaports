@@ -1,10 +1,10 @@
 # Reference: <https://postmarketos.org/devicepkg>
-# Maintainer: Caleb Connolly <caleb@connolly.tech>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 
 pkgname=device-oneplus-enchilada
 pkgdesc="OnePlus 6"
 pkgver=15
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

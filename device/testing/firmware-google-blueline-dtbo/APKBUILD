@@ -1,10 +1,10 @@
 # Maintainer: Victoria Brekenfeld <postmarketos@drakulix.de>
 # Co-Maintainer: Joel Selvaraj <joelselvaraj.oss@gmail.com>
-# Co-Maintainer: Caleb Connolly <caleb@postmarketos.org>
+# Co-Maintainer: Casey Connolly <kcxt@postmarketos.org>
 
 pkgname=firmware-google-blueline-dtbo
 pkgver=1
-pkgrel=0
+pkgrel=1
 _commit="88468ea69b2598551861cb48f0785463a61f066c"
 pkgdesc="dtbo.img needed to boot mainline on Pixel 3"
 url="https://gitlab.com/phodina/dtbo-google-blueline"

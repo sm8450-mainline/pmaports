@@ -1,9 +1,9 @@
 From 624169ad57f6880c96349e1a67ef2c103528ec54 Mon Sep 17 00:00:00 2001
-From: Caleb Connolly <caleb.connolly@linaro.org>
+From: Casey Connolly <casey.connolly@linaro.org>
 Date: Mon, 25 Sep 2023 14:53:18 +0100
 Subject: [PATCH 2/2] boards: support OnePlus 6/6T
 
-Signed-off-by: Caleb Connolly <caleb.connolly@linaro.org>
+Signed-off-by: Casey Connolly <casey.connolly@linaro.org>
 ---
  boards/oneplus,enchilada |   6 +
  boards/oneplus,fajita    |   2 +

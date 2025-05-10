@@ -1,10 +1,10 @@
-# Maintainer: Caleb Connolly <caleb@postmarketos.org>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 # Co-Maintainer: Ferass El Hafidi <funderscore@postmarketos.org>
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-postmarketos-trailblazer
 pkgdesc="postmarketOS Trailblazer generic ARM64"
 pkgver=12
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

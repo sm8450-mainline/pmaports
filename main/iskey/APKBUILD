@@ -1,7 +1,7 @@
-# Maintainer: Caleb Connolly <caleb@postmarketos.org>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 pkgname=iskey
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tiny tool to check if a key is pressed"
 url="https://postmarketos.org"
 arch="all"

@@ -1,7 +1,7 @@
-# Maintainer: Caleb Connolly <caleb@postmarketos.org>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 pkgname=postmarketos-dev
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="postmarketOS development tools"
 url="https://postmarketos.org"
 arch="noarch"

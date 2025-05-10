@@ -1,11 +1,11 @@
-# Maintainer: Caleb Connolly <caleb@connolly.tech>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 # Co-Maintainer: Uclydde <julianbraha@gmail.com>
 # Reference: <https://postmarketos.org/devicepkg>
 
 pkgname=device-oneplus-guacamole
 pkgdesc="OnePlus 7 Pro"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

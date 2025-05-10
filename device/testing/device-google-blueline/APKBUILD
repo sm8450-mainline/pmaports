@@ -1,12 +1,12 @@
 # Reference: <https://postmarketos.org/devicepkg>
 # Maintainer: Victoria Brekenfeld <postmarketos@drakulix.de>
 # Co-Maintainer: Joel Selvaraj <joelselvaraj.oss@gmail.com>
-# Co-Maintainer: Caleb Connolly <caleb@postmarketos.org>
+# Co-Maintainer: Casey Connolly <kcxt@postmarketos.org>
 
 pkgname=device-google-blueline
 pkgdesc="Google Pixel 3"
 pkgver=3
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

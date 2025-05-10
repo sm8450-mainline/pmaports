@@ -1,5 +1,5 @@
 From 15802fb2456736b46a25622244d1080a87320d3c Mon Sep 17 00:00:00 2001
-From: Caleb Connolly <caleb.connolly@linaro.org>
+From: Casey Connolly <casey.connolly@linaro.org>
 Date: Fri, 5 May 2023 20:55:23 +0100
 Subject: [PATCH 1/2] bin: generate: use POSIX sh and support spaces
 
@@ -9,7 +9,7 @@ using globbing to unwrap the bus for loop.
 It's necessary to add the final '*' in the "for driver in" loop in
 bootrr-generate-template on POSIX sh.
 
-Signed-off-by: Caleb Connolly <caleb.connolly@linaro.org>
+Signed-off-by: Casey Connolly <casey.connolly@linaro.org>
 ---
  bin/bootrr-generate-template  | 30 +++++++++++++++---------------
  helpers/assert_device_present |  4 ++--

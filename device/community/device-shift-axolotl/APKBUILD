@@ -1,11 +1,11 @@
 # Reference: <https://postmarketos.org/devicepkg>
 # Maintainer: Alexander Martinz <amartinz@shiftphones.com>
-# Co-Maintainer: Caleb Connolly <caleb@postmarketos.org>
+# Co-Maintainer: Casey Connolly <kcxt@postmarketos.org>
 # Co-Maintainer: Dylan Van Assche <me@dylanvanassche.be>
 pkgname=device-shift-axolotl
 pkgdesc="SHIFT6mq"
 pkgver=15
-pkgrel=5
+pkgrel=6
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

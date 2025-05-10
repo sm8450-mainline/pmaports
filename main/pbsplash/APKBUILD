@@ -1,8 +1,8 @@
-# Maintainer: Caleb Connolly <caleb@connolly.tech>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 pkgname=pbsplash
 pkgdesc="postmarketOS boot splash screen"
 pkgver=0.3.1
-pkgrel=0
+pkgrel=1
 url="https://git.sr.ht/~calebccff/pbsplash"
 arch="all"
 options="!check" # no testsuite

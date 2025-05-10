@@ -1,4 +1,4 @@
-# Maintainer: Caleb Connolly <caleb@connolly.tech>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 # Co-maintainer: Clayton Craft <clayton@craftyguy.net>
 # Service files for projects that would otherwise either
 # need to be forked just for the service, or don't provide
@@ -8,7 +8,7 @@
 pkgname=systemd-services
 # 1. bump pkgver
 pkgver=66
-pkgrel=0
+pkgrel=1
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
 arch="noarch"

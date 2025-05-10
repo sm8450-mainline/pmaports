@@ -1,7 +1,7 @@
-# Maintainer: Caleb Connolly <caleb@connolly.tech>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 pkgname=postmarketos-mkinitfs-hook-ci
 pkgver=0.1.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Hook for doing automated CI tests in the initramfs"
 url="https://postmarketos.org"
 source="

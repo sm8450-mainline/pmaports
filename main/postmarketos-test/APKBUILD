@@ -1,7 +1,7 @@
-# Maintainer: Caleb Connolly <caleb@connolly.tech>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 pkgname=postmarketos-test
 pkgver=0.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Common test utilities for postmarketOS"
 url="https://postmarketos.org"
 arch="noarch"

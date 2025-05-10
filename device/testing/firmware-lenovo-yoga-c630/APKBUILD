@@ -1,8 +1,8 @@
-# Maintainer: Caleb Connolly <caleb@connolly.tech>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 
 pkgname=firmware-lenovo-yoga-c630
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware for Lenovo Yoga C630"
 url="https://gitlab.com/sdm845-mainline/firmware-lenovo-yoga-c630"
 arch="aarch64"

@@ -1,8 +1,8 @@
-# Maintainer: Caleb Connolly (kalube) <caleb@connolly.tech>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 # Co-Maintainer: Joel Selvaraj <joelselvaraj.oss@gmail.com>
 pkgname=alsa-ucm-conf-sdm845
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="ALSA UCM configuration for Qualcomm SDM845 devices"
 url="https://postmarketos.org"
 arch="aarch64"

@@ -1,5 +1,5 @@
 # Contributor: Jakub Panek <me@panekj.dev>
-# Maintainer: Caleb Connolly <caleb@postmarketos.org>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 # Co-Maintainer: jane400 <jane400@postmarketos.org>
 
 #########################################################
@@ -10,7 +10,7 @@ pkgname=systemd
 # currently tracking git MR
 pkgver=256.11
 _pkgver="musl-v${pkgver//_/-}-split-usr"
-pkgrel=6
+pkgrel=7
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !s390x" # blocked by pmboostrap not supporting

@@ -1,10 +1,10 @@
 # Reference: <https://postmarketos.org/devicepkg>
-# Maintainer: Caleb Connolly <caleb@connolly.tech>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 
 pkgname=device-oneplus-fajita
 pkgdesc="OnePlus 6T"
 pkgver=15
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

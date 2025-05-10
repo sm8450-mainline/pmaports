@@ -1,9 +1,9 @@
-# Maintainer: Caleb Connolly <caleb@postmarketos.org>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 # Kernel config based on: arch/arm64/configs/defconfig
 
 pkgname=linux-next
 pkgver=6.15_git20250509
-pkgrel=0
+pkgrel=1
 _nextver="${pkgver#*_git}"
 pkgdesc="Linux next kernel"
 arch="aarch64"

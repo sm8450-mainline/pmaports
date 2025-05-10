@@ -1,10 +1,10 @@
 # Reference: <https://postmarketos.org/devicepkg>
-# Maintainer: Caleb Connolly <caleb@postmarketos.org>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 # Co-Maintainer: Alexander Martinz <amartinz@shiftphones.com>
 pkgname=device-shift-otter
 pkgdesc="SHIFTphone 8"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

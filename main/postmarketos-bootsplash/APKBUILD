@@ -1,7 +1,7 @@
-# Maintainer: Caleb Connolly <caleb@connolly.tech>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 pkgname=postmarketos-bootsplash
 pkgver=0.2.3
-pkgrel=0
+pkgrel=1
 pkgdesc="pmOS integration components for pbsplash"
 url="https://postmarketos.org"
 arch="all"
@@ -60,7 +60,7 @@ systemd() {
 }
 
 sha512sums="
-7e5416f0f9de3605dcbc5ddd4b93d244fd6d4fd1bc2d5a15a034263f8517fc51e73509f29f2a13397d059913917990ada89b36ac7b00a0d21c0283fade755c1c  kill-pbsplash
+aa3489ae15a36f3dd247d6850c72c8431365058e248948bac6c89bb0b77de7eca3b99112eec5fde2e7ca55b8a03a74fa224055696e798f3ae5a0aefc92456334  kill-pbsplash
 79dd5eacf5914fb5eb1ef1b820478c07d2e0ae49441c9dc32c2ec18f26303f0e97c85221bab8e79abb854949e1ac4c20c566bb16379d4d396bda10d3d3b3d4d1  kill-pbsplash.service
 476c7a8106429c35e772eaf98e257f7a77070050431875113c7c0c75a358250757a381086c7302f1eded0d4cde88d2e63f9fa5d69b6fce46e2d908afd8d9323a  shutdown-splash.service
 c413607e21c805fff3d9948963aebf1048cdb2e68ed2f4316723d21f861a32aede7d1bf3851c8ba7562b07302471ca6d8f7be1e0487d83dd4cdea9bbb506e792  kill-pbsplash-override.conf

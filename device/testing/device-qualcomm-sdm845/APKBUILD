@@ -1,10 +1,10 @@
 # Reference: <https://postmarketos.org/devicepkg>
-# Maintainer: Caleb Connolly <caleb.connolly@linaro.org>
+# Maintainer: Casey Connolly <casey.connolly@linaro.org>
 
 pkgname=device-qualcomm-sdm845
 pkgdesc="Generic device package for Qualcomm SDM845 devices"
 pkgver=2
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

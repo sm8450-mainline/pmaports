@@ -1,10 +1,10 @@
 # Maintainer: Victoria Brekenfeld <postmarketos@drakulix.de>
 # Co-Maintainer: Joel Selvaraj <joelselvaraj.oss@gmail.com>
-# Co-Maintainer: Caleb Connolly <caleb@postmarketos.org>
+# Co-Maintainer: Casey Connolly <kcxt@postmarketos.org>
 
 pkgname=firmware-google-blueline
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware for Google Pixel 3 (blueline)"
 url="https://gitlab.com/phodina/firmware-google-blueline"
 # Suggested by Caleb as it has working Wifi

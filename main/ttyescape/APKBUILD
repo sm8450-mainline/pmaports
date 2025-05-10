@@ -1,7 +1,7 @@
-# Maintainer: Caleb Connolly <caleb@connolly.tech>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 pkgname=ttyescape
 pkgver=1.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Daemon to allow users to escape to a tty"
 url="https://gitlab.postmarketos.org/postmarketOS/ttyescape"
 arch="noarch"

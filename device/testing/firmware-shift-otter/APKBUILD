@@ -1,9 +1,9 @@
 # Reference: <https://postmarketos.org/devicepkg>
-# Maintainer: Caleb Connolly <caleb@postmarketos.org>
+# Maintainer: Casey Connolly <kcxt@postmarketos.org>
 # Co-Maintainer: Alexander Martinz <amartinz@shiftphones.com>
 pkgname=firmware-shift-otter
 pkgver=20250417
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware for SHIFTphone 8"
 url="https://github.com/SomeBlobs/firmware-shift-otter"
 arch="aarch64"
