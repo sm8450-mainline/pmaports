@@ -6,10 +6,10 @@ pkgdesc="GNOME Shell theme for E-Ink displays"
 url="https://github.com/fujimo-t/gnome-shell-theme-e-ink"
 arch="aarch64"
 license="GPL-2.0-or-later"
-depends="sassc"
+makedepends_build="sassc"
 source="$pkgname-$pkgver.tar.gz::https://github.com/fujimo-t/gnome-shell-theme-e-ink/archive/refs/tags/v$pkgver.tar.gz"
 
-options="!check"
+options="!check pmb:cross-native2"
 
 _theme_dir="/usr/share/gnome-shell/theme"
 
