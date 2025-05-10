@@ -1,8 +1,9 @@
 # Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: Anjandev Momi <anjan@momi.ca>
 pkgname=device-google-bonito
 pkgdesc="Google Pixel 3a XL"
 pkgver=4
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
