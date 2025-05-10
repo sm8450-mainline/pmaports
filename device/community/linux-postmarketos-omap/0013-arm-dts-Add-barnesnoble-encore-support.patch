@@ -1,0 +1,387 @@
+diff --git a/arch/arm/boot/dts/ti/omap/Makefile b/arch/arm/boot/dts/ti/omap/Makefile
+index 95c68135d..4a119f1ba 100644
+--- a/arch/arm/boot/dts/ti/omap/Makefile
++++ b/arch/arm/boot/dts/ti/omap/Makefile
+@@ -43,6 +43,7 @@ dtb-$(CONFIG_ARCH_OMAP3) += \
+ 	omap3-n900.dtb \
+ 	omap3-n9.dtb \
+ 	omap3-n950.dtb \
++	omap3-nookcolor.dtb \
+ 	omap3-overo-alto35.dtb \
+ 	omap3-overo-chestnut43.dtb \
+ 	omap3-overo-gallop43.dtb \
+diff --git a/arch/arm/boot/dts/ti/omap/omap3-nookcolor.dts b/arch/arm/boot/dts/ti/omap/omap3-nookcolor.dts
+new file mode 100644
+index 000000000..6bd31d733
+--- /dev/null
++++ b/arch/arm/boot/dts/ti/omap/omap3-nookcolor.dts
+@@ -0,0 +1,369 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * omap3-nookcolor.dts - Device Tree file for Barnes & Noble Nook Color
++ *
++ * Written by: Scott C
++ */
++
++/dts-v1/;
++
++#include "omap36xx.dtsi"
++#include <dt-bindings/input/input.h>
++
++/ {
++	model = "Barnes & Noble Nook Color";
++	compatible = "bn,omap3-nookcolor", "ti,omap36xx", "ti,omap3630", "ti,omap3";
++
++	cpus {
++		cpu@0 {
++			cpu0-supply = <&vcc>;
++		};
++	};
++
++	memory@80000000 {
++		device_type = "memory";
++		reg = <0x80000000 0x20000000>; /* 512 MB */
++	};
++
++	reserved-memory {
++		#address-cells = <1>;
++		#size-cells = <1>;
++		ranges;
++
++		/* commenting/removing as I added this but don't have setup to make use of it.
++		ram_console@8E000000 {
++			reg = <0x8E000000 0x00100000>;
++			no-map;
++		};
++		*/
++	};
++
++	backlight: backlight {
++		compatible = "pwm-backlight";
++		pwms = <&pwm8 0 7812500 0>;
++
++		enable-gpios = <&gpio2 15 GPIO_ACTIVE_LOW>;
++
++		brightness-levels = <5 32 64 75 105 128 179 254>;
++		default-brightness-level = <4>;
++	};
++
++	/*
++	 * max8903 battery charger
++	 * Here is what I had in the board file I started with, and how I mapped to the newer dts values:
++	 *
++	 *  MAX8903_GPIO_CHG_EN		110 --> cen-gpios  Charger Enable input				= <&gpio4 14 GPIO_ACTIVE_LOW>
++	 *  MAX8903_GPIO_CHG_FLT	101 --> flt-gpios  Fault output					= <&gpio4 5 GPIO_ACTIVE_LOW>
++	 *  MAX8903_GPIO_CHG_IUSB	102 --> chg-gpios  Charger status output			= <&gpio4 6 GPIO_ACTIVE_LOW>
++	 *  MAX8903_GPIO_CHG_USUS_EVT1A	104 --> usus-gpios USB Suspend Input (1: suspended)		= <&gpio4 8 GPIO_ACTIVE_LOW>
++	 *  MAX8903_GPIO_CHG_ILM_EVT1A	 61 --> dcm-gpios  Current-Limit Mode input (1: DC, 2: USB)	= <&gpio2 29 GPIO_ACTIVE_LOW>
++	 *  MAX8903_UOK_GPIO_FOR_IRQ	115 --> uok-gpios  USB Power OK output				= <&gpio4 19 GPIO_ACTIVE_LOW>
++	 *  MAX8903_DOK_GPIO_FOR_IRQ	114 --> dok-gpios  DC (Adapter) Power OK output			= <&gpio4 18 GPIO_ACTIVE_LOW>
++	 */
++	charger {
++		compatible = "maxim,max8903";
++
++		dok-gpios = <&gpio4 18 GPIO_ACTIVE_LOW>;
++		uok-gpios = <&gpio4 19 GPIO_ACTIVE_LOW>;
++		flt-gpios = <&gpio4 5 GPIO_ACTIVE_LOW>;
++		chg-gpios = <&gpio4 6 GPIO_ACTIVE_LOW>;
++		cen-gpios = <&gpio4 14 GPIO_ACTIVE_LOW>;
++		usus-gpios = <&gpio4 8 GPIO_ACTIVE_LOW>;
++		dcm-gpios = <&gpio2 29 GPIO_ACTIVE_LOW>;
++	};
++
++	gpio-keys {
++		compatible = "gpio-keys";
++
++		home-button {
++			label = "Home Button";
++			linux,code = <KEY_HOME>;
++			gpios = <&gpio2 16 GPIO_ACTIVE_LOW>; /* GPIO_48 */
++			wakeup-source;
++		};
++
++		power-button {
++			label = "Power Button";
++			linux,code = <KEY_POWER>;
++			gpios = <&gpio1 14 GPIO_ACTIVE_HIGH>; /* GPIO_14 */
++			wakeup-source;
++		};
++	};
++
++	lvds-encoder {
++		compatible = "ti,sn75lvds83", "lvds-encoder";
++		
++		power-supply = <&dummy_reg_vcc_lvds>;
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			port@0 {
++				reg = <0>;
++
++				lvds_encoder_input: endpoint {
++					remote-endpoint = <&dss_dpi_out>;
++				};
++			};
++
++			port@1 {
++				reg = <1>;
++
++				lvds_encoder_output: endpoint {
++					remote-endpoint = <&panel_in_lvds>;
++				};
++			};
++		};
++	};
++
++	pwm8: pwm-8 {
++		compatible = "ti,omap-dmtimer-pwm";
++		#pwm-cells = <3>;
++
++		ti,timers = <&timer8>;
++		ti,clock-source = <0x00>; /* system clock */
++	};
++
++	dummy_reg_vcc_lvds: regulator-dummy-vcclvds {
++		compatible = "regulator-fixed";
++		regulator-name = "dummy_reg_vcc_lvds";
++		regulator-always-on;
++	};
++
++	dummy_reg_vcpin: regulator-dummy-vcpin {
++		compatible = "regulator-fixed";
++		regulator-name = "dummy_reg_vcpin";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		regulator-always-on;
++	};
++
++	dummy_reg_vdd: regulator-dummy-vdd {
++		compatible = "regulator-fixed";
++		regulator-name = "dummy_reg_vdd";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		regulator-always-on;
++	};
++
++	vdd_lcdtp: regulator-vddlcdtp {
++		compatible = "regulator-fixed";
++		regulator-name = "vdd_lcdtp";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		gpio = <&gpio2 4 GPIO_ACTIVE_HIGH>; /* gpio 36 */
++		enable-active-high;
++		regulator-boot-on;
++	};
++
++	vwl1271: regulator-vwl1271 {
++		compatible = "regulator-fixed";
++		regulator-name = "vwl1271";
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		gpio = <&gpio1 22 GPIO_ACTIVE_HIGH>; /* gpio 22 */
++		startup-delay-us = <70000>;
++		enable-active-high;
++	};
++};
++
++&dss {
++	status = "okay";
++
++	vdda_video-supply = <&vdac>;
++	/* vdds_dsi-supply = <&vpll2>; // or vpll1 ? 
++	 */
++
++	port {
++		dss_dpi_out: endpoint {
++			remote-endpoint = <&lvds_encoder_input>;
++			data-lines = <24>;
++		};
++	};
++};
++
++/*
++ * GPIOs 44 and 45 "CABC0" and "CABC1" seem to be set once and left 
++ * that way by earlier code as follows  
++ * gpio_direction_output(LCD_CABC0_GPIO,0);
++ * gpio_set_value(LCD_CABC0_GPIO,0);
++ */
++&gpio2 {
++	gpio-hog-cabc0 {
++		gpio-hog;
++		gpios = <12 GPIO_ACTIVE_LOW>;	/* gpio_44 */
++		output-low;
++		line-name = "CABC0";
++	};
++
++	gpio-hog-cabc1 {
++		gpio-hog;
++		gpios = <13 GPIO_ACTIVE_LOW>;	/* gpio_45 */
++		output-low;
++		line-name = "CABC1";
++	};
++};
++
++&i2c1 {
++	clock-frequency = <100000>;  /* 100 kHz */
++
++	kxtf9: accelerometer@f {
++		compatible = "kionix,kxtf9";
++		reg = <0x0f>;
++
++		interrupt-parent = <&gpio4>;
++		interrupts = <17 IRQ_TYPE_EDGE_RISING>;
++
++		/* Starting with "portrait" orientation just because I need a starting point */
++		mount-matrix = "0", "-1", "0",
++				"-1", "0", "0",
++				"0", "0", "1";
++	};
++
++	fuel-gauge@36 {
++		compatible = "maxim,max17042";
++		reg = <0x36>;
++
++		interrupt-parent = <&gpio4>;
++		interrupts = <4 IRQ_TYPE_EDGE_FALLING>;
++	};
++
++	twl: twl@48 {
++		reg = <0x48>;
++		interrupts = <7>; /* SYS_NIRQ cascaded to intc */
++		interrupt-parent = <&intc>;
++	};
++};
++
++#include "twl4030.dtsi"
++#include "twl4030_omap3.dtsi"
++
++&i2c2 {
++	clock-frequency = <400000>;
++
++	/* this should be present in the device, but section not completed/ tested yet.
++	audio-codec@18 {
++		compatible = "ti,tlv320aic310x";
++		reg = <0x18>;
++	};
++	*/
++
++	touchscreen@34 {
++		compatible = "cypress,cy8ctma340";
++		reg = <0x34>;
++
++		clock-frequency = <400000>;
++
++		/* GPIO 99 for IRQ */
++		interrupt-parent = <&gpio4>;
++		interrupts = <3 IRQ_TYPE_EDGE_FALLING>;
++
++		// "Reset line for the touchscreen, should be tagged as GPIO_ACTIVE_LOW"
++		reset-gpios = <&gpio2 14 GPIO_ACTIVE_LOW>;
++
++		vdd-supply = <&dummy_reg_vdd>;
++		vcpin-supply = <&dummy_reg_vcpin>;
++
++		touchscreen-size-x = <1024>;
++		touchscreen-size-y = <600>;
++
++		active-interval-ms = <0>;
++		touch-timeout-ms = <255>;
++		lowpower-interval-ms = <10>;
++
++		// touchscreen-max-pressure = <255>;
++
++		bootloader-key = /bits/ 8 <0x00 0x01 0x02 0x03 0x04 0x05 0x06 0x07>;
++	};
++};
++
++&i2c3 {
++	status = "disabled";
++};
++
++&mcspi4 {
++	status = "okay";
++
++	panel: panel@0 {
++		compatible = "lg,ld070ws1";
++		reg = <0>;  /* Chip select 0 */
++
++		spi-max-frequency = <375000>;
++
++		vlcd-supply = <&vdd_lcdtp>;
++
++		backlight = <&backlight>;
++
++		port {
++			panel_in_lvds: endpoint {
++				remote-endpoint = <&lvds_encoder_output>;
++			};
++		};
++	};
++};
++
++/* microSD Card Slot */
++&mmc1 {
++	vmmc-supply = <&vmmc1>;
++	/* vqmmc-supply = <&vsim>; ONLY if needed */
++	bus-width = <4>;
++
++	/* cd-gpios = <&twl_gpio 0 GPIO_ACTIVE_LOW>;  double check this one */
++};
++
++/* Internal/eMMC */
++&mmc2 {
++	vmmc-supply = <&vmmc2>;
++	bus-width = <8>;
++
++	/* cd-gpios = <&twl_gpio 1 GPIO_ACTIVE_LOW>;  double check this one */
++
++	non-removable;
++	ti,non-removable;
++};
++
++/*
++&mmc3 {
++	vmmc-supply = <&wl12xx_vmmc>; // This might not be right - probably should point to either a vmmc or the vwl1271 regulator set up above
++	bus-width = <4>;
++
++	non-removable;
++	ti,non-removable;
++
++	cap-power-off-card;
++
++	#address-cells = <1>;
++	#size-cells = <0>;
++
++	wlcore : wlcore@2 {
++		compatible = "ti,wl1271";
++		reg = <2>;
++		interrupt-parent = <&gpio6>;
++		interrupts = <2 IRQ_TYPE_EDGE_RISING>; // gpio 162
++		ref-clock-frequency = <26000000>;
++	};
++};
++*/
++
++&twl_keypad {
++	linux,keymap = < MATRIX_KEY(0, 0, KEY_HOME)
++			 MATRIX_KEY(1, 0, KEY_VOLUMEUP)
++			 MATRIX_KEY(2, 0, KEY_VOLUMEDOWN)
++			 >;
++};
++
++&usb_otg_hs {
++	interface-type = <0>;
++	usb-phy = <&usb2_phy>;
++	phys = <&usb2_phy>;
++	phy-names = "usb2-phy";
++	mode = <3>;
++	power = <50>;
++};
++
++&vmmc2 {
++	regulator-name = "vmmc2";
++	regulator-min-microvolt = <1850000>;
++	regulator-max-microvolt = <1850000>;
++};
