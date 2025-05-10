@@ -7,10 +7,9 @@
 #########################################################
 
 pkgname=systemd
-# currently tracking git MR
-pkgver=256.11
+pkgver=257.5
 _pkgver="musl-v${pkgver//_/-}-split-usr"
-pkgrel=7
+pkgrel=0
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !s390x" # blocked by pmboostrap not supporting
@@ -140,8 +139,6 @@ source="
 	https://gitlab.postmarketos.org/postmarketOS/systemd/-/archive/$_pkgver/systemd-$_pkgver.tar.gz
 	wired.network
 	systemd-apk-macros.sh
-
-	tmpfiles-narrow-scope-of-HAVE_SYSV_COMPAT-condition-.patch
 	"
 builddir="$srcdir/systemd-$_pkgver"
 
@@ -454,8 +451,7 @@ libs() {
 }
 
 sha512sums="
-3cd75d5ba29a3994230ecbe16ea106d4fe05d7d76e7cd9b9a6a63177f09d8c362c055a1fea49e6c9a10a949afc07a6c75fe75dad2bd302d94e41a81f8ddb2a15  systemd-musl-v256.11-split-usr.tar.gz
+fd9f6c8c3ee9c13b66fc52c94492bcb563280acd9811bc5f7e4ccf28e5d664b330b356ba77110146bece8801eb49e38aa5c85b6422cc48b1d326d8cddcf83ba8  systemd-musl-v257.5-split-usr.tar.gz
 81c897fed8a3fbfb67ec591b2398a5d65e4af1b3ef379376c157c98d71f085b707f8ebc896d5571a94f99f8fc84fd6b43e3b879ca9b0d57fc6c4596034c7a777  wired.network
 cc1c8f00a0ff1c94fcebe0e6d48b3d1a74c51b9d86bf255762cecda4b4d0c08e313f817aaaa301f41133eaf73c525e36c0f48659b263a7ed990080de9f3cec6c  systemd-apk-macros.sh
-ad6503195b11db4db2e7a05292fc64a3ac91075577ae2037c2bcceffa932a3052597b5a08335da1e3471d955984ee0232d9e4740371938fc78b70b739617758b  tmpfiles-narrow-scope-of-HAVE_SYSV_COMPAT-condition-.patch
 "
