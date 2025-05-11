@@ -5,10 +5,8 @@
 deviceinfo_format_version="0"
 deviceinfo_name="ASUS ZenWatch 2"
 deviceinfo_manufacturer="ASUS"
-deviceinfo_codename="asus-sparrow"
+deviceinfo_codename="asus-sparrow-downstream"
 deviceinfo_year="2015"
-deviceinfo_dtb="qcom-apq8026-asus-sparrow"
-deviceinfo_append_dtb="true"
 deviceinfo_arch="armv7"
 
 # Device related
@@ -20,8 +18,7 @@ deviceinfo_screen_height="320"
 
 # Bootloader related
 deviceinfo_flash_method="fastboot"
-# limit to single-core until we have cpufreq to avoid fast overheating
-deviceinfo_kernel_cmdline="maxcpus=1"
+deviceinfo_kernel_cmdline="console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=sparrow user_debug=31 maxcpus=4 msm_rtb.filter=0x3F"
 deviceinfo_generate_bootimg="true"
 deviceinfo_generate_extlinux_config="true"
 deviceinfo_bootimg_qcdt="false"
