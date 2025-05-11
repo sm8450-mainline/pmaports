@@ -1,9 +1,10 @@
+# Archived: Downstream port, only for testing. Use mainline port!
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on: arch/arm/configs/sturgeon_defconfig
 
-pkgname=linux-huawei-sturgeon
+pkgname=linux-huawei-sturgeon-downstream
 pkgver=3.10.40
-pkgrel=1
+pkgrel=0
 pkgdesc="Huawei Watch kernel fork"
 arch="armv7"
 _carch="arm"
@@ -56,7 +57,7 @@ package() {
 }
 
 sha512sums="
-515ae0ddd89251b234368c1082332e216051d528ba7164267c943b5b5b077620fe50aceabc28d0c151fc31804a1c532c38c1289e67bcd87d4a07c5cd9e9729f5  linux-huawei-sturgeon-97abcf5b24684a46530ffc8a4748dd7ae6c2e65a.tar.gz
+515ae0ddd89251b234368c1082332e216051d528ba7164267c943b5b5b077620fe50aceabc28d0c151fc31804a1c532c38c1289e67bcd87d4a07c5cd9e9729f5  linux-huawei-sturgeon-downstream-97abcf5b24684a46530ffc8a4748dd7ae6c2e65a.tar.gz
 a3847fe930298714f3eef645ec5c828842d40abf8b84ce7bc2c41bc9729c4bfe2dda3b0357fdf3b18896319b3eeee5b9e5a79dc796e331c4b81e9063b413b929  config-huawei-sturgeon.armv7
 77eba606a71eafb36c32e9c5fe5e77f5e4746caac292440d9fb720763d766074a964db1c12bc76fe583c5d1a5c864219c59941f5e53adad182dbc70bf2bc14a7  gcc7-give-up-on-ilog2-const-optimizations.patch
 197d40a214ada87fcb2dfc0ae4911704b9a93354b75179cd6b4aadbb627a37ec262cf516921c84a8b1806809b70a7b440cdc8310a4a55fca5d2c0baa988e3967  gcc8-fix-put-user.patch
