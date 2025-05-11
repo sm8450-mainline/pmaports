@@ -92,6 +92,7 @@ enable iio-sensor-proxy.service
 enable hfd-service.service
 
 ## qcom
+enable 81voltd.service
 enable diag-router.service
 enable msm-modem-uim-selection.service
 enable pd-mapper.service
