@@ -2,28 +2,27 @@
 # Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=device-htc-memul
 pkgdesc="HTC One Mini 2"
-pkgver=6
+pkgver=7
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
 depends="
+	firmware-htc-memul-adsp
+	firmware-htc-memul-modem
+	firmware-htc-memul-wcnss
+	firmware-qcom-adreno-a330
+	linux-postmarketos-qcom-msm8226
 	lk2nd-msm8226-htc-memul
 	mkbootimg
 	postmarketos-base
 	soc-qcom-msm8226
 	"
 makedepends="devicepkg-dev"
-subpackages="
-	$pkgname-kernel-downstream:kernel_downstream
-	$pkgname-kernel-mainline:kernel_mainline
-	$pkgname-nonfree-firmware:nonfree_firmware
-	"
 source="
 	deviceinfo
-	initfs-hook.sh
-	modules-initfs.mainline
+	modules-initfs
 	"
 
 build() {
@@ -34,29 +33,7 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 
-kernel_downstream() {
-	pkgdesc="Downstream kernel"
-	depends="linux-htc-memul"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-
-	amove etc/udev/rules.d/90-$pkgname.rules
-	amove usr/share/mkinitfs/hooks/00-$pkgname.sh
-}
-
-kernel_mainline() {
-	pkgdesc="Close to mainline kernel"
-	depends="linux-postmarketos-qcom-msm8226"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-nonfree_firmware() {
-	pkgdesc="Firmware for WiFi, etc."
-	depends="firmware-htc-memul-adsp firmware-htc-memul-modem firmware-htc-memul-wcnss firmware-qcom-adreno-a330"
-	mkdir "$subpkgdir"
-}
-
 sha512sums="
-130ad174d1db794c8007db889a89bc7757d2c0357c2aadd388120b124cfbed20d36e3205cffc8a8e3a5f0018441cc6047b7c54efad28f1cdcba0280adaa1f119  deviceinfo
-765abaad5fda0dfda5e62e1e48414d3eea822198f39d0792171a04d73f86f6273a6e562afab430cbfcdd084412568a0ad03d012e9c40c5564f5cd1b9c0f181eb  initfs-hook.sh
-9ebe6ca9e371b5091e4e47ecbe3ec0c72d055e4bc2281880119eb0dee4c56b71f20f7d3cf1f1cb62e6814604e745fb17bbbfcfed2fec42398871e50b17685533  modules-initfs.mainline
+dcdcb5dd36665ee635431d31cc9925cf50b3ec5b36466368980418aef521ba48bde62470fc4970aff00a6b5218ef6ae0ee2986251549cb6695e8fd11cd293155  deviceinfo
+9ebe6ca9e371b5091e4e47ecbe3ec0c72d055e4bc2281880119eb0dee4c56b71f20f7d3cf1f1cb62e6814604e745fb17bbbfcfed2fec42398871e50b17685533  modules-initfs
 "
