@@ -489,7 +489,6 @@ package() {
 
 		# These are moved into packages with arch=$CTARGET_ARCH so remove
 		# cross prefix (doesn't exist when BOOTSTRAP=nolibc)
-		[ "$BOOTSTRAP" != nolibc ] && mv "$pkgdir"/usr/$CTARGET/lib/*.so.* "$pkgdir"/usr/lib/
 
 		# fixup gcc library symlinks to be linker scripts so
 		# linker finds the libs from relocated sysroot
