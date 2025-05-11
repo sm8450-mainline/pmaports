@@ -2,12 +2,12 @@
 pkgname=bootrr
 pkgver=0.1_git20230827
 _commit="cac8008d8ba6ba6e7361e87022d7ac1940b8c8b8"
-pkgrel=2
+pkgrel=3
 pkgdesc="A sanity checker for boards under automated test"
 url="https://github.com/andersson/bootrr"
 arch="noarch"
 license="BSD-3-Clause"
-subpackages="$pkgname:pmtest"
+subpackages="$pkgname-pmtest"
 source="
 	bootrr-$_commit.tar.gz::https://github.com/andersson/bootrr/archive/$_commit.tar.gz
 	00-bootrr.files
