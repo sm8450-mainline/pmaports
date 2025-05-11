@@ -1,10 +1,11 @@
+# Archived: Downstream port, only for testing. Use mainline port!
 # Reference: <https://postmarketos.org/vendorkernel>
 # Maintainer: Luca Weiss <luca@lucaweiss.eu>
 # Kernel config based on: arch/arm/configs/lineageos_FP2_defconfig
 
-pkgname=linux-fairphone-fp2
+pkgname=linux-fairphone-fp2-downstream
 pkgver=3.4.0
-pkgrel=14
+pkgrel=0
 pkgdesc="Fairphone 2 kernel fork"
 arch="armv7"
 _carch="arm"
@@ -64,7 +65,7 @@ package() {
 }
 
 sha512sums="
-6b440c5d087b790894606d4736af815204d9e6f682b7c1ba78f5852fa7aecd74cb276f4953d270f14c96d5418f4e2a83c5179c54d50e2e5afc9084f83ab54200  linux-fairphone-fp2-284400aea4b9f8a3c97a34408f48d0971897ae02.tar.gz
+6b440c5d087b790894606d4736af815204d9e6f682b7c1ba78f5852fa7aecd74cb276f4953d270f14c96d5418f4e2a83c5179c54d50e2e5afc9084f83ab54200  linux-fairphone-fp2-downstream-284400aea4b9f8a3c97a34408f48d0971897ae02.tar.gz
 a19a14847492ea383ddffa01f1b8344ca8084ad610b4290e24e5074619295bc5473db186f724211a35a7f0f445a2d0b35e730e7953a3b3ad2f4f70893f07139d  config-fairphone-fp2.armv7
 77eba606a71eafb36c32e9c5fe5e77f5e4746caac292440d9fb720763d766074a964db1c12bc76fe583c5d1a5c864219c59941f5e53adad182dbc70bf2bc14a7  gcc7-give-up-on-ilog2-const-optimizations.patch
 197d40a214ada87fcb2dfc0ae4911704b9a93354b75179cd6b4aadbb627a37ec262cf516921c84a8b1806809b70a7b440cdc8310a4a55fca5d2c0baa988e3967  gcc8-fix-put-user.patch

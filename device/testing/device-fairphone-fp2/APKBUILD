@@ -2,36 +2,33 @@
 # Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=device-fairphone-fp2
 pkgdesc="Fairphone 2"
-pkgver=9
+pkgver=10
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
 depends="
+	firmware-fairphone-fp2-adsp
+	firmware-fairphone-fp2-modem
+	firmware-fairphone-fp2-wcnss
+	firmware-qcom-adreno-a330
+	linux-postmarketos-qcom-msm8974
 	lk2nd-msm8974
+	mesa-egl
 	mkbootimg
+	msm-modem
+	msm-modem-uim-selection
 	postmarketos-base
 	soc-qcom-msm8974
 	"
 makedepends="devicepkg-dev"
 source="
 	deviceinfo
-	modules-initfs.mainline
-	FP2.conf
-	hifi
+	modules-initfs
 	phoc.ini
-	30-gpu-firmware.files
 "
-subpackages="
-	$pkgname-kernel-downstream:kernel_downstream
-	$pkgname-kernel-mainline:kernel_mainline
-	$pkgname-nonfree-firmware:nonfree_firmware
-	$pkgname-downstream-firmware:downstream_firmware
-	$pkgname-mainline-firmware:mainline_firmware
-	$pkgname-alsa
-	$pkgname-phosh
-"
+subpackages="$pkgname-phosh"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -41,49 +38,6 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 
-kernel_downstream() {
-	pkgdesc="Downstream kernel"
-	depends="linux-fairphone-fp2"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-kernel_mainline() {
-	pkgdesc="Close to mainline kernel"
-	depends="linux-postmarketos-qcom-msm8974 mesa-egl"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-nonfree_firmware() {
-	pkgdesc="Firmware for WiFi, Audio, etc."
-	depends="firmware-fairphone-fp2-adsp firmware-fairphone-fp2-modem firmware-fairphone-fp2-wcnss"
-	mkdir "$subpkgdir"
-}
-
-downstream_firmware() {
-	pkgdesc="Firmware support packages for downstream kernel"
-	depends="$pkgname-alsa adsp-audio msm-modem-downstream wcnss-wlan"
-	install_if="$pkgname-kernel-downstream $pkgname-nonfree-firmware"
-	mkdir "$subpkgdir"
-}
-
-mainline_firmware() {
-	pkgdesc="Firmware support packages for mainline kernel"
-	depends="msm-modem msm-modem-uim-selection firmware-qcom-adreno-a330"
-	install_if="$pkgname-kernel-mainline $pkgname-nonfree-firmware"
-	mkdir "$subpkgdir"
-
-	install -Dm644 "$srcdir/30-gpu-firmware.files" \
-		"$subpkgdir/usr/share/mkinitfs/files/30-gpu-firmware.files"
-}
-
-alsa() {
-	pkgdesc="Audio configuration files"
-
-	mkdir -p "$subpkgdir"/usr/share/alsa/ucm/FP2
-	install -Dm644 "$srcdir"/FP2.conf "$subpkgdir"/usr/share/alsa/ucm/FP2/
-	install -Dm644 "$srcdir"/hifi "$subpkgdir"/usr/share/alsa/ucm/FP2/
-}
-
 phosh() {
 	install_if="$pkgname postmarketos-ui-phosh"
 	install -Dm644 "$srcdir"/phoc.ini \
@@ -91,10 +45,7 @@ phosh() {
 }
 
 sha512sums="
-2fd9f84b2ac67774c276af13d47bf79ba2eed5d636742d4af030922cd02334dad96cee2ab0a8a3510176de6227b755e0893b804b8965412f7902875539782233  deviceinfo
-1a99953420a4068c6205dd90015e895909d39011dcc72fd73ac6880920fe4b95fe54377b9d4864a2d4fac56c4334e0c896ba8cc92dea61f93e9384de0998a910  modules-initfs.mainline
-55360b1ba4ddadea341c9edb13c32ba5f19aabf75ab28602f30cfb79b9df8834f115ef979c70569f23ec1293b1fcd408baf320d87803293ce7106bdc73a26c9f  FP2.conf
-b834461c6866bb0c473dd089dd5da641dd42a00f610aad6503117aa50fe6e200db9ad0a264bb609f12350d59faee1f772907bacd75439f702ea7d52f6f85e2b1  hifi
+2301e2c8b66fda1d4262bd221dbd812112ffd92a31b7f5289292958981ae214e99dcce0d4e591fa7cb4fd0cbe7f560cf876dc49dd90346d1cc0419a96cefdbf5  deviceinfo
+1a99953420a4068c6205dd90015e895909d39011dcc72fd73ac6880920fe4b95fe54377b9d4864a2d4fac56c4334e0c896ba8cc92dea61f93e9384de0998a910  modules-initfs
 cef2fd633cddbcf4ac9b4d2fa6bf3a1e3e8d810a2ea8050767fe649d289db753662821d5e41e2c8d20fb9c765c1babcb6a4d95e4c9345f5ea32d1b1d2b1e5126  phoc.ini
-bbe6d6f530a9fa1934dd065dd4f6da48450e2115e4656b219d7f3aebc8b6a2775c02a2e5ffb5790950bb8183fca4677fbeaf9d8a267089c9f0d08461fc8ed45d  30-gpu-firmware.files
 "
