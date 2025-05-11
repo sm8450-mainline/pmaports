@@ -1,20 +1,19 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lg-mako
-pkgver=5
+pkgver=6
 pkgrel=0
 pkgdesc="Google Nexus 4"
 url="https://postmarketos.org"
 arch="armv7"
 license="MIT"
 depends="
+	firmware-lg-mako
+	linux-postmarketos-qcom-apq8064
+	mkbootimg
 	postmarketos-base
-	mkbootimg"
+	"
 makedepends="devicepkg-dev"
-subpackages="
-	$pkgname-kernel-downstream:kernel_downstream
-	$pkgname-kernel-mainline:kernel_mainline
-	$pkgname-nonfree-firmware:nonfree_firmware"
-source="deviceinfo 90-android-touch-dev.rules pointercal fb.modes wcnss-wlan"
+source="deviceinfo"
 options="!check !archcheck"
 
 build() {
@@ -23,43 +22,8 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
-	install -Dm644 "$srcdir"/90-android-touch-dev.rules \
-		"$pkgdir"/etc/udev/rules.d/90-android-touch-dev.rules
-	install -Dm644 "$srcdir"/pointercal \
-		"$pkgdir"/etc/pointercal
-	install -Dm644 "$srcdir"/fb.modes \
-		"$pkgdir"/etc/fb.modes
-	install -Dm644 "$srcdir"/wcnss-wlan \
-		"$pkgdir"/etc/conf.d/wcnss-wlan
-}
-
-kernel_downstream() {
-	pkgdesc="Downstream kernel"
-	depends="
-		linux-lg-mako
-		wcnss-wlan
-		postmarketos-base-downstream-disable-udev-v4l
-	"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-kernel_mainline() {
-	pkgdesc="Mainline kernel"
-	depends="linux-postmarketos-qcom-apq8064"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-
-nonfree_firmware() {
-	pkgdesc="Wifi firmware"
-	depends="firmware-lg-mako"
-	mkdir "$subpkgdir"
 }
 
 sha512sums="
-498f1cf92664ab48f75b3bca02a68b1cb6a902539fcba032c844d4c0bcbd384885f734c6cf9a4008f4884d2e6d8bb53f8201c9c8ca8fcb3fb1f4021336bce60f  deviceinfo
-ee25f3d0377f027d108593eb7953b8db49d7f05a5c36a0c8ca7e7849d15e3c217bc1ac97d77a66e28d2db4b81c0f50b905639911276da40321d2b6cca7f797df  90-android-touch-dev.rules
-52b1465c75c51e2dc2e351a0609220af04b939b9edf7fca844cc00bb9eeb4e71f53e34817ba094e477fc43bf15101fcfd07963c791a36be5c52f199bba6a6d9d  pointercal
-217bdf692ade75d57968299e29e9379ffcfc97addf735663b3e1e7dfce049f9d13b26347b4405ac724ae5fac2946012dcc58014b23b8df357e225b6718dbc0a6  fb.modes
-a8cfde9dd3bc96d990038443e8d10a551f13536f017992ae23545d2f1e09b0f729e5cfd1f94f52a2a335335172f082925b91c980695a27f76f636343de795898  wcnss-wlan
+84b8610ac319d6a8d8fc02c2b1c8f35128556688a87534ac1910ff41f31f1d2ab8601bb3775b35950ba244c9e732379e170acea295746f378e43dc352e691418  deviceinfo
 "
