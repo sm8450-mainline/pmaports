@@ -1,8 +1,9 @@
+# Archived: Downstream port, only for testing. Use mainline port!
 # Kernel config based on: arch/arm/configs/golden_android_defconfig
 
-pkgname=linux-samsung-golden
+pkgname=linux-samsung-golden-downstream
 pkgver=3.0.31
-pkgrel=4
+pkgrel=0
 pkgdesc="Samsung Galaxy SIII mini kernel fork"
 arch="armv7"
 _carch="arm"
@@ -59,7 +60,7 @@ package() {
 		modules_install
 }
 
-sha512sums="318586c486d831719d678e7645c073146b6d2cfc60ac0b8b54ddc6e545723d207d46a7acd78d944e7a855e3a5181fa8ccf863d9dd0c10129a6814e9e7e70a2fa  linux-samsung-golden-2662dc4f65ef3ad5eeb4222d3aad5dd418a04510.tar.gz
+sha512sums="318586c486d831719d678e7645c073146b6d2cfc60ac0b8b54ddc6e545723d207d46a7acd78d944e7a855e3a5181fa8ccf863d9dd0c10129a6814e9e7e70a2fa  linux-samsung-golden-downstream-2662dc4f65ef3ad5eeb4222d3aad5dd418a04510.tar.gz
 d0843c5606a0d207e73bbe952a548f7374ca099c40448a097318d96068df7da3c4ce7f1abdb10015b6ddd5f422f202578229a44f070af5953d50d924d3f9ddce  config-samsung-golden.armv7
 1fcfb5f06a2bfdcc55d53054ca80d1b989599a39a5379d057a0724fc405187d74da4309a650e70b9c79d39444e81923cfc5c9199ed8c0a77c83dcd7998446bb7  timeconst.pl-Eliminate-Perl-warning.patch
 1b3ffbfd511af7a81590e0004bcf45b89592d6bf38cc3dd48af1e227f879426894eede34376ac708e56e84217af6ff22ee16526b3e64905ef30f0d101bbcbc29  00_fix_makefile.patch
