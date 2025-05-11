@@ -1,23 +1,23 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-motorola-falcon
 pkgdesc="Moto G (2013)"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
-depends="postmarketos-base mkbootimg soc-qcom-msm8226"
-makedepends="devicepkg-dev"
-subpackages="
-	$pkgname-kernel-downstream:kernel_downstream
-	$pkgname-kernel-mainline:kernel_mainline
-	$pkgname-nonfree-firmware:nonfree_firmware
+depends="
+	firmware-motorola-falcon
+	linux-postmarketos-qcom-msm8226
+	mkbootimg
+	postmarketos-base
+	soc-qcom-msm8226
 	"
-
+makedepends="devicepkg-dev"
 source="
 	deviceinfo
-	modules-initfs.mainline
+	modules-initfs
 	"
 
 build() {
@@ -28,25 +28,7 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 
-kernel_downstream() {
-	pkgdesc="Downstream kernel"
-	depends="linux-motorola-falcon msm-fb-refresher"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-kernel_mainline() {
-	pkgdesc="Close to mainline kernel"
-	depends="linux-postmarketos-qcom-msm8226"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-nonfree_firmware() {
-	pkgdesc="Wifi firmware"
-	depends="firmware-motorola-falcon"
-	mkdir "$subpkgdir"
-}
-
 sha512sums="
-c7f10570f98bf9080da79c15c93a0e0a9b22895b488ae73e5a0c0e746a9ef68e15525a32cbc68acd30549f8fb9d9577e9fb4781abea4abbcc6c7db50b8538c06  deviceinfo
-35701f944fb4d1dd365fb2d3363620271ce748647c7462e9e8d6a2447df766f94cf1d07aa366c66c745fbb0fdaa6960e3f77176f9b6f4f9ca0dbc5d2f5989067  modules-initfs.mainline
+d65b09730b3a8e66a2df50f4f594a572bdf28ad78697100d492fdc298a4afb06b0129167e3c4a1462ec7844bff10fa3935a14edc8727b85513337ddf0a58ed6c  deviceinfo
+35701f944fb4d1dd365fb2d3363620271ce748647c7462e9e8d6a2447df766f94cf1d07aa366c66c745fbb0fdaa6960e3f77176f9b6f4f9ca0dbc5d2f5989067  modules-initfs
 "
