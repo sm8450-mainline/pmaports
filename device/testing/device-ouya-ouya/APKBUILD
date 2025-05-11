@@ -1,25 +1,22 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-ouya-ouya
-pkgver=2
-pkgdesc="Ouya"
+pkgver=3
 pkgrel=0
+pkgdesc="Ouya"
 url="https://postmarketos.org"
 arch="armv7"
 license="MIT"
 options="!check !archcheck"
-depends="mkbootimg postmarketos-base"
-makedepends="devicepkg-dev"
-subpackages="
-	$pkgname-nonfree-firmware:nonfree_firmware
-	$pkgname-kernel-downstream:kernel_downstream
-	$pkgname-kernel-mainline:kernel_mainline
-	$pkgname-x11
+depends="
+	firmware-ouya-ouya
+	linux-ouya-ouya-mainline
+	mkbootimg
+	postmarketos-base
 	"
+makedepends="devicepkg-dev"
 source="
 	deviceinfo
-	fb.modes
 	initfs-hook.sh
-	networkmanager.conf
 	"
 
 build() {
@@ -28,39 +25,9 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
-	install -D -m644 "$srcdir"/fb.modes \
-		"$pkgdir"/etc/fb.modes
-	install -D -m644 "$srcdir"/networkmanager.conf \
-		"$pkgdir"/etc/NetworkManager/conf.d/10-ouya.conf
-}
-
-nonfree_firmware() {
-	pkgdesc="bcm4330 wifi firmware"
-	depends="firmware-ouya-ouya"
-	mkdir "$subpkgdir"
-}
-
-kernel_downstream() {
-	pkgdesc="Downstream kernel"
-	depends="linux-ouya-ouya"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-kernel_mainline() {
-	pkgdesc="Close to mainline; work in progress"
-	depends="linux-ouya-ouya-mainline"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-x11() {
-	install_if="$pkgname xorg-server"
-	depends="xf86-video-opentegra libvdpau-tegra"
-	mkdir "$subpkgdir"
 }
 
 sha512sums="
-22866c785c8e14944a33852d9031713da43500d4362e65374527297022af38d36493c29e98f51df4a689932e51fe21749e13fe8222624fa7700abfe7f6018356  deviceinfo
-bf442fac4dc0594e055ed7a7d8232b5c884e2e77543273e8c4f32b5fe3c199561c86d8a5f665e17406057ca7863fabb93e789fe5e168fcd89d2982e0046232ad  fb.modes
-d01ac1f451275b1a269aab3c8f7fe20b482c952d00c4457ea496b45780c052f8ef98a5ba22a4af009ca128858374c1d3fb97e458102b09f7c40f3d7a718326c1  initfs-hook.sh
-b0737a8fb7a60b2d24e4e124dbeb7044832a683a78887454d13d4078039338fb04579ce9066140733222409e7f53255bfde2c6725bd3848752a27e112717c28c  networkmanager.conf
+9af48bdb258387f0e2e9c85d1c3db52838b5a2e129e58b368f99e047b14b901872194290c183b00416a6976f1f14791d216e5d6e7889fd1ecb676b05c4251a76  deviceinfo
+f0d9578cb0f5fda91b83717467e5f9e143bd4a24309406d7c9b59402325cb9dbe34c7f542083ac58ced18c6fd7277eb5710eba555ad1c98c1e06e6b72b26b91d  initfs-hook.sh
 "
