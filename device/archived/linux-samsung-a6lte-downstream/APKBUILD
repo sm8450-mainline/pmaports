@@ -1,9 +1,10 @@
+# Archived: Downstream port, only for testing. Use mainline port!
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on the stock Android one
 
-pkgname=linux-samsung-a6lte
+pkgname=linux-samsung-a6lte-downstream
 pkgver=3.18.140
-pkgrel=6
+pkgrel=0
 pkgdesc="Samsung Galaxy A6 2018 kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -74,7 +75,7 @@ package() {
 }
 
 sha512sums="
-c2cc5190c480de4ac2d376827c5c56a542c6644d3dbeb47956d0b90c5570b246872ecedbf5655ac5564c9f61190d23567a4c496bb4235c46f6bd7a6d8addcc68  linux-samsung-a6lte-981969320c1cdc214cf8a1a357fab642f401a5d1.tar.gz
+c2cc5190c480de4ac2d376827c5c56a542c6644d3dbeb47956d0b90c5570b246872ecedbf5655ac5564c9f61190d23567a4c496bb4235c46f6bd7a6d8addcc68  linux-samsung-a6lte-downstream-981969320c1cdc214cf8a1a357fab642f401a5d1.tar.gz
 82ca91133a27967d164c5e38545bfe84055c0ec7dde738038ba8258a05d518e07b16a2ba7b9c1b7dda28236dbdc62def3cfb643ae695bca88498714b6fd25e56  config-samsung-a6lte.aarch64
 2b48f1bf0e3f70703d2cdafc47d5e615cc7c56c70bec56b2e3297d3fa4a7a1321d649a8679614553dde8fe52ff1051dae38d5990e3744c9ca986d92187dcdbeb  gcc10-extern_YYLOC_global_declaration.patch
 3f65a690e48f913fcb980718fae4dc03c29a6dc86eecb1e2af644488ad415de326a61d840399fb69915cbc5d56d5586f2df2287b3e7323a2927ae73a3b1b1373  zram-zs-create-pool-null.patch
