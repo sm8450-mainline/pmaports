@@ -1,27 +1,23 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-htc-m8
 pkgdesc="HTC One M8"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
 depends="
+	firmware-htc-m8
+	linux-postmarketos-qcom-msm8974
+	lk2nd-msm8974-htc-m8
 	mkbootimg
 	postmarketos-base
 	soc-qcom-msm8974
 "
 makedepends="devicepkg-dev"
-subpackages="
-	$pkgname-kernel-downstream:kernel_downstream
-	$pkgname-kernel-mainline:kernel_mainline
-	$pkgname-nonfree-firmware:nonfree_firmware
-"
 source="
 	deviceinfo
-	initfs-hook.sh
-	90-android-touch-dev.rules
 "
 
 build() {
@@ -30,30 +26,8 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
-	install -D -m644 "$srcdir"/90-android-touch-dev.rules \
-		"$pkgdir"/etc/udev/rules.d/90-android-touch-dev.rules
-}
-
-kernel_downstream() {
-	pkgdesc="Downstream kernel"
-	depends="linux-htc-m8 msm-fb-refresher"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-kernel_mainline() {
-	pkgdesc="Close to mainline kernel"
-	depends="linux-postmarketos-qcom-msm8974 lk2nd-msm8974-htc-m8"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-nonfree_firmware() {
-	pkgdesc="Wifi firmware"
-	depends="firmware-htc-m8"
-	mkdir "$subpkgdir"
 }
 
 sha512sums="
-e3432d0710a78e49fdb7b0bfadb4bee8dbe30f733c6c9040560c61a8f9423a48407da723a85cb5e13ea614f0038bd4ac160de4311f5faaa0e4d109b301b00504  deviceinfo
-765abaad5fda0dfda5e62e1e48414d3eea822198f39d0792171a04d73f86f6273a6e562afab430cbfcdd084412568a0ad03d012e9c40c5564f5cd1b9c0f181eb  initfs-hook.sh
-f0f69ab3b5b3fed11ec5049f37c71c4e9dcf87dc1f238199a3917dd61957d46783a8798d63d400cc5d3983987e750e3fec6d7117561ad5005f28131ae4821d66  90-android-touch-dev.rules
+65aeb4617cf7c0a6fd6936bfe20bb68b56dc875192c4d06c36ce6372535ea01cc848987884d8ec0c33c0666f838aef8a6f0cac6aa74a1836186cd41e0420dce2  deviceinfo
 "

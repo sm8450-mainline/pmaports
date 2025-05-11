@@ -4,23 +4,22 @@
 deviceinfo_format_version="0"
 deviceinfo_name="HTC One M8"
 deviceinfo_manufacturer="HTC"
-deviceinfo_codename="htc-m8"
+deviceinfo_codename="htc-m8-downstream"
 deviceinfo_year="2014"
 deviceinfo_arch="armv7"
-deviceinfo_dtb="qcom-msm8974pro-htc-m8"
-deviceinfo_append_dtb="true"
 
 # Device related
 deviceinfo_chassis="handset"
 deviceinfo_keyboard="false"
 deviceinfo_external_storage="true"
+deviceinfo_create_initfs_extra="true"
 
 # Bootloader related
 deviceinfo_flash_method="fastboot"
 deviceinfo_flash_fastboot_partition_rootfs="system"
-deviceinfo_kernel_cmdline="console=tty0 PMOS_NOSPLASH"
+deviceinfo_kernel_cmdline="console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31 ehci-hcd.park=3 zcache androidboot.selinux=permissive"
 deviceinfo_generate_bootimg="true"
-deviceinfo_generate_extlinux_config="true"
+deviceinfo_bootimg_qcdt="true"
 deviceinfo_flash_offset_base="0x00000000"
 deviceinfo_flash_offset_kernel="0x00008000"
 deviceinfo_flash_offset_ramdisk="0x02008000"
@@ -28,6 +27,3 @@ deviceinfo_flash_offset_second="0x00f00000"
 deviceinfo_flash_offset_tags="0x01e00000"
 deviceinfo_flash_pagesize="2048"
 deviceinfo_flash_sparse="true"
-
-# lk2nd does not support GPT for subpartitions/SD cards yet
-deviceinfo_partition_type="msdos"
