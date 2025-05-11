@@ -4,7 +4,7 @@
 deviceinfo_format_version="0"
 deviceinfo_name="Google Nexus 5X"
 deviceinfo_manufacturer="LG"
-deviceinfo_codename="lg-bullhead"
+deviceinfo_codename="lg-bullhead-downstream"
 deviceinfo_year="2015"
 deviceinfo_arch="aarch64"
 
@@ -28,6 +28,4 @@ deviceinfo_flash_offset_tags="0x01e00000"
 deviceinfo_flash_pagesize="4096"
 deviceinfo_flash_sparse="true"
 
-deviceinfo_append_dtb="true"
-deviceinfo_dtb="qcom/msm8992-lg-bullhead-rev-101"
-deviceinfo_kernel_cmdline="console=tty0 console=ttyMSM0,115200,n8 debug ignore_loglevel earlycon"
+deviceinfo_kernel_cmdline="console=ttyHSL0,115200,n8 androidboot.hardware=bullhead boot_cpus=0-3 maxcpus=4 lpm_levels.sleep_disabled=1 msm_poweroff.download_mode=0 buildvariant=userdebug"
