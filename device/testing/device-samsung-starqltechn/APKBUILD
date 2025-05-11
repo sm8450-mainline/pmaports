@@ -2,7 +2,7 @@
 pkgname=device-samsung-starqltechn
 pkgdesc="Samsung Galaxy S9 SM-G9600"
 pkgver=8
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -10,6 +10,8 @@ options="!check !archcheck"
 depends="
 	alsa-ucm-conf-sdm845
 	dtc
+	hexagonfs-firmware-loader
+	hexagonrpcd>=0.3.2-r3
 	linux-postmarketos-qcom-sdm845
 	mkbootimg
 	msm-firmware-loader
