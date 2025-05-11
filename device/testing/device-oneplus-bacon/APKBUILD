@@ -1,25 +1,26 @@
 # Reference: <https://postmarketos.org/devicepkg>
 # Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=device-oneplus-bacon
-pkgver=6
+pkgver=7
 pkgrel=0
 pkgdesc="OnePlus One"
 url="https://postmarketos.org"
 arch="armv7"
 license="MIT"
 depends="
+	firmware-oneplus-bacon
+	firmware-qcom-adreno-a330
+	linux-postmarketos-qcom-msm8974
 	lk2nd-msm8974
 	mkbootimg
 	postmarketos-base
 	soc-qcom-msm8974
 	"
 makedepends="devicepkg-dev"
-subpackages="
-	$pkgname-kernel-downstream:kernel_downstream
-	$pkgname-kernel-mainline:kernel_mainline
-	$pkgname-nonfree-firmware:nonfree_firmware
-"
-source="deviceinfo modules-initfs.mainline 90-android-touch-dev.rules"
+source="
+	deviceinfo
+	modules-initfs
+	"
 options="!check !archcheck"
 
 build() {
@@ -28,30 +29,9 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
-	install -Dm644 "$srcdir"/90-android-touch-dev.rules \
-		"$pkgdir"/etc/udev/rules.d/90-android-touch-dev.rules
-}
-
-kernel_downstream() {
-	pkgdesc="Downstream kernel"
-	depends="linux-oneplus-bacon msm-fb-refresher"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-kernel_mainline() {
-	pkgdesc="Close to mainline kernel"
-	depends="linux-postmarketos-qcom-msm8974"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-nonfree_firmware() {
-	pkgdesc="GPU, Wi-Fi firmware"
-	depends="firmware-qcom-adreno-a330 firmware-oneplus-bacon"
-	mkdir "$subpkgdir"
 }
 
 sha512sums="
-204d345bb08f57746f84376ad3f1ab48235a7f1c5e55fc1d10d8382d611ce6293f6ee2fb28e2cf8871d538cc6311a602dd820a11b5dfe18a0bf274db561816d9  deviceinfo
-fd639faebbee2c0c2c227710678376e0d039b7d96a62103f7ba7e6304d7060023f09064918e93a125465d20d125c0334225680521a7aeae5a43d77d7360c180c  modules-initfs.mainline
-65e9ee7352b1dc39d99ea411eb0ed9c56f9975230907db5add3a1b4146cdf6f227c934052dab38a1937ed67d67585f28fb7410f10a1bec9dd5e4eb69d7253515  90-android-touch-dev.rules
+14faa011aeab36f0f97c4c320e62c3f09389e03c54b9241e8ed03f37aaac2972a95c5a3dd09ef8b96d566a00424470f4baa2542398f0614f153a145b57b907a7  deviceinfo
+fd639faebbee2c0c2c227710678376e0d039b7d96a62103f7ba7e6304d7060023f09064918e93a125465d20d125c0334225680521a7aeae5a43d77d7360c180c  modules-initfs
 "

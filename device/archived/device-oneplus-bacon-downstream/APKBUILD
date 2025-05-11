@@ -1,0 +1,39 @@
+# Archived: Downstream port, only for testing. Use mainline port!
+# Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: Luca Weiss <luca@lucaweiss.eu>
+pkgname=device-oneplus-bacon-downstream
+pkgver=1
+pkgrel=0
+pkgdesc="OnePlus One (Downstream)"
+url="https://postmarketos.org"
+arch="armv7"
+license="MIT"
+depends="
+	firmware-oneplus-bacon
+	linux-oneplus-bacon
+	mkbootimg
+	msm-fb-refresher
+	postmarketos-base
+	"
+makedepends="devicepkg-dev"
+source="
+	deviceinfo
+	90-android-touch-dev.rules
+	"
+options="!check !archcheck"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+
+	install -Dm644 "$srcdir"/90-android-touch-dev.rules \
+		"$pkgdir"/etc/udev/rules.d/90-android-touch-dev.rules
+}
+
+sha512sums="
+487a0b6e4b1e45ba9a2062183919cf5fe65d1fc6aea909b07d90e71a64b2f87a6024c1f53476236a5cd9202acd50bbcfd4a2829a4b8c6b8c9025f42cbfc6aa72  deviceinfo
+65e9ee7352b1dc39d99ea411eb0ed9c56f9975230907db5add3a1b4146cdf6f227c934052dab38a1937ed67d67585f28fb7410f10a1bec9dd5e4eb69d7253515  90-android-touch-dev.rules
+"
