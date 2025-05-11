@@ -40,7 +40,7 @@ url="https://gcc.gnu.org"
 arch="x86_64"
 license="GPL-2.0-or-later AND LGPL-2.1-or-later"
 _gccrel=$pkgver-r$pkgrel
-depends="binutils-x86 mpc1"
+depends="binutils-x86 mpc1 so:libc.musl-x86_64.so.1 so:libgcc_s.so.1 so:libgmp.so.10 so:libisl.so.23 so:libmpc.so.3 so:libmpfr.so.6 so:libstdc++.so.6 so:libz.so.1"
 makedepends_build="gcc g++ bison flex texinfo gawk zip gmp-dev mpfr-dev mpc1-dev zlib-dev"
 makedepends_host="linux-headers gmp-dev mpfr-dev mpc1-dev isl-dev zlib-dev musl-dev-x86 binutils-x86"
 subpackages="g++-x86:gpp libstdc++-dev-x86:libcxx_dev"
@@ -571,6 +571,8 @@ gpp() {
 	pkgdesc="GNU C++ standard library and compiler"
 	depends="libstdc++-dev$_target=$_gccrel gcc$_target=$_gccrel musl-dev"
 	[ "$CHOST" = "$CTARGET" ] && depends="$depends libstdc++=$_gccrel"
+
+	depends="$depends so:libc.musl-x86_64.so.1 so:libgmp.so.10 so:libisl.so.23 so:libmpc.so.3 so:libmpfr.so.6 so:libz.so.1"
 
 	amove $_gcclibexec/cc1plus
 	amove usr/bin/*++
