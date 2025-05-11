@@ -1,0 +1,10 @@
+[Unit]
+Description=81voltd
+After=ModemManager.target
+
+[Service]
+ExecStart=/usr/bin/81voltd
+
+[Install]
+WantedBy=multi-user.target
+

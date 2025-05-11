@@ -1,6 +1,6 @@
 pkgname=81voltd
 pkgver=1.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Server-side implementation of the QMI IMS Data service"
 url="https://gitlab.com/flamingradian/81voltd"
 arch="all"
@@ -13,8 +13,10 @@ makedepends="
 source="
 	$pkgname-$pkgver.tar.gz::https://gitlab.com/flamingradian/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz
 	81voltd.initd
+	81voltd.service
 	"
 builddir="$srcdir/$pkgname-v$pkgver"
+subpackages="$pkgname-openrc $pkgname-systemd"
 
 # There are no checks to run
 options="!check"
@@ -28,10 +30,13 @@ package() {
 	DESTDIR="$pkgdir" meson install --no-rebuild -C output
 
 	install -Dm755 "$builddir"/output/81voltd "$pkgdir"/usr/bin/81voltd
-        install -Dm755 "$srcdir"/81voltd.initd "$pkgdir"/etc/init.d/81voltd
+	install -Dm755 "$srcdir"/81voltd.initd "$pkgdir"/etc/init.d/81voltd
+
+	install -Dm644 "$srcdir"/81voltd.service -t "$pkgdir"/usr/lib/systemd/system
 }
 
 sha512sums="
 460ad150d7f43303147d22d4552ee5fc90a6ba0cda5606d29e55939de1df465f713272cfa009ab1d606fd6b140ffdb9f080f2356713cd24e7c8b3040031013fc  81voltd-1.0.0.tar.gz
 73fa6f27259f3731a811216983911886e4ce5fb15664f978e99184ab88fd4444142f72b6313474e59260596a54e8e3ace7b66f10ead92159fad930b3a225b464  81voltd.initd
+2b3f0b2fb03b0c1e21edd1f9e29ea4e5d4ca0d4110ed890c847b4098ac8175c7a77e1f1868d799f1e00010f67539f2bc1d143521847aaacbea882db4d7b199a1  81voltd.service
 "
