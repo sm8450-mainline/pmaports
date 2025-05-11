@@ -4,10 +4,8 @@
 deviceinfo_format_version="0"
 deviceinfo_name="Motorola Moto G 4G (2013)"
 deviceinfo_manufacturer="Motorola"
-deviceinfo_codename="motorola-peregrine"
+deviceinfo_codename="motorola-peregrine-downstream"
 deviceinfo_year="2013"
-deviceinfo_dtb="qcom-msm8926-motorola-peregrine"
-deviceinfo_append_dtb="true"
 deviceinfo_arch="armv7"
 
 # Device related
@@ -20,8 +18,10 @@ deviceinfo_dev_touchscreen="/dev/input/event3"
 
 # Bootloader related
 deviceinfo_flash_method="fastboot"
+deviceinfo_kernel_cmdline="androidboot.bootdevice=msm_sdcc.1 androidboot.hardware=qcom vmalloc=400M androidboot.selinux=permissive"
 deviceinfo_generate_bootimg="true"
 deviceinfo_generate_extlinux_config="true"
+deviceinfo_bootimg_qcdt="true"
 deviceinfo_flash_offset_base="0x10000000"
 deviceinfo_flash_offset_kernel="0x00008000"
 deviceinfo_flash_offset_ramdisk="0x01000000"
