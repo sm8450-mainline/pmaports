@@ -1,18 +1,18 @@
+# Archived: Downstream port, only for testing. Use mainline port!
 # Reference: <https://postmarketos.org/devicepkg>
-pkgname=device-google-crosshatch
-pkgdesc="Google Pixel 3 XL"
-pkgver=2
+pkgname=device-google-crosshatch-downstream
+pkgdesc="Google Pixel 3 XL (Downstream)"
+pkgver=1
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
 depends="
-	firmware-google-crosshatch-mainline-dtbo
-	linux-google-crosshatch-mainline
+	linux-google-crosshatch-downstream
 	mkbootimg
 	postmarketos-base
-"
+	"
 makedepends="devicepkg-dev"
 source="deviceinfo"
 
@@ -25,5 +25,5 @@ package() {
 }
 
 sha512sums="
-1e4c036e5b6303fecfea6cd8ec05e1666c09b5beb1cadf920aae0eacf35e44b3259b78da68522a3afa6da9d56cae19aba5f8caf17107f5a3378c1ba760bab59f  deviceinfo
+3f0f9410733e7646aec1efb19afd4240139feb19091977bb80d3d98c72747e067557e82475f6697bf324cb87aba543b4a54beb1375e5899055dd1a0f9f664e3e  deviceinfo
 "

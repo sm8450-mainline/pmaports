@@ -1,9 +1,10 @@
+# Archived: Downstream port, only for testing. Use mainline port!
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on: arch/arm64/configs/lineageos_crosshatch_defconfig
 
-pkgname=linux-google-crosshatch
+pkgname=linux-google-crosshatch-downstream
 pkgver=4.9.200
-pkgrel=2
+pkgrel=0
 pkgdesc="Google Pixel 3 XL kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -45,7 +46,7 @@ package() {
 	KERNEL_IMAGE_NAME="Image.lz4-dtb" downstreamkernel_package "$builddir" "$pkgdir" "$_carch" "$_flavor"
 }
 
-sha512sums="e63d9c877182952aff07beeb2581dae15ae2316a24deb5bffdc633884a438ae30685d7cdd3302d275443a7d0bcd02b33d0d49461abe56995adf43e5a5636a81e  linux-google-crosshatch-d6cae0bddcfc25ce897d43a11a4d3c5d07777831.tar.gz
+sha512sums="e63d9c877182952aff07beeb2581dae15ae2316a24deb5bffdc633884a438ae30685d7cdd3302d275443a7d0bcd02b33d0d49461abe56995adf43e5a5636a81e  linux-google-crosshatch-downstream-d6cae0bddcfc25ce897d43a11a4d3c5d07777831.tar.gz
 169643e6373e20d41428f2e8404fb6d489d33f41a27774d5e37f3f2ee874dc99577e4880b737a8411a1bd20d556f233b3a48ac2b451277256871500fe244f977  config-google-crosshatch.aarch64
 720c5856b7d1d8b3cb20f77507818b7fe1b4950d444f7ed20cb02d255987d8860d5ed293e81ea326f147af13004b524886c733123794ac62978fda13689a5189  clk-qcom-mdss-fix-in-tree-build.patch
 f175233f0cd4e5658937cf50c8535a2b9f1a0d9c7c3fb52aa54096f7733f292e1ab6c2cebadde8479980f27d9b8f7d03f98da3f8166858c8519d91de2a37f1ba  arm64-boot-disable-building-DTBO-images.patch
