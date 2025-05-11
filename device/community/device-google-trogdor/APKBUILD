@@ -2,8 +2,8 @@
 # Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-trogdor
 pkgdesc="Google Trogdor Chromebooks"
-pkgver=4
-pkgrel=1
+pkgver=5
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -18,7 +18,11 @@ depends="
 "
 makedepends="devicepkg-dev"
 subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
-source="deviceinfo modules-initfs"
+source="
+	deviceinfo
+	modules-initfs
+	99-google-trogdor-accel.rules
+"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -26,6 +30,8 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
+	install -Dm644 "$srcdir"/99-google-trogdor-accel.rules\
+			"$pkgdir"/usr/lib/udev/rules.d/99-google-trogdor-accel.rules
 }
 
 nonfree_firmware() {
@@ -50,4 +56,5 @@ openrc() {
 sha512sums="
 f94dcb175e49cbaadce524586ed1c3e3b0182e414c84c495a5585b49ed40ca6f7fa9c73544d19cbad236333f9fd997f150f836452b47a271f99b7b059972c4bc  deviceinfo
 ef0257928f28aff25e6c625fabfd0942b01d4d86f1b523212ca825cf80f8b7a6c20ff17bfb02cb19f2a5d8787326ba22ad560a957c8d3c38b9ec70f1e16f9117  modules-initfs
+c9e0be258575e2af67509b55d373a5e4da00ba338e6ff30859926e20aabe60a0ea657002e5b47bd579b55ff3be75a772c1f63d3adc05feb0a0d23c1fc52292b8  99-google-trogdor-accel.rules
 "
