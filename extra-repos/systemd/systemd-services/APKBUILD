@@ -8,7 +8,7 @@
 pkgname=systemd-services
 # 1. bump pkgver
 pkgver=67
-pkgrel=1
+pkgrel=2
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
 arch="noarch"
@@ -297,7 +297,7 @@ _service() {
 		if echo "user system" | grep -q "${f%%/*}"; then
 			prefix="$prefix/usr/lib/systemd"
 		elif echo "tmpfiles.d" | grep -q "${f%%/*}"; then
-			prefix="$prefix/usr/lib/tmpfiles.d"
+			prefix="$prefix/usr/lib"
 		elif echo "user-environment-generators system-environment-generators" | grep -q "${f%%/*}"; then
 			prefix="$prefix/usr/lib/systemd"
 			mode=755
