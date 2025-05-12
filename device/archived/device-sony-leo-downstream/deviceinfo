@@ -4,7 +4,7 @@
 deviceinfo_format_version="0"
 deviceinfo_name="Sony Xperia Z3"
 deviceinfo_manufacturer="Sony"
-deviceinfo_codename="sony-leo"
+deviceinfo_codename="sony-leo-downstream"
 deviceinfo_year="2014"
 deviceinfo_arch="armv7"
 
@@ -14,9 +14,6 @@ deviceinfo_keyboard="false"
 deviceinfo_external_storage="true"
 deviceinfo_screen_width="1080"
 deviceinfo_screen_height="1920"
-
-deviceinfo_dtb="qcom-msm8974pro-sony-xperia-shinano-leo"
-deviceinfo_append_dtb="true"
 
 # Bootloader related
 deviceinfo_flash_method="fastboot"
