@@ -1,8 +1,9 @@
+# Archived: Downstream port, only for testing. Use mainline port!
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on: arch/arm64/configs/platina_defconfig
 # Maintainer: Molly Sophia <mollysophia379@gmail.com>
 
-pkgname=linux-xiaomi-platina
+pkgname=linux-xiaomi-platina-downstream
 pkgver=4.4.296
 pkgrel=0
 pkgdesc="Xiaomi Mi 8 Lite kernel fork"
@@ -62,7 +63,7 @@ package() {
 }
 
 sha512sums="
-1e7f7ef9629aa72544c76ab941c79a283639dc744e4b88034d6b5787dbbb00073cc65ef846fa8a6c1f70168a595c267b7497d1e9ab4243ef1dd0f06e62ce06ab  linux-xiaomi-platina-82e44f01405d6fcccef53c5d2c95cf2fbbda9075.tar.gz
+1e7f7ef9629aa72544c76ab941c79a283639dc744e4b88034d6b5787dbbb00073cc65ef846fa8a6c1f70168a595c267b7497d1e9ab4243ef1dd0f06e62ce06ab  linux-xiaomi-platina-downstream-82e44f01405d6fcccef53c5d2c95cf2fbbda9075.tar.gz
 9cd764f6b25de99f044876a076d546cc989ab13a72484c3e54ef187b99760d9e7b2847a05bca3cb3bd274044f374c750ef33781d4d6599792350d0dee2f33e3f  config-xiaomi-platina.aarch64
 9f1b27e523675ecaafd0ffd884e3e8d0fe9b0bf78b09b5fe044a5d5c9888a86fb0007aa9d90118f0b022a4ace62c5be236097df3bb67a3207a24a766d0907c33  0001-Use-relative-includes.patch
 a8713d22404a5e2c0d2add3deb4cb033e972bd1983e10f1557d4de640c1329af50be2bfd92dc3cf76df711a6b4a422b920da76c2d6c4435e3624c85f7d07ae52  0002-Fix-TRACE_INCLUDE_PATH-paths.patch

@@ -1,18 +1,18 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-platina
 pkgdesc="Xiaomi Mi 8 Lite"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
-depends="mkbootimg postmarketos-base"
+depends="
+	linux-postmarketos-qcom-sdm660
+	mkbootimg
+	postmarketos-base
+	"
 makedepends="devicepkg-dev"
-subpackages="
-	$pkgname-kernel-downstream:kernel_downstream
-	$pkgname-kernel-mainline:kernel_mainline
-"
 source="deviceinfo modules-initfs"
 
 build() {
@@ -23,19 +23,7 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 
-kernel_downstream() {
-	pkgdesc="LineageOS downstream kernel (recommended)"
-	depends="linux-xiaomi-platina msm-fb-refresher"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-kernel_mainline() {
-	pkgdesc="For kernel development only (most features aren't working)"
-	depends="linux-postmarketos-qcom-sdm660"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
 sha512sums="
-f82ecf9667953f3436c28d24f627a1ec69884ff9e1df81661c789dcadbb03f3abde070e0feed7bf07a40c2abac5b19720a1323ac8296e6de84d07e2edfd81c57  deviceinfo
+b7024138a54c8e600db06da7244fb4a00411c2a46d00287077de347ecfb0905bface78574f21212ae5e31d2b5532f27939a1f9f329f4f07900bb5cb86a43bdb2  deviceinfo
 029156e04ee0f9e20cf37d6fd0f52278ecc6a029b9ca86845a5e9a7b550ed1211b62f09e5ed36083061269d4e83b648788b87bbde0fba3cd1eb68675c47b79eb  modules-initfs
 "
