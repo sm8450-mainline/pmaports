@@ -2,7 +2,7 @@
 # Maintainer: David Heidelberg <david@ixit.cz>
 pkgname=device-asus-flo
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Nexus 7 2013 (flo)"
 url="https://postmarketos.org"
 arch="armv7"
@@ -10,7 +10,7 @@ license="MIT"
 depends="postmarketos-base mkbootimg"
 makedepends="devicepkg-dev"
 subpackages="
-	$pkgname-kernel-downstream:kernel_downstream
+	$pkgname-kernel-mainline-old:kernel_mainline_old
 	$pkgname-kernel-mainline:kernel_mainline
 	$pkgname-nonfree-firmware:nonfree_firmware"
 source="deviceinfo 90-android-touch-dev.rules wpa_supplicant.conf pointercal"
@@ -31,8 +31,8 @@ package() {
 		"$pkgdir"/etc/pointercal
 }
 
-kernel_downstream() {
-	pkgdesc="GPU works somehow, very old"
+kernel_mainline_old() {
+	pkgdesc="Old 4.11 mainline kernel, GPU works somehow"
 	depends="linux-asus-flo"
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
