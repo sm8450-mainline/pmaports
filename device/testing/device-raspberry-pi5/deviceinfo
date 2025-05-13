@@ -7,6 +7,7 @@ deviceinfo_manufacturer="Raspberry Pi"
 deviceinfo_codename="raspberry-pi5"
 deviceinfo_year="2023"
 deviceinfo_arch="aarch64"
+deviceinfo_disable_dhcpd="true"
 
 # Device related
 deviceinfo_gpu_accelerated="true"
