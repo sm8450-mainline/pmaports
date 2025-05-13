@@ -1,7 +1,8 @@
+# Archived: Downstream port, only for testing. Use mainline port!
 # Maintainer: Henrik Grimler <henrik@grimler.se>
 # Reference: <https://postmarketos.org/devicepkg>
-pkgname=device-samsung-klimtlte
-pkgdesc="Samsung Galaxy Tab S 8.4 LTE"
+pkgname=device-samsung-klimtlte-downstream
+pkgdesc="Samsung Galaxy Tab S 8.4 LTE (Downstream)"
 pkgver=5
 pkgrel=0
 url="https://postmarketos.org"
@@ -9,10 +10,12 @@ license="MIT"
 arch="armv7"
 options="!check !archcheck"
 depends="
-	firmware-samsung-klimt-mainline
-	linux-postmarketos-exynos5
+	firmware-samsung-klimt-downstream
+	linux-samsung-klimtlte
 	mkbootimg
+	msm-fb-refresher
 	postmarketos-base
+	postmarketos-base-downstream
 "
 makedepends="devicepkg-dev"
 source="deviceinfo"
@@ -26,5 +29,5 @@ package() {
 }
 
 sha512sums="
-d6a4d20b9bce77a3c6f1cd9ab281c4ae3937920d76257acab88814856ba5eb906fa16d4c76b57739ee3af490489308708ffaf827b6a361f4c1eb06b979fed97d  deviceinfo
+d22eafa935e6bbe943246bfd2868988a155ce00a4d263c54c17daaad87cc245afa4f8d55e8b3b7ef9199be179173b0787c9d129322fc84304b4c298c766ec2ec  deviceinfo
 "

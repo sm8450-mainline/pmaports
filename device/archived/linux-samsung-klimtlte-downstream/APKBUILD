@@ -1,10 +1,11 @@
+# Archived: Downstream port, only for testing. Use mainline port!
 # Maintainer: Henrik Grimler <henrik@grimler.se>
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on: arch/arm/configs/lineageos_klimtlte_defconfig
 
-pkgname=linux-samsung-klimtlte
+pkgname=linux-samsung-klimtlte-downstream
 pkgver=3.4.113
-pkgrel=3
+pkgrel=0
 pkgdesc="Samsung Galaxy Tab S 8.4 LTE kernel fork"
 arch="armv7"
 _carch="arm"
@@ -49,7 +50,7 @@ package() {
 }
 
 sha512sums="
-38bb1af78097f32ec594d3c7dd393c1fe449c4c892b567b1558a999143049e1bc2fa7375ecd54477be97066534e0dd875c01453e4658b4ae3f91e346e0b3b6ea  linux-samsung-klimtlte-c1a203cee565eb20a9b5bc2daf1c1b650a420fe5.tar.gz
+38bb1af78097f32ec594d3c7dd393c1fe449c4c892b567b1558a999143049e1bc2fa7375ecd54477be97066534e0dd875c01453e4658b4ae3f91e346e0b3b6ea  linux-samsung-klimtlte-downstream-c1a203cee565eb20a9b5bc2daf1c1b650a420fe5.tar.gz
 896fadb4d8a1da5f9d7406b174c5adb6cd5e431342fa0d84b05fefcb6bdc251d48a848615d543548a0f6ef46e682b3bb53e159b94f406cdff09ffb5cbd3d7906  config-samsung-klimtlte.armv7
 5214a850d496bed9e17575bd0b52e9e4415bcbd5a89863f924c5bfed848f684c0a95e8d10c9ef93c0e00149f034cf5e897d1b268be35676a600b3ee6e1917501  01-netfilter-symbols.patch
 5fad0940e90da71277b70b6e72fbb75fcc5e12625e65f827ae896d448628b252b3312539f9c184b26ffe5ca3b343a56b388ea6addb7fe446c7d1ae2aefb4b51e  02-usb_gadget-set-random-rndis-host-MAC-address-to-prev.patch
