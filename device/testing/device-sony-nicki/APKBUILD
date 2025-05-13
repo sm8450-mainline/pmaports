@@ -1,52 +1,28 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-sony-nicki
 pkgdesc="Sony Xperia M"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
-depends="postmarketos-base mkbootimg mdss-fb-init-hack msm-fb-refresher"
+depends="
+	linux-sony-nicki-mainline
+	mkbootimg
+	postmarketos-base
+	"
 makedepends="devicepkg-dev"
-source="deviceinfo 90-android-touch-dev.rules screen-workaround.sh fb.modes pointercal"
-subpackages="
-		$pkgname-kernel-downstream:kernel_downstream
-		$pkgname-kernel-mainline:kernel_mainline
-"
+source="deviceinfo"
 
 build() {
 	devicepkg_build $startdir $pkgname
 }
 
-kernel_downstream() {
-	pkgdesc="LineageOS downstream kernel (recommended)"
-	depends="linux-sony-nicki postmarketos-base-downstream-disable-udev-v4l"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-kernel_mainline() {
-	pkgdesc="Close to mainline; do not use - only for development!"
-	depends="linux-sony-nicki-mainline"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
 package() {
 	devicepkg_package $startdir $pkgname
-	install -D -m644 "$srcdir"/90-android-touch-dev.rules \
-		"$pkgdir"/etc/udev/rules.d/90-android-touch-dev.rules
-	install -D -m644 "$srcdir"/screen-workaround.sh \
-		"$pkgdir"/etc/profile.d/screen-workaround.sh
-	install -D -m644 "$srcdir"/fb.modes \
-		"$pkgdir"/etc/fb.modes
-	install -D -m644 "$srcdir"/pointercal \
-		"$pkgdir"/etc/pointercal
 }
 
 sha512sums="
-bc6ac56742c5ecbf9966667d26af95585e2be1d9ac726957a6747064988772c074e67ab23da442ab9f96cc3d56a481d5302c5c3faac30a80dea5c3175d55125b  deviceinfo
-a3d3a0cf43c5f216279666143d6042f2669dbe3dc5ecec2817b6118a0c122f5b927799b37432bee3167359c118d0142fd8e8e8d67374e8ab1d837673f217e1ae  90-android-touch-dev.rules
-336b6ac90946ec4b4626e9dcb8f1cce503d0ad6fc164177e53502b580aa509dc31ae2ef4fcb9fb04906576cdd6590f625f127e2c29ec61493e30cb6508fdb68d  screen-workaround.sh
-aac9a5d4c856b6feaf4f2961251fbc81d9173e24c3b20806e803711b40e388a173abf2651d5d828d36a504ef2de12c1c1eacea1f1b9479e31f55234012140405  fb.modes
-016111b7618e2509186fd91dd238cdfb51c37a02af98ba01d3cf27358ff901f71f7ff5e798752334e720bf8108b907a31e9242085c8c915748f2d9391f86dfc4  pointercal
+bdb0e6aa25713a4987ea302a56b011692fc58165d9413471a3c0f309083f3316a1acb2293a38d898507cb64abfba040d517ed4d855bd6f288a9c7708515930d3  deviceinfo
 "
