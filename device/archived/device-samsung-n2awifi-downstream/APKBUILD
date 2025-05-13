@@ -1,25 +1,26 @@
+# Archived: Downstream port, only for testing. Use mainline port!
 # Maintainer: Hendrik Noack <hendrik.noack@protonmail.com>
 # Reference: <https://postmarketos.org/devicepkg>
-pkgname=device-samsung-n2awifi
+pkgname=device-samsung-n2awifi-downstream
 pkgdesc="Samsung Galaxy Tab Pro 10.1 WiFi"
-pkgver=5
+pkgver=1
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
 depends="
-	firmware-samsung-n2awifi-mainline
-	linux-firmware-brcm
-	linux-firmware-s5p-mfc
-	linux-postmarketos-exynos5
+	firmware-samsung-n2awifi-downstream
+	linux-samsung-n2awifi-downstream
 	mkbootimg
+	msm-fb-refresher
 	postmarketos-base
+	postmarketos-base-downstream
+	postmarketos-base-downstream-disable-udev-v4l
 "
 makedepends="devicepkg-dev"
 source="
 	deviceinfo
-	modules-initfs
 "
 
 build() {
@@ -31,6 +32,5 @@ package() {
 }
 
 sha512sums="
-3f48e07df64d843fb95d063a2738303fe43622b1fd0cdab89690465fc0153ba66cf44232e5e1b615af50ed146b851bc83dab0804f48c976de8cd2109e18653ec  deviceinfo
-4b3cb9dca85c04f1bfc5676029a6ae225409f173c6f0fc025786c1a72326dabad4b5ad75d0dd9a41cdebe8c15db5ca9761e15f3b9f99f8bf70b19769bb116fe6  modules-initfs
+9030e037ecc806de2caee3156b5a6e85a199f13a1dc0cd652d31ff6ee25b8e48a6e20abdf57a04f56b92e50ca8df530e468eafd9594edd63d8c1da0153417a8c  deviceinfo
 "
