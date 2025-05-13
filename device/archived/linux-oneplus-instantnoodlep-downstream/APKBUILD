@@ -1,9 +1,10 @@
+# Archived: Downstream port, only for testing. Use mainline port!
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on: arch/arm64/configs/vendor/kona_defconfig
 
-pkgname=linux-oneplus-instantnoodlep
+pkgname=linux-oneplus-instantnoodlep-downstream
 pkgver=4.19.272
-pkgrel=1
+pkgrel=0
 pkgdesc="OnePlus 8 Pro kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -71,7 +72,7 @@ package() {
 }
 
 sha512sums="
-8b291904ba7ea00fe32da7803415fa2e889cd2d964b454fb457923c2c462ab4ee02a843e6286f2a69f8530b4d09965ad21683b771c180124605bc7d15cfa07fb  linux-oneplus-instantnoodlep-28048669da64fdc5c7d9b1697531ed25d62ea9aa.tar.gz
+8b291904ba7ea00fe32da7803415fa2e889cd2d964b454fb457923c2c462ab4ee02a843e6286f2a69f8530b4d09965ad21683b771c180124605bc7d15cfa07fb  linux-oneplus-instantnoodlep-downstream-28048669da64fdc5c7d9b1697531ed25d62ea9aa.tar.gz
 8f8e2c0e34229bc0958b711c6a6509e6ff1f3535146954ea927f023ce707d56cc548424732dd458556dd2851a7add584f78ccf67a9cefaf7d690f693f7639a1e  config-oneplus-instantnoodlep.aarch64
 bbd3790b58b1f0c28bac25cd50533fa9bb60d5727480ee3ff0063fbcc83c1b188d820cd7de736ca6bb67821b76071f54c46e5e5292a79e744af122bdc1a17ac0  0001-comment-out-mgeneral-regs-only-flag.patch
 37ff67b6aadcc8cf432c1e41d5ea9cecd882986df274a02ad7978401d86ef821809d6cb195881192626e5545e6b0668cb475ebe9cb42e583452e424854ddec78  0002-remove-inline-from-fn-usb-driver.patch
