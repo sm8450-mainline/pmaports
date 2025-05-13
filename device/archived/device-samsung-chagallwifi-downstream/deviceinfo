@@ -5,10 +5,8 @@
 deviceinfo_format_version="0"
 deviceinfo_name="Samsung Galaxy Tab S 10.5 WiFi"
 deviceinfo_manufacturer="Samsung"
-deviceinfo_codename="samsung-chagallwifi"
+deviceinfo_codename="samsung-chagallwifi-downstream"
 deviceinfo_year="2014"
-deviceinfo_append_dtb="true"
-deviceinfo_dtb="exynos5420-chagall-wifi"
 deviceinfo_arch="armv7"
 deviceinfo_getty="ttySAC2;115200"
 deviceinfo_flash_kernel_on_update="true"
@@ -37,3 +35,4 @@ deviceinfo_flash_pagesize="2048"
 # Heimdall related
 deviceinfo_flash_heimdall_partition_kernel="BOOT"
 deviceinfo_flash_heimdall_partition_rootfs="SYSTEM"
+

@@ -1,11 +1,12 @@
+# Archived: Downstream port, only for testing. Use mainline port!
 # Maintainer: David Davies-Jones <david@exultantmonkey.co.uk>
 # Co-Maintainer: Henrik Grimler <henrik@grimler.se>
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on: arch/arm/configs/lineageos_chagallwifi_defconfig
 
-pkgname=linux-samsung-chagallwifi
+pkgname=linux-samsung-chagallwifi-downstream
 pkgver=3.4.113
-pkgrel=5
+pkgrel=0
 pkgdesc="Samsung Galaxy Tab S 10.5 kernel fork"
 arch="armv7"
 _carch="arm"
@@ -48,7 +49,7 @@ package() {
 }
 
 sha512sums="
-c10c0b457a37ca89172203d83b0c5efd3b4fd4a9e4ff5b64328737275cfc4b19d4a316eab61aa5561943f29f70bb2bebac0efba54854e01553b90b8dd639d4bd  linux-samsung-chagallwifi-fed1690ca92e33cc6a5febe2e45dd909b9090d37.tar.gz
+c10c0b457a37ca89172203d83b0c5efd3b4fd4a9e4ff5b64328737275cfc4b19d4a316eab61aa5561943f29f70bb2bebac0efba54854e01553b90b8dd639d4bd  linux-samsung-chagallwifi-downstream-fed1690ca92e33cc6a5febe2e45dd909b9090d37.tar.gz
 9f5a290e6675208ef616e2f0aea721dc14708e35fb12da1cb0e19dc21ccc05c53ba4698f916f8aad685931f629c2db2aae80cb31f38225984e863c26f49116dd  config-samsung-chagallwifi.armv7
 5214a850d496bed9e17575bd0b52e9e4415bcbd5a89863f924c5bfed848f684c0a95e8d10c9ef93c0e00149f034cf5e897d1b268be35676a600b3ee6e1917501  01-netfilter-symbols.patch
 5fad0940e90da71277b70b6e72fbb75fcc5e12625e65f827ae896d448628b252b3312539f9c184b26ffe5ca3b343a56b388ea6addb7fe446c7d1ae2aefb4b51e  02-usb_gadget-set-random-rndis-host-MAC-address-to-prev.patch
