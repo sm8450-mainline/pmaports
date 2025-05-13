@@ -1,19 +1,19 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-sony-yuga
-pkgver=4
-pkgrel=1
+pkgver=5
+pkgrel=0
 pkgdesc="Sony Xperia Z"
 url="https://postmarketos.org"
 arch="armv7"
 license="MIT"
-depends="postmarketos-base mkbootimg"
+depends="
+	firmware-sony-fusion3
+	linux-postmarketos-qcom-apq8064
+	mkbootimg
+	postmarketos-base
+	"
 makedepends="devicepkg-dev"
-subpackages="
-	$pkgname-nonfree-firmware:nonfree_firmware
-	$pkgname-kernel-downstream:kernel_downstream
-	$pkgname-kernel-mainline:kernel_mainline
-"
-source="deviceinfo 90-android-touch-dev.rules"
+source="deviceinfo"
 options="!check !archcheck"
 
 build() {
@@ -22,33 +22,8 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
-	install -D -m644 "$srcdir"/90-android-touch-dev.rules \
-		"$pkgdir"/etc/udev/rules.d/90-android-touch-dev.rules
-}
-
-kernel_downstream() {
-	pkgdesc="LineageOS downstream kernel (recommended)"
-	depends="
-		linux-sony-yuga
-		msm-fb-refresher
-		postmarketos-base-downstream-disable-udev-v4l
-	"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-kernel_mainline() {
-	pkgdesc="Close to mainline; do not use - only for development!"
-	depends="linux-postmarketos-qcom-apq8064"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-nonfree_firmware() {
-	pkgdesc="Wifi firmware"
-	depends="firmware-sony-fusion3"
-	mkdir "$subpkgdir"
 }
 
 sha512sums="
-d7f942ff1d17e4a775040c1a00bdafed534fb552696fdf4764fe8a741f4766fa4dacdd243058e9e4574706b9e9e8dccb5144fe4c6c3a6aa04d5fcdad46385601  deviceinfo
-8b6034c0338ab4c7d648f47983aad6da07e427e7dba47baabf85a1b3ddeeda47c8d7fbcd547a302c9a759b2943ee30d3e82c3b368d8582833a058e4671638a9e  90-android-touch-dev.rules
+7703d4ea1876f96e249cd62b89df29880d2761c18ad6eb7be4f0ce0b125cc36e0941147062e0c56bf7f422fbde4267db35c0115109a2f34468ac0d50d9fbda87  deviceinfo
 "

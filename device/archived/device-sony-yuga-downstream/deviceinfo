@@ -4,12 +4,9 @@
 deviceinfo_format_version="0"
 deviceinfo_name="Sony Xperia Z"
 deviceinfo_manufacturer="Sony"
-deviceinfo_codename="sony-yuga"
+deviceinfo_codename="sony-yuga-downstream"
 deviceinfo_year="2013"
 deviceinfo_arch="armv7"
-deviceinfo_dtb="qcom-apq8064-sony-xperia-yuga"
-deviceinfo_append_dtb="true"
-deviceinfo_kernel_cmdline="console=ttyMSM0,115200,n8 fw_devlink=permissive"
 
 # Device related
 deviceinfo_chassis="handset"
@@ -27,3 +24,4 @@ deviceinfo_flash_offset_ramdisk="0x02000000"
 deviceinfo_flash_offset_second="0x00f00000"
 deviceinfo_flash_offset_tags="0x00000100"
 deviceinfo_flash_pagesize="2048"
+deviceinfo_kernel_cmdline="console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=2 androidboot.selinux=permissive"
