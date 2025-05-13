@@ -1,0 +1,33 @@
+# Archived: Downstream port, only for testing. Use mainline port!
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-oneplus-kebab-downstream
+pkgdesc="OnePlus 8T (Downstream)"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	firmware-oneplus-instantnoodlep
+	linux-oneplus-kebab-downstream
+	mkbootimg
+	postmarketos-base
+"
+makedepends="
+	devicepkg-dev
+	dtc
+"
+source="deviceinfo"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+cccedb0afe624eb7017bee81728b36d9ce48dde98366c9fcad806cb6e9004934c0f406fbad11b8b8c0daf93079977d3c5bb9c11b120a092d44bed5465e8ca638  deviceinfo
+"
