@@ -4,14 +4,11 @@
 deviceinfo_format_version="0"
 deviceinfo_name="Samsung Galaxy SII"
 deviceinfo_manufacturer="Samsung"
-deviceinfo_codename="samsung-i9100"
+deviceinfo_codename="samsung-i9100-downstream"
 deviceinfo_year="2011"
-deviceinfo_append_dtb="true"
-deviceinfo_dtb="exynos4210-i9100"
 deviceinfo_getty="ttySAC2;115200"
 deviceinfo_flash_method="heimdall-isorec"
 deviceinfo_arch="armv7"
-deviceinfo_mesa_driver="exynos"
 
 # Device related
 deviceinfo_gpu_accelerated="true"
