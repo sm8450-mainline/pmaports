@@ -3,7 +3,7 @@
 pkgname=device-generic-x86_64
 pkgdesc="Generic x86_64 system, with EFI"
 pkgver=19
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="x86_64"
@@ -12,6 +12,7 @@ depends="
 	alsa-ucm-conf
 	postmarketos-base
 	systemd-boot
+	systemd-boot-x86
 	unl0kr-fbforcerefresh
 "
 makedepends="devicepkg-dev"
