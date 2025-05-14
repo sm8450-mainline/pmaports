@@ -21,3 +21,5 @@ deviceinfo_mesa_driver="vc4"
 # Bootloader related
 deviceinfo_flash_method="none"
 deviceinfo_boot_filesystem="fat16"
+# The following line is required for NVMe/M.2 installs:
+deviceinfo_partition_type="msdos"
