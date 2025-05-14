@@ -1,6 +1,6 @@
 pkgname=postmarketos-qemu-common
 pkgdesc="Common package for Qemu 'devices'"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -14,10 +14,14 @@ subpackages="
 source="
 	mce-display-blanking.conf
 	resolution-qemu-X11.conf
+	wlr-no-hw-cursor.sh
 "
 
 package() {
-	mkdir -p "$pkgdir"
+	# This sets a var specific to wlroots, but some UIs vendor it and creating
+	# multiple subpkgs to handle these is silly.
+	install -Dm644 wlr-no-hw-cursor.sh \
+		"$pkgdir"/etc/profile.d/10-wlr-no-hw-cursor.sh
 }
 
 mce() {
@@ -42,4 +46,5 @@ x11() {
 sha512sums="
 99d32eed6c5cda59e91516e982c5bd5165ff718133e2411a0dbba04e2057d1dfad49a75e5cc67140d0e0adcbe1383671bd2892335929b782a5b19f5472e635ad  mce-display-blanking.conf
 bfff3ebf11abb43d8ea45e778c19554b1bc8ef9e694d8160daaac0ef906b4d8eda772e5f984033cce52ebddfbbe76e5340c6805e68f967994a3240c1e10c8b5b  resolution-qemu-X11.conf
+1434e9d3431eabeb76129e3bcaf20318b6a0c8fcc879d90d667f53984f45a88d5b50000501b3deb4469df5f5d9b82cb0accef23313344c23c13336880d9006e1  wlr-no-hw-cursor.sh
 "
