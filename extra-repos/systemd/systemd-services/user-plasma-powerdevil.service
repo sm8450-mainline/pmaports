@@ -10,6 +10,7 @@ BusName=org.kde.Solid.PowerManagement
 TimeoutStopSec=5sec
 Slice=background.slice
 Restart=on-failure
+AmbientCapabilities=CAP_WAKE_ALARM
 
 # Temporary workaround for Powerdevil crashing while kwin_wayland restarts
 Environment=POWERDEVIL_NO_DDCUTIL=1
