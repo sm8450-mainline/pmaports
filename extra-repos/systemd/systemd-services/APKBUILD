@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=68
+pkgver=69
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -52,6 +52,7 @@ subpackages="
 	kactivitymanagerd-systemd:_service
 	kanshi-systemd:_service
 	kded-systemd:_service
+	keyd-systemd:_service
 	kglobalacceld-systemd:_service
 	kodi-systemd:_service
 	ksystemstats-systemd:_service
@@ -156,6 +157,7 @@ _iwd_sources="system/iwd.service" # From https://git.kernel.org/pub/scm/network/
 _kanshi_sources="user/kanshi.service" # created, no unit file upstream
 _kactivitymanagerd_sources="user/plasma-kactivitymanagerd.service"
 _kded_sources="user/plasma-kded6.service" # From https://invent.kde.org/frameworks/kded/-/blob/master/src/plasma-kded6.service.in
+_keyd_sources="system/keyd.service" # From https://github.com/rvaiya/keyd/blob/master/keyd.service.in
 _kglobalacceld_sources="user/plasma-kglobalaccel.service"
 _kodi_sources="system/kodi.service" # From https://github.com/graysky2/kodi-standalone-service/blob/master/x86/init/kodi-gbm.service
 _ksystemstats_sources="user/plasma-ksystemstats.service"
@@ -244,6 +246,7 @@ source="$(flatpath \
 	$_kactivitymanagerd_sources \
 	$_kanshi_sources \
 	$_kded_sources \
+	$_keyd_sources \
 	$_kglobalacceld_sources \
 	$_kodi_sources \
 	$_ksystemstats_sources \
@@ -376,6 +379,7 @@ df3388cb7b9d035e54b34d8f8a6594be89c3015f979fe3bdc199fb7db1ab0bef821d6b306eecdf97
 9cf877929b16f3437e65d1a0a2049799cc97cc84a7caab6a581e90139495b4febb5fb4c59ee463110866a0b60c9462d6d0fdb331d92d29b30ce6aeada365ac48  user-plasma-kactivitymanagerd.service
 fa41668288d53f8ce42a7524f10b1e03812fb11ed71bcb484dc22d0d374b453837317eb599cf61b66163a905949024509e73d5190012b664b301d48af7002a01  user-kanshi.service
 b0ecd5d413a2010d3f36285c2d35523119c29007e1e4162e51dfc746cc105f990a82a2a2d6037a8b906628c0a4f606729290525c7a53dbcfbc8147244fa403a7  user-plasma-kded6.service
+b80a6bca1f38c4feaffba5d1ceb854738f41d5b3ab450a1613da959cb516790e6849b7a164d1b5e62cba369c86e0c75797cd599dcd87064262760c3be159ef81  system-keyd.service
 acf21c4391ca62775491ba4d3b7c460b4163ef07abb195e152c98299a2d12779f3eb95f8cad0aeb3239f2d0fa8222a2483000c45aa6a47e05269876147d89839  user-plasma-kglobalaccel.service
 e7c33c889afb822ae20ebd09f3b9f8d130d1f89324006ab3a140fbf46ef7e774634d2ac13ac328c588266823e5eb52c7e0d6d6459f1f64052f9cea5a5fe9f54a  system-kodi.service
 bccc419b13d39c59ef6bb765dde2bef70c621995bc53d74ccc9ad4aef92931ee74c3ee0b19a0dffb8c3f133b5b0d73f5f70df269dddf5f0ed1dba1cf31d7e141  user-plasma-ksystemstats.service
