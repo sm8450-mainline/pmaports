@@ -103,3 +103,6 @@ enable tqftpserv.service
 
 ## pinephone{,-pro}
 enable eg25-manager.service
+
+## chromebook
+enable keyd.service
