@@ -3,7 +3,7 @@
 # Co-Maintainer: fossdd <fossdd@pwned.life>
 pkgname=postmarketos-base-ui-gnome
 pkgver=7
-pkgrel=0
+pkgrel=1
 pkgdesc="Meta package for shared configuration for GNOME-based UIs"
 url="https://postmarketos.org"
 arch="noarch"
@@ -20,7 +20,6 @@ depends="
 	postmarketos-base-ui-audio
 	postmarketos-base-ui-networkmanager
 	power-profiles-provider
-	xdg-desktop-portal-gnome
 	xdg-desktop-portal-gtk
 	xdg-user-dirs
 	xdg-user-dirs-gtk
