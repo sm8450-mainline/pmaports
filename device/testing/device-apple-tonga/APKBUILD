@@ -3,7 +3,7 @@
 pkgname=device-apple-tonga
 pkgdesc="Apple Macbook Air M1"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -16,19 +16,6 @@ depends="
 	asahi-fwextract
 	asahi-scripts
 	alsa-ucm-conf-asahi
-	mesa-asahi
-	mesa-asahi-dri-gallium
-	mesa-asahi-egl
-	mesa-asahi-gbm
-	mesa-asahi-gl
-	mesa-asahi-glapi
-	mesa-asahi-gles
-	mesa-asahi-osmesa
-	mesa-asahi-rusticl
-	mesa-asahi-va-gallium
-	mesa-asahi-vdpau-gallium
-	mesa-asahi-vulkan-swrast
-	mesa-asahi-xatracker
 "
 makedepends="devicepkg-dev systemd-boot"
 source="deviceinfo"
