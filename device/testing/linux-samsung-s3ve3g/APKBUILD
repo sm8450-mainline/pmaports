@@ -3,7 +3,7 @@
 
 pkgname=linux-samsung-s3ve3g
 pkgver=3.4.113
-pkgrel=7
+pkgrel=8
 pkgdesc="Samsung Galaxy S III Neo kernel fork"
 arch="armv7"
 _carch="arm"
@@ -24,6 +24,7 @@ source="
 	gcc8-fix-put-user.patch
 	gcc10-extern_YYLOC_global_declaration.patch
 	kernel-use-the-gnu89-standard-explicitly.patch
+	linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
 	linux3.4-Fix-signature-mismatch-for-msm_pm_boot_init.patch
 	0001-remove-Unified-Sysfs-for-GPU-kernel-option.patch
 	0002-always-reserve-framebuffer-memory.patch
@@ -60,6 +61,7 @@ c2984fc0707e00a718c486f31491921c5112ec0c13d4d9d5032f77765859fa4f1989bdcedd8763bb
 197d40a214ada87fcb2dfc0ae4911704b9a93354b75179cd6b4aadbb627a37ec262cf516921c84a8b1806809b70a7b440cdc8310a4a55fca5d2c0baa988e3967  gcc8-fix-put-user.patch
 2b48f1bf0e3f70703d2cdafc47d5e615cc7c56c70bec56b2e3297d3fa4a7a1321d649a8679614553dde8fe52ff1051dae38d5990e3744c9ca986d92187dcdbeb  gcc10-extern_YYLOC_global_declaration.patch
 ad0182a483791fc88e058838bc331b2f04a75ba291e763767babdb815efadfc3b4fda97e69e2e3f00a426cabea088e35297a92bd287592597d1e309be68ee92c  kernel-use-the-gnu89-standard-explicitly.patch
+9e3b067fa1b19ad02500c4fce1b6142051df3845c508e615788beb650c4f953683107ac2d80670c4e3df38f532e0e91060d2d13ec04c9ec985abd2dfa82e900b  linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
 25217ec622dbcb811c9a7375c6e360f313e58c8433a300c9a9afd3f17712ec0d322e16501c72c49fef9e38a2d3a69718401bf4269977fccd075a4a57d8458c5d  linux3.4-Fix-signature-mismatch-for-msm_pm_boot_init.patch
 472f2aacb61f66a253113bce3846cb132ce73cf98df4b08245184ac96857f8d3657e80c5ecdabfc04f61ea0971a0e4d2c64dc5886f6c949b560e018e855a5a95  0001-remove-Unified-Sysfs-for-GPU-kernel-option.patch
 99710981a40c5ce465fc6de9c438349224c52a4175a0bcbec95bd4d860a44abfa0d59151e94b85a40f049aadff66cb02b74ea84c51424ec5b19b76b17edb5b20  0002-always-reserve-framebuffer-memory.patch
