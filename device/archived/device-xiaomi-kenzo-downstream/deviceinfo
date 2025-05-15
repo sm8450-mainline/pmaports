@@ -4,7 +4,7 @@
 deviceinfo_format_version="0"
 deviceinfo_name="Xiaomi Redmi Note 3"
 deviceinfo_manufacturer="Xiaomi"
-deviceinfo_codename="xiaomi-kenzo"
+deviceinfo_codename="xiaomi-kenzo-downstream"
 deviceinfo_year="2016"
 deviceinfo_arch="aarch64"
 
