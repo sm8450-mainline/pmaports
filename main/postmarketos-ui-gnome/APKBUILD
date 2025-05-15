@@ -4,7 +4,7 @@
 # Co-Maintainer: fossdd <fossdd@pwned.life>
 pkgname=postmarketos-ui-gnome
 pkgver=4
-pkgrel=2
+pkgrel=3
 pkgdesc="(Wayland) Gnome Shell"
 url="https://gnome.org/"
 # armhf blocked by gnome-shell -> gjs -> mozjs102
@@ -19,6 +19,7 @@ depends="
 	gdm
 	gnome
 	postmarketos-base-ui-gnome
+	xdg-desktop-portal-gnome
 	"
 _pmb_recommends="
 	gnome-calendar
