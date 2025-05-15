@@ -96,7 +96,7 @@ build() {
 }
 
 check() {
-	xvfb-run meson test --no-rebuild -v -C output
+	xvfb-run meson test -v -C output
 }
 
 extensions_app() {

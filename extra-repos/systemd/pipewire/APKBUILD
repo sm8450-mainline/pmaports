@@ -114,7 +114,7 @@ check() {
 	# See: https://gitlab.com/postmarketOS/pmaports/-/merge_requests/5142#note_1969455333
 	[ "$CARCH" = "armv7" ] && return
 
-	meson test --no-rebuild --print-errorlogs -C output
+	meson test --print-errorlogs -C output
 }
 
 package() {
