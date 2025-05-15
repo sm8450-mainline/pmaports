@@ -8,6 +8,7 @@ expected_directories = [
     "cross",
     "device/archived",
     "device/community",
+    "device/downstream",
     "device/main",
     "device/testing",
     "extra-repos/systemd",
