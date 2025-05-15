@@ -4,7 +4,7 @@
 # Co-Maintainer: fossdd <fossdd@pwned.life>
 pkgname=postmarketos-ui-gnome-mobile
 pkgver=4
-pkgrel=1
+pkgrel=2
 pkgdesc="(Wayland) Gnome Shell patched to adapt better to phones (Experimental)"
 url="https://gnome.org/"
 arch="noarch !armhf !riscv64" # gnome-shell / riscv64: mutter-mobile
@@ -30,6 +30,7 @@ depends="
 	tracker
 	tracker-miners
 	udisks2
+	xdg-desktop-portal-gnome
 	"
 _pmb_recommends="
 	gnome-mobile-extensions-app
