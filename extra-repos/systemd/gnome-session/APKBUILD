@@ -30,8 +30,6 @@ makedepends="
 	xmlto
 	"
 options="!check" #no tests
-# FIXME: _shell subpackage is not in this forked package because pmbootstrap
-# currently can't handle it: https://gitlab.postmarketos.org/postmarketOS/pmbootstrap/-/merge_requests/2592
 subpackages="$pkgname-lang $pkgname-doc $pkgname-systemd gnome-shell-session:_shell:noarch"
 source="https://download.gnome.org/sources/gnome-session/${_pkgver%%.*}/gnome-session-$_pkgver.tar.xz
 	gnome-session-bash-login.patch"
@@ -58,7 +56,9 @@ _shell() {
 	# only confuse display managers as gnome-shell isn't installed
 
 	pkgdesc="Session files for GNOME Shell"
-	depends="$pkgname=$pkgver-r$pkgrel gnome-shell"
+	# FIXME: doesnt depend on gnome-shell right now because pmbootstrap
+	# currently can't handle it: https://gitlab.postmarketos.org/postmarketOS/pmbootstrap/-/merge_requests/2592
+	#depends="$pkgname=$pkgver-r$pkgrel gnome-shell"
 	install_if="$pkgname=$pkgver-r$pkgrel gnome-shell"
 
 	amove usr/share/gnome-session/sessions
