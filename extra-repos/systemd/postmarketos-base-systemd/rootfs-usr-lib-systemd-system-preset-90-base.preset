@@ -107,3 +107,4 @@ enable eg25-manager.service
 
 ## chromebook
 enable keyd.service
+enable cros-keyboard-map.service
