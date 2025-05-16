@@ -3,7 +3,7 @@
 
 pkgname=linux-wiko-lenny5
 pkgver=3.18.79
-pkgrel=1
+pkgrel=2
 pkgdesc="Wiko Lenny 5 Kernel"
 arch="armv7"
 _carch="arm"
@@ -31,11 +31,10 @@ if [ "${CC:0:5}" != "gcc6-" ]; then
 fi
 
 # Source
-_download_url="http://www.wikogeek.com/index.php?tel="
-_download_id="73278a4a86960eeb576a8fd4c9ec6997"
+_commit="521b3081fabf46d6c5cd533679a987135384863f"
 _config="config-$_flavor.$arch"
 source="
-	$pkgname-$_download_id.zip::$_download_url$_download_id
+	$pkgname-$_commit.tar.gz::https://github.com/parthibx24/android_kernel_wiko_k300/archive/$_commit.tar.gz
 	$_config
 	fix_dts_headers.patch
 	vdsomunge_upstream.patch
@@ -44,15 +43,11 @@ source="
 	0001-Include-cust.dtsi-don-t-run-python2-drvgen.patch
 "
 
-builddir="$srcdir/kernel-3.18"
+builddir="$srcdir/android_kernel_wiko_k300-$_commit"
 
-# Workaround to extract the kernel-3.18.tar.gz archive file in the $srcdir
-_src_subpath="WK300_Jerry3-WK400_Lenny5_OpenSource/Jerry3-Lenny5-OpenSource/"
-_kernel_zip="$srcdir/$_src_subpath/kernel-3.18.tar.gz"
 _outdir="out"
 
 prepare() {
-	tar xzkf $_kernel_zip -C $srcdir
 	default_prepare
 	. downstreamkernel_prepare
 }
@@ -68,7 +63,7 @@ package() {
 }
 
 sha512sums="
-87e9c0d2b7d06f84fa4185eabd224036529bb033fdfab5ba48125534765a169dfd904476f8c25cf53565c6fa416d668a008ac8d1cd98af6d5e4956ff386d1b09  linux-wiko-lenny5-73278a4a86960eeb576a8fd4c9ec6997.zip
+c2a33b380898bbdae613328261ff8b3b3bac58263122bb1636a9d43ce1667e7d3ba1d1d8c02801559c3e7da4657628fe4743407be16e26d7bbbe7ad867abc584  linux-wiko-lenny5-521b3081fabf46d6c5cd533679a987135384863f.tar.gz
 efdb0d3ba7a6e0525bf278db628affd881d2e67f7cc454e8921daa42b9921d46764c2bd304bf533e00f7332f02c523ac7c2eaf6982808d8db9d10ca278573b34  config-wiko-lenny5.armv7
 2287abb30b410f5ba13ee6dc1bb603789f9eeda9eda4a982263354aa303501b37742d8f8758b92d1edc32622505ce05e6c545257534b8c65dc8093606195d825  fix_dts_headers.patch
 19a6c3445bfd8057e4fabe1709f3d2344f3a99fef49b44636c07a18ba8791fab1bcff77f93aadff887946ae6f83c9d86e1c28f9b88d03c6ba156704d430b4470  vdsomunge_upstream.patch
