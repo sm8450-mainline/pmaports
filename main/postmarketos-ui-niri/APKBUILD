@@ -2,7 +2,7 @@
 # Maintainer: Aster Boese <asterboese@mailbox.org>
 pkgname=postmarketos-ui-niri
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="(Wayland) A scrollable-tiling compositor (DOES NOT RUN WITHOUT HW ACCELERATION!)"
 url="https://postmarketos.org"
 # Blocked by niri
@@ -32,7 +32,6 @@ _pmb_recommends="
 	xwayland
 	"
 _pmb_groups="seat"
-install="$pkgname.pre-install"
 source="
 	niri-greet.kdl
 	wlgreet.toml
