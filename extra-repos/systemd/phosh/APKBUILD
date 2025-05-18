@@ -1,7 +1,7 @@
 # Forked from Alpine for systemd split func
 maintainer="fossdd <fossdd@pwned.life>"
 pkgname=phosh
-_pkgver=0.46.0
+_pkgver=0.47.0
 pkgver=9999$_pkgver
 pkgrel=0
 pkgdesc="Wayland shell for GNOME on mobile devices"
@@ -111,5 +111,5 @@ libphosh_dev() {
 }
 
 sha512sums="
-ff6c9d95f4a09d75f0f7ae667a06b0424a1a4266177227195981326da7967e337cf9de1b686febcb66b5776ffcec293ef6c6d899e0d7955b2e8b871d93e2db8c  phosh-0.46.0.tar.xz
+19c150d28921b383269e4c95d353b7ea69e62cc4075a7a1e1523aa0977b347898d16df7d88861e5d029469a881623e15673ee270c3c514db123aec683ec8194d  phosh-0.47.0.tar.xz
 "
