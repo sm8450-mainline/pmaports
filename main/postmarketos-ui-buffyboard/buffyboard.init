@@ -2,6 +2,7 @@
 
 name="buffyboard"
 command="/usr/bin/buffyboard"
+command_args="-r $(cat /sys/class/graphics/fbcon/rotate)"
 pidfile="/var/run/buffyboard.pid"
 command_background=true
 
