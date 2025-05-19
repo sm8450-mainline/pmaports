@@ -4,7 +4,7 @@ _flavor=postmarketos-allwinner
 _config="config-$_flavor.$CARCH"
 pkgname=linux-$_flavor
 pkgver=6.13.8_git20250323
-pkgrel=0
+pkgrel=1
 _tag="orange-pi-6.13-20250323-0155"
 pkgdesc="Kernel fork with Pine64 patches (megi's tree, slightly patched)"
 arch="aarch64 armv7"
@@ -28,6 +28,7 @@ makedepends="
 options="!strip !check !tracedeps
 	pmb:cross-native
 	pmb:kconfigcheck-community
+	pmb:kconfigcheck-netmount
 	"
 source="$pkgname-$_tag.tar.gz::https://codeberg.org/megi/linux/archive/$_tag.tar.gz
 	config-$_flavor.aarch64
@@ -80,8 +81,8 @@ package() {
 }
 sha512sums="
 ad18f1d869539bfa58b88598ed042c4db27e2c88de0a8006e9bb314ba056b40ba547d58e5f817b013f0738cf0e2d1d3da0c818126ca47268dad34ec48e20c35c  linux-postmarketos-allwinner-orange-pi-6.13-20250323-0155.tar.gz
-67d5b5c655718cf31a872c121e4c339004e23da9d11f02b83349b1b8b2a00e667b71ffc4a06c4d9db74963d2af33c5f203de80bca1c1052ba4f9a880e6df4726  config-postmarketos-allwinner.aarch64
-4272b8b2d81f877437a0b9ec8ba4308275b8e9d8678189116892454aa8a07034cc536f11e790ee61e8053717f6d18d6347a01206c7811ad947a843b3eca6d450  config-postmarketos-allwinner.armv7
+fd24d78ce0ca83333218ba01868cae491707cabe2063d325abcf489ff0a3f7e9f11a7604c6819bbde12292751979aff8e631e9a49701f455a42267a96d60519a  config-postmarketos-allwinner.aarch64
+accdfa974eb133e7870676c37f777bcd3ac3980a1fa230b5607446ee567ebf75b5d6e8fe17bd8b03c42f129b90fa49cce021f1a79cc642026ed7e2914e48f24d  config-postmarketos-allwinner.armv7
 8e798cfeea93853454076469bf837f6045ee37fcce06fc97633acc2e7a6e50d0b2a28ea7e93029f1d7dc4fb1af735a78742519369501f914515c13dfd4abdff1  0001-dts-add-dontbeevil-pinephone-devkit.patch
 ecb29bd3d1c496a5885a5474329a721e01c0782890d6a36cc79594a8e4337e170bbfddee464f909449ff483ab81bdf1a22e660218ec8776aff174666bec86ed2  0002-dts-add-pinetab-dev-old-display-panel.patch
 869a00cdbec6fb7e6881f52f9db1334deb843644c0bd5689278a84d93296f6dfd2cfab2a404471cfd4e475d0351b61752a2d07c430a3611271562e3f69a659da  0003-dts-pinetab-add-missing-ohci1.patch
