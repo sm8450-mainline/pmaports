@@ -84,6 +84,32 @@ PSI = true
 PSI_DEFAULT_DISABLED = false
 UDMABUF = true
 
+["category:netmount".">=2.6.0"."all"]
+CACHEFILES = true
+CRYPTO_AES = true
+CRYPTO_CAMELLIA = true
+CRYPTO_CBC = true
+CRYPTO_CTS = true
+CRYPTO_HMAC = true
+CRYPTO_SHA256 = true
+CRYPTO_SHA512 = true
+FSCACHE = true
+NFS_FS = true
+NFS_FSCACHE = true
+NFS_V3 = true
+NFS_V4 = true
+RPCSEC_GSS_KRB5 = true
+["category:netmount".">=3.1.0"."all"]
+CRYPTO_CMAC = true
+["category:netmount".">=3.10.0"."all"]
+CRYPTO_AES_TI = true
+["category:netmount".">=3.10.0"."aarch64"]
+CRYPTO_AES_ARM64_CE_BLK = true
+["category:netmount".">=4.14.0"."all"]
+RPCSEC_GSS_KRB5_ENCTYPES_AES_SHA1 = true
+RPCSEC_GSS_KRB5_ENCTYPES_AES_SHA2 = true
+RPCSEC_GSS_KRB5_ENCTYPES_CAMELLIA = true
+
 # waydroid: android compatibility layer
 ["category:waydroid".">=0.0.0"."all"]
 ANDROID_BINDERFS = false
