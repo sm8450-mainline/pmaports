@@ -8,6 +8,7 @@ deviceinfo_codename="raspberry-pi5"
 deviceinfo_year="2023"
 deviceinfo_arch="aarch64"
 deviceinfo_disable_dhcpd="true"
+deviceinfo_getty="ttyAMA10;115200"
 
 # Device related
 deviceinfo_gpu_accelerated="true"
