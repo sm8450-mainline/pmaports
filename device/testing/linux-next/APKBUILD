@@ -3,7 +3,7 @@
 
 pkgname=linux-next
 pkgver=6.15_git20250604
-pkgrel=0
+pkgrel=1
 _nextver="${pkgver#*_git}"
 pkgdesc="Linux next kernel"
 arch="armv7 aarch64"
@@ -30,14 +30,23 @@ makedepends="
 	bash
 	bc
 	bison
+	clang
+	clang-libclang
 	devicepkg-dev
+	elfutils-dev
 	findutils
 	flex
 	git
+	lld
+	llvm
 	openssl-dev
 	perl
 	postmarketos-installkernel
 	python3
+	rust
+	rust-bindgen
+	rust-src
+	rustfmt
 	zstd
 "
 builddir="$srcdir/linux-next-next-$_nextver"
@@ -49,14 +58,14 @@ prepare() {
 
 	# Generate .config
 	unset LDFLAGS
-	make ARCH="$_carch" CC="${CC:-gcc}" \
+	make LLVM=1 ARCH="$_carch" CC="${CC:-gcc}" \
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-next-$_nextver" \
 		"$_defconfig" pmos.config devices.config
 }
 
 build() {
 	unset LDFLAGS
-	make O="$_outdir" ARCH="$_carch" CC="${CC:-gcc}" \
+	make LLVM=1 O="$_outdir" ARCH="$_carch" CC="${CC:-gcc}" \
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
 }
 
@@ -68,7 +77,7 @@ package() {
 
 	mkdir -p "$pkgdir"/boot
 
-	make zinstall modules_install dtbs_install \
+	make LLVM=1 zinstall modules_install dtbs_install \
 		ARCH="$_carch" \
 		INSTALL_PATH="$pkgdir"/boot/ \
 		INSTALL_MOD_PATH="$pkgdir" \
@@ -84,5 +93,5 @@ package() {
 sha512sums="
 621277448751adc7f95cceaeb457e724145da5586d8ecb6ac63397ae7cf545e2fe86bea997e488940c6f509fe5ec98d5554b8dcec574fb8b0a264ecc34f4ff9c  linux-next-next-20250604.tar.gz
 def9df5035ad91aab0032acacc50456bdbe39daafa4a1a0b4fb699ae9e89b9c16bf40bb6043b52fad0b6d1755729b332209f24de4d75233f167cf584edc6e9ba  devices.config
-592996d1b9ee3b9c231f35d76c0ea9f0eeffe9d582bafe4f089042a1237767b7723e076dda630d5a532cceeb97c47d67f19793f3e87911d1ec2978b069990ed0  pmos.config
+dc83b61179ab579528d191aacd36c416ba821dd7d0577234724ebdbc78cb157363892933e784a2d9eaa2c08e31f94b84be9694ec57b7812c6c2a862d90dfd113  pmos.config
 "
