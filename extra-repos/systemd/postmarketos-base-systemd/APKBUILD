@@ -2,8 +2,8 @@
 # Co-maintainer: Clayton Craft <clayton@craftyguy.net>
 # pmbootstrap installs this, if systemd is selected in "pmbootstrap init".
 pkgname=postmarketos-base-systemd
-pkgver=39
-pkgrel=1
+pkgver=40
+pkgrel=0
 pkgdesc="Meta package for running postmarketOS with systemd"
 url="https://postmarketos.org"
 arch="noarch"
@@ -54,6 +54,7 @@ subpackages="
 _source644="
 	etc/motd.ansi
 	etc/profile.d/99motd.sh
+	etc/profile.d/20locale.sh
 	etc/systemd/logind.conf
 	usr/share/mkinitfs/files-extra/01-initramfs-base-systemd.files
 	usr/lib/NetworkManager/conf.d/50-dns.conf
@@ -102,6 +103,7 @@ resolved() {
 sha512sums="
 793ee54a0313a0a20664e8dd90561376b3d5f9b870d292a77ab8fc7507f7f5c6d648e7de6ee98916be3702fcdaac5ca8b3648b33503547e419d0fe683bf77baa  rootfs-etc-motd.ansi
 fbaa33425e507062a454f11bda48508f261c2144e5c23a20f567dc1cef14ce1dec57f8d934f418f5b6095509757f8503481aba9790a04c8f9f6995e65833d8c9  rootfs-etc-profile.d-99motd.sh
+084f6256e712d33e605c4a1d794ed6ed2d3f31c7ddce5baaad7f44ba74f371f969a16e06f25884a71e4e7216496df0ff0afb6d3246e23932681ad64abfb96975  rootfs-etc-profile.d-20locale.sh
 2faac294bb632762e247b850f09ff4b544ccff6c462efd8d4faca71ba30bdfa9c460377a0dc88e92c5dbbe251017d164064a56ac0e0410f224b45d4f5f81866c  rootfs-etc-systemd-logind.conf
 15423bfda57c90ab62fe69865ca4072a0aeb83bf77d9c278257e346f4da81843d010b41003c91ae9f3fcb1c67447645e7c19078eea2bf11312051e6ad7523ad1  rootfs-usr-share-mkinitfs-files-extra-01-initramfs-base-systemd.files
 94063e3a3f983b7613d9de6bfc067096f79b12688f45667faf968f9a9bae194c4c8e554311f2ab5614edcc4d4499f6d30aa965a67b7417c26ce4d07edc847178  rootfs-usr-lib-NetworkManager-conf.d-50-dns.conf
