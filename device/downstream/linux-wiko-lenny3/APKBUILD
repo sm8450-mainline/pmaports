@@ -2,7 +2,7 @@
 
 pkgname=linux-wiko-lenny3
 pkgver=3.18.19
-pkgrel=6
+pkgrel=7
 pkgdesc="Wiko Lenny 3 Kernel"
 arch="armhf"
 _carch="arm"
@@ -31,6 +31,8 @@ source="
 	01_add_generated_cust_dtsi.patch
 	02_fix_various_include_directives.patch
 	gcc10-extern_YYLOC_global_declaration.patch
+	linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
+	linux3.4-fix-piggy.gzip.S.patch
 "
 builddir="$srcdir/linux-wiko-lenny3-$_commit"
 
@@ -56,4 +58,6 @@ sha512sums="
 adda36d779a79b2f840361a7df91028fdb86dd9aa7d2b431b8bd1fc674175d6c5bd098f7a6765cc4e3f7b3428ff7d35d9f5bac31cb7602ea270a6affe843a2e9  01_add_generated_cust_dtsi.patch
 42a7ef954d517f945bdbca16d92aff63b6b07260d666119dc96c33db577231f907c7968d9466bf163c397a37f4fb23a6886047b1eb821aa14687d43442c8e615  02_fix_various_include_directives.patch
 2b48f1bf0e3f70703d2cdafc47d5e615cc7c56c70bec56b2e3297d3fa4a7a1321d649a8679614553dde8fe52ff1051dae38d5990e3744c9ca986d92187dcdbeb  gcc10-extern_YYLOC_global_declaration.patch
+9e3b067fa1b19ad02500c4fce1b6142051df3845c508e615788beb650c4f953683107ac2d80670c4e3df38f532e0e91060d2d13ec04c9ec985abd2dfa82e900b  linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
+080745ca4ecaa804ee1df26ea81975ca93b74372e0c08322a6c481e97807495ae6ceb6cc77653afa24f9f2df45da8ebf8e5de6b06037fbb08e0279877ce42188  linux3.4-fix-piggy.gzip.S.patch
 "
