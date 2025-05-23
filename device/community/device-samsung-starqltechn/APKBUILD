@@ -1,4 +1,5 @@
 # Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: Dzmitry Sankouski <dsankouski@gmail.com>
 pkgname=device-samsung-starqltechn
 pkgdesc="Samsung Galaxy S9 SM-G9600"
 pkgver=8
