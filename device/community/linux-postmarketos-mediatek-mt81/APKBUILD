@@ -1,0 +1,116 @@
+# Maintainer: WeirdTreeThing <bradyn127@protonmail.com>
+pkgname=linux-postmarketos-mediatek-mt81
+pkgver=6.12.36
+pkgrel=0
+pkgdesc="Mainline kernel for mediatek mt8183/mt8192/mt8195/mt8186"
+arch="aarch64"
+_flavor="${pkgname#linux-}"
+url="https://kernel.org"
+license="GPL-2.0-only"
+options="!strip !check !tracedeps
+	pmb:cross-native
+	pmb:kconfigcheck-community
+	"
+makedepends="
+	bison
+	devicepkg-dev
+	findutils
+	flex
+	postmarketos-installkernel
+	openssl-dev
+	perl
+	rsync
+	gzip
+	xz
+	gmp-dev
+	mpc1-dev
+	mpfr-dev
+	lz4
+	zstd
+"
+replaces="linux-postmarketos-mtk-mt8183 linux-postmarketos-mediatek-mt8183 linux-postmarketos-mediatek-mt81xx"
+
+_carch="arm64"
+
+# Source
+_config="config-$_flavor.$CARCH"
+case $pkgver in
+	*.*.*)	_kernver=${pkgver%.0};;
+	*.*)	_kernver=$pkgver;;
+esac
+
+source="
+	https://cdn.kernel.org/pub/linux/kernel/v${_kernver%%.*}.x/linux-$_kernver.tar.xz
+	arm64-dts-mt8183-Add-kukui-jacuzzi-cerise-board.patch
+	arm64-dts-mediatek-Add-dts-for-hayato-rev5-sku0.patch
+	mt8183-fix-bluetooth.patch
+	mt8183-kukui-add-it6505-and-enable-dpi.patch
+	mt8183-kukui-jacuzzi-fix-display-resume.patch
+	mt8183-kukui-jacuzzi-hack-dpms-resume.patch
+	mt8183-kukui-jacuzzi-fennel14-rt1015p-sound.patch
+	wifi-rtw88-Fix-the-random-error-beacon-valid-message.patch
+	HACK-MTK-Disable-AFBC-support.patch
+	platform-chrome-cros_ec_typec-Purge-blocking-switch-devlinks.patch
+	drm-Display-Add-Type-C-switch-helpers.patch
+	drm-bridge-anx7625-Register-Type-C-mode-switches.patch
+	drm-bridge-anx7625-Check-for-Type-C-during-panel-registration.patch
+	STOPSHIP-arm64-dts-mediatek-asurada-Add-DP.patch
+	STOPSHIP-arm64-dts-mediatek-asurada-Enable-HDMI-audio.patch
+	mt8186-enable-dpi.patch
+	mt8186-add-extcon-to-dp-bridge.patch
+	mt8195-adsp.patch
+	mt8195-dvfsrc.patch
+	config-$_flavor.aarch64
+"
+builddir="$srcdir/linux-$_kernver"
+
+prepare() {
+	default_prepare
+	cp "$srcdir/config-$_flavor.$CARCH" .config
+}
+
+build() {
+	unset LDFLAGS
+	make ARCH="$_carch" \
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-$_flavor"
+}
+
+package() {
+	mkdir -p "$pkgdir"/boot
+
+	make zinstall modules_install dtbs_install \
+		ARCH="$_carch" \
+		INSTALL_PATH="$pkgdir"/boot \
+		INSTALL_MOD_PATH="$pkgdir" \
+		INSTALL_MOD_STRIP=1 \
+		INSTALL_DTBS_PATH="$pkgdir"/boot/dtbs
+	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
+
+	install -D "$builddir"/include/config/kernel.release \
+		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
+}
+
+
+sha512sums="
+17f540e00c4f5e457e64211c29d6b8c8dc7c9e7a523be070cced0423ef68a3c068a956561de069f4a7719009506908696219c524c27953c4b02fadfa37db808e  linux-6.12.36.tar.xz
+a95ce4a71d249ef401ca04cf8faf85b9022114d35fef5a0ce18929f734a0ac80ed0332648cc9768625f3c26b3720679e1a20bf8ac564087bd4c64f49cd96cc45  arm64-dts-mt8183-Add-kukui-jacuzzi-cerise-board.patch
+bf39ed6646a869a7a99dc7f0ccc7bbaca0c50776e87848cb1a9e55bef317a73c08549a9acb8cce5c394ab3bf90667e4d1cf8a3671bb9de15d2a470d5e8be0261  arm64-dts-mediatek-Add-dts-for-hayato-rev5-sku0.patch
+d74da1231181835bec82015da1b3f5b08a1fe9c3c35dd712e285891094d94d9427ceac75d32f74be3a635e17d93ad82b37adf97db8176efc91aed17535023fc2  mt8183-fix-bluetooth.patch
+19fdf640c34a0c04ba6aca85e93650f8696fe16d2fd2dba2a79ed504c5e2813868f5dfd91f9b3ee6951eede2b2b1e295c7a0c0f5b462996316b4576973c82ddd  mt8183-kukui-add-it6505-and-enable-dpi.patch
+519b6468bca78d0e315c826592ae40dddca9daeba7c2b451a20ca996494cca45721833b9138fefbb543f53e0b9257c78ec4fec54de2a160aa8df730daf3ac996  mt8183-kukui-jacuzzi-fix-display-resume.patch
+e9a128a8ddd98c6c8957ba45186afa2ea8ebeac83d4f2db3ff9ee8a5dd8027af90868c334a7b456bfe7dce793517f27ad63efa220bc933e3407f6362da6d7b2a  mt8183-kukui-jacuzzi-hack-dpms-resume.patch
+9b8707de42635734031495da055c5860addeb656051540f1a14404b10aa8b501168d8b0e274b37bce989db3bc050e9beef722189556f6d782b92cc907731488d  mt8183-kukui-jacuzzi-fennel14-rt1015p-sound.patch
+21a927be9b660603e233c531969fc1f0376e508f2246fe9ff73c7c86dff12b1af394a0ee83698d06fcba0b1dd6ab1fd8c79b4bc7ec97729bb9d3e0acfcf633b8  wifi-rtw88-Fix-the-random-error-beacon-valid-message.patch
+ace10a0dca57917f382f21c421a2677f0a0d1a4efeeece54eaea24326098461c2b531f903d7fad81bf4f89f2ba4a58de801296af05ab0707d1b96b0e142ee1c9  HACK-MTK-Disable-AFBC-support.patch
+703faf3cc6e73bac514c6903c2bdc304c7cc6348c144bcca287a2e354535ed7ea97628b2bc26e06f8cc98c32cf4ae42f7bbb6bc1ca2592d3a954512d92efedce  platform-chrome-cros_ec_typec-Purge-blocking-switch-devlinks.patch
+d733766fa0fc49e4f29f76a8cd8f518fdf1bbd6655fd7bad63406ca8ed560518b72e8c8ee0a7ea6ea5af1b99df73f00972e9cf86e5dda6082b47c72744ce232c  drm-Display-Add-Type-C-switch-helpers.patch
+cc8f4cae5c8d69b4f67a2e60acbd772e7c315db182366d49417b255dc40f4a0ad416a4be7147721ce347de32340c073814869262acc950481297ef5575e66dc4  drm-bridge-anx7625-Register-Type-C-mode-switches.patch
+539668541846798f49eb2661246a1ecdb475f70cf781cd1529b676a136a49f67bb5a0d27547756acf29bafea25c3c1caf3fb0a35d7591ea2b60aa4c334695336  drm-bridge-anx7625-Check-for-Type-C-during-panel-registration.patch
+0e6be6a08b88cdcb1cbf4010388131252d24618053815848cafbd81e1b4b6d82d9ae99760b154f65e0bb08a197554957fa9f83e625977e34da2ec83f00a4654e  STOPSHIP-arm64-dts-mediatek-asurada-Add-DP.patch
+982e5d7eb6460544f5014bd303ca6972d06ada6c71b3633e972e6b5cd4ab10dfb9eb40e4f80971fe6325a437661521503f7dc4aef3010cfada013fc399fd36ad  STOPSHIP-arm64-dts-mediatek-asurada-Enable-HDMI-audio.patch
+e4eaff9d3ec1a56ae2503dd353ad57bf072219e68c26ba8b894feb90d6ccb01bd131cdde8d238451258679aca1203a9ebdd888f01ee2a118d46f981ff4bcf54c  mt8186-enable-dpi.patch
+8854ac2bcd728261d47c2756d2e9081d0f399766fb305a460cd38d394d5620aef06dc46a4e986a21e34ecd1527c4f73d3e1c86e47ce855437716be94604d6d24  mt8186-add-extcon-to-dp-bridge.patch
+7582a86506ec1ff0a08ae52d249fa465f436439b01b592fe01f7aaa2fbdb3b2ae989473cd5cd9d39e6e9dac60d847063fa66ef36b808be695aa62b512d722d2b  mt8195-adsp.patch
+c61890785079aa67a4b92a30955cc7b2b1e1f8460255f2391b3d11f76c0e9568fe7dc9710e542392d42bf0a4426e1d47d7287621166e0cc9aa0333382ebd2cd2  mt8195-dvfsrc.patch
+9990a6ba76a641cd9724e8b4369c1792a9650fbdf44142ca69dec83eff0bf56cac200fa3a0ec6e47380949e29988518dcf73c1aa96572a0387367ba3d19eccec  config-postmarketos-mediatek-mt81.aarch64
+"
