@@ -3,7 +3,7 @@
 pkgname=device-google-cherry
 pkgdesc="Google Cherry Chromebooks"
 pkgver=4
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -11,7 +11,7 @@ options="!check !archcheck"
 depends="
 	alsa-ucm-conf
 	depthcharge-tools
-	linux-postmarketos-mediatek-mt81xx
+	linux-postmarketos-mediatek-mt81
 	postmarketos-base
 	postmarketos-cros-common
 	soc-mediatek-mt8183
