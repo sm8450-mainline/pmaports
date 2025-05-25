@@ -3,7 +3,7 @@
 pkgname=device-google-kukui
 pkgdesc="Google Kukui Chromebooks"
 pkgver=9
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -11,7 +11,7 @@ options="!check !archcheck"
 depends="
 	alsa-ucm-conf-cros
 	depthcharge-tools
-	linux-postmarketos-mediatek-mt8183>=6.1.28-r0
+	linux-postmarketos-mediatek-mt81
 	postmarketos-base
 	postmarketos-cros-common
 	soc-mediatek-mt8183
