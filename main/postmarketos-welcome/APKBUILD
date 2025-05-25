@@ -1,6 +1,6 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=postmarketos-welcome
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=0
 pkgdesc="postmarketOS welcome app"
 url="https://gitlab.postmarketos.org/postmarketOS/postmarketos-welcome"
@@ -33,6 +33,6 @@ package() {
 }
 
 sha512sums="
-78add4d0581ef21c62340cb57a15a34de6b14c7259f2b542d8cee249deba6f909cf2551bc958888748fe6ab5ee83dfe44ef9aee7520de54c470e303c0421da9a  postmarketos-welcome-0.9.0.tar.bz2
+f9b6bed5459522661ec004aecb86c7ec0fc96c47c9b35c1d90213fbc51c6964dad8f561628e430df1bc23b806c5f181929f6bd2fbfcc4020689ababec46c66dc  postmarketos-welcome-0.9.1.tar.bz2
 abf57cca997ef78cd6f71e370433e1776b80ab6a55c471eb5ce97008aedfec3e01e120dd8449899e4c15edf90e3679a6b3d62a64937b84d00762433680749ad1  org.postmarketos.Welcome.desktop
 "
