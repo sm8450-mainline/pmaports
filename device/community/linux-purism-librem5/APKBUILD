@@ -4,9 +4,9 @@
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 pkgname=linux-purism-librem5
 pkgver=6.6.83
-pkgrel=0
+pkgrel=1
 # NOTE: Don't forget to rebase the config! See prepare() for instructions.
-_purismrel=1
+_purismrel=2
 _pureosrel=cri1
 # <kernel ver> + <purism kernel release> + <PureOS release>
 _purismver=${pkgver}pureos${_purismrel}_$_pureosrel
@@ -67,8 +67,8 @@ prepare() {
 	#    exit 1
 	#
 	# After that run the following
-	#    cp <chroot_native/home/pmos/build/src/linux-pureos-6.6.32pureos2/.config> \
-	#       device/main/linux-purism-librem5/config-purism-librem5.aarch64
+	#    cp <chroot_native/home/pmos/build/src/linux-pureos-6.6.83pureos2_cri1/.config> \
+	#       device/community/linux-purism-librem5/config-purism-librem5.aarch64
 	#    pmbootstrap kconfig edit linux-purism-librem5
 	#    pmbootstrap kconfig check linux-purism-librem5
 }
@@ -91,6 +91,6 @@ package() {
 }
 
 sha512sums="
-08d60042f3a314b8210f6d2ba20d85fe693f759620e54784f2e06d62036c96a93a8081dde13e7c5e1ad35fbfadc0bb2c92b744c5cd7d4faa3b21b46628961eea  linux-purism-librem5-6.6.83pureos1_cri1.tar.gz
-54fa674f73dca3f03e0e9a54075ec661a0b7d4b773b55d0ea13cb930ebe15e52c97140b689cdce44c6895954fb0b310af5f9a64143785f666ddb6586f4d096ad  config-purism-librem5.aarch64
+51f22b06b4e83364fc68f1ae654003804ce4af8631178552ab91094ea06bb024403489b915436c2772404052d2a76e68989a43373c8e0d880c568ec740407d11  linux-purism-librem5-6.6.83pureos2_cri1.tar.gz
+04551f5e12abdea04395f46b5c30e73e0da3e6cbafe2150425e248081a6cc95e39b982fb2376b6c24c0a8a1e68e85a185ff29e015740dd520e41230a557b806d  config-purism-librem5.aarch64
 "
