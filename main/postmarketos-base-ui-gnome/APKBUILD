@@ -38,6 +38,7 @@ _pmb_recommends="
 	firefox-esr
 	flatpak
 	fprintd
+	g4music
 	gnome-calculator
 	gnome-calendar
 	gnome-clocks
