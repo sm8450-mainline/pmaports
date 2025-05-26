@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-base-ui
 pkgver=40
-pkgrel=0
+pkgrel=1
 pkgdesc="Meta package for minimal postmarketOS UI base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -273,7 +273,7 @@ iwd_openrc() {
 
 audio() {
 	pkgdesc="For UIs that require audio support"
-	depends="postmarketos-base-ui-audio-backend"
+	depends="postmarketos-base-ui-audio-backend alsa-utils"
 
 	mkdir "$subpkgdir"
 }
