@@ -3,6 +3,10 @@
 Description=swap with zram
 DefaultDependencies=no
 Before=swap.target
+Requires=modprobe@zram.service
+# TODO: when upstreaming to Alpine, move this into a unit fragment installed in
+# pmaports since this condition test is specific to pmOS
+ExecCondition=sh -c '. /usr/share/misc/source_deviceinfo'
 
 [Service]
 Type=oneshot
@@ -15,8 +19,7 @@ RemainAfterExit=true
 # zram_tmp.service and zram_var_tmp.service and that
 # num_devices in modprobe.d/zram.conf contains the maximal used number + 1
 
-ExecStartPre=-/sbin/modprobe zram
-ExecStart=/bin/sh -c "exec /usr/sbin/zram-init -azstd -Lzram_swap `zram-size-calc`"
+ExecStart=/bin/sh -c "exec zram-init -azstd -Lzram_swap $(zram-size-calc)"
 ExecStop=/usr/sbin/zram-init 0
 
 [Install]
