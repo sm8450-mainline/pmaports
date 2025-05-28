@@ -3,8 +3,8 @@
 # Co-Maintainer: Newbyte <newbyte@postmarketos.org>
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 pkgname=device-purism-librem5
-pkgver=6
-pkgrel=1
+pkgver=7
+pkgrel=0
 _confver=68
 _purismrel=1
 # <librem5-base ver>.<purism release>
@@ -47,6 +47,7 @@ source="
 	70-librem5-xwayland-accel.sh
 	0001-udev-cameras-use-correct-path-for-modprobe-on-Alpine.patch
 	l5-brcm-bt-enable.initd
+	l5-brcm-bt-enable.service
 	l5-lockdown-support.initd
 	l5-ship-mode.initd
 	modemmanager.conf
@@ -60,6 +61,7 @@ subpackages="
 	$pkgname-openrc
 	$pkgname-smartcard
 	$pkgname-smartcard-openrc:smartcard_openrc
+	$pkgname-systemd
 	$pkgname-tinydm
 	$pkgname-usbguard
 	$pkgname-x11
@@ -167,6 +169,9 @@ package() {
 	install -Dm755 "$srcdir"/l5-brcm-bt-enable.initd \
 		"$pkgdir"/etc/init.d/l5-brcm-bt-enable
 
+	install -Dm644 "$srcdir"/l5-brcm-bt-enable.service -t \
+		"$pkgdir"/usr/lib/systemd/system
+
 	# install audio config files from Purism
 	install -Dm644 "$builddir"/default/audio/ucm2/conf.d/simple-card/Librem\ 5.conf \
 		"$pkgdir"/usr/share/alsa/ucm2/NXP/iMX8/Librem_5/Librem\ 5.conf
@@ -183,6 +188,8 @@ package() {
 
 	install -D -m755 "$srcdir"/l5-ship-mode.initd \
 		"$pkgdir"/etc/init.d/l5-ship-mode
+	install -D -m755 "$builddir"/default/shipmode/l5-poweroff-shipmode -t \
+		"$pkgdir"/usr/lib/systemd/system-shutdown/
 
 	# lockdown support
 	install -Dm755 "$builddir"/default/lockdown-support/lockdown-support.sh \
@@ -191,6 +198,8 @@ package() {
 		-t "$pkgdir"/etc/modprobe.d/
 	install -Dm755 "$srcdir"/l5-lockdown-support.initd \
 		"$pkgdir"/etc/init.d/l5-lockdown-support
+	install -Dm644 "$builddir"/debian/librem5-base-defaults.librem5-lockdown-support.service -t \
+		"$pkgdir"/usr/lib/systemd/system
 
 	# Modem
 	install -Dm644 "$srcdir"/modemmanager.conf \
@@ -220,6 +229,7 @@ a0740e405781ec6ef765fdc9f5700c95adbb241c45c97b9384ba68cdece662cb216ca5918640042f
 fad386071fc45f9880a94cc8004fabd5d98b3e6a12606c98d8e72e0208f22ab54f03b921f5967a959782507e2bff67d2fa92e46d8cd242011a3afcdbda529279  70-librem5-xwayland-accel.sh
 b45749fcddfd65a302b502bcabfa5828d1b63e45d844fd50e44009a756b919db20fe9526102947c0f0dfcdffe4a037e5050fe1b24fb915933ce0837f49759378  0001-udev-cameras-use-correct-path-for-modprobe-on-Alpine.patch
 177ec87ec1f110d7c4253a20375c6771c6cfac41057b02bd673caea5399a799a59c5e087037fccf7a104447e6890499a2194aa34bab14df203fa95168ced75d7  l5-brcm-bt-enable.initd
+58edf35607606b7ef9079bfe015b8867c32ff3c0d3c87e11246e9077311017645d1a2d58917eab2990d25a26b85191fb3b9843195387643e4bafe3f3567cd0d2  l5-brcm-bt-enable.service
 f4b314d553655f7975445ac0a33099923e20dabb082c07e2cf6a78e4118c143d777dd4ad2c09cbc388600bdefe8deb3073fbd15b238772ddf09c66ac46415590  l5-lockdown-support.initd
 c723764d507ccd4b04aa5ce79b1d1ebc131873cdc37a943cb0f92b8a08a3c69eb9e0d31fcd4589fd8c40a9676bae9897e4f12ec2ebe4db8214ac85669ef35a53  l5-ship-mode.initd
 e089b0c4320c8cb5a6bd1e85f12b6afb24d035958f2bdc7a8ed2cee5b0f379e6fdfad876d8d22c03c9cb0576b4aa7c20c3e9986ba8147500add6d93b44e5f266  modemmanager.conf
