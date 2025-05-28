@@ -1,7 +1,7 @@
 # Maintainer: winbo-yml-exe <winbo.yml@proton.me>
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-raspberry-pi5
-pkgver=5
+pkgver=6
 pkgrel=0
 pkgdesc="Raspberry Pi 5"
 url="https://postmarketos.org"
@@ -19,7 +19,6 @@ source="
 	deviceinfo
 	modules-initfs
 	usercfg.txt
-	cmdline.txt
 	95-vchiq-permissions.rules
 	enforce-platform.sh
 	"
@@ -31,7 +30,6 @@ build() {
 package() {
 	devicepkg_package $startdir $pkgname
 	install -Dm644 "$srcdir"/usercfg.txt "$pkgdir"/boot/usercfg.txt
-	install -Dm644 "$srcdir"/cmdline.txt "$pkgdir"/boot/cmdline.txt
 	install -Dm644 "$srcdir"/95-vchiq-permissions.rules \
 		"$pkgdir"/etc/udev/rules.d/95-vchiq-permissions.rules
 	install -Dm755 "$srcdir"/enforce-platform.sh -t "$pkgdir"/etc/profile.d/
@@ -60,10 +58,9 @@ plasma_bigscreen() {
 
 
 sha512sums="
-7e780aca65f7d977d17782fb22c306e46dc168c9249c7d926d11fd4948942c25aa2817f42699c8dee90708b873892601e8347ffee441d3785f6f6e8d06ebc344  deviceinfo
+1f78647440fbfc3cf0eb1cd63a3b789a5530ba7c92f36d222dfa15ee57ca43d972a6ce52b703238dc6bbe08e1159ea56f6b42fc1f6c98b5f7c254418d275a64b  deviceinfo
 1c89943bcf0d26244211b52774de8453780d246e35c5cb5cb15012741128ceed646ae9ab7adc47221e53bfeb65c68130d21cdf9c3d7e9f4d57c5d0d889300f8c  modules-initfs
 4e832421e47dd0faf443a7a949aae83cc6d4a80fd816df5c6d9d72ac4ae23f803863b9b63903a14b18ae585e6abc5c8703376a003967b74dc30040dc544aa2e9  usercfg.txt
-7525e0b287ba6f48cbf8ff5c0d1c5856dd832265e7b58732a7f733c7a6d894a60abbbd7dad582f1cb546a393a72be8770617ddc4320ac5e32c89c30611caceb9  cmdline.txt
 7e5505cb07d5b4a81bd28443d508336b5c547356538f1c06f91ed93ad0d7d456d4f74f1d24df5a2e08c17e74f0a66607352ac4874e967e9a91dfec9522d2d58d  95-vchiq-permissions.rules
 5ebdd05414792b82073a6453517c19458863809cdfb25e7d8857030c1feb69cbebc02c5309e6a14373125d83e5e673a20f2006520a34148af17219fb1863dd95  enforce-platform.sh
 "

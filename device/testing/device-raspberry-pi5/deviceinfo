@@ -23,3 +23,5 @@ deviceinfo_flash_method="none"
 deviceinfo_boot_filesystem="fat16"
 # The following line is required for NVMe/M.2 installs:
 deviceinfo_partition_type="msdos"
+deviceinfo_kernel_cmdline="dwc_otg.lpm_enable=0 console=ttyAMA10,115200 console=tty1"
+deviceinfo_generate_cmdline_txt="true"
