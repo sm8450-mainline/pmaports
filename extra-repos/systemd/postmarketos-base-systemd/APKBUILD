@@ -2,7 +2,7 @@
 # Co-maintainer: Clayton Craft <clayton@craftyguy.net>
 # pmbootstrap installs this, if systemd is selected in "pmbootstrap init".
 pkgname=postmarketos-base-systemd
-pkgver=43
+pkgver=44
 pkgrel=0
 pkgdesc="Meta package for running postmarketOS with systemd"
 url="https://postmarketos.org"
@@ -40,7 +40,7 @@ depends="
 	"
 provides="postmarketos-base-init"
 provider_priority=100
-replaces="alpine-baselayout postmarketos-base systemd systemd-logind"
+replaces="alpine-baselayout postmarketos-baselayout postmarketos-base systemd systemd-logind"
 replaces_priority=100
 install="
 	$pkgname.post-install
