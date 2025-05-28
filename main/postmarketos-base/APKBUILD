@@ -1,6 +1,6 @@
 pkgname=postmarketos-base
 pkgver=44
-pkgrel=3
+pkgrel=4
 pkgdesc="Meta package for minimal postmarketOS base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -10,8 +10,6 @@ makedepends="postmarketos-initramfs"
 # recommendation to not depend on openrc has been to copy them here:
 # https: // gitlab.alpinelinux.org/alpine/aports/-/merge_requests/71686#note_435428
 depends="
-	alpine-baselayout
-	alpine-release
 	apk-tools
 	busybox
 	busybox-suid
@@ -37,13 +35,12 @@ subpackages="
 	$pkgname-nftables-openrc:nftables_openrc
 	$pkgname-openrc
 	$pkgname-ssh
+	postmarketos-release:release
+	postmarketos-baselayout:baselayout
 	"
 options="!check"
 
 replaces="
-	alpine-baselayout
-	alpine-baselayout-data
-	alpine-release
 	sudo
 	sudo-ldap
 	"
@@ -110,10 +107,15 @@ prepare() {
 }
 
 package() {
-	# pmos-base-init provided by a subpackage in this APKBUILD, and it may not
-	# exist when this is evaluated at the top level. It's moved into this
-	# function to work around it.
-	depends="$depends postmarketos-base-init"
+	# These packages are provided by subpackages in this APKBUILD, and they
+	# may not exist when this is evaluated at the top level. They're moved
+	# into this function to work around it.
+	depends="
+		$depends
+		postmarketos-base-init
+		postmarketos-baselayout
+		postmarketos-release
+		"
 
 	local i
 	for i in $_source440; do
@@ -128,10 +130,6 @@ package() {
 	for i in $_source755; do
 		install -Dm755 "$srcdir/$(flatpath "$i")" "$pkgdir/$i"
 	done
-
-	# /etc/os-release should be a relative symlink, see:
-	# https://www.man7.org/linux/man-pages/man5/os-release.5.html
-	ln -s ../usr/lib/os-release "$pkgdir"/etc/os-release
 }
 
 mesa() {
@@ -195,6 +193,27 @@ openrc() {
 	amove etc/init.d/swapfile
 	amove etc/init.d/tmpfs
 	amove etc/udev/udev.conf
+}
+
+baselayout() {
+	depends="alpine-baselayout"
+	replaces="alpine-baselayout alpine-baselayout-data postmarketos-base-systemd<44"
+
+	amove etc/fstab
+	amove etc/motd
+}
+
+release() {
+	replaces="alpine-release"
+	pkgdesc="postmarketOS release data"
+	depends="alpine-release"
+
+	amove usr/lib/os-release
+	amove etc/issue
+
+	# /etc/os-release should be a relative symlink, see:
+	# https://www.man7.org/linux/man-pages/man5/os-release.5.html
+	ln -s ../usr/lib/os-release "$subpkgdir"/etc/os-release
 }
 
 sha512sums="
