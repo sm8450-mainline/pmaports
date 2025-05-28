@@ -108,3 +108,7 @@ enable eg25-manager.service
 ## chromebook
 enable keyd.service
 enable cros-keyboard-map.service
+
+## librem5
+enable l5-brcm-bt-enable.service
+enable librem5-base-defaults.librem5-lockdown-support.service
