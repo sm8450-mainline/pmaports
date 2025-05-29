@@ -3,7 +3,7 @@
 pkgname=libcamera
 _pkgver=0.5.0
 pkgver=9999$_pkgver
-pkgrel=0
+pkgrel=1
 pkgdesc="Linux camera framework"
 url="https://libcamera.org/"
 arch="all"
@@ -24,6 +24,7 @@ makedepends="$depends_dev
 	libevent-dev
 	libpisp-dev
 	libunwind-dev
+	libyuv-dev
 	linux-headers
 	meson
 	py3-jinja2
@@ -80,6 +81,7 @@ esac
 
 build() {
 	abuild-meson \
+		-Dtest=true \
 		-Dv4l2=true \
 		-Dwerror=false \
 		. output
