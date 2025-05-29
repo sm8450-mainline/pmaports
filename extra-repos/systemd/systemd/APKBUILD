@@ -9,7 +9,7 @@
 pkgname=systemd
 pkgver=257.5
 _pkgver="musl-v${pkgver//_/-}-split-usr"
-pkgrel=0
+pkgrel=1
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !s390x" # blocked by pmboostrap not supporting
@@ -315,7 +315,6 @@ networkd() {
 	amove etc/systemd/network
 	amove etc/systemd/networkd.conf
 	amove usr/share/polkit-1/rules.d/systemd-networkd.rules
-	amove usr/lib/systemd/systemd-network-generator
 	amove usr/lib/systemd/systemd-networkd
 	amove usr/lib/systemd/systemd-networkd-wait-online
 	amove usr/lib/systemd/network
