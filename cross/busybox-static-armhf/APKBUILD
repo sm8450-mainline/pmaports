@@ -8,7 +8,7 @@ fi
 
 pkgname=busybox-static-armhf
 pkgver=1.37.0
-pkgrel=17
+pkgrel=18
 
 _arch="armhf"
 _mirror="http://dl-4.alpinelinux.org/alpine/"
@@ -32,5 +32,5 @@ package() {
 }
 
 sha512sums="
-2b6663fa6121412f48247ae76fc8777270a78c5f79b6e577d42bf8126dbbf0f6b9bef7a686b1d7a25ae2c625390332ed3350f4974863841374643540a18c3d7d  busybox-static-1.37.0-r17-armhf-edge.apk
+7b40353ad8bc4484376572b49195a7449bbfc3bba75b58e77db31f4370752672e9d82e3af0f8d82e1eb0a12ac996db0b4577b2ba8641353343358f02325b7a39  busybox-static-1.37.0-r18-armhf-edge.apk
 "
