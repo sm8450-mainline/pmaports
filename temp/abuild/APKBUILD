@@ -4,30 +4,44 @@
 # APKBUILDs at once.
 
 pkgname=abuild
-pkgver=99993.15.0_rc3
-_pkgver=3.15.0_rc3
-_commit="ea2f884eba612f2e27a750241501e35b2d859234"
+pkgver=99993.15.0
+_pkgver=3.15.0
+_commit="709363ea16f7febb08300511a9ca2aa8ca9b30c1"
 pkgrel=0
 pkgdesc="Script to build Alpine Packages"
 url="https://git.alpinelinux.org/cgit/abuild/"
 arch="all"
 license="GPL-2.0-only"
-depends="fakeroot scanelf openssl>3 apk-tools>=2.0.7-r1 libc-utils
-	attr tar pkgconf patch lzip curl libcap-getcap"
-makedepends="openssl-dev>3 zlib-dev pkgconfig scdoc"
-checkdepends="kyua git"
+depends="
+	apk-tools>=2.0.7-r1
+	cmd:getcap
+	fakeroot
+	musl-utils
+	lzip
+	openssl>3
+	patch
+	pkgconf
+	scanelf
+	tar
+	"
+makedepends_build="pkgconfig scdoc"
+makedepends_host="openssl-dev>3 zlib-dev"
+makedepends="$makedepends_host $makedepends_build"
+checkdepends="cmd:setcap kyua git"
 install="$pkgname.pre-install $pkgname.pre-upgrade"
 subpackages="
 	apkbuild-cpan:cpan:noarch
 	apkbuild-gem-resolver:gems:noarch
 	apkbuild-pypi:pypi:noarch
 	abuild-rootbld:_rootbld:noarch
+	abuild-sudo:_sudo
 	$pkgname-doc
 	"
 options="suid !check" # tests are SLOW in qemu
 pkggroups="abuild"
 source="
 	https://gitlab.alpinelinux.org/postmarketOS/abuild/-/archive/$_commit/abuild-$_commit.tar.gz
+	cargo-target.patch
 	"
 builddir="$srcdir/$pkgname-$_commit"
 
@@ -45,12 +59,12 @@ package() {
 	install -m 644 abuild.conf "$pkgdir"/etc/abuild.conf
 
 	case "$CARCH" in
-	x86*|ppc64le)
+	aarch64|loongarch64|x86*|ppc64le)
 		# binutils only supports it here
 		cat >>"$pkgdir"/usr/share/abuild/default.conf <<-EOF
 
 		# binutils ld.bfd supports this on this architecture; default to it
-		export RUSTFLAGS="\$RUSTFLAGS -Clink-arg=-Wl,-z,pack-relative-relocs"
+		export RUSTFLAGS="\${RUSTFLAGS-} -Clink-arg=-Wl,-z,pack-relative-relocs"
 		export LDFLAGS="\$LDFLAGS -Wl,-z,pack-relative-relocs"
 		EOF
 	esac
@@ -98,10 +112,20 @@ pypi() {
 
 _rootbld() {
 	pkgdesc="Build packages in chroot"
-	depends="abuild bubblewrap cmd:envsubst git"
+	depends="abuild bubblewrap cmd:envsubst"
 	mkdir -p "$subpkgdir"
 }
 
+_sudo() {
+	pkgdesc="Simple privilege elevation tools for building packages"
+	depends=""
+	install_if="$pkgname=$pkgver-r$pkgrel"
+
+	amove usr/bin/abuild-sudo usr/bin/abuild-apk usr/bin/abuild-adduser \
+		usr/bin/abuild-addgroup
+}
+
 sha512sums="
-fafaff1015229c42c4486461897b94e36b98c44d462c816f59a8c04dd501070f23f921a610158c8bb04e163dbb2d1588e093e82c34af70073280e4dc5691b01f  abuild-ea2f884eba612f2e27a750241501e35b2d859234.tar.gz
+e8f7b846f7f56b5add0a1d963988f2c73b199675b58328ff4f01bd49d4447d224c5e19cbc24bbbacffd912ed83fc7c4fa6b6518b3376e78452cfa7b2b460d995  abuild-709363ea16f7febb08300511a9ca2aa8ca9b30c1.tar.gz
+fbb44d871d57f31f1e94f0b7a1daed8bd86e2312c6c7a68dd599e71836b7fbc6e1159e865ce464c58f7fa2292adba3ab73ad90bd5b1a274f0ba8886108842f8a  cargo-target.patch
 "
