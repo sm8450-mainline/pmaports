@@ -4,7 +4,7 @@
 # Co-Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=device-google-x64cros
 pkgdesc="Google Chromebooks with x64 CPU"
-pkgver=13
+pkgver=14
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -21,7 +21,7 @@ makedepends="devicepkg-dev"
 install="$pkgname.post-install $pkgname.post-upgrade"
 subpackages="
 	$pkgname-kernel-lts:kernel_lts
-	$pkgname-kernel-edge:kernel_edge
+	$pkgname-kernel-stable:kernel_stable
 	$pkgname-firmware-intel:firmware_intel
 	$pkgname-firmware-amd:firmware_amd
 	"
@@ -52,9 +52,11 @@ package() {
 	devicepkg_package $startdir $pkgname
 }
 
-kernel_edge() {
-	pkgdesc="Alpine Edge kernel"
-	depends="linux-edge"
+kernel_stable() {
+	pkgdesc="Alpine Stable kernel"
+	depends="linux-stable"
+	provides="$pkgname-kernel-edge=$pkgver-r$pkgrel"
+	replaces="$pkgname-kernel-edge"
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
