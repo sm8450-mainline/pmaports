@@ -1,14 +1,14 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-sipeed-licheezero
 pkgdesc="Sipeed Lichee Zero"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
 depends="
-	linux-edge
+	linux-stable
 	postmarketos-base
 	u-boot-sunxi
 	u-boot-tools
@@ -60,7 +60,7 @@ package() {
 sha512sums="
 2e2ef72fa7b8d723065afddafdf008c3154ddc385fa8de21fa3240e96d46fd654cf2151fa62fefbeee3e39f7e290f739d30bfb680a7539e6e5d25ee5a13a9d6b  deviceinfo
 27b3ef04bea6d690099c1928f80bac63f9bfa94e6cea61f847dcd078f385af7895d176f7916f6c6203ccb9f5724a27d7ff94b62c8af746b36cb7aacd8741175b  modules-initfs
-ebe1caa9f87d348a91c8ff8609df0f6ba9f6ad0e6fbf935fb31bca3ce61acf1a988621eb0c86564e8a0623691b15a3aed6d2b4a9be076ac37a67c7c03953e37f  uboot-script.cmd
+c1a4923c97065218be249ae32d4067c454f15e7a4949fbf6012dae03062f16783385d52982d9e49d03d46979f3a50a6f6a8f26c42887e120062302ec94f49452  uboot-script.cmd
 3893ee2b0d8ddd018cc909d8157d79e6637fe546670430899c463452fd92ae9d9d6c4d212631d93b55e838f29b9e34fd22ab58a3ce628fec75a2d21944f8313d  overlay.txt
 8980f09f9afd276d0373545f203ee362f663ae055bf87df22e8085e8a4e53a4e46e96e2b4f8adb24b1dc77fffdf050fb8663008a742ad77c6cfbc50e3aff043f  i2c0-user.dts
 "

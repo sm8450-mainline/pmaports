@@ -3,14 +3,14 @@ setenv bootargs init=/init.sh rw console=tty0 console=ttyS0,115200 panic=10 cons
 printenv
 
 echo Loading DTB ${fdtfile}
-load mmc 0:1 ${fdt_addr_r} dtbs-edge/${fdtfile}
+load mmc 0:1 ${fdt_addr_r} dtbs-stable/${fdtfile}
 
 echo Loading Initramfs
 load mmc 0:1 ${ramdisk_addr_r} initramfs
 setenv ramdisk_size ${filesize}
 
 echo Loading Kernel
-load mmc 0:1 ${kernel_addr_r} vmlinuz-edge
+load mmc 0:1 ${kernel_addr_r} vmlinuz-stable
 
 
 echo Resizing FDT
