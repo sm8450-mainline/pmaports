@@ -2,7 +2,7 @@
 # Maintainer: Minecrell <minecrell@minecrell.net>
 # Co-Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=device-qemu-amd64
-pkgver=8
+pkgver=9
 pkgrel=0
 pkgdesc="Simulated device in QEMU (x86_64)"
 url="https://postmarketos.org"
@@ -18,7 +18,7 @@ makedepends="devicepkg-dev"
 subpackages="
 	$pkgname-kernel-lts:kernel_lts
 	$pkgname-kernel-virt:kernel_virt
-	$pkgname-kernel-edge:kernel_edge
+	$pkgname-kernel-stable:kernel_stable
 	$pkgname-kernel-none:kernel_none
 	"
 source="
@@ -52,9 +52,11 @@ kernel_lts() {
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
-kernel_edge() {
-	pkgdesc="Alpine Edge kernel"
-	depends="linux-edge linux-firmware-none"
+kernel_stable() {
+	pkgdesc="Alpine Stable kernel"
+	depends="linux-stable linux-firmware-none"
+	provides="$pkgname-kernel-edge=$pkgver-r$pkgrel"
+	replaces="$pkgname-kernel-edge"
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
