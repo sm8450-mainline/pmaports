@@ -2,8 +2,8 @@
 # Maintainer: Federico Amedeo Izzo <federico@izzo.pro>
 pkgname=device-clockworkpi-uconsole-cm4
 pkgdesc="Clockwork Tech ClockworkPi uConsole CM4"
-pkgver=1
-pkgrel=2
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -52,7 +52,7 @@ openrc() {
 
 sha512sums="
 8239d117839d3e3603c7ab73e598059bb521b81aeec5d6f7d0ec68d00cb9912bbad9fe5a0741e41e7ec94250729042dce91a6efb412c4e30c43a9c0b0a81a5b5  deviceinfo
-bc630857d9b0b6a89b3d9ff794be1133f5d7a681f26cd826ea4315649f8bf6c0c24aafa220093cbb313aa8bd6d46d2621c7aacb62e445a2d60c87e50099b45a5  modules-initfs
-43c2aca99ee3e02f4563bc27d331fa6e4e3c540732487c5806fd7574025cabc69347b74e2cea72f9c36fde8876833126063ca808a7398c5754dd53aecd6df7bf  usercfg.txt
+d97e603ef83626ec12a2503035c8de4d3d4d548510b85b26b07382736c334ae0c420e6811612fa83795eb8aa349dae29ec9944708d57cdd04cce09db3c32de23  modules-initfs
+2c6d1c786e2ba16f26da89e836f09399e73f559553696a7bd03b495caaaa9195ba234d33b1bc90733915c8752aca8a1ca4c90d4c19057c7dcdfad163d6d761d2  usercfg.txt
 7e5505cb07d5b4a81bd28443d508336b5c547356538f1c06f91ed93ad0d7d456d4f74f1d24df5a2e08c17e74f0a66607352ac4874e967e9a91dfec9522d2d58d  95-vchiq-permissions.rules
 "
