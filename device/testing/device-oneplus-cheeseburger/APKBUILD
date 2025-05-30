@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-oneplus-cheeseburger
 pkgdesc="OnePlus 5"
-pkgver=5
+pkgver=6
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -38,8 +38,8 @@ package() {
 
 kernel_alpine() {
 	# FIXME: msm-modem-uim-selection hangs boot for some 20 seconds when installed with non-free FW
-	pkgdesc="Pure mainline kernel, unpatched Alpine linux-edge"
-	depends="linux-edge linux-firmware-none"
+	pkgdesc="Upstream stable kernel, unpatched Alpine linux-stable"
+	depends="linux-stable linux-firmware-none"
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
