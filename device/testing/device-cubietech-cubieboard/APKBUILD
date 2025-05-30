@@ -1,14 +1,14 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-cubietech-cubieboard
 pkgdesc="Cubietech Cubieboard"
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
 depends="
-	linux-edge
+	linux-stable
 	postmarketos-base
 	u-boot-sunxi
 	"
@@ -28,5 +28,5 @@ package() {
 sha512sums="
 b96257f819ef38fc3dabc09db4ebabd9e52ce99f79a2ea11db95a4f6bb52fda38c45840f2537132b8d34eeb78e78287d9bd4941f29300170b0c29bb37f6b3008  deviceinfo
 4218f3e3b4aa3d3dbacbfe4dbe997bce8a9bf9f077ad78df21c0754b3789e0dd8533e2c9a4ee9fffb0069ee08bf51977cc0a11308c30cf7551fec0b38e36881e  modules-initfs
-43e3df861ee9e92907fcf6f93152ee873d81149ab1d96d83816b7d7337a1280945853d6fa77940e201c29584758e37076832209ce9cab520e2ba100af6f6229f  extlinux.conf
+d653e00c3bbb5695e2c69359b684a2ef7f8d232d9d8db878261dd541a4272370f48f0f963adaa1b65ab611d8daca6908e43fb5e2600068b785f624d76cc98991  extlinux.conf
 "
