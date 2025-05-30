@@ -1,8 +1,4 @@
 # Forked from Alpine to add systemd-service support
-# HACK: pma#3452: this is now in temp/abuild AND extra-repos/systemd/abuild for
-# initial systemd bringup. Until this is resolved, make changes to both
-# APKBUILDs at once.
-
 pkgname=abuild
 pkgver=99993.15.0
 _pkgver=3.15.0
