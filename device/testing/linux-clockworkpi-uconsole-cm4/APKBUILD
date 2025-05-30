@@ -2,8 +2,8 @@
 # Kernel config based on: arch/arm64/configs/bcm2711_defconfig
 # Maintainer: Federico Amedeo Izzo <federico@izzo.pro>
 pkgname=linux-clockworkpi-uconsole-cm4
-pkgver=6.1.74
-pkgrel=2
+pkgver=6.12.30
+pkgrel=0
 pkgdesc="Clockwork Tech ClockworkPi uConsole CM4 kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -28,17 +28,16 @@ makedepends="
 
 # Source
 _repository="linux"
-_commit="1cdbd99f402b76c61632d09a49b20ce90af0cc72"
+_commit="1ec873f3f18c98f0dc6d51db5b75958e109a0e5c"
 _config="config-$_flavor.$arch"
 source="
 	$pkgname-$_commit.tar.gz::https://github.com/raspberrypi/$_repository/archive/$_commit.tar.gz
 	$_config
-	0001-video-backlight-Add-OCP8178-backlight-driver.patch
-	0002-drm-panel-add-clockwork-cwu50.patch
-	0003-driver-staging-add-uconsole-simple-amplifier-switch.patch
-	0004-arm-dts-overlays-add-uconsole-cm4.patch
-	0005-drivers-power-axp20x-customize-PMU.patch
-	0006-power-axp20x_battery-implement-calibration.patch
+	0001-video-backlight-add-OCP8178-backlight-driver.patch
+	0002-gpu-drm-add-CWU50-and-CWD686-panels.patch
+	0003-power-supply-add-axp20x-drivers.patch
+	0004-arm64-configs-update-bcm2712-bcm2711-defconfig.patch
+	0005-arm-boot-overlays-add-uconsole-overlays.patch
 "
 builddir="$srcdir/$_repository-$_commit"
 _outdir="out"
@@ -57,7 +56,7 @@ build() {
 package() {
 	downstreamkernel_package "$builddir" "$pkgdir" "$_carch" "$_flavor"
 
-	local INSTALL_DTBS_PATH="$pkgdir"/boot
+	local _install_dtbs_path="$pkgdir"/boot
 
 	mkdir -p "$pkgdir"/boot
 	make modules_install dtbs_install \
@@ -65,21 +64,20 @@ package() {
 		INSTALL_PATH="$pkgdir"/boot \
 		INSTALL_MOD_PATH="$pkgdir" \
 		INSTALL_MOD_STRIP=1 \
-		INSTALL_DTBS_PATH="$INSTALL_DTBS_PATH"
+		INSTALL_DTBS_PATH="$_install_dtbs_path"
 	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
 
-	mv -f "$INSTALL_DTBS_PATH"/broadcom/*.dtb \
-		"$INSTALL_DTBS_PATH"
-	rmdir "$INSTALL_DTBS_PATH"/broadcom
+	mv -f "$_install_dtbs_path"/broadcom/*.dtb \
+		"$_install_dtbs_path"
+	rmdir "$_install_dtbs_path"/broadcom
 }
 
 sha512sums="
-880edc35f448ae2a072706efeda064a27273a25469a63c5bd7020fca1b115c13504b4d50135b97a6102a311dfa61419ce02d9f417ec673af3d1118529b015e1c  linux-clockworkpi-uconsole-cm4-1cdbd99f402b76c61632d09a49b20ce90af0cc72.tar.gz
-cbedf4252437241b71b6b296354e8f8842fe5552889e11c22c9276b8baee0764ba6702c9e4e2fc253a7c0617bb40a612322656420151ed112a3190708bfc2cfb  config-clockworkpi-uconsole-cm4.aarch64
-764faf249f98ba7a2299cf318bbd8e0922ab3a283dab8331710eccf83e4cc0088b4aa27894c196a2da5a08942c42ee173ca585844fa6abe36f9402095d845287  0001-video-backlight-Add-OCP8178-backlight-driver.patch
-3b4eb2cbf11d4b094d75070bd8ab7926f495c3bfc1b1ecc3ddd4b7a5e2355120eaf1fca4e4fe1884de4249808525f5271a1a8db14f583f89b096d0000ca01eac  0002-drm-panel-add-clockwork-cwu50.patch
-523ebd73d069c7e2ee55cefdcc9d2132264148dc13dfd79606cf87868ba86136d9df3dd7f54b130440544f51bbf8822a0a3c50eec34d54c996d867e260afa28c  0003-driver-staging-add-uconsole-simple-amplifier-switch.patch
-9cf45723ede7eee7f3b6548e0e424db9403a4c863b22c4b63063370042ac1385b5b005be9e52d3e7fb8d3a6ca71c775b2f4f1ca328f8c3ad226abf88a11f0d01  0004-arm-dts-overlays-add-uconsole-cm4.patch
-46cdb2bd144168c28cabbf235f4d0e23016a89a434670e12414e26422200ee3ff692168a9506a3989f93b60aac15903f6a641685cfe7d52193bc711bc648f6a0  0005-drivers-power-axp20x-customize-PMU.patch
-f86fb6e30e64c3594b9a9dcd855e962265ea642cc72a79404ae9f939a0122543d3cf4c462cc5b19d8f37dc9558276d1747285149b3e96caf7fff2a1bdc0a5295  0006-power-axp20x_battery-implement-calibration.patch
+93b4a8b35cf4aae85c634a16b301ab61f6ec526fa581cd32ac654738b88f31ac16e033322f172e492db6cfcf1c2b11a73f2b9bddd0e8c4afc2cd70d85f7b1319  linux-clockworkpi-uconsole-cm4-1ec873f3f18c98f0dc6d51db5b75958e109a0e5c.tar.gz
+3654a748386272673423f84f5bfcdd79d5d79d4272c279afdc5ab257468eaa27a20e0b6465681e88c8fb45f6129d3b865b6598fec977e3fd3009d3aea33e9323  config-clockworkpi-uconsole-cm4.aarch64
+f984d9150424470e34570e5c6ecc938ce5af214e4bfbd56c57425e4f4dc563952086392a50906a51298a6480060ff16f4a5487fc1f6ff353653148b52808e91e  0001-video-backlight-add-OCP8178-backlight-driver.patch
+538a5c2bca24e757163c386ea7b63b07453c9c60b2168ec17589bf39f1fd7249268b17c7fc857e73965fd18d07a8a45c75a58b146a19791d53f0e0efad61157c  0002-gpu-drm-add-CWU50-and-CWD686-panels.patch
+b22a4e0fcee83d36b441a2e60e78ac1d0f4dbdbb815081ca9a02eb2aa747dd9a912fed59eb11afafef9ee9d1e0aefdfed586eba7a665e031d83558df68096d42  0003-power-supply-add-axp20x-drivers.patch
+48931da5ef0468a988cabdd3b1580fefccf9a1420fd5d664fb48c3201539d47f1d707ac16a88f038f52c9a183d1924e49eaa1d339028c51195944fa88829bee3  0004-arm64-configs-update-bcm2712-bcm2711-defconfig.patch
+c705d756c331a8dc6287337b7e55f15886920010c4277549e41ca663bb5421cabab492604d167f63816dfb3883181c746b69a57aaf56761bebe4e2acd6120c69  0005-arm-boot-overlays-add-uconsole-overlays.patch
 "
