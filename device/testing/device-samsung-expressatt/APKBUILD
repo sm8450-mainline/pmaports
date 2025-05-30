@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-expressatt
 pkgdesc="Samsung Galaxy Express SGH-I437"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -11,7 +11,6 @@ depends="postmarketos-base mkbootimg linux-firmware-none"
 makedepends="devicepkg-dev"
 subpackages="
 	$pkgname-kernel-next:kernel_next
-	$pkgname-kernel-edge:kernel_edge
 	$pkgname-kernel-stable:kernel_stable
 	$pkgname-kernel-lts:kernel_lts
 "
@@ -31,15 +30,10 @@ kernel_next() {
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
-kernel_edge() {
-	pkgdesc="Mainline kernel from Alpine Linux (linux-edge)"
-	depends="linux-edge"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
 kernel_stable() {
-	pkgdesc="Mainline kernel from Alpine Linux with LTS config (linux-stable)"
+	pkgdesc="Stable kernel from Alpine Linux (linux-stable)"
 	depends="linux-stable"
+	provides="$pkgname-kernel-edge=$pkgver-r$pkgrel"
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
