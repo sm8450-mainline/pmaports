@@ -1,0 +1,65 @@
+pkgname=firmware-asus-s5507q
+pkgver=1
+pkgrel=0
+_commit="6adb9ca4d5219f011d36daa09ec521907f54c6a5"
+pkgdesc="Firmware files for ASUS Vivobook S 15"
+url="https://github.com/binarycraft007/firmware-asus-s5507q"
+arch="aarch64"
+depends="
+	linux-firmware-qcom
+	linux-firmware-qca
+	linux-firmware-ath12k
+	firmware-qcom-adreno
+"
+license="proprietary"
+source="$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz
+	dpu.files
+	wifi.files
+	audio.files
+	common.files
+"
+options="!check !strip !archcheck !spdx !tracedeps pmb:cross-native"
+builddir="$srcdir/firmware-asus-s5507q-$_commit"
+replaces="linux-firmware-ath12k"
+
+subpackages="
+	$pkgname-common:common
+	$pkgname-dpu:dpu
+	$pkgname-wifi:wifi
+	$pkgname-audio:audio
+"
+
+package() {
+	mkdir -p "$pkgdir"
+}
+
+common() {
+	while IFS="" read -r _i || [ -n "$_i" ]; do
+		install -Dm644 "$builddir/$_i" "$subpkgdir/$_i"
+	done < "$srcdir/common.files"
+	install -Dm644 "$srcdir/common.files" "$subpkgdir/usr/share/mkinitfs/files/common.files"
+}
+
+wifi() {
+	while IFS="" read -r _i || [ -n "$_i" ]; do
+		install -Dm644 "$builddir/$_i" "$subpkgdir/$_i"
+	done < "$srcdir/wifi.files"
+}
+
+audio() {
+	while IFS="" read -r _i || [ -n "$_i" ]; do
+		install -Dm644 "$builddir/$_i" "$subpkgdir/$_i"
+	done < "$srcdir/audio.files"
+}
+
+dpu() {
+	install -Dm644 "$srcdir/dpu.files" "$subpkgdir/usr/share/mkinitfs/files/dpu.files"
+}
+
+sha512sums="
+ff665076663383b18c14c79bfac2fbcac46455d40a2c08a147e49b3d7741e8eab94b0fca03a1f536c3c07c082234648adf370796502d80d46bf3dbcb8566f280  firmware-asus-s5507q-6adb9ca4d5219f011d36daa09ec521907f54c6a5.tar.gz
+1ab5d99b050db2a65d0ada43e333145bf59b38a9658116c80977d01f94b3dbb0c3e9c2f30824f96e43f949706857a777024c0f095b989eaef013c4d5e5238cfc  dpu.files
+d424a5ec8e278cd6a3095714ca97284174c01583aa55d2666d8a034050e8609de9770daf98d7908b5ab5fa5d64aba068e3ce9af5dfed838ba1ded92808192f84  wifi.files
+3a273a9448957ea1c187287ed1d90ff9e5ed358b8dd20b37e1890f7effbd66ba016d0c0fcc8884e79a1b435aefbb389643de3d9d9fe977ea5210417d2f63a3b0  audio.files
+42168ff103ce03dc8fe7491d756333b0bc8d821d8aa7360539b1d019519732ee70874601d90941dc1fc993422039cf0954049f0953367b741fb68bce58d148c6  common.files
+"
