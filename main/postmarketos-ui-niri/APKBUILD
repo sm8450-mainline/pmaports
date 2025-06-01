@@ -37,7 +37,7 @@ source="
 	wlgreet.toml
 	"
 # No tests
-options="!check pmb:gpu-accel pmb:systemd"
+options="!check pmb:drm pmb:systemd"
 
 package() {
 	# niri configuration for the greeter

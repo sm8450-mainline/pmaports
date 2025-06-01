@@ -40,7 +40,7 @@ source="
 	asteroid-launcher-wrapper.sh
 	gtk-app-wayland.sh
 	"
-options="!check pmb:systemd"
+options="!check pmb:drm pmb:systemd"
 
 package() {
 	install -Dm755 "$srcdir"/asteroid-launcher-wrapper.sh "$pkgdir"/usr/bin/asteroid-launcher-wrapper

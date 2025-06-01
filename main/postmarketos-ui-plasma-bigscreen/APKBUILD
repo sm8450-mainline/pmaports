@@ -26,7 +26,7 @@ source="$pkgname-$_commit_configs.tar.gz::https://invent.kde.org/plasma-bigscree
 	qtlogging.ini
 	nymphcast.desktop
 	"
-options="!check pmb:gpu-accel"
+options="!check pmb:drm"
 
 package() {
 	install -Dm644 -t "$pkgdir"/etc/xdg/QtProject \

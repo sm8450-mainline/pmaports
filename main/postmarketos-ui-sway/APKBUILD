@@ -3,7 +3,7 @@
 pkgname=postmarketos-ui-sway
 pkgver=3.1
 pkgrel=10
-pkgdesc="(Wayland) Tiling WM, drop-in replacement for i3wm (DOES NOT RUN WITHOUT HW ACCELERATION!)"
+pkgdesc="(Wayland) Tiling WM, drop-in replacement for i3wm"
 url="https://postmarketos.org"
 arch="noarch"
 license="GPL-3.0-or-later"
@@ -37,7 +37,7 @@ source="
 	etc-sway-config
 	etc-sway-config.d-00-logo-key.conf
 	"
-options="!check pmb:gpu-accel" # no testsuite
+options="!check pmb:drm" # no testsuite
 replaces="sway"
 
 package() {

@@ -32,7 +32,7 @@ _pmb_groups="
 	wroomd
 	"
 subpackages="$pkgname-openrc"
-options="!check"
+options="!check pmb:drm"
 
 package() {
 	mkdir -p "$pkgdir"

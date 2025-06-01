@@ -36,7 +36,7 @@ source="
 	"
 subpackages="$pkgname-extras $pkgname-openrc"
 replaces="plasma-mobile"
-options="!check pmb:gpu-accel pmb:systemd"
+options="!check pmb:drm pmb:systemd"
 
 package() {
 	install -Dm644 \

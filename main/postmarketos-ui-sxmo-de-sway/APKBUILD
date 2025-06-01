@@ -40,7 +40,7 @@ _pmb_recommends="
 	"
 provides="postmarketos-ui-sxmo"
 provider_priority=10
-options="!check"
+options="!check pmb:drm"
 subpackages="$pkgname-openrc"
 
 package() {

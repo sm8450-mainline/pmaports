@@ -36,7 +36,7 @@ source="
 	mimeapps.list
 	udiskie.desktop
 	"
-options="!check pmb:gpu-accel pmb:systemd"
+options="!check pmb:drm pmb:systemd"
 subpackages="$pkgname-openrc $pkgname-systemd"
 
 package() {

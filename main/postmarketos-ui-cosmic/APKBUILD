@@ -41,7 +41,7 @@ source="
 	favorites.conf
 	wallpaper.conf
 "
-options="!check pmb:gpu-accel pmb:systemd"
+options="!check pmb:drm pmb:systemd"
 replaces="
 	cosmic-applets
 	cosmic-bg

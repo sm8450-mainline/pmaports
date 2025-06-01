@@ -31,7 +31,7 @@ _pmb_recommends="htop
 	"
 subpackages="$pkgname-openrc"
 source="start_weston.sh weston.ini.default"
-options="!check pmb:gpu-accel" # Meta package, no test suite
+options="!check pmb:drm" # Meta package, no test suite
 
 package() {
 	install -Dm755 "$srcdir"/start_weston.sh \
