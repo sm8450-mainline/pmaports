@@ -1,0 +1,11 @@
+[Unit]
+Description=Google Sargo (Pixel 3a) GNSS Modem Setup
+
+[Service]
+ExecStart=qmicli -d qrtr://0 --loc-set-engine-lock=mt
+ExecStart=qmicli -d qrtr://0 --loc-set-nmea-types=all
+Type=oneshot
+
+[Install]
+WantedBy=default.target
+
