@@ -22,6 +22,8 @@ source="
 	hexagonrpcd.confd
 	modules-initfs
 	81-libssc-xiaomi-miatoll.rules
+	90-feedbackd-aw8695.rules
+	90-feedbackd-drv2624.rules
 "
 
 subpackages="
@@ -39,6 +41,12 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
+
+	install -Dm644 "$srcdir"/90-feedbackd-aw8695.rules -t \
+		"$pkgdir"/usr/lib/udev/rules.d
+
+	install -Dm644 "$srcdir"/90-feedbackd-drv2624.rules \
+		-t "$pkgdir"/usr/lib/udev/rules.d
 }
 
 nonfree_firmware() {
@@ -92,4 +100,6 @@ sha512sums="
 9a70ba5c036f2d3dc90c5c34a1d5bf0ef0805a19e5b49cd2821897bf3e6fe8af0cd2148aebb263807359ac616958da1c4032d85079d91d975f4bf220df1028ea  hexagonrpcd.confd
 9c1e77fd27ca8efb288099ed48f5f4cad71ae29a9c76a96d6aef471d3870a7aee3548cd0ed892407d5ce391814cf88145d22e1eba148e7008634c06700eecfbc  modules-initfs
 2c16ba75e0077b2b1eaefa4c73b287475505a1aeb291ec29316d41cc094277320f9d2aaabfd91eb1dc0f488ab2d61a94faef16e7afe0f1e226779113761b9a37  81-libssc-xiaomi-miatoll.rules
+2974ccc172bf1299daeb0bc746879b3a1db1fbc3a2b163a02a6554fed6ed9f733144bcf976cd2441c5664d496dcce3ae943f4314c653470dc07dda0de5ad632b  90-feedbackd-aw8695.rules
+016d398155f2344417f5e5649a361719ba6e53e593c501b5df39114cdd284302b9bf8686a39817aee0c08fec95b3ab613c181d6cc9596299aaf7fd05dbe0c3dd  90-feedbackd-drv2624.rules
 "
