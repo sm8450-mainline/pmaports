@@ -8,7 +8,6 @@ deviceinfo_manufacturer="Xiaomi"
 deviceinfo_codename="xiaomi-miatoll"
 deviceinfo_year="2020"
 deviceinfo_arch="aarch64"
-deviceinfo_flash_kernel_on_update="true"
 
 # Device related
 deviceinfo_gpu_accelerated="true"
@@ -18,26 +17,15 @@ deviceinfo_external_storage="true"
 deviceinfo_screen_width="1080"
 deviceinfo_screen_height="2400"
 
-# Kernel options
-deviceinfo_dtb_joyeuse_tianma="qcom/sm7125-xiaomi-joyeuse-tianma"
-deviceinfo_dtb_joyeuse_huaxing="qcom/sm7125-xiaomi-joyeuse-huaxing"
-deviceinfo_dtb_curtana_tianma="qcom/sm7125-xiaomi-curtana-tianma"
-deviceinfo_dtb_curtana_huaxing="qcom/sm7125-xiaomi-curtana-huaxing"
-deviceinfo_append_dtb="true"
-
 # Bootloader related
-deviceinfo_flash_method="fastboot"
+deviceinfo_flash_method="fastboot-bootpart"
+# Where to flash boot.img, or in our case where to flash the pmOS boot partition.
+# This is a bit confusing.
+deviceinfo_flash_fastboot_partition_kernel="cache"
+deviceinfo_flash_fastboot_partition_system="userdata"
 deviceinfo_kernel_cmdline="quiet loglevel=2"
-deviceinfo_generate_bootimg="true"
-deviceinfo_bootimg_qcdt="false"
-deviceinfo_bootimg_dtb_second="false"
-deviceinfo_flash_offset_base="0x00000000"
-deviceinfo_flash_offset_kernel="0x00008000"
-deviceinfo_flash_offset_ramdisk="0x01000000"
-deviceinfo_flash_offset_second="0x00000000"
-deviceinfo_flash_offset_tags="0x00000100"
-deviceinfo_flash_pagesize="4096"
-deviceinfo_flash_sparse="true"
+deviceinfo_generate_systemd_boot="true"
+deviceinfo_boot_filesystem="fat32"
 
 # Required for devices using UFS as storage (instead of e.g. eMMC)
 deviceinfo_rootfs_image_sector_size="4096"

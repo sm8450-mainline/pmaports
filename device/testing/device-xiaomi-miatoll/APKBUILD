@@ -2,8 +2,8 @@
 # Maintainer: Nikroks <nikroks@mainlining.org>
 pkgname=device-xiaomi-miatoll
 pkgdesc="Xiaomi Redmi Note 9 Pro / Redmi Note 9S"
-pkgver=4
-pkgrel=3
+pkgver=5
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -11,10 +11,12 @@ options="!check !archcheck"
 depends="
 	make-dynpart-mappings
 	mkbootimg
+	linux-postmarketos-qcom-sm7125
 	postmarketos-base
 	swclock-offset
 	soc-qcom-sm7125
 	soc-qcom-sm7125-ucm
+	systemd-boot
 "
 makedepends="devicepkg-dev"
 source="
@@ -29,10 +31,6 @@ source="
 subpackages="
 	$pkgname-nonfree-firmware:nonfree_firmware
 	$pkgname-nonfree-firmware-openrc:nonfree_firmware_openrc
-	$pkgname-kernel-curtana_tianma:kernel_curtana_tianma
-	$pkgname-kernel-curtana_huaxing:kernel_curtana_huaxing
-	$pkgname-kernel-joyeuse_tianma:kernel_joyeuse_tianma
-	$pkgname-kernel-joyeuse_huaxing:kernel_joyeuse_huaxing
 "
 
 build() {
@@ -71,32 +69,8 @@ nonfree_firmware_openrc() {
 	mkdir "$subpkgdir"
 }
 
-kernel_curtana_tianma() {
-	pkgdesc="Xiaomi Redmi Note 9S with Tianma panel. To know which model you have, visit https://wiki.postmarketos.org/wiki/Xiaomi-miatoll-variants"
-	depends="linux-postmarketos-qcom-sm7125"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-kernel_curtana_huaxing() {
-	pkgdesc="Xiaomi Redmi Note 9S with Huaxing panel. To know which model you have, visit https://wiki.postmarketos.org/wiki/Xiaomi-miatoll-variants"
-	depends="linux-postmarketos-qcom-sm7125"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-kernel_joyeuse_tianma() {
-	pkgdesc="Xiaomi Redmi Note 9 Pro (Global) with Tianma panel. To know which model you have, visit https://wiki.postmarketos.org/wiki/Xiaomi-miatoll-variants"
-	depends="linux-postmarketos-qcom-sm7125"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
-kernel_joyeuse_huaxing() {
-	pkgdesc="Xiaomi Redmi Note 9 Pro (Global) with Huaxing panel. To know which model you have, visit https://wiki.postmarketos.org/wiki/Xiaomi-miatoll-variants"
-	depends="linux-postmarketos-qcom-sm7125"
-	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
-}
-
 sha512sums="
-19add049123a9b901ff7c8d7b87d0f68aba4ea510d72e975fb2fae2a34c07c9d89580da40c15a6e173138cda9b068da0c27e205fef7f486f75137ce7cf12f4c4  deviceinfo
+3e99c6d32524481c5f78cef1cdec3dde8f2494c9fbf7736eb68891cd64e218df5e54845ca291636344d08e1e81a4ad55823b5b3ab3e3866795a5a5c344f38724  deviceinfo
 9a70ba5c036f2d3dc90c5c34a1d5bf0ef0805a19e5b49cd2821897bf3e6fe8af0cd2148aebb263807359ac616958da1c4032d85079d91d975f4bf220df1028ea  hexagonrpcd.confd
 9c1e77fd27ca8efb288099ed48f5f4cad71ae29a9c76a96d6aef471d3870a7aee3548cd0ed892407d5ce391814cf88145d22e1eba148e7008634c06700eecfbc  modules-initfs
 2c16ba75e0077b2b1eaefa4c73b287475505a1aeb291ec29316d41cc094277320f9d2aaabfd91eb1dc0f488ab2d61a94faef16e7afe0f1e226779113761b9a37  81-libssc-xiaomi-miatoll.rules
