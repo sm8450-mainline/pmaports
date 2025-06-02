@@ -18,7 +18,7 @@ subpackages="
 	$pkgname-ucm
 	"
 
-_ucm_commit="8d0fa9c235c397ed80256786942f96cf51687377"
+_ucm_commit="a34eab049098b78ac5f586b11d93060046da3247"
 source="
 	30-gpu-firmware.files
 	alsa-ucm-conf-$_ucm_commit.tar.gz::https://github.com/sm7125-mainline/alsa-ucm-conf/archive/$_ucm_commit/alsa-ucm-conf-$_ucm_commit.tar.gz
@@ -59,6 +59,6 @@ ucm() {
 
 sha512sums="
 18058e4ed1a2416841d63269d262ae1cbe9be828882580d934501fc842340b6e8641c3a79202c7c27ddad81ef3f2efffdf5dbc24e39fd7282700fd1bd5ba1454  30-gpu-firmware.files
-b5ce02e16caa57664f7add2c76b9dabb85e9a9fd2b11f5fcc73dae337bfbaacef9280874ff0560bf3ee86012bdc00f9633a1f62db306ec3225397dd52abdf059  alsa-ucm-conf-8d0fa9c235c397ed80256786942f96cf51687377.tar.gz
+7b383b931932a85812040a8a445a2d45cb6f31fa966073b1709b2d922e8a5fad0c39d0b9501c835bcf016d2e999f9bdb990fe946d4b3c811002105d2ab84b8f5  alsa-ucm-conf-a34eab049098b78ac5f586b11d93060046da3247.tar.gz
 9d455b56558d453d501a1ad869ffa79f9952ed43485a9847d506db6a78bfcd9f9c9d855660ee1d368eb74f4429385ec166addc30d802261c75562e785fe84c52  UPower.conf
 "
