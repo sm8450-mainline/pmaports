@@ -2,7 +2,7 @@
 # Co-Maintainer: Jenneron <jenneron@protonmail.com>
 pkgname=linux-postmarketos-mediatek-mt8183
 pkgver=6.12.21
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline kernel for mediatek mt8183"
 arch="aarch64"
 _flavor="${pkgname#linux-}"
@@ -43,6 +43,7 @@ esac
 source="
 	https://cdn.kernel.org/pub/linux/kernel/v${_kernver%%.*}.x/linux-$_kernver.tar.xz
 	arm64-dts-mt8183-Add-kukui-jacuzzi-cerise-board.patch
+	drm-mediatek-only-announce-AFBC-if-really-supported.patch
 	mt8183-fix-bluetooth.patch
 	mt8183-kukui-add-it6505-and-enable-dpi.patch
 	mt8183-kukui-jacuzzi-fix-display-resume.patch
@@ -87,5 +88,6 @@ d74da1231181835bec82015da1b3f5b08a1fe9c3c35dd712e285891094d94d9427ceac75d32f74be
 519b6468bca78d0e315c826592ae40dddca9daeba7c2b451a20ca996494cca45721833b9138fefbb543f53e0b9257c78ec4fec54de2a160aa8df730daf3ac996  mt8183-kukui-jacuzzi-fix-display-resume.patch
 e9a128a8ddd98c6c8957ba45186afa2ea8ebeac83d4f2db3ff9ee8a5dd8027af90868c334a7b456bfe7dce793517f27ad63efa220bc933e3407f6362da6d7b2a  mt8183-kukui-jacuzzi-hack-dpms-resume.patch
 9b8707de42635734031495da055c5860addeb656051540f1a14404b10aa8b501168d8b0e274b37bce989db3bc050e9beef722189556f6d782b92cc907731488d  mt8183-kukui-jacuzzi-fennel14-rt1015p-sound.patch
+c133230bc7023531cee932e0a007613b9813ccaec422a0e9d9ff14e6afb6f6cc82a774a45668ff1777d8746e25938fcd40194419c2945f0700a7aef3c3c0f488  drm-mediatek-only-announce-AFBC-if-really-supported.patch
 ce12fb0bf44817398d19d937776f4484fa3e17952852f242273fb125c2af2a1a3bddcec27bf66cb965806c92aafed660b979920ab027f0e3a635f682b594d277  config-postmarketos-mediatek-mt8183.aarch64
 "
