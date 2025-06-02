@@ -2,13 +2,13 @@
 # Maintainer: exkc <exxxxkc@getgoogleoff.me>
 pkgname=device-radxa-zero
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Radxa Zero"
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
-depends="postmarketos-base linux-edge u-boot-amlogic-radxa-zero"
+depends="postmarketos-base linux-postmarketos-amlogic u-boot-amlogic-radxa-zero"
 makedepends="devicepkg-dev"
 subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
 source="deviceinfo modules-initfs"
@@ -18,14 +18,6 @@ build() {
 }
 
 package() {
-	# Due to linux-edge bugs in boot-deploy (see boot-deploy!20)
-	# This device could not be use generated extlinux.conf.
-	# There are hack for the boot-deploy bugs.
-	# However,if i put the hack in the deviceinfo modules-initfs file directly
-	# the ci will fail.
-	# so i have to use those command at below to put the hack in the deviceinfo.
-	echo '# Hack for lnux-edge bugs in boot-deploy (see boot-deploy!20)' >> $srcdir/deviceinfo
-	echo 'kernel_filename="vmlinuz-edge"' >> $srcdir/deviceinfo
 	devicepkg_package $startdir $pkgname
 }
 
