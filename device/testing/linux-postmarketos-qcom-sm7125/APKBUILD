@@ -1,9 +1,9 @@
-# Maintainer: Nikroks <nikroksm@mail.ru>
+# Maintainer: Nikroks <nikroks@mainlining.org>
 
 _flavor="postmarketos-qcom-sm7125"
 pkgname=linux-$_flavor
 pkgver=6.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mainline Kernel fork for SM7125 devices"
 arch="aarch64"
 _carch="arm64"

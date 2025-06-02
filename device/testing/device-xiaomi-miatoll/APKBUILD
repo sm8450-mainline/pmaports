@@ -1,9 +1,9 @@
 # Reference: <https://postmarketos.org/devicepkg>
-# Maintainer: Nikroks <nikroksm@mail.ru>
+# Maintainer: Nikroks <nikroks@mainlining.org>
 pkgname=device-xiaomi-miatoll
 pkgdesc="Xiaomi Redmi Note 9 Pro / Redmi Note 9S"
 pkgver=4
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

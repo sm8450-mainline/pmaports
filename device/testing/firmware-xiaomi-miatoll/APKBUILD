@@ -1,7 +1,7 @@
-# Maintainer: Nikroks <nikroksm@mail.ru>
+# Maintainer: Nikroks <nikroks@mainlining.org>
 pkgname=firmware-xiaomi-miatoll
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware for miatoll"
 url="https://github.com/sm7125-mainline/firmware-xiaomi-miatoll"
 arch="aarch64"

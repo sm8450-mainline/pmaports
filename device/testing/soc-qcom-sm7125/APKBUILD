@@ -1,7 +1,7 @@
-# Maintainer: Nikroks <nikroksm@mail.ru>
+# Maintainer: Nikroks <nikroks@mainlining.org>
 pkgname=soc-qcom-sm7125
 pkgver=2
-pkgrel=0
+pkgrel=1
 pkgdesc="Common package for Qualcomm SM7125 devices"
 url="https://postmarketos.org"
 license="BSD-3-Clause"
