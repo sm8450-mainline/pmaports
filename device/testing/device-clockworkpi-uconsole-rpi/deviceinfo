@@ -4,9 +4,9 @@
 # scripts.
 
 deviceinfo_format_version="0"
-deviceinfo_name="Clockwork Tech ClockworkPi uConsole CM4"
+deviceinfo_name="Clockwork Tech ClockworkPi uConsole with Rapsberry Pi compute modules"
 deviceinfo_manufacturer="Clockwork Tech"
-deviceinfo_codename="clockworkpi-uconsole-cm4"
+deviceinfo_codename="clockworkpi-uconsole-rpi"
 deviceinfo_year="2023"
 deviceinfo_arch="aarch64"
 deviceinfo_disable_dhcpd="true"

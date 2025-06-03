@@ -1,17 +1,18 @@
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on: arch/arm64/configs/bcm2711_defconfig
 # Maintainer: Federico Amedeo Izzo <federico@izzo.pro>
-pkgname=linux-clockworkpi-uconsole-cm4
+pkgname=linux-clockworkpi-uconsole-rpi
 pkgver=6.12.30
 pkgrel=0
-pkgdesc="Clockwork Tech ClockworkPi uConsole CM4 kernel fork"
+pkgdesc="Clockwork Tech ClockworkPi uConsole Rapsberry Pi kernel fork"
 arch="aarch64"
 _carch="arm64"
-_flavor="clockworkpi-uconsole-cm4"
+_flavor="clockworkpi-uconsole-rpi"
 url="https://kernel.org"
 license="GPL-2.0-only"
 options="!strip !check !tracedeps pmb:cross-native"
 depends="linux-firmware-brcm"
+provides="linux-clockworkpi-uconsole-cm4=$pkgver-r$pkgrel"
 makedepends="
 	bash
 	bc
@@ -73,8 +74,8 @@ package() {
 }
 
 sha512sums="
-93b4a8b35cf4aae85c634a16b301ab61f6ec526fa581cd32ac654738b88f31ac16e033322f172e492db6cfcf1c2b11a73f2b9bddd0e8c4afc2cd70d85f7b1319  linux-clockworkpi-uconsole-cm4-1ec873f3f18c98f0dc6d51db5b75958e109a0e5c.tar.gz
-3654a748386272673423f84f5bfcdd79d5d79d4272c279afdc5ab257468eaa27a20e0b6465681e88c8fb45f6129d3b865b6598fec977e3fd3009d3aea33e9323  config-clockworkpi-uconsole-cm4.aarch64
+93b4a8b35cf4aae85c634a16b301ab61f6ec526fa581cd32ac654738b88f31ac16e033322f172e492db6cfcf1c2b11a73f2b9bddd0e8c4afc2cd70d85f7b1319  linux-clockworkpi-uconsole-rpi-1ec873f3f18c98f0dc6d51db5b75958e109a0e5c.tar.gz
+3654a748386272673423f84f5bfcdd79d5d79d4272c279afdc5ab257468eaa27a20e0b6465681e88c8fb45f6129d3b865b6598fec977e3fd3009d3aea33e9323  config-clockworkpi-uconsole-rpi.aarch64
 f984d9150424470e34570e5c6ecc938ce5af214e4bfbd56c57425e4f4dc563952086392a50906a51298a6480060ff16f4a5487fc1f6ff353653148b52808e91e  0001-video-backlight-add-OCP8178-backlight-driver.patch
 538a5c2bca24e757163c386ea7b63b07453c9c60b2168ec17589bf39f1fd7249268b17c7fc857e73965fd18d07a8a45c75a58b146a19791d53f0e0efad61157c  0002-gpu-drm-add-CWU50-and-CWD686-panels.patch
 b22a4e0fcee83d36b441a2e60e78ac1d0f4dbdbb815081ca9a02eb2aa747dd9a912fed59eb11afafef9ee9d1e0aefdfed586eba7a665e031d83558df68096d42  0003-power-supply-add-axp20x-drivers.patch
