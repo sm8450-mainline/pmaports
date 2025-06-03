@@ -15,6 +15,11 @@ if test -e mmc ${mmcbootdev}:${mmcbootpart} ${kernel_image}; then
     load mmc ${mmcbootdev}:${mmcbootpart} ${kernel_addr_r} ${kernel_image};
 fi
 
+if test -e mmc ${mmcbootdev}:${mmcbootpart} ${kernel_image}-stable; then
+    echo Loading Kernel: vmlinuz-stable
+    load mmc ${mmcbootdev}:${mmcbootpart} ${kernel_addr_r} ${kernel_image}-stable
+fi
+
 if test -e mmc ${mmcbootdev}:${mmcbootpart} ${kernel_image}-edge; then
     echo Loading Kernel: vmlinuz-edge
     load mmc ${mmcbootdev}:${mmcbootpart} ${kernel_addr_r} ${kernel_image}-edge

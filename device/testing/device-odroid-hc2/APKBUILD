@@ -3,13 +3,13 @@
 
 pkgname=device-odroid-hc2
 pkgdesc="ODROID HC2"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
-depends="linux-edge
+depends="linux-stable
 	 postmarketos-base
 	 u-boot-odroid
 	 u-boot-tools
@@ -55,7 +55,7 @@ tools() {
 
 sha512sums="
 8eae54c131b8fc9c0e4cca6bbd8aaca72eb585c59d7794a97606b6061f98f87fb2b268fefc3113410e04e9e772d1f65d78e935de01a7679ba45ee60007961183  deviceinfo
-228726f7afca55b02e4d452904d8490cf15957edd59cc87274d89c8589f9d15044db87a4413053243e66aa1b22860cfda052b5b95395effaf3aaf4d1770d3fd3  modules-initfs
-74fdbef86278033048b85d8a6f26fe5f57799307dc05670e69e52781ab71d6b9f8a82176b291ceea59aad98139f9cf9ccd6d1dab54e82f7b892ec42d80eab502  uboot-script.cmd
+c1bcb5bf8aac1135cfd55bc77445aa2edeb70777da927c8648a6ae602542ac3f7174bd9b86c70ca97d6444a62d2892f6fa0d743c14b3653bc8eb31b6e61fd4e2  modules-initfs
+22212ee91d781bf9997569c986a340d4ff7ec2d30d19ae0233a664b5b91d8bbfe71586dae57d6a3d961f6e4e369733005e01c2cd58f941ce67f557b2e21ce37b  uboot-script.cmd
 09a2191dce5b5c8fdf80c4473d9773a51f2c633db51477f2f64983dd030d7800fd80999a228ec7efe3f9feafeba35902bff68cf95e6ae59048dc64424f402b63  install-rootfs-hdd.sh
 "

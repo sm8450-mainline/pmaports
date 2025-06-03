@@ -1,9 +1,11 @@
+pl330
 libata
 uas
 usb-storage
 scsi_mod
 sd_mod
-t10_pi
+sdhci
+mmc_block
 dwc2
 dwc3
 dwc3-exynos
@@ -20,8 +22,8 @@ dw_mmc-exynos
 r8152
 xhci-hcd
 xhci-plat-hcd
-s2mps11
-clk-s2mps11
-rtc-s5m
 sec-core
 sec-irq
+s2mps11
+clk-s2mps11
+cpufreq_dt
