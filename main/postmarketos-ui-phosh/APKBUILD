@@ -4,7 +4,7 @@
 # Co-Maintainer: fossdd <fossdd@pwned.life>
 pkgname=postmarketos-ui-phosh
 pkgver=24
-pkgrel=0
+pkgrel=1
 pkgdesc="(Wayland) Mobile UI initially developed for the Librem 5"
 url="https://phosh.mobi"
 arch="noarch !armhf"
@@ -17,14 +17,15 @@ depends="
 	!mutter-mobile-schemas
 	bluez
 	phosh
+	phosh-osk-stub
 	postmarketos-base-ui-gnome-mobile
 	postmarketos-base-ui-qt-tweaks
 	postmarketos-base-ui-qt-wayland
 	sound-theme-phosh
 	tinydm
 	udiskie
-	xdg-desktop-portal-wlr
 	xdg-desktop-portal-phosh
+	xdg-desktop-portal-wlr
 	"
 _pmb_recommends="
 	phosh-mobile-settings
