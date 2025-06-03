@@ -1,0 +1,31 @@
+# Reference: <https://postmarketos.org/deviceinfo>
+# Maintainer: Antoine Martin (ayakael) <dev@ayakael.net>
+# Please use double quotes only. You can source this file in shell
+# scripts.
+
+deviceinfo_format_version="0"
+deviceinfo_name="Clockwork Tech ClockworkPi uConsole Radxa CM5"
+deviceinfo_manufacturer="Clockwork Tech"
+deviceinfo_codename="clockworkpi-uconsole-radxa-cm5"
+deviceinfo_year="2023"
+deviceinfo_arch="aarch64"
+deviceinfo_disable_dhcpd="true"
+
+# Device related
+deviceinfo_gpu_accelerated="true"
+deviceinfo_chassis="embedded"
+deviceinfo_keyboard="true"
+deviceinfo_external_storage="true"
+deviceinfo_screen_width="1280"
+deviceinfo_screen_height="720"
+deviceinfo_getty="ttyFIQ0;1500000"
+
+# Bootloader related
+deviceinfo_flash_method="none"
+deviceinfo_boot_filesystem="fat32"
+deviceinfo_dtb="rockchip/rk3588s-radxa-cm5-uconsole"
+deviceinfo_kernel_cmdline="console=tty1 console=ttyFIQ0,1500000n8 PMOS_FORCE_PARTITION_RESIZE earlycon consoleblank=0 coherent_pool=2M irqchip.gicv3_pseudo_nmi=0 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory swapaccount=1"
+deviceinfo_sd_embed_firmware="u-boot/radxa-cm5/rpi-cm4-io/idbloader.img:64,u-boot/radxa-cm5/rpi-cm4-io/u-boot.itb:16384"
+deviceinfo_sd_embed_firmware_step_size="512"
+deviceinfo_boot_part_start="32768"
+deviceinfo_generate_extlinux_config="true"

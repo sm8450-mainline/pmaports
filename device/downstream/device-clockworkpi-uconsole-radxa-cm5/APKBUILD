@@ -1,0 +1,47 @@
+# Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: Antoine Martin (ayakael) <dev@ayakael.net>
+pkgname=device-clockworkpi-uconsole-radxa-cm5
+pkgdesc="Clockwork Tech ClockworkPi uConsole Radxa CM5"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	linux-radxa
+	postmarketos-base
+	u-boot-radxa-cm5
+"
+makedepends="devicepkg-dev"
+subpackages="
+	$pkgname-openrc
+"
+source="
+	deviceinfo
+	modules-initfs
+	modules-load.conf
+	modprobe.conf
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+openrc() {
+	depends=openrc
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	mkdir -p "$subpkgdir"
+}
+
+sha512sums="
+6309b7581a17792f282b2c9f35ff4d6ad4eaa5836e488843da33d3e1af051bb3dadc66147e10e7d33b67ae3bcb0ece307ad2f34555875bf8116916bf535bd678  deviceinfo
+85d573bfd51ac4aa502336452b0384af77b6ec095f5c4760e8f287b8452b3ccb4521051bc01c53fa0856440d52231f535f3f0258d62ad578161ad464344413e9  modules-initfs
+642cdb1b4ac02b8c3ab7b72f4eeef615ac4911b42bcd845b54305f0ff64c07b86f4a807a97d395cb6c0cd0a5f5eed15e68d9e4ccb69db8e38fb65c8be4acaeeb  modules-load.conf
+a5324ed5118168b846d359dc2c8e76ccdc624003d157a28e4c9728ddedd9b52c6deb95af9c3a9d94faf52413f2f830dc45ec6c0093458d27149ef17de5dceef5  modprobe.conf
+"
