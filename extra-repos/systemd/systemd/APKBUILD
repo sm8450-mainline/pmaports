@@ -9,7 +9,7 @@
 pkgname=systemd
 pkgver=257.5
 _pkgver="musl-v${pkgver//_/-}-split-usr"
-pkgrel=2
+pkgrel=3
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !s390x" # blocked by pmboostrap not supporting
@@ -256,10 +256,11 @@ udevd() {
 	amove usr/lib/udev
 
 	# Install symlinks to be more like eudev
-	# FIXME: systemd-udevd gets placed at /usr/bin/udevadm
+	# FIXME: After usr merge, convert these into relative symlinks to support
+	# installing this package into an arbitrary directory
 	mkdir -p "$subpkgdir"/sbin "$subpkgdir"/bin
-	ln -sf ../usr/lib/systemd/systemd-udevd "$subpkgdir"/sbin/udevd
-	ln -sf ../usr/lib/systemd/systemd-udevd "$subpkgdir"/bin/udevadm
+	ln -sf /usr/lib/systemd/systemd-udevd "$subpkgdir"/sbin/udevd
+	ln -sf /usr/lib/systemd/systemd-udevd "$subpkgdir"/bin/udevadm
 }
 
 udevd_bcomp() {
