@@ -38,6 +38,7 @@ _pmb_recommends="
 	maliit-keyboard
 	postmarketos-artwork-wallpapers
 	snapshot
+	tuned-ppd
 	xdg-user-dirs
 	"
 subpackages="$pkgname-openrc"
