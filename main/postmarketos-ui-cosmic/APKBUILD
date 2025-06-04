@@ -2,7 +2,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-ui-cosmic
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="COSMIC Desktop Environment from System76"
 url="https://system76.com/cosmic/"
 # Only tested on these archs.
@@ -16,7 +16,7 @@ depends="
 	postmarketos-base-ui
 	postmarketos-base-ui-audio
 	postmarketos-base-ui-networkmanager
-	power-profiles-daemon
+	power-profiles-provider
 	upower
 	xdg-desktop-portal-gtk
 	xdg-user-dirs
@@ -36,6 +36,7 @@ _pmb_recommends="
 	papers
 	postmarketos-artwork-wallpapers
 	snapshot
+	tuned-ppd
 "
 source="
 	favorites.conf
