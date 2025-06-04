@@ -4,7 +4,7 @@
 # Co-Maintainer: fossdd <fossdd@pwned.life>
 pkgname=postmarketos-ui-phosh
 pkgver=24
-pkgrel=1
+pkgrel=2
 pkgdesc="(Wayland) Mobile UI initially developed for the Librem 5"
 url="https://phosh.mobi"
 arch="noarch !armhf"
@@ -17,7 +17,6 @@ depends="
 	!mutter-mobile-schemas
 	bluez
 	phosh
-	phosh-osk-stub
 	postmarketos-base-ui-gnome-mobile
 	postmarketos-base-ui-qt-tweaks
 	postmarketos-base-ui-qt-wayland
@@ -38,7 +37,7 @@ source="
 	udiskie.desktop
 	"
 options="!check pmb:drm pmb:systemd"
-subpackages="$pkgname-openrc $pkgname-systemd"
+subpackages="$pkgname-default-osk:default_osk $pkgname-openrc $pkgname-systemd"
 
 package() {
 	install -Dm644 "$srcdir"/01_postmarketos-ui-phosh.gschema.override \
@@ -47,6 +46,12 @@ package() {
 		"$pkgdir"/usr/share/applications/mimeapps.list
 	install -Dm644 "$srcdir"/udiskie.desktop \
 		"$pkgdir"/etc/xdg/autostart/udiskie.desktop
+}
+
+default_osk() {
+	install_if="$pkgname=$pkgver-r$pkgrel"
+	depends="phosh-osk-stub"
+	mkdir -p "$subpkgdir"
 }
 
 openrc() {
