@@ -1,8 +1,8 @@
-From fe95cf63979bed8000ff0794b015112fef0eaa66 Mon Sep 17 00:00:00 2001
+From ca75d1b7545d475714021d976b89102654580bbc Mon Sep 17 00:00:00 2001
 From: Robert Mader <robert.mader@collabora.com>
 Date: Sun, 13 Oct 2024 14:13:44 +0200
-Subject: [PATCH 6/6] pipeline: simple: Increase internal buffer count to four
- aswell
+Subject: [PATCH 07/13] pipeline: simple: Increase internal buffer count to
+ four aswell
 
 Signed-off-by: Robert Mader <robert.mader@collabora.com>
 ---
@@ -10,10 +10,10 @@ Signed-off-by: Robert Mader <robert.mader@collabora.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/libcamera/pipeline/simple/simple.cpp b/src/libcamera/pipeline/simple/simple.cpp
-index f6442019..79d8b3cd 100644
+index 09310dc02..58e70993f 100644
 --- a/src/libcamera/pipeline/simple/simple.cpp
 +++ b/src/libcamera/pipeline/simple/simple.cpp
-@@ -361,7 +361,7 @@ protected:
+@@ -415,7 +415,7 @@ protected:
  	int queueRequestDevice(Camera *camera, Request *request) override;
  
  private:
@@ -23,5 +23,5 @@ index f6442019..79d8b3cd 100644
  	struct EntityData {
  		std::unique_ptr<V4L2VideoDevice> video;
 -- 
-2.47.1
+2.49.0
 

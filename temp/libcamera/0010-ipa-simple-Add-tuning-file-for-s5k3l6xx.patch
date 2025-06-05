@@ -1,7 +1,7 @@
-From 49ba0c5f835d4b8b43585fa50202b6014fb5fdbd Mon Sep 17 00:00:00 2001
+From ef5523fc96a3ee2fde54a78fcb11dfa805b01d17 Mon Sep 17 00:00:00 2001
 From: Robert Mader <robert.mader@collabora.com>
 Date: Sun, 24 Nov 2024 18:20:37 +0100
-Subject: [PATCH 09/10] ipa/simple: Add tuning file for s5k3l6xx
+Subject: [PATCH 10/13] ipa/simple: Add tuning file for s5k3l6xx
 
 Used by the Librem5
 ---
@@ -11,7 +11,7 @@ Used by the Librem5
  create mode 100644 src/ipa/simple/data/s5k3l6xx.yaml
 
 diff --git a/src/ipa/simple/data/meson.build b/src/ipa/simple/data/meson.build
-index 7d07d567..a763edc4 100644
+index 7d07d5670..a763edc4f 100644
 --- a/src/ipa/simple/data/meson.build
 +++ b/src/ipa/simple/data/meson.build
 @@ -3,6 +3,7 @@
@@ -24,7 +24,7 @@ index 7d07d567..a763edc4 100644
  
 diff --git a/src/ipa/simple/data/s5k3l6xx.yaml b/src/ipa/simple/data/s5k3l6xx.yaml
 new file mode 100644
-index 00000000..f7d01b73
+index 000000000..f7d01b738
 --- /dev/null
 +++ b/src/ipa/simple/data/s5k3l6xx.yaml
 @@ -0,0 +1,11 @@
@@ -40,5 +40,5 @@ index 00000000..f7d01b73
 +  - Agc:
 +...
 -- 
-2.47.1
+2.49.0
 

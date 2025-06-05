@@ -1,9 +1,9 @@
 # Forked from Alpine for temporary downstream patches
 
 pkgname=libcamera
-_pkgver=0.5.0
+_pkgver=0.5.1
 pkgver=9999$_pkgver
-pkgrel=1
+pkgrel=0
 pkgdesc="Linux camera framework"
 url="https://libcamera.org/"
 arch="all"
@@ -44,18 +44,19 @@ subpackages="
 	$pkgname-tools
 	"
 source="https://gitlab.freedesktop.org/camera/libcamera/-/archive/v$_pkgver/libcamera-v$_pkgver.tar.gz
-	0001-libcamera-simple-Enable-softwareISP-for-the-librem5.patch
-	0002-libcamera-simple-Force-disable-softwareISP-for-milli.patch
-	0003-libcamera-simple-Enable-softISP-for-the-Pinephone.patch
-	0004-libcamera-simple-Skip-hwISP-formats-if-swISP-is-acti.patch
-	0005-pipeline-simple-Consider-output-sizes-when-choosing-.patch
-	0006-pipeline-simple-Increase-internal-buffer-count-to-fo.patch
-	0007-ipa-simple-Add-tuning-file-for-IMX355.patch
-	0008-ipa-simple-Add-tuning-file-for-IMX363.patch
-	0009-ipa-simple-Add-tuning-file-for-s5k3l6xx.patch
-	0010-ipa-simple-Add-tuning-file-for-hi846.patch
-	0011-ipa-simple-Add-tuning-file-for-IMX371.patch
-	0012-ipa-simple-Add-tuning-file-for-IMX376.patch
+	0001-pipeline-simple-Fix-matching-with-empty-media-graphs.patch
+	0002-libcamera-simple-Enable-softwareISP-for-the-librem5.patch
+	0003-libcamera-simple-Force-disable-softwareISP-for-milli.patch
+	0004-libcamera-simple-Enable-softISP-for-the-Pinephone.patch
+	0005-libcamera-simple-Skip-hwISP-formats-if-swISP-is-acti.patch
+	0006-pipeline-simple-Consider-output-sizes-when-choosing-.patch
+	0007-pipeline-simple-Increase-internal-buffer-count-to-fo.patch
+	0008-ipa-simple-Add-tuning-file-for-IMX355.patch
+	0009-ipa-simple-Add-tuning-file-for-IMX363.patch
+	0010-ipa-simple-Add-tuning-file-for-s5k3l6xx.patch
+	0011-ipa-simple-Add-tuning-file-for-hi846.patch
+	0012-ipa-simple-Add-tuning-file-for-IMX371.patch
+	0013-ipa-simple-Add-tuning-file-for-IMX376.patch
 	qcam.desktop
 	"
 builddir="$srcdir/$pkgname-v$_pkgver"
@@ -112,7 +113,7 @@ ipa() {
 	amove usr/lib/libcamera
 	# then sign ipa's
 	local ipa
-	for ipa in "$subpkgdir"/usr/lib/libcamera/ipa*.so; do
+	for ipa in "$subpkgdir"/usr/lib/libcamera/ipa/ipa*.so; do
 		msg "signing $ipa"
 		"$builddir"/src/ipa/ipa-sign.sh \
 			"$(find "$builddir"/output -type f -iname "*ipa-priv-key.pem")" \
@@ -152,18 +153,19 @@ tools() {
 }
 
 sha512sums="
-afc196cc693ba9fedd352f3a31dbe0f4dd1c28f50e7d5198d0c87fd0b8920eb497f51facd80960a96204c1e2803f8bf15ceadca7a7aa2d1aa38e51171befcc21  libcamera-v0.5.0.tar.gz
-0a93293b141f47ea9296f87bcd596e3625f4d609ea4c6c8f0381ef30230f5ded0f92d3bb7ec18406cca4b7c437a44628375d8d65b4761d78ddf3c5245e166467  0001-libcamera-simple-Enable-softwareISP-for-the-librem5.patch
-e024d325ec088b89b22033e10090b6a9c895e212660f5c71c774d2833a1873bf8594285aaf7ce3277cc51bf03a7493be29b657d1e7c9a299c864be9b64933d0b  0002-libcamera-simple-Force-disable-softwareISP-for-milli.patch
-add6bd7e641dc085921133bba7302740b1cf71c18a26f13e2c2c7bbbfb830cdee92e7e4603141cd720bac4e49d9b04874f262d36a764e79d4e2f4f38c3b6ec92  0003-libcamera-simple-Enable-softISP-for-the-Pinephone.patch
-37aa7c96c04267240171f5a137baa9d41993428b1adead068cc7c7a3ed693824447a7cfa9aa2b6b591aa60b302a47e89499fed46f99ee2128c2d6e0540b52f8f  0004-libcamera-simple-Skip-hwISP-formats-if-swISP-is-acti.patch
-3728068b572793db6342e105f6745d3a042818502883f10f44d2f2741498ec0bd431608c531f9e515b62adaa1f50d6354829d64ef31121b71774f3095b36d63f  0005-pipeline-simple-Consider-output-sizes-when-choosing-.patch
-8d517419183e63b689422ba04bc4d5f6f59c7a05db67ff2548e7195169891f876bda7f15e5274765e0730f62abd3a1ab278fad27ff7669683e8e40164d2a5788  0006-pipeline-simple-Increase-internal-buffer-count-to-fo.patch
-4242a4c4934edcb14a7c23020be3c5ea9596f241eb4c44910388489113102931d6d36c1ba9a3eb4676c0981b641e227087709eda3bf831b3b127add35b87fdd6  0007-ipa-simple-Add-tuning-file-for-IMX355.patch
-a803793ed16eca2563bbbae84713dab6a5f3090ae6ae5f755393c0b2203bf4471f4f37b6fc69991894ced60a8607d671262a51a49f02730931e43c6a4a3e9635  0008-ipa-simple-Add-tuning-file-for-IMX363.patch
-374366eeb471f2034319caa02df182d363187e4f1a0a8ec1dedfe39b3765cc19602c62df7881b99005b004395314e3f737c67a494d44a305e4afb2d0f0085115  0009-ipa-simple-Add-tuning-file-for-s5k3l6xx.patch
-6ac1989989fbc7d560948d66f59f62a4f28c8b398398d204cf4323c5db5f1eb45d5caa0f287f4f95956a1346e1346d5e1cf2d3577d46c2588b38a15bdcdb3b76  0010-ipa-simple-Add-tuning-file-for-hi846.patch
-7bdc0d5f8904d827ad62e16f4ea5d8bf72262bbbf3260634d59884060b4b8592262fc443bd380383bbf4f1eeb4f9da1bcd7080f04a964cc008ad570bedca81c4  0011-ipa-simple-Add-tuning-file-for-IMX371.patch
-0e51325a3216dea7fabdcd329b03d2c6493f3e2665e2937e48d94e3fe28d8d01f3077417e8bf08748259aa07b7550eaa484811d17e08edf1817c5bc5c673baf5  0012-ipa-simple-Add-tuning-file-for-IMX376.patch
+2585f9b9e016fca9ca9e93c0f11129ee83117b7d0498a3c7d6b94de1a5f0a2e97c31fbaaaebfd64b8dba0e686f37bc5e74fb0b5b4f501cb1d1532792f04ffcd7  libcamera-v0.5.1.tar.gz
+d4dcad9dbe5c2d4be77d8b66bc064cbed3a87dfafd7969665f7c7063dc25ce5a96aaa0ef27329dc69e0b644f7cb371820f7fd362c7d87b8174c853e0f8e57325  0001-pipeline-simple-Fix-matching-with-empty-media-graphs.patch
+46c98267cb36c325335cc33642f66e1690305b1bc28909d11d51c613f41fca57df94cf47b683f602f791d33ba9ceb01e02c3a81dc4a62a4ab49725ef686bcfee  0002-libcamera-simple-Enable-softwareISP-for-the-librem5.patch
+c23416c2c3cb29532991f079f44a15ed903f85216be9ac5953c2ccfbb8e7eb79c674a9b05d4dd132db553b7cc9a8fb217c47bb737d2d841a54d5919b3660f16a  0003-libcamera-simple-Force-disable-softwareISP-for-milli.patch
+174a2c40106a0c3a65ca72c2de5831e44b3fcb5bf68bf6305b66d4662d3eeaad2e327ab8baf371fca1f21ba00e7c8658533d86060a2e6fc954470d309c7a567f  0004-libcamera-simple-Enable-softISP-for-the-Pinephone.patch
+2a7bffe9785b3f99fce5f7d67762f1810b5c8cf34d1743f92e19604e9d44dcd4e4df83d19ccd8d3736a853324b380cdbb42e9bd8925e15a027d3a00bdb2fad62  0005-libcamera-simple-Skip-hwISP-formats-if-swISP-is-acti.patch
+e564728d051d53e3b0e25b396a1dd9680bee391dcde3a0c3d4a1e42bce2b7351eb29e9a429508bbf6dd94820d27f98600ed35e54e2f91a26dc999f6a715a0f2d  0006-pipeline-simple-Consider-output-sizes-when-choosing-.patch
+14df052835936025e7d9632906831a3309d2564fa7dac6cb0ed977a3e15319c794c27382a1a3395e74437d4914d6db3b39a44327cac7d744c13479e41f6a53a9  0007-pipeline-simple-Increase-internal-buffer-count-to-fo.patch
+d0ecf2d8da8d236dfa643c2f1c40ef46a0ce4d33ce6c30ecf80887bd8075c056d75d26afc94bd64fe440d0c0115234516130f65e8795ec31133f448bb782886a  0008-ipa-simple-Add-tuning-file-for-IMX355.patch
+38250844de01b52a5a1fe8e28716b199b25a5f6f1cda757cf8c8095442bb659587f095d892489eb4ea1fe249b7661c109bc66b62374d4b2f95d7621e405a4b11  0009-ipa-simple-Add-tuning-file-for-IMX363.patch
+0e675182876d1a56fe7fd4d8fae20e1c9e58afa8f98de6b3bcdd5e66be698f22a44f64db45a0947017e0f1028e925605f2cf132a3e759be36dd140a756560d00  0010-ipa-simple-Add-tuning-file-for-s5k3l6xx.patch
+58f7ff3d69e0099fa314ca256ec58cbd798f0a3880ada5b3cae7eb6809b9915980877f529a8cbe2908d5241b490cd2023d16d9287265de59a30ac5dfe31b6da5  0011-ipa-simple-Add-tuning-file-for-hi846.patch
+173e1188e95d1e750ad1cfb841910b3091688b66cc416ae3a94ce50ac2c9e21945a095cf9225006d34df1532703ecf561c52134ecf00d5b3d53159a6df7ed94f  0012-ipa-simple-Add-tuning-file-for-IMX371.patch
+0409ecbb03eac9fd73ec43807db54882f63af9ed71c65d8def63afb2a2b3cd708fda47c5de683218b89bb7417938dc23cab70756baecea1746e757059bae83aa  0013-ipa-simple-Add-tuning-file-for-IMX376.patch
 22167a4eceb6d1b40b0b7c45fdf116c71684f5340de7f767535cb8e160ad9d2ae0f00cb3d461f73a344520a48a4641cf46226841d78bee06bfbfd2a91337f754  qcam.desktop
 "
