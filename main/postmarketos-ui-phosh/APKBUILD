@@ -3,8 +3,8 @@
 # Co-Maintainer: Pablo Correa Gomez <pabloyoyoista@postmarketos.org>
 # Co-Maintainer: fossdd <fossdd@pwned.life>
 pkgname=postmarketos-ui-phosh
-pkgver=24
-pkgrel=2
+pkgver=25
+pkgrel=0
 pkgdesc="(Wayland) Mobile UI initially developed for the Librem 5"
 url="https://phosh.mobi"
 arch="noarch !armhf"
@@ -70,7 +70,7 @@ systemd() {
 }
 
 sha512sums="
-e577b8073df680ccee75ef5b6bb1f2877d5727687d63d6fd9211298e791b6c9f593eb79278c77a4b4918e3c57333c2a012030baf5a3c8d6d16000cc63a030f84  01_postmarketos-ui-phosh.gschema.override
+3ce42ce9cd55fb80dbd5689bb2b4955b7b296f0487163a3a7ad4eeecc0f874d890aaba76071aabc103dd67d0c8258dc077f202e28325d05b77a610613d1878d9  01_postmarketos-ui-phosh.gschema.override
 a741e8db9e4232334b924326c48be4e4c8f7a2382a7608926918a7491c518b2dda551e55a00d4d5fcf58c7950a78dc35d5cc5eaab53ad93a56de40887071f242  mimeapps.list
 53f5c565b4ca8a12f12b63ec84a0194ef530703565d123203d41582a35a54d66afaf3a676df158ae0effe327dcfc1c6496a082ce9dbe803b2547417c3c3fad6e  udiskie.desktop
 "
