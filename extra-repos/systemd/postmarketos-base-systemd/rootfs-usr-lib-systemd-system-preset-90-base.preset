@@ -109,6 +109,9 @@ enable qrtr-ns.service
 enable rmtfs.service
 enable tqftpserv.service
 
+## pixel3a
+enable modem-gnss.service
+
 ## pinephone{,-pro}
 enable eg25-manager.service
 
