@@ -1,0 +1,75 @@
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-xiaomi-perseus
+pkgdesc="Xiaomi Mi Mix 3"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	linux-postmarketos-qcom-sdm845
+	postmarketos-base
+	mkbootimg
+	alsa-ucm-conf-sdm845
+	soc-qcom
+	unl0kr-fbforcerefresh
+"
+makedepends="devicepkg-dev"
+subpackages="
+	$pkgname-nonfree-firmware:nonfree_firmware
+	$pkgname-nonfree-firmware-openrc:nonfree_firmware_openrc
+	$pkgname-pmtest
+"
+
+source="
+	deviceinfo
+	hexagonrpcd.confd
+	modules-initfs
+	81-libssc-xiaomi-perseus.rules
+"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+nonfree_firmware() {
+	pkgdesc="GPU, venus, modem and sensor firmware"
+	depends="
+		firmware-xiaomi-perseus
+		hexagonrpcd>=0.3.2-r3
+		soc-qcom-modem
+	"
+
+	install -Dm644 81-libssc-xiaomi-perseus.rules \
+		"$subpkgdir"/etc/udev/rules.d/81-libssc-xiaomi-perseus.rules
+	install -Dm644 "$srcdir"/hexagonrpcd.confd \
+		"$subpkgdir"/usr/share/hexagonrpcd/hexagonrpcd-sdsp.conf
+}
+
+nonfree_firmware_openrc() {
+	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="hexagonrpcd-openrc"
+
+	mkdir -p "$subpkgdir"
+}
+
+pmtest() {
+	depends="bootrr qrtr firmware-xiaomi-perseus unl0kr"
+	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-mkinitfs-hook-ci"
+	install="$subpkgname.post-install"
+
+	devicepkg_pmtest_post_install "ttyMSM0,115200" > "$subpkgname.post-install"
+}
+
+sha512sums="
+58012da0bf293d145d5f8588a903271f8cdebf5dc4c6a784a92834da6209a1f9ae224cbdcf0512e393078252d4595f758a30ce61b2dfbb78a24a917254afbcc0  deviceinfo
+0b58abc4bb2416d146bbb4732453cfa8173108058c9293957320a6fdd488657afa21c4ef14c8eed96c9fd2df295ebcf73cb96928d5f5179595a9b91834b562d8  hexagonrpcd.confd
+e97278b252af952e8ad8d8bb72188791c64b7e7a0c94f0c43507ff5edf35276150d1461ea7e9244c19614c0260ab5a5a4806a8b8815f830d42d95b419d54baad  modules-initfs
+2c16ba75e0077b2b1eaefa4c73b287475505a1aeb291ec29316d41cc094277320f9d2aaabfd91eb1dc0f488ab2d61a94faef16e7afe0f1e226779113761b9a37  81-libssc-xiaomi-perseus.rules
+"
