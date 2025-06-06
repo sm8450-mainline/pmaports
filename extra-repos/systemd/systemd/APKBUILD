@@ -9,7 +9,7 @@
 pkgname=systemd
 pkgver=257.6
 _pkgver="musl-v${pkgver//_/-}-split-usr"
-pkgrel=0
+pkgrel=1
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 arch="all !ppc64le !s390x" # blocked by pmboostrap not supporting
@@ -35,6 +35,7 @@ makedepends="
 	audit-dev
 	bash
 	bash-completion
+	bpftool
 	clang
 	cmake
 	coreutils
@@ -59,6 +60,7 @@ makedepends="
 	libselinux-dev
 	libxkbcommon-dev
 	linux-pam-dev
+	linux-stable-dev
 	llvm15
 	lz4-dev
 	meson
@@ -203,6 +205,9 @@ build() {
 		\
 		-Didn=false \
 		-Dsysvinit-path="" \
+		-Dbpf-framework=enabled \
+		-Dvmlinux-h=provided \
+		-Dvmlinux-h-path="$(find /usr/src -path "/usr/src/linux-headers-*-stable/vmlinux.h" | sort -V | tail -n1)" \
 		build .
 	meson compile ${JOBS:+-j ${JOBS}} -C build
 }
