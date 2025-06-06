@@ -3,13 +3,14 @@
 pkgname=device-generic-x86_64
 pkgdesc="Generic x86_64 system, with EFI"
 pkgver=19
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="x86_64"
 options="!check !archcheck"
 depends="
 	alsa-ucm-conf
+	hwdata
 	postmarketos-base
 	systemd-boot
 	systemd-boot-x86
