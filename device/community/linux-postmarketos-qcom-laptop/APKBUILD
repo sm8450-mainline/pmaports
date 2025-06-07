@@ -2,7 +2,7 @@
 # Co-Maintainer: Casey Connolly <kcxt@postmarketos.org>
 pkgname=linux-postmarketos-qcom-laptop
 pkgver=6.15
-pkgrel=0
+pkgrel=1
 # Commit from branch @ https://github.com/jhovold/linux/tree/wip/x1e80100-$pkgver
 _commit="64941e2988752ce492e2dac6249535423189ee46"
 pkgdesc="Generic kernel for Qualcomm laptops"
@@ -24,10 +24,13 @@ makedepends="
 	bc
 	bison
 	devicepkg-dev
+	elfutils-dev
 	findutils
 	flex
 	git
+	linux-headers
 	openssl-dev
+	pahole
 	perl
 	python3
 	zstd
@@ -82,6 +85,6 @@ package() {
 
 sha512sums="
 5eea324d83f243a50712f5317b2db55cd3e380eaa2e76d689dd5125bcbbd78601fbd1bf8622c95fa3e0ee43580bdbafce15c507aee65cb4ffac994f7c0b98948  linux-postmarketos-qcom-laptop-64941e2988752ce492e2dac6249535423189ee46.tar.gz
-bea4d6dcf60e90b8ce111c3b510e8f57db2d556b4b18aa257b267ea15ea4c90e4f81be656e59da0a525819d34354afdab3501234783c1542bbde9ee6670e17b8  misc.config
+85ceb64d2950e95232bdbff4f118f10e4a1296d9b7ec11a807e89c3578d3e8ada79c0fafa9bccc70915fe6eb72bf67f521f3781c229a9f197ae9e63b4a716dd7  misc.config
 89244418a7331fd89109591f2748bebdcc7c9a4a34980a551d0a42abf063cb47188758d5e22001caf10f8db893532544a3dbd1111764ddea9db6048bbde005f4  pmos.config
 "
