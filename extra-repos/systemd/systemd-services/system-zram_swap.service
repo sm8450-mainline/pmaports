@@ -4,13 +4,13 @@ Description=swap with zram
 DefaultDependencies=no
 Before=swap.target
 Requires=modprobe@zram.service
-# TODO: when upstreaming to Alpine, move this into a unit fragment installed in
-# pmaports since this condition test is specific to pmOS
-ExecCondition=sh -c '. /usr/share/misc/source_deviceinfo'
 
 [Service]
 Type=oneshot
 RemainAfterExit=true
+# TODO: when upstreaming to Alpine, move this into a unit fragment installed in
+# pmaports since this condition test is specific to pmOS
+ExecCondition=sh -c '. /usr/share/misc/source_deviceinfo'
 
 # Change the maximal number of parallel streams (-s), algorithm (-a) and
 # size (in megabytes) to your needs.

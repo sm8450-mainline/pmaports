@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=71
+pkgver=72
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -430,5 +430,5 @@ e09a3c76f3be961dce9f564bb654ea84d1d7fb59907a2168c0569bf6c17a5ebe9fbe4d1f94f1d014
 9dd95f10dcdb6234697b012c6f428cfca0cfbde24a8951e96cb4c463f55a22d40096a94ca0018f9dbe4ebb2c80eb39faeaa9222f6fb419831520a138f88f0321  user-xdg-document-portal.service
 1262f10b97989be726432700a923d7717570feb7b0d78c3c573e21ee6be320f5a618d0d21c1eb351702397caa95b476b8854bf83545993fb464b4a7a80067800  user-xdg-permission-store.service
 744c60fdc6e53ba2c9f370ce8462e1a420cfea973edff49d0caf7a3e65f0f35257d61b5ae3ace3e9d9d48e382cb54d9f2ff96ad02d5e16758a49ba2e07963e5a  user-xdg-desktop-portal-wlr.service
-cc408fd245cb0f17244a1281b3823500cd011a1d82b5a9772c71fc8a5971a59508aad189c470b1efef0e5dcb4d94b17e46eedb929b1d7be51407c97692dc124c  system-zram_swap.service
+e0014662e4ec2c52d3beabe3247ede7c6b12c1d22b7c62d6b04ff82a668f492c09060243acf92090e6a7ec75a44b41760b3bbd144da4f36c14364cfa28a8dac3  system-zram_swap.service
 "
