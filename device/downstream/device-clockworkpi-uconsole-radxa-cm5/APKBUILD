@@ -2,32 +2,89 @@
 # Maintainer: Antoine Martin (ayakael) <dev@ayakael.net>
 pkgname=device-clockworkpi-uconsole-radxa-cm5
 pkgdesc="Clockwork Tech ClockworkPi uConsole Radxa CM5"
-pkgver=2
+pkgver=3
+_commit=2e8040ec92f85e3d43caf3e44557cb0659db4531
+_dtso_commit=c2204834e1d7d0acfd64e1b7874d432bc142f1a4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
-options="!check !archcheck"
+options="!archcheck"
 depends="
 	linux-radxa
 	postmarketos-base
 	u-boot-radxa-cm5
 "
-makedepends="devicepkg-dev"
+makedepends="
+	devicepkg-dev
+	clang
+	dtc
+	linux-radxa
+	linux-radxa-dev
+	"
 subpackages="
 	$pkgname-openrc
 	$pkgname-x11
+	$pkgname-akms
 "
 source="
+	clockworkradxa-linux-$_commit.tar.gz::https://github.com/ak-rex/ClockworkRadxa-linux/archive/$_commit.tar.gz
+	radxa-cm5-uconsole-$_dtso_commit.tar.gz::https://github.com/dev-null2019/radxa-cm5-uconsole/archive/$_dtso_commit.tar.gz
+
 	deviceinfo
 	modules-initfs
 	modules-load.conf
 	modprobe.conf
 	xorg.conf
+
+	driver-makefile.in
+	driver-akmbuild.in
+"
+builddir="$srcdir"/ClockworkRadxa-linux-$_commit
+
+# Location of out-of-tree drivers to be built using AKMS
+_drivers="
+	drivers/pinctrl/pinctrl-axp209.c
+	drivers/power/supply/axp20x_usb_power.c
+	drivers/iio/adc/axp20x_adc.c
+	drivers/iio/adc/ti-adc081c.c
+	drivers/mfd/axp20x-i2c.c
+	drivers/mfd/axp20x.c
+	drivers/regulator/axp20x-regulator.c
+	drivers/input/misc/axp20x-pek.c
+	drivers/power/supply/axp20x_ac_power.c
+	drivers/power/supply/axp20x_battery.c
+	drivers/video/backlight/ocp8178_bl.c
+	drivers/gpu/drm/panel/panel-cwu50.c
 "
 
 build() {
 	devicepkg_build $startdir $pkgname
+
+	local _modules=
+	local _objects=
+	local _file=
+
+	# setup akms folder
+	# this also generates information to complete AKMBUILD and Makefile
+	mkdir -p "$builddir"/akms
+	for driver in $_drivers; do
+		_file=${driver##*\/}
+		cp "$builddir"/$driver "$builddir"/akms/$_file
+		_modules="$_modules ${_file/.c/.ko}"
+		_objects="$_objects ${_file/.c/.o}"
+	done
+	sed -e "s/%%MODVER%%/$pkgver/" -e "s/%%DRIVER_MOD%%/$_modules/" "$srcdir"/driver-akmbuild.in > "$builddir"/akms/AKMBUILD
+	sed "s/%%DRIVER_OBJ%%/$_objects/" "$srcdir"/driver-makefile.in > "$builddir"/akms/Makefile
+
+	# generate dtbo for uconsole
+	_kernel_ver=$(find /lib/modules -maxdepth 1 -mindepth 1 | sed 's|.*/||g')
+	cp -r "$srcdir"/radxa-cm5-uconsole-$_dtso_commit/devicetree_overlays "$builddir"/dtso
+	echo ">>> Generating dtbo against $_kernel_ver"
+	for dts in "$builddir"/dtso/*.dts; do
+		cpp -nostdinc -I "/usr/src/linux-headers-$_kernel_ver/include" -I arch -undef -x assembler-with-cpp $dts $dts.preprocessed
+		dtc -O dtb -o ${dts/.dts/.dtbo} $dts.preprocessed
+	done
 }
 
 x11() {
@@ -38,6 +95,33 @@ x11() {
 
 package() {
 	devicepkg_package $startdir $pkgname
+
+	# merge dtbos with soc dtb for uconsole
+	mkdir -p "$pkgdir"/boot/dtbs/rockchip
+	fdtoverlay -i /boot/dtbs/rockchip/rk3588s-radxa-cm5-rpi-cm4-io.dtb "$builddir"/dtso/*.dtbo -o "$pkgdir"/boot/dtbs/rockchip/rk3588s-radxa-cm5-uconsole.dtb
+}
+
+# Test build of drivers against kernel
+check() {
+	_kernel_ver=$(find /lib/modules -maxdepth 1 -mindepth 1 | sed 's|.*/||g')
+	for ver in $_kernel_ver; do
+		echo ">>> Testing module build against $ver"
+		cp -R "$builddir"/akms "$builddir"/akms-$ver
+		(
+			cd "$builddir"/akms-$ver
+			make KVER=$ver
+		)
+	done
+}
+
+akms() {
+	pkgdesc="uConsole kernel module (AKMS)"
+	depends="akms linux-radxa-dev build-base"
+	install_if="$pkgname=$pkgver-r$pkgrel"
+
+	mkdir -p "$subpkgdir"/usr/src
+	cp -R "$builddir"/akms "$subpkgdir"/usr/src/clockworkpi-radxa
+	chmod -R u=rwX,go=rX-w "$subpkgdir"/usr/src/clockworkpi-radxa
 }
 
 openrc() {
@@ -48,9 +132,13 @@ openrc() {
 }
 
 sha512sums="
+a9c48c3470d5641113e351456d6cfa1e2283e6577cf54eea9a2d49ba4f6269e46cba16039584b34e07c7d8006f6dec112e970148f155f2c3ff0670521568a5a7  clockworkradxa-linux-2e8040ec92f85e3d43caf3e44557cb0659db4531.tar.gz
+a15eb74d9db9114022e96ba04542d18350cf6d637c5efa49f4a5a65c33c5fd20a7997095a049a561fb7aac767a299f367489c5a342138a5259cc32ebb6152384  radxa-cm5-uconsole-c2204834e1d7d0acfd64e1b7874d432bc142f1a4.tar.gz
 6309b7581a17792f282b2c9f35ff4d6ad4eaa5836e488843da33d3e1af051bb3dadc66147e10e7d33b67ae3bcb0ece307ad2f34555875bf8116916bf535bd678  deviceinfo
 85d573bfd51ac4aa502336452b0384af77b6ec095f5c4760e8f287b8452b3ccb4521051bc01c53fa0856440d52231f535f3f0258d62ad578161ad464344413e9  modules-initfs
 642cdb1b4ac02b8c3ab7b72f4eeef615ac4911b42bcd845b54305f0ff64c07b86f4a807a97d395cb6c0cd0a5f5eed15e68d9e4ccb69db8e38fb65c8be4acaeeb  modules-load.conf
 a5324ed5118168b846d359dc2c8e76ccdc624003d157a28e4c9728ddedd9b52c6deb95af9c3a9d94faf52413f2f830dc45ec6c0093458d27149ef17de5dceef5  modprobe.conf
 939cb4ca50e0f54258dd92bdfbf91e6fa7b33b386022d058ba0d4b4e4f6d855cba9f5fffda0652f18c8b9b95d5dbbfc766e0931f0de53841f96d9d8975bf27e7  xorg.conf
+51a1fc5ba9336e784fe8dfb97eed8d3f51fd181a9a76c5266e227e1670aa423fdaec04b869795a2abd5afca6d472a1f107f30a0f0efd242ee16c8910773ddcc2  driver-makefile.in
+576346f3e5611dcba4fd3a5f5bf97e51febb844ff8006b5e4e8aba429df0c1835f702548d61120439cf0279b56d337f4ab9e2389ae8fa0c024b0a3afd4422b2f  driver-akmbuild.in
 "
