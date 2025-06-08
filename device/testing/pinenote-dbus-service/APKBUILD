@@ -1,21 +1,19 @@
 # Maintainer: Antoine Martin (ayakael) <dev@ayakael.net>
 pkgname=pinenote-dbus-service
-pkgver=0.2.2_pre5
-_gittag=${pkgver/_pre/-dev}
+pkgver=0.2.3
 pkgrel=0
 pkgdesc="Dbus daemon for controlling driver aspects on Pine64 Pinenote"
 url="https://github.com/m-weigand/pinenote_dbus_service"
 arch="aarch64"
 license="MIT"
-makedepends="cargo"
-depends="dbus-dev"
+makedepends="cargo dbus-dev"
 source="
-	pinenote-dbus-service-$_gittag.tar.gz::https://github.com/m-weigand/pinenote_dbus_service/archive/refs/tags/v$_gittag.tar.gz
+	pinenote-dbus-service-$pkgver.tar.gz::https://github.com/m-weigand/pinenote_dbus_service/archive/refs/tags/v$pkgver.tar.gz
 	pinenote.initd
 "
 options="!check" # No testsuite
 
-builddir="$srcdir/pinenote_dbus_service-$_gittag"
+builddir="$srcdir/pinenote_dbus_service-$pkgver"
 
 build() {
 	cargo build --release --locked
@@ -30,6 +28,6 @@ package() {
 }
 
 sha512sums="
-10cf05f9e1e8affec97b532611a9bffb86928cabe4eb9bd321b66e8dba340e6a7916fa0c8286f81300bfa655d5596bba09f0316abcafa6c55128823c78acb807  pinenote-dbus-service-0.2.2-dev5.tar.gz
+02bcec9b8681faf0137730c513cfb8f9c3fa59ade6811a98edabe21a4918939822a075d3ad9f8d734b29e683f85f0466e0c2aefdad946a955df78af5a6ae4c89  pinenote-dbus-service-0.2.3.tar.gz
 362c20218610e7a5349eef40d54463a05906e258157e590ad1635591a548ddc60050142cfab41a0423797182e5ae392a7fe6476fc71b9c01cece384351e6f148  pinenote.initd
 "
