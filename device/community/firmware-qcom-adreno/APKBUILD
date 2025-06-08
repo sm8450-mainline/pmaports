@@ -6,7 +6,7 @@ url="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
 arch="aarch64 armv7"
 license="custom"
 subpackages="$pkgname-doc"
-source="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-$pkgver.tar.gz"
+source="https://gitlab.com/kernel-firmware/linux-firmware/-/archive/$pkgver/linux-firmware-$pkgver.tar.gz"
 options="!check !strip !archcheck !tracedeps pmb:cross-native"
 builddir="$srcdir/linux-firmware-$pkgver"
 
