@@ -2,15 +2,16 @@
 # Kernel config based on: arch/arm64/configs/rockchip_linux_defconfig
 # Maintainer: Antoine Martin (ayakael) <dev@ayakael.net>
 pkgname=linux-radxa
-pkgver=6.1.84
+pkgver=6.1.115
 pkgrel=0
 pkgdesc="Radxa kernel fork"
 arch="aarch64"
 _carch="arm64"
-_flavor="clockworkpi-uconsole-radxa-cm5"
+_flavor="radxa"
 url="https://kernel.org"
 license="GPL-2.0-only"
 options="!strip !check !tracedeps pmb:cross-native"
+subpackages="$pkgname-dev:_dev:$CBUILD_ARCH"
 makedepends="
 	bash
 	bc
@@ -29,42 +30,52 @@ makedepends="
 
 # Source
 _repository="kernel"
-_commit="51ed5f015c3cbba79436c47db19896d6d7cd011f"
-_dtso_commit="c2204834e1d7d0acfd64e1b7874d432bc142f1a4"
+_commit="74729d7c051026f99138b6e0e60d580c0bf226db"
 _config="config-$_flavor.$arch"
 source="
 	$pkgname-$_commit.tar.gz::https://github.com/radxa/$_repository/archive/$_commit.tar.gz
-	radxa-cm5-uconsole-$_dtso_commit.tar.gz::https://github.com/dev-null2019/radxa-cm5-uconsole/archive/$_dtso_commit.tar.gz
 	$_config
-	0001-uconsole-video-backlight-Add-OCP8178-backlight-driver.patch
-	0002-uconsole-drm-panel-add-clockwork-cwu50.patch
-	0003-uconsole-power-axp20x_battery-implement-calibration.patch
-	0004-uconsole-driver-staging-add-uconsole-simple-amplifier-switch.patch
+	postmarketos-defconfig.patch
 "
 builddir="$srcdir/$_repository-$_commit"
-_dtsodir="$srcdir"/radxa-cm5-uconsole-$_dtso_commit/devicetree_overlays
-_outdir="out"
+_builddir="$srcdir"/build-$_flavor.$CARCH
 
 prepare() {
 	default_prepare
-	cp "$srcdir/config-$_flavor.$CARCH" .config
+
+	mkdir -p "$_builddir"
+	cp "$srcdir/config-$_flavor.$CARCH" "$_builddir"/.config
+
+	# copies missing library
+	mkdir -p "$_builddir"/drivers/gpu/arm/bifrost/
+	cp "$builddir"/drivers/gpu/arm/bifrost/mali_csffw.bin "$_builddir"/drivers/gpu/arm/bifrost/mali_csffw.bin
+
+	# remove and regenerate localversion
+	rm -f localversion*
+	echo "-$pkgrel-$_flavor" > "$_builddir"/localversion-postmarketos
+
+	make -C "$builddir" \
+		O="$_builddir" \
+		ARCH="$_carch" \
+		olddefconfig
 }
 
 build() {
 	unset LDFLAGS
+	cd "$_builddir"
+	local _kver=$(make kernelversion)
+	if [ "$_kver" != "$pkgver" ]; then
+		error "Version in Makefile ($_kver) does not correspond with pkgver ($pkgver)"
+		return 1
+	fi
 	make ARCH="$_carch" CC="${CC:-gcc}" \
 		KBUILD_BUILD_VERSION="$((pkgrel + 1))-postmarketOS"
-
-	# generate dtbo for uconsole
-	for dts in "$_dtsodir"/*.dts; do
-		cpp -nostdinc -I "$_dtsodir" -I arch -undef -x assembler-with-cpp $dts $dts.preprocessed
-		dtc -O dtb -o ${dts/.dts/.dtbo} $dts.preprocessed
-	done
 }
 
 package() {
-	downstreamkernel_package "$builddir" "$pkgdir" "$_carch" "$_flavor"
+	downstreamkernel_package "$_builddir" "$pkgdir" "$_carch" "$_flavor"
 
+	cd "$_builddir"
 	mkdir -p "$pkgdir"/boot
 	make modules_install dtbs_install \
 		ARCH="$_carch" \
@@ -73,17 +84,61 @@ package() {
 		INSTALL_MOD_STRIP=1 \
 		INSTALL_DTBS_PATH="$pkgdir"/boot/dtbs
 	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
+}
 
-	# merge dtbos with soc dtb for uconsole
-	fdtoverlay -i "$builddir"/arch/arm64/boot/dts/rockchip/rk3588s-radxa-cm5-rpi-cm4-io.dtb "$_dtsodir"/*.dtbo -o "$pkgdir"/boot/dtbs/rockchip/rk3588s-radxa-cm5-uconsole.dtb
+_dev() {
+	cd "$_builddir"
+	local _abi_release="$(make -s kernelrelease)"
+	# copy the only the parts that we really need for build 3rd party
+	# kernel modules and install those as /usr/src/linux-headers,
+	# simlar to what ubuntu does
+	#
+	# this way you dont need to install the 300-400 kernel sources to
+	# build a tiny kernel module
+	#
+	pkgdesc="Headers and script for third party modules for $_flavor kernel"
+	depends="$_depends_dev"
+
+	local dir="$subpkgdir"/usr/src/linux-headers-$_abi_release
+
+	# first we import config, run prepare to set up for building
+	# external modules, and create the scripts
+	mkdir -p "$dir"
+	cp "$_builddir"/.config "$dir"/.config
+	echo "-$pkgrel-$_flavor" > "$dir"/localversion-postmarketos
+
+	make -j1 -C "$builddir" ARCH="$_carch" O="$dir" \
+		syncconfig prepare modules_prepare scripts
+
+	# remove the stuff that points to real sources. we want 3rd party
+	# modules to believe this is the sources
+	rm "$dir"/Makefile "$dir"/source
+
+	# copy the needed stuff from real sources
+	#
+	# this is taken from ubuntu kernel build script
+	# http://kernel.ubuntu.com/git/ubuntu/ubuntu-zesty.git/tree/debian/rules.d/3-binary-indep.mk
+	cd "$builddir"
+	find .  -path './include/*' -prune \
+		-o -path './scripts/*' -prune -o -type f \
+		\( -name 'Makefile*' -o -name 'Kconfig*' -o -name 'Kbuild*' -o \
+		   -name '*.sh' -o -name '*.pl' -o -name '*.lds' \) \
+		-print | cpio -pdm "$dir"
+
+	cp -a scripts include "$dir"
+	find $(find arch -name include -type d -print) -type f \
+		| cpio -pdm "$dir"
+
+	install -Dm644 "$_builddir"/Module.symvers \
+		"$dir"/Module.symvers
+
+	mkdir -p "$subpkgdir"/lib/modules/$_abi_release
+	ln -sf /usr/src/linux-headers-$_abi_release \
+		"$subpkgdir"/lib/modules/$_abi_release/build
 }
 
 sha512sums="
-75269ce2ffbe3ca5a723203aefdda8b47c87730a5b34d828c71c8c7578d726e8f3fc0d526635033852c136e39c19af921a9965b6491ee5a7ae044c7c86d8b8de  linux-radxa-51ed5f015c3cbba79436c47db19896d6d7cd011f.tar.gz
-a15eb74d9db9114022e96ba04542d18350cf6d637c5efa49f4a5a65c33c5fd20a7997095a049a561fb7aac767a299f367489c5a342138a5259cc32ebb6152384  radxa-cm5-uconsole-c2204834e1d7d0acfd64e1b7874d432bc142f1a4.tar.gz
-a1c59ef7898f496b5478464f1d680f8d7b7316d16f6b7f26d72b2e6df3c45c3e3fd36093ec00aa649ca636b6c68a68a62861ac171e30e5d1d3f7c092e67f325a  config-clockworkpi-uconsole-radxa-cm5.aarch64
-71b5d6a65e252da46105cd1b9984bdafdf970ddad0418aaa24b39e41d84eabbfd069e038f9c68f21fad37867b99a1bc2a2d326a4f1ae89e343d4c20f2cb2adbb  0001-uconsole-video-backlight-Add-OCP8178-backlight-driver.patch
-a87746be6aa8731e4773824013fcfea9ec7aaac120653b1ddc5d9d7b883ca476ea51425335d82be4a015c4ffc979bc4d436cd801724bad38c5d5ccc604332474  0002-uconsole-drm-panel-add-clockwork-cwu50.patch
-9f847d612911babc5dab77db540d8c7d3983e9a9650ac39f447c132dbc076bddcca0639c1f643e415d2651e36f95b15ca8a370759a1449b183128cc6356e51b3  0003-uconsole-power-axp20x_battery-implement-calibration.patch
-52061711ce403ac288b60673430e205846aa8ec63759a01e0be3c5dc040b951c012963f3a9e4f6d8493456afff26b0860d944624153c64f27e3504c7c432136c  0004-uconsole-driver-staging-add-uconsole-simple-amplifier-switch.patch
+3c268ca3eaaa6bbffce9759f963ec6030a4a4d2c3b8ed5e130ca5c29d25bad78e43faa575fbc6c1f90ffdbffea39db6a569f073d1917547a4bfbe7b8bf506578  linux-radxa-74729d7c051026f99138b6e0e60d580c0bf226db.tar.gz
+e23a8fb644bca3e18c399112b1f0f569ddcda37d1cceb2fdef82ef97993071ee085c16c35898a22222988876af5456bc422bb247d501ff6725aa7c6cc7367522  config-radxa.aarch64
+a9ec1018a798ee26cb864933dd3aa1d460e6e40a30c55cb0fdd56806031f3b2755d3823d6c30f7bcc1d2bb71d3cabe7a409f46a2e5ff78dc9ff5a31108709758  postmarketos-defconfig.patch
 "
