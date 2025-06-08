@@ -17,6 +17,7 @@ deviceinfo_chassis="embedded"
 deviceinfo_keyboard="true"
 deviceinfo_external_storage="true"
 deviceinfo_mesa_driver="vc4"
+deviceinfo_getty="ttyAMA0;115200"
 
 # Bootloader related
 deviceinfo_flash_method="none"

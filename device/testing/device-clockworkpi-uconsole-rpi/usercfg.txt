@@ -13,6 +13,9 @@ enable_uart=1
 dtoverlay=clockworkpi-uconsole
 dtoverlay=vc4-kms-v3d-pi4,cma-384
 dtparam=spi=on
+# This restores UART0/ttyAMA0 by disabling BT
+# without this, serial is only accessible through /dev/ttyS0
+#dtoverlay=disable-bt
 enable_uart=1
 
 
