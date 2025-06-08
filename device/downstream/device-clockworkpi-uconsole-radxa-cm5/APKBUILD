@@ -2,7 +2,7 @@
 # Maintainer: Antoine Martin (ayakael) <dev@ayakael.net>
 pkgname=device-clockworkpi-uconsole-radxa-cm5
 pkgdesc="Clockwork Tech ClockworkPi uConsole Radxa CM5"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -16,16 +16,24 @@ depends="
 makedepends="devicepkg-dev"
 subpackages="
 	$pkgname-openrc
+	$pkgname-x11
 "
 source="
 	deviceinfo
 	modules-initfs
 	modules-load.conf
 	modprobe.conf
+	xorg.conf
 "
 
 build() {
 	devicepkg_build $startdir $pkgname
+}
+
+x11() {
+	install_if="$pkgname xorg-server"
+	install -Dm644 "$srcdir"/xorg.conf \
+		"$subpkgdir"/etc/X11/xorg.conf.d/10-monitor.conf
 }
 
 package() {
@@ -44,4 +52,5 @@ sha512sums="
 85d573bfd51ac4aa502336452b0384af77b6ec095f5c4760e8f287b8452b3ccb4521051bc01c53fa0856440d52231f535f3f0258d62ad578161ad464344413e9  modules-initfs
 642cdb1b4ac02b8c3ab7b72f4eeef615ac4911b42bcd845b54305f0ff64c07b86f4a807a97d395cb6c0cd0a5f5eed15e68d9e4ccb69db8e38fb65c8be4acaeeb  modules-load.conf
 a5324ed5118168b846d359dc2c8e76ccdc624003d157a28e4c9728ddedd9b52c6deb95af9c3a9d94faf52413f2f830dc45ec6c0093458d27149ef17de5dceef5  modprobe.conf
+939cb4ca50e0f54258dd92bdfbf91e6fa7b33b386022d058ba0d4b4e4f6d855cba9f5fffda0652f18c8b9b95d5dbbfc766e0931f0de53841f96d9d8975bf27e7  xorg.conf
 "
