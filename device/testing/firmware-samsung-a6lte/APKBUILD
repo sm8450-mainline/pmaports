@@ -1,13 +1,16 @@
 pkgname=firmware-samsung-a6lte
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware files for Samsung Galaxy A6 (2018)"
 arch="aarch64"
 url="https://dumps.tadiphone.dev/dumps/samsung/a6lte"
 license="proprietary"
 options="!strip !check !archcheck !spdx !tracedeps pmb:cross-native"
 depends="linux-firmware-brcm"
-makedepends="zstd"
+makedepends="
+	linux-firmware-brcm
+	zstd
+"
 
 # Source
 _raw_wifi_path="https://dumps.tadiphone.dev/dumps/samsung/a6lte/-/raw/a6ltejx-user-9-PPR1.180610.011-A600FJXS5BSL1-release-keys/vendor/etc/wifi"
