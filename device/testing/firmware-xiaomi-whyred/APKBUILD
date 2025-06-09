@@ -1,7 +1,7 @@
 # Maintainer: Alexey Minnekhanov <alexeymin@postmarketos.org>
 pkgname=firmware-xiaomi-whyred
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware files for Xiaomi Redmi Note 5 Pro"
 url="https://postmarketos.org"
 arch="aarch64"
@@ -9,7 +9,7 @@ license="proprietary"
 options="!strip !check !archcheck !spdx !tracedeps pmb:cross-native"
 makedepends="qca-swiss-army-knife"
 source="
-	$pkgname-$pkgver-r$pkgver.tar.bz2::https://gitflic.ru/project/alexeymin/firmware-xiaomi-whyred/release/59529705-3bd3-4623-a0ea-3031e44cac07/fee9afe8-5aa6-41c0-b39f-aba91706a538/download
+	$pkgname-$pkgver-r$pkgver.tar.bz2::https://fw.minlexx.ru/firmware-xiaomi-whyred.tar.bz2
 	https://raw.githubusercontent.com/TheMuppets/proprietary_vendor_xiaomi_whyred/refs/heads/lineage-20/proprietary/vendor/firmware/a512_zap.elf
 "
 
