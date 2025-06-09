@@ -13,7 +13,11 @@ depends="
 	u-boot-sunxi
 	u-boot-tools
 "
-makedepends="devicepkg-dev dtc"
+makedepends="
+	devicepkg-dev
+	dtc
+	u-boot-tools
+"
 source="
 	deviceinfo
 	modules-initfs

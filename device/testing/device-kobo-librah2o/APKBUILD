@@ -14,7 +14,10 @@ depends="
 	u-boot-kobo-librah2o
 	u-boot-tools
 "
-makedepends="devicepkg-dev"
+makedepends="
+	devicepkg-dev
+	u-boot-tools
+"
 
 source="
 	deviceinfo
