@@ -1,6 +1,6 @@
 pkgname=u-boot-pine64-quartz64
 pkgver=2023.04_git20232303
-pkgrel=0
+pkgrel=1
 pkgdesc="u-boot bootloader for the Quartz64 (RK3566)"
 url="https://gitlab.com/a-wai/u-boot-pinenote"
 arch="aarch64"
@@ -34,6 +34,7 @@ source="
 	$pkgname-$_commit.tar.gz::https://github.com/Kwiboo/u-boot-rockchip/archive/$_commit.tar.gz
 	ram_init.bin::https://github.com/rockchip-linux/rkbin/raw/$_ram_commit/bin/rk35/rk3566_ddr_1056MHz_v1.16.bin
 	bl31.elf::https://github.com/rockchip-linux/rkbin/raw/$_bl31_commit/bin/rk35/rk3568_bl31_v1.42.elf
+	libfdt.i_shipped-use-SWIG_AppendOutput.patch
 "
 
 build() {
@@ -73,4 +74,5 @@ sha512sums="
 e230d6449deb3f0c8d1e5ecb1897a0eddcaf8479e25d2c98d627c4a6cc7ac1f564673f0164d48457c66596a454fa9f783b09445aed10fdff36688038a8a74769  u-boot-pine64-quartz64-cc3eb4da9a66769911ca2005301391f9cc9316f4.tar.gz
 4cac163b76bfe405dbe3889ed146c9e2af384862b9c9e17e6bad3ad036a206e7160deee0a319eff5d25d512b3ab89d313183fde6848da6117540363f4416dad8  ram_init.bin
 97ce818a8b6f6434811a2b2a31bbac0863badc89696bd9e6a2596e37faf8dc5c948adc86bd159bff5570628270cfcb322fe28728a501ccc9371ac8848473c3ba  bl31.elf
+016ef30dbbb1021dad4f58eeda3f5a5e89ff3a76dbc69e8e4cf6a3fc3983aef998cfe1087abb4b21bb2f859bd5cffe26c1da42d13f1c3d2e3c053c399f38720b  libfdt.i_shipped-use-SWIG_AppendOutput.patch
 "
