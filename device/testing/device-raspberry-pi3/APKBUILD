@@ -2,7 +2,7 @@
 # Maintainer: fossdd <fossdd@pwned.life>
 pkgname=device-raspberry-pi3
 pkgdesc="Raspberry Pi 3B/3B+"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -11,7 +11,7 @@ options="!check !archcheck"
 depends="postmarketos-base raspberrypi-bootloader linux-rpi bluetooth-raspberry-pi"
 makedepends="devicepkg-dev"
 subpackages="$pkgname-openrc"
-source="deviceinfo modules-initfs usercfg.txt cmdline.txt 95-vchiq-permissions.rules networkmanager.conf"
+source="deviceinfo modules-initfs usercfg.txt 95-vchiq-permissions.rules networkmanager.conf"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -20,7 +20,6 @@ build() {
 package() {
 	devicepkg_package $startdir $pkgname
 	install -Dm644 "$srcdir"/usercfg.txt "$pkgdir"/boot/usercfg.txt
-	install -Dm644 "$srcdir"/cmdline.txt "$pkgdir"/boot/cmdline.txt
 	install -Dm644 "$srcdir"/95-vchiq-permissions.rules \
 		"$pkgdir"/etc/udev/rules.d/95-vchiq-permissions.rules
 	install -Dm644 "$srcdir"/networkmanager.conf \
@@ -36,10 +35,9 @@ openrc() {
 }
 
 sha512sums="
-884106ae06152317cc4c9ba6c59e6475914645706aa509883d5361aee7ecabd79eb2fbe98f78e2b8a116b740c9a22b600d9e60a8ced68c3ce2b2294dbb109d7b  deviceinfo
+538f7475f76b10e87d5371476ec09b9360501e5d0d88c095b5809fa2d34f7fa53184bd5322bfc6effe0556972e60cf349575e279187debe5ba2d850ff12fac8b  deviceinfo
 e3515cf9f41807917eac1f7663e0131bd18783824facf15f2bb0381635bf6d9a0c334f3786b6fb76d01469de6449878c871f8b747f45e9e3cee77699905cf319  modules-initfs
 a1724e0accc2cbba4c24efb0f9bc99d480811b35cefc225c7e4a9015d0f66bb0db83ceee9948d8d96938a2fb7077ddba00abb6be943504b793abc40df6f0aecb  usercfg.txt
-ae3de0b8fec07d3a283dc3c06bf8678eec1e65c9faf0b7f4fdc9fb92751e324d1f8e2fb224dbbf561b7e5a6fb34769bfa1657858375f74b101a130d78e0737e2  cmdline.txt
 7e5505cb07d5b4a81bd28443d508336b5c547356538f1c06f91ed93ad0d7d456d4f74f1d24df5a2e08c17e74f0a66607352ac4874e967e9a91dfec9522d2d58d  95-vchiq-permissions.rules
 0f79016bf717dea43830962f524deae8d1cedc274376e40bd912ebe63208c5b1c3b7a5aa14379da19020c587dbd5588df2f0066ca1540070a226983a43e4159b  networkmanager.conf
 "
