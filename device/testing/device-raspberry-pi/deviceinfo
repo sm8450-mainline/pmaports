@@ -9,6 +9,8 @@ deviceinfo_year="2013"
 deviceinfo_arch="armhf"
 deviceinfo_disable_dhcpd="true"
 deviceinfo_partition_type="msdos"
+deviceinfo_kernel_cmdline="modules=loop,squashfs,sd-mod,usb-storage quiet dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1"
+deviceinfo_generate_cmdline_txt="true"
 
 # Device related
 deviceinfo_chassis="embedded"
