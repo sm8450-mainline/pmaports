@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-raspberry-pi0
 pkgdesc="Raspberry Pi Zero"
-pkgver=2
-pkgrel=1
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armhf"
@@ -10,7 +10,7 @@ options="!check !archcheck"
 depends="postmarketos-base raspberrypi-bootloader linux-rpi bluetooth-raspberry-pi"
 makedepends="devicepkg-dev"
 subpackages="$pkgname-openrc"
-source="deviceinfo modules-initfs config.txt usercfg.txt cmdline.txt 95-vchiq-permissions.rules"
+source="deviceinfo modules-initfs config.txt usercfg.txt 95-vchiq-permissions.rules"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -20,7 +20,6 @@ package() {
 	devicepkg_package $startdir $pkgname
 	install -Dm644 "$srcdir"/config.txt "$pkgdir"/boot/config.txt
 	install -Dm644 "$srcdir"/usercfg.txt "$pkgdir"/boot/usercfg.txt
-	install -Dm644 "$srcdir"/cmdline.txt "$pkgdir"/boot/cmdline.txt
 	install -Dm644 "$srcdir"/95-vchiq-permissions.rules \
 		"$pkgdir"/etc/udev/rules.d/95-vchiq-permissions.rules
 }
@@ -34,10 +33,9 @@ openrc() {
 }
 
 sha512sums="
-b51fe37ee32b058bd585283804fea9d3c950a2bc9824365b1dfe99ac157a9097b93ecc98e6d6f9e3e20291c9493114ae6145ec164399a70908e3dbfb976f2fce  deviceinfo
+b79593ccb88b1c297160bb4af9ab4d0f42c2c1fbe743c00853b7268f73fda53ae0bcfb0dfb9c47faf48aa09a5e81d015af4b55c87abcf017289696667b96190e  deviceinfo
 09540960017460809c091457ba9f96b0d12c8a12ef300b77017651bf1492e66440244502ccf22fb8c58d0362751366ef1acf1c5a60b0698c1dda530f0945c17f  modules-initfs
 8e9111b1c131575c372c01125a148c3326871c5789fa99f069918cb5f8ba9a57d7b0da845524a6037635808c3a4ca6d40a8861485a6ed476880106e4e4d2a660  config.txt
 f38e28c13ab50d90dfc06bfae2945aab93551f39ec3cb2a2b65cfeb14dbbf04eb8c80920491106789e9d8f2290fbdac2f5e9adab24fa5f478568df3a638dc8e4  usercfg.txt
-5ff2b940d71bbd524c1ea488dafce760ebb9a402129d8ca18c5ddba75d5e48481f8ce614a4d5df298b213f4b49d977b25ffe50c5e801d878aab1e0d03ec49f95  cmdline.txt
 7e5505cb07d5b4a81bd28443d508336b5c547356538f1c06f91ed93ad0d7d456d4f74f1d24df5a2e08c17e74f0a66607352ac4874e967e9a91dfec9522d2d58d  95-vchiq-permissions.rules
 "
