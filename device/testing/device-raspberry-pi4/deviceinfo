@@ -20,3 +20,5 @@ deviceinfo_screen_height="1080"
 # Bootloader related
 deviceinfo_flash_method="none"
 deviceinfo_boot_filesystem="fat16"
+deviceinfo_kernel_cmdline="modules=loop,squashfs,sd-mod,usb-storage quiet dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1"
+deviceinfo_generate_cmdline_txt="true"
