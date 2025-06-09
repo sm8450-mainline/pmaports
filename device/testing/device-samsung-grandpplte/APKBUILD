@@ -16,7 +16,12 @@ depends="
 	u-boot-grandpplte
 	u-boot-tools
 "
-makedepends="devicepkg-dev"
+makedepends="
+	devicepkg-dev
+	mt6735-bootshim
+	u-boot-grandpplte
+	u-boot-tools
+"
 source="
 	boot.cmd
 	boot-image.its

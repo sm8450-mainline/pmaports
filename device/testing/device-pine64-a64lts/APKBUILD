@@ -9,7 +9,10 @@ arch="aarch64"
 options="!check !archcheck"
 subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
 depends="postmarketos-base linux-postmarketos-allwinner u-boot-sunxi u-boot-tools"
-makedepends="devicepkg-dev"
+makedepends="
+	devicepkg-dev
+	u-boot-tools
+"
 source="
 	deviceinfo
 	uboot-script.cmd

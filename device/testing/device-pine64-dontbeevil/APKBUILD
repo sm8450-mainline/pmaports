@@ -16,7 +16,10 @@ subpackages="
 	$pkgname-x11
 "
 depends="postmarketos-base u-boot-sunxi u-boot-tools ofono"
-makedepends="devicepkg-dev"
+makedepends="
+	devicepkg-dev
+	u-boot-tools
+"
 source="
 	deviceinfo
 	modules-initfs
