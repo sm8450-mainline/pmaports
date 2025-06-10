@@ -1,4 +1,5 @@
 # U-boot with patches to make the Samsung S9 boot
+# Maintainer: Dzmitry Sankouski <dsankouski@gmail.com>
 pkgname=u-boot-starqltechn
 pkgver=2023.01_rc2
 pkgrel=2
