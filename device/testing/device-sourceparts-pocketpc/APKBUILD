@@ -13,7 +13,7 @@ depends="
 	u-boot-sourceparts-pocketpc
 	u-boot-tools
 "
-makedepends="devicepkg-dev"
+makedepends="devicepkg-dev u-boot-tools"
 source="
 	deviceinfo
 	uboot-script.cmd
