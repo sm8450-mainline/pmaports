@@ -15,7 +15,7 @@ depends="
 	u-boot-tools
 	u-boot-lark-freeme-70-2s
 	"
-makedepends="devicepkg-dev linux-postmarketos-allwinner"
+makedepends="devicepkg-dev linux-postmarketos-allwinner u-boot-tools"
 source="
 	deviceinfo
 	u-boot-script.cmd
