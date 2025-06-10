@@ -4,8 +4,8 @@
 # Co-Maintainer: Dylan Van Assche <me@dylanvanassche.be>
 pkgname=device-shift-axolotl
 pkgdesc="SHIFT6mq"
-pkgver=15
-pkgrel=6
+pkgver=16
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -74,7 +74,7 @@ pmtest() {
 }
 
 sha512sums="
-e3f8a8d556a3c3134791693f2003aa64465b6971f7e353f547d6f1cbe3a0a0225a225e40ee4dbed951c0fa67f5a4636fd15953f6a3fe23d4f098fa1d39baa8f5  deviceinfo
+487120bef94f4c21530eacf5fbb40ca8f7ac3db6008c41944ee9ab3777bdecba5d15c48afecbdb0af92f1016274d4c7d54c5e9cb27ef39916af6830fdbcfd61a  deviceinfo
 5966325963a3a62c919b5f39f7bc56e1785f192f50c40a6cc644a2fea0c9b8dd083e287ef43c59c2b9cab5c88d65266b0cd9cf1f5110924950bd250be5385622  hexagonrpcd.confd
 4dc84207c5ca84b33b74139c8b0c9ce5baa8bcb1068df9943c478c02abcf8daccb88e06af63f120a434a115e277008e899305bd5239d8669436cb269889040e9  modules-initfs
 2a3cbdad5aa91181d24a4e56e63986af6accf887c64fa4d1b6ddad1926e29050243c4b1e2fd892d38ca7c16e24dff8545a16552e5749ae31b6d01bf428468e51  q6voiced.conf

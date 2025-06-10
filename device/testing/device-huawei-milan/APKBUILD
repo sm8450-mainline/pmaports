@@ -2,7 +2,7 @@
 # Maintainer: bzy-080408 <Bzy080408@outlook.com>
 pkgname=device-huawei-milan
 pkgdesc="Huawei Maimang 5 / G9 (Plus) / Nova (Plus)"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -34,6 +34,6 @@ package() {
 }
 
 sha512sums="
-9f201c264c8a30756a631cd39b7868575599fa1d36e0d3885091eeebe11f52bfb17d1d1a6ca4d5a78e3bed45aab3349afd637182a1cd5ce2f8ee32490e1adf55  deviceinfo
+d9a8e2f822e0e58626edcc25e43bc0557d8ab8018bf94b0b34f6b6196411c0e070eeb4a790943e01b8b03b50a70eb01da16590a8ab718526e793826088174c8d  deviceinfo
 5c7a190070b1e4f3f0517b24bbaeaf37da5a2dd815081233e29f403c8dfcf3921cb6651b9adc88677fa780f65ebb7c2c174de35e090692a18fd9ccdc75793589  modules-initfs
 "

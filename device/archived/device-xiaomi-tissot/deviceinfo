@@ -36,8 +36,5 @@ deviceinfo_dtb="qcom/msm8953-xiaomi-tissot"
 deviceinfo_append_dtb="true"
 deviceinfo_flash_kernel_on_update="false"
 
-# osk-sdl
-deviceinfo_mesa_driver="msm"
-
 # lk2nd does not support GPT for subpartitions/SD cards yet
 deviceinfo_partition_type="msdos"

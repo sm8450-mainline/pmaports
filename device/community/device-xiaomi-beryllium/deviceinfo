@@ -37,5 +37,3 @@ deviceinfo_flash_offset_tags="0x00000100"
 deviceinfo_flash_pagesize="4096"
 deviceinfo_flash_sparse="true"
 deviceinfo_initfs_compression="zstd:fast"
-
-# osk-sdl

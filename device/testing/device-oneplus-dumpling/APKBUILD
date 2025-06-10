@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-oneplus-dumpling
 pkgdesc="OnePlus 5T"
-pkgver=4
-pkgrel=6
+pkgver=5
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -61,7 +61,7 @@ phosh() {
 }
 
 sha512sums="
-4f85cbb805dbb7c8cf532c773239630e098570c6d9189a87296c8377c7310dc83ff9faad6b3a356a0d451d0bfc49a4e7ad252c8ebe3dbd05fa7115b2eb2e2505  deviceinfo
+7cebaa0aa9659de5c971f7b2c1adae4abcabd7a85e8121838e3ad39bfebf0ec2031a34259607b4aa14558fcc4077563b656514c0222719018b125f501110ec8e  deviceinfo
 53472343462865f6b44897a079edc62dbbefe1b3ad0c7ceb02fa85a21d0162c0505321b516fc37a9fa7fcfe946cd17fd03a70b24bca302aa18773b576e5f14c9  modules-initfs.alpine
 27fa563174768cf1c3b0568b9e5b84cfb5eb54ed29ff4788eaba829ca484a053dff46ae7f64741c59a9e7652970f5858e8bf42af5ae23fe6f37660777ca40d4a  modules-initfs.mainline
 2288f08a44aae5136c0c0c846501c2bd4bcb10f05454b40c6e4490d398385b8a7129216047b5eb7982ca6d62d3aa71f3e18bfb8661d0cd32c8a600685ca0da48  phoc.ini

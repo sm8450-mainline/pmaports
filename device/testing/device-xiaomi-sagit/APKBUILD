@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-sagit
 pkgdesc="Xiaomi Mi 6"
-pkgver=2
-pkgrel=5
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -45,7 +45,7 @@ phosh() {
 }
 
 sha512sums="
-36b7ac99f4e24bc2bcf08f12f129b6be48c0b390e6ceafc577b6632929eeef45a374f9cf8cdd7ae81fbe8c5e58e5f7cfd9b6e578c064f3bd6ba723b213ca24ba  deviceinfo
+4d1e35a0a2dbb7097179ae2533058d3f49ce7883dd7bd4fd9274a48ed581fb17027578ce67d566a383861a88f5ecff27862b8e7806fa0c0dd31301dd01a39063  deviceinfo
 1a58c96c0c73569eea2691e0dc817c3ab8e5e284049458c18d1db499dd1047e519b11f54331ab01ea8eedb824988cea51a41af19c079a54e8dbe42bd61dd37e6  modules-initfs
 2288f08a44aae5136c0c0c846501c2bd4bcb10f05454b40c6e4490d398385b8a7129216047b5eb7982ca6d62d3aa71f3e18bfb8661d0cd32c8a600685ca0da48  phoc.ini
 "

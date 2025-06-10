@@ -3,7 +3,7 @@
 
 pkgname=device-solidrun-cubox
 pkgdesc="SolidRun CuBox"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -35,6 +35,6 @@ package() {
 }
 
 sha512sums="
-3c81918dc4107558046ae7bd34c1b373244f0d688cba3191953fe35b342121712224b66e3ebbe0601b7bfd7c9373d7804880baa267afd21f40183325ae2e00e8  deviceinfo
+e3952444a5b4a26036adaf08721b58fcf34a376592d31ceae1d922d8d08af280fb436692f0384e94800df344828ec42073deed72072256594dd9d15e7446654d  deviceinfo
 c651eb52066d6a8aa48388b391de0c9a4d85369adce3d2228bd3dfaa4d3ab797dbeca6965d5e3b898a378cb9d52215f946e497c44fc37b5fc668ec79d5f24ffc  boot.cmd
 "

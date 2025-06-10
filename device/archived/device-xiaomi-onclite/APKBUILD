@@ -3,7 +3,7 @@
 
 pkgname=device-xiaomi-onclite
 pkgdesc="Xiaomi Redmi 7"
-pkgver=6
+pkgver=7
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -32,6 +32,6 @@ package() {
 }
 
 sha512sums="
-a37d2baf856bbd734b9571ded15aa24c8800350295169b9d543b10cd225eadbdf36a1ebbb4d72369f0f117662de6e8f43cdd2f095893ef3ef3f201b6c98e8a73  deviceinfo
+a3c5d103277fc3a1723316af48f58cc21eb3b1800c6444a963fb2ae50e0a88e887a2ebb8f0b4dab3506f2ee4fdefa4d629cdd3c06eae306810cc53869b06534a  deviceinfo
 706e76054992dfd03ef240e0de2d7e84a77c97727141fa8d737b02c9d780f60c2df57755e17c44d93136aa6a6d1f8a8d9dbbf51d11674e5fb67197bd313811fd  modules-initfs
 "

@@ -2,7 +2,7 @@
 
 pkgname=device-samsung-a6plte
 pkgdesc="Samsung Galaxy A6+ (2018)"
-pkgver=4
+pkgver=5
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -51,7 +51,7 @@ phosh() {
 }
 
 sha512sums="
-72005dc6acc25d13d4ac0cac4ca8578112223eb6a462da8b5854c0d804372ad86d14a784b6a9a18db6cce9ddd2e8ae8b9910846661e432ebf37fa15baf8cc4b0  deviceinfo
+d9ec103bcf14b989d9438655354ad2704c296661066a02908388c7b95f3e62d40af61d1f745ec4c02ec400a0cafadea6348420b0c919ed39785444820db1fffc  deviceinfo
 e178cc887ce85bd0fd6eb4c8cb8a4869e1d82c5cb4549c7ea12b2ae8a13b35ffa85dd8d529b8e8612710379687a42a6c2c135857c0c537cf7db99ddd955e2b9f  modules-initfs
 bea40516cf51b4ad0609cc21ca56c19eb9cb2b1be45cddf486264d9c526469f1abad313a95a4f938ccbd0c023d08884aefe8d850746a97075999de11b4a2ff4c  gpu-nobin.sh
 38409d4ce48db4624539dbfd695d3c6e1596a29fd7c3004a41368b28cba646495d05360420ad728f82c63d6ddeeca71d09944df06ebaca120aedd9cc2b436eb3  phoc.ini

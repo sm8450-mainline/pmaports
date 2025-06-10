@@ -2,7 +2,7 @@
 # Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=device-fairphone-fp2
 pkgdesc="Fairphone 2"
-pkgver=10
+pkgver=11
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -45,7 +45,7 @@ phosh() {
 }
 
 sha512sums="
-2301e2c8b66fda1d4262bd221dbd812112ffd92a31b7f5289292958981ae214e99dcce0d4e591fa7cb4fd0cbe7f560cf876dc49dd90346d1cc0419a96cefdbf5  deviceinfo
+0e9065d3585b9f29fd1ccc13d3f64eae4163003a064841780ba388eb38c01bf61a5afeed631dc50ebf8f9e0e674752ea1369d2989ec6b682047d3a5cc04d2830  deviceinfo
 1a99953420a4068c6205dd90015e895909d39011dcc72fd73ac6880920fe4b95fe54377b9d4864a2d4fac56c4334e0c896ba8cc92dea61f93e9384de0998a910  modules-initfs
 cef2fd633cddbcf4ac9b4d2fa6bf3a1e3e8d810a2ea8050767fe649d289db753662821d5e41e2c8d20fb9c765c1babcb6a4d95e4c9345f5ea32d1b1d2b1e5126  phoc.ini
 "

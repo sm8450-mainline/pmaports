@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-hlte
 pkgdesc="Samsung Galaxy Note 3"
-pkgver=4
+pkgver=5
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -50,6 +50,6 @@ nonfree_firmware() {
 
 sha512sums="
 6cef5f8ae1785ac16e6fe84bfc861ac50cdfb94db35d764f44a25c960e123cb82f6e56f45362a5340c62a3d5ac225f2689afd4f6964cb88305a0892ba44214f0  bt-module-deps.conf
-caf09128088895e7b1c472d5842b072693c8849acc6df25b636e45f6cc7bec9f8f28ea9b6e01d921afd428393d7f24775b2a60784ab88b7ae7cd672ef56fe071  deviceinfo
+048aa2085f863298203beed72e9f33362a053bfc99f52b1c0e99cb7ae1fe9e7620b660b28bea6f2427cb589850f95d1ca77c8050a7fa9ac2ebe6cc2ab8c01be7  deviceinfo
 640f11d6cdea23ae5e183468aa9873f5ce091cac721d893866d5e46c19d77bcc6f5401cc0e6488c36d4da954fe94c3d7046f0bc2d299b656a06b540fab8d5e55  modules-initfs
 "

@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-beryllium
 pkgdesc="Xiaomi Poco F1"
-pkgver=12
-pkgrel=4
+pkgver=13
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -76,7 +76,7 @@ kernel_ebbg() {
 }
 
 sha512sums="
-7210020cb4b745cd064f24b51cfa17e91d888a913ebf5cabf2b65162efc3f328c487174343a0cd7549512cb4ad165a2c6215454a71757d4e3f54bfd4613ba809  deviceinfo
+441826859519f3195194d3e1f25da64f95b15c1213b8787f4f809be9ccb9d48b8915490ee5a30b0b7398d1aabe2d522144573c5b39bc84376598ec87fb24ce4f  deviceinfo
 52079045a0c1f48628d891bf8867f5c1802152fce8e2c4bd787630f1f5e4c9b386bfc373e464cb053688350ac678dbc3c407a76a31a1ae700ca67764d0d384f1  hexagonrpcd.confd
 cab76675b9c48eb1ce0691b31667d17ee73ecf21439a7f7c9c2ba96344e3bf4ad713ebc685298d6e32ad589ba26f429cd6b0d200338b50d136ad1a29758e4214  modules-initfs.ebbg
 175a7d859956a029b91a1105b93c4113b07ab5cfe932294dd369808059ed03471625f64ce90e5146a65c0bb26417470d8f7c02e48dfacf2d016ce5b2c28cee76  modules-initfs.tianma

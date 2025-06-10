@@ -3,8 +3,8 @@
 
 pkgname=device-qualcomm-sdm845
 pkgdesc="Generic device package for Qualcomm SDM845 devices"
-pkgver=2
-pkgrel=2
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -41,7 +41,7 @@ package() {
 }
 
 sha512sums="
-269d048bbb1b7b0d199c9969f4700c9cae8a7850a5b66cd736c3e93a21a1b0caca0ddc4e97fe3703b39562e771793db9a8e13f11a84957026bc7d00f035c9a4a  deviceinfo
+15d7fc1410ac5749bf7f21a6e4dd6b59771b5ac526efbb000dd3bd5b23ed9d6153a647d59bfcb312587f9ad925b60a109e48f7b8a5aa5ec81b67e615580c2309  deviceinfo
 5f3e1c286baea16a5b0a4a34cef7ad774d3aa5cc384e1deb4fba40d1f9372a708baf3b587e3edac69edcf04b5513f0111c1976b649b424cc721733ce4ddabc19  q6voiced.conf
 3bbacc8c260e2c0af509b9b123218f830610ac7aef82efc9b117fc62ccda4155e588be718dcb399102b5534a25900e53840083add166a7ac5b399ddc702de904  modules-initfs
 "

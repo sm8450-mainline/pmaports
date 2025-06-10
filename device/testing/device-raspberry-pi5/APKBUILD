@@ -1,7 +1,7 @@
 # Maintainer: winbo-yml-exe <winbo.yml@proton.me>
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-raspberry-pi5
-pkgver=4
+pkgver=5
 pkgrel=0
 pkgdesc="Raspberry Pi 5"
 url="https://postmarketos.org"
@@ -60,7 +60,7 @@ plasma_bigscreen() {
 
 
 sha512sums="
-ffb5c53f652bd07e666854edee88d0ee2cf7eabc6b916328ec00fe852c9e12604103da72666a0a7d0accd967c7f9d027db4a5a5fe45d0fccf02789b650657b89  deviceinfo
+7e780aca65f7d977d17782fb22c306e46dc168c9249c7d926d11fd4948942c25aa2817f42699c8dee90708b873892601e8347ffee441d3785f6f6e8d06ebc344  deviceinfo
 1c89943bcf0d26244211b52774de8453780d246e35c5cb5cb15012741128ceed646ae9ab7adc47221e53bfeb65c68130d21cdf9c3d7e9f4d57c5d0d889300f8c  modules-initfs
 4e832421e47dd0faf443a7a949aae83cc6d4a80fd816df5c6d9d72ac4ae23f803863b9b63903a14b18ae585e6abc5c8703376a003967b74dc30040dc544aa2e9  usercfg.txt
 7525e0b287ba6f48cbf8ff5c0d1c5856dd832265e7b58732a7f733c7a6d894a60abbbd7dad582f1cb546a393a72be8770617ddc4320ac5e32c89c30611caceb9  cmdline.txt

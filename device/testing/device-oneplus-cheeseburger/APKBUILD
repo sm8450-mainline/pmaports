@@ -2,8 +2,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-oneplus-cheeseburger
 pkgdesc="OnePlus 5"
-pkgver=4
-pkgrel=6
+pkgver=5
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -72,7 +72,7 @@ plasma_mobile() {
 
 sha512sums="
 fcb37390af6f2a0aed381585eeec7d0dd30e0b291d97a6fa433ed4b5d3badb3298709972d382a44f555329f83aabdbb8c8affcfe3933072538c4ac8c3ff9aca8  21-oneplus5-ts.rules
-e2aec223cc4d8877c53c995852b7791ed0ef4addf0009a597cb069880c0b41c7028a08b6196d836277415d10d2fd158b11396d06c8dd7fde900ef74765442bb3  deviceinfo
+b8e7c2d27f30414114a24fe0ff4b59cf6af9ba147b386f5a4ca89d2c1751ca8f5911da871a2b1a25d2e0cfb3769bcff614d923794df0ce8d5f371b2e88000b2e  deviceinfo
 53472343462865f6b44897a079edc62dbbefe1b3ad0c7ceb02fa85a21d0162c0505321b516fc37a9fa7fcfe946cd17fd03a70b24bca302aa18773b576e5f14c9  modules-initfs.alpine
 bea8d7d4a622d8d455a4f06e7207b636e3f310eab5c0865da5cea56942846f90cb6b00a9f5f000ecf148dab5092d54ef47d9aa021719a4a5b9867792c9f6b7e7  modules-initfs.mainline
 2288f08a44aae5136c0c0c846501c2bd4bcb10f05454b40c6e4490d398385b8a7129216047b5eb7982ca6d62d3aa71f3e18bfb8661d0cd32c8a600685ca0da48  phoc.ini

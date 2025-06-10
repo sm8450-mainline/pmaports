@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-vince
 pkgdesc="Xiaomi Redmi 5 Plus"
-pkgver=15
+pkgver=16
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -34,6 +34,6 @@ package() {
 }
 
 sha512sums="
-bc0db9190fdef9859e7dedc0439f350ce8716a59efa5a182e12985c2435e2f1a624ddb85d1d3b89c60d452e813c90a8a9eb888db5a83422d6d225363c84e5072  deviceinfo
+92a35ee90efc7dd61112f04c8035ed403e6bd62a80e836b42c4da5f9f2ef3cd601f2d7a12890f8d88af41ed88f40c5679e0b99bed2e138071c3829478ff2a127  deviceinfo
 69cfc8db6ea497576085e1b5861c766b5c6cfbd493e4d66aa0bfa29a0e80eeaeb8a465c4841c6a7959796f5a2325e621d60f2c35ccb0741d7934ab310abe807f  modules-initfs
 "

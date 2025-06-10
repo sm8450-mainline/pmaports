@@ -3,7 +3,7 @@
 
 pkgname=device-xiaomi-natrium
 pkgdesc="Xiaomi Mi 5s Plus"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -71,7 +71,7 @@ phosh() {
 
 
 sha512sums="
-ee242f3b4ccf07e616165062c29ca2eaf2c4908b2abc3aedb9e5795ad906bcfd8749210efc1188225d4c99a6f5cb3b1f648b90fef9bded4dc7b40db8c9de0e05  deviceinfo
+1582ef90532b67924b469dd9dc0a340566b2c8979b3bd78195901d256f1fbe8af0fed450a801557286126aa758ac5371eb9cc688a52505379d0c3bfb68ab5574  deviceinfo
 4f420e410ed05d617659e8ec1d86b9d3b1514caabe1836cde06d6950f4d92e2b96ad9df7d91061019513aa23971d24a3c394e36abd4f3fbc4a9db5420037c2c4  modules-initfs
 e9ee9c1404b41ba15eafff3f728ff6e0e78dc17e9a88483fca92db1aa3efe0e4d5bf26142e533c4ff12b1bf8ce04ccabb7ca0f93aaea586d5b30910282aad237  pointercal
 38409d4ce48db4624539dbfd695d3c6e1596a29fd7c3004a41368b28cba646495d05360420ad728f82c63d6ddeeca71d09944df06ebaca120aedd9cc2b436eb3  phoc.ini

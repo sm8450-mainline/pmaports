@@ -40,6 +40,3 @@ deviceinfo_initfs_compression="zstd:fast"
 
 # Required for devices using UFS as storage (instead of e.g. eMMC)
 deviceinfo_rootfs_image_sector_size="4096"
-
-# osk-sdl
-deviceinfo_mesa_driver="msm"

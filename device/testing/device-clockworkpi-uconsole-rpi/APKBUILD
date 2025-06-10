@@ -2,7 +2,7 @@
 # Maintainer: Federico Amedeo Izzo <federico@izzo.pro>
 pkgname=device-clockworkpi-uconsole-rpi
 pkgdesc="Clockwork Tech ClockworkPi uConsole with Raspberry Pi compute modules"
-pkgver=4
+pkgver=5
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -60,7 +60,7 @@ openrc() {
 }
 
 sha512sums="
-b9f17e497f9e9ed3e6c356cd48af150e255d9a90c2debace222703e2c900989c1bf1c07ad3be7b58358807e954fa5d978a3b8f317657ff27cedcda8f959ecdaf  deviceinfo
+ca5a62f611318cfdb095728c7b473aa85e30e965222ca740d6ad8fa372eba7adc8ca62edc770da19375faa228cc0c8718234f2f07ea72a2db0d77bfbc6924546  deviceinfo
 d97e603ef83626ec12a2503035c8de4d3d4d548510b85b26b07382736c334ae0c420e6811612fa83795eb8aa349dae29ec9944708d57cdd04cce09db3c32de23  modules-initfs
 5f5dee9320be0f170f1284ebb7fa49c92802350f9621336c21c864d111fa99dd6007077fdccd45c828c2e31da1e46d29341063dcc8901a4f40935794b9486d6d  usercfg.txt
 7e5505cb07d5b4a81bd28443d508336b5c547356538f1c06f91ed93ad0d7d456d4f74f1d24df5a2e08c17e74f0a66607352ac4874e967e9a91dfec9522d2d58d  95-vchiq-permissions.rules

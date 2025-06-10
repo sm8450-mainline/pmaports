@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-codina-tmo
 pkgdesc="Samsung Galaxy Exhibit (SGH-T599)"
-pkgver=1
-pkgrel=4
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -46,7 +46,7 @@ phosh() {
 }
 
 sha512sums="
-5964ae8453b56efe83d17a2bc826e48165b205be6d415944ba85a0c17dc9c8b39a70cae0f66f5bb0ea5112ddd9bde29efad201b0cf22ac86febf3691722d6cf5  deviceinfo
+915e7a7dc345801ce56c96e95ae6852425bbad65cf9247ae33cb029f1dd19c838cb130a95b3a5c07131fcbc163eb9445e49e2ace0068fbbd0cf46ee9016103a9  deviceinfo
 685ec71484a932c59f83f1039d4d18a010a5849342e96d9e15ae8ce64374aac15073f9c51d7d9f270c60e70d2ea15c685b8f528cdc40f991b093b9227cba6a48  kwin.sh
 95576332f1ad579d30359df9a3efcc3f478c56688509b5c470a70e8ae41466dbb397fb6db7578b5c54e13795ab8cf869b5c63ba775951817a8bb3d4c682bdfd5  phoc.ini
 "

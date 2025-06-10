@@ -4,8 +4,8 @@
 
 pkgname=device-thundercomm-db845c
 pkgdesc="Thundercomm Dragonboard 845c"
-pkgver=1
-pkgrel=8
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -43,6 +43,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-68993b554680e7cee7d79bb6eeead541ce05da2a2c25ab0c5e4747c1679e472cd4d02561ad7911c4ad18144aeb600db55483db6472ddf081691bf27c41eea461  deviceinfo
+c861e5cf5f0282f87c1f6448e62d96ee694f219611ed650078406e696d2151ffa7ad766e1bb9f8fe0e1cb60b59c2c34469e8922f504d9fa49739a04943086680  deviceinfo
 085809bd3525802faa63ce60206266853a688a40c9793b79faafc4c53c5d9d6f0f33a1695fb3a5c0c01f8bab9d7b7088ba7f2735ac27d5c72e2d258cce6ebba3  modules-initfs
 "

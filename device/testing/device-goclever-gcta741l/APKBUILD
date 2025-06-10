@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-goclever-gcta741l
 pkgdesc="GoClever Orion 70L"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -52,6 +52,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-5ce62bae1017dffa217578011cd11acc832472406381fe36fbbea1a8c008706f4d84ddda5b8bda0d8f21ed35bb12d228505b908030c7707d10564933c6cf1993  deviceinfo
+90e0a8c939398b7e174fcf63bfc9a6ae3a8b5ca90631209c005e45d2774be88f7b6afb57b66f479cd7d243a3782eb34889de6688c8d987a43916e9f9576e24b0  deviceinfo
 5b8c1d440867a3cee891168a156fb428b14dfeaf0b437da3e4dc1dd1408458bde98b4ce4682dfb0c5f9c5055a0e2c34cc78ba6160b6ca64281f9721d8d02dede  u-boot-script.cmd
 "

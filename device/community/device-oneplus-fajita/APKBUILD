@@ -3,8 +3,8 @@
 
 pkgname=device-oneplus-fajita
 pkgdesc="OnePlus 6T"
-pkgver=15
-pkgrel=3
+pkgver=16
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -72,7 +72,7 @@ pmtest() {
 }
 
 sha512sums="
-07e3d79715befccd1e7393908c06f88ac8468d1ce6cb96138e3a04e6f8274889db169f5daf05b04b633bcc9e85d11ea5c2017b84bc0ae86a8fad80b05794d0d8  deviceinfo
+9804e3b1521b86a30c7e93b9bbdbd93a658bfc95720d5eb17106f0171cafc8858da2dfe4b5a8208e6669c21351273a4d6c9f789519414c1a931b07b9381ac50e  deviceinfo
 6b5308471fcbb938ac00d6e9a3f8e61073bda1d608f2edf1a2aba4b256dd3f76b1ccee0873dcaa8dc4a8db304d433360a56fe447d70f57ba068428b75ddea236  hexagonrpcd.confd
 ea8709aa214cffaefb1d486c0c47044537446faebff16efb3b015623f043f730b7121e401c676e43aa8868bd6c630fc8a2d7dbf5fb082490e9b5493e0405b66d  modules-initfs
 fe9871c325a38c0cadc9631870801ec15ab9f5b786ee854325b93eb3d23e7d8b1ac4f1075572ffcd225d8ec514dec09b986972ddff12a89260c0218af6de7887  q6voiced.conf

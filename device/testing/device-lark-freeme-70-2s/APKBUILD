@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-lark-freeme-70-2s
 pkgdesc="Lark FreeMe 70.2S"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -52,6 +52,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-61ceb08acef7c6d082ea33e869263b9de82bd1b6e43a6a9771e5e317626cbb2a55445b8d95e6e64dfd6246f22934e77185819500547124d29926f4f7fef96643  deviceinfo
+3e0b6fc4f2f1aa3d6abaa2babb1602b63a50c4ed886e0efcc65c7bb948d40d4bba5ce1bfc7aae533bbc3fe54f2a5a333a7432537e69644c5d5bc8e3d0734987b  deviceinfo
 5b8c1d440867a3cee891168a156fb428b14dfeaf0b437da3e4dc1dd1408458bde98b4ce4682dfb0c5f9c5055a0e2c34cc78ba6160b6ca64281f9721d8d02dede  u-boot-script.cmd
 "

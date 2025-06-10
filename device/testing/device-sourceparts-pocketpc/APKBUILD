@@ -1,8 +1,8 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-sourceparts-pocketpc
 pkgdesc="Source Parts Pocket P.C."
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -40,6 +40,6 @@ package() {
 }
 
 sha512sums="
-69d6d0f8daf09403cd59a46873db575616ca9c7c5d2571a2e6aa975d26cc7777f47f51201003d197f3df32f41e076be64a4f4559db5c6bd234a4dfd6dfc9a169  deviceinfo
+97c309a6675b589fce5035e716345c45f61136391fdad8f2bc4e1a1fc80bf64b8607ebd3da8da0af21b77cf5b2b8a339aa1a7e7b42381730d1155dface4f41ab  deviceinfo
 fef3c97c335eed2636f94cf2a207f7225b89bf00c159744897f41e900d7f9c8df5fc66964c2bc04726a4a5397da2b414377eeccfb4a2e6a6f0361156140357d4  uboot-script.cmd
 "
