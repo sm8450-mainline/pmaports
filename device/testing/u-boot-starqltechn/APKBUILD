@@ -21,7 +21,7 @@ makedepends="
 options="!archcheck !check !strip"
 _ubootver=2023.01-rc2
 source="
-	http://source.denx.de/u-boot/u-boot/-/archive/v$_ubootver/u-boot-v$_ubootver.tar.gz
+	https://source.denx.de/u-boot/u-boot/-/archive/v$_ubootver/u-boot-v$_ubootver.tar.gz
 	0001-starqltechn-enable-serial-console.patch
 	0002-sdm845-save-relocaddr-to-env-variables.patch
 	0003-input-do-not-override-console-when-stdin-and-device-.patch
