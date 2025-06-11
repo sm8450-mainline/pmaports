@@ -8,11 +8,13 @@
 # Put ourselves into a PID namespace. This is an easy and non-racey way to
 # ensure that all child processes get killed on our exit.
 if [ "$$" != 1 ]; then
-	unshare -p sh "$0"
+	unshare -f -p sh "$0"
 	exitcode="$?"
 	# Restore MIC1 state to normal. We should be the only entity fiddling
 	# with that.
 	amixer -D sysdefault cset name='MIC1 MIC1 On' 1
+	# Workaround for https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/issues/813
+	mmcli -m 0 --voice-hangup-all
 	exit "$exitcode"
 fi
 
@@ -43,7 +45,7 @@ for i in /run/user/*/; do
 		# Report microphone mute events
 		( echo; pactl subscribe; ) | while read; do pactl get-source-mute @DEFAULT_SOURCE@; done
 	' "$(grep "^[^:]*:[^:]*:$(basename "$i"):" /etc/passwd | cut -d : -f 1-1)" &
-done | while read line; do
+done | uniq | while read line; do
 	if [[ "$line" == "Mute: yes" ]]; then
 		amixer -D sysdefault cset name='MIC1 MIC1 On' 0
 	elif [[ "$line" == "Mute: no" ]]; then
