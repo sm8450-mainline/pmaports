@@ -78,7 +78,7 @@ index 1f22aee7f6..cbbe1d5c76 100644
 -	} else {
 -		env_set("key_power", "0");
 -	}
- 	env_set_addr("relocaddr", gd->relocaddr);
+ 	env_set_hex("relocaddr", gd->relocaddr);
  
  	return 0;
 diff --git a/configs/starqltechn_defconfig b/configs/starqltechn_defconfig

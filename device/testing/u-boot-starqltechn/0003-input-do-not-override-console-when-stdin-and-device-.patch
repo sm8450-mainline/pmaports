@@ -17,7 +17,7 @@ index a4341e8c7c..a4eeba13a5 100644
  #if !defined(CONFIG_SPL_BUILD) || CONFIG_IS_ENABLED(ENV_SUPPORT)
  	/* check if this is the standard input device */
 -	if (!error && strcmp(env_get("stdin"), dev->name) == 0) {
-+	if (!error && !dev->name && strcmp(env_get("stdin"), dev->name) == 0) {
++	if (0) {
  		/* reassign the console */
  		if (OVERWRITE_CONSOLE ||
  				console_assign(stdin, dev->name))

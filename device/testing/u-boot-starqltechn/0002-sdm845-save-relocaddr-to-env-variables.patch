@@ -20,7 +20,7 @@ index 5f53c21947..1f22aee7f6 100644
  	} else {
  		env_set("key_power", "0");
  	}
-+	env_set_addr("relocaddr", gd->relocaddr);
++	env_set_hex("relocaddr", gd->relocaddr);
  
  	return 0;
  }
