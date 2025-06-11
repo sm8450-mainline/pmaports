@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-a6lte-downstream
 pkgdesc="Samsung Galaxy A6 2018 (Downstream)"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -26,7 +26,6 @@ replaces="
 	lightdm
 "
 makedepends="devicepkg-dev"
-install="$pkgname.post-install"
 source="
 	deviceinfo
 	etc-conf.d-samsungipcd
@@ -36,6 +35,7 @@ source="
 	etc-lightdm-lightdm.conf
 	etc-NetworkManager-conf.d-swlan0-unmanaged.conf
 	etc-NetworkManager-conf.d-wlan0-preserve-mac.conf
+	usr-libexec-samsungipcd-init.sh
 	usr-libexec-samsungipcd-voicecall.sh
 	usr-share-alsa-ucm2-conf.d-Universal7870-I-HiFi.conf
 	usr-share-alsa-ucm2-conf.d-Universal7870-I-Universal7870-I.conf
@@ -57,6 +57,7 @@ package() {
 
 	install -Dm644 etc-conf.d-samsungipcd "$pkgdir"/etc/conf.d/samsungipcd
 	install -Dm644 etc-lightdm-lightdm.conf "$pkgdir"/etc/lightdm/lightdm.conf
+	install -Dm755 usr-libexec-samsungipcd-init.sh "$pkgdir"/usr/libexec/samsungipcd/init.sh
 	install -Dm755 usr-libexec-samsungipcd-voicecall.sh "$pkgdir"/usr/libexec/samsungipcd/voicecall.sh
 	install -Dm644 usr-share-alsa-ucm2-conf.d-Universal7870-I-HiFi.conf "$pkgdir"/usr/share/alsa/ucm2/conf.d/Universal7870-I/HiFi.conf
 	install -Dm644 usr-share-alsa-ucm2-conf.d-Universal7870-I-Universal7870-I.conf "$pkgdir"/usr/share/alsa/ucm2/conf.d/Universal7870-I/Universal7870-I.conf
@@ -89,6 +90,7 @@ f9716fc70bf3508d2f9e83d908f1c13103403f01ebb784acec6cdf3e959e92b63c75e49b0120abe1
 861270c6bc0b2a3e6cd389c21c8c895e62de8cf8bec6fcf23c178f8cbaae855d62b0ee98692671ab4f518d84cb43dd0b2fe46f5a609f65af6a6c06e0fdbb6d0c  etc-lightdm-lightdm.conf
 ef24527b13e48a9153643f3713167d3d08486e7de8b4c94d7c446ff380396115890573d8cd4aa5448766d9e779e189833a83e7921081679bd348c3f8a59410af  etc-NetworkManager-conf.d-swlan0-unmanaged.conf
 5c3a692f22a29fca792c114c6d94ff1bf0d6921f068f207a2894a8f99c73dcc319e7c803ed7adfe64eb3e60088f37e2a2730118b2ed57aa01b35415664085567  etc-NetworkManager-conf.d-wlan0-preserve-mac.conf
+2949601ac8edd5d526579e83d73a05d4b17e3de2b6936066ac624bb4cd668e5d7ba3f38f1112a0f39a678b8a73d38e73e81556cb6aa69519bad65155accdb984  usr-libexec-samsungipcd-init.sh
 010046035478f56ff3eca1cd40dd5f625a0bf1d05acd6a88cb4906c9ea028ac3cb213bb809371e6f45ba8e6a897e9f00ed1449bd18903cea8b1ac3a1ed3a5072  usr-libexec-samsungipcd-voicecall.sh
 2169590d10d6123575d43e8ff7dc0d2ba824f8266d9fa75a5b59a4cc5753e47e327368b777082930d6b7a7aed6f57fa6ac2c5a2e816e1e12cd1032a8bb1822b5  usr-share-alsa-ucm2-conf.d-Universal7870-I-HiFi.conf
 478983dffd484deb2037ab530bd181c784205e3f297484b0a8938a55d232eb2f35775c475ff913c7547726612036a7935c104950ba983ee263be300cda4b277a  usr-share-alsa-ucm2-conf.d-Universal7870-I-Universal7870-I.conf
