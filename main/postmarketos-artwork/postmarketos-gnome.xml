@@ -3,8 +3,8 @@
 <wallpapers>
   <wallpaper deleted="false">
     <name>postmarketOS Wallpapers</name>
-    <filename>/usr/share/wallpapers/postmarketos/contents/images/1660x1660.png</filename>
-    <filename-dark>/usr/share/wallpapers/postmarketos/contents/images_dark/1660x1660.png</filename-dark>
+    <filename>/usr/share/wallpapers/postmarketos/contents/images/1924x1924.png</filename>
+    <filename-dark>/usr/share/wallpapers/postmarketos/contents/images_dark/1924x1924.png</filename-dark>
     <options>zoom</options>
     <shade_type>solid</shade_type>
     <pcolor>#73A82F</pcolor>
