@@ -3,7 +3,7 @@
 pkgname=device-lg-lenok
 pkgdesc="LG G Watch R"
 pkgver=5
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -13,6 +13,7 @@ depends="
 	firmware-lg-lenok-wifi
 	firmware-qcom-adreno-a330
 	linux-postmarketos-qcom-msm8226
+	lk2nd-msm8226
 	mkbootimg
 	postmarketos-base
 	soc-qcom-msm8226
