@@ -13,7 +13,7 @@
 _report_ci() {
 	local precision=1000
 	local duration=2
-	local count=20
+	local count=3
 	while [ "$((count = count - 1))" -gt 0 ]; do
 		printf '%s\n' "$@"
 		sleep "$(printf '0.%03d' "$(( precision * duration / count ))")"
