@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=72
+pkgver=73
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -96,6 +96,7 @@ subpackages="
 	xdg-desktop-portal-systemd:_service
 	xdg-desktop-portal-wlr-systemd:_service
 	zram-init-systemd:_service
+	sing-box-systemd:_service
 "
 # 3. Add a new entry below with the list of service files
 #    to install for that package
@@ -206,6 +207,12 @@ _xdg_desktop_portal_gnome_sources="user/xdg-desktop-portal-gnome.service"
 _xdg_desktop_portal_kde_sources="user/plasma-xdg-desktop-portal-kde.service" # From https://invent.kde.org/plasma/xdg-desktop-portal-kde/-/blob/master/data/plasma-xdg-desktop-portal-kde.service.in
 _xdg_desktop_portal_wlr_sources="user/xdg-desktop-portal-wlr.service"
 _zram_init_sources="system/zram_swap.service"  # adapted from https://github.com/vaeth/zram-init/blob/main/systemd/system/zram_swap.service
+_sing_box_sources="
+	system/sing-box.service
+	system/sing-box@.service
+	tmpfiles.d/sing-box.conf
+	sysusers.d/sing-box.conf
+" # From https://github.com/SagerNet/sing-box/tree/dev-next/release/config
 
 flatpath() {
 	local i
@@ -290,6 +297,7 @@ source="$(flatpath \
 	$_xdg_desktop_portal_sources \
 	$_xdg_desktop_portal_wlr_sources \
 	$_zram_init_sources \
+	$_sing_box_sources \
 )"
 
 _service() {
@@ -306,6 +314,8 @@ _service() {
 		if echo "user system" | grep -q "${f%%/*}"; then
 			prefix="$prefix/usr/lib/systemd"
 		elif echo "tmpfiles.d" | grep -q "${f%%/*}"; then
+			prefix="$prefix/usr/lib"
+		elif echo "sysusers.d" | grep -q "${f%%/*}"; then
 			prefix="$prefix/usr/lib"
 		elif echo "user-environment-generators system-environment-generators" | grep -q "${f%%/*}"; then
 			prefix="$prefix/usr/lib/systemd"
@@ -431,4 +441,8 @@ e09a3c76f3be961dce9f564bb654ea84d1d7fb59907a2168c0569bf6c17a5ebe9fbe4d1f94f1d014
 1262f10b97989be726432700a923d7717570feb7b0d78c3c573e21ee6be320f5a618d0d21c1eb351702397caa95b476b8854bf83545993fb464b4a7a80067800  user-xdg-permission-store.service
 744c60fdc6e53ba2c9f370ce8462e1a420cfea973edff49d0caf7a3e65f0f35257d61b5ae3ace3e9d9d48e382cb54d9f2ff96ad02d5e16758a49ba2e07963e5a  user-xdg-desktop-portal-wlr.service
 e0014662e4ec2c52d3beabe3247ede7c6b12c1d22b7c62d6b04ff82a668f492c09060243acf92090e6a7ec75a44b41760b3bbd144da4f36c14364cfa28a8dac3  system-zram_swap.service
+4d201f29ad98abf38a15e877bb1b4f46fb08ab0cd5cb83f29aaa104eaa0a51fd14784110ee844ccb89914aa73b985fc9c61e216f8d2ac230adfa1d1660ebd573  system-sing-box.service
+f4042114ed0f36e51bc32f6df184843d6d7e58b7cece8a845796910d80e1f26c9d0be9415ed90f7a91211bd669d8bb002b24a5a79657f8b699f952299ddfb5d2  system-sing-box@.service
+e67997cfad302af405e1bee78f79ea9caaa8fec0b765003ff08901f43a2ea07209726d0a20f2640b796bc6775606e34143da362d1e0471ce32b919747004d53c  tmpfiles.d-sing-box.conf
+014eff9e21ddaa64260f3915655e0a1fa771b356c0c56b3a5d868830237a561ba3e5cc06085bf70dde9dbf809807c301addd0a968a005436c067b6ce0a52672d  sysusers.d-sing-box.conf
 "
