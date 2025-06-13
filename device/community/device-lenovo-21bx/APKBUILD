@@ -5,7 +5,7 @@
 pkgname=device-lenovo-21bx
 pkgdesc="Lenovo ThinkPad X13s"
 pkgver=13
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -13,7 +13,6 @@ options="!check !archcheck !strip"
 depends="
 	alsa-ucm-conf
 	dtbloader
-	firmware-lenovo-21bx
 	libmbim-tools
 	linux-firmware-ath11k
 	linux-firmware-qca
