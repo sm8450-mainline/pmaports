@@ -30,11 +30,14 @@ placeholder:
     - .ci/lib/gitlab_prepare_ci.sh
   after_script:
     - cp -r /home/pmos/.local/var/pmbootstrap/packages/ packages/ || true
+    - mkdir -p keys
+    - cp /home/pmos/.local/var/pmbootstrap/config_apk_keys/pmos@local*.pub keys/ || true
     - .ci/lib/move_logs.sh $CI_PROJECT_DIR
   artifacts:
     expire_in: 1 week
     paths:
       - packages/
+      - keys/
   timeout: 10 h
 
 build-x86_64:
