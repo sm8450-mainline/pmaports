@@ -1,8 +1,8 @@
 # Maintainer: Casey Connolly <kcxt@postmarketos.org>
 pkgname=soc-qcom
 pkgdesc="Common package for Qualcomm devices"
-pkgver=1
-pkgrel=3
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
@@ -27,6 +27,7 @@ subpackages="
 	$pkgname-openrc
 	$pkgname-pulseaudio
 	$pkgname-pulseaudio-openrc:pulseaudio_openrc
+	$pkgname-pulseaudio-systemd:pulseaudio_systemd
 	$pkgname-qbootctl
 	$pkgname-qbootctl-openrc:qbootctl_openrc
 	$pkgname-vulkan
@@ -38,6 +39,7 @@ source="
 	UPower.conf
 	call_audio_idle_suspend_workaround.confd
 	call_audio_idle_suspend_workaround.initd
+	call-audio-idle-suspend-workaround.service
 	call_audio_idle_suspend_workaround.sh
 	gstreamer.conf
 	gstreamer.sh
@@ -151,12 +153,22 @@ pulseaudio_openrc() {
 		"$subpkgdir"/etc/conf.d/call_audio_idle_suspend_workaround
 }
 
+pulseaudio_systemd() {
+	install_if="$pkgname-pulseaudio=$pkgver-r$pkgrel systemd"
+	depends="systemd"
+
+	# Call Audio idle suspend workaround systemd unit
+	install -Dm644 "$srcdir"/call-audio-idle-suspend-workaround.service \
+		-t "$subpkgdir"/usr/lib/systemd/user
+}
+
 sha512sums="
 28c14f47eaedec577d152001c51753537c98f267ac4a0acf78a304efebe5f6a1b4dc6d501497da9a0a925806a1d9c80b25e001cf9b1eb21efa22cd6a41ff753b  51-qcom.conf
 4f2c22a3a3fc7d380e200ad977578107d81f0e7ade7918e03bdb15b60a564e8db5f47e13cce22f636d38fd3722696bb46076b8872dae0ca2d8a3838522a1f025  90-feedbackd-pmi8998.rules
 9d455b56558d453d501a1ad869ffa79f9952ed43485a9847d506db6a78bfcd9f9c9d855660ee1d368eb74f4429385ec166addc30d802261c75562e785fe84c52  UPower.conf
 6fb4c0bd8b7ed534d855a6732ccff783960e3cfa0e0cc7effcbb93afa00798dec15361a37a3200081bc114c8d266b7a0851cc4e819ad36eabdb47a50c72620d9  call_audio_idle_suspend_workaround.confd
 5a58475b6e2ee1d655f3f23d8dc19e1cb2f32f1dfff3b9a9337d9c5baad1ec24bfaec0fb9cc03f00e5a291bee27c6b8bffbc65157e2bee5d65ef6d1adcb0910b  call_audio_idle_suspend_workaround.initd
+128364dab6d5e9c01773d5c3b823029ac1c8471eb5ab11e6528a39e9d726562e26aa77c817ca966772de3e3339119281c9ccdf35f92ec7c9a90331b8fc16254a  call-audio-idle-suspend-workaround.service
 6da0a9209f114354aa2aa1185ec3896a8e0bb1bfce0dc3fc4c0de339cf1389feaa2d724e733c251ff032a5e86d37d9549e94f8f7c7a5accfedbd8a4d6316bbfd  call_audio_idle_suspend_workaround.sh
 f86ebf68bb7e41b531e5cd8fc3e54d8fafad314fb80950277e41004303b3bf75b2ae96f0228bdf4ed67645aee8ceaf247140b4843c66365259d2908b8991b877  gstreamer.conf
 471583b91bc35608cb75d0b3ceb88fa793a4e763ea228703c50ffb1b45c0e9054646c46f710164ec3ef65a882a204fd59546f3a0ebb94b8d6c6f08c4043bcfd3  gstreamer.sh

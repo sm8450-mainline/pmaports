@@ -1,4 +1,5 @@
 ## user services
+enable call-audio-idle-suspend-workaround.service
 enable dbus-broker.service
 enable dbus.socket
 enable obex.service
