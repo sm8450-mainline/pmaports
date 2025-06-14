@@ -62,7 +62,6 @@ VT = true
 BINFMT_ELF = true
 ["category:default".">=3.10.0"."all"]
 BINFMT_SCRIPT = true
-UDMABUF = true
 ["category:default".">=4.0.0"."all"]
 UEVENT_HELPER = true
 USER_NS = true
@@ -83,6 +82,7 @@ FW_LOADER_COMPRESS_ZSTD = true
 # required for systemd-oomd
 PSI = true
 PSI_DEFAULT_DISABLED = false
+UDMABUF = true
 
 # waydroid: android compatibility layer
 ["category:waydroid".">=0.0.0"."all"]
