@@ -3,7 +3,7 @@
 
 pkgname=linux-motorola-perry
 pkgver=3.18.140
-pkgrel=1
+pkgrel=2
 pkgdesc="Motorola Moto E4 kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -22,6 +22,7 @@ source="
 	arm-smmu.patch
 	epl8802_alsps.patch
 	gcc10-extern_YYLOC_global_declaration.patch
+	linux3.7to4.5-ARM64-remove-Sun-Solaris-style-flag-on-section.patch
 "
 builddir="$srcdir/$_repository-$_commit"
 _outdir="out"
@@ -52,4 +53,5 @@ b075614229f963d58968835aa1e9a211f4caf8a036f0ad7798cc29a08c55e713e36e819536d042ff
 a1d0e865c91f7eb542832e3ff60fc7083bc4f5b5a7abecbf13ad6a867a5fab7c84e4187df8c4960dd01d610e1a968c801572f3e7fee97bc851bf3ab32c2e3f8c  arm-smmu.patch
 2f58744834780143b8f3df1d61bc2c9d4f712d18db9fec4b70768f302e27f1ac04402bf4ee28be635d6b942c941e68760c7ff86ebf053c744b29fd43bd9d5e47  epl8802_alsps.patch
 2b48f1bf0e3f70703d2cdafc47d5e615cc7c56c70bec56b2e3297d3fa4a7a1321d649a8679614553dde8fe52ff1051dae38d5990e3744c9ca986d92187dcdbeb  gcc10-extern_YYLOC_global_declaration.patch
+75545ccd0082a119b9ad95fcef3523c939a5c946f8f3a5c3dde15cee1502f6c1011050a0ad5359426f018bb7ceea1c97a28c7665941bc89f365c8d11065ce0f6  linux3.7to4.5-ARM64-remove-Sun-Solaris-style-flag-on-section.patch
 "

@@ -3,7 +3,7 @@
 
 pkgname=linux-xiaomi-ferrari
 pkgver=3.10.104
-pkgrel=3
+pkgrel=4
 pkgdesc="Xiaomi Mi 4i kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -28,6 +28,7 @@ source="
 	gcc7-give-up-on-ilog2-const-optimizations.patch
 	gcc8-fix-put-user.patch
 	gcc10-extern_YYLOC_global_declaration.patch
+	linux3.7to4.5-ARM64-remove-Sun-Solaris-style-flag-on-section.patch
 	01_prima_gcc6.patch
 "
 builddir="$srcdir/$_repository-$_commit"
@@ -52,9 +53,12 @@ package() {
 	install -Dm644 "$_outdir/arch/$_carch/boot"/dt.img "$pkgdir"/boot/dt.img
 }
 
-sha512sums="2cd2854045eaada791e912612ce609ca4cb5d7082a5019fc86effa92db3fe4a1df8bce433feaf32a04ecd3d1eb368a19b24de706298ad8fce4d6d32269ddf949  linux-xiaomi-ferrari-2368662e6a4fa4f5e3782666638e8f0f22bad650.tar.gz
+sha512sums="
+2cd2854045eaada791e912612ce609ca4cb5d7082a5019fc86effa92db3fe4a1df8bce433feaf32a04ecd3d1eb368a19b24de706298ad8fce4d6d32269ddf949  linux-xiaomi-ferrari-2368662e6a4fa4f5e3782666638e8f0f22bad650.tar.gz
 afda6e5b3249b2619ce92c88be696f3e3eb1da824663d69ccce48c26d3e9b6220855e678be2507c967addeb980ff5f24fecfe9fe6768081cdeaf41fddc57467d  config-xiaomi-ferrari.aarch64
 77eba606a71eafb36c32e9c5fe5e77f5e4746caac292440d9fb720763d766074a964db1c12bc76fe583c5d1a5c864219c59941f5e53adad182dbc70bf2bc14a7  gcc7-give-up-on-ilog2-const-optimizations.patch
 197d40a214ada87fcb2dfc0ae4911704b9a93354b75179cd6b4aadbb627a37ec262cf516921c84a8b1806809b70a7b440cdc8310a4a55fca5d2c0baa988e3967  gcc8-fix-put-user.patch
 2b48f1bf0e3f70703d2cdafc47d5e615cc7c56c70bec56b2e3297d3fa4a7a1321d649a8679614553dde8fe52ff1051dae38d5990e3744c9ca986d92187dcdbeb  gcc10-extern_YYLOC_global_declaration.patch
-a246e10cd979a7f5defb3a97049448b70cff892d667e41f998431ddbeb0e19a84687296b2456e807dd48090823bec63a340f07f3b4ba32121113914e41d299da  01_prima_gcc6.patch"
+75545ccd0082a119b9ad95fcef3523c939a5c946f8f3a5c3dde15cee1502f6c1011050a0ad5359426f018bb7ceea1c97a28c7665941bc89f365c8d11065ce0f6  linux3.7to4.5-ARM64-remove-Sun-Solaris-style-flag-on-section.patch
+a246e10cd979a7f5defb3a97049448b70cff892d667e41f998431ddbeb0e19a84687296b2456e807dd48090823bec63a340f07f3b4ba32121113914e41d299da  01_prima_gcc6.patch
+"

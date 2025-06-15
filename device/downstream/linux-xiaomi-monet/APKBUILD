@@ -3,7 +3,7 @@
 # Kernel config based on: arch/arm64/configs/vendor/monet_user_defconfig
 pkgname=linux-xiaomi-monet
 pkgver=4.19.113
-pkgrel=0
+pkgrel=1
 pkgdesc="Xiaomi Mi 10 Lite 5G kernel fork"
 arch="aarch64"
 _carch="arm64"

@@ -3,7 +3,7 @@
 
 pkgname=linux-wexler-qc750
 pkgver=3.1.10
-pkgrel=4
+pkgrel=5
 pkgdesc="WEXLER Tab 7t kernel fork"
 arch="armv7"
 _carch="arm"
@@ -31,6 +31,8 @@ source="
 	gcc8-fix-put-user.patch
 	gcc10-extern_YYLOC_global_declaration.patch
 	kernel-use-the-gnu89-standard-explicitly.patch
+	linux3.0-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
+	linux3.4-fix-piggy.gzip.S.patch
 	03_fix_rndis.patch
 	00-nt11003-touchscreen-fix.patch
 "
@@ -60,6 +62,8 @@ e14f59c83071997e032ed862e4b6abbd4dcd04f7c456a3bdb321c6875e3d46bb12a6e543f5657ac1
 197d40a214ada87fcb2dfc0ae4911704b9a93354b75179cd6b4aadbb627a37ec262cf516921c84a8b1806809b70a7b440cdc8310a4a55fca5d2c0baa988e3967  gcc8-fix-put-user.patch
 2b48f1bf0e3f70703d2cdafc47d5e615cc7c56c70bec56b2e3297d3fa4a7a1321d649a8679614553dde8fe52ff1051dae38d5990e3744c9ca986d92187dcdbeb  gcc10-extern_YYLOC_global_declaration.patch
 ad0182a483791fc88e058838bc331b2f04a75ba291e763767babdb815efadfc3b4fda97e69e2e3f00a426cabea088e35297a92bd287592597d1e309be68ee92c  kernel-use-the-gnu89-standard-explicitly.patch
+66ab793bb1fa50a07f10e2cdb0f49ea05a787c6b1fe5358e69a76e43295ac5be3b68cdf6a882e868bfe6969cac981c5545587cd57eee4b5cec26078ae0ecaa1c  linux3.0-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
+080745ca4ecaa804ee1df26ea81975ca93b74372e0c08322a6c481e97807495ae6ceb6cc77653afa24f9f2df45da8ebf8e5de6b06037fbb08e0279877ce42188  linux3.4-fix-piggy.gzip.S.patch
 6585c67450f1ef6d0c165ce4cb5c64f64d779147d1390558bf72cd40da5a33d53de6fd3c67e5ab864c14b3f67602bbe3060eea07c85b19bb82a0735024b369eb  03_fix_rndis.patch
 729d57263eec3df038debd0f6abac748cee0a346d87e1bded7c905d5ae5ba224be7313488345c6e77f5f7c3d59d5f226bf9c3c2e5b331e461356c748ad1a422e  00-nt11003-touchscreen-fix.patch
 "

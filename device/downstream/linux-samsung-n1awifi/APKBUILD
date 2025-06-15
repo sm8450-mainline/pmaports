@@ -3,7 +3,7 @@
 
 pkgname=linux-samsung-n1awifi
 pkgver=3.4.113
-pkgrel=2
+pkgrel=3
 pkgdesc="Samsung Galaxy Note 10.1 (2014 Edition) kernel fork"
 arch="armv7"
 _carch="arm"
@@ -32,6 +32,8 @@ source="
 	gcc7-give-up-on-ilog2-const-optimizations.patch
 	gcc8-fix-put-user.patch
 	gcc10-extern_YYLOC_global_declaration.patch
+	linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
+	drivers-psmouse-add-guard-for-Finger-Sensing-Pad-cod.patch
 	01-fix-FIMC-IS-disabling.patch
 	02-revert-hrtimer-crash.patch
 	03-usb_gadget-set-random-rndis-host-MAC-address-to-prev.patch
@@ -60,6 +62,8 @@ sha512sums="
 77eba606a71eafb36c32e9c5fe5e77f5e4746caac292440d9fb720763d766074a964db1c12bc76fe583c5d1a5c864219c59941f5e53adad182dbc70bf2bc14a7  gcc7-give-up-on-ilog2-const-optimizations.patch
 197d40a214ada87fcb2dfc0ae4911704b9a93354b75179cd6b4aadbb627a37ec262cf516921c84a8b1806809b70a7b440cdc8310a4a55fca5d2c0baa988e3967  gcc8-fix-put-user.patch
 2b48f1bf0e3f70703d2cdafc47d5e615cc7c56c70bec56b2e3297d3fa4a7a1321d649a8679614553dde8fe52ff1051dae38d5990e3744c9ca986d92187dcdbeb  gcc10-extern_YYLOC_global_declaration.patch
+9e3b067fa1b19ad02500c4fce1b6142051df3845c508e615788beb650c4f953683107ac2d80670c4e3df38f532e0e91060d2d13ec04c9ec985abd2dfa82e900b  linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
+a3df24c8d9116a3ad3559aac5ce126049e9123df633990ec72facd64ef538ed773e3ac0da233f2e04d99164d590340d598cfb3da3bbea502cf7c2cd3ef08cf24  drivers-psmouse-add-guard-for-Finger-Sensing-Pad-cod.patch
 00c86b897193340ce4e8184e622d830d16efe9a5c10c12357e5f6ab98193a28f69c0006bdfe0d3429f1136a9820b8f8ff262d07b0314e40f4c7b664013e0b8a6  01-fix-FIMC-IS-disabling.patch
 14e9341140e6fcc899c435c7572cacfbbef3c5a9b455106cfc648985211daf64ff5955ea9b9b7706b459401d9b60c6bb5857396e913adc07c01b3557c49a98d8  02-revert-hrtimer-crash.patch
 5fad0940e90da71277b70b6e72fbb75fcc5e12625e65f827ae896d448628b252b3312539f9c184b26ffe5ca3b343a56b388ea6addb7fe446c7d1ae2aefb4b51e  03-usb_gadget-set-random-rndis-host-MAC-address-to-prev.patch

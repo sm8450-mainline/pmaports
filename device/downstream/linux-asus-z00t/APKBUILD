@@ -2,7 +2,7 @@
 
 pkgname=linux-asus-z00t
 pkgver=3.10.108
-pkgrel=4
+pkgrel=5
 pkgdesc="Zenfone 2 Laser/Selfie (1080p) kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -32,6 +32,7 @@ source="
 	02_mdss_fb_refresh_rate.patch
 	05_dtb-fix.patch
 	gcc10-extern_YYLOC_global_declaration.patch
+	linux3.7to4.5-ARM64-remove-Sun-Solaris-style-flag-on-section.patch
 "
 builddir="$srcdir/$_repository-$_commit"
 
@@ -57,9 +58,12 @@ package() {
 		"$pkgdir/boot/dt.img"
 }
 
-sha512sums="2a43545d07b4b477749ac4eaf793e0e7cf105699264d4bd97df20904a3039f421330825dc8c7f9f741387dc3dd9c48b716de6c797048a1f9f358fee97f68fa85  linux-asus-z00t-5fd66aa9219bf9aaa504aa3cb2dae7a3de5238f7.tar.gz
+sha512sums="
+2a43545d07b4b477749ac4eaf793e0e7cf105699264d4bd97df20904a3039f421330825dc8c7f9f741387dc3dd9c48b716de6c797048a1f9f358fee97f68fa85  linux-asus-z00t-5fd66aa9219bf9aaa504aa3cb2dae7a3de5238f7.tar.gz
 f485f3fa4f17d7cdfe103bfa7e16b2e492ddf2bd724964d6b8f4df3fe87421650c817856787925585061b322ee5f5d4e73733fd424588d7ffb20d39bb2f796ca  config-asus-z00t.aarch64
 972e98523d6ef06342e69a09e979bdd86904cf7f9a843b519b37791e531b680182564a2ab537c94629c3589f4e775b2c39de04c64e210a0f8b6f10745c3596f1  01_fix_gcc6_errors.patch
 a8c955bf718f155011e980f3d0948be98e1fee5649f418299a4851780543019daf7afa406aa7b0829375645107e4e6fbf241026b0cabe2b2ac895a47df83d2d8  02_mdss_fb_refresh_rate.patch
 0e5ebee2f1b0005fcae4f313219c0b6481b3d044c7167e0fb18b72db0eae49aef7b281cd29e0fa1e653fc5585064c990085ca68f920348c3d9d9ea9524d1baa6  05_dtb-fix.patch
-2b48f1bf0e3f70703d2cdafc47d5e615cc7c56c70bec56b2e3297d3fa4a7a1321d649a8679614553dde8fe52ff1051dae38d5990e3744c9ca986d92187dcdbeb  gcc10-extern_YYLOC_global_declaration.patch"
+2b48f1bf0e3f70703d2cdafc47d5e615cc7c56c70bec56b2e3297d3fa4a7a1321d649a8679614553dde8fe52ff1051dae38d5990e3744c9ca986d92187dcdbeb  gcc10-extern_YYLOC_global_declaration.patch
+75545ccd0082a119b9ad95fcef3523c939a5c946f8f3a5c3dde15cee1502f6c1011050a0ad5359426f018bb7ceea1c97a28c7665941bc89f365c8d11065ce0f6  linux3.7to4.5-ARM64-remove-Sun-Solaris-style-flag-on-section.patch
+"

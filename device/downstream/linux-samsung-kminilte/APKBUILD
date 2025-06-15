@@ -2,7 +2,7 @@
 
 pkgname=linux-samsung-kminilte
 pkgver=3.4.113
-pkgrel=9
+pkgrel=10
 pkgdesc="Samsung Galaxy S5 Mini kernel fork"
 arch="armv7"
 _carch="arm"
@@ -31,6 +31,8 @@ source="
 	0001-drivers-leds-rt5033_fled-fix-use-of-usleep.patch
 	0002-drivers-leds-flashlight-add-support-for-setting-mode.patch
 	0003-netfilter-symbols.patch
+	linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
+	linux3.4-fix-piggy.gzip.S.patch
 	"
 builddir="$srcdir/$_repository-$_commit"
 
@@ -55,4 +57,6 @@ sha512sums="
 873e4ff64521f685b7948e7a55aba4a95e3c0086b54c8e1440f67630c49a6b17b10c71837ba44d0bdb9afb05ff3ee8c0c890f0053fb79cd733aa76aed53579c2  0001-drivers-leds-rt5033_fled-fix-use-of-usleep.patch
 fb30ea67620fc0dae62943b512662e0f3a49b7509d5f3cddda4c1552fe365535ac414f4ae960356f18228ce49d5c362c512cec7a9b671ffe96408f91b1b9fdee  0002-drivers-leds-flashlight-add-support-for-setting-mode.patch
 5214a850d496bed9e17575bd0b52e9e4415bcbd5a89863f924c5bfed848f684c0a95e8d10c9ef93c0e00149f034cf5e897d1b268be35676a600b3ee6e1917501  0003-netfilter-symbols.patch
+9e3b067fa1b19ad02500c4fce1b6142051df3845c508e615788beb650c4f953683107ac2d80670c4e3df38f532e0e91060d2d13ec04c9ec985abd2dfa82e900b  linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
+080745ca4ecaa804ee1df26ea81975ca93b74372e0c08322a6c481e97807495ae6ceb6cc77653afa24f9f2df45da8ebf8e5de6b06037fbb08e0279877ce42188  linux3.4-fix-piggy.gzip.S.patch
 "

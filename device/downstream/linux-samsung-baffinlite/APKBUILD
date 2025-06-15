@@ -4,7 +4,7 @@
 
 pkgname=linux-samsung-baffinlite
 pkgver=3.4.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Samsung Galaxy Grand Neo kernel fork"
 arch="armv7"
 _carch="arm"
@@ -29,6 +29,8 @@ source="
 	$pkgname-$_commit.tar.gz::https://github.com/knuxdroid/$_repository/archive/$_commit.tar.gz
 	$_config
 	kernel-use-the-gnu89-standard-explicitly.patch
+	linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
+	linux3.4-fix-piggy.gzip.S.patch
 "
 builddir="$srcdir/$_repository-$_commit"
 
@@ -60,4 +62,6 @@ sha512sums="
 0c1043e703bd9382db48d2f472abb8d0acee74ff16070daf03bef9d591d611aae45c0af09971111ef6b9f3fca6dcd3742e2318ef29a0cde13910983b20a65bbc  linux-samsung-baffinlite-6cd5888e4714454ca7398f46aa09fa29170d92b9.tar.gz
 6565e18ba87da0304927c0f3b71c33e1056d6a989fece6df4f596d4855ed0e75c31c0809ad9dbad770cd0593410391d2cdb98016cc57ed654e1367b1ab8c5ced  config-samsung-baffinlite.armv7
 ad0182a483791fc88e058838bc331b2f04a75ba291e763767babdb815efadfc3b4fda97e69e2e3f00a426cabea088e35297a92bd287592597d1e309be68ee92c  kernel-use-the-gnu89-standard-explicitly.patch
+9e3b067fa1b19ad02500c4fce1b6142051df3845c508e615788beb650c4f953683107ac2d80670c4e3df38f532e0e91060d2d13ec04c9ec985abd2dfa82e900b  linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
+080745ca4ecaa804ee1df26ea81975ca93b74372e0c08322a6c481e97807495ae6ceb6cc77653afa24f9f2df45da8ebf8e5de6b06037fbb08e0279877ce42188  linux3.4-fix-piggy.gzip.S.patch
 "

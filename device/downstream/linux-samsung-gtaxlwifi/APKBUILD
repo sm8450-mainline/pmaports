@@ -3,7 +3,7 @@
 
 pkgname=linux-samsung-gtaxlwifi
 pkgver=3.18.140
-pkgrel=0
+pkgrel=1
 pkgdesc="Samsung Galaxy Tab A 2016 (SM-T580) kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -30,6 +30,7 @@ source="
 	$pkgname-$_commit.tar.gz::https://github.com/TALUAtGitHub/$_repository/archive/$_commit.tar.gz
 	$_config
 	01-fix-dtb.patch
+	linux3.7to4.5-ARM64-remove-Sun-Solaris-style-flag-on-section.patch
 "
 builddir="$srcdir/$_repository-$_commit"
 _outdir="out"
@@ -59,4 +60,5 @@ sha512sums="
 b082900b4ad45f26913dbc705675ceaaed2fca6be20f8699f3c3d7e42f042e9d3db49c18b5ff16bff501cc68522e710f08ea61b73292668e27c8dc29fe9f26bd  linux-samsung-gtaxlwifi-d8deb7266a4aa634bc0b96bb9a10fb9c335cc6e2.tar.gz
 2a1fb550c4bef1de90ad233af1ed5a29cded7fb77a3ab881707d8f9dd9660fd108ed32f67891a674291661baecc3e1eca4c51a1a4ff66b515bf786db9a4e7d06  config-samsung-gtaxlwifi.aarch64
 f10b3ddf297144739c8538bfb7998f19d8aec65e458e8dbe6ef400ffd9dfa845f042f481902dd0d38c97b2cc9c431db7722bccfbdf46bb6d340810bb981a8918  01-fix-dtb.patch
+75545ccd0082a119b9ad95fcef3523c939a5c946f8f3a5c3dde15cee1502f6c1011050a0ad5359426f018bb7ceea1c97a28c7665941bc89f365c8d11065ce0f6  linux3.7to4.5-ARM64-remove-Sun-Solaris-style-flag-on-section.patch
 "

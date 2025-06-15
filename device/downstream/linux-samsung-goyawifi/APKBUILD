@@ -3,7 +3,7 @@
 
 pkgname=linux-samsung-goyawifi
 pkgver=3.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Samsung Galaxy Tab 3 Lite kernel fork"
 arch="armv7"
 _carch="arm"
@@ -33,6 +33,8 @@ source="
 	fix_memset-related_crashes.patch
 	fix_the_memset_fix.patch
 	gcc10-extern_YYLOC_global_declaration.patch
+	linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
+	linux3.4-fix-piggy.gzip.S.patch
 	fix_makefile.patch
 	0001-cache-the-value-of-file_inode-in-struct-file.patch
 	0002-Backport-shm-add-sealing-API.patch
@@ -72,6 +74,8 @@ bf859bbbfe566959b758cd147750bca3b2c57e222265bbf67d414bfc9d46e1dd775decaff629e8fc
 efd1641c0892fddb9c5feea3e49e534fed311b01f0576688b5af766e0160850822d0eb8e296b08c5f82b586d5d0336a98e8e86707ba9af7fcf36fc89f0b288eb  fix_memset-related_crashes.patch
 5c080c27716d124616e4e684fc63bffb2665f00de06e894dfd78f58588feec2fec858fe8234b054061e3db14d28cb90fbac53f4b54c4fac5946d843cf038386c  fix_the_memset_fix.patch
 2b48f1bf0e3f70703d2cdafc47d5e615cc7c56c70bec56b2e3297d3fa4a7a1321d649a8679614553dde8fe52ff1051dae38d5990e3744c9ca986d92187dcdbeb  gcc10-extern_YYLOC_global_declaration.patch
+9e3b067fa1b19ad02500c4fce1b6142051df3845c508e615788beb650c4f953683107ac2d80670c4e3df38f532e0e91060d2d13ec04c9ec985abd2dfa82e900b  linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
+080745ca4ecaa804ee1df26ea81975ca93b74372e0c08322a6c481e97807495ae6ceb6cc77653afa24f9f2df45da8ebf8e5de6b06037fbb08e0279877ce42188  linux3.4-fix-piggy.gzip.S.patch
 fb16404be045f4d9c7bf29512321ec2a4cb17111a8c870adff91889f0e6b314265cddb5dd9caa8088425902d2032e9dac4b6ba8c648b32df0efd78edf24550c1  fix_makefile.patch
 8a0963c2f24e7c784e53781a5a16e540c9aa6fc3db0c9f8d83d28b0a30604472054ca3058051e34fcd900c167af0a68943f4ebffc327f5594361d8eb345c37c4  0001-cache-the-value-of-file_inode-in-struct-file.patch
 0fede4dd36632e03d3d2d0d7b73038520319b585f1fffbdf005fa2b5b37485ae0ecee0f6ef53906bfe81f7303774b8c7bcd1f85fb1b7a030f596d63eac8df833  0002-Backport-shm-add-sealing-API.patch

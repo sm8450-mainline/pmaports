@@ -3,7 +3,7 @@
 
 pkgname=linux-samsung-j7elte
 pkgver=3.10.108
-pkgrel=0
+pkgrel=1
 pkgdesc="Samsung Galaxy J7 kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -32,6 +32,7 @@ source="
 	$_config
 	gcc8-fix-put-user.patch
 	gcc10-extern_YYLOC_global_declaration.patch
+	linux3.7to4.5-ARM64-remove-Sun-Solaris-style-flag-on-section.patch
 	fix-vmm-blob-include.patch
 	create-a-file-platform.h-which-is-a-symlink.patch
 	fix-argb.patch
@@ -67,6 +68,7 @@ b01b78378bb072ab42f6e2c0751a052b99b06c4516d32df4551d97614717be4a30c24ba0b8ddc3cb
 23e49e4993a98684717beaca7ea44f2cd4e0079460e573acc93237aa8b1d55115c72a22c0f16f3b8638c5b82ab57ea71ee8c043bf61d89f7cb190711e87d0156  config-samsung-j7elte.aarch64
 197d40a214ada87fcb2dfc0ae4911704b9a93354b75179cd6b4aadbb627a37ec262cf516921c84a8b1806809b70a7b440cdc8310a4a55fca5d2c0baa988e3967  gcc8-fix-put-user.patch
 2b48f1bf0e3f70703d2cdafc47d5e615cc7c56c70bec56b2e3297d3fa4a7a1321d649a8679614553dde8fe52ff1051dae38d5990e3744c9ca986d92187dcdbeb  gcc10-extern_YYLOC_global_declaration.patch
+75545ccd0082a119b9ad95fcef3523c939a5c946f8f3a5c3dde15cee1502f6c1011050a0ad5359426f018bb7ceea1c97a28c7665941bc89f365c8d11065ce0f6  linux3.7to4.5-ARM64-remove-Sun-Solaris-style-flag-on-section.patch
 23bf8ef0ad38b38ffa9ddfdee76a32c43b021169c6db6f5b733fd6434169f7c7bb27cdb1232be89475f34f9053211d943e13f5fba565c928256b92b18d636130  fix-vmm-blob-include.patch
 b2b8020948dfa4dc24eec4402aa7c2845ba56e844b2cfb591b4326b372a7748063c9e67d54bf70d841141c7a9203c25766538522d1a6a08e3ca3b8054eface43  create-a-file-platform.h-which-is-a-symlink.patch
 aff2f127c44de0fc3e523834766a5851b48ade0e5cd95f594b36fc17adf3fb0549c70e4cba34a4bbea272fca80d61e0f4615a7195662f38794a1cd96213c7ca2  fix-argb.patch

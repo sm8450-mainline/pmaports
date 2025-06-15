@@ -3,7 +3,7 @@
 
 pkgname=linux-samsung-a5xelte
 pkgver=3.10.107
-pkgrel=1
+pkgrel=2
 pkgdesc="Samsung Galaxy A5 (2016) kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -32,6 +32,7 @@ source="
 	$_config
 	gcc8-fix-put-user.patch
 	gcc10-extern_YYLOC_global_declaration.patch
+	linux3.7to4.5-ARM64-remove-Sun-Solaris-style-flag-on-section.patch
 	02-fix-vmm-blob-include.patch
 	0003-create-a-file-platform.h-which-is-a-symlink.patch
 	0004-build-dtb.patch
@@ -70,6 +71,7 @@ sha512sums="
 d143361b725de6f2755b88e66f2e42f6e11215785a3017142f82294445f823ad9ceb89dc1951b59b0cfd3c87e23da7621f227cb8550baf34d1987b2686cc8f58  config-samsung-a5xelte.aarch64
 197d40a214ada87fcb2dfc0ae4911704b9a93354b75179cd6b4aadbb627a37ec262cf516921c84a8b1806809b70a7b440cdc8310a4a55fca5d2c0baa988e3967  gcc8-fix-put-user.patch
 2b48f1bf0e3f70703d2cdafc47d5e615cc7c56c70bec56b2e3297d3fa4a7a1321d649a8679614553dde8fe52ff1051dae38d5990e3744c9ca986d92187dcdbeb  gcc10-extern_YYLOC_global_declaration.patch
+75545ccd0082a119b9ad95fcef3523c939a5c946f8f3a5c3dde15cee1502f6c1011050a0ad5359426f018bb7ceea1c97a28c7665941bc89f365c8d11065ce0f6  linux3.7to4.5-ARM64-remove-Sun-Solaris-style-flag-on-section.patch
 23bf8ef0ad38b38ffa9ddfdee76a32c43b021169c6db6f5b733fd6434169f7c7bb27cdb1232be89475f34f9053211d943e13f5fba565c928256b92b18d636130  02-fix-vmm-blob-include.patch
 b2b8020948dfa4dc24eec4402aa7c2845ba56e844b2cfb591b4326b372a7748063c9e67d54bf70d841141c7a9203c25766538522d1a6a08e3ca3b8054eface43  0003-create-a-file-platform.h-which-is-a-symlink.patch
 1e7b01a1620e9a5bf6fafc892a0e8bbc0eab12303c8f8787a4a993bb1e2db2b21102092f3573def4e37e5c64264667f9d5b92445e0a3b1d520bc7720d37343da  0004-build-dtb.patch

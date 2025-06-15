@@ -3,7 +3,7 @@
 
 pkgname=linux-nokia-fame
 pkgver=3.4.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Nokia Lumia 520 kernel fork"
 arch="armv7"
 _carch="arm"
@@ -33,6 +33,8 @@ source="
 	gcc10-extern_YYLOC_global_declaration.patch
 	kernel-use-the-gnu89-standard-explicitly.patch
 	linux3.4-vfs-Fix-proc-tid-fdinfo-fd-file-handling.patch
+	linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
+	linux3.4-fix-piggy.gzip.S.patch
 "
 builddir="$srcdir/$_repository-$_commit"
 _outdir="out"
@@ -61,4 +63,6 @@ f8dcfd0715ee8eda512f6fe0851f2c9eb0e05fb89e9b18018f329db650b91a927102fc68d25a30aa
 2b48f1bf0e3f70703d2cdafc47d5e615cc7c56c70bec56b2e3297d3fa4a7a1321d649a8679614553dde8fe52ff1051dae38d5990e3744c9ca986d92187dcdbeb  gcc10-extern_YYLOC_global_declaration.patch
 ad0182a483791fc88e058838bc331b2f04a75ba291e763767babdb815efadfc3b4fda97e69e2e3f00a426cabea088e35297a92bd287592597d1e309be68ee92c  kernel-use-the-gnu89-standard-explicitly.patch
 5e81c20b0b30c1ab09bd59f1e1b77fcce945a27de8144c68617ddc5e8f10e1f6fa8b1e4cd5d63e43511d61dace46fb26b14a6227a667b9718d44c8b81dbe6100  linux3.4-vfs-Fix-proc-tid-fdinfo-fd-file-handling.patch
+9e3b067fa1b19ad02500c4fce1b6142051df3845c508e615788beb650c4f953683107ac2d80670c4e3df38f532e0e91060d2d13ec04c9ec985abd2dfa82e900b  linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
+080745ca4ecaa804ee1df26ea81975ca93b74372e0c08322a6c481e97807495ae6ceb6cc77653afa24f9f2df45da8ebf8e5de6b06037fbb08e0279877ce42188  linux3.4-fix-piggy.gzip.S.patch
 "

@@ -4,7 +4,7 @@
 
 pkgname=linux-amazon-austin
 pkgver=3.10.54
-pkgrel=0
+pkgrel=1
 pkgdesc="Amazon Fire 7 (2017) kernel fork"
 arch="armv7"
 _carch="arm"
@@ -28,6 +28,7 @@ _config="config-$_flavor.$arch"
 source="
 	$pkgname-$_commit.tar.gz::https://github.com/hexdump0815/$_repository/archive/$_commit.tar.gz
 	$_config
+	linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
 	gcc4-compile-fixes.patch
 	fix-host-card-inserted.patch
 	silence-hotplug-logspam.patch
@@ -69,6 +70,7 @@ package() {
 sha512sums="
 2017b730bb7e9470084ff812dc3d35cd50040c4a69a9b443b2105393cdc6ce6bb03fc5c80ed8d2a04020103e89675162629fc81d2601ce40a291001bd4bfaea5  linux-amazon-austin-Fire_7_7th_Gen-5.3.7.3-20210714.tar.gz
 ce3842273ab183f8135d3128a4a53a3ea6677f6379c6243e5e33a266c6c05916b13e754d931166481bffe6841136f99aefaeebf931878fb38eb70e0fa3d402f5  config-amazon-austin.armv7
+9e3b067fa1b19ad02500c4fce1b6142051df3845c508e615788beb650c4f953683107ac2d80670c4e3df38f532e0e91060d2d13ec04c9ec985abd2dfa82e900b  linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
 0ae455bd3d91ef03644f742916340951617e438e09e6552438daf71e3d5eaf498b022c01535160de92ef2fa3b4100f5a2bdb475179ac9705352a0a337b26e8b8  gcc4-compile-fixes.patch
 bfd9134f02059fdc948890a0f923f9c681e209b9ada6025eaa61e04348f69c9e155a094c929e5d6842c09d5782cbb98de3d004fee0ce40767ff954f4499e60fa  fix-host-card-inserted.patch
 50760092b5125466b2280aead0baa12644f064cedc4821fbab6068c97900799922b3d67e6b75968639a1d5bc2cd6af94e90645c594f42c6ac28473c1ea20d9f4  silence-hotplug-logspam.patch

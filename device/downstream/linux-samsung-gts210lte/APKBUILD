@@ -3,7 +3,7 @@
 
 pkgname=linux-samsung-gts210lte
 pkgver=3.10.9
-pkgrel=0
+pkgrel=1
 pkgdesc="Samsung Galaxy Tab S2 9.7 LTE (SM-T815) kernel fork"
 arch="armv7"
 _carch="arm"
@@ -34,6 +34,7 @@ source="
 	gcc7-give-up-on-ilog2-const-optimizations.patch
 	gcc8-fix-put-user.patch
 	gcc10-extern_YYLOC_global_declaration.patch
+	linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
 	samsung-usb-ethaddr.patch
 	kernel-use-the-gnu89-standard-explicitly.patch
 	drivers-muic-fix.patch
@@ -73,6 +74,7 @@ sha512sums="
 77eba606a71eafb36c32e9c5fe5e77f5e4746caac292440d9fb720763d766074a964db1c12bc76fe583c5d1a5c864219c59941f5e53adad182dbc70bf2bc14a7  gcc7-give-up-on-ilog2-const-optimizations.patch
 197d40a214ada87fcb2dfc0ae4911704b9a93354b75179cd6b4aadbb627a37ec262cf516921c84a8b1806809b70a7b440cdc8310a4a55fca5d2c0baa988e3967  gcc8-fix-put-user.patch
 7abefc75702b3275ad88055c57a580d419342d34df59ca38e0b2b183216ba563f0955a6794b1e3ee8dbc49da1d4531ae7c24451e53b0bc18fe1a0db209c66ddb  gcc10-extern_YYLOC_global_declaration.patch
+9e3b067fa1b19ad02500c4fce1b6142051df3845c508e615788beb650c4f953683107ac2d80670c4e3df38f532e0e91060d2d13ec04c9ec985abd2dfa82e900b  linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
 015cc3cd31c1edc208bf2bee872d3be1fe35006f8b90c3cc5c082fb7d89b2ae91a04239676b8868da75d5682e330b1d60d1f5fad67410cbaeeb66a8685df36f5  samsung-usb-ethaddr.patch
 841d23c78c490a1434c254b06a284f08e6a63a2ed94150302e931b336e1d19704554e5027a29500d073ca89f624ecbdd6c2d323902b03f1b1134d927e6538d00  kernel-use-the-gnu89-standard-explicitly.patch
 e2e550d9d5020c2f51e1af0576236ac9d57b2e0c10c14a2a92dc7b1bf4100ebc15a6bf0fff4f57232164e84358dc37d24721e1d9f133a526bf78b610eaf00add  drivers-muic-fix.patch

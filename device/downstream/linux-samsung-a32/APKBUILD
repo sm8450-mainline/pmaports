@@ -4,7 +4,7 @@
 
 pkgname=linux-samsung-a32
 pkgver=4.14.195
-pkgrel=0
+pkgrel=1
 pkgdesc="Samsung Galaxy A32 4G kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -28,7 +28,7 @@ makedepends="
 "
 
 # Source
-_repository="kernel_samsung_a32"
+_repository="kernel_samsung_a32-old"
 _commit="69ebc099071238de52ad4a3ac4a65fbda1865fda"
 _config="config-$_flavor.$arch"
 source="
@@ -68,7 +68,7 @@ package() {
 }
 
 sha512sums="
-99484dd228a1f894792fc34da74a92787174b1b2f5de059d7cba91401e337ef152907491092de214df06ac254d7ad5f0ffedfe5a7b165a2e121dab5094d292f8  linux-samsung-a32-69ebc099071238de52ad4a3ac4a65fbda1865fda.tar.gz
+22e930e02bbfdfef9da145b103e5773c00fec238e42796e9983ef3e6f8bea976e7a907bbb31247caea1978f8f3b9a1419de9e7704046b6a0adb4fe0d3895d6a8  linux-samsung-a32-69ebc099071238de52ad4a3ac4a65fbda1865fda.tar.gz
 2ca8154e922baa037dfd1e5271c27153655c17299008b16d8698a1b11c0b8d27cd214ce63f6f80b2526b2077c4d65b37922da9fa469ca0bb86bb8540180fbada  config-samsung-a32.aarch64
 3b139f775eec7d41c4baae6550c3d1036e9d853f5fedcb1992d7cff56b2922fcf42f363f79ad7a718fe79ee10bd0bc87c4c68187fa6332f478d4ec288d12a2cf  01_use_system_cpio.patch
 5a724f4ea619ba222f2b39fcd5aaabf9a5439e1d5430bb74ca64dfdc3b47d83a92b2e64969e5f6d198b9d57ba1c192618fc47f18f6a6bb1be3ac54d0e8dab58e  02_remove_duplicate_set_selection.patch
