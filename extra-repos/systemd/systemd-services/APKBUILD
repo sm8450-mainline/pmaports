@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=76
+pkgver=77
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -59,6 +59,7 @@ subpackages="
 	kodi-systemd:_service
 	ksystemstats-systemd:_service
 	kwallet-pam-systemd:_service
+	lightdm-systemd:_service
 	localsearch-systemd:_service
 	lxc-systemd:_service
 	mce-systemd:_service
@@ -169,6 +170,7 @@ _kglobalacceld_sources="user/plasma-kglobalaccel.service"
 _kodi_sources="system/kodi.service" # From https://github.com/graysky2/kodi-standalone-service/blob/master/x86/init/kodi-gbm.service
 _ksystemstats_sources="user/plasma-ksystemstats.service"
 _kwallet_pam_sources="user/plasma-kwallet-pam.service"
+_lightdm_sources="system/lightdm.service"
 _localsearch_sources="user/tracker-writeback.service user/tracker-control.service user/tracker-miner-fs.service"  # From https://gitlab.gnome.org/GNOME/localsearch
 _lxc_sources="system/lxc@.service"
 _mce_sources="system/mce.service" # From mce upstream
@@ -268,6 +270,7 @@ source="$(flatpath \
 	$_kodi_sources \
 	$_ksystemstats_sources \
 	$_kwallet_pam_sources \
+	$_lightdm_sources \
 	$_localsearch_sources \
 	$_lxc_sources \
 	$_mce_sources \
@@ -408,6 +411,7 @@ acf21c4391ca62775491ba4d3b7c460b4163ef07abb195e152c98299a2d12779f3eb95f8cad0aeb3
 e7c33c889afb822ae20ebd09f3b9f8d130d1f89324006ab3a140fbf46ef7e774634d2ac13ac328c588266823e5eb52c7e0d6d6459f1f64052f9cea5a5fe9f54a  system-kodi.service
 bccc419b13d39c59ef6bb765dde2bef70c621995bc53d74ccc9ad4aef92931ee74c3ee0b19a0dffb8c3f133b5b0d73f5f70df269dddf5f0ed1dba1cf31d7e141  user-plasma-ksystemstats.service
 a9358610c86fd3506e4cf02aea26e699d61268121ea3c16507b8f71446c16169a1c90c75faf126f2cf607c091e507f7e5822ea5fd8cc1f6e14f257c8007287a3  user-plasma-kwallet-pam.service
+d49344e79f6468ef06538068cbb12c37e313e02ade28984a75dad4d50e1e962372451908e9910ae60c74bd5230ae45e6a6346bb0f7c6af83c346a691f5714556  system-lightdm.service
 49010e368981fdb8f36bdfe58ed6ee00615cbee696891ce02fae7b213b451d5dfe60a5c6e0065c6d3ab588ce38948f5bee1f03200daa4fe8e234e82b249a9e15  user-tracker-writeback.service
 53777d4ba1c35d7f00294675f61d3f0a0fa632a9abd6d428d9e159419e3ae43c6bb3c12f506dca0545db889a6642bfbaee5802fc637c6a84635e5f6814c79944  user-tracker-control.service
 c5ebba42808185df86d71a0eec6d4c2122c45ea1d27123f0c0b389849e09dd8a85bd174654f3c6cb6467bd0ddb5cf25f07266ac3cdf25b888be355d07086ffed  user-tracker-miner-fs.service
