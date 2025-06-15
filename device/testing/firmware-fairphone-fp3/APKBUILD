@@ -18,7 +18,6 @@ subpackages="
 options="!check !strip !archcheck !tracedeps pmb:cross-native"
 source="https://github.com/FairBlobs/FP3-firmware/archive/$_commit/FP3-firmware-$_commit.tar.gz"
 builddir="$srcdir/FP3-firmware-$_commit"
-_fwdir="/lib/firmware"
 
 build() {
 	for i in *.mdt; do
@@ -34,62 +33,62 @@ adreno() {
 	pkgdesc="Fairphone 3 firmware for GPU"
 
 	install -Dm644 "$builddir"/a506_zap.mbn -t \
-		"$subpkgdir/$_fwdir/qcom/msm8953/fairphone/fp3"
+		"$subpkgdir/lib/firmware/qcom/msm8953/fairphone/fp3"
 
 	ln -s a506_zap.mbn \
-		"$subpkgdir/$_fwdir/qcom/msm8953/fairphone/fp3/a506_zap.mdt"
+		"$subpkgdir/lib/firmware/qcom/msm8953/fairphone/fp3/a506_zap.mdt"
 }
 
 adsp() {
 	pkgdesc="Fairphone 3 firmware for the ADSP"
 
 	install -Dm644 "$builddir"/adsp.mbn -t \
-		"$subpkgdir/$_fwdir/qcom/msm8953/fairphone/fp3"
+		"$subpkgdir/lib/firmware/qcom/msm8953/fairphone/fp3"
 
-	mkdir -p "$subpkgdir/$_fwdir/postmarketos"
+	mkdir -p "$subpkgdir/lib/firmware/postmarketos"
 	ln -s ../qcom/msm8953/fairphone/fp3/adsp.mbn \
-		"$subpkgdir/$_fwdir/postmarketos/adsp.mdt"
+		"$subpkgdir/lib/firmware/postmarketos/adsp.mdt"
 }
 
 modem() {
 	pkgdesc="Fairphone 3 firmware for the modem"
 
 	install -Dm644 "$builddir"/mba.mbn -t \
-		"$subpkgdir/$_fwdir/qcom/msm8953/fairphone/fp3"
+		"$subpkgdir/lib/firmware/qcom/msm8953/fairphone/fp3"
 	install -Dm644 "$builddir"/modem.mbn -t \
-		"$subpkgdir/$_fwdir/qcom/msm8953/fairphone/fp3"
+		"$subpkgdir/lib/firmware/qcom/msm8953/fairphone/fp3"
 
-	mkdir -p "$subpkgdir/$_fwdir/postmarketos"
+	mkdir -p "$subpkgdir/lib/firmware/postmarketos"
 	ln -s ../qcom/msm8953/fairphone/fp3/mba.mbn \
-		"$subpkgdir/$_fwdir/postmarketos/mba.mbn"
+		"$subpkgdir/lib/firmware/postmarketos/mba.mbn"
 	ln -s ../qcom/msm8953/fairphone/fp3/modem.mbn \
-		"$subpkgdir/$_fwdir/postmarketos/modem.mdt"
+		"$subpkgdir/lib/firmware/postmarketos/modem.mdt"
 }
 
 venus() {
 	pkgdesc="Fairphone 3 firmware for venus"
 
 	install -Dm644 "$builddir"/venus.mbn -t \
-		"$subpkgdir/$_fwdir/qcom/msm8953/fairphone/fp3"
+		"$subpkgdir/lib/firmware/qcom/msm8953/fairphone/fp3"
 
-	mkdir -p "$subpkgdir/$_fwdir/postmarketos"
+	mkdir -p "$subpkgdir/lib/firmware/postmarketos"
 	ln -s ../qcom/msm8953/fairphone/fp3/venus.mbn \
-		"$subpkgdir/$_fwdir/postmarketos/venus.mdt"
+		"$subpkgdir/lib/firmware/postmarketos/venus.mdt"
 }
 
 wcnss() {
 	pkgdesc="Fairphone 3 firmware for the Qualcomm Wireless Connectivity Subsystem (WCNSS)"
 
 	install -Dm644 "$builddir"/wcnss.mbn -t \
-		"$subpkgdir/$_fwdir/qcom/msm8953/fairphone/fp3"
+		"$subpkgdir/lib/firmware/qcom/msm8953/fairphone/fp3"
 	install -Dm644 "$builddir"/wlan/prima/WCNSS_qcom_wlan_nv.bin -t \
-		"$subpkgdir/$_fwdir/qcom/msm8953/fairphone/fp3"
+		"$subpkgdir/lib/firmware/qcom/msm8953/fairphone/fp3"
 
-	mkdir -p "$subpkgdir/$_fwdir/postmarketos/wlan/prima"
+	mkdir -p "$subpkgdir/lib/firmware/postmarketos/wlan/prima"
 	ln -s ../qcom/msm8953/fairphone/fp3/wcnss.mbn \
-		"$subpkgdir/$_fwdir/postmarketos/wcnss.mdt"
+		"$subpkgdir/lib/firmware/postmarketos/wcnss.mdt"
 	ln -s ../../../qcom/msm8953/fairphone/fp3/WCNSS_qcom_wlan_nv.bin \
-		"$subpkgdir/$_fwdir/postmarketos/wlan/prima/WCNSS_qcom_wlan_nv.bin"
+		"$subpkgdir/lib/firmware/postmarketos/wlan/prima/WCNSS_qcom_wlan_nv.bin"
 }
 
 sha512sums="
