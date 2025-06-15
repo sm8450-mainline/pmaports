@@ -2,13 +2,15 @@
 # Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=device-oneplus-bacon
 pkgver=7
-pkgrel=0
+pkgrel=1
 pkgdesc="OnePlus One"
 url="https://postmarketos.org"
 arch="armv7"
 license="MIT"
 depends="
-	firmware-oneplus-bacon
+	firmware-oneplus-bacon-adsp
+	firmware-oneplus-bacon-modem
+	firmware-oneplus-bacon-wcnss
 	firmware-qcom-adreno-a330
 	linux-postmarketos-qcom-msm8974
 	lk2nd-msm8974
