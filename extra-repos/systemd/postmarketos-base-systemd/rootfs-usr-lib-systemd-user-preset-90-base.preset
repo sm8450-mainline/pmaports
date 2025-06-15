@@ -14,3 +14,7 @@ enable udiskie.service
 
 # GNOME
 enable gnome-keyring-daemon.socket
+
+# xfce4
+enable xfce4-notifyd.service
+enable xfconfd.service

@@ -66,6 +66,9 @@ enable kodi.service
 ## COSMIC
 enable cosmic-greeter.service
 
+## mate / xfce
+enable lightdm.service
+
 ## niri
 # NOTE: This is a generic greeter so it can be moved under a more generic
 # header if another UI uses it.
