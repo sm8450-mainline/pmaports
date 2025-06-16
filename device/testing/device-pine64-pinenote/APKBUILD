@@ -1,34 +1,45 @@
 # Maintainer: Antoine Martin (ayakael) <dev@ayakael.net>
 pkgname=device-pine64-pinenote
 pkgdesc="Pine64 PineNote"
-pkgver=3
+pkgver=4
 pkgrel=0
+_commit="28d2c05ab4e80a7972611cd3188f3e8be4197f6a"
 url="https://postmarketos.org"
-license="MIT"
+license="GPL-3.0-only"
 arch="aarch64"
 options="!check !archcheck"
 depends="
 	linux-pine64-pinenote
-	pinenote-dbus-service<20221207
+	pinenote-dbus-service
 	postmarketos-base
 	u-boot-pine64-pinenote
 "
 makedepends="devicepkg-dev"
+# pinenote-dist repo provides some management scripts for pinenote and sway
+# although for now we only source waveform scripts
 source="
+	pinenote-dist-$_commit.tar.gz::https://git.sr.ht/~hrdl/pinenote-dist/archive/$_commit.tar.gz
+	waveform-extract-use-lib.patch
+
+	deviceinfo
+	modules-initfs
+
+	pinenote-init-waveform.initd
+	30-eink-waveform.files
 	50-touchscreen.conf
 	81-libinput-pinenote.rules
 	82-ebc-rockchip.rules
-	deviceinfo
 	local-overrides.quirks
-	modules-initfs
 	panfrost.conf
 	phoc.ini
 	rockchip_ebc.conf
 "
 subpackages="
 	$pkgname-nonfree-firmware:nonfree_firmware
+	$pkgname-nonfree-firmware-openrc:nonfree_firmware_openrc
 	$pkgname-phosh
 "
+builddir="$srcdir"/pinenote-dist-$_commit
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -61,18 +72,49 @@ phosh() {
 
 nonfree_firmware() {
 	pkgdesc="WiFi, Bluetooth and display firmware"
-	depends="firmware-pine64-pinenote linux-firmware"
-	mkdir "$subpkgdir"
+	depends="linux-firmware py3-numpy"
+	replaces="firmware-pine64-pinenote"
+
+	# waveform firmware is provided locally via /dev/disk/by-label/waveform
+	# and then adapted to kernel using hrdl's script
+	# and initd script executes it at first boot of device
+	install -Dm644 "$srcdir"/30-eink-waveform.files \
+		"$subpkgdir"/usr/share/mkinitfs/files/30-eink-waveform.files
+	install -Dm755 "$builddir"/bin/wbf_to_custom.py \
+		-t "$subpkgdir"/usr/libexec/pinenote
+	install -Dm755 "$builddir"/bin/read_file.py \
+		-t "$subpkgdir"/usr/libexec/pinenote
+	install -Dm755 "$builddir"/bin/waveform_extract.sh \
+		-t "$subpkgdir"/usr/libexec/pinenote
+
+	# create empty waveform firmware so that initial mkinitfs doesn't fail
+	mkdir -p "$subpkgdir"/lib/firmware/rockchip
+	touch "$subpkgdir"/lib/firmware/rockchip/ebc.wbf
+	touch "$subpkgdir"/lib/firmware/rockchip/custom_wf.bin
 }
 
+nonfree_firmware_openrc() {
+	install_if="$pkgname-nonfree-firmware=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="openrc"
+
+	install -Dm755 "$srcdir"/pinenote-init-waveform.initd \
+		"$subpkgdir"/etc/init.d/pinenote-init-waveform
+}
+
+
 sha512sums="
+4b6548a05dcdbe1ddda97dba58d625407fb553f90817e8e678b97e28603f64aab9a31fa18bda654c06638f3be21d7a6936786197f93f715e7d03a07e380873c5  pinenote-dist-28d2c05ab4e80a7972611cd3188f3e8be4197f6a.tar.gz
+6dc70339d220a560e684e0a28679ab932455cc05d6fb83b9dadd696b54f7987f4ebaadeb8d6287ca3357cd20087e9e1294cd5e0147f9cfb2f74b7cb58a30f6e0  waveform-extract-use-lib.patch
 5829b9b52206a7520066e4bb3c08c2535d98002a3940664a0239344f5e7522fe7b6a9cb0c0074f9846c7e42c40746f2991f6aeeefeba8efa9140c16630b2893e  deviceinfo
-473accb3497244742dd9fd15f8a02957a13e08fa4d4393fec185ecbb27f1f17726e4b5ece22da861151f9d358d3266206c647def8aa75adb672b6f1f1904c66f  modules-initfs
-4bf5158fbd53274a7429e825bb66225001f2403a4851e2d6803323b77d9095738ee3e5340ac85baf3e86bb4f47d38af8cbd78d8a5055c59a62f5b06e722e19cb  phoc.ini
-1123720962c9c8fec3c50302ca6a3dd56e2907dc9eea361a7b8eb4201b042476633d41a0ee4f6ab61d9c60eeccc894f83491ba9fa309a9bce2f1db0b0341d79d  local-overrides.quirks
+e0d3ac808e7a4f05df327a824e30dc54864908e31f4a643f6e85f054ab812eeb28fef647eb52ae85bfad7d40c9cd81c43c1cdc575de5dbc04304d74862d9772c  modules-initfs
+29710d80112f8797adf7e3dfd54771d8752d29cb265532e235fe406e380056ac846929568ddbe5110bbd74da337e2f8cd905e4092c14bc94aea07dc83f39aa6e  pinenote-init-waveform.initd
+8f7a5ad2f407de8c474d54dfdb9cc099c96e8918fc123f8b2a8ff911d7e1c7ca6fe30f9cea8ee2f0c1ba5f3e53359193d0683ca912f0b66e79a12814ce38dd98  30-eink-waveform.files
 ac433eebbc35a48561837495997aee4e55510b979bc0d8e3bafb761bc1be5b4bdeed2f456369dcbc582688aefd07c63966b0d72b6ffa99e84cfd868e677f02c8  50-touchscreen.conf
 2bc51f200baefc37abfaaad368a911244999e906bdca4b728ac233f49a8fb3ae7206ee3c95cdb20d7dceae2a31d25a57f4e1da4fd67057fd64724b8232e42aed  81-libinput-pinenote.rules
 19e922eec89dba419798c4e1dc9b39c040db33986d0969a39a8220c642fa081763f15ff2418115d5a748af4054a1be0784927d1712ea79942c2b237ebab47728  82-ebc-rockchip.rules
+1123720962c9c8fec3c50302ca6a3dd56e2907dc9eea361a7b8eb4201b042476633d41a0ee4f6ab61d9c60eeccc894f83491ba9fa309a9bce2f1db0b0341d79d  local-overrides.quirks
 6ba6638754e00908243de2f73ed6898dac03638a200dcf7b7cd9684757355ee1eb0ac874af0f971ad2e054c1a8c471867bdaea4d9aaf7eea6d3cf81ac7dd73a2  panfrost.conf
+4bf5158fbd53274a7429e825bb66225001f2403a4851e2d6803323b77d9095738ee3e5340ac85baf3e86bb4f47d38af8cbd78d8a5055c59a62f5b06e722e19cb  phoc.ini
 b52d2e7f0c62d7c313b6db9aeb706cdb2596b6aa637aeddb862abf1e256103377fb6267e38cd4285e25d32112acf8d03bbf32ecff7be3dfbb9176209ea7ae283  rockchip_ebc.conf
 "

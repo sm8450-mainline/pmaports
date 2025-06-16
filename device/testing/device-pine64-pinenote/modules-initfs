@@ -1,3 +1,4 @@
+gpio_rockchip
 tps65185-regulator
 rockchip_ebc
 drm_kms_helper
