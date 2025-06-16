@@ -2,7 +2,7 @@
 
 pkgname=linux-amazon-thor
 pkgver=3.4.113
-pkgrel=7
+pkgrel=8
 pkgdesc="Phoenix Kernel for the 7-inch Kindle Fire HDX 3rd generation"
 arch="armv7"
 _carch="arm"
@@ -26,7 +26,7 @@ _repository="kernel_phoenix_hdx-common"
 _commit="f73e4eec8717c6104eca954cf9c259d9d37c38a5"
 _config="config-$_flavor.$arch"
 source="
-	$pkgname-$_commit.tar.gz::https://github.com/ggow/$_repository/archive/$_commit.tar.gz
+	$pkgname-$_commit.tar.gz::https://github.com/LastNiceGuy/$_repository/archive/$_commit.tar.gz
 	$_config
 	00_fix_smd_private.patch
 	00_fix_qaudio.patch
@@ -37,6 +37,7 @@ source="
 	03_msm_fix_trace.patch
 	06_fix_mdss_fb_rgb_mode.patch
 	gcc10-extern_YYLOC_global_declaration.patch
+	linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
 "
 builddir="$srcdir/$_repository-$_commit"
 
@@ -72,4 +73,5 @@ ea1d3b5a234fa565e3c1a792de48f4fc4e6023d281d303c8e319c7ef28edc5739ab0e4dea0139a41
 657630a1ebd5a9aff872530022e83b1087ef3c0eb7a214d350c9caf779c2691f92de6630a40d735b5f7a34ba6a3e9e7eb708d3deb52f134d53164836c312e5e9  03_msm_fix_trace.patch
 2ce72397039e5a842e6564586ec14dcd2aaf0430959a42c18406c9c3736ce6f6fc6af146b345fa81977748a3182ce585af0da5db3e39cd4dc5314b6186478a64  06_fix_mdss_fb_rgb_mode.patch
 2b48f1bf0e3f70703d2cdafc47d5e615cc7c56c70bec56b2e3297d3fa4a7a1321d649a8679614553dde8fe52ff1051dae38d5990e3744c9ca986d92187dcdbeb  gcc10-extern_YYLOC_global_declaration.patch
+9e3b067fa1b19ad02500c4fce1b6142051df3845c508e615788beb650c4f953683107ac2d80670c4e3df38f532e0e91060d2d13ec04c9ec985abd2dfa82e900b  linux3.4-ARM-8933-1-replace-Sun-Solaris-style-flag-on-section.patch
 "
