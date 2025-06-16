@@ -1,3 +1,4 @@
+# Archived: Kernel sources have disappeared, does not build anymore
 # Maintainer: Hadi Charara <hadicharara@ymail.com>
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on: arch/arm64/configs/suez_defconfig
