@@ -2,7 +2,7 @@
 # Maintainer: Jakko <jahau@rocketmail.com>
 pkgname=postmarketos-ui-mate
 pkgver=9
-pkgrel=1
+pkgrel=2
 pkgdesc="(X11) MATE Desktop Environment, fork of GNOME2 (stylus recommended)"
 url="http://mate-desktop.org/"
 arch="noarch"
@@ -54,7 +54,7 @@ source="
 	onboard-autostart.desktop
 	pmOS-panel.layout
 	"
-options="!check"
+options="!check pmb:systemd"
 
 package() {
 	install -Dm644 -t "$pkgdir"/etc/skel/.config/autostart \

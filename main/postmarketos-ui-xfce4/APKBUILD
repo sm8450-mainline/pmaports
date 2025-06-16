@@ -2,7 +2,7 @@
 # Maintainer: Jakko <jahau@rocketmail.com>
 pkgname=postmarketos-ui-xfce4
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="(X11) Lightweight desktop (stylus recommended)"
 url="https://gitlab.postmarketos.org/postmarketOS/xfce4-phone"
 arch="noarch"
@@ -52,7 +52,7 @@ source="
 	onboard-autostart.desktop
 	xfce4-phone.sh
 	"
-options="!check"
+options="!check pmb:systemd"
 builddir="$srcdir/xfce4-phone-$pkgver"
 
 package() {
