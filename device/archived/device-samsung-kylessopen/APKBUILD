@@ -1,3 +1,4 @@
+# Archived: Kernel does not build anymore
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-kylessopen
 pkgdesc="Galaxy Trend"
