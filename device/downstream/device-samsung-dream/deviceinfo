@@ -14,6 +14,7 @@ deviceinfo_keyboard="false"
 deviceinfo_external_storage="true"
 deviceinfo_screen_width="1440"
 deviceinfo_screen_height="2960"
+deviceinfo_create_initfs_extra="true"
 
 # Bootloader related
 deviceinfo_flash_method="heimdall-bootimg"
@@ -34,4 +35,3 @@ deviceinfo_flash_heimdall_partition_rootfs="USERDATA"
 deviceinfo_usb_idVendor="0x04e8"
 # Galaxy (MTP)
 deviceinfo_usb_idProduct="0x6860"
-
