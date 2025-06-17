@@ -29,6 +29,10 @@ enable zram_swap.service
 enable systemd-oomd.service
 enable alsa-restore.service
 enable alsa-state.service
+# Note: tuned-ppd can be dbus activated but it and tuned are being enabled here
+# so that they start at boot without waiting for a user to login.
+enable tuned.service
+enable tuned-ppd.service
 
 # Note: technically these two shouldn't be enabled at the same time, but
 # pmos-base-wifi provides should make sure that only one is installed at the
