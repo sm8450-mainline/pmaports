@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-motorola-peregrine
 pkgdesc="Moto G 4G (2013)"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -29,6 +29,6 @@ package() {
 }
 
 sha512sums="
-61c1654f1f823023db012b030e72ae9cb4b32557bc74a494914cd03bab09ea4c5bd752f028f2374b3b7099d3defe5c3fbc80c3011eb7daa22becc5a765c4bde3  deviceinfo
+d91164c3cd614af8f37711f19a1a8f176ac16b40e2681b329a9c6f0cff345e199f22140b6438b769445fd2e4e91a954836ccb6e6268f618d210c726cf06c7d69  deviceinfo
 01b3f81f77732b7bc32e01e1c242a30f03b7c02da3aa830e3eb21b6f10458616cc8752d532405c66cd54f488c53962cf1901ebe30019ddcd572ea13445e6d28b  modules-initfs
 "
