@@ -12,7 +12,9 @@ _pkgver="musl-v${pkgver//_/-}-split-usr"
 pkgrel=1
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
-arch="all !ppc64le !s390x" # blocked by pmboostrap not supporting
+# ppc64le and s390x blocked by pmboostrap not supporting
+# armhf blocked by pmb#2618
+arch="all !ppc64le !s390x !armhf"
 license="MIT AND GPL-2.0-only AND LGPL-2.1-or-later"
 options="pmb:strict !check" # few tests fail, need to debug. We use alpine dbus for building, systemd-dbus for runtime
 
