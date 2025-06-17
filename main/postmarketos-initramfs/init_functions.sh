@@ -1264,6 +1264,7 @@ create_logs_disk() {
 	losetup -f /tmp/logs.img
 	mkfs.vfat -n "PMOS_LOGS" "$loop_dev"
 	mkdir -p /tmp/logs
+	modprobe vfat
 	mount "$loop_dev" /tmp/logs
 
 	# Copy logs
