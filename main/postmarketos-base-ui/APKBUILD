@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-base-ui
 pkgver=41
-pkgrel=0
+pkgrel=1
 pkgdesc="Meta package for minimal postmarketOS UI base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -47,8 +47,9 @@ subpackages="
 	"
 replaces="
 	chrony
-	wpa_supplicant-openrc
 	postmarketos-base
+	sleep-inhibitor
+	wpa_supplicant-openrc
 	"
 replaces_priority=100  # leave plenty for alpine
 
@@ -161,14 +162,10 @@ elogind() {
 	install_if="$pkgname=$pkgver-r$pkgrel elogind"
 	install="$subpkgname.post-install"
 	depends="!systemd-logind sleep-inhibitor-openrc openrc"
-	replaces="
-		elogind
-		sleep-inhibitor
-		"
+	replaces="elogind"
 	provides="postmarketos-base-elogind=$pkgver-r$pkgrel"
 
 	amove etc/elogind/logind.conf
-	amove etc/sleep-inhibitor.conf
 }
 
 openrc_settingsd() {
