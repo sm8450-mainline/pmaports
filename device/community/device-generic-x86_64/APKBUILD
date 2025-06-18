@@ -2,8 +2,8 @@
 # Co-Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=device-generic-x86_64
 pkgdesc="Generic x86_64 system, with EFI"
-pkgver=19
-pkgrel=2
+pkgver=20
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="x86_64"
@@ -25,7 +25,7 @@ source="
 install="$pkgname.post-install $pkgname.post-upgrade"
 subpackages="
 	$pkgname-intel
-	$pkgname-kernel-edge:kernel_edge
+	$pkgname-kernel-stable:kernel_stable
 	$pkgname-kernel-lts:kernel_lts
 "
 _pmb_recommends="
@@ -55,11 +55,11 @@ intel() {
 		-t "$subpkgdir"/usr/share/mkinitfs/files/
 }
 
-kernel_edge() {
-	pkgdesc="Alpine Edge kernel"
-	provides="device-tablet-x64uefi-kernel-edge=$pkgver-r$pkgrel device-tablet-x86uefi-kernel-edge=$pkgver-r$pkgrel"
-	replaces="device-tablet-x64uefi-kernel-edge device-tablet-x86uefi-kernel-edge"
-	depends="linux-edge"
+kernel_stable() {
+	pkgdesc="Alpine Stable kernel"
+	provides="device-tablet-x64uefi-kernel-edge=$pkgver-r$pkgrel device-tablet-x86uefi-kernel-edge=$pkgver-r$pkgrel $pkgname-kernel-edge=$pkgver-r$pkgrel"
+	replaces="device-tablet-x64uefi-kernel-edge device-tablet-x86uefi-kernel-edge $pkgname-kernel-edge"
+	depends="linux-stable"
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
