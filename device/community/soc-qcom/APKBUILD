@@ -2,7 +2,7 @@
 pkgname=soc-qcom
 pkgdesc="Common package for Qualcomm devices"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
@@ -154,12 +154,11 @@ pulseaudio_openrc() {
 }
 
 pulseaudio_systemd() {
-	install_if="$pkgname-pulseaudio=$pkgver-r$pkgrel systemd"
-	depends="systemd"
-
 	# Call Audio idle suspend workaround systemd unit
 	install -Dm644 "$srcdir"/call-audio-idle-suspend-workaround.service \
 		-t "$subpkgdir"/usr/lib/systemd/user
+
+	default_systemd
 }
 
 sha512sums="
