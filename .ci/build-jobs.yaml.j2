@@ -17,20 +17,9 @@ workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == "parent_pipeline"
 
-{% if archs|length == 0 %}
-# Needed because gitlab fails if no jobs are ran:
-#  - https://gitlab.com/gitlab-org/gitlab/-/issues/368248
-# This applies to `when: manual` is used on all jobs.
-placeholder:
-  stage: build
-  script:
-    - 'true'
-{% endif %}
-
 .build:
-  # Create jobs, but don't run them unless this is
+  # Create jobs, but do not run them unless this is
   # overriden in jobs that extend it
-  when: manual
   stage: build
   interruptible: true
   before_script:
@@ -51,57 +40,28 @@ placeholder:
       - keys/
   timeout: 10 h
 
-build-x86_64:
-{% if ('x86_64' in archs) %}
-  when: always
-{% endif %}
+build:
   extends: .build
-  script:
-    - .ci/build-x86_64.sh
-
-build-x86:
-{% if ('x86' in archs) %}
-  when: always
+  parallel:
+    matrix:
+{% for arch in archs %}
+      - ARCH: {{ arch }}
+        TAG: {{ archtag[arch] }}
+{% endfor %}
+{% if archs|length == 0 %}
+      - ARCH: placeholder
+        TAG: shared
 {% endif %}
-  extends: .build
+  tags:
+    - $TAG
   script:
-    - .ci/build-x86.sh
-
-build-aarch64:
-{% if ('aarch64' in archs) %}
-  when: always
+# Needed because gitlab fails if no jobs are ran:
+#  - https://gitlab.com/gitlab-org/gitlab/-/issues/368248
+{% if archs|length == 0 %}
+    - 'true'
+{% else %}
+    - .ci/build-$ARCH.sh
 {% endif %}
-  extends: .build
-  tags: [arm64]
-  script:
-    - .ci/build-aarch64.sh
-
-build-armv7:
-{% if ('armv7' in archs) %}
-  when: always
-{% endif %}
-  extends: .build
-  tags: [qemu]
-  script:
-    - .ci/build-armv7.sh
-
-build-armhf:
-{% if ('armhf' in archs) %}
-  when: always
-{% endif %}
-  extends: .build
-  tags: [qemu]
-  script:
-    - .ci/build-armhf.sh
-
-build-riscv64:
-{% if ('riscv64' in archs) %}
-  when: always
-{% endif %}
-  extends: .build
-  tags: [qemu]
-  script:
-    - .ci/build-riscv64.sh
 
 # Hardware testing
 
@@ -139,7 +99,12 @@ prepare-{{ device.name }}:
         - {{ kernel }}
       {%- endfor %}
   {%- endif %}
-  needs: ["build-{{ device.arch }}"]
+  needs:
+    - job: "build"
+      parallel:
+        matrix:
+          - ARCH: "{{ device.arch }}"
+            TAG: "{{ archtag[device.arch] }}"
   variables:
     DEVICE_NAME: {{ device.name }}
     # NOTE: All the packages that may influence testing should have an

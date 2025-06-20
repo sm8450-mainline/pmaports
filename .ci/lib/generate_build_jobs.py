@@ -141,6 +141,23 @@ class Device:
         return supported_devices
 
 
+class ArchTagSet(set):
+    supported_arches = [
+        Arch.x86_64,
+        Arch.x86,
+        Arch.aarch64,
+        Arch.armv7,
+        Arch.armhf,
+        Arch.riscv64,
+    ]
+
+    def update(self, iterable):
+        # This ignores things like !armv7, that could be a follow-up optimization
+        if 'noarch' in iterable or 'all' in iterable:
+            iterable = [arch for arch in self.supported_arches]
+        super().update([Arch(arch) for arch in iterable if Arch(arch) in self.supported_arches])
+
+
 if __name__ == "__main__":
     # Needs input to output if we should create the jobs
     if len(sys.argv) != 3:
@@ -163,7 +180,7 @@ if __name__ == "__main__":
     # Get the list of supported devices
     supported_devices = Device.supported_devices()
 
-    archs = set()
+    archs = ArchTagSet()
     devices_under_test = set()
     packages_modified = set()
     # Get and print modified packages
@@ -189,19 +206,27 @@ if __name__ == "__main__":
             if apkbuild['pkgname'] in device.dependencies:
                 devices_under_test.add(device)
 
-    # This ignores things like !armv7, that could be a follow-up optimization
-    if 'noarch' in archs or 'all' in archs:
-        archs = set([str(arch) for arch in Arch.supported()])
-
     if common.commit_message_has_string("[ci:skip-build]"):
         print("User requested skipping build, not creating child pipeline file")
-        archs = set()
+        archs = ArchTagSet()
         devices_under_test = set()
 
     print(f"Architectures to build: {archs}")
     print(f"Devices under test: {devices_under_test}")
 
     with open(template) as f:
-        rendered = Template(f.read()).render(archs=archs, devices_under_test=devices_under_test, packages_modified=packages_modified)
+        rendered = Template(f.read()).render(
+            archs=archs,
+            devices_under_test=devices_under_test,
+            packages_modified=packages_modified,
+            archtag={
+                Arch.x86_64: "shared",
+                Arch.x86: "shared",
+                Arch.aarch64: "arm64",
+                Arch.armv7: "qemu",
+                Arch.armhf: "qemu",
+                Arch.riscv64: "qemu",
+            },
+        )
         with open(child_pipeline, "w") as fw:
             fw.write(rendered)
