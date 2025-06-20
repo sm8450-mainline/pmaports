@@ -2,7 +2,7 @@
 # Maintainer: Sicelo <absicsz@gmail.com>
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-nokia-n900
-pkgver=44
+pkgver=45
 pkgrel=0
 pkgdesc="Nokia N900"
 url="https://postmarketos.org"
@@ -30,12 +30,14 @@ makedepends="
 "
 install="$pkgname.post-install $pkgname.pre-upgrade"
 subpackages="
-	$pkgname-x11
-	$pkgname-xkeyboard-config:xkeyboard_config
+	$pkgname-foot
 	$pkgname-i3blocks
 	$pkgname-i3wm
-	$pkgname-upower
 	$pkgname-openrc
+	$pkgname-upower
+	$pkgname-sway
+	$pkgname-x11
+	$pkgname-xkeyboard-config:xkeyboard_config
 "
 source="
 	10-initfs-keymap.files
@@ -69,6 +71,11 @@ source="
 	modem-opts.conf
 	modules.blocklist
 	pointercal
+	sway/etc-sway-config.d-nokia-n900.conf
+	sway/etc-profile.d-25wlr-pixman.sh
+	sway/etc-xdg-foot-foot.ini
+	sway/usr-bin-sway-bar-hack.sh
+	sway/usr-bin-sway-saver.sh
 	uboot-script.cmd
 	udev/10-nokia-modem.rules
 	udev/15-bq27k.rules
@@ -204,6 +211,26 @@ openrc() {
 	mkdir -p "$subpkgdir"
 }
 
+sway() {
+	depends="brightnessctl foot i3blocks jq upower"
+	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-ui-sway"
+	install -D -m644 "$srcdir"/etc-sway-config.d-nokia-n900.conf \
+		"$subpkgdir"/etc/sway/config.d/nokia-n900.conf
+	install -D -m644 "$srcdir"/etc-profile.d-25wlr-pixman.sh \
+		"$subpkgdir"/etc/profile.d/25wlr-pixman.sh
+	install -D -m755 "$srcdir"/usr-bin-sway-saver.sh \
+		"$subpkgdir"/usr/bin/sway-saver.sh
+	install -D -m755 "$srcdir"/usr-bin-sway-bar-hack.sh \
+		"$subpkgdir"/usr/bin/sway-bar-hack.sh
+}
+
+foot() {
+	install_if="$pkgname=$pkgver-r$pkgrel foot"
+	replaces="foot"
+	install -D -m 644 "$srcdir"/etc-xdg-foot-foot.ini \
+		"$subpkgdir"/etc/xdg/foot/foot.ini
+}
+
 i3blocks() {
 	install_if="$pkgname=$pkgver-r$pkgrel i3blocks"
 	install -D -m644 "$srcdir"/i3blocks.conf \
@@ -250,6 +277,11 @@ e440ed7a3070c17e003b86b72dbe6d8194d01b577ca8dd56dd066f216b6dda32bb965c780950f178
 695feac7f69a0ec8c5e007cdb651adcc3492f1c6236e7fd183edec2a5e25cb957d3ace630ea5fdb87fd703e35ac368f1d097c2f881ecb52c9cfd433564db2a6c  modem-opts.conf
 862ebc7cd2d7a1b3d41b10701b8418308c89eb0732eb99c42ec1091d48e08db9421727f67a3272b7309549798d59afb1b8d7d2fa48d1447b208fcb2329472d4d  modules.blocklist
 143c21f0b18a016d37cb44178e9daea09f128a90769b48353c03c3f245cb9b1f7e773b9ccee084973fc78ddd7a18c2642e54888a85bda7c7daecddc9a8c62eff  pointercal
+0342c1518b832e8db65c349147c478905e2bf3319abc36a1031c17b1513f969dd4e0423d98b99b64d51f1f7871e21d8764b5af54018c7e09a03cb44717459f47  etc-sway-config.d-nokia-n900.conf
+1c7499eb84948eb5b73d58474b1b71a5f2f63116a2a3e1f9a4238064dcf6c152ccefa108bd4ab1074712a2319111c8fdd4bfcf0dbe4d26b5a319404def1b11d2  etc-profile.d-25wlr-pixman.sh
+45da074b597a47825146ae1f3712538210e2ebe1c459f98a8189ccfc7c16ed54d221999b5890785c92aa750c6295dee7e920ef7f97d415d4212f8c0fea29169f  etc-xdg-foot-foot.ini
+49db3826d42a57951bdfe7d651de6d20277edcda094fd98aeaf0a859b4a88ff9df340915d77b32dc8481fc6ea23f02a2ed4b70c28a3c93cbac4a8182ebbc4ca1  usr-bin-sway-bar-hack.sh
+8ca33e8e8bb5da1c4de562db3a96ff3481d42344d9cabe532730665231cce491c777526ed35a4872bee768f48e5573f35bc034757740f8b57a570d409004b241  usr-bin-sway-saver.sh
 42f916d87dd305111028992a1107bf6fe108bebbd782ae8edd065e76505db2b3a75e57515970c3e40cb0d1b7e83097a1bba92785be13df7c3fd80959a8d9c5c1  uboot-script.cmd
 465b9a0d2b46d0981c64b47cb1f656c2456a90b91b1751a2efad10af38a96030dd99108b1fd76ce31bf1ea0f236d55bed38b114d6bd712f09f8968de034c946c  10-nokia-modem.rules
 1acc441b9f83dc91fd65fa3f89b8205bfd72a465286bc181b4e7e92dd4b8c0bc5c20a18dab46ff3ee8ae70940efd7d767b3dfb920edb4c74377bd418b838693d  15-bq27k.rules
