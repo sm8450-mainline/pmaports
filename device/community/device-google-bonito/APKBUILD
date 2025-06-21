@@ -2,8 +2,8 @@
 # Maintainer: Anjandev Momi <anjan@momi.ca>
 pkgname=device-google-bonito
 pkgdesc="Google Pixel 3a XL"
-pkgver=4
-pkgrel=3
+pkgver=5
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -19,7 +19,6 @@ depends="
 "
 makedepends="devicepkg-dev"
 source="
-	90-feedbackd-drv2624.rules
 	deviceinfo
 	modules-initfs
 	q6voiced.conf
@@ -36,9 +35,6 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
-
-	install -Dm644 "$srcdir"/90-feedbackd-drv2624.rules \
-		-t "$pkgdir"/usr/lib/udev/rules.d
 }
 
 kernel_sdc() {
@@ -71,7 +67,6 @@ nonfree_firmware() {
 }
 
 sha512sums="
-016d398155f2344417f5e5649a361719ba6e53e593c501b5df39114cdd284302b9bf8686a39817aee0c08fec95b3ab613c181d6cc9596299aaf7fd05dbe0c3dd  90-feedbackd-drv2624.rules
 e417f9a4da0dd595e34c520c10aef89e480336d9d57b66284a98777afce1dbc3dcda30f8a3a1c625b5e5e19aae4a95f28e00ca47e5d0e993ca922da5107bd837  deviceinfo
 1eb5f138619f499fab31ea64f63ee9f8984f195528708ec6a01ddc533c74cfb71d1442b97905ae15db24b8faac259fa3e89db357ca9c747ce3ee598c2d681639  modules-initfs
 3a4a9322839d4b3ef9d79668a37840a9f444954759ae3c512e694051d2f9a2573db42ad6c4c1a5c75eeb861232a27ba1a8cef9b503decd54ead25a96e3dd6f98  q6voiced.conf

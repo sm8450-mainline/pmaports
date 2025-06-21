@@ -1,1 +1,0 @@
-SUBSYSTEM=="input", KERNEL=="event*", ENV{ID_INPUT}=="1", ATTRS{name}=="twl4030:vibrator", TAG+="uaccess", ENV{FEEDBACKD_TYPE}="vibra"

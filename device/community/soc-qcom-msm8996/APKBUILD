@@ -1,8 +1,8 @@
 # Maintainer: Yassine Oudjana (Tooniis) <y.oudjana@protonmail.com>
 pkgname=soc-qcom-msm8996
 pkgdesc="Common package for Qualcomm MSM8996 devices"
-pkgver=1
-pkgrel=4
+pkgver=2
+pkgrel=0
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
@@ -15,13 +15,10 @@ subpackages="
 _ucm_commit="9f2fd084eccbb01c5bffa6dbc50dcd2b116371d8"
 source="
 	alsa-ucm-conf-$_ucm_commit.tar.gz::https://gitlab.com/msm8996-mainline/alsa-ucm-conf/-/archive/$_ucm_commit/alsa-ucm-conf-$_ucm_commit.tar.gz
-	90-feedbackd-spmi-haptics.rules
 	"
 
 package() {
 	mkdir -p "$pkgdir"
-	install -Dm644 "$srcdir"/90-feedbackd-spmi-haptics.rules \
-		"$pkgdir"/usr/lib/udev/rules.d/90-feedbackd-spmi-haptics.rules
 }
 
 nonfree_firmware() {
@@ -40,5 +37,4 @@ ucm() {
 }
 sha512sums="
 11183d9cc3b3bd01aaed64dccf166521c028b24bb2f9cb7deeba9488fb7306cef64ecfb414bd1dc157d731dcddd79a23a59eb016f5c5273d1e9df2f0391122a6  alsa-ucm-conf-9f2fd084eccbb01c5bffa6dbc50dcd2b116371d8.tar.gz
-4f2c22a3a3fc7d380e200ad977578107d81f0e7ade7918e03bdb15b60a564e8db5f47e13cce22f636d38fd3722696bb46076b8872dae0ca2d8a3838522a1f025  90-feedbackd-spmi-haptics.rules
 "

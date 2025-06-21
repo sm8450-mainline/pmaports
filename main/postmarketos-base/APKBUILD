@@ -1,6 +1,6 @@
 pkgname=postmarketos-base
-pkgver=44
-pkgrel=5
+pkgver=45
+pkgrel=0
 pkgdesc="Meta package for minimal postmarketOS base"
 url="https://postmarketos.org"
 arch="noarch"
@@ -77,7 +77,6 @@ _source644="
 	usr/lib/udev/rules.d/20-tm2-touchkey-input.rules
 	usr/lib/udev/rules.d/20-tm2-touchkey-leds.rules
 	usr/lib/udev/rules.d/20-zinitix-input.rules
-	usr/lib/udev/rules.d/90-feedbackd-regulator-haptic.rules
 	usr/share/mkinitfs/files/postmarketos-base.files
 	"
 _source755="
@@ -235,7 +234,6 @@ b70ee1b39b5f33c9a3e6bf4259158519691c82c8cefb700d4df49eb749a2cce208082e00d4905b9e
 b61c6116f972df08f460494cf3b511b7cb4046a65bb3bd840cddb5ca98518c4514dc5f8a9330bc9ac630e5adbfecc839cbd21f70cac5000a30fd2daeab0f02d7  rootfs-usr-lib-udev-rules.d-20-tm2-touchkey-input.rules
 de4d8f258cb2ce654be15abe0188caa6ca9cc163fd45350f2025e7e9d043878e3f1202ef9033b1b15d7e18c4b40c3b19db387ee050a3baf03c4bd4293f4721e3  rootfs-usr-lib-udev-rules.d-20-tm2-touchkey-leds.rules
 7396c2adc7808a995162cd20c0e8b327675eb5e616e936e65887a4581eb4d134f9911202bb269e0541643d0c1cb6955bf590bc4df8bafc6ecf2bf7fc63385e3c  rootfs-usr-lib-udev-rules.d-20-zinitix-input.rules
-f5c6913040a0448c346fdd0b5dbea865a3ac92ac1a21646d32753e6521642a27b061c314f10a14b612b78aa6bc8d3209e51f7ced95c478f1be55e478ff04067b  rootfs-usr-lib-udev-rules.d-90-feedbackd-regulator-haptic.rules
 d89a7e4b9d601431c62c11f83c9c72fdb90384d9100ee5fc4aff25dda0836fd3bf9e48c0536615be791374459eb8fbaf36d27358d4402ce768a9b9a32bed4f93  rootfs-usr-share-mkinitfs-files-postmarketos-base.files
 3c049c5e6fbe3079ac333f416cbaf5d3890a7941b79d68741bfc861ee94358fba6d8b72614fe99ab84563f9208613037c6702a7d0fc5a6dfa9d0518b5a13b0cb  rootfs-etc-init.d-deferred-initcalls
 42d6bce78b6e3c118dcbd9228b138661a05f8f321f17457e8df8f2398c0b780399d8d056f0a7c50d91557ac8698ab37dde61ec1a13fd69a7b3faad092f126580  rootfs-etc-init.d-swapfile

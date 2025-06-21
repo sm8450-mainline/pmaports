@@ -2,7 +2,7 @@
 # Maintainer: Sicelo <absicsz@gmail.com>
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-nokia-n900
-pkgver=45
+pkgver=46
 pkgrel=0
 pkgdesc="Nokia N900"
 url="https://postmarketos.org"
@@ -79,7 +79,6 @@ source="
 	uboot-script.cmd
 	udev/10-nokia-modem.rules
 	udev/15-bq27k.rules
-	udev/80-feedbackd-twl4030.rules
 	udev/90-touchscreen-dev.rules
 	upower.conf
 	x11-keymap
@@ -128,8 +127,6 @@ package() {
 		"$pkgdir"/etc/udev/rules.d/10-nokia-modem.rules
 	install -D -m644 "$srcdir"/15-bq27k.rules \
 		"$pkgdir"/usr/lib/udev/rules.d/15-bq27xxx-battery.rules
-	install -Dm644 "$srcdir"/80-feedbackd-twl4030.rules \
-		"$pkgdir"/usr/lib/udev/rules.d/80-feedbackd-twl4030.rules
 
 	# Keymap
 	install -D -m644 "$srcdir"/keymaps/rx51_us.bmap.gz \
@@ -285,7 +282,6 @@ e440ed7a3070c17e003b86b72dbe6d8194d01b577ca8dd56dd066f216b6dda32bb965c780950f178
 42f916d87dd305111028992a1107bf6fe108bebbd782ae8edd065e76505db2b3a75e57515970c3e40cb0d1b7e83097a1bba92785be13df7c3fd80959a8d9c5c1  uboot-script.cmd
 465b9a0d2b46d0981c64b47cb1f656c2456a90b91b1751a2efad10af38a96030dd99108b1fd76ce31bf1ea0f236d55bed38b114d6bd712f09f8968de034c946c  10-nokia-modem.rules
 1acc441b9f83dc91fd65fa3f89b8205bfd72a465286bc181b4e7e92dd4b8c0bc5c20a18dab46ff3ee8ae70940efd7d767b3dfb920edb4c74377bd418b838693d  15-bq27k.rules
-03079030237440080e833dbfeff80327c1ad6a8129c6c730b401a3052cd00a986783ec3473a526b14ae73ba1f20653b4c7b2a6590839bfe6cc156bbbc3b7bb74  80-feedbackd-twl4030.rules
 c6012aef28b096141b924fced226ec99fb93eb53b69c064a8887d8fecdf8dc08a3ba3db399e18d88374c6ef4c59013a30699c7e4d76e5cb771040582573a0527  90-touchscreen-dev.rules
 9b99feee42dd6bdd122769994c786d3127c41e0aa3321f19c82a9d3845cf07b522908621a31cbddd9599fe18c5c37127d9b4be4255cd7fa8e0e8983bf73eb41b  upower.conf
 c7837e6688f09c7d650ac7479b8881d4bad709480a71a1dea8b5bba4f4215d6b48a3aebd3f58923bbd48813559478d4ef137dcc9838d321722e141f0aa6a6085  x11-keymap

@@ -2,8 +2,8 @@
 # Maintainer: Luca Weiss <luca@lucaweiss.eu>
 pkgname=device-fairphone-fp4
 pkgdesc="Fairphone 4"
-pkgver=4
-pkgrel=2
+pkgver=5
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -37,7 +37,6 @@ makedepends="devicepkg-dev"
 subpackages="$pkgname-openrc"
 source="
 	81-libssc-fairphone-fp4.rules
-	90-feedbackd-aw8695.rules
 	deviceinfo
 	hexagonrpcd.confd
 	modules-initfs
@@ -52,8 +51,6 @@ package() {
 
 	install -Dm644 "$srcdir"/81-libssc-fairphone-fp4.rules \
 		"$pkgdir"/usr/lib/udev/rules.d/81-libssc-fairphone-fp4.rules
-	install -Dm644 "$srcdir"/90-feedbackd-aw8695.rules \
-		"$pkgdir"/usr/lib/udev/rules.d/90-feedbackd-aw8695.rules
 	install -Dm644 "$srcdir"/hexagonrpcd.confd \
 		"$pkgdir"/usr/share/hexagonrpcd/hexagonrpcd-adsp-sensorspd.conf
 }
@@ -74,7 +71,6 @@ openrc() {
 
 sha512sums="
 2c16ba75e0077b2b1eaefa4c73b287475505a1aeb291ec29316d41cc094277320f9d2aaabfd91eb1dc0f488ab2d61a94faef16e7afe0f1e226779113761b9a37  81-libssc-fairphone-fp4.rules
-2974ccc172bf1299daeb0bc746879b3a1db1fbc3a2b163a02a6554fed6ed9f733144bcf976cd2441c5664d496dcce3ae943f4314c653470dc07dda0de5ad632b  90-feedbackd-aw8695.rules
 97629090e9d08391ec9ee9f84cf40b9710c9dffc09609f056a27869acc8f87e176765f6e8f9800ef29872df8f48a2e085eeaaaf69f38f8a97ecb1d19ac9c79eb  deviceinfo
 6a3d620f2cc60308a62ff651ffb00a5ee1f092131cca9d33b6afd61c8a372a3fd7d46540162213593107e0943b33f3f0119d003d43dcd06dbde757390a6c1729  hexagonrpcd.confd
 52bb7ed829caa4dcff9728bd6e3cdf118b3c7ee7dfe90df0d4e6422dd67bf3258ae2a4d2dc7599da4182fbd8eb47a0e1d20c58198dc17f2bf178b8f01a8887f7  modules-initfs
