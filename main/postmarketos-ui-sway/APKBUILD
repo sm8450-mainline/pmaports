@@ -1,8 +1,8 @@
 # Reference: https://postmarketos.org/uipkg
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=postmarketos-ui-sway
-pkgver=3.1
-pkgrel=10
+pkgver=3.2
+pkgrel=0
 pkgdesc="(Wayland) Tiling WM, drop-in replacement for i3wm"
 url="https://postmarketos.org"
 arch="noarch"
@@ -23,7 +23,7 @@ depends="
 	xdg-desktop-portal-wlr
 	"
 _pmb_recommends="
-	dmenu
+	bemenu
 	foot
 	postmarketos-artwork-wallpapers
 	swayidle
@@ -67,6 +67,6 @@ openrc() {
 }
 
 sha512sums="
-6caaaa313d509a54eaa43e6bc24739f5d8241689dbed268885f6645e79567e3cd9f41d0d8fa43d52fe99587a1d1b6f1669cfecc88220d9ea409feb4f4cd43d3c  etc-sway-config
+e68719d5ee99e4df9e23de0b1e1a33df20f0cbb46cd3767ebd2d6d524a831defea8e0145877a26bce161ca1ec020de7356ab25374402e1886fa0c60e53c61025  etc-sway-config
 889f10fb247396a11375057f7e81eae0f0b21ec90cd47964e02ba24fc0f6db8bb7678545e3272149535cf0bb6a2019456cc59d06a9564ce4a1797bb434013b78  etc-sway-config.d-00-logo-key.conf
 "
