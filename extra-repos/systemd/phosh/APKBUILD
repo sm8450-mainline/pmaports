@@ -1,9 +1,9 @@
 # Forked from Alpine for systemd split func
 maintainer="fossdd <fossdd@pwned.life>"
 pkgname=phosh
-_pkgver=0.47.0
+_pkgver=0.48.0
 pkgver=9999$_pkgver
-pkgrel=2
+pkgrel=0
 pkgdesc="Wayland shell for GNOME on mobile devices"
 # armhf: blocked by gnome-shell-schemas and pmb#2618
 arch="all !armhf"
@@ -54,7 +54,7 @@ makedepends="
 	wayland-dev
 	wayland-protocols
 	"
-checkdepends="xvfb-run"
+checkdepends="xvfb-run xmlstarlet"
 # the ordering here is important - libphosh split functions need to run first to move the libphosh-0
 # headers/pkgconfig/lib into the libphosh packages, before the top level -dev package gobbles
 # up the rest.
@@ -68,10 +68,7 @@ subpackages="
 	$pkgname-portalsconf
 	$pkgname-systemd
 	"
-source="https://sources.phosh.mobi/releases/phosh/phosh-${_pkgver/_/.}.tar.xz
-	media-player.patch
-	update-force-adaptive-list.patch
-	"
+source="https://sources.phosh.mobi/releases/phosh/phosh-${_pkgver/_/.}.tar.xz"
 builddir="$srcdir/$pkgname-${_pkgver/_/.}"
 # TODO: crossdirect disabled due to armv7 crosscompile failure on x86_64, see
 # https://gitlab.postmarketos.org/postmarketOS/pmaports/-/issues/2820
@@ -113,7 +110,5 @@ libphosh_dev() {
 }
 
 sha512sums="
-19c150d28921b383269e4c95d353b7ea69e62cc4075a7a1e1523aa0977b347898d16df7d88861e5d029469a881623e15673ee270c3c514db123aec683ec8194d  phosh-0.47.0.tar.xz
-20bf4d50611560e14182c7cb139aadcf59508f57caefe564e0cfe7d29e7c3e9985c787f832f353b7c7f017e6b373ef0a7b69368071ac0ba4b2a6160ad606f0a9  media-player.patch
-b4cf4c1dd5993cdb1d77daa066be46768e65231a3b9d89aba02e7326882b0dfca69ca4fa69cb2c25b41d974e81f1a9a858e7bda669d376097a6c3615bf665c8c  update-force-adaptive-list.patch
+7d689b29d39aae0937fdcf22c8fe5267de6174487d75df67a3d71e7cb23b765ce138e8c7769256cb0ca006241692ec8376f5119f1c576c2ea2edc437abcda335  phosh-0.48.0.tar.xz
 "
