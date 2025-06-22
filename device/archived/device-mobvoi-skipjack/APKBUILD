@@ -1,0 +1,53 @@
+# Archived: Kernel does not build anymore
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-mobvoi-skipjack
+pkgdesc="Mobvoi Ticwatch C2"
+pkgver=3
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="armv7"
+options="!check !archcheck"
+depends="
+	linux-mobvoi-skipjack
+	mkbootimg
+	postmarketos-base
+	mdss-fb-init-hack
+"
+subpackages="
+	$pkgname-nonfree-firmware-modem:nonfree_firmware_modem
+	$pkgname-nonfree-firmware-venus:nonfree_firmware_venus
+	$pkgname-nonfree-firmware-wcnss:nonfree_firmware_wcnss
+"
+makedepends="devicepkg-dev"
+source="deviceinfo"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+nonfree_firmware_modem() {
+	pkgdesc="Modem firmware"
+	depends="firmware-mobvoi-skipjack-modem"
+	mkdir "$subpkgdir"
+}
+
+nonfree_firmware_venus() {
+	pkgdesc="GPU firmware"
+	depends="firmware-mobvoi-skipjack-venus"
+	mkdir "$subpkgdir"
+}
+
+nonfree_firmware_wcnss() {
+	pkgdesc="WiFi/Bluetooth firmware"
+	depends="firmware-mobvoi-skipjack-wcnss"
+	mkdir "$subpkgdir"
+}
+
+sha512sums="
+455443ca487a0fabd1a53bddfe41872adf814c86f8b0eefe2ed2cc9afcf59ee985dd42ac34fa3458dfe395d002c9b3b40a126c1ac331a4be32ee4437a8ffd41d  deviceinfo
+"

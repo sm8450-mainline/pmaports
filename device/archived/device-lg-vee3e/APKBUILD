@@ -1,0 +1,25 @@
+# Archived: Kernel does not build anymore
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-lg-vee3e
+pkgdesc="LG Optimus L3 II"
+pkgver=2
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="armv7"
+options="!check !archcheck"
+depends="postmarketos-base linux-lg-vee3e mkbootimg mdss-fb-init-hack"
+makedepends="devicepkg-dev"
+source="deviceinfo"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+3396ccc8e4287a5c75522dcc830a0114e50249c905e3b940d12cd09500a342a3b3834fa22fa9159b3edbc33b7e3f387c8c78cf0929b11cf16edf0876cfbc0955  deviceinfo
+"
