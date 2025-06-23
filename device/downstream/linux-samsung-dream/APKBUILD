@@ -3,7 +3,7 @@
 
 pkgname=linux-samsung-dream
 pkgver=4.4.111
-pkgrel=3
+pkgrel=4
 pkgdesc="Meta package for Samsung Galaxy S8/S8+ kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -80,7 +80,7 @@ kernel_dream2lte() {
 
 sha512sums="
 a7c6d55d12ec5ef2bb388fae4106c63eb89ea0d4f8a682f45a0e15899484b633883cd40138eb2d36ef040b49301e48e3fdb44be92ecbfa20a7bbcda35f326a9c  linux-samsung-dream-abd876b3b5fc80dc302183cd372067bab40efab5.tar.gz
-14aa04acd6f265fb5bfa482743ba523b0f9df6d325fdca0d12041955b370dd70425610457c066d05e437481a60b7686eaeebf21a60d5c4b535346779c3852bc4  config-samsung-dream.aarch64
+5ea23ab5e7d1e87ea5a7340956ff4875a989a9518d738a54f76d4f331e084c784b66c5db3502758362d8a9489bd89c32940e4f3df42a804128c93ec08d720cf0  config-samsung-dream.aarch64
 bc035012f50c5f4736f54c15d1c46822ab5c99d055cc6428dd80c523bd308b4477a47c7afd5627cbbefea487e8f1d482ec4a7d5a69705d4f190a4f1af7cfa604  0001-Decrease-ext4-debug-prints.patch
 2ca6fb824afe860baaffbefb680e8463affd5ccf49d255060afdaca564ce3f9a2b1574c48fe2e357e3a2e58bcbfc66fe7ae0e7da4a7d3d0f0b2c31292d24b6d8  0002-Fix-decon_reg-variable-type.patch
 79e3b877ed125b1aa4dda684af44f2dccd52e4025908323c2b4c14484e5aab5dd4956a7d1ca7096bfc1d7427a25a2e18f5b07bcaebbf8f9e07433f918b0c4a36  0003-Change-dtb-config-variable.patch
