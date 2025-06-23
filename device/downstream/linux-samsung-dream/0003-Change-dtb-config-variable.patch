@@ -1,5 +1,14 @@
+From fdb2ab17589bccba7aabe6b2fda7568f3c60d95b Mon Sep 17 00:00:00 2001
+From: Daniele Debernardi <drebrez@gmail.com>
+Date: Mon, 23 Jun 2025 16:18:40 +0200
+Subject: [PATCH] Change dtb config variable
+
+---
+ arch/arm64/boot/dts/exynos/Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
 diff --git a/arch/arm64/boot/dts/exynos/Makefile b/arch/arm64/boot/dts/exynos/Makefile
-index 4c7b0e624cd1..77a728a4ee47 100644
+index 4c7b0e624cd1..a166857ec3f3 100644
 --- a/arch/arm64/boot/dts/exynos/Makefile
 +++ b/arch/arm64/boot/dts/exynos/Makefile
 @@ -1,17 +1,17 @@
@@ -23,3 +32,6 @@ index 4c7b0e624cd1..77a728a4ee47 100644
  	exynos8895-greatlte_eur_open_06.dtb
  
  always            := $(dtb-y) $(dtbo-y)
+-- 
+2.50.0
+

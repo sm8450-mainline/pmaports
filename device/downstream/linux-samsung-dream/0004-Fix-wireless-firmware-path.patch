@@ -1,5 +1,14 @@
+From 59c9643809d98c6d9f458a57c8fecdd891bc22d9 Mon Sep 17 00:00:00 2001
+From: Henrik Grimler <henrik@grimler.se>
+Date: Mon, 23 Jun 2025 16:19:45 +0200
+Subject: [PATCH] Fix wireless firmware path
+
+---
+ drivers/net/wireless/bcmdhd4361/dhd.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
 diff --git a/drivers/net/wireless/bcmdhd4361/dhd.h b/drivers/net/wireless/bcmdhd4361/dhd.h
-index df9f668aa1c8..6aa707fb5945 100644
+index df9f668aa1c8..77cdb50b49bb 100644
 --- a/drivers/net/wireless/bcmdhd4361/dhd.h
 +++ b/drivers/net/wireless/bcmdhd4361/dhd.h
 @@ -376,7 +376,7 @@ enum dhd_op_flags {
@@ -20,3 +29,6 @@ index df9f668aa1c8..6aa707fb5945 100644
  #endif /* ANDROID_PLATFORM_VERSION < 7 */
  #else
  #define VENDOR_PATH ""
+-- 
+2.50.0
+
