@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-dream
 pkgdesc="Samsung Galaxy S8/S8+"
-pkgver=2
+pkgver=3
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -49,5 +49,5 @@ nonfree_firmware() {
 
 sha512sums="
 b88c40b55bf92a01c9a2e6ea57a6661384fa746971a5c7c267a698f08ea02175c38fa9e06a92077e2c132d11de0a1bd2e8fd029128ef1d4770ddea61d93cd557  deviceinfo
-73eb760c6e29c7500b3a2090310f467bb906f7bef2556b80e00e57c25a5fdb1089e86438e67744861a5d43096d8733b812efe39e90a83584816a79d9024a2ec4  initfs-hook.sh
+df3254f47e304508f38aa8fcb822681dba24e5d73f4012c7ccea1695ee1a6a5d55a8c2ec00c6749915e9c25c91331db5944e4eed7c891c88f060e4a900a5beaf  initfs-hook.sh
 "
