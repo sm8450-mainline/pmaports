@@ -6,7 +6,8 @@ _pkgver=48.4
 pkgrel=0
 pkgdesc="clutter-based window manager and compositor"
 url="https://wiki.gnome.org/Projects/Mutter/"
-arch="all !s390x" # no libei-dev for s390x
+# armhf: pmb#2618
+arch="all !s390x !armhf" # no libei-dev for s390x
 license="GPL-2.0-or-later"
 depends="
 	gnome-settings-daemon

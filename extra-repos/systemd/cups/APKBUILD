@@ -7,7 +7,8 @@ _pkgver=2.4.11
 pkgrel=2
 pkgdesc="The CUPS Printing System"
 url="https://github.com/OpenPrinting/cups/"
-arch="all"
+# armhf: pmb#2618
+arch="all !armhf"
 license="Apache-2.0"
 depends_dev="libgcrypt-dev gnutls-dev zlib-dev"
 makedepends="

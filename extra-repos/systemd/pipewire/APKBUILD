@@ -7,7 +7,8 @@ pkgrel=0
 _so_ver=0.3
 pkgdesc="Multimedia processing graphs"
 url="https://pipewire.org/"
-arch="all"
+# armhf: pmb#2618
+arch="all !armhf"
 license="LGPL-2.1-or-later"
 pkggroups="pipewire"
 makedepends="

@@ -7,7 +7,8 @@ _pkgver=48.0
 pkgrel=0
 pkgdesc="GNOME keyring"
 url="https://wiki.gnome.org//Projects/GnomeKeyring"
-arch="all"
+# armhf: pmb#2618
+arch="all !armhf"
 license="GPL-2.0-only LGPL-2.0-only"
 # the gcr binaries are needed for things to open the keyring via libsecret
 depends="gcr"

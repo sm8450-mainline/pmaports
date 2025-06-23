@@ -6,7 +6,8 @@ pkgver=999$_pkgver
 pkgrel=0
 pkgdesc="Session / policy manager implementation for PipeWire"
 url="https://pipewire.org/"
-arch="all"
+# armhf: pmb#2618
+arch="all !armhf"
 license="LGPL-2.1-or-later"
 depends_dev="
 	systemd-dev

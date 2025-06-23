@@ -5,7 +5,8 @@ pkgver=45.0
 pkgrel=0
 pkgdesc="Log viewer for the systemd journal"
 url="https://apps.gnome.org/Logs"
-arch="all"
+# armhf: pmb#2618
+arch="all !armhf"
 license="GPL-3.0-or-later"
 makedepends="
 	desktop-file-utils

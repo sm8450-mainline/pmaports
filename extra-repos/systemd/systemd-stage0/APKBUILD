@@ -9,7 +9,8 @@ _pkgver="musl-v${pkgver//_/-}-split-usr"
 pkgrel=0
 pkgdesc="Minimal systemd bootstrap package"
 url="https://github.com/systemd/systemd"
-arch="all"
+# armhf: pmb#2618
+arch="all !armhf"
 license="MIT AND GPL-2.0-only AND LGPL-2.1-or-later"
 
 # This is only for bootstrapping other packages, make sure it does not get

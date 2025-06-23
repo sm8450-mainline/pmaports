@@ -5,7 +5,7 @@ pkgver=99996.3.5
 _pkgver=6.3.5
 pkgrel=0
 pkgdesc="The KDE crash handler"
-# armhf blocked by qt6-qtdeclarative -> ki18n
+# armhf blocked by qt6-qtdeclarative -> ki18n and pmb#2618
 arch="all !armhf"
 url="https://kde.org/plasma-desktop/"
 license="GPL-2.0-or-later"

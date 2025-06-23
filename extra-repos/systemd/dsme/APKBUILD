@@ -8,7 +8,8 @@ pkgrel=0
 _commit_dbusglib="d42176ae4763e5288ef37ea314fe58387faf2005"
 pkgdesc="Device State Management Entity"
 url="https://github.com/sailfishos/dsme"
-arch="all"
+# armhf: pmb#2618
+arch="all !armhf"
 license="LGPL-2.1-only"
 depends_dev="
 	cryptsetup-dev

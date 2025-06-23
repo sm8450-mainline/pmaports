@@ -8,7 +8,8 @@ _pkgver=23.13.9
 pkgrel=0
 pkgdesc="D-Bus interface for user account query and manipulation"
 url="https://www.freedesktop.org/software/accountsservice/"
-arch="all"
+# armhf: pmb#2618
+arch="all !armhf"
 license="GPL-3.0-or-later"
 depends_dev="gobject-introspection-dev"
 makedepends="

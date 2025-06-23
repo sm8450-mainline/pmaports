@@ -7,7 +7,8 @@ _pkgver=126
 pkgrel=1
 pkgdesc="Application development toolkit for controlling system-wide privileges"
 url="https://github.com/polkit-org/polkit"
-arch="all"
+# armhf: pmb#2618
+arch="all !armhf"
 license="GPL-2.0-or-later"
 # pmb:strict: force zap after building this package so we don't still have
 #             systemd-stage0 installed

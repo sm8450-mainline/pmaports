@@ -6,7 +6,8 @@ pkgver=9999$_pkgver
 pkgrel=0
 pkgdesc="Power Management Services"
 url="https://upower.freedesktop.org"
-arch="all"
+# armhf: pmb#2618
+arch="all !armhf"
 license="GPL-2.0-or-later"
 makedepends="
 	docbook-xsl

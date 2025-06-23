@@ -3,7 +3,7 @@ pkgname=kjournald
 pkgver=24.12.3
 pkgrel=0
 pkgdesc="Framework for interacting with systemd-journald"
-# armhf blocked by qt6-qtdeclarative
+# armhf blocked by qt6-qtdeclarative and pmb#2618
 arch="all !armhf"
 url="https://invent.kde.org/system/kjournald"
 license="BSD-3-Clause AND LGPL-2.1-or-later AND MIT"

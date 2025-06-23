@@ -8,7 +8,8 @@ pkgdesc="clutter-based window manager and compositor"
 url="https://wiki.gnome.org/Projects/Mutter/"
 # ricsv64: doesn't build currently:
 # https://builds.sr.ht/~postmarketos/job/869829#task-pmbootstrap_build-1224
-arch="all !riscv64"
+# armhf: pmb#2618
+arch="all !riscv64 !armhf"
 license="GPL-2.0-or-later"
 depends="
 	gnome-settings-daemon-mobile

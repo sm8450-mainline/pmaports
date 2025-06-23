@@ -6,7 +6,8 @@ _pkgver=21.1.18
 pkgrel=0
 pkgdesc="X.Org X servers"
 url="https://www.x.org/wiki"
-arch="all"
+# armhf: pmb#2618
+arch="all !armhf"
 license="MIT"
 # !check: fails with pmbootstrap cross compile to armv7
 options="suid !check"

@@ -8,7 +8,8 @@ _pkgver=1.52.0
 pkgrel=2
 pkgdesc="Network Management daemon"
 url="https://wiki.gnome.org/Projects/NetworkManager"
-arch="all"
+# armhf: pmb#2618
+arch="all !armhf"
 license="GPL-2.0-or-later"
 depends_dev="$pkgname=$pkgver-r$pkgrel libnm=$pkgver-r$pkgrel"
 makedepends="

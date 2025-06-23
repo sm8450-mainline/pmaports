@@ -5,7 +5,7 @@ _pkgver=0.47.0
 pkgver=9999$_pkgver
 pkgrel=2
 pkgdesc="Wayland shell for GNOME on mobile devices"
-# armhf: blocked by gnome-shell-schemas
+# armhf: blocked by gnome-shell-schemas and pmb#2618
 arch="all !armhf"
 url="https://gitlab.gnome.org/World/Phosh/phosh"
 license="GPL-3.0-only"

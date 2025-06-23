@@ -6,7 +6,8 @@ _pkgver=44.3
 pkgrel=0
 pkgdesc="GNOME desktop core libraries"
 url="https://gitlab.gnome.org/GNOME/gnome-desktop"
-arch="all"
+# armhf: pmb#2618
+arch="all !armhf"
 license="GPL-2.0-or-later AND LGPL-2.1-or-later"
 depends_dev="gobject-introspection-dev gsettings-desktop-schemas-dev"
 makedepends="$depends_dev

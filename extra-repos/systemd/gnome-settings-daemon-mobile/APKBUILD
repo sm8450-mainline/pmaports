@@ -6,7 +6,8 @@ _pkgver=48.0
 pkgrel=0
 pkgdesc="GNOME settings daemon"
 url="https://gitlab.gnome.org/verdre/gnome-settings-daemon-mobile"
-arch="all"
+# armhf: pmb#2618
+arch="all !armhf"
 options="!check" # tests fail on builders
 license="GPL-2.0-only AND LGPL-2.1-only"
 depends="pulseaudio"

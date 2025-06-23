@@ -11,7 +11,8 @@ pkgver=75
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
-arch="noarch"
+# armhf: pmb#2618
+arch="noarch !armhf"
 options="!check"
 license="BSD-3-Clause"
 

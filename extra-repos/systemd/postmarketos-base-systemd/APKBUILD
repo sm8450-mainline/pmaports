@@ -6,7 +6,8 @@ pkgver=47
 pkgrel=0
 pkgdesc="Meta package for running postmarketOS with systemd"
 url="https://postmarketos.org"
-arch="noarch"
+# armhf: pmb#2618
+arch="noarch !armhf"
 license="GPL-3.0-or-later"
 options="!check"
 
