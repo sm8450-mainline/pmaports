@@ -6,6 +6,7 @@ deviceinfo_name="Samsung Galaxy S8/S8+"
 deviceinfo_manufacturer="Samsung"
 deviceinfo_codename="samsung-dream"
 deviceinfo_year="2017"
+deviceinfo_getty="ttySAC0;115200"
 deviceinfo_arch="aarch64"
 
 # Device related
@@ -18,7 +19,6 @@ deviceinfo_create_initfs_extra="true"
 
 # Bootloader related
 deviceinfo_flash_method="heimdall-bootimg"
-deviceinfo_kernel_cmdline="buildvariant=eng"
 deviceinfo_generate_bootimg="true"
 deviceinfo_bootimg_qcdt="true"
 deviceinfo_bootimg_dtb_second="false"
