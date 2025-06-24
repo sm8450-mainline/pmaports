@@ -1,7 +1,7 @@
-From b902b582f39d47d0196e0540e57e172c5a6eb403 Mon Sep 17 00:00:00 2001
-From: Hendra Manudinata <manoedinata@gmail.com>
-Date: Mon, 28 Oct 2024 16:22:38 +0700
-Subject: [PATCH 6/6] HACK: decon_7570: Swap red & blue offset
+From 8c520ab87b8213a340c0c86a88b24e4d90e3a457 Mon Sep 17 00:00:00 2001
+From: Hendra Manudinata <manoedinata@daunscape.tech>
+Date: Tue, 24 Jun 2025 22:44:50 +0700
+Subject: [PATCH 5/7] HACK: decon_7570: Swap red & blue offset
 
 Based on [1], to make red & blue properly rendered.
 
@@ -31,5 +31,5 @@ index 7695b674..b3010c98 100644
  		break;
  
 -- 
-2.34.1
+2.43.0
 

@@ -1,10 +1,10 @@
-From 5c21a20cc9d4c6f19b5d4baa1ac4ec40ce26ae0f Mon Sep 17 00:00:00 2001
-From: Hendra Manudinata <manoedinata@gmail.com>
-Date: Tue, 7 May 2024 23:42:50 +0700
-Subject: [PATCH 5/6] staging: samsung: sec_batt: Force disable low power
+From 635fa2923ec665957465e21f8f6994d7d4ee8a97 Mon Sep 17 00:00:00 2001
+From: Hendra Manudinata <manoedinata@daunscape.tech>
+Date: Tue, 24 Jun 2025 22:44:45 +0700
+Subject: [PATCH 4/7] staging: samsung: sec_batt: Force disable low power
  charge
 
-Signed-off-by: Hendra Manudinata <manoedinata@gmail.com>
+Signed-off-by: Hendra Manudinata <manoedinata@daunscape.tech>
 ---
  drivers/staging/samsung/sec_batt.c | 3 +++
  1 file changed, 3 insertions(+)
@@ -26,5 +26,5 @@ index de9f63ef..5145dcc6 100644
  	pr_info("%s: Low power charging mode: %d\n", __func__, lpcharge);
  
 -- 
-2.34.1
+2.43.0
 

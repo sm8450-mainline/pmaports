@@ -1,12 +1,12 @@
-From 458b76be4e001e9c50104b113e56654ed3575cc7 Mon Sep 17 00:00:00 2001
-From: Hendra Manudinata <manoedinata@gmail.com>
-Date: Tue, 7 May 2024 21:01:13 +0700
-Subject: [PATCH 2/6] drivers: samsung: scsc: Skip mount point check
+From f477ca8aa702f428eebad3966b164d9ffb0e1839 Mon Sep 17 00:00:00 2001
+From: Hendra Manudinata <manoedinata@daunscape.tech>
+Date: Tue, 24 Jun 2025 22:44:53 +0700
+Subject: [PATCH 7/7] drivers: samsung: scsc: Skip mount point check
 
-We definitely won't be able to do this check on postmarketOS, so let's
+We probably won't be able to do this check on postmarketOS, so let's
 say that the path will be always exist.
 
-Signed-off-by: Hendra Manudinata <manoedinata@gmail.com>
+Signed-off-by: Hendra Manudinata <manoedinata@daunscape.tech>
 ---
  drivers/misc/samsung/scsc/mx140_file.c | 3 +++
  1 file changed, 3 insertions(+)
@@ -33,5 +33,5 @@ index 0bc345ca..601e4bd6 100644
  	/* Search for SCSC FW under the mountpoints */
  
 -- 
-2.34.1
+2.43.0
 

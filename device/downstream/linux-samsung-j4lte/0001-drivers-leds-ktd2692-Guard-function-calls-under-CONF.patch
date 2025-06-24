@@ -1,12 +1,12 @@
-From 3af049e080fad9ea2cae686b92e2888ca4d27cc9 Mon Sep 17 00:00:00 2001
-From: Hendra Manudinata <manoedinata@gmail.com>
-Date: Tue, 7 May 2024 21:54:04 +0700
-Subject: [PATCH 1/6] drivers: leds: ktd2692: Guard function calls under
+From c48b66954daf6d454d435a3a744862c372b21b16 Mon Sep 17 00:00:00 2001
+From: Hendra Manudinata <manoedinata@daunscape.tech>
+Date: Tue, 24 Jun 2025 22:44:41 +0700
+Subject: [PATCH 1/7] drivers: leds: ktd2692: Guard function calls under
  `CONFIG_VIDEO_EXYNOS_FIMC_IS2`
 
 Fixes compilation issues when `CONFIG_VIDEO_EXYNOS_FIMC_IS2` is disabled.
 
-Signed-off-by: Hendra Manudinata <manoedinata@gmail.com>
+Signed-off-by: Hendra Manudinata <manoedinata@daunscape.tech>
 ---
  drivers/leds/leds-ktd2692.c | 10 ++++++++++
  1 file changed, 10 insertions(+)
@@ -89,5 +89,5 @@ index 4c2038a8..b75e0910 100755
  	return 0;
  }
 -- 
-2.34.1
+2.43.0
 

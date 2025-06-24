@@ -1,9 +1,9 @@
-From 85d282bcd9ae6a907c10c51354c34a2a5c4cab81 Mon Sep 17 00:00:00 2001
-From: Hendra Manudinata <manoedinata@gmail.com>
-Date: Tue, 7 May 2024 23:40:58 +0700
-Subject: [PATCH 4/6] drivers: usb: u_ether: Force setting random MAC address
+From 269f6a524a9d82624f5eea0f41eea14634650a25 Mon Sep 17 00:00:00 2001
+From: Hendra Manudinata <manoedinata@daunscape.tech>
+Date: Tue, 24 Jun 2025 22:44:42 +0700
+Subject: [PATCH 3/7] drivers: usb: u_ether: Force setting random MAC address
 
-Signed-off-by: Hendra Manudinata <manoedinata@gmail.com>
+Signed-off-by: Hendra Manudinata <manoedinata@daunscape.tech>
 ---
  drivers/usb/gadget/function/u_ether.c | 6 ------
  1 file changed, 6 deletions(-)
@@ -32,5 +32,5 @@ index b7d94ae9..6252450c 100644
  
  	net->ethtool_ops = &ops;
 -- 
-2.34.1
+2.43.0
 
