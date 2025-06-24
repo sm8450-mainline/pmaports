@@ -15,9 +15,6 @@ deviceinfo_flash_kernel_on_update="true"
 deviceinfo_chassis="tablet"
 deviceinfo_keyboard="false"
 deviceinfo_external_storage="true"
-deviceinfo_screen_width="1280"
-deviceinfo_screen_height="800"
-deviceinfo_gpu_accelerated="false"
 
 # Bootloader related
 deviceinfo_flash_method="heimdall-bootimg"
