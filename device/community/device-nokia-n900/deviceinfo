@@ -16,6 +16,7 @@ deviceinfo_keyboard="true"
 deviceinfo_keymaps="us/rx51_us ch/rx51_ch it/rx51_it fi/rx51_fi se/rx51_se"
 deviceinfo_external_storage="true"
 deviceinfo_swap_size_recommended="1024"
+deviceinfo_drm="true"
 
 # Bootloader related
 deviceinfo_flash_method="0xffff"

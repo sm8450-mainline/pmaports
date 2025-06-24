@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-espresso10
 pkgdesc="Samsung Galaxy Tab 2 (10.1 inch)"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -28,5 +28,5 @@ nonfree_firmware() {
 }
 
 sha512sums="
-2ec468c3fb2a45a2313e50bda486349f7b755d622cab60b29c4c086f4c1b75d27bfd6e0a07ecd90ce301c38fa72061dbb874aa20390a060094f8ffd20cea2c7c  deviceinfo
+b4ee43bd70056b0f340eb8bcffafe49e1aea0001f551ddc74ff530134d2a6702b33563baea0bf568ab09f35d5290c961c3fe510892138b8583f29bc9623564a5  deviceinfo
 "
