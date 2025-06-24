@@ -4,7 +4,7 @@
 
 pkgname=linux-samsung-j4lte
 pkgver=3.18.140
-pkgrel=0
+pkgrel=1
 pkgdesc="Samsung Galaxy J4 kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -71,7 +71,7 @@ package() {
 
 sha512sums="
 495e1f9d4c6b4997a5f5faced507493421ecaa104fc6c8affff546f855cc5ea8f535177464f422f5b76db96fbbd1ead2471ef0fd7537659c2041d03c53ede97c  linux-samsung-j4lte-57ffdcdde7e968af314e809cdab6b3ee24bc4d24.tar.gz
-a1de7074c7f3511de1e2fc1517dc2477dfeeadfdc62b35910182ae4a0c1ef7191dbc4d92db98fd64e11c51f2abd996d3698af722164c3fe10a9b16c0365860ee  config-samsung-j4lte.aarch64
+d3f172f271e2bd92ac2167a558590725a4f064b17ade139691eb24db85d21e70a3160a2c14ff6d7b029df4d744154d06ada621b181a653949cc4f3ce0fbfea7b  config-samsung-j4lte.aarch64
 fafed0c79633b50f9c62febeb1198bc863ddcaf7d3140bf58b87f574a75a16c1b73d563ce849ab8400030d6700bf64ea3bbb60b5cb86a902696e1bd702a3b276  0001-drivers-leds-ktd2692-Guard-function-calls-under-CONF.patch
 f81dc234b7c37e5c33472a22f96299c435d4e2728e24164dc375abbc80912ce5a9045178deb2338f1f484a52296ad558541c01c101f244a62bf6149e75e0406b  0002-zram-Set-zstd-as-the-default-compressor.patch
 f69b9363ffd543f98f7799256bb3cfccc84623b69d8c7ee3ea291b52cecac7d961d4b491db6b5477bdd527ad3e9cbd738d67647fc074adcd2927b5eb6d2478dd  0003-drivers-usb-u_ether-Force-setting-random-MAC-address.patch
