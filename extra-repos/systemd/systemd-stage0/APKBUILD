@@ -4,7 +4,7 @@
 # Co-Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 
 pkgname=systemd-stage0
-pkgver=257.6
+pkgver=257.7
 _pkgver="musl-v${pkgver//_/-}-split-usr"
 pkgrel=0
 pkgdesc="Minimal systemd bootstrap package"
@@ -105,5 +105,5 @@ package() {
 }
 
 sha512sums="
-e08a1732d9dc576994382a4aacb5844f43a1e2df61e970fe6590472dcd9fa92b86f6adc4710ee23ca9374ed1bbb3a71bf38b878e8f075886847bd48c94415745  systemd-musl-v257.6-split-usr.tar.gz
+e4a122814efed6d7809db33ed78ac8e0bc685f999d76643a0c8f60ac1527c9df10720b202bf6b62ee3b9334cbee5d17a5ff95f8781a9e4f1485705b8020a5c25  systemd-musl-v257.7-split-usr.tar.gz
 "

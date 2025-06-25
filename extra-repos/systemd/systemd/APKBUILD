@@ -7,9 +7,9 @@
 #########################################################
 
 pkgname=systemd
-pkgver=257.6
+pkgver=257.7
 _pkgver="musl-v${pkgver//_/-}-split-usr"
-pkgrel=1
+pkgrel=0
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 # ppc64le and s390x blocked by pmboostrap not supporting
@@ -445,7 +445,7 @@ libs() {
 }
 
 sha512sums="
-e08a1732d9dc576994382a4aacb5844f43a1e2df61e970fe6590472dcd9fa92b86f6adc4710ee23ca9374ed1bbb3a71bf38b878e8f075886847bd48c94415745  systemd-musl-v257.6-split-usr.tar.gz
+e4a122814efed6d7809db33ed78ac8e0bc685f999d76643a0c8f60ac1527c9df10720b202bf6b62ee3b9334cbee5d17a5ff95f8781a9e4f1485705b8020a5c25  systemd-musl-v257.7-split-usr.tar.gz
 81c897fed8a3fbfb67ec591b2398a5d65e4af1b3ef379376c157c98d71f085b707f8ebc896d5571a94f99f8fc84fd6b43e3b879ca9b0d57fc6c4596034c7a777  wired.network
 cc1c8f00a0ff1c94fcebe0e6d48b3d1a74c51b9d86bf255762cecda4b4d0c08e313f817aaaa301f41133eaf73c525e36c0f48659b263a7ed990080de9f3cec6c  systemd-apk-macros.sh
 "
