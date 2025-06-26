@@ -20,7 +20,7 @@ deviceinfo_dev_internal_storage_repartition="true"
 
 # Bootloader related
 deviceinfo_flash_method="none"
-deviceinfo_kernel_cmdline="console=tty1 console=ttyS0 PMOS_FORCE_PARTITION_RESIZE"
+deviceinfo_kernel_cmdline="console=tty1 console=ttyS0,115200 PMOS_FORCE_PARTITION_RESIZE"
 deviceinfo_disable_dhcpd="true"
 deviceinfo_partition_type="gpt"
 deviceinfo_boot_filesystem="fat32"
