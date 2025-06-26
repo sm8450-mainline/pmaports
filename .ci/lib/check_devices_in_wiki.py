@@ -9,7 +9,7 @@ import sys
 import urllib.request
 
 
-def get_devices():
+def get_devices() -> list[str]:
     """:returns: list of all devices"""
     ret = []
     pmaports = (os.path.realpath(os.path.join(os.path.dirname(__file__) +
@@ -28,7 +28,7 @@ def get_devices():
     return sorted(ret)
 
 
-def get_wiki_devices_html(path):
+def get_wiki_devices_html(path: str | None) -> dict[str, str]:
     """:param path: to a local file with the saved content of the devices wiki
                     page or None to download a fresh copy
        :returns: HTML of the page, split into booting and not booting:
@@ -54,15 +54,16 @@ def get_wiki_devices_html(path):
     return {"booting": split[0], "not_booting": split[1]}
 
 
-def get_wiki_renamed_devices_html():
+def get_wiki_renamed_devices_html() -> str:
     """:returns: HTML of the page"""
     # Download wiki page
     url = "http://wiki.postmarketos.org/wiki/Renamed_Devices"
     with urllib.request.urlopen(url) as f:
-        return f.read().decode("utf-8")
+        res: bytes = f.read()
+        return res.decode("utf-8")
 
 
-def check_device(device, html, is_booting):
+def check_device(device: str, html: dict[str, str], is_booting: bool) -> bool:
     """:param is_booting: require the device to be in the booting section, not
                           just anywhere in the page (i.e. in the not booting
                           table).
@@ -84,7 +85,7 @@ def check_device(device, html, is_booting):
     return False
 
 
-def main():
+def main() -> int:
     # Parse arguments
     parser = argparse.ArgumentParser()
     parser.add_argument("--booting", help="devices must be in the upper table,"
