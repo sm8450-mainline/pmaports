@@ -3,7 +3,7 @@
 pkgname=libcamera
 _pkgver=0.5.1
 pkgver=9999$_pkgver
-pkgrel=0
+pkgrel=1
 pkgdesc="Linux camera framework"
 url="https://libcamera.org/"
 arch="all"
