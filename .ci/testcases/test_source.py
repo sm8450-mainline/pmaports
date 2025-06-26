@@ -99,7 +99,7 @@ def test_aports_unreferenced_files():
         for file in glob.iglob(dirname + "/**", recursive=True):
             rel_file_path = os.path.relpath(file, dirname)
             # Skip APKBUILDs and directories
-            if rel_file_path == "APKBUILD" or os.path.isdir(file):
+            if rel_file_path in ["APKBUILD", "gitlab-ci.yml.j2"] or os.path.isdir(file):
                 continue
 
             if os.path.basename(rel_file_path) not in sources_chk \
