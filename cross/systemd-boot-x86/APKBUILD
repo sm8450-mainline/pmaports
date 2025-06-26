@@ -2,7 +2,7 @@
 
 pkgname=systemd-boot-x86
 _pkgname=systemd-boot  # for monitoring
-pkgver=257.6
+pkgver=257.7
 pkgrel=0
 pkgdesc="systemd's EFI boot manager for x86 EFI on x86_64."
 url="https://systemd.io/"
@@ -119,7 +119,7 @@ efistub() {
 }
 
 sha512sums="
-ceed65196d4235f53db00f5970eadff79149629d8c34f79593d0b326ece536ea0b4f97192458989b5fccbd9438bb2dbb0abda2a5e6c3449a709c9a0889e29d3d  systemd-257.6.tar.gz
+fdc7c0153432b261ad8018c869dc714ce1d6d2a8428bdec46f7c5f120b196d3a553a375ae433f0c166c57b6e8b3c56549f585349b7b6ff83c2a86a32982d8411  systemd-257.7.tar.gz
 81e6f311d567ef8b1f8957f25f019e7fa995f640659381757d1abdd7295434810b79a09367d274c5755f1ed1f6d37d7d98e9c93645578daca34acdeca0ba3965  0001-patch-wchar_t-for-musl.patch
 2c028d35c85a042582f668fd9ba1145134168e79e9137c90a2ea572c79124952b86114dc304dafa710a433b13aedc8251f5669aafffee9ddf42a32c2592bf5df  0002-meson-minimal-configure-for-building-systemd-boot.patch
 ad54e2c7e7a21bfa9b5f9e8db1b6af6a6d78a3e5dfe2dafcec77488f6224865ab4d4c8a8c8ee1c54c99d1741361e9fb3a51e5d36bcbc7a1c3fdcc4d0c1672132  cross-x86.meson
