@@ -42,7 +42,8 @@ def get_wiki_devices_html(path):
     else:
         # Download wiki page
         url = "http://wiki.postmarketos.org/wiki/Devices"
-        content = urllib.request.urlopen(url).read().decode("utf-8")
+        with urllib.request.urlopen(url) as f:
+            content = f.read().decode("utf-8")
 
     # Split into booting and not booting
     split = content.split("<span class=\"mw-headline\" id=\"Non-booting_devices\">")
@@ -57,7 +58,8 @@ def get_wiki_renamed_devices_html():
     """:returns: HTML of the page"""
     # Download wiki page
     url = "http://wiki.postmarketos.org/wiki/Renamed_Devices"
-    return urllib.request.urlopen(url).read().decode("utf-8")
+    with urllib.request.urlopen(url) as f:
+        return f.read().decode("utf-8")
 
 
 def check_device(device, html, is_booting):
@@ -126,8 +128,8 @@ def main():
         print("wiki as well and make sure to add it here:")
         print("https://postmarketos.org/renamed")
         return 1
-    else:
-        print("*** Wiki check successful!")
+
+    print("*** Wiki check successful!")
     return 0
 
 
