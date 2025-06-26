@@ -2,9 +2,8 @@
 # Copyright 2023 Oliver Smith
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+from pathlib import Path
 import argparse
-import glob
-import os
 import sys
 import urllib.request
 
@@ -12,10 +11,9 @@ import urllib.request
 def get_devices() -> list[str]:
     """:returns: list of all devices"""
     ret = []
-    pmaports = (os.path.realpath(os.path.join(os.path.dirname(__file__) +
-                "/../..")))
-    for path in glob.glob(pmaports + "/device/*/device-*/"):
-        device = os.path.dirname(path).split("device-", 1)[1]
+    pmaports = Path(__file__).resolve().parents[2]
+    for path in pmaports.glob("device/*/device-*/"):
+        device = path.name.split("device-", 1)[1]
 
         # -downstream suffix is used when packaging the downstream kernel for
         # devices that have a working mainline kernel. Those are usually
@@ -28,7 +26,7 @@ def get_devices() -> list[str]:
     return sorted(ret)
 
 
-def get_wiki_devices_html(path: str | None) -> dict[str, str]:
+def get_wiki_devices_html(path: Path | None) -> dict[str, str]:
     """:param path: to a local file with the saved content of the devices wiki
                     page or None to download a fresh copy
        :returns: HTML of the page, split into booting and not booting:
@@ -95,7 +93,7 @@ def main() -> int:
                         action="store_true")
     parser.add_argument("--path", help="instead of downloading the devices"
                         " page from the wiki, use a local HTML file",
-                        default=None)
+                        type=Path, default=None)
     args = parser.parse_args()
 
     # Check all devices
