@@ -39,7 +39,7 @@ def get_wiki_devices_html(path: Path | None) -> dict[str, str]:
             content = handle.read()
     else:
         # Download wiki page
-        url = "http://wiki.postmarketos.org/wiki/Devices"
+        url = "https://wiki.postmarketos.org/wiki/Devices"
         with urllib.request.urlopen(url) as f:
             content = f.read().decode("utf-8")
 
@@ -55,7 +55,7 @@ def get_wiki_devices_html(path: Path | None) -> dict[str, str]:
 def get_wiki_renamed_devices_html() -> str:
     """:returns: HTML of the page"""
     # Download wiki page
-    url = "http://wiki.postmarketos.org/wiki/Renamed_Devices"
+    url = "https://wiki.postmarketos.org/wiki/Renamed_Devices"
     with urllib.request.urlopen(url) as f:
         res: bytes = f.read()
         return res.decode("utf-8")
