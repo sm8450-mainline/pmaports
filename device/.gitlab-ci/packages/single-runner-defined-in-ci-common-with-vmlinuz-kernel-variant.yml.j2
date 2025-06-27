@@ -1,0 +1,20 @@
+# Only use this gitlab-ci snippet if your package:
+#
+# * only requires a single runner
+# * has its runner tags definition found in ci-common's ci-tron/common.yml
+# * uses CI-tron as a bootloader
+# * has kernel variants following the naming scheme `vmlinuz-$KERNEL_VARIANT`
+#
+# If this is not the case, feel free to copy the content of this file into
+# your package's folder
+test-{{ device.name }}:
+  extends:
+    # Extended from jobs defined in ci-common's ci-tron/common.yml
+    - .pmos-ci-tron-runner-{{ device.name }}
+
+    # Extended from build-jobs.yaml.j2
+    - .device-boot-flow-separate-artifacts
+    - .test-{{ device.name }}
+
+  variables:
+    KERNEL_NAME: vmlinuz-$KERNEL_VARIANT
