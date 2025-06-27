@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=74
+pkgver=75
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -47,6 +47,7 @@ subpackages="
 	greetd-wlgreet-systemd:_service
 	hexagonrpcd-systemd:_service
 	hfd-service-systemd:_service
+	hkdm-systemd:_service
 	iio-sensor-proxy-systemd:_service
 	iwd-systemd:_service
 	kactivitymanagerd-systemd:_service
@@ -155,6 +156,7 @@ _goimapnotify_sources="user/goimapnotify@.service" # From https://gitlab.com/sha
 _greetd_wlgreet_sources="system/wlgreet.service"
 _hexagonrpcd_sources="system/hexagonrpcd-adsp-rootpd.service system/hexagonrpcd-adsp-sensorspd.service system/hexagonrpcd-sdsp.service system/iio-sensor-proxy.service.d/hexagonrpcd.conf"
 _hfd_service_sources="system/hfd-service.service" # From https://gitlab.com/ubports/development/core/hfd-service/-/blob/main/init/hfd-service.service.in
+_hkdm_sources="system/hkdm.service"
 _iio_sensor_proxy_sources="system/iio-sensor-proxy.service"
 _iwd_sources="system/iwd.service" # From https://git.kernel.org/pub/scm/network/wireless/iwd.git/tree/src/iwd.service.in
 _kanshi_sources="user/kanshi.service" # created, no unit file upstream
@@ -252,6 +254,7 @@ source="$(flatpath \
 	$_greetd_wlgreet_sources \
 	$_hexagonrpcd_sources \
 	$_hfd_service_sources \
+	$_hkdm_sources \
 	$_iio_sensor_proxy_sources \
 	$_iwd_sources \
 	$_kactivitymanagerd_sources \
@@ -390,6 +393,7 @@ b31259eabac94a0709c274f37f8c0ce1752964d19e63306a04bc72cc426be3c40b3743bbf7e955cf
 ac6b7ac72f8caad95e73191a3839b9d8b125c9dd315fb3dbb9c386c132972684ea65ac33fcfb2a6e26ec49079d939a05a4d8059dba19b29dd2da230ee6726378  system-hexagonrpcd-sdsp.service
 af0e416f78ab317fe09813de58b446e5178457992ea4a2da2eb128811045201087d847e1b7ac0447a59c20129a736135e5d76b113262aa1f76b994e77b9c6b42  system-iio-sensor-proxy.service.d-hexagonrpcd.conf
 5087ff36981b89c9bd09f96cff93d1f20d5af513e2cdebf65a85e329f458a9a2b77c12091ed31278c3b89baef79273cc818fddabbe4e1eec75faf7b9cc18cb8a  system-hfd-service.service
+083e59dcbbbd8f6ea148880256ff20f1a16e583348cd7cfc7aa6321d7b0cbe0a82780fd482a26ef25a5ebcfc83f5b7899d5db7c7d479fd7c56e5d7e95fd24a34  system-hkdm.service
 d12ebe6e7db2a8e34baab640dd4e2ea9cd01bc19054adf32d55528a6b27f71c2006ac2d65a58c98e21ed598e9cc66bfe79e197d20ed9d13f866a5a6cd3e247d5  system-iio-sensor-proxy.service
 df3388cb7b9d035e54b34d8f8a6594be89c3015f979fe3bdc199fb7db1ab0bef821d6b306eecdf978eb227454d5e50aab29ac02d9722b1b075ec0ce4705e3518  system-iwd.service
 9cf877929b16f3437e65d1a0a2049799cc97cc84a7caab6a581e90139495b4febb5fb4c59ee463110866a0b60c9462d6d0fdb331d92d29b30ce6aeada365ac48  user-plasma-kactivitymanagerd.service

@@ -1,0 +1,13 @@
+[Unit]
+Description=HKDM (Hotkey Daemon for Mobile) service
+Documentation=https://gitlab.postmarketos.org/postmarketOS/hkdm
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/hkdm
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=default.target
+
