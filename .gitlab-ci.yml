@@ -155,7 +155,11 @@ generate-build-jobs:
   script:
     - wget "https://gitlab.postmarketos.org/postmarketOS/ci-common/-/raw/master/install_pmbootstrap.sh"
     - sh ./install_pmbootstrap.sh py3-jinja2
-    - .ci/lib/generate_build_jobs.py .ci/build-jobs.yaml.j2 .ci/build-jobs.yaml
+
+    # HACK: Make the pmb library happy to use the currently-cloned pmaports repo
+    - mkdir -p /root/.local/var/pmbootstrap/cache_git/ && ln -s $PWD /root/.local/var/pmbootstrap/cache_git/pmaports
+
+    - PYTHONPATH=/tmp/pmbootstrap/ .ci/lib/generate_build_jobs.py .ci/build-jobs.yaml.j2 .ci/build-jobs.yaml
 
   artifacts:
     paths:
