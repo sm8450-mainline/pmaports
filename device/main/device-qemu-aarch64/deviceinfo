@@ -18,7 +18,7 @@ deviceinfo_getty="ttyAMA0;115200"
 
 # Bootloader related
 deviceinfo_flash_method="none"
-deviceinfo_kernel_cmdline="console=tty1 console=ttyAMA0,38400n8 PMOS_FORCE_PARTITION_RESIZE"
+deviceinfo_kernel_cmdline="console=tty1 console=ttyAMA0,115200 PMOS_FORCE_PARTITION_RESIZE"
 deviceinfo_disable_dhcpd="true"
 deviceinfo_partition_type="gpt"
 deviceinfo_boot_filesystem="fat32"
