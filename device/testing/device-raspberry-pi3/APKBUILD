@@ -2,8 +2,8 @@
 # Maintainer: fossdd <fossdd@pwned.life>
 pkgname=device-raspberry-pi3
 pkgdesc="Raspberry Pi 3B/3B+"
-pkgver=2
-pkgrel=2
+pkgver=3
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -36,7 +36,7 @@ openrc() {
 }
 
 sha512sums="
-069270d1813875e5d71c1823850cc6bee14002be399529353112d1a46a051bf66ec28737333f34f98b3a8d653cef5473e8ce85a83bf5206e5172998068557cf7  deviceinfo
+884106ae06152317cc4c9ba6c59e6475914645706aa509883d5361aee7ecabd79eb2fbe98f78e2b8a116b740c9a22b600d9e60a8ced68c3ce2b2294dbb109d7b  deviceinfo
 e3515cf9f41807917eac1f7663e0131bd18783824facf15f2bb0381635bf6d9a0c334f3786b6fb76d01469de6449878c871f8b747f45e9e3cee77699905cf319  modules-initfs
 a1724e0accc2cbba4c24efb0f9bc99d480811b35cefc225c7e4a9015d0f66bb0db83ceee9948d8d96938a2fb7077ddba00abb6be943504b793abc40df6f0aecb  usercfg.txt
 ae3de0b8fec07d3a283dc3c06bf8678eec1e65c9faf0b7f4fdc9fb92751e324d1f8e2fb224dbbf561b7e5a6fb34769bfa1657858375f74b101a130d78e0737e2  cmdline.txt

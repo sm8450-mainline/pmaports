@@ -18,3 +18,4 @@ deviceinfo_external_storage="true"
 # Bootloader related
 deviceinfo_flash_method="none"
 deviceinfo_boot_filesystem="fat16"
+deviceinfo_partition_type="msdos"
