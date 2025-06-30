@@ -1,3 +1,5 @@
+# Archived: Replaced by apple-idevice
+
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-apple-d22
 pkgdesc="Apple iPhone X (Global)"

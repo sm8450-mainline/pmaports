@@ -1,3 +1,5 @@
+# Archived: Replaced by apple-idevice
+
 # Reference: <https://postmarketos.org/devicepkg>
 # Maintainer: Aster Boese <asterboese@mailbox.org>
 pkgname=device-apple-n61

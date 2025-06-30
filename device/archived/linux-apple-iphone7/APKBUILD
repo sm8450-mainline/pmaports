@@ -1,3 +1,5 @@
+# Archived: Replaced by linux-postmarketos-apple-16k
+
 # Maintainer: Jonas Heinrich <onny@project-insanity.org>
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on: arch/arm64/configs/hx_h9p_defconfig
