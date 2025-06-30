@@ -2,11 +2,11 @@
 # Kernel config based on: arch/arm64/configs/defconfig
 # Maintainer: Aster Boese <asterboese@mailbox.org>
 
-_flavor="postmarketos-apple"
+_flavor="postmarketos-apple-4k"
 pkgname=linux-$_flavor
-pkgver=6.15.0_rc1
-pkgrel=1
-pkgdesc="Mainline kernel fork for Apple iPhone and iPad devices"
+pkgver=6.16.0_rc1
+pkgrel=0
+pkgdesc="Mainline kernel fork for Apple iPhone and iPad devices (4k)"
 arch="aarch64"
 _carch="arm64"
 url="https://kernel.org"
@@ -25,8 +25,8 @@ makedepends="
 
 # Source
 _repository="HoolockLinux/linux"
-_commit="92733dd1584f122427dd9e1b5378e474b8565e07"
-_config="config-$_flavor.$_carch"
+_commit="a178ccc5c81acec9462a1f0be4ed5df1e47b225d"
+_config="config-$_flavor.$arch"
 source="
 	http://github.com/$_repository/archive/$_commit.tar.gz
 	$_config
@@ -35,7 +35,7 @@ builddir="$srcdir/linux-$_commit"
 
 prepare() {
 	default_prepare
-	cp "$srcdir/config-$_flavor.$_carch" .config
+	cp "$srcdir/config-$_flavor.$arch" .config
 }
 
 build() {
@@ -64,6 +64,6 @@ package() {
 }
 
 sha512sums="
-8a79a0d45e7fb329525a9267a1268d8dbc1932325bee600f862fe1014ffbe7f1c910a1b5fe8e2885bc552a227069aee13e59405806e0fce8d527b03d4ffdd6ec  92733dd1584f122427dd9e1b5378e474b8565e07.tar.gz
-bcd5a8f8bc20a11950248d6be3edaf19f8a70bc50d50c53f1e8640adaaf83d1fbce33b675e662301dd03893a1bb0b59d8b45d5d09296fe0f94f6bd52cfafc9f6  config-postmarketos-apple.arm64
+d3ce34a35ab85a30cb9596e0f88895b9139fb5d9c72ad1de3a07321e752c2b3a07b214255da7da1dcc1921c5bb69201d5d55a23ab49993bb08ac4751b88eb305  a178ccc5c81acec9462a1f0be4ed5df1e47b225d.tar.gz
+ee435abbe959c7d89d69f0297255469b6c45f24244910a32eb4c977503210d3d262573369e73997289954ef2dc5231736a514bf5777271822d089156cecdf712  config-postmarketos-apple-4k.aarch64
 "
