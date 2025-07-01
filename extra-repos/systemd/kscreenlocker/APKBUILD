@@ -1,8 +1,8 @@
 # Forked from Alpine to add systemd!
 
 pkgname=kscreenlocker
-pkgver=99996.3.5
-_pkgver=6.3.5
+pkgver=99996.4.1
+_pkgver=6.4.1
 pkgrel=0
 pkgdesc="Library and components for secure lock screen architecture"
 # armhf blocked by qt6-qtdeclarative -> ki18n and pmb#2618
@@ -75,7 +75,7 @@ package() {
 }
 
 sha512sums="
-7a4e270de14718f4f29e5c26b559a79ca0189a87ad58931c0c3d425477ee056833099f8f9eb1ce8813a55e0f543495abf4335bad9ff61656569b8533b0a8b7f7  kscreenlocker-6.3.5.tar.xz
+9297862db25cb9124586088a6335c50aed57307199f10cfa1a2eacd2d1ddaa1f977317e774d34e21829343520ac82119c3bc0eb51af2a48866a8560f81c0bc69  kscreenlocker-6.4.1.tar.xz
 cdbc45fb74a3c43fb2302fe09bf2f9f644ca93693e0110cf748c403762236aaeea8284a8d21fc495014c69b6d5fe4789aaff7687ce9f03dda270490fa5042e2b  kde.pam
 fe2f244b73b5cccf4b7125b9e3cac0a35566840e4ba2f69937fd8053aa56af71ee43dcbfa9c0f79de9ebe31f656e98a5d38955f77560be5c3535b08215ad8789  kde-fingerprint.pam
 2ae866d25224ba345ea9d5ddb2fce668de5c51d1cfbb4d7a048c50107ccd6cffc3231a46855599c0ba3d62ff002a26e45b69d9029f88f4ab42661465a5e526c5  kde-smartcard.pam
