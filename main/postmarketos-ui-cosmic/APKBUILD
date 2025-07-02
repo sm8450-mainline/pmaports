@@ -2,7 +2,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-ui-cosmic
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="COSMIC Desktop Environment from System76"
 url="https://system76.com/cosmic/"
 # Only tested on these archs.
@@ -11,6 +11,7 @@ url="https://system76.com/cosmic/"
 arch="x86_64 aarch64"
 license="GPL-3.0-or-later"
 depends="
+	bluez
 	cosmic-session
 	polkit-elogind
 	postmarketos-base-ui
