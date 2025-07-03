@@ -26,6 +26,9 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
+
+	install -D -m644 "$srcdir"/90-sec_touchscreen.rules \
+		"$pkgdir"/usr/lib/udev/rules.d/90-sec_touchscreen.rules
 }
 
 nonfree_firmware() {
