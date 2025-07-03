@@ -1,7 +1,7 @@
-# Maintainer: Jenneron <jenneron@protonmail.com>
+# Maintainer: Alicja Michalska <alicja.michalska@9elements.com>
 pkgname=linux-postmarketos-qcom-sc7180
-pkgver=6.6.28
-pkgrel=8
+pkgver=6.12.35
+pkgrel=9
 pkgdesc="Mainline kernel fork for Qualcomm Snapdragon 7c devices"
 arch="aarch64"
 _carch="arm64"
@@ -25,6 +25,7 @@ makedepends="
 	mpfr-dev
 	postmarketos-installkernel
 	xz
+	python3
 "
 
 # Source
@@ -35,17 +36,6 @@ case $pkgver in
 esac
 source="
 	https://cdn.kernel.org/pub/linux/kernel/v${_kernver%%.*}.x/linux-${pkgver//_/-}.tar.xz
-	0001-remoteproc-qcom-pas-Add-sc7180-adsp.patch
-	0002-arm64-dts-qcom-sc7180-Add-tertiary-mi2s-pinctrl.patch
-	0003-arm64-dts-qcom-sc7180-Add-ADSP.patch
-	0004-ASoC-qcom-sc7180-Add-support-for-qdsp6-baked-sound.patch
-	0005-arm64-dts-qcom-pm6150-Add-resin-and-rtc-nodes.patch
-	0006-arm64-dts-qcom-acer-aspire1-Enable-RTC.patch
-	0007-arm64-dts-qcom-acer-aspire1-Add-sound.patch
-	0008-platform-Add-ARM64-platform-directory.patch
-	0009-platform-arm64-Add-Acer-Aspire-1-embedded-controller.patch
-	0010-arm64-dts-qcom-acer-aspire1-Add-embedded-controller.patch
-	0011-HACK-clk-Delay-disabling-unused-clocks-by-10s.patch
 	$_config
 "
 builddir="$srcdir/linux-${_kernver//_/-}"
@@ -89,17 +79,6 @@ package() {
 }
 
 sha512sums="
-fdf6def06de85656f8aa010edfb8b2f7f71cdeef9a70b5b35511833fbcf0e4fbfafb6224acfdf475975bc4bc8f05d0291745af5a6ae752a70cbd09ae2d3d17a8  linux-6.6.28.tar.xz
-ac68e3e441c90ebc88d75cabcbb54d836256876932689f74a4d492a19c5aab9e207930ff14ba24f2298af44f662616ef34c9b8147a7ebada2db9c11eab55f3f2  0001-remoteproc-qcom-pas-Add-sc7180-adsp.patch
-8f8aad35c408b2c29a8ddd2bc71c8542bef73e9b386c010257004e67bccf82fc1ffe9ca8df0b12d6930a776fdb288a365ddceb7d4bbc7031777bef6fdf3534a1  0002-arm64-dts-qcom-sc7180-Add-tertiary-mi2s-pinctrl.patch
-a4d8bbf39575e61d228b3b66fa692b207c1ee011e6030fdd097936a1ad28b1d5b01816d989adcb809d05f107aaf9024ccd077e6daa9c65aa2ff23907ee1f0566  0003-arm64-dts-qcom-sc7180-Add-ADSP.patch
-30130ae6e49bc0386fd7b34e69961e208806673b2bf2b7bb9abe428766013116baa924536346bceee60db886565c7e2f9c48c8ba2e691381aae544df730b780a  0004-ASoC-qcom-sc7180-Add-support-for-qdsp6-baked-sound.patch
-80479f5b598628f48302aa4c224f173cbe02ebb6a9e14a555b9bf06163a40442cdc8e77c7a6e14684a21df0e61627cfa3345cef385d6d3e11c1d412cc924d85a  0005-arm64-dts-qcom-pm6150-Add-resin-and-rtc-nodes.patch
-6628e979e9ba579ff3f259f8d2917318342f4cc855a06ac70dc2a81bf3c9e3a6729b1ebee28591db1374afc7a0aabbbf2f2e8b915c735f070528f6ddfd905631  0006-arm64-dts-qcom-acer-aspire1-Enable-RTC.patch
-9200a97d795d97e42e89af9cb47fc750ef2784d883327b6e8ca0ad77634c8af20b531f8917c3584c369fd2f36142cea73f51d416e78a99e80c48ae99165bdf18  0007-arm64-dts-qcom-acer-aspire1-Add-sound.patch
-1cc7105a6b4aa112f8203416a11cda56a39dfa957679021f7bf38f9503eab51c99cb53aed391cb7cb6ec853b705f0d5032ea5932f8c342152aca916681b507d3  0008-platform-Add-ARM64-platform-directory.patch
-08c6cace24a207f4a64a85b17e97646f62a8590b502cd5b6945489d0aeded352e21f0e1b0ec541ae2e61ec7fd4f6bc1e5bf1d5d32f2c6616eb41d39d66f0bab5  0009-platform-arm64-Add-Acer-Aspire-1-embedded-controller.patch
-69cfb699990ea7994089016b29cc248cb03483ad3f7620cbba63a779b2ed8928e6fde68484d29b6b8dfd1a8a6fa8d84c441f30180c7a257520ced442dab33876  0010-arm64-dts-qcom-acer-aspire1-Add-embedded-controller.patch
-c5edcd74f898b08bc663766668632d351aea40426b3563d53a4b8c6856dd82627f4794d60450e41171c990ebb3649056b36ef432c14c8783168e8060a2e3b094  0011-HACK-clk-Delay-disabling-unused-clocks-by-10s.patch
-8a8d4c8c50bd5eba07cf8e0b9a3d7759d8a3ca2c0fb2ecc91e35c93e570bf4184999c73f414c3a9a1bfcc8b6e9dc6fa6ba70de0421e492c77ab6d458df3bffaa  config-postmarketos-qcom-sc7180.aarch64
+3697bf2c9525c8d11f7e821fa080d8c366ae751af02b471a506224002abe6b23b0ccf17d9694c7590c1b07002289eb19003ba8677bbb0bb09d54458495964188  linux-6.12.35.tar.xz
+e5a8b89769f00a5802760aaefbdbe85a91967be74e6911617ccfcf515bac88b1014bcecb8903ce792bee85e4da902126ec5617168f87eb8f899c75b80378eab4  config-postmarketos-qcom-sc7180.aarch64
 "
