@@ -2,9 +2,9 @@
 
 maintainer="Jane Rachinger <jane400+pmaports@postmarketos.org>"
 pkgname=cups
-pkgver=99992.4.11
-_pkgver=2.4.11
-pkgrel=2
+_pkgver=2.4.12
+pkgver=9999$_pkgver
+pkgrel=0
 pkgdesc="The CUPS Printing System"
 url="https://github.com/OpenPrinting/cups/"
 # armhf: pmb#2618
@@ -152,7 +152,7 @@ systemd() {
 }
 
 sha512sums="
-12dca4753fd340b8b54f434c88d28dd663981d3bdde100d0c88a3a8c87666fd5ec9492a938c75089ef68f1c63da597d1faa6bea47fc5f2d8793712f6a41442d1  cups-2.4.11.tar.gz
+55ccd54e6d1bf09bb0881a6fc73b07f73bf71f41454c3ec23e48187529ed4c41d3b9720ff76568bb5cfdfe7b567e90870b6243c7fb2f0657c4ce8145aba95b9d  cups-2.4.12.tar.gz
 bc2e9985b248bdf552306dcaad6ac86ada0053da97a742e57e7d65f0c2373a88edd622b326a39bb536c7aaabc449255d5597001297c9430d237379547c95caf3  cups.logrotate
 148eb01f0861e1cd0861a174a5c5262c49b079b27b972b4e90656b9b9357ec710e861604c30e897818f550e9c1cdcefcd8c8bc955ba4a333902a74cdd8dfb5a6  cups-no-export-ssllibs.patch
 7b2f1212b009d4e005eaf4fc288413bde57aff4ca664173202163e8f18be1ddc72c26ec84576a4850d63b08c6ce5948d57c77e81c4f4c85032d7ef7530b1eb81  cups-nostrip.patch
