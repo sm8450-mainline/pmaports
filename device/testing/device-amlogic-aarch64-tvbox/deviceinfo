@@ -3,9 +3,9 @@
 # scripts.
 
 deviceinfo_format_version="0"
-deviceinfo_name="Amlogic TV box"
+deviceinfo_name="Amlogic AArch64 TV box"
 deviceinfo_manufacturer="Amlogic"
-deviceinfo_codename="amlogic-tvbox"
+deviceinfo_codename="amlogic-aarch64-tvbox"
 deviceinfo_year="2015"
 deviceinfo_dtb_p201="amlogic/meson-gxbb-p201"
 deviceinfo_dtb_p212="amlogic/meson-gxl-s905x-p212"

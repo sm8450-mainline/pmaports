@@ -1,9 +1,9 @@
 # Reference: <https://postmarketos.org/devicepkg>
 # Maintainer: Ferass El Hafidi <funderscore@postmarketos.org>
-pkgname=device-amlogic-tvbox
-pkgdesc="Amlogic TV box"
+pkgname=device-amlogic-aarch64-tvbox
+pkgdesc="Amlogic AArch64 TV box"
 pkgver=8
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -28,6 +28,8 @@ subpackages="
 	$pkgname-kernel-videostrong-kii-pro:kernel_videostrong_kii_pro
 	$pkgname-kernel-xiaomi-aquaman:kernel_xiaomi_aquaman
 "
+provides="device-amlogic-tvbox=$pkgver-r$pkgrel"
+replaces="device-amlogic-tvbox"
 
 build() {
 	devicepkg_build $startdir $pkgname
@@ -93,6 +95,6 @@ kernel_xiaomi_aquaman() {
 
 sha512sums="
 17e803e341c362f54df2116125549ededc41deb89cd6f57974133e18053b30af35fc2b60cdb732b10efadf95234f154bdd7b32410c139f0166adfe9b4ffe02dd  boot-image.its
-d133a85e67e5aea1430b540892dbe0c15e2770b70d3e58ce5a5cc6065395e33f8101fec9143ef0601e137d1d9c6d125db7bd21e0b009ac82def00829759ad4e8  deviceinfo
+4daa0548ce37d6dfc597e7a38ec76957e9c1c3e9990e3cc6d27399c7f08a87433519108fd7c569b8fcec026d7e9d737786e71146f320a841eca00f6587c236f4  deviceinfo
 52948c2884a6f6384e12b7a598f70878526d0d3293c214425170145231144ec7de805c038641741a4a5d75b50e554f6a3fa3769784a674217ed032f9b6a233c8  modules-initfs
 "
