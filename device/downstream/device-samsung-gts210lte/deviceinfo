@@ -7,6 +7,7 @@ deviceinfo_name="Samsung Galaxy Tab S2 9.7 LTE (SM-T815)"
 deviceinfo_manufacturer="Samsung"
 deviceinfo_codename="samsung-gts210lte"
 deviceinfo_year="2015"
+deviceinfo_getty="ttySAC1;115200"
 deviceinfo_arch="armv7"
 
 # Device related
