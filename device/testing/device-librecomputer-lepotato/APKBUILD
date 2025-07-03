@@ -3,7 +3,7 @@
 pkgname=device-librecomputer-lepotato
 pkgdesc="Libre Computer AML-S905X-CC-V1.0"
 pkgver=3
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -11,7 +11,7 @@ options="!check !archcheck"
 depends="
 	linux-postmarketos-amlogic
 	postmarketos-base
-	soc-amlogic-s905
+	soc-amlogic-aarch64
 	u-boot-amlogic-librecomputer-lepotato
 "
 makedepends="devicepkg-dev"

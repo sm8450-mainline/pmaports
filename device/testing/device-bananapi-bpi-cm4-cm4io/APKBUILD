@@ -3,12 +3,12 @@
 pkgname=device-bananapi-bpi-cm4-cm4io
 pkgdesc="BananaPi BPI-CM4IO Baseboard with BPI-CM4"
 pkgver=1
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
-depends="postmarketos-base u-boot-amlogic-bananapi-bpi-cm4-cm4io soc-amlogic-s905 linux-postmarketos-amlogic"
+depends="postmarketos-base u-boot-amlogic-bananapi-bpi-cm4-cm4io soc-amlogic-aarch64 linux-postmarketos-amlogic"
 makedepends="devicepkg-dev"
 subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
 source="deviceinfo modules-initfs"

@@ -3,7 +3,7 @@
 pkgname=device-khadas-vim3
 pkgdesc="Khadas VIM3 Amlogic A311D"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -11,7 +11,7 @@ options="!check !archcheck"
 depends="
 	linux-postmarketos-amlogic
 	postmarketos-base
-	soc-amlogic-s905
+	soc-amlogic-aarch64
 "
 makedepends="devicepkg-dev"
 source="
