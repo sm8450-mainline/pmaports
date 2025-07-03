@@ -3,13 +3,14 @@
 pkgname=kwin
 pkgver=99996.4.1
 _pkgver=6.4.1
-pkgrel=0
+pkgrel=1
 pkgdesc="An easy to use, but flexible, composited Window Manager"
 # armhf blocked by qt6-qtdeclarative and pmb#2618
 arch="all !armhf !armv7"
 url="https://kde.org/plasma-desktop/"
 license="GPL-2.0-or-later AND (GPL-2.0-only OR GPL-3.0-only) AND LGPL-2.1-only"
 depends="
+	aurorae
 	hwdata
 	kirigami
 	qt6-qtmultimedia
