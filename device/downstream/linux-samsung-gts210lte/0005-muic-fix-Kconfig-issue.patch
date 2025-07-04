@@ -1,9 +1,22 @@
+From fc67289a4270a359d56c0dd3d1c028a0dc1a04cf Mon Sep 17 00:00:00 2001
+From: Henrik Grimler <henrik@grimler.se>
+Date: Mon, 30 Jun 2025 13:07:24 +0200
+Subject: [PATCH] muic: fix Kconfig issue
+
 Fixes error:
 
 drivers/muic/universal/muic_state.c:363:1: fatal error: opening dependency file drivers/muic/universal/.muic_state.o.d: No such file or directory
 
 This commit is basically the same as (part of)
 https://github.com/jcadduono/android_kernel_samsung_universal3475/commit/8b34f9d012cc
+---
+ drivers/muic/Kconfig            | 25 +++----------------------
+ drivers/muic/Makefile           | 13 +------------
+ drivers/muic/universal/Kconfig  | 22 ++++++++++++++++++++++
+ drivers/muic/universal/Makefile | 13 +++++++++++++
+ 4 files changed, 39 insertions(+), 34 deletions(-)
+ create mode 100644 drivers/muic/universal/Kconfig
+ create mode 100644 drivers/muic/universal/Makefile
 
 diff --git a/drivers/muic/Kconfig b/drivers/muic/Kconfig
 index 9de6622d5791..ff3a5a0757a6 100644
@@ -112,3 +125,6 @@ index 000000000000..2beb93df6b3c
 +obj-$(CONFIG_MUIC_UNIVERSAL_SM5703)	+= muic_regmap_sm5703.o
 +obj-$(CONFIG_MUIC_UNIVERSAL_S2MM001)	+= muic_regmap_s2mm001b.o
 +obj-$(CONFIG_MUIC_UNIVERSAL_MAX77849)	+= muic_regmap_max77849.o
+-- 
+2.50.0
+

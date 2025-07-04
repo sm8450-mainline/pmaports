@@ -1,9 +1,7 @@
-From 51b97e354ba9fce1890cf38ecc754aa49677fc89 Mon Sep 17 00:00:00 2001
+From 33bbf9c917372ce05be03c19c1d7d7decc312c52 Mon Sep 17 00:00:00 2001
 From: "Kirill A. Shutemov" <kirill@shutemov.name>
 Date: Mon, 20 Oct 2014 12:23:12 +0300
-Subject: kernel: use the gnu89 standard explicitly
-
-From: "Kirill A. Shutemov" <kirill@shutemov.name>
+Subject: [PATCH] kernel: use the gnu89 standard explicitly
 
 commit 51b97e354ba9fce1890cf38ecc754aa49677fc89 upstream.
 
@@ -38,11 +36,12 @@ Signed-off-by: Sasha Levin <sasha.levin@oracle.com>
 Singed-off-by: Kirill A. Shutemov <kirill.shutemov@linux.intel.com>
 Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-
 ---
- Makefile |    6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ Makefile | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
+diff --git a/Makefile b/Makefile
+index 1d1cec577103..c33b77b1d537 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -242,7 +242,7 @@ CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
@@ -66,3 +65,6 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
  KBUILD_AFLAGS_KERNEL :=
  KBUILD_CFLAGS_KERNEL :=
  KBUILD_AFLAGS   := -D__ASSEMBLY__
+-- 
+2.50.0
+

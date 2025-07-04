@@ -1,3 +1,8 @@
+From 1aa9aa6254ffd9669404763260933bf71a7390ab Mon Sep 17 00:00:00 2001
+From: Henrik Grimler <henrik@grimler.se>
+Date: Mon, 30 Jun 2025 13:07:51 +0200
+Subject: [PATCH] security: tima_uevent: fix kconfig issue
+
 Fixes error:
 
 security/tima_uevent/tima_uevent.c:217:1: fatal error: opening dependency file security/tima_uevent/.tima_uevent.o.d: No such file or directory
@@ -6,6 +11,12 @@ security/tima_uevent/tima_uevent.c:217:1: fatal error: opening dependency file s
 
 This commit is basically the same as (part of)
 https://github.com/jcadduono/android_kernel_samsung_universal3475/commit/8b34f9d012cc
+---
+ security/Kconfig              |  2 +-
+ security/Makefile             |  2 +-
+ security/tima_uevent/Kconfig  | 17 +++++++----------
+ security/tima_uevent/Makefile |  3 +--
+ 4 files changed, 10 insertions(+), 14 deletions(-)
 
 diff --git a/security/Kconfig b/security/Kconfig
 index 0351ba7e4ed5..e332c9225bb1 100644
@@ -75,3 +86,6 @@ index 4f1ca82645b7..ae0c213e371c 100644
 -#obj-$(CONFIG_TIMA)   += tima_uevent.o
 -
 +obj-$(CONFIG_TIMA) += tima_uevent.o
+-- 
+2.50.0
+

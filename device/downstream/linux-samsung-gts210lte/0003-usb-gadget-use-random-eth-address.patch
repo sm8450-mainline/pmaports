@@ -1,9 +1,14 @@
-For some reason, CONFIG_USB_ANDROID_SAMSUNG_COMPOSITE disables the code in u_ether
-that assigns a random MAC address to the USB network interface. This patch simply
-disables it to fall back to the original code that works correctly.
+From 9b3b9d5f4e3e17d9babc303adb81e2190fc7adf1 Mon Sep 17 00:00:00 2001
+From: Henrik Grimler <henrik@grimler.se>
+Date: Mon, 30 Jun 2025 11:30:29 +0200
+Subject: [PATCH] usb: gadget: use random eth address
+
+---
+ drivers/usb/gadget/u_ether.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/usb/gadget/u_ether.c b/drivers/usb/gadget/u_ether.c
-index 61d98db8bd63..105feffa4686 100644
+index 61d98db8bd63..51ed57656822 100644
 --- a/drivers/usb/gadget/u_ether.c
 +++ b/drivers/usb/gadget/u_ether.c
 @@ -1148,7 +1148,7 @@ struct eth_dev *gether_setup_name(struct usb_gadget *g, u8 ethaddr[ETH_ALEN],
@@ -15,3 +20,6 @@ index 61d98db8bd63..105feffa4686 100644
  	memcpy(dev->host_mac, ethaddr, ETH_ALEN);
  	printk(KERN_DEBUG "usb: set unique host mac\n");
  #else
+-- 
+2.50.0
+
