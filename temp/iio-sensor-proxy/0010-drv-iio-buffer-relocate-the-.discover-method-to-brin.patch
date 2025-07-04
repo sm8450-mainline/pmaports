@@ -1,0 +1,153 @@
+From f35d293e65841a3b9c0de778300c7fa58b181fd0 Mon Sep 17 00:00:00 2001
+From: "Sicelo A. Mhlongo" <absicsz@gmail.com>
+Date: Sun, 25 May 2025 17:44:29 +0200
+Subject: [PATCH 1/4] drv-iio-buffer-*: relocate the .discover method to bring
+ the .open and .close methods into scope
+
+To fix #411 [0], the .discover method will now attempt to read from the sensor
+buffer. Therefore, it will need to call .open and .close. Relocate the method
+to ensure the former are within scope. There is no functional change in the
+.discover method.
+
+[0] https://gitlab.freedesktop.org/hadess/iio-sensor-proxy/-/issues/411
+---
+ src/drv-iio-buffer-accel.c   | 26 +++++++++++++-------------
+ src/drv-iio-buffer-compass.c | 26 +++++++++++++-------------
+ src/drv-iio-buffer-light.c   | 26 +++++++++++++-------------
+ 3 files changed, 39 insertions(+), 39 deletions(-)
+
+diff --git a/src/drv-iio-buffer-accel.c b/src/drv-iio-buffer-accel.c
+index 90747a6..931d5cb 100644
+--- a/src/drv-iio-buffer-accel.c
++++ b/src/drv-iio-buffer-accel.c
+@@ -120,19 +120,6 @@ read_orientation (gpointer user_data)
+ 	return G_SOURCE_CONTINUE;
+ }
+ 
+-static gboolean
+-iio_buffer_accel_discover (GUdevDevice *device)
+-{
+-	if (!drv_check_udev_sensor_type (device, "iio-buffer-accel", NULL))
+-		return FALSE;
+-
+-	if (!is_buffer_usable (device))
+-		return FALSE;
+-
+-	g_debug ("Found IIO buffer accelerometer at %s", g_udev_device_get_sysfs_path (device));
+-	return TRUE;
+-}
+-
+ static void
+ iio_buffer_accel_set_polling (SensorDevice *sensor_device,
+ 			      gboolean state)
+@@ -205,6 +192,19 @@ iio_buffer_accel_close (SensorDevice *sensor_device)
+ 	g_free (sensor_device);
+ }
+ 
++static gboolean
++iio_buffer_accel_discover (GUdevDevice *device)
++{
++	if (!drv_check_udev_sensor_type (device, "iio-buffer-accel", NULL))
++		return FALSE;
++
++	if (!is_buffer_usable (device))
++		return FALSE;
++
++	g_debug ("Found IIO buffer accelerometer at %s", g_udev_device_get_sysfs_path (device));
++	return TRUE;
++}
++
+ SensorDriver iio_buffer_accel = {
+ 	.driver_name = "IIO Buffer accelerometer",
+ 	.type = DRIVER_TYPE_ACCEL,
+diff --git a/src/drv-iio-buffer-compass.c b/src/drv-iio-buffer-compass.c
+index f0399f4..cfe8f4f 100644
+--- a/src/drv-iio-buffer-compass.c
++++ b/src/drv-iio-buffer-compass.c
+@@ -103,19 +103,6 @@ read_heading (gpointer user_data)
+ 	return G_SOURCE_CONTINUE;
+ }
+ 
+-static gboolean
+-iio_buffer_compass_discover (GUdevDevice *device)
+-{
+-	if (!drv_check_udev_sensor_type (device, "iio-buffer-compass", NULL))
+-		return FALSE;
+-
+-	if (!is_buffer_usable (device))
+-		return FALSE;
+-
+-	g_debug ("Found IIO buffer compass at %s", g_udev_device_get_sysfs_path (device));
+-	return TRUE;
+-}
+-
+ static SensorDevice *
+ iio_buffer_compass_open (GUdevDevice *device)
+ {
+@@ -188,6 +175,19 @@ iio_buffer_compass_close (SensorDevice *sensor_device)
+ 	g_free (sensor_device);
+ }
+ 
++static gboolean
++iio_buffer_compass_discover (GUdevDevice *device)
++{
++	if (!drv_check_udev_sensor_type (device, "iio-buffer-compass", NULL))
++		return FALSE;
++
++	if (!is_buffer_usable (device))
++		return FALSE;
++
++	g_debug ("Found IIO buffer compass at %s", g_udev_device_get_sysfs_path (device));
++	return TRUE;
++}
++
+ SensorDriver iio_buffer_compass = {
+ 	.driver_name = "IIO Buffer Compass",
+ 	.type = DRIVER_TYPE_COMPASS,
+diff --git a/src/drv-iio-buffer-light.c b/src/drv-iio-buffer-light.c
+index 4be2398..6046dc3 100644
+--- a/src/drv-iio-buffer-light.c
++++ b/src/drv-iio-buffer-light.c
+@@ -108,19 +108,6 @@ read_light (gpointer user_data)
+ 	return G_SOURCE_CONTINUE;
+ }
+ 
+-static gboolean
+-iio_buffer_light_discover (GUdevDevice *device)
+-{
+-	if (!drv_check_udev_sensor_type (device, "iio-buffer-als", NULL))
+-		return FALSE;
+-
+-	if (!is_buffer_usable (device))
+-		return FALSE;
+-
+-	g_debug ("Found IIO buffer ALS at %s", g_udev_device_get_sysfs_path (device));
+-	return TRUE;
+-}
+-
+ static void
+ iio_buffer_light_set_polling (SensorDevice *sensor_device,
+ 			      gboolean state)
+@@ -192,6 +179,19 @@ iio_buffer_light_close (SensorDevice *sensor_device)
+ 	g_free (sensor_device);
+ }
+ 
++static gboolean
++iio_buffer_light_discover (GUdevDevice *device)
++{
++	if (!drv_check_udev_sensor_type (device, "iio-buffer-als", NULL))
++		return FALSE;
++
++	if (!is_buffer_usable (device))
++		return FALSE;
++
++	g_debug ("Found IIO buffer ALS at %s", g_udev_device_get_sysfs_path (device));
++	return TRUE;
++}
++
+ SensorDriver iio_buffer_light = {
+ 	.driver_name = "IIO Buffer Light sensor",
+ 	.type = DRIVER_TYPE_LIGHT,
+-- 
+2.50.0
+

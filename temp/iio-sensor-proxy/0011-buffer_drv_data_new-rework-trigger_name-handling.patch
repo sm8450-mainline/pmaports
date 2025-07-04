@@ -1,0 +1,132 @@
+From 7416edf4da98d8e3b75f9eddb7e5c488ac4a4c54 Mon Sep 17 00:00:00 2001
+From: "Sicelo A. Mhlongo" <absicsz@gmail.com>
+Date: Sun, 25 May 2025 19:17:51 +0200
+Subject: [PATCH 2/4] buffer_drv_data_new: rework trigger_name handling
+
+In each buffer driver, the get_trigger_name() call is always immediately
+followed by a call to buffer_drv_data_new(). To simplify the code,
+buffer_drv_data_new() now calls get_trigger_name().  Incidentally,
+iio-sensor-proxy does not actually use the buffer sensor's trigger for
+anything.
+---
+ src/drv-iio-buffer-accel.c   |  6 +-----
+ src/drv-iio-buffer-compass.c | 10 +---------
+ src/drv-iio-buffer-light.c   |  9 +--------
+ src/iio-buffer-utils.c       |  9 ++++-----
+ src/iio-buffer-utils.h       |  3 +--
+ 5 files changed, 8 insertions(+), 29 deletions(-)
+
+diff --git a/src/drv-iio-buffer-accel.c b/src/drv-iio-buffer-accel.c
+index 931d5cb..06db1aa 100644
+--- a/src/drv-iio-buffer-accel.c
++++ b/src/drv-iio-buffer-accel.c
+@@ -151,13 +151,9 @@ iio_buffer_accel_open (GUdevDevice *device)
+ {
+ 	SensorDevice *sensor_device;
+ 	DrvData *drv_data;
+-	g_autofree char *trigger_name = NULL;
+ 	BufferDrvData *buffer_data;
+ 
+-	/* Get the trigger name, and build the channels from that */
+-	trigger_name = get_trigger_name (device);
+-
+-	buffer_data = buffer_drv_data_new (device, trigger_name);
++	buffer_data = buffer_drv_data_new (device);
+ 	if (!buffer_data)
+ 		return NULL;
+ 
+diff --git a/src/drv-iio-buffer-compass.c b/src/drv-iio-buffer-compass.c
+index cfe8f4f..2ae0ccd 100644
+--- a/src/drv-iio-buffer-compass.c
++++ b/src/drv-iio-buffer-compass.c
+@@ -108,17 +108,9 @@ iio_buffer_compass_open (GUdevDevice *device)
+ {
+ 	SensorDevice *sensor_device;
+ 	DrvData *drv_data;
+-	g_autofree char *trigger_name = NULL;
+ 	BufferDrvData *buffer_data;
+ 
+-	/* Get the trigger name, and build the channels from that */
+-	trigger_name = get_trigger_name (device);
+-	if (!trigger_name) {
+-		g_debug ("Could not find trigger for %s", g_udev_device_get_sysfs_path (device));
+-		return NULL;
+-	}
+-
+-	buffer_data = buffer_drv_data_new (device, trigger_name);
++	buffer_data = buffer_drv_data_new (device);
+ 	if (!buffer_data)
+ 		return NULL;
+ 
+diff --git a/src/drv-iio-buffer-light.c b/src/drv-iio-buffer-light.c
+index 6046dc3..2a524c6 100644
+--- a/src/drv-iio-buffer-light.c
++++ b/src/drv-iio-buffer-light.c
+@@ -139,16 +139,9 @@ iio_buffer_light_open (GUdevDevice *device)
+ {
+ 	SensorDevice *sensor_device;
+ 	DrvData *drv_data;
+-	g_autofree char *trigger_name = NULL;
+ 	BufferDrvData *buffer_data;
+ 
+-	/* Get the trigger name, and build the channels from that */
+-	trigger_name = get_trigger_name (device);
+-	if (!trigger_name) {
+-		g_debug ("Could not find trigger for %s", g_udev_device_get_sysfs_path (device));
+-		return NULL;
+-	}
+-	buffer_data = buffer_drv_data_new (device, trigger_name);
++	buffer_data = buffer_drv_data_new (device);
+ 	if (!buffer_data)
+ 		return NULL;
+ 
+diff --git a/src/iio-buffer-utils.c b/src/iio-buffer-utils.c
+index 7a627d3..bc74e4c 100644
+--- a/src/iio-buffer-utils.c
++++ b/src/iio-buffer-utils.c
+@@ -880,13 +880,14 @@ buffer_drv_data_free (BufferDrvData *buffer_data)
+ }
+ 
+ BufferDrvData *
+-buffer_drv_data_new (GUdevDevice *device,
+-		     const char  *trigger_name)
++buffer_drv_data_new (GUdevDevice *device)
+ {
+ 	BufferDrvData *buffer_data;
++	g_autofree char *trigger_name = NULL;
+ 
+ 	buffer_data = g_new0 (BufferDrvData, 1);
+ 	buffer_data->dev_dir_name = g_udev_device_get_sysfs_path (device);
++	trigger_name = get_trigger_name (device);
+ 	if (trigger_name)
+ 		buffer_data->trigger_name = g_strdup (trigger_name);
+ 	buffer_data->device = g_object_ref (device);
+@@ -909,10 +910,8 @@ is_buffer_usable (GUdevDevice *device)
+ 	g_autofree char *trigger_name = NULL;
+ 	BufferDrvData *buffer_data;
+ 
+-	trigger_name = get_trigger_name (device);
+-
+ 	/* Temporarily enable the buffer to ensure the kernel driver is buffer-capable */
+-	buffer_data = buffer_drv_data_new (device, trigger_name);
++	buffer_data = buffer_drv_data_new (device);
+ 	if (!buffer_data)
+ 		return FALSE;
+ 
+diff --git a/src/iio-buffer-utils.h b/src/iio-buffer-utils.h
+index 597177a..9c5e6db 100644
+--- a/src/iio-buffer-utils.h
++++ b/src/iio-buffer-utils.h
+@@ -43,8 +43,7 @@ gboolean iio_fixup_sampling_frequency  (GUdevDevice *dev);
+ char *get_trigger_name                 (GUdevDevice *device);
+ 
+ void           buffer_drv_data_free    (BufferDrvData *buffer_data);
+-BufferDrvData *buffer_drv_data_new     (GUdevDevice *device,
+-					const char  *trigger_name);
++BufferDrvData *buffer_drv_data_new     (GUdevDevice *device);
+ void     disable_ring_buffer           (BufferDrvData *data);
+ gboolean enable_ring_buffer            (BufferDrvData *data);
+ gboolean is_buffer_usable              (GUdevDevice *device);
+-- 
+2.50.0
+

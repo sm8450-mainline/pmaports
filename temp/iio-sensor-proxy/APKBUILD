@@ -2,7 +2,7 @@
 
 pkgname=iio-sensor-proxy
 pkgver=9999
-pkgrel=10
+pkgrel=11
 pkgdesc="IIO sensors to D-Bus proxy"
 url="https://gitlab.freedesktop.org/hadess/iio-sensor-proxy"
 arch="aarch64"
@@ -30,6 +30,10 @@ source="https://gitlab.freedesktop.org/hadess/iio-sensor-proxy/-/archive/$_commi
 	0007-data-iio-sensor-proxy.service.in-add-AF_QIPCRTR.patch
 	0008-drv-ssc-implement-set_polling.patch
 	0009-tests-integration-test-add-SSC-sensors.patch
+	0010-drv-iio-buffer-relocate-the-.discover-method-to-brin.patch
+	0011-buffer_drv_data_new-rework-trigger_name-handling.patch
+	0012-iio-buffer-attempt-to-read-from-buffer-during-sensor.patch
+	0013-integration-test-add-test-for-sensors-that-report-no.patch
 	"
 
 build() {
@@ -64,4 +68,8 @@ d4379f8e53eea02f53640752bef883870a44d0169cf821d3f5bb3245309cac1d1502a7848d5cce60
 376999144da2c5a6374de73bfaaf0eb605c5c686640f4de8cbcabbe3e78f3fce4675d5bfdc2dd60dacaa84447a039cf22cc4e5fcda478ea77a00001f052a3d85  0007-data-iio-sensor-proxy.service.in-add-AF_QIPCRTR.patch
 bf0ea8a078eb168937645a661fea5b979bf1747ee0c1cd556a238c25f4f26eefd6b2f7a1da1eb0b7d66dcafe24ce31521d71e1a188a324671b08178b392206af  0008-drv-ssc-implement-set_polling.patch
 2a208aa064e4f3d6cb24701f65c5cdc5d35a99f61489ac0ab5f336aa8229bc1aa7571b6d7e928a3a28e53b8e35a07655ec3e8b432d7295d82606f8b1f206e7af  0009-tests-integration-test-add-SSC-sensors.patch
+f697507221c83e32012e1cfd4f08525791bdae6c3c4ac2d23cb532bf70820f7cebfba3e10c84d0a464dea7da93a3eb64d4d30dc6e5e3771fb9d6c2bcf7b47866  0010-drv-iio-buffer-relocate-the-.discover-method-to-brin.patch
+74170846478fcd1cbe5738ae00174f0aa3783afa003f6afb1a19267d847c6685d237ab9e0ece53ea598be4b5fd9a28826179e61a52a97074c945a2bf2d4afe34  0011-buffer_drv_data_new-rework-trigger_name-handling.patch
+d4ba829d8a8032bea72598d065e67f4cd3a58eaab7a0f942f4e5019236696aa4f5071318ca6eddc08c20c0681907de907a805582447422bc0e8017a53ef8e700  0012-iio-buffer-attempt-to-read-from-buffer-during-sensor.patch
+9273f01d35e0f45ddc943808326d87f3a2e678ea29e607d3d70cabc9ea321db761cc170a86b3093553a4c3dfae1d81c5057d146b9a90ff490c85641f02b040df  0013-integration-test-add-test-for-sensors-that-report-no.patch
 "
