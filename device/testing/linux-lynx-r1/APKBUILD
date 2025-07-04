@@ -1,0 +1,63 @@
+# Maintainer: Alicja Michalska <alicja.michalska@9elements.com>
+
+_flavor="lynx-r1"
+pkgname=linux-$_flavor
+pkgver=6.13.0
+pkgrel=0
+pkgdesc="Mainline kernel for Lynx R1"
+arch="aarch64"
+_carch="arm64"
+url="https://gitlab.postmarketos.org/ellyq/linux-lynx-r-1"
+license="GPL-2.0-only"
+options="!strip !check !tracedeps
+	pmb:cross-native
+	pmb:kconfigcheck-nftables
+	pmb:kconfigcheck-community
+"
+makedepends="bash bison findutils flex openssl-dev perl postmarketos-installkernel python3
+"
+
+# Source
+_tag="$pkgver"
+_config="config-lynx-r1.aarch64"
+source="
+	$pkgname-$_tag.tar.gz::https://gitlab.postmarketos.org/ellyq/linux-lynx-r-1/-/archive/$_tag/linux-lynx-r-1-$_tag.tar.gz
+config-lynx-r1.aarch64
+"
+builddir="$srcdir/linux-lynx-r-1-$_tag"
+
+prepare() {
+	default_prepare
+	cp "$srcdir/config-$_flavor.$arch" .config
+}
+
+prepare() {
+	default_prepare
+	cp "$srcdir/config-$_flavor.$arch" .config
+}
+
+build() {
+	unset LDFLAGS
+	make ARCH="$_carch" CC="${CC:-gcc}" \
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-$_flavor"
+}
+
+package() {
+	mkdir -p "$pkgdir"/boot
+
+	make zinstall modules_install dtbs_install \
+		ARCH="$_carch" \
+		INSTALL_PATH="$pkgdir"/boot/ \
+		INSTALL_MOD_PATH="$pkgdir" \
+		INSTALL_MOD_STRIP=1 \
+		INSTALL_DTBS_PATH="$pkgdir/boot/dtbs"
+	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
+
+	install -D "$builddir"/include/config/kernel.release \
+		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
+}
+
+sha512sums="
+985991605697d5a74b31a5d588a3c523dab50041110b7f19c1b28e1120da6278c30d38db0a749197bff9569c806a2905a5bc6fa9e20b92e937a18bad08c4ee00  linux-lynx-r1-6.13.0.tar.gz
+fb5f5804e3d3605f2110c00844e9390bc4e10d645afb517577918940cb51e3f9efef314a83971a532b7401865b15146b72f4d06343003736a819929f44adf585  config-lynx-r1.aarch64
+"
