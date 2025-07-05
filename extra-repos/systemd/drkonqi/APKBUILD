@@ -1,6 +1,6 @@
 maintainer="Bart Ribbers <bribbers@disroot.org>"
 pkgname=drkonqi
-pkgver=6.4.1
+pkgver=6.4.2
 pkgrel=0
 pkgdesc="The KDE crash handler"
 # armhf blocked by qt6-qtdeclarative -> ki18n
@@ -68,5 +68,5 @@ package() {
 }
 
 sha512sums="
-7816dfd73b9ee08736d4a1fc844b546ab215be6b50394349a24ab29cc06013dc795e51061ef6251ab00e5e2a17990d1477538d09cba1d7738a04251e2fe9eb88  drkonqi-6.4.1.tar.xz
+99fbc07ca55b1fcb7371f8b518f35300065795c2064047924104c99dbde1c8c419fe8eb5603730c4db8ec486a1bbabe9459f2c029b342b20469ca7dd42d687af  drkonqi-6.4.2.tar.xz
 "
