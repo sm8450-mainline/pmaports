@@ -59,7 +59,8 @@ build() {
 		-DUSE_ELOGIND=OFF \
 		-DUID_MIN=1000 \
 		-DUID_MAX=65000 \
-		-DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d
+		-DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d \
+		-DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf
 	cmake --build build
 }
 
