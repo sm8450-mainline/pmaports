@@ -1,7 +1,7 @@
-From dcf05aef367d2b591d506fc81491e7c9fa113a3c Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Duje=20Mihanovi=C4=87?= <duje.mihanovic@skole.hr>
-Date: Fri, 21 Jul 2023 22:37:50 +0200
-Subject: [PATCH 03/10] arm64: dts: Add DTS for Marvell PXA1908 and
+From afd6a8563932dbc57ebc7e3dbeb89e8d72a42bea Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Duje=20Mihanovi=C4=87?= <duje@dujemihanovic.xyz>
+Date: Mon, 7 Jul 2025 16:19:50 +0200
+Subject: [PATCH 04/16] arm64: dts: Add DTS for Marvell PXA1908 and
  samsung,coreprimevelte
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -10,32 +10,45 @@ Content-Transfer-Encoding: 8bit
 Add DTS for Marvell PXA1908 SoC and Samsung Galaxy Core Prime Value
 Edition LTE, a smartphone based on said SoC.
 
-Signed-off-by: Duje Mihanović <duje.mihanovic@skole.hr>
+Signed-off-by: Duje Mihanović <duje@dujemihanovic.xyz>
 ---
- arch/arm64/boot/dts/marvell/Makefile          |   3 +
- .../pxa1908-samsung-coreprimevelte.dts        | 332 ++++++++++++++++++
- arch/arm64/boot/dts/marvell/pxa1908.dtsi      | 300 ++++++++++++++++
- 3 files changed, 635 insertions(+)
- create mode 100644 arch/arm64/boot/dts/marvell/pxa1908-samsung-coreprimevelte.dts
- create mode 100644 arch/arm64/boot/dts/marvell/pxa1908.dtsi
+Changes in v16:
+- memory -> memory@0 (fixes DT warning)
+- Drop linux,initrd-{start,end} (not needed since U-Boot was ported)
+---
+ arch/arm64/boot/dts/marvell/Makefile          |   2 +
+ arch/arm64/boot/dts/marvell/mmp/Makefile      |   2 +
+ .../mmp/pxa1908-samsung-coreprimevelte.dts    | 331 ++++++++++++++++++
+ arch/arm64/boot/dts/marvell/mmp/pxa1908.dtsi  | 300 ++++++++++++++++
+ 4 files changed, 635 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/marvell/mmp/Makefile
+ create mode 100644 arch/arm64/boot/dts/marvell/mmp/pxa1908-samsung-coreprimevelte.dts
+ create mode 100644 arch/arm64/boot/dts/marvell/mmp/pxa1908.dtsi
 
 diff --git a/arch/arm64/boot/dts/marvell/Makefile b/arch/arm64/boot/dts/marvell/Makefile
-index ce751b5028e2..39c5749e631d 100644
+index ce751b5028e2..40e5ac6cd468 100644
 --- a/arch/arm64/boot/dts/marvell/Makefile
 +++ b/arch/arm64/boot/dts/marvell/Makefile
-@@ -32,3 +32,6 @@ dtb-$(CONFIG_ARCH_MVEBU) += cn9130-cf-base.dtb
+@@ -32,3 +32,5 @@ dtb-$(CONFIG_ARCH_MVEBU) += cn9130-cf-base.dtb
  dtb-$(CONFIG_ARCH_MVEBU) += cn9130-cf-pro.dtb
  dtb-$(CONFIG_ARCH_MVEBU) += cn9131-cf-solidwan.dtb
  dtb-$(CONFIG_ARCH_MVEBU) += cn9132-clearfog.dtb
 +
-+# MMP SoC Family
-+dtb-$(CONFIG_ARCH_MMP) += pxa1908-samsung-coreprimevelte.dtb
-diff --git a/arch/arm64/boot/dts/marvell/pxa1908-samsung-coreprimevelte.dts b/arch/arm64/boot/dts/marvell/pxa1908-samsung-coreprimevelte.dts
++subdir-y	+= mmp
+diff --git a/arch/arm64/boot/dts/marvell/mmp/Makefile b/arch/arm64/boot/dts/marvell/mmp/Makefile
 new file mode 100644
-index 000000000000..b9ae01587c49
+index 000000000000..103175ed63b0
 --- /dev/null
-+++ b/arch/arm64/boot/dts/marvell/pxa1908-samsung-coreprimevelte.dts
-@@ -0,0 +1,332 @@
++++ b/arch/arm64/boot/dts/marvell/mmp/Makefile
+@@ -0,0 +1,2 @@
++# SPDX-License-Identifier: GPL-2.0
++dtb-$(CONFIG_ARCH_MMP) += pxa1908-samsung-coreprimevelte.dtb
+diff --git a/arch/arm64/boot/dts/marvell/mmp/pxa1908-samsung-coreprimevelte.dts b/arch/arm64/boot/dts/marvell/mmp/pxa1908-samsung-coreprimevelte.dts
+new file mode 100644
+index 000000000000..47a4f01a7077
+--- /dev/null
++++ b/arch/arm64/boot/dts/marvell/mmp/pxa1908-samsung-coreprimevelte.dts
+@@ -0,0 +1,331 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +#include "pxa1908.dtsi"
 +#include <dt-bindings/gpio/gpio.h>
@@ -69,7 +82,7 @@ index 000000000000..b9ae01587c49
 +	};
 +
 +	/* Bootloader fills this in */
-+	memory {
++	memory@0 {
 +		device_type = "memory";
 +		reg = <0 0 0 0>;
 +	};
@@ -109,7 +122,6 @@ index 000000000000..b9ae01587c49
 +			max-reason = <5>;
 +		};
 +	};
-+
 +
 +	i2c-muic {
 +		compatible = "i2c-gpio";
@@ -368,11 +380,11 @@ index 000000000000..b9ae01587c49
 +	bus-width = <4>;
 +	wp-inverted;
 +};
-diff --git a/arch/arm64/boot/dts/marvell/pxa1908.dtsi b/arch/arm64/boot/dts/marvell/pxa1908.dtsi
+diff --git a/arch/arm64/boot/dts/marvell/mmp/pxa1908.dtsi b/arch/arm64/boot/dts/marvell/mmp/pxa1908.dtsi
 new file mode 100644
 index 000000000000..cf2b9109688c
 --- /dev/null
-+++ b/arch/arm64/boot/dts/marvell/pxa1908.dtsi
++++ b/arch/arm64/boot/dts/marvell/mmp/pxa1908.dtsi
 @@ -0,0 +1,300 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +/dts-v1/;
@@ -675,5 +687,5 @@ index 000000000000..cf2b9109688c
 +	};
 +};
 -- 
-2.49.0
+2.50.1
 

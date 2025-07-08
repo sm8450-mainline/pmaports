@@ -1,0 +1,63 @@
+From d9cd2fe8b2d2c6e1ff360b81812aaccae999fb3c Mon Sep 17 00:00:00 2001
+From: Karel Balej <balejk@matfyz.cz>
+Date: Mon, 25 Dec 2023 22:23:27 +0100
+Subject: [PATCH 09/16] DONOTMERGE: arm64: dts: samsung,coreprimevelte: add
+ PMIC
+
+---
+ .../mmp/pxa1908-samsung-coreprimevelte.dts    | 34 +++++++++++++++++++
+ 1 file changed, 34 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/marvell/mmp/pxa1908-samsung-coreprimevelte.dts b/arch/arm64/boot/dts/marvell/mmp/pxa1908-samsung-coreprimevelte.dts
+index 47a4f01a7077..53e0dc3ff897 100644
+--- a/arch/arm64/boot/dts/marvell/mmp/pxa1908-samsung-coreprimevelte.dts
++++ b/arch/arm64/boot/dts/marvell/mmp/pxa1908-samsung-coreprimevelte.dts
+@@ -303,6 +303,38 @@ &twsi1 {
+ 
+ &twsi2 {
+ 	status = "okay";
++
++	pmic@30 {
++		compatible = "marvell,88pm886-a1";
++		reg = <0x30>;
++		interrupts = <0 4 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-parent = <&gic>;
++		wakeup-source;
++
++		regulators {
++			ldo2: ldo2 {
++				regulator-min-microvolt = <1900000>;
++				regulator-max-microvolt = <3100000>;
++			};
++
++			ldo6: ldo6 {
++				regulator-boot-on;
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3300000>;
++			};
++
++			ldo14: ldo14 {
++				regulator-boot-on;
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3300000>;
++			};
++
++			/* for sdh1 */
++			ldo15: ldo15 {
++				regulator-always-on;
++			};
++		};
++	};
+ };
+ 
+ &twsi3 {
+@@ -328,4 +360,6 @@ &sdh0 {
+ 	cd-inverted;
+ 	bus-width = <4>;
+ 	wp-inverted;
++	vqmmc-supply = <&ldo6>;
++	vmmc-supply = <&ldo14>;
+ };
+-- 
+2.50.1
+

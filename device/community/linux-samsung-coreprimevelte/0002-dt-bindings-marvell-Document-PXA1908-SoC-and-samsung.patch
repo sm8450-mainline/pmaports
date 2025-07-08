@@ -1,15 +1,21 @@
-From 190ff7d174393b29010f152f4281fed9423e7556 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Duje=20Mihanovi=C4=87?= <duje.mihanovic@skole.hr>
-Date: Fri, 21 Jul 2023 22:37:51 +0200
-Subject: [PATCH 01/10] dt-bindings: marvell: Document PXA1908 SoC
+From 9cef7a4340c4a430888a39a9a89b1ae36a53cd98 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Duje=20Mihanovi=C4=87?= <duje@dujemihanovic.xyz>
+Date: Mon, 7 Jul 2025 16:19:49 +0200
+Subject: [PATCH 02/16] dt-bindings: marvell: Document PXA1908 SoC and
+ samsung,coreprimevelte
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-Add dt binding for the Marvell PXA1908 SoC.
+Add dt bindings for the Marvell PXA1908 SoC and the Samsung Galaxy Core
+Prime VE LTE phone (model number SM-G361F) using the SoC.
+
+The SoC comes with 4 Cortex-A53 cores clocked up to ~1.2GHz and a
+Vivante GC7000UL GPU. The phone also has a 4.5" 480x800 touchscreen, 8GB
+eMMC and 1GB of LPDDR3 RAM.
 
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Signed-off-by: Duje Mihanović <duje.mihanovic@skole.hr>
+Signed-off-by: Duje Mihanović <duje@dujemihanovic.xyz>
 ---
  Documentation/devicetree/bindings/arm/mrvl/mrvl.yaml | 5 +++++
  1 file changed, 5 insertions(+)
@@ -31,5 +37,5 @@ index 4c43eaf3632e..f73bb8ec3a1a 100644
  additionalProperties: true
  
 -- 
-2.49.0
+2.50.1
 

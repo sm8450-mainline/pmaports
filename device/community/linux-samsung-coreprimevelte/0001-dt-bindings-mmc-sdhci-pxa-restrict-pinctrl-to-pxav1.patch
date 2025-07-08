@@ -1,0 +1,80 @@
+From 37ce7bc5734c3f9bdcb7d20af64bf4bf975d26cb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Duje=20Mihanovi=C4=87?= <duje@dujemihanovic.xyz>
+Date: Mon, 7 Jul 2025 16:19:49 +0200
+Subject: [PATCH 01/16] dt-bindings: mmc: sdhci-pxa: restrict pinctrl to pxav1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The current pinctrl properties apply only to the pxav1 controller.
+Adding one default pinctrl node to a pxav3 controller therefore causes
+a schema warning.
+
+Check the existing properties only on pxav1. pxav2 and pxav3 may add
+their own set of pinctrl properties if and when needed.
+
+Signed-off-by: Duje Mihanović <duje@dujemihanovic.xyz>
+---
+Changes in v16:
+- New patch
+---
+ .../devicetree/bindings/mmc/sdhci-pxa.yaml    | 36 ++++++++++---------
+ 1 file changed, 20 insertions(+), 16 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/mmc/sdhci-pxa.yaml b/Documentation/devicetree/bindings/mmc/sdhci-pxa.yaml
+index 4869ddef36fd..e7c06032048a 100644
+--- a/Documentation/devicetree/bindings/mmc/sdhci-pxa.yaml
++++ b/Documentation/devicetree/bindings/mmc/sdhci-pxa.yaml
+@@ -30,6 +30,26 @@ allOf:
+           maxItems: 1
+         reg-names:
+           maxItems: 1
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mrvl,pxav1-mmc
++    then:
++      properties:
++        pinctrl-names:
++          description:
++            Optional for supporting PXA168 SDIO IRQ errata to switch CMD pin between
++            SDIO CMD and GPIO mode.
++          items:
++            - const: default
++            - const: state_cmd_gpio
++        pinctrl-0:
++          description:
++            Should contain default pinctrl.
++        pinctrl-1:
++          description:
++            Should switch CMD pin to GPIO mode as a high output.
+ 
+ properties:
+   compatible:
+@@ -62,22 +82,6 @@ properties:
+       - const: io
+       - const: core
+ 
+-  pinctrl-names:
+-    description:
+-      Optional for supporting PXA168 SDIO IRQ errata to switch CMD pin between
+-      SDIO CMD and GPIO mode.
+-    items:
+-      - const: default
+-      - const: state_cmd_gpio
+-
+-  pinctrl-0:
+-    description:
+-      Should contain default pinctrl.
+-
+-  pinctrl-1:
+-    description:
+-      Should switch CMD pin to GPIO mode as a high output.
+-
+   mrvl,clk-delay-cycles:
+     description: Specify a number of cycles to delay for tuning.
+     $ref: /schemas/types.yaml#/definitions/uint32
+-- 
+2.50.1
+

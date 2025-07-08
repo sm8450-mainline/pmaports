@@ -1,7 +1,7 @@
-From a6e97443320fca535c1b43f6dff27a41f7ac746e Mon Sep 17 00:00:00 2001
+From 27a92f7d52aefe3122bd9afe42e1fa47f1ecc303 Mon Sep 17 00:00:00 2001
 From: Karel Balej <balejk@matfyz.cz>
 Date: Sat, 28 Oct 2023 13:04:01 +0200
-Subject: [PATCH 05/10] dt-bindings: mwifiex: document use with the SD8777
+Subject: [PATCH 06/16] dt-bindings: mwifiex: document use with the SD8777
  chipset
 
 Document the corresponding compatible string for the use of this driver
@@ -34,5 +34,5 @@ index 930b700b73d0..4f1c231bae01 100644
        - marvell,sd8897
        - marvell,sd8978
 -- 
-2.49.0
+2.50.1
 

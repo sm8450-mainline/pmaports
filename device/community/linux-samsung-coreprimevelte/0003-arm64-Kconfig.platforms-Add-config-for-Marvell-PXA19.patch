@@ -1,7 +1,7 @@
-From e36e75d3689f0226b2c1c6e1dc1d9e3105d5591b Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Duje=20Mihanovi=C4=87?= <duje.mihanovic@skole.hr>
-Date: Fri, 21 Jul 2023 22:37:49 +0200
-Subject: [PATCH 02/10] arm64: Kconfig.platforms: Add config for Marvell
+From 93852f0271061cf50067eaa22685d9c959cbce15 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Duje=20Mihanovi=C4=87?= <duje@dujemihanovic.xyz>
+Date: Mon, 7 Jul 2025 16:19:49 +0200
+Subject: [PATCH 03/16] arm64: Kconfig.platforms: Add config for Marvell
  PXA1908 platform
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -9,13 +9,14 @@ Content-Transfer-Encoding: 8bit
 
 Add ARCH_MMP configuration option for Marvell PXA1908 SoC.
 
-Signed-off-by: Duje Mihanović <duje.mihanovic@skole.hr>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Duje Mihanović <duje@dujemihanovic.xyz>
 ---
  arch/arm64/Kconfig.platforms | 8 ++++++++
  1 file changed, 8 insertions(+)
 
 diff --git a/arch/arm64/Kconfig.platforms b/arch/arm64/Kconfig.platforms
-index 02f9248f7c84..5cca61f4f4d7 100644
+index 8b76821f190f..858ccd72eb35 100644
 --- a/arch/arm64/Kconfig.platforms
 +++ b/arch/arm64/Kconfig.platforms
 @@ -178,6 +178,14 @@ config ARCH_MESON
@@ -34,5 +35,5 @@ index 02f9248f7c84..5cca61f4f4d7 100644
  	bool "Marvell EBU SoC Family"
  	select ARMADA_AP806_SYSCON
 -- 
-2.49.0
+2.50.1
 

@@ -1,35 +1,18 @@
-From 6d6d401236ce807f88d61ac76adcca25f4e03dcc Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Duje=20Mihanovi=C4=87?= <duje.mihanovic@skole.hr>
-Date: Mon, 25 Dec 2023 22:23:27 +0100
-Subject: [PATCH 08/10] fill in dt nodes
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
-DONOTMERGE: arm64: dts: samsung,coreprimevelte: add touchscreen
-
-arm64: dts: samsung,coreprimevelte: Add KTD2801 binding
-
-Add Kinetic KTD2801 backlight driver binding to samsung,coreprimevelte.
-
-Signed-off-by: Duje Mihanović <duje.mihanovic@skole.hr>
-
-DONOTMERGE: arm64: dts: samsung,coreprimevelte: add SDIO
+From f91280fe60450f6645becf87dcbef22e5477a8c7 Mon Sep 17 00:00:00 2001
+From: Karel Balej <balejk@matfyz.cz>
+Date: Mon, 25 Dec 2023 22:45:29 +0100
+Subject: [PATCH 12/16] DONOTMERGE: arm64: dts: samsung,coreprimevelte: add
+ SDIO
 
 This includes WiFi and Bluetooth.
-
-arm64: dts: samsung-coreprimevelte: enable eMMC
-
-arm64: dts: samsung-coreprimevelte: add vibrator
 ---
- .../pxa1908-samsung-coreprimevelte.dts        | 270 +++++++++++++++++-
- arch/arm64/boot/dts/marvell/pxa1908.dtsi      |   7 +
- 2 files changed, 275 insertions(+), 2 deletions(-)
+ .../mmp/pxa1908-samsung-coreprimevelte.dts    | 204 ++++++++++++++++++
+ 1 file changed, 204 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/marvell/pxa1908-samsung-coreprimevelte.dts b/arch/arm64/boot/dts/marvell/pxa1908-samsung-coreprimevelte.dts
-index b9ae01587c49..d6607194922f 100644
---- a/arch/arm64/boot/dts/marvell/pxa1908-samsung-coreprimevelte.dts
-+++ b/arch/arm64/boot/dts/marvell/pxa1908-samsung-coreprimevelte.dts
+diff --git a/arch/arm64/boot/dts/marvell/mmp/pxa1908-samsung-coreprimevelte.dts b/arch/arm64/boot/dts/marvell/mmp/pxa1908-samsung-coreprimevelte.dts
+index 89eedddabadd..067fefc5a7db 100644
+--- a/arch/arm64/boot/dts/marvell/mmp/pxa1908-samsung-coreprimevelte.dts
++++ b/arch/arm64/boot/dts/marvell/mmp/pxa1908-samsung-coreprimevelte.dts
 @@ -10,6 +10,7 @@ / {
  	aliases {
  		mmc0 = &sdh2; /* eMMC */
@@ -38,35 +21,20 @@ index b9ae01587c49..d6607194922f 100644
  		serial0 = &uart0;
  	};
  
-@@ -116,6 +117,27 @@ key-voldown {
- 			gpios = <&gpio 17 GPIO_ACTIVE_LOW>;
- 		};
+@@ -121,6 +122,12 @@ backlight {
+ 		ctrl-gpios = <&gpio 97 GPIO_ACTIVE_HIGH>;
+ 		max-brightness = <210>;
  	};
-+
-+	backlight {
-+		compatible = "kinetic,ktd2801";
-+		ctrl-gpios = <&gpio 97 GPIO_ACTIVE_HIGH>;
-+		max-brightness = <210>;
-+	};
 +
 +	wlan_pwrseq: pwrseq0 {
 +		compatible = "mmc-pwrseq-simple";
 +		powerdown-gpios = <&gpio 57 GPIO_ACTIVE_HIGH>;
 +		reset-gpios = <&gpio 58 GPIO_ACTIVE_HIGH>;
 +	};
-+
-+	vibrator {
-+		compatible = "pwm-vibrator";
-+		pwm-names = "enable";
-+		pwms = <&pwm 100000>;
-+		enable-gpios = <&gpio 20 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vibrator_pin>;
-+	};
  };
  
  &smmu {
-@@ -287,6 +309,162 @@ sdh0_pins_2: sdh0-pins-2 {
+@@ -292,6 +299,161 @@ sdh0_pins_2: sdh0-pins-2 {
  		pinctrl-single,input-schmitt-enable = <0x40 0 0x40 0x40>;
  		pinctrl-single,low-power-mode = <0x208 0x388>;
  	};
@@ -222,86 +190,16 @@ index b9ae01587c49..d6607194922f 100644
 +		pinctrl-single,drive-strength = <0x1000 0x1800>;
 +		pinctrl-single,bias-pullup = <0x8000 0xc000 0x8000 0xc000>;
 +		pinctrl-single,bias-pulldown = <0xa000 0xa000 0 0xa000>;
-+		pinctrl-single,input-schmitt = <0 0x30>;
-+		pinctrl-single,input-schmitt-enable = <0x40 0 0x40 0x40>;
++		pinctrl-single,input-schmitt = <0x40 0 0x40 0x70>;
 +		pinctrl-single,low-power-mode = <0 0x388>;
 +	};
  };
  
  &uart0 {
-@@ -304,10 +482,53 @@ &twsi1 {
- 
- &twsi2 {
- 	status = "okay";
-+
-+	pmic@30 {
-+		compatible = "marvell,88pm886-a1";
-+		reg = <0x30>;
-+		interrupts = <0 4 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-parent = <&gic>;
-+		wakeup-source;
-+
-+		regulators {
-+			ldo2: ldo2 {
-+				regulator-min-microvolt = <1900000>;
-+				regulator-max-microvolt = <3100000>;
-+			};
-+
-+			ldo6: ldo6 {
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1200000>;
-+				regulator-max-microvolt = <3300000>;
-+			};
-+
-+			ldo14: ldo14 {
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1200000>;
-+				regulator-max-microvolt = <3300000>;
-+			};
-+
-+			/* for sdh1 */
-+			ldo15: ldo15 {
-+				regulator-always-on;
-+			};
-+		};
-+	};
+@@ -380,3 +542,45 @@ &sdh0 {
+ 	vqmmc-supply = <&ldo6>;
+ 	vmmc-supply = <&ldo14>;
  };
- 
- &twsi3 {
- 	status = "okay";
-+
-+	touchscreen@50 {
-+		compatible = "imagis,ist3032c";
-+		reg = <0x50>;
-+		interrupt-parent = <&gpio>;
-+		interrupts = <72 IRQ_TYPE_EDGE_FALLING>;
-+		vdd-supply = <&ldo2>;
-+		touchscreen-size-x = <480>;
-+		touchscreen-size-y = <800>;
-+		linux,keycodes = <KEY_APPSELECT>, <KEY_BACK>;
-+	};
- };
- 
- &usb {
-@@ -315,8 +536,9 @@ &usb {
- };
- 
- &sdh2 {
--	/* Disabled for now because initialization fails with -ETIMEDOUT. */
--	status = "disabled";
-+	pinctrl-names = "default", "state_uhs";
-+	pinctrl-0 = <&sdh2_pins_0 &sdh2_pins_1 &sdh2_pins_2>;
-+	pinctrl-1 = <&sdh2_fast_pins_0 &sdh2_fast_pins_1 &sdh2_fast_pins_2>;
- 	bus-width = <8>;
- 	non-removable;
- 	mmc-ddr-1_8v;
-@@ -329,4 +551,48 @@ &sdh0 {
- 	cd-inverted;
- 	bus-width = <4>;
- 	wp-inverted;
-+	vqmmc-supply = <&ldo6>;
-+	vmmc-supply = <&ldo14>;
-+};
 +
 +&sdh1 {
 +	status = "okay";
@@ -343,25 +241,7 @@ index b9ae01587c49..d6607194922f 100644
 +			0xce 0xba 0x00 0x00 0x00 0x2d 0xc6 0xc0 0x00 0x00 0x00 0x00
 +			0x00 0xf0 0x00 0x00>;
 +	};
- };
-diff --git a/arch/arm64/boot/dts/marvell/pxa1908.dtsi b/arch/arm64/boot/dts/marvell/pxa1908.dtsi
-index cf2b9109688c..94fe11dd77b4 100644
---- a/arch/arm64/boot/dts/marvell/pxa1908.dtsi
-+++ b/arch/arm64/boot/dts/marvell/pxa1908.dtsi
-@@ -195,6 +195,13 @@ gpio@100 {
- 				};
- 			};
- 
-+			pwm: pwm@1ac00 {
-+				compatible = "marvell,pxa250-pwm";
-+				reg = <0x1ac00 0x10>;
-+				#pwm-cells = <1>;
-+				clocks = <&apbc PXA1908_CLK_PWM3>;
-+			};
-+
- 			pmx: pinmux@1e000 {
- 				compatible = "marvell,pxa1908-padconf", "pinconf-single";
- 				reg = <0x1e000 0x330>;
++};
 -- 
-2.49.0
+2.50.1
 

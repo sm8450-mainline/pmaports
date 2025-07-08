@@ -1,7 +1,7 @@
-From d573a9b9731267edd933edca7edae50b2254b777 Mon Sep 17 00:00:00 2001
+From 565578d4169fb88b0a26ecace5bc757b579e28b2 Mon Sep 17 00:00:00 2001
 From: Karel Balej <balejk@matfyz.cz>
 Date: Sat, 28 Oct 2023 13:09:06 +0200
-Subject: [PATCH 06/10] net: mwifiex: add support for the SD8777 chipset
+Subject: [PATCH 07/16] net: mwifiex: add support for the SD8777 chipset
 
 Marvell SD8777 is a wireless chipset used for instance in the PXA1908
 SoC found for example in the samsung,coreprimevelte smartphone, with
@@ -38,7 +38,7 @@ index b182f7155d66..a7bd2c5735f6 100644
  
  	  If you choose to build it as a module, it will be called
 diff --git a/drivers/net/wireless/marvell/mwifiex/sdio.c b/drivers/net/wireless/marvell/mwifiex/sdio.c
-index 490ffd981164..48a40a04f50b 100644
+index c1fe48448839..a3db72b40eaa 100644
 --- a/drivers/net/wireless/marvell/mwifiex/sdio.c
 +++ b/drivers/net/wireless/marvell/mwifiex/sdio.c
 @@ -318,6 +318,21 @@ static const struct mwifiex_sdio_card_reg mwifiex_reg_sd89xx = {
@@ -113,5 +113,5 @@ index 7cddfdac2f57..c49138fcd79a 100644
  #define SDIO_DEVICE_ID_MARVELL_8887_WLAN	0x9135
  #define SDIO_DEVICE_ID_MARVELL_8887_BT		0x9136
 -- 
-2.49.0
+2.50.1
 

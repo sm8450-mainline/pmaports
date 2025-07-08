@@ -1,32 +1,35 @@
-From ba2b00d1d612aad8a30b6e5e9be05f646d31eae3 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Duje=20Mihanovi=C4=87?= <duje.mihanovic@skole.hr>
-Date: Fri, 21 Jul 2023 22:37:52 +0200
-Subject: [PATCH 04/10] MAINTAINERS: add myself as Marvell PXA1908 maintainer
+From 0bc1dbacab6f4189766bf481237b3e4c4bb7330d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Duje=20Mihanovi=C4=87?= <duje@dujemihanovic.xyz>
+Date: Mon, 7 Jul 2025 16:19:50 +0200
+Subject: [PATCH 05/16] MAINTAINERS: add myself as Marvell PXA1908 maintainer
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 Add myself as the maintainer for Marvell PXA1908 SoC support.
 
-Signed-off-by: Duje Mihanović <duje.mihanovic@skole.hr>
+Signed-off-by: Duje Mihanović <duje@dujemihanovic.xyz>
 ---
- MAINTAINERS | 9 +++++++++
- 1 file changed, 9 insertions(+)
+Changes in v16:
+- Update email
+- Fix device tree path
+---
+ MAINTAINERS | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 00e94bec401e..09ff1ea93aca 100644
+index dd844ac8d910..7cb86399a67f 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -2671,6 +2671,15 @@ F:	drivers/irqchip/irq-mvebu-*
+@@ -2718,6 +2718,14 @@ F:	drivers/irqchip/irq-mvebu-*
  F:	drivers/pinctrl/mvebu/
  F:	drivers/rtc/rtc-armada38x.c
  
 +ARM/Marvell PXA1908 SOC support
-+M:	Duje Mihanović <duje.mihanovic@skole.hr>
++M:	Duje Mihanović <duje@dujemihanovic.xyz>
 +L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
 +S:	Maintained
-+T:	git https://gitlab.com/LegoLivesMatter/linux
-+F:	arch/arm64/boot/dts/marvell/pxa1908*
++F:	arch/arm64/boot/dts/marvell/mmp/
 +F:	drivers/clk/mmp/clk-pxa1908*.c
 +F:	include/dt-bindings/clock/marvell,pxa1908.h
 +
@@ -34,5 +37,5 @@ index 00e94bec401e..09ff1ea93aca 100644
  M:	Eddie Huang <eddie.huang@mediatek.com>
  M:	Sean Wang <sean.wang@mediatek.com>
 -- 
-2.49.0
+2.50.1
 

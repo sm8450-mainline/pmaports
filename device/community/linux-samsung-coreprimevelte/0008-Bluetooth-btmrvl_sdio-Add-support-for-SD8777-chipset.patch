@@ -1,7 +1,7 @@
-From b44fdb5aee57ce73ed4d694dd53068a941a49e84 Mon Sep 17 00:00:00 2001
+From f8e6359a25291ce8cb0f20c78660a5a3203e5282 Mon Sep 17 00:00:00 2001
 From: blacksilver <blacksilver@debdan.net>
 Date: Wed, 1 Nov 2023 10:33:06 +0100
-Subject: [PATCH 07/10] Bluetooth: btmrvl_sdio: Add support for SD8777 chipset
+Subject: [PATCH 08/16] Bluetooth: btmrvl_sdio: Add support for SD8777 chipset
 
 Support for Marvell's chipset SD8777 is added.
 Existing btmrvl_reg_87xx register definition is reused.
@@ -69,5 +69,5 @@ index c49138fcd79a..57b1a3e69fb6 100644
  #define SDIO_DEVICE_ID_MARVELL_8887_WLAN	0x9135
  #define SDIO_DEVICE_ID_MARVELL_8887_BT		0x9136
 -- 
-2.49.0
+2.50.1
 
