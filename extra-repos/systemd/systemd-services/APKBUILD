@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=75
+pkgver=76
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -66,6 +66,7 @@ subpackages="
 	modemmanager-systemd:_service
 	msm-modem-systemd:_service
 	nftables-systemd:_service
+	nginx-systemd:_service
 	openssh-server-pam-systemd:_service
 	pd-mapper-systemd:_service
 	plasma-mobile-systemd:_service
@@ -175,6 +176,7 @@ _mmsd_tng_sources="user/mmsd-tng.service"
 _modemmanager_sources="system/ModemManager.service"
 _msm_modem_sources="system/msm-modem-uim-selection.service"
 _nftables_sources="system/nftables.service"
+_nginx_sources="system/nginx.service" # Based on arch's service: https://gitlab.archlinux.org/archlinux/packaging/packages/nginx/-/blob/main/nginx.service
 _openssh_server_pam_sources="system/sshd.service system/sshd@.service system/sshdgenkeys.service"
 _pd_mapper_sources="system/pd-mapper.service"
 _plasma_mobile_sources="system/plasma-mobile.service"
@@ -273,6 +275,7 @@ source="$(flatpath \
 	$_modemmanager_sources \
 	$_msm_modem_sources \
 	$_nftables_sources \
+	$_nginx_sources \
 	$_openssh_server_pam_sources \
 	$_pd_mapper_sources \
 	$_plasma_mobile_sources \
@@ -414,6 +417,7 @@ becb3bb17995f44b4021d05109130a00d0eba3d698eaf204a1f8d325741faa729d4ac7fedf0446b9
 5eab6a59c81232b188df45482e325b2d1cb9e038ca147a1b6983c1c095d8194fba804793c5e291b201a820976c8f506aadd2daf7c52fe573a3af708fc9984641  system-ModemManager.service
 a12d8d6994ae6e46b0d131c9f5c475ccc70ab7aaf5839b19c1917410fb3c90a208bc0c6e07c90cf251ea6e445741af83a9f77bf9fcb30490bb0fbfc07aa8cbb9  system-msm-modem-uim-selection.service
 12bb9aa2a2ab8d4b21c72a785b41057eb16a27eca5718cd03a987a50b77d669fe90abafae48c68b41616f31b1953853b3b4a74db4bc3cdeccacc00df113de204  system-nftables.service
+cf85311596958ebbd0b9744e0323a69b06375d72d355274fda190d9465f5511344304112d542e13950e21c1cdb7664d3138dfa64895a5401e89e3ec3dcf118f7  system-nginx.service
 fa445c4a53214524baed4e9c52a5463592a074f88a5a286eacb60d0907c0545f725afde23abd68cf611067add80c2ccb289a381fc5ff6a5f654ea49c81f02fe8  system-sshd.service
 6f1db26dbbcf96a5e14996cc468f1911c51a46fc3f70552af3591c0dfaaa043135d137d435818a2a2cce656f09fa305337c3c86121a5109dc20f0326a2e0ec15  system-sshd@.service
 c0badea3905c1d53d213fbfe11d25b556a2e484fe77eb50e9f4d42e25b67b56a0804e7d8e1b7731cd280cbb3525b4c60311817609381e2308d9f2dfb7c0d7072  system-sshdgenkeys.service
