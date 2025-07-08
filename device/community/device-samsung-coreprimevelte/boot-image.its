@@ -18,7 +18,7 @@
 
 		fdt {
 			description = "Device tree";
-			data = /incbin/("/boot/dtbs/marvell/pxa1908-samsung-coreprimevelte.dtb");
+			data = /incbin/("/boot/dtbs/marvell/mmp/pxa1908-samsung-coreprimevelte.dtb");
 			type = "flat_dt";
 			compression = "none";
 		};

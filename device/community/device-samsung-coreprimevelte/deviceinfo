@@ -19,7 +19,7 @@ deviceinfo_gpu_accelerated="true"
 
 # Bootloader related
 deviceinfo_create_initfs_extra="true"
-deviceinfo_dtb="marvell/pxa1908-samsung-coreprimevelte"
+deviceinfo_dtb="marvell/mmp/pxa1908-samsung-coreprimevelte"
 deviceinfo_generate_uboot_fit_images="true"
 deviceinfo_flash_method="heimdall-bootimg"
 deviceinfo_generate_bootimg="true"
