@@ -2,7 +2,7 @@
 # Kernel config based on: arch/arm64/configs/pinenote_defconfig
 # Maintainer: Antoine Martin (ayakael) <dev@ayakael.net>
 pkgname=linux-pine64-pinenote
-pkgver=6.15.2
+pkgver=6.15.5
 _kernver=${pkgver%.*}
 pkgrel=0
 pkgdesc="Pine64 PineNote close to mainline fork"
@@ -65,7 +65,7 @@ package() {
 
 sha512sums="
 d03788ffa8d8ae1b84ef1286bb44a08fc01432e509dfec6cccae5c5a5a47201d378aec2bcd21e6f0bbd1e625b26f47780c06ee9c1cef3775358f98b160923f30  linux-6.15.tar.xz
-545f2d859ad9d3018bf2a44b6ce8b341e32407a9300a47b672d426ebd64b866e2bc3f334f0fad9cce7ea7e64ba139ce133e966fb6ba7a76219fc1407f936ce74  linux-pine64-pinenote-6.15.2.patch.xz
+ff35f126fc24cd9fc2ba7dafb10e2c4dc4643a2165893d6dd07ce0ab49bf33d4b67ab33b32875b74371749b5e6f93a061114c9837bdb48203d50b5ec55db5a65  linux-pine64-pinenote-6.15.5.patch.xz
 4d35ee18a5631b8cdb381caad81fcc8ab64f050e197bfda168c7f4f12339eced201b8cc89f8f7353b405fde7e9734de04c4c63f7413db9e73d3f70d3e366a9b5  linux-pine64-pinenote-6.15-fa594ab9a7c3f6cf1e1fb69a112d709472bddba7.patch
 522c7c38800ac0479f6e99e4e97ba88add5021fe6ab6eeba6e604a37635e48622c113919a425607edbe0abf2aa6bb95b2e824d5d2fe293e149fe588e05374122  pmos-kconfig-default.patch
 e45862d4a1eeae61cd97f6878b19035fbadbdd7618d003d43527ca0fc8c74cc835e454ef5e4ef9ca40b82c3b7a93f469fdb604537931ba685ca7a9748c14bda3  config-pine64-pinenote.aarch64
