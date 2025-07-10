@@ -1,4 +1,4 @@
-From 5d5544e3a06ad42e3677d19ce42eaf81d7196739 Mon Sep 17 00:00:00 2001
+From 8f3a655f315dd116820c945be6cd335b7db45c24 Mon Sep 17 00:00:00 2001
 From: Jernej Skrabec <jernej.skrabec@siol.net>
 Date: Sat, 24 Aug 2019 01:36:44 +0200
 Subject: [PATCH] eMMC workaround
@@ -34,5 +34,5 @@ index 30b596562281..c9b44a5ae1c0 100644
  
  	ret = mmc_of_parse(mmc);
 -- 
-2.48.1
+2.50.0
 

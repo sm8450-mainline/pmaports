@@ -1,4 +1,4 @@
-From 03c1f78fe422398c41f0a9736d09beb96c6cdc71 Mon Sep 17 00:00:00 2001
+From b4e7f2625de37f3f1a35b194b3e1bf656704af24 Mon Sep 17 00:00:00 2001
 From: Maxim Karasev <begs@disroot.org>
 Date: Sat, 4 Sep 2021 14:56:01 +0300
 Subject: [PATCH] arm64: dts: allwinner: orangepi-3: fix ethernet
@@ -10,7 +10,7 @@ patch from LibreELEC tree.
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi-3.dts b/arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi-3.dts
-index d1f5daf63484..54f27ecff324 100644
+index e0c2b097cf46..d9dd9cbf68f9 100644
 --- a/arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi-3.dts
 +++ b/arch/arm64/boot/dts/allwinner/sun50i-h6-orangepi-3.dts
 @@ -145,7 +145,7 @@ hdmi_out_con: endpoint {
@@ -34,5 +34,5 @@ index d1f5daf63484..54f27ecff324 100644
  };
  
 -- 
-2.48.1
+2.50.0
 

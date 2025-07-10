@@ -1,4 +1,4 @@
-From 79d85f9fb8db684e8d941ed792b83cfcda8675d7 Mon Sep 17 00:00:00 2001
+From 0b21ac49d7f34d9ef23c51dbf8a36f942442b0b3 Mon Sep 17 00:00:00 2001
 From: Clayton Craft <clayton@craftyguy.net>
 Date: Wed, 16 Dec 2020 20:16:14 -0800
 Subject: [PATCH] dts: pinephone: drop modem-power node
@@ -169,5 +169,5 @@ index 231dca430e40..f9881b9923af 100644
  		regulator-max-microvolt = <3500000>;
  		gpio = <&r_pio 0 7 GPIO_ACTIVE_HIGH>; /* PL7 */
 -- 
-2.48.1
+2.50.0
 

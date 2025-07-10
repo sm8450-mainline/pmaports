@@ -1,4 +1,4 @@
-From 27b6053c340b2f733d891567d6829f60cf55095a Mon Sep 17 00:00:00 2001
+From e6b267cfd99bffad8c87c97528c90310357d5e67 Mon Sep 17 00:00:00 2001
 From: JuniorJPDJ <git@juniorjpdj.pl>
 Date: Tue, 23 Mar 2021 12:27:30 +0100
 Subject: [PATCH] drm: panel: simple: Add Hannstar TQTM070CB501
@@ -8,10 +8,10 @@ Subject: [PATCH] drm: panel: simple: Add Hannstar TQTM070CB501
  1 file changed, 27 insertions(+)
 
 diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
-index 222c170dde8b..a6d4a28b8e2d 100644
+index 10f3221cf00b..28abaed4499e 100644
 --- a/drivers/gpu/drm/panel/panel-simple.c
 +++ b/drivers/gpu/drm/panel/panel-simple.c
-@@ -2389,6 +2389,30 @@ static const struct panel_desc hannstar_hsd101pww2 = {
+@@ -2449,6 +2449,30 @@ static const struct panel_desc hannstar_hsd101pww2 = {
  	.connector_type = DRM_MODE_CONNECTOR_LVDS,
  };
  
@@ -42,7 +42,7 @@ index 222c170dde8b..a6d4a28b8e2d 100644
  static const struct drm_display_mode hitachi_tx23d38vm0caa_mode = {
  	.clock = 33333,
  	.hdisplay = 800,
-@@ -4815,6 +4839,9 @@ static const struct of_device_id platform_of_match[] = {
+@@ -5037,6 +5061,9 @@ static const struct of_device_id platform_of_match[] = {
  	}, {
  		.compatible = "hit,tx23d38vm0caa",
  		.data = &hitachi_tx23d38vm0caa
@@ -53,5 +53,5 @@ index 222c170dde8b..a6d4a28b8e2d 100644
  		.compatible = "innolux,at043tn24",
  		.data = &innolux_at043tn24,
 -- 
-2.48.1
+2.50.0
 
