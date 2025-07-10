@@ -1,5 +1,5 @@
 # Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
-# https://wiki.postmarketos.org/wiki/Pmbootstrap:_Cross_Compiling
+# https://docs.postmarketos.org/pmbootstrap/cross_compiling.html
 #
 # Wrapper for the "crossdirect" compilation method.
 # pmbootstrap mounts the native chroot in the foreign arch (e.g. armhf) chroot
@@ -12,21 +12,28 @@
 # -> /native/usr/bin/rustc --target=armv6-alpine-linux-musleabihf ...
 #
 # When building packages in the armhf chroot, PATH will get prepended with
-# "/native/usr/lib/crossdirect/armhf". The end game is of course invoking the
-# cross compiler from the native chroot, running at native speed, whenever
-# calling the compiler from the foreign arch chroot. See crossdirect.c for
-# implementation details of the C version (llvm, fakeroot, rpath). The rust
-# version is implemented as simple shell wrappers.
+# "/native/usr/lib/crossdirect/armhf". The end game is of course invoking
+# programs such as cross compilers and archivers from the native chroot,
+# running at native speed, whenever they get called from the foreign arch
+# chroot. See crossdirect.c for implementation details of the C version (llvm,
+# fakeroot, rpath). The rust version and redirect for archivers are implemented
+# as simple shell wrappers.
 
 pkgname=crossdirect
-pkgver=5.2.0
-pkgrel=1
-pkgdesc="Wrappers to launch native cross compilers in foreign chroots"
+pkgver=5.3.0
+pkgrel=0
+pkgdesc="Wrappers to launch native programs (e.g. cross compilers) in foreign chroots"
 url="https://postmarketOS.org"
 arch="all"
 license="MIT"
 options="!check"
-source="cargo.sh crossdirect.c rustc.sh rust-qemu-linker.sh"
+source="
+	cargo.sh
+	crossdirect.c
+	exec_native.sh
+	rust-qemu-linker.sh
+	rustc.sh
+"
 
 build() {
 	cd "$srcdir"
@@ -64,12 +71,29 @@ package() {
 		g++
 		gcc
 	"
+	_bin_archivers="
+		bzip2
+		gunzip
+		gzip
+		lzip
+		lzma
+		lzop
+		pigz
+		unlzma
+		unpigz
+		unxz
+		unzip
+		xz
+	"
 
 	# Rust wrappers
 	install -Dm755 "$srcdir/rust-qemu-linker.sh" \
 		"$pkgdir/usr/lib/crossdirect/rust-qemu-linker"
 	install -Dm755 "$srcdir/cargo.sh" "$pkgdir/usr/lib/crossdirect/cargo.sh"
 	install -Dm755 "$srcdir/rustc.sh" "$pkgdir/usr/lib/crossdirect/rustc.sh"
+
+	# For archivers
+	install -Dm755 "$srcdir/exec_native.sh" -t "$pkgdir/usr/lib/crossdirect/"
 
 	# Iterate over architectures
 	for _arch in $_archs; do
@@ -89,6 +113,12 @@ package() {
 			ln -s "crossdirect-$_arch" "$_hostspec-$_bin"
 		done
 
+		# Archivers
+		for _bin in $_bin_archivers; do
+			ln -s ../exec_native.sh "$_bin"
+		done
+
+		# Rust
 		ln -s ../cargo.sh cargo
 		ln -s ../rustc.sh rustc
 	done
@@ -97,6 +127,7 @@ package() {
 sha512sums="
 0f4b48f250425dc57f63955fc8b38477d23db793bee367c3fbe03c3d2a559ba576434d07518310db4cae9d90d501af4051b80038b10fae94b980e537fc9374ad  cargo.sh
 b2e602b7fc95ed403d29f0d754879d5f773c39ee33e726bb10cff17b3c088406dac84f2ca6d8ad563c64370007d98af805d6ee9cd4a06fe3d4c61c0cb90c5c0c  crossdirect.c
-de2aa6929bbff5db9132673e667f4525b333d062cb1f7a0597dd924de9e5c7215a9f8e2e6263b6fb5ace06f2c4b64f4ebfd0ede9b78add07c2cd08ec8613e98f  rustc.sh
+a87d91b6e3286ce29fb1f487954e7154f282194691a1bf19b4cd80cca07a9c36aa96306883b1a6671ffbc2b503575a8c9484dccde8c55431845056c6f377bec5  exec_native.sh
 ea9bf8db3810d03d0a7395057f3d6e57f7127d87c55deaedc171c255288f5f3cc6fbcc680a5a1b92786cf573875d5dc22521173799fe2639acc97d0715ff905b  rust-qemu-linker.sh
+de2aa6929bbff5db9132673e667f4525b333d062cb1f7a0597dd924de9e5c7215a9f8e2e6263b6fb5ace06f2c4b64f4ebfd0ede9b78add07c2cd08ec8613e98f  rustc.sh
 "
