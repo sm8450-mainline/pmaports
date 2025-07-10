@@ -48,8 +48,22 @@ build() {
 
 package() {
 	# Architectures and binaries
-	_archs="x86_64 armhf armv7 aarch64 riscv64"
-	_bins="c++ cc cpp g++ gcc clang clang++"
+	_archs="
+		aarch64
+		armhf
+		armv7
+		riscv64
+		x86_64
+	"
+	_bin_compilers="
+		c++
+		cc
+		clang
+		clang++
+		cpp
+		g++
+		gcc
+	"
 
 	# Rust wrappers
 	install -Dm755 "$srcdir/rust-qemu-linker.sh" \
@@ -70,7 +84,7 @@ package() {
 		cp "$srcdir/crossdirect-$_arch" "./"
 
 		# GCC: create compiler symlinks
-		for _bin in $_bins; do
+		for _bin in $_bin_compilers; do
 			ln -s "crossdirect-$_arch" "$_bin"
 			ln -s "crossdirect-$_arch" "$_hostspec-$_bin"
 		done
