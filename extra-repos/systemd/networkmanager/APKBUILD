@@ -3,9 +3,9 @@
 
 maintainer="Jane Rachinger <jane400+pmaports@postmarketos.org>"
 pkgname=networkmanager
-pkgver=9991.52.0
-_pkgver=1.52.0
-pkgrel=2
+pkgver=9991.52.1
+_pkgver=1.52.1
+pkgrel=0
 pkgdesc="Network Management daemon"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 # armhf: pmb#2618
@@ -235,7 +235,7 @@ _default_plugin() {
 }
 
 sha512sums="
-6669467bad7a4965b92124506d25649bd6c95e90c34213edb3f854df9a163507ac5dd381ff53800254a2db703f23233f8dc5b59a75042532bd573fc8c7022158  networkmanager-1.52.0.tar.gz
+ecbc4675d8c3972836920a76ba8e0ef14982785b72fd5de8213841490800c352c5ecf22091bbb5d3dfc1f93549c18564578149fccb4afbf6da59983d0d40c45f  networkmanager-1.52.1.tar.gz
 0f79016bf717dea43830962f524deae8d1cedc274376e40bd912ebe63208c5b1c3b7a5aa14379da19020c587dbd5588df2f0066ca1540070a226983a43e4159b  networkmanager.conf
 9820ed2ead0af689644842de57657bb10330a1eaff0e85b21ae9913f55e399e47d8b41b0a12956f30de80272b4424c6e55f33acbc88e156879003a260bf576f6  networkmanager.rules
 e321f6f072901c4076543a6d1c4c46cf4a16b24be5fea6167c878bfeb9eced801fae94925ff208132f22a69a34d0f036b30f7b9253dea1757b98b40cbe3a896d  0001-hack-wifi-Disable-WPA-PSK-SHA256-for-brcmfmac-in-AP-.patch
