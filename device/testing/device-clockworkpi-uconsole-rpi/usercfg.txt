@@ -4,7 +4,6 @@ dtoverlay=clockworkpi-uconsole-cm3
 dtoverlay=vc4-kms-v3d
 dtparam=spi=on
 dtoverlay=spi-gpio35-39
-gpio=11=op,dh
 enable_uart=1
 
 [pi4]
@@ -34,6 +33,8 @@ dtparam=audio=on
 dtoverlay=audremap,pins_12_13
 dtoverlay=dwc2,dr_mode=host
 dtparam=ant2
+# enables built-in speakers
+gpio=11=op,dh
 initramfs initramfs
 
 ##only edit the section of the pi you have, other section will be ignored.
