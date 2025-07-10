@@ -3,7 +3,7 @@
 pkgname=kwin
 pkgver=99996.4.2
 _pkgver=6.4.2
-pkgrel=0
+pkgrel=1
 pkgdesc="An easy to use, but flexible, composited Window Manager"
 # armhf blocked by qt6-qtdeclarative and pmb#2618
 arch="all !armhf !armv7"
