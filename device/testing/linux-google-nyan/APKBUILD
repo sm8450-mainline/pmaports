@@ -2,7 +2,7 @@
 # Co-Maintainer: Segfault <awarnecke002@hotmail.com>
 pkgname=linux-google-nyan
 pkgver=6.6.17
-pkgrel=6
+pkgrel=7
 pkgdesc="Mainline kernel fork for Google Nyan Chromebooks"
 arch="armv7"
 _carch="arm"
@@ -70,7 +70,7 @@ package() {
 
 sha512sums="
 91a6ec0d1e371cad5703bc65016fd930a5da74ca4d862eecdab08846b455b42a6845531322af65d8805210d88dd74c327ca6de1166ed250aa546918e5412c470  linux-6.6.17.tar.xz
-739ca0604344267ab82fc5d80287ca20e1048e4e0e192d3dec385d605e1f1c23338b870466352b9cdabdcbe179bd5facf9f44cf89ee868733e902435563647a4  config-google-nyan.armv7
+18bb48c07971cae859bd51195dd1df01bcb703170e316329da2c1c8459d1ea730fb5e5125aba7a414315e9f095795567b1c2aa51a0ff66c36d213ee6abd02915  config-google-nyan.armv7
 4e46d412d6a342044ad348e19cb75b8b90d57fe345eaa341e1c960f73f0c1ef3dd09196eccc3c413e199ac366eb512770e96b60d6a3ad44ec80a930d732d0fd4  0001-ARM-dts-tegra-nyan-add-mmc-aliases.patch
 f62ce358aed7273320f0163fbaf7425b4800945ac3cdb6a57062b0087c5b2799131d0a48fa1580bff33a4ae33c1ee9ae2c5771887b8b460be2596c7605234a0f  0002-ARM-tegra-nyan-fix-mic-jack-detection.patch
 a43ecb9f410d2c3168ada6c4788174154627fe6568e9048def2b6ea827b0c7b676f148352e39f6985172bcb85b4d0f77376ec7f94ba33716671f99fe20923504  0003-Revert-spi-Reintroduce-spi_set_cs_timing.patch
