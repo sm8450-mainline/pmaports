@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=77
+pkgver=78
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -84,6 +84,7 @@ subpackages="
 	syncthing-systemd:_service
 	tailscale-systemd:_service
 	tinydm-systemd:_service
+	tinysparql-systemd:_service
 	tqftpserv-systemd:_service
 	tuned-systemd:_service
 	tuned-ppd-systemd:_service
@@ -196,6 +197,7 @@ _sleep_inhibitor_sources="system/sleep-inhibitor.service"
 _syncthing_sources="user/syncthing.service"  # From https://github.com/syncthing/syncthing/blob/main/etc/linux-systemd/user/syncthing.service
 _tailscale_sources="system/tailscaled.service etc/default/tailscaled"
 _tinydm_sources="system/tinydm.service"  # see issue tinydm#11
+_tinysparql_sources="user/tinysparql-xdg-portal-3.service"  # From https://gitlab.gnome.org/GNOME/tinysparql/-/blob/main/src/portal/tracker-xdg-portal.service.in
 _tqftpserv_sources="system/tqftpserv.service"
 _tuned_sources="system/tuned.service"  # From https://github.com/redhat-performance/tuned/blob/master/tuned.service
 _tuned_ppd_sources="system/tuned-ppd.service"  # From https://github.com/redhat-performance/tuned/blob/master/tuned/ppd/tuned-ppd.service
@@ -299,6 +301,7 @@ source="$(flatpath \
 	$_syncthing_sources \
 	$_tailscale_sources \
 	$_tinydm_sources \
+	$_tinysparql_sources \
 	$_tqftpserv_sources \
 	$_tuned_sources \
 	$_tuned_ppd_sources \
@@ -446,6 +449,7 @@ be9df5e3fd9c88ec1a8db4aa2d9e8075d74ee3d2670aa3cfc611df3cff4d4041ac888a0338c9d5f1
 41547eb369937348378e898e0dda7151552056107f4daab5a8a137a1b846560afa923cd345037b4f96bc9cdf2a7f66211a346b77229cc07ce2d0b634ff40dfe7  system-tailscaled.service
 de63ecafaffc675f21d2a4b1e6b7e2c5464c03f7b2f79094d7f719c295190ac28b3cd85ba99a17bb9042d77ec323a6ffb5f108e33d28b6e7820d09250daadd57  etc-default-tailscaled
 23f854fa2d0e0cb4de54db8605e549bb32061470ea7fa8ac16d474149be635e2b20a815c4ea8088e583693d7f515651ad2872b45f3b38a762f686b977d4fc49d  system-tinydm.service
+7adde19af39f218b5daf81a356ed76c9311d48552d6aa5998535e34fc8e6217947e5b9722e7085b6f2969a9a64be467c0715ef11163c9ea1d437a2d04ef8288b  user-tinysparql-xdg-portal-3.service
 c569b27925297672c479e12a6425abdf5791886fff77c2c2b67b7aa9277eb0a22e7b95b52dbc225870c97460d0988a4dae18ed864e19096c704c0895de55b699  system-tqftpserv.service
 a6154846b26445d4da8ef59364b8b43a2d64db7edc6726f094ff0f8688c832444a1e666c77a142bb66c11c226b45f29ad2000395bf69662fbbce9044c7dcadb0  system-tuned.service
 8d55230785dab9d37abc57b996af962333f493c516285f1b674788659915a5b83c7de48773da918ac7cbcc49b02c833c2e36d19e29b48911c96315b8927bcf45  system-tuned-ppd.service
