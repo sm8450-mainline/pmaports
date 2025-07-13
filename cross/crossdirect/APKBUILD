@@ -21,7 +21,7 @@
 
 pkgname=crossdirect
 pkgver=5.3.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Wrappers to launch native programs (e.g. cross compilers) in foreign chroots"
 url="https://postmarketOS.org"
 arch="all"
@@ -38,7 +38,7 @@ source="
 build() {
 	cd "$srcdir"
 	# Architectures and binaries
-	_archs="x86_64 armhf armv7 aarch64 riscv64"
+	_archs="x86_64 armhf armv7 aarch64 ppc64le riscv64"
 	for _arch in $_archs; do
 		[ "$_arch" == "$CARCH" ] && continue
 		_hostspec="$(arch_to_hostspec $_arch)"
@@ -59,6 +59,7 @@ package() {
 		aarch64
 		armhf
 		armv7
+		ppc64le
 		riscv64
 		x86_64
 	"

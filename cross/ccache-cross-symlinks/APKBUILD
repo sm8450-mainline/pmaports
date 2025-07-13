@@ -5,7 +5,7 @@
 
 pkgname=ccache-cross-symlinks
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc="Enable ccache for cross-compilers with symlinks"
 url="https://ccache.samba.org/"
 arch="noarch"
@@ -15,7 +15,7 @@ options="!check"
 
 package() {
 	# Keep in sync with pmb.config.build_device_architectures
-	local _archs="armhf armv7 aarch64 x86_64 x86 riscv64"
+	local _archs="armhf armv7 aarch64 x86_64 x86 riscv64 ppc64le"
 
 	local _bins="c++ cc cpp g++ gcc clang clang++"
 	mkdir -p "$pkgdir/usr/lib/ccache/bin"
