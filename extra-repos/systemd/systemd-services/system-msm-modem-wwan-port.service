@@ -1,0 +1,13 @@
+[Unit]
+Description=MSM Modem WWAN Port
+Before=ModemManager.service
+After=rmtfs.service
+Requires=rmtfs.service
+
+[Service]
+Type=notify
+ExecStart=/usr/libexec/msm-modem-wwan-port
+
+[Install]
+WantedBy=multi-user.target
+RequiredBy=ModemManager.service

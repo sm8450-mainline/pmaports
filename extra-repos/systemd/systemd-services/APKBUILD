@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=78
+pkgver=79
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -66,6 +66,7 @@ subpackages="
 	mmsd-tng-systemd:_service
 	modemmanager-systemd:_service
 	msm-modem-systemd:_service
+	msm-modem-wwan-port-systemd:_service
 	nftables-systemd:_service
 	nginx-systemd:_service
 	openssh-server-pam-systemd:_service
@@ -179,6 +180,7 @@ _mce_sources="system/mce.service" # From mce upstream
 _mmsd_tng_sources="user/mmsd-tng.service"
 _modemmanager_sources="system/ModemManager.service"
 _msm_modem_sources="system/msm-modem-uim-selection.service"
+_msm_modem_wwan_port_sources="system/msm-modem-wwan-port.service"
 _nftables_sources="system/nftables.service"
 _nginx_sources="system/nginx.service" # Based on arch's service: https://gitlab.archlinux.org/archlinux/packaging/packages/nginx/-/blob/main/nginx.service
 _openssh_server_pam_sources="system/sshd.service system/sshd@.service system/sshdgenkeys.service"
@@ -283,6 +285,7 @@ source="$(flatpath \
 	$_mmsd_tng_sources \
 	$_modemmanager_sources \
 	$_msm_modem_sources \
+	$_msm_modem_wwan_port_sources \
 	$_nftables_sources \
 	$_nginx_sources \
 	$_openssh_server_pam_sources \
@@ -428,6 +431,7 @@ becb3bb17995f44b4021d05109130a00d0eba3d698eaf204a1f8d325741faa729d4ac7fedf0446b9
 873b53592786a978659bda8d32de5ed9a9f163ca298c4f4112f10bf635a8170c4060cc15b57ff72b3afd50075cd1c5dbc10030f00b166e2540397da9e1c5e46b  user-mmsd-tng.service
 5eab6a59c81232b188df45482e325b2d1cb9e038ca147a1b6983c1c095d8194fba804793c5e291b201a820976c8f506aadd2daf7c52fe573a3af708fc9984641  system-ModemManager.service
 a12d8d6994ae6e46b0d131c9f5c475ccc70ab7aaf5839b19c1917410fb3c90a208bc0c6e07c90cf251ea6e445741af83a9f77bf9fcb30490bb0fbfc07aa8cbb9  system-msm-modem-uim-selection.service
+f380d0a4760f0d19ea65b5fea7ca5e1eee28eb162fd15efec318bddb3ea1735f2c891d9d129227e959a2ac479b49f2c438170fe1fdd2c91abf564f7b111a97c3  system-msm-modem-wwan-port.service
 12bb9aa2a2ab8d4b21c72a785b41057eb16a27eca5718cd03a987a50b77d669fe90abafae48c68b41616f31b1953853b3b4a74db4bc3cdeccacc00df113de204  system-nftables.service
 cf85311596958ebbd0b9744e0323a69b06375d72d355274fda190d9465f5511344304112d542e13950e21c1cdb7664d3138dfa64895a5401e89e3ec3dcf118f7  system-nginx.service
 fa445c4a53214524baed4e9c52a5463592a074f88a5a286eacb60d0907c0545f725afde23abd68cf611067add80c2ccb289a381fc5ff6a5f654ea49c81f02fe8  system-sshd.service
