@@ -2,8 +2,8 @@
 # Maintainer: Ferass El Hafidi <funderscore@postmarketos.org>
 pkgname=device-amlogic-aarch64-tvbox
 pkgdesc="Amlogic AArch64 TV box"
-pkgver=8
-pkgrel=2
+pkgver=9
+pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -24,6 +24,7 @@ subpackages="
 	$pkgname-kernel-p201:kernel_p201
 	$pkgname-kernel-p212:kernel_p212
 	$pkgname-kernel-p241:kernel_p241
+	$pkgname-kernel-p281:kernel_p281
 	$pkgname-kernel-ugoos-am3:kernel_ugoos_am3
 	$pkgname-kernel-videostrong-kii-pro:kernel_videostrong_kii_pro
 	$pkgname-kernel-xiaomi-aquaman:kernel_xiaomi_aquaman
@@ -72,6 +73,13 @@ kernel_p241() {
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
+kernel_p281() {
+	pkgdesc="Kernel for Amlogic P281-based TV box (S905W)"
+	depends="linux-postmarketos-amlogic u-boot-amlogic-s905x-tv"
+	aml_boot_prep "meson-gxl-s905w-p281.dtb" "$subpkgdir"
+	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
+}
+
 kernel_ugoos_am3() {
 	pkgdesc="Kernel for Ugoos AM3 (S912)"
 	depends="linux-postmarketos-amlogic"
@@ -95,6 +103,6 @@ kernel_xiaomi_aquaman() {
 
 sha512sums="
 17e803e341c362f54df2116125549ededc41deb89cd6f57974133e18053b30af35fc2b60cdb732b10efadf95234f154bdd7b32410c139f0166adfe9b4ffe02dd  boot-image.its
-4daa0548ce37d6dfc597e7a38ec76957e9c1c3e9990e3cc6d27399c7f08a87433519108fd7c569b8fcec026d7e9d737786e71146f320a841eca00f6587c236f4  deviceinfo
+3ce2fb18088c4b8013cf52f5d97c93d511ec67fed8d846a7ea2cb897ba33b25c478c4122adf95950640c6af4d4572aaea912e87786f3631a15c0af147ee8cd4d  deviceinfo
 52948c2884a6f6384e12b7a598f70878526d0d3293c214425170145231144ec7de805c038641741a4a5d75b50e554f6a3fa3769784a674217ed032f9b6a233c8  modules-initfs
 "
