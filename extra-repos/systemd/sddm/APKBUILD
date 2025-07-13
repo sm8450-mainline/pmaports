@@ -1,9 +1,10 @@
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=sddm
-pkgver=9999_git20240428
+pkgver=99990.21.0
 _pkgver=0.21.0
 pkgrel=1
+_pkgrel=5
 pkgdesc="Simple Desktop Display Manager"
 url="https://github.com/sddm/sddm/"
 # armhf blocked by qt5-qtdeclarative
