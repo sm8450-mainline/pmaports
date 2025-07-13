@@ -1,0 +1,37 @@
+# Maintainer: Barnabas Czeman <barnabas.czeman@postmarketos.org>
+pkgname=msm-modem-wwan-port
+pkgver=1
+pkgrel=0
+pkgdesc="Open wwan port for older Qualcomm SoCs."
+url="https://postmarketos.org/"
+arch="armhf armv7 aarch64"
+license="GPL-3.0-or-later"
+depends="rmtfs"
+subpackages="
+	$pkgname-openrc
+"
+
+source="
+	msm-modem-wwan-port
+	msm-modem-wwan-port.initd
+"
+options="!check"
+
+package() {
+	install -Dm755 "$srcdir"/msm-modem-wwan-port \
+		-t "$pkgdir"/usr/libexec/
+}
+
+openrc() {
+	install_if="$pkgname=$pkgver-r$pkgrel openrc"
+	depends="openrc rmtfs-openrc"
+	install="$subpkgname.post-install"
+
+	install -Dm755 "$srcdir/$pkgname.initd" \
+		"$subpkgdir/etc/init.d/$pkgname"
+}
+
+sha512sums="
+14b91d616d796d89c3b7497b85ddd998f6108546118aee44531eb26183d3d09b0f6bb3f6a47840afbfc7bed115c4d6ac31369046b7281cfb3dc8a54f0fc8c58e  msm-modem-wwan-port
+133a18b2fb5a1753a9a1b7ff37faf69642f90be451484ba85235bba60394d66b875574bcc6461c0dffbf2bb80f37b9e95f280858f8893c7b79070bb7261305b3  msm-modem-wwan-port.initd
+"

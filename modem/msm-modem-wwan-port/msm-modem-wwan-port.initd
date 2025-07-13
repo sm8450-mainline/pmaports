@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+
+# Based on msm-modem-uim-selection.initd
+
+name="Modem WWAN port"
+description="Activate the WWAN port on the embedded QMI modem"
+
+depend() {
+	need rmtfs
+	before ofono
+	before modemmanager
+}
+
+# All of the logic is placed in the service start method as we want to block
+# other services while the modem isn't ready yet.
+start() {
+  /usr/libexec/msm-modem-uim-selection
+  eend $?
+}
