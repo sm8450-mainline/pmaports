@@ -4,12 +4,15 @@ maintainer="Aster Boese <asterboese@mailbox.org>"
 pkgname=device-apple-idevice
 pkgdesc="Apple Generic Apple iDevice"
 pkgver=1
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
 options="!check !archcheck"
-depends="postmarketos-base"
+depends="
+	m1n1-apple-idevice
+	postmarketos-base
+	"
 makedepends="devicepkg-dev"
 subpackages="
 	$pkgname-kernel-4k:kernel_4k
