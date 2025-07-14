@@ -70,5 +70,9 @@ def test_files_belong_to_package():
                 "both contain an APKBUILD"
             package_dir = dirpath
 
+        # Skip specific ".gitlab-ci.yml" files outside of usual structure
+        if dirpath in ["./cross"]:
+            files[:] = [f for f in files if f != ".gitlab-ci.yml"]
+
         assert not files or package_dir, "Found files that do not belong to any package: " \
             f"{dirpath}/{files}"

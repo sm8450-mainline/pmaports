@@ -1,0 +1,15 @@
+cross-gcc-tests:
+  extends: .package-test
+  before_script:
+    - wget "https://gitlab.postmarketos.org/postmarketOS/ci-common/-/raw/master/install_pmbootstrap.sh"
+    - sh ./install_pmbootstrap.sh
+  script:
+    - su pmos -c "pmbootstrap --details-to-stdout build gcc-aarch64"
+    - su pmos -c "pmbootstrap --details-to-stdout build --arch=aarch64 hello-world"
+    - su pmos -c "pmbootstrap --details-to-stdout build --arch=aarch64 iskey"
+    - su pmos -c "pmbootstrap --details-to-stdout build --arch=aarch64 pbsplash"
+    - su pmos -c "pmbootstrap --details-to-stdout build --arch=aarch64 gcc-x86_64"
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - cross/gcc-x86_64/APKBUILD
