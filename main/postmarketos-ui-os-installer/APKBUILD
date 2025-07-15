@@ -1,7 +1,7 @@
 # Reference: https://postmarketos.org/uipkg
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=postmarketos-ui-os-installer
-pkgver=1
+pkgver=2
 pkgrel=0
 pkgdesc="UI for installing postmarketOS"
 url="https://gitlab.gnome.org/p3732/os-installer"
@@ -93,7 +93,7 @@ package() {
 		"$pkgdir"/etc/os-installer/scripts/prepare.sh
 }
 sha512sums="
-da5f5408cc58c9202989dfd5730499abe5977ef0ca7fd017dde657f1e1d84ebffb011a171778e0b74e28424ac39796aa97085ca8d9340446eb8e6def2b7e4c17  rootfs-etc-doas.d-os-installer.conf
+7f0c1ad22753524f022696e14243bca776d0d3e5a2ea9652eb448bac1c3be8e04d6418fdcca9ebe8d6e3123c36b2bb7937ac0d1a42c9f0d6bd8512c8ef8c8e5d  rootfs-etc-doas.d-os-installer.conf
 ebbff3d4c55d631e5c75c7de77852ea77cf0bae67349536ae7714616dbe2baf7762dd71578779670fc97d286ab8b26834e2b857bb843da421a5a4e81d96b3c37  rootfs-etc-xdg-autostart-org.postmarketOS.os-installer.desktop
 e51733f5c75649206ec99b96486fc33419541dd8ff6fe2ccd9eb8cba0920a004c6190362342ecd943c99f6d6e7c5e41e1992dbe4f3f42180dfab08fa06436911  rootfs-etc-gdm-custom.conf
 5d43fcfbbcda66497067eb665537b2e38e77f335ba58989e6a24af35f10e07cf1d10ba47cd7536de87bcf60fdb5c8582c7a84b7ffaa0c47c964b0b7ae6c95cae  rootfs-usr-lib-sysusers.d-os-installer.conf
