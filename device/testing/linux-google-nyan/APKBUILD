@@ -1,8 +1,8 @@
-# Maintainer: Jenneron <jenneron@protonmail.com>
-# Co-Maintainer: Segfault <awarnecke002@hotmail.com>
+# Maintainer: WeirdTreeThing <bradyn127@protonmail.com>
+# Co-Maintainer: Robert Eckelmann <longoserob@postmarketos.org>
 pkgname=linux-google-nyan
 pkgver=6.6.17
-pkgrel=7
+pkgrel=8
 pkgdesc="Mainline kernel fork for Google Nyan Chromebooks"
 arch="armv7"
 _carch="arm"
