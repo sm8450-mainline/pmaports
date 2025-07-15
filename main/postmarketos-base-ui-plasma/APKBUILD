@@ -2,7 +2,7 @@
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=postmarketos-base-ui-plasma
 pkgver=2
-pkgrel=13
+pkgrel=14
 pkgdesc="Meta package for shared configuration for Plasma-based UIs"
 url="https://postmarketos.org"
 arch="noarch !armhf" # armhf is not supported
@@ -36,8 +36,8 @@ _pmb_recommends="
 	kaccounts-providers
 	kde-gtk-config
 	maliit-keyboard
+	plasma-camera
 	postmarketos-artwork-wallpapers
-	snapshot
 	tuned-ppd
 	xdg-user-dirs
 	"
