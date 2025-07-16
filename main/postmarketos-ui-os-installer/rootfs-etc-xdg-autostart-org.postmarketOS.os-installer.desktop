@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Install postmarketOS
 Icon=preferences-system
-Exec=doas /usr/bin/os-installer
+Exec=/usr/bin/os-installer
 Terminal=false
 Type=Application
 StartupNotify=true

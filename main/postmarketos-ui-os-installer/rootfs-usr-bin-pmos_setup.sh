@@ -2,13 +2,7 @@
 
 set -eu
 
-# FIXME: Don't run this as root...
-pmb="pmbootstrap --as-root -y"
-
-if [ "$(id -u)" -ne 0 ]; then
-	echo "must be run as root! (FIXME)"
-	exit 1
-fi
+pmb="pmbootstrap -y"
 
 do_prepare() {
 	yes '' | $pmb init
