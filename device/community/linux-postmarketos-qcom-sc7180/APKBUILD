@@ -1,7 +1,7 @@
 # Maintainer: Alicja Michalska <alicja.michalska@9elements.com>
 pkgname=linux-postmarketos-qcom-sc7180
 pkgver=6.12.35
-pkgrel=9
+pkgrel=10
 pkgdesc="Mainline kernel fork for Qualcomm Snapdragon 7c devices"
 arch="aarch64"
 _carch="arm64"
@@ -80,5 +80,5 @@ package() {
 
 sha512sums="
 3697bf2c9525c8d11f7e821fa080d8c366ae751af02b471a506224002abe6b23b0ccf17d9694c7590c1b07002289eb19003ba8677bbb0bb09d54458495964188  linux-6.12.35.tar.xz
-e5a8b89769f00a5802760aaefbdbe85a91967be74e6911617ccfcf515bac88b1014bcecb8903ce792bee85e4da902126ec5617168f87eb8f899c75b80378eab4  config-postmarketos-qcom-sc7180.aarch64
+e3bf63cd57fed073aa8a88cca55f69877a3cf8bb9d8aa4523c02359a11cad69bb341897e1d506c598e89c2f738e25f2909d5c30fe1d889ab5782adc01ab1282f  config-postmarketos-qcom-sc7180.aarch64
 "
