@@ -9,7 +9,7 @@
 pkgname=systemd
 pkgver=257.7
 _pkgver="musl-v${pkgver//_/-}-split-usr"
-pkgrel=1
+pkgrel=2
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 # ppc64le and s390x blocked by pmboostrap not supporting
@@ -432,7 +432,7 @@ x11() {
 }
 
 dev() {
-	provides="eudev-dev udev-dev elogind-dev systemd-stage0-dev=$pkgver-r$pkgrel"
+	provides="eudev-dev udev-dev systemd-stage0-dev=$pkgver-r$pkgrel"
 	provider_priority=100
 
 	default_dev
