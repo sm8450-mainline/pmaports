@@ -43,6 +43,7 @@ makedepends="
 	coreutils
 	cryptsetup-dev
 	elfutils
+	eudev-compat
 	glib-dev
 	gperf
 	kmod-dev
