@@ -50,7 +50,6 @@ makedepends="
 	libbpf-dev
 	libbz2
 	libcap-dev
-	libfido2-dev
 	libgcc
 	libgcrypt-dev
 	libintl
