@@ -4,7 +4,7 @@
 pkgname=device-samsung-manta
 pkgdesc="Google Nexus 10"
 pkgver=8
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -33,22 +33,13 @@ build() {
 package() {
 	devicepkg_package $startdir $pkgname
 
-	install -D -m644 "$srcdir"/networkmanager.conf \
-		"$pkgdir"/etc/NetworkManager/conf.d/10-manta.conf
-
-	install -Dm744 "$srcdir"/wifi-macaddr.sh \
-		-t "$pkgdir"/usr/lib/device-samsung-manta/
-
-	install -Dm644 "$srcdir"/100-wlan-mac.rules \
-		-t "$pkgdir"/usr/lib/udev/rules.d/
-
-	mkdir -p "$pkgdir"/etc/modules-load.d
+	mkdir -p "$pkgdir"/lib/modules-load.d
 	echo "ds2482" \
-		> "$pkgdir"/etc/modules-load.d/ds2482.conf
+		> "$pkgdir"/lib/modules-load.d/ds2482.conf
 
-	mkdir -p "$pkgdir"/etc/modprobe.d
+	mkdir -p "$pkgdir"/lib/modprobe.d
 	echo "options ds2482 active_pullup=0" \
-		> "$pkgdir"/etc/modprobe.d/ds2482.conf
+		> "$pkgdir"/lib/modprobe.d/ds2482.conf
 
 	install -Dm644 "$srcdir"/hwclock \
 		-t "$pkgdir"/etc/conf.d/
