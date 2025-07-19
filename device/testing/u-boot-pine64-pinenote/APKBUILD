@@ -1,6 +1,6 @@
 pkgname=u-boot-pine64-pinenote
-pkgver=2023.04_git20232303
-pkgrel=1
+pkgver=2025.04_git20250211
+pkgrel=0
 pkgdesc="u-boot bootloader for the Pinenote (rk3566)"
 url="https://gitlab.com/a-wai/u-boot-pinenote"
 arch="aarch64"
@@ -20,9 +20,10 @@ makedepends="
 	py3-setuptools
 	python3-dev
 	swig
+	gnutls-dev
 "
 
-_commit="2e0e11b8e65c48a43270f4ec4a88b74c8a83e269"
+_commit="228e9e5b3502ec0e3aac3fae38d9d99f77e9ede1"
 _ram_commit="9e44f3e17cc51378df294fcd909be48c0f07b47b"
 _bl31_commit="7fac639ad6e3949ddb571cc9646c564d9af2bdeb"
 
@@ -30,27 +31,36 @@ builddir=$srcdir/u-boot-rockchip-$_commit
 
 source="
 	$pkgname-$_commit.tar.gz::https://github.com/Kwiboo/u-boot-rockchip/archive/$_commit.tar.gz
-	ram_init.bin::https://github.com/rockchip-linux/rkbin/raw/$_ram_commit/bin/rk35/rk3566_ddr_1056MHz_v1.16.bin
-	bl31.elf::https://github.com/rockchip-linux/rkbin/raw/$_bl31_commit/bin/rk35/rk3568_bl31_v1.42.elf
-	libfdt.i_shipped-use-SWIG_AppendOutput.patch
+	https://github.com/rockchip-linux/rkbin/raw/$_ram_commit/bin/rk35/rk3566_ddr_1056MHz_v1.16.bin
+	https://github.com/rockchip-linux/rkbin/raw/$_bl31_commit/bin/rk35/rk3568_bl31_v1.42.elf
+	https://github.com/PNDeb/pinenote-debian-image/releases/download/v20250101_01/rk356x_spl_loader_v1.12.112.bin
+	update-u-boot
 "
 
 build() {
-	export ROCKCHIP_TPL=$srcdir/ram_init.bin
-	export BL31=$srcdir/bl31.elf
+	export ROCKCHIP_TPL="$srcdir"/rk3566_ddr_1056MHz_v1.16.bin
+	export BL31="$srcdir"/rk3568_bl31_v1.42.elf
+
 	make pinenote-rk3566_defconfig
 	make
+
+	# make idbloader.img
+	tools/mkimage -n rk3568 -T rksd -d "$ROCKCHIP_TPL:$builddir"/spl/u-boot-spl.bin "$builddir"/idbloader.img
 }
 
 package() {
-	install -Dm644 u-boot-rockchip.bin \
+	install -D -m755 "$srcdir"/update-u-boot "$pkgdir"/usr/sbin/update-u-boot
+	install -Dm644 \
+		"$builddir"/idbloader.img \
+		"$builddir"/u-boot.itb \
+		"$srcdir"/rk356x_spl_loader_v1.12.112.bin \
 		-t "$pkgdir"/usr/share/u-boot/pine64-pinenote
 }
 
-
 sha512sums="
-7cc310164fb04986acd9e3aca6df6279ee65edd5f51167f9fd011c405bd503ee5811cd4ebca8fa79ec312335ed4e8006b79523c6312b46bf670f8305c8c5c228  u-boot-pine64-pinenote-2e0e11b8e65c48a43270f4ec4a88b74c8a83e269.tar.gz
-4cac163b76bfe405dbe3889ed146c9e2af384862b9c9e17e6bad3ad036a206e7160deee0a319eff5d25d512b3ab89d313183fde6848da6117540363f4416dad8  ram_init.bin
-97ce818a8b6f6434811a2b2a31bbac0863badc89696bd9e6a2596e37faf8dc5c948adc86bd159bff5570628270cfcb322fe28728a501ccc9371ac8848473c3ba  bl31.elf
-016ef30dbbb1021dad4f58eeda3f5a5e89ff3a76dbc69e8e4cf6a3fc3983aef998cfe1087abb4b21bb2f859bd5cffe26c1da42d13f1c3d2e3c053c399f38720b  libfdt.i_shipped-use-SWIG_AppendOutput.patch
+a89f5ac2a726d32b634603f14ceb76d20a05f444df1a3c4dd2fbf12e913ef8f5c909fc431cf4424573905ee341cfb4e0ddfc93aa9a237d973d01bbc4a6130b1d  u-boot-pine64-pinenote-228e9e5b3502ec0e3aac3fae38d9d99f77e9ede1.tar.gz
+4cac163b76bfe405dbe3889ed146c9e2af384862b9c9e17e6bad3ad036a206e7160deee0a319eff5d25d512b3ab89d313183fde6848da6117540363f4416dad8  rk3566_ddr_1056MHz_v1.16.bin
+97ce818a8b6f6434811a2b2a31bbac0863badc89696bd9e6a2596e37faf8dc5c948adc86bd159bff5570628270cfcb322fe28728a501ccc9371ac8848473c3ba  rk3568_bl31_v1.42.elf
+386fcd19d53cf2af5bb7a704d9c6e9fc5b05bf5c1aba7d4e052dc83e57c416b4e85074b2486c7f31f7618e50931bce00fbe425e46e01445653445b0fded67537  rk356x_spl_loader_v1.12.112.bin
+0296588a73bdb968f1413c1e416b05da01202dd8bdeadb9fe9530ab08ed071c60ec44f6591d88453da0ea82c4d9364f85d74bb5830093c0cf97f63080f4011e5  update-u-boot
 "
