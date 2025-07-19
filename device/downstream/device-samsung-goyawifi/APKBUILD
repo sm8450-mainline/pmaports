@@ -2,7 +2,7 @@
 pkgname=device-samsung-goyawifi
 pkgdesc="Samsung Galaxy Tab 3 Lite"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
@@ -41,7 +41,7 @@ package() {
 
 	# Add module rules for Wi-Fi (mbt8xxx kernel panic)
 	install -D -m644 "$srcdir"/goyawifi.conf \
-		"$pkgdir"/etc/modprobe.d/goyawifi.conf
+		"$pkgdir"/lib/modprobe.d/goyawifi.conf
 	install -D -m644 "$srcdir"/sd8xxx.conf \
 		"$pkgdir"/lib/modules-load.d/sd8xxx.conf
 	# Load Vivante GPU module
@@ -68,10 +68,10 @@ networkmanager_dhclient() {
 
 	# Use DHCLIENT for networkmanager as internal client would not work on goyawifi
 	install -D -m644 "$srcdir"/dhcp-client.conf \
-		"$subpkgdir"/etc/NetworkManager/conf.d/dhcp-client.conf
+		"$subpkgdir"/usr/lib/NetworkManager/conf.d/dhcp-client.conf
 
 	install -D -m755 "$srcdir"/ipv4-workaround.sh \
-		"$subpkgdir"/etc/NetworkManager/dispatcher.d/ipv4-workaround.sh
+		"$subpkgdir"/usr/lib/NetworkManager/dispatcher.d/ipv4-workaround.sh
 }
 
 fix_lightdm() {
