@@ -3,7 +3,7 @@
 pkgname=device-raspberry-pi3
 pkgdesc="Raspberry Pi 3B/3B+"
 pkgver=4
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -21,9 +21,9 @@ package() {
 	devicepkg_package $startdir $pkgname
 	install -Dm644 "$srcdir"/usercfg.txt "$pkgdir"/boot/usercfg.txt
 	install -Dm644 "$srcdir"/95-vchiq-permissions.rules \
-		"$pkgdir"/etc/udev/rules.d/95-vchiq-permissions.rules
+		"$pkgdir"/usr/lib/udev/rules.d/95-vchiq-permissions.rules
 	install -Dm644 "$srcdir"/networkmanager.conf \
-		"$pkgdir"/etc/NetworkManager/conf.d/10-rpi3.conf
+		"$pkgdir"/usr/lib/NetworkManager/conf.d/10-rpi3.conf
 }
 
 openrc() {
