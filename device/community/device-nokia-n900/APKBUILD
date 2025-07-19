@@ -3,7 +3,7 @@
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-nokia-n900
 pkgver=46
-pkgrel=0
+pkgrel=1
 pkgdesc="Nokia N900"
 url="https://postmarketos.org"
 arch="armv7"
@@ -122,9 +122,9 @@ package() {
 
 	# Udev rules
 	install -D -m644 "$srcdir"/90-touchscreen-dev.rules \
-		"$pkgdir"/etc/udev/rules.d/90-touchscreen-dev.rules
+		"$pkgdir"/usr/lib/udev/rules.d/90-touchscreen-dev.rules
 	install -D -m644 "$srcdir"/10-nokia-modem.rules \
-		"$pkgdir"/etc/udev/rules.d/10-nokia-modem.rules
+		"$pkgdir"/usr/lib/udev/rules.d/10-nokia-modem.rules
 	install -D -m644 "$srcdir"/15-bq27k.rules \
 		"$pkgdir"/usr/lib/udev/rules.d/15-bq27xxx-battery.rules
 
@@ -146,13 +146,13 @@ package() {
 
 	# Kernel module management
 	install -D -m644 "$srcdir"/modem-load.conf \
-		"$pkgdir"/etc/modules-load.d/10-nokia-modem.conf
+		"$pkgdir"/lib/modules-load.d/10-nokia-modem.conf
 	install -D -m644 "$srcdir"/modem-opts.conf \
-		"$pkgdir"/etc/modprobe.d/nokia-modem.conf
+		"$pkgdir"/lib/modprobe.d/nokia-modem.conf
 	install -D -m644 "$srcdir"/modules.blocklist \
-		"$pkgdir"/etc/modprobe.d/n900-module-blocklist.conf
+		"$pkgdir"/lib/modprobe.d/n900-module-blocklist.conf
 	install -D -m644 "$srcdir"/bq27k-options.conf \
-		"$pkgdir"/etc/modprobe.d/bq27xxx-battery.conf
+		"$pkgdir"/lib/modprobe.d/bq27xxx-battery.conf
 
 	postmarketos-mvcfg-package "$pkgdir" "$pkgname"
 }
