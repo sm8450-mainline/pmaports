@@ -102,6 +102,10 @@ nonfree_firmware() {
 	mkdir -p "$subpkgdir"/lib/firmware/rockchip
 	touch "$subpkgdir"/lib/firmware/rockchip/ebc.wbf
 	touch "$subpkgdir"/lib/firmware/rockchip/custom_wf.bin
+
+	# symbolic link for wifi firmware to where it expects it
+	mkdir -p "$subpkgdir"/lib/firmware/brcm
+	ln -s ../cypress/cyfmac43455-sdio.bin.zst "$subpkgdir"/lib/firmware/brcm/brcmfmac43455-sdio.pine64,pinenote-v1.2.bin.zst
 }
 
 nonfree_firmware_openrc() {
