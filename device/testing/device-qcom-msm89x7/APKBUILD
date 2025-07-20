@@ -2,7 +2,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-qcom-msm89x7
 pkgdesc="Generic device package for various Qualcomm MSM8917/MSM8937/MSM8940-based devices"
-pkgver=4
+pkgver=5
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -34,6 +34,6 @@ package() {
 }
 
 sha512sums="
-6ad45fa722af43aaf63dd50aa496bb4d4dc0d5c47bd07ddff2babc9bb50d2403e003b8e10e42526d567ef83df5b3d3b243fd3980943ca72736413a9280d82754  deviceinfo
+03150e15f6e2b312f778905397269aae3a7a1af7ba868b1edad40c3368bf6f23471d6ba6d1b2d119de822cbc4f020859b0d0b657276980454f22984c0af7d9db  deviceinfo
 7c3b00d1e35b9dfea3faa563bf3194a4f7bdebad24b69675737da0be5025f3d73c4bbdb5c088d487cd558c9ef8a9ed7f6392e904067d2bb31780322fa4e88a74  modules-initfs
 "
