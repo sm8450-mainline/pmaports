@@ -1,0 +1,255 @@
+diff --git a/etc/sway_hrdl/waybar/config.orig b/etc/sway_hrdl/waybar/config
+index f31a30eb25..55c8e0214c 100644
+--- a/etc/sway_hrdl/waybar/config.orig
++++ b/etc/sway_hrdl/waybar/config
+@@ -46,7 +46,7 @@
+         "idle_inhibitor",
+         "battery",
+         "tray",
+-        // "clock#time",
++        "clock#time",
+         "custom/kill",
+     ],
+ 
+@@ -143,7 +143,6 @@
+ 
+     "custom/kill": {
+       "format": "",
+-      "interval": "once",
+       "on-click": "swaymsg kill",
+       "min-length": 5,
+       "tooltip": false,
+@@ -151,77 +150,66 @@
+ 
+     "custom/winleft": {
+       "format": "",
+-      "interval": "once",
+       "on-click": "swaymsg move left",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/winright": {
+       "format": "",
+-      "interval": "once",
+       "on-click": "swaymsg move right",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/winup": {
+       "format": "",
+-      "interval": "once",
+       "on-click": "swaymsg move up",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/windown": {
+       "format": "",
+-      "interval": "once",
+       "on-click": "swaymsg move down",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/splitv": {
+       "format": "/|",
+-      "interval": "once",
+       "on-click": "swaymsg splitv",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/splith": {
+       "format": "/-",
+-      "interval": "once",
+       "on-click": "swaymsg splith",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/mvws_prev": {
+       "format": "",
+-      "interval": "once",
+       "on-click": "sway_workspace move prev",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/gows_prev": {
+       "format": "<",
+-      "interval": "once",
+       "on-click": "sway_workspace goto prev",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/gows_next": {
+       "format": ">",
+-      "interval": "once",
+       "on-click": "sway_workspace goto next",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/mvws_next": {
+       "format": "",
+-      "interval": "once",
+       "on-click": "sway_workspace move next",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/okb": {
+       "format": "",
+-      "interval": "once",
+       "on-click": "toggle_onscreen_keyboard.py",
+       "min-length": 5,
+       "tooltip": false,
+@@ -229,7 +217,6 @@
+ 
+     "custom/smenu": {
+       "format": "",
+-      "interval": "once",
+       "on-click": "toggle_menu.sh",
+       "min-length": 5,
+       "tooltip": false,
+@@ -237,35 +224,30 @@
+ 
+     "custom/ws1": {
+       "format": "1",
+-      "interval": "once",
+       "on-click": "swaymsg workspace number 1",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/ws2": {
+       "format": "2",
+-      "interval": "once",
+       "on-click": "swaymsg workspace number 2",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/ws3": {
+       "format": "3",
+-      "interval": "once",
+       "on-click": "swaymsg workspace number 3",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/ws4": {
+       "format": "4",
+-      "interval": "once",
+       "on-click": "swaymsg workspace number 4",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/ws5": {
+       "format": "5",
+-      "interval": "once",
+       "on-click": "swaymsg workspace number 5",
+       "min-length": 5,
+       "tooltip": false,
+@@ -273,28 +255,24 @@
+ 
+     "custom/blc_down": {
+       "format": "",
+-      "interval": "once",
+       "on-click": "brightnessctl --device=backlight_cool set 10%-",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/blc_up": {
+       "format": "",
+-      "interval": "once",
+       "on-click": "brightnessctl --device=backlight_cool set 10%+",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/blw_down": {
+       "format": "",
+-      "interval": "once",
+       "on-click": "brightnessctl --device=backlight_warm set 10%-",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/blw_up": {
+       "format": "",
+-      "interval": "once",
+       "on-click": "brightnessctl --device=backlight_warm set 10%+",
+       "min-length": 5,
+       "tooltip": false,
+@@ -310,28 +288,24 @@
+     },
+     "custom/ebc_dump_buffers": {
+       "format": "🐃",
+-      "interval": "once",
+       "on-click": "rockchip_ebc_dump_buffers.py",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/ebc_cycle_driver_mode": {
+       "format": "🚲",
+-      "interval": "once",
+       "on-click": "python -c 'import rockchip_ebc_custom_ioctl as reci; reci.cycle_driver_mode()'",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/ebc_refresh": {
+       "format": "",
+-      "interval": "once",
+       "on-click": "dbus-send --type=method_call --dest=org.pinenote.ebc_custom / org.pinenote.ebc_custom.GlobalRefresh",
+       "min-length": 5,
+       "tooltip": false,
+     },
+     "custom/rotate_0": {
+       "format": "R0",
+-      "interval": "once",
+       "on-click": "sway_rotate.sh rotnormal",
+       "min-length": 5,
+       "tooltip": false,
+@@ -339,7 +313,6 @@
+ 
+     "custom/rotate_90": {
+       "format": "R90",
+-      "interval": "once",
+       "on-click": "sway_rotate.sh rotright",
+       "min-length": 5,
+       "tooltip": false,
+@@ -347,7 +320,6 @@
+ 
+     "custom/rotate_180": {
+       "format": "R180",
+-      "interval": "once",
+       "on-click": "sway_rotate.sh rotinvert",
+       "min-length": 5,
+       "tooltip": false,
+@@ -355,7 +327,6 @@
+ 
+     "custom/rotate_270": {
+       "format": "R270",
+-      "interval": "once",
+       "on-click": "sway_rotate.sh rotleft",
+       "min-length": 5,
+       "tooltip": false,
+@@ -363,7 +334,6 @@
+ 
+     "custom/key_pageup": {
+       "format": "",
+-      "interval": "once",
+       // "on-click": "wtype -P page_up",
+       "on-click": "swaymsg resize grow width 10px; swaymsg resize grow height 10px",
+       "min-length": 5,
+@@ -371,21 +341,12 @@
+     },
+     "custom/key_pagedown": {
+       "format": "",
+-      "interval": "once",
+       // "on-click": "wtype -P page_down",
+       "on-click": "swaymsg resize shrink width 10px; swaymsg resize shrink height 10px",
+       "min-length": 5,
+       "tooltip": false,
+     },
+ 
+-    "custom/battery_watts": {
+-      "exec": "battery_watts.sh",
+-      "format": " {}W",
+-      "interval": 10,
+-      "min-length": 5,
+-      "tooltip": false,
+-    },
+-
+     "tray": {
+         "icon-size": 21,
+         "spacing": 10

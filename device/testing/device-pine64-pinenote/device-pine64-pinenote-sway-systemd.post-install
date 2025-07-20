@@ -1,0 +1,4 @@
+#!/bin/sh
+
+systemctl disable tinydm.service
+systemctl enable tinydm-ebc.service
