@@ -41,6 +41,7 @@ subpackages="
 	$pkgname-nonfree-firmware-systemd:nonfree_firmware_systemd
 	$pkgname-phosh
 	$pkgname-x11
+	$pkgname-xournalpp
 "
 builddir="$srcdir"/pinenote-dist-$_commit
 
@@ -69,6 +70,16 @@ phosh() {
 
 	install -Dm644 "$srcdir"/phoc.ini \
 		-t "$subpkgdir"/etc/phosh
+}
+
+xournalpp() {
+	install_if="$pkgname=$pkgver-r$pkgrel xournalpp"
+	depends="xournalpp"
+
+	install -Dm644 \
+		"$builddir"/config/xournalpp/settings.xml \
+		"$builddir"/config/xournalpp/toolbar.ini \
+		-t "$subpkgdir"/etc/skel/.config/xournalpp
 }
 
 nonfree_firmware() {
