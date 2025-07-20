@@ -40,6 +40,7 @@ subpackages="
 	$pkgname-nonfree-firmware-openrc:nonfree_firmware_openrc
 	$pkgname-nonfree-firmware-systemd:nonfree_firmware_systemd
 	$pkgname-phosh
+	$pkgname-x11
 "
 builddir="$srcdir"/pinenote-dist-$_commit
 
@@ -52,8 +53,6 @@ package() {
 
 	install -Dm644 "$srcdir"/local-overrides.quirks \
 		-t "$pkgdir"/etc/libinput/
-	install -Dm644 "$srcdir"/50-touchscreen.conf \
-		-t "$pkgdir"/etc/X11/xorg.conf.d
 	install -Dm644 "$srcdir"/81-libinput-pinenote.rules \
 		-t "$pkgdir"/usr/lib/udev/rules.d
 	install -Dm644 "$srcdir"/82-ebc-rockchip.rules \
@@ -112,6 +111,14 @@ nonfree_firmware_systemd() {
 		"$builddir"/systemd/pinenote-hrdl-extract-waveform.service \
 		"$builddir"/systemd/pinenote-hrdl-convert-waveform.service \
 		-t "$subpkgdir"/usr/lib/systemd/system
+}
+
+x11() {
+	install_if="$pkgname=$pkgver-r$pkgrel xorg-server"
+
+	# xorg touchscreen settings
+	install -Dm644 "$srcdir"/50-touchscreen.conf \
+		-t "$subpkgdir"/etc/X11/xorg.conf.d
 }
 
 sha512sums="
