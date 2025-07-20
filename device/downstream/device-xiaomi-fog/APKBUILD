@@ -3,7 +3,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-xiaomi-fog
 pkgdesc="Xiaomi Redmi 10C"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -22,5 +22,5 @@ package() {
 }
 
 sha512sums="
-da242b2092a43b123b12175af6ab170efa3c530a609f2ac7f8baf631fe43afe8d3c743be06f7da6a2ff0d91598e5a003f5dc8c1447621159368db5bb443ca474  deviceinfo
+fdb087f3fad41856d62784af895cf33b767ec3bffd53fe7d0a8d43e2acf4395f8e538aa54f1e4956a4a38071c2ad594371ede2a806e8a90919cf17bf6c98ffe0  deviceinfo
 "
