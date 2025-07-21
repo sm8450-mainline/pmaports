@@ -1,7 +1,7 @@
 # Maintainer: Antoine Martin (ayakael) <dev@ayakael.net>
 pkgname=pinenote-dbus-service
 pkgver=0.2.3
-pkgrel=0
+pkgrel=1
 pkgdesc="Dbus daemon for controlling driver aspects on Pine64 Pinenote"
 url="https://github.com/m-weigand/pinenote_dbus_service"
 arch="aarch64"
@@ -11,6 +11,7 @@ source="
 	pinenote-dbus-service-$pkgver.tar.gz::https://github.com/m-weigand/pinenote_dbus_service/archive/refs/tags/v$pkgver.tar.gz
 	pinenote.initd
 "
+subpackages="$pkgname-openrc $pkgname-systemd"
 options="!check" # No testsuite
 
 builddir="$srcdir/pinenote_dbus_service-$pkgver"
@@ -22,7 +23,8 @@ build() {
 package() {
 	cargo install --path . --root="$pkgdir/usr"
 	install -Dm644 dbus_security_configuration/pinenote.conf -t "$pkgdir"/usr/share/dbus-1/system.d/
-	install -Dm755 "$srcdir"/pinenote.initd $pkgdir/etc/init.d/pinenote
+	install -Dm755 "$srcdir"/pinenote.initd "$pkgdir"/etc/init.d/pinenote
+	install -Dm644 "$builddir"/systemd_units/pinenote_dbus_service.service -t "$pkgdir"/usr/lib/systemd/system/
 	rm "$pkgdir"/usr/.crates.toml
 	rm "$pkgdir"/usr/.crates2.json
 }
