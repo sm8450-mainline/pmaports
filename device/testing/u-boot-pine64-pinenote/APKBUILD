@@ -25,21 +25,21 @@ makedepends="
 
 _commit="228e9e5b3502ec0e3aac3fae38d9d99f77e9ede1"
 _ram_commit="9e44f3e17cc51378df294fcd909be48c0f07b47b"
-_bl31_commit="7fac639ad6e3949ddb571cc9646c564d9af2bdeb"
+_rkbin_commit="b4558da0860ca48bf1a571dd33ccba580b9abe23"
 
 builddir=$srcdir/u-boot-rockchip-$_commit
 
 source="
 	$pkgname-$_commit.tar.gz::https://github.com/Kwiboo/u-boot-rockchip/archive/$_commit.tar.gz
-	https://github.com/rockchip-linux/rkbin/raw/$_ram_commit/bin/rk35/rk3566_ddr_1056MHz_v1.16.bin
-	https://github.com/rockchip-linux/rkbin/raw/$_bl31_commit/bin/rk35/rk3568_bl31_v1.42.elf
+	https://github.com/m-weigand/rkbin/raw/$_rkbin_commit/bin/rk35/rk3566_ddr_1056MHz_ultra_v1.10.bin
+	https://github.com/m-weigand/rkbin/raw/$_rkbin_commit/bin/rk35/rk3568_bl31_ultra_v2.13.elf
 	https://github.com/PNDeb/pinenote-debian-image/releases/download/v20250101_01/rk356x_spl_loader_v1.12.112.bin
 	update-u-boot
 "
 
 build() {
-	export ROCKCHIP_TPL="$srcdir"/rk3566_ddr_1056MHz_v1.16.bin
-	export BL31="$srcdir"/rk3568_bl31_v1.42.elf
+	export ROCKCHIP_TPL="$srcdir"/rk3566_ddr_1056MHz_ultra_v1.10.bin
+	export BL31="$srcdir"/rk3568_bl31_ultra_v2.13.elf
 
 	make pinenote-rk3566_defconfig
 	make
@@ -59,8 +59,8 @@ package() {
 
 sha512sums="
 a89f5ac2a726d32b634603f14ceb76d20a05f444df1a3c4dd2fbf12e913ef8f5c909fc431cf4424573905ee341cfb4e0ddfc93aa9a237d973d01bbc4a6130b1d  u-boot-pine64-pinenote-228e9e5b3502ec0e3aac3fae38d9d99f77e9ede1.tar.gz
-4cac163b76bfe405dbe3889ed146c9e2af384862b9c9e17e6bad3ad036a206e7160deee0a319eff5d25d512b3ab89d313183fde6848da6117540363f4416dad8  rk3566_ddr_1056MHz_v1.16.bin
-97ce818a8b6f6434811a2b2a31bbac0863badc89696bd9e6a2596e37faf8dc5c948adc86bd159bff5570628270cfcb322fe28728a501ccc9371ac8848473c3ba  rk3568_bl31_v1.42.elf
+ac3ee0fe0757a33aa24b359d60024f00c75d1e9c84f6e52bfe03524af11860188839705b1644321627a46375c840f12ae6229b25a5e80ecfc536d2229a21d3ea  rk3566_ddr_1056MHz_ultra_v1.10.bin
+870e7d1a5b0a84c20b3b37df461e5be24c19864356ad8319cea39c5bec793953c1b3aedb454db060d756d99cfd8f55ad31d9aca946e7d48a714ec6abaf82b54f  rk3568_bl31_ultra_v2.13.elf
 386fcd19d53cf2af5bb7a704d9c6e9fc5b05bf5c1aba7d4e052dc83e57c416b4e85074b2486c7f31f7618e50931bce00fbe425e46e01445653445b0fded67537  rk356x_spl_loader_v1.12.112.bin
 0296588a73bdb968f1413c1e416b05da01202dd8bdeadb9fe9530ab08ed071c60ec44f6591d88453da0ea82c4d9364f85d74bb5830093c0cf97f63080f4011e5  update-u-boot
 "
