@@ -1,0 +1,70 @@
+# Maintainer: Alicja Michalska <ellyqw@mainlining.org>
+# Experimental kernel for SDM710 devices
+
+_flavor="xiaomi-pyxis"
+pkgname=linux-$_flavor
+pkgver=6.15.2
+pkgrel=0
+pkgdesc="Mainline Kernel fork for SDM710 devices"
+arch="aarch64"
+_carch="arm64"
+url="https://github.com/ellyq/sdm710-mainline"
+license="GPL-2.0-only"
+options="!strip !check !tracedeps
+	pmb:cross-native
+	pmb:kconfigcheck-community"
+makedepends="
+	bash
+	bison
+	findutils
+	flex
+	installkernel
+	openssl-dev
+	perl
+	python3
+	zstd
+"
+
+_repository="sdm710-mainline"
+_commit="90f81d9b405c2dfcc0f0fc74c3c8f1018f709612"
+_config="config-xiaomi-pyxis.$arch"
+
+# Source
+source="
+	$pkgname-$_commit.tar.gz::https://github.com/ellyq/$_repository/archive/$_commit.tar.gz
+	$_config
+"
+
+builddir="$srcdir/$_repository-$_commit"
+
+prepare() {
+	default_prepare
+	cp "$srcdir/config-xiaomi-pyxis.$arch" .config
+}
+
+build() {
+	unset LDFLAGS
+	make ARCH="$_carch" CC="${CC:-gcc}" \
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-$_flavor"
+}
+
+package() {
+	install -Dm644 "$builddir/arch/$_carch/boot/Image.gz" \
+		"$pkgdir/boot/vmlinuz"
+
+	make modules_install dtbs_install \
+		ARCH="$_carch" \
+		INSTALL_PATH="$pkgdir"/boot/ \
+		INSTALL_MOD_PATH="$pkgdir" \
+		INSTALL_MOD_STRIP=1 \
+		INSTALL_DTBS_PATH="$pkgdir"/boot/dtbs
+	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
+
+	install -D "$builddir"/include/config/kernel.release \
+		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
+}
+
+sha512sums="
+3f8733203f32ba7d0d19ddb9204b6e806c6ca3329e8ed526f25bf1f6f2158143ec76435c0f4cb2f99195aea9637e6733c6d1ccd78741c8191f2e08d15fff1a97  linux-xiaomi-pyxis-90f81d9b405c2dfcc0f0fc74c3c8f1018f709612.tar.gz
+0965d059ca77522c97997b1999efd4d5f1be0d6946ee1d3d344f75d81ec64c07f0480ee08a3b07b018313ddce9550a3f37da9cadaedd0f836797d12d7d90be5a  config-xiaomi-pyxis.aarch64
+"

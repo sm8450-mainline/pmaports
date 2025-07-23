@@ -1,0 +1,48 @@
+# Maintainer: Alicja Michalska <ellyqw@mainlining.org>
+pkgname=firmware-xiaomi-pyxis
+pkgver=2025.08
+pkgrel=0
+pkgdesc="Proprietary firmware blobs from stock firmware"
+url="https://github.com/ellyq/firmware-mainline-pyxis"
+arch="aarch64"
+license="proprietary"
+makedepends="zstd"
+
+_commit="0c8e85ac4f9650c2bc7b283b1ba01c3d151af001"
+source="https://github.com/ellyq/firmware-mainline-pyxis/archive/$_commit.tar.gz"
+builddir="$srcdir/firmware-mainline-pyxis-$_commit"
+options="!check !archcheck !strip !tracedeps textrels pmb:cross-native"
+
+build() {
+	# Compress kernel-loaded firmware
+	zstd a615_zap.mbn
+	zstd ipa_fws.mbn
+	zstd adsp.mbn
+	zstd cdsp.mbn
+	zstd venus.mbn
+	zstd mba.mbn
+	zstd modem.mbn
+}
+
+package() {
+	mkdir -p "$pkgdir"/lib/firmware/qcom/sdm710/pyxis/
+
+	install -Dm644 "$builddir"/a615_zap.mbn.zst \
+		       "$pkgdir"/lib/firmware/qcom/sdm710/pyxis/a615_zap.mbn.zst
+	install -Dm644 "$builddir"/ipa_fws.mbn.zst \
+		       "$pkgdir"/lib/firmware/qcom/sdm710/pyxis/ipa_fws.mbn.zst
+	install -Dm644 "$builddir"/adsp.mbn.zst \
+		       "$pkgdir"/lib/firmware/qcom/sdm710/pyxis/adsp.mbn.zst
+	install -Dm644 "$builddir"/cdsp.mbn.zst \
+		       "$pkgdir"/lib/firmware/qcom/sdm710/pyxis/cdsp.mbn.zst
+	install -Dm644 "$builddir"/venus.mbn.zst \
+		       "$pkgdir"/lib/firmware/qcom/sdm710/pyxis/venus.mbn.zst
+	install -Dm644 "$builddir"/mba.mbn.zst \
+		       "$pkgdir"/lib/firmware/qcom/sdm710/pyxis/mba.mbn.zst
+	install -Dm644 "$builddir"/modem.mbn.zst \
+		       "$pkgdir"/lib/firmware/qcom/sdm710/pyxis/modem.mbn.zst
+}
+
+sha512sums="
+f94e16812fba96ba2e0afc84cf69579fa1603a0a0f0180c142958f27b4f9debf1dcf4b83dbb0112401d207d5d322ad86f4e78a0557f740d0ea952e86c24338ab  0c8e85ac4f9650c2bc7b283b1ba01c3d151af001.tar.gz
+"
