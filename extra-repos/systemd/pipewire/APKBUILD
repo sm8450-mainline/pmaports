@@ -1,7 +1,7 @@
 # Forked from Alpine to rebuild with systemd support
 
 pkgname=pipewire
-_pkgver=1.4.6
+_pkgver=1.4.7
 pkgver=999$_pkgver
 pkgrel=0
 _so_ver=0.3
@@ -257,7 +257,7 @@ libs() {
 }
 
 sha512sums="
-038b058c4c529b6d66ae384a421cec6b6c62fa37e1c7a9ccc8e82d881cd2c0a74d394cc51ebba8b7a4133d8e196f27ea4dfe064845e3935df64ce22c18c21f37  pipewire-1.4.6.tar.gz
+a0d0a9d92f75b46d6b89e616df36125f9f8cfacc594b5fcea3bd5d81a79e50ecdc898cde705f8facf902f709b919bf4dcceb517222ee6b7a87fb02575760b6eb  pipewire-1.4.7.tar.gz
 b70b05151bcf4b7f13d68b2731d789b9c062fadfcb91f4ed6bdb0d495390b0010f57034fb115a053e1459c7d9ea27523ca1c0c69639aeeb96c17ebac8dfc5b57  pipewire.desktop
 6f4322d306bef346187778fc0975d608fdd37d4c8e08815a0aed28ef7e07c3f21d6a80b70743d0f867bdc237f5e1dc28131c778e7a45e363e5677668ce7acdb1  pipewire-launcher.sh
 "
