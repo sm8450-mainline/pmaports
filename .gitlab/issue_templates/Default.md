@@ -28,7 +28,6 @@
 -->
 * [ ] edge (`master` branch)
 * [ ] `v25.06`
-* [ ] `v24.12` (supported until 2025-07-22)
 
 * [ ] I confirm that the issue still is present after running `sudo apk upgrade -a`
 
