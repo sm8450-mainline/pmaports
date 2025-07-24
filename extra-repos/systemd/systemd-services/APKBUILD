@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=79
+pkgver=80
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -28,6 +28,7 @@ subpackages="
 	at-spi2-core-systemd:_service
 	avahi-systemd:_service
 	baloo-systemd:_service
+	blueman-systemd:_service
 	bluez-systemd:_service
 	colord-systemd:_service
 	connman-systemd:_service
@@ -114,6 +115,11 @@ _apk_polkit_rs_sources="system/apk-polkit-server.service"
 _at_spi2_core_sources="user/at-spi-dbus-bus.service"
 _avahi_sources="system/avahi-daemon.service system/avahi-daemon.socket"  # From: https://github.com/avahi/avahi/blob/master/avahi-daemon
 _baloo_sources="user/kde-baloo.service"
+_blueman_sources="
+	system/blueman-mechanism.service
+	user/blueman-applet.service
+	user/blueman-manager.service
+"
 _bluez_sources="
 	system/bluetooth.service
 	system/bluetooth-mesh.service
@@ -247,6 +253,7 @@ source="$(flatpath \
 	$_at_spi2_core_sources \
 	$_avahi_sources \
 	$_baloo_sources \
+	$_blueman_sources \
 	$_bluez_sources \
 	$_colord_sources \
 	$_connman_sources \
@@ -371,6 +378,9 @@ sha512sums="
 37c2b24cf9d59c7f91b2556f7aac74d2dd2cbd7b1473432cc2eaeb1bc9b2c7cedc531e7b5b0facc3478840a516eb9cde8182714c3d5148169547554bf0810f84  system-avahi-daemon.service
 2f10490def55253edf164b26e17cf8d82fdcb19089c2dc2eac110c622c9661e0a3c4247629f924246b6c1a24faf0416bece4a6ab8729cd400ed5c3c1a7ed703b  system-avahi-daemon.socket
 c68f0c9f09f3e26a5d317792177057bbcfd83f7cd9c57b235325a836cf01c83abd4c0ab0088b2f3777d85497f35d25b1498ac5d29b717d3f5c0f0651ef1b6054  user-kde-baloo.service
+d579b380591dc39d2c52b3de14309bb35be6e13a4106615b6a9180389361938e49ff7a752ed6b49da304288771eab2a93d1626db16f395703151304e61ca4299  system-blueman-mechanism.service
+022827efa05c322a5a5af7617fdbc33db054ff08eb17e6349755f3355f81b6907c4132324344f2f9cb7205bbd3be2ffbfcde451edfdba2665574a697a1b9a93f  user-blueman-applet.service
+aef7b9060dec287f3d3e246255fb33fae3c8b2558dcc750b23d89d6ed66ca5db888b1bdb307a8d8a7c44e55a7398dea41aba23eab3d720ec93313f029b958377  user-blueman-manager.service
 de133c35cf95d7c833368c9010264668e72657400ad4e5259ef046321c878507f36ef73fa7b4759f69c9d18cda8f8db8d7675d794d9a28f46480fb4d47ba9e0c  system-bluetooth.service
 7972e37d950d8e337f109242dc3a7689d0d6e43b80ce42decd81f8d48abaf275a50f5d980d5a40d4494608a2f88f745e1d4639688e179c95792bfb6f398b9ae4  system-bluetooth-mesh.service
 5ad5f8adcc89759e5c935a2e55803fac52a9681af3a28f5c8d46f693717afcf7c8c6394f85dd5dbc1ddb575b909b0f6feee2e9973ee177e6445d375136b932ee  user-dbus-org.bluez.obex.service
