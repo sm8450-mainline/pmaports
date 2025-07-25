@@ -9,7 +9,7 @@
 pkgname=systemd
 pkgver=257.7
 _pkgver="musl-v${pkgver//_/-}-split-usr"
-pkgrel=3
+pkgrel=4
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 # ppc64le and s390x blocked by pmboostrap not supporting
@@ -158,6 +158,15 @@ _default_zshcomp() {
 }
 
 build() {
+	# The "bless boot" is built conditionally on -Dbootloader=enabled, but it
+	# doesn't seem to actually depend on anything in src/systemd/boot. There's a lot
+	# of stuff that gets enabled with that flag, and we don't actually want any of
+	# it (it's packaged separately as 'systemd-boot' in Alpine aports). By removing
+	# the condition, we can build/package the bless boot stuff without having to
+	# unnecessarily build the bootloader.
+	sed -i "/'ENABLE_BOOTLOADER',/d" src/bless-boot/meson.build
+	sed -i "/systemd-bless-boot.service.in/,/},/ s/'ENABLE_BOOTLOADER', //" units/meson.build
+
 	abuild-meson \
 		-Dmode=release \
 		-Dsplit-bin=true \
