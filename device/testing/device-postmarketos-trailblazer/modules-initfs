@@ -45,7 +45,6 @@ phy-qcom-qmp-ufs
 phy-qcom-qmp-usb
 phy-qcom-qmp-usbc
 phy-qcom-qusb2
-phy-qcom-snps-eusb2
 phy-snps-eusb2
 phy_sun6i_mipi_dphy
 pinctrl-sm6115
