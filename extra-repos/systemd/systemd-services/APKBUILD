@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=81
+pkgver=82
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -35,6 +35,7 @@ subpackages="
 	containerd-systemd:_service
 	cosmic-greeter-systemd:_service
 	dconf-systemd:_service
+	dnsmasq-systemd:_service
 	docker-engine-systemd:_service
 	eg25-manager-systemd:_service
 	evolution-data-server-systemd:_service
@@ -137,6 +138,7 @@ _connman_sources="
 _containerd_sources="system/containerd.service"  # From: https://github.com/containerd/containerd/blob/main/containerd.service
 _cosmic_greeter_sources="system/cosmic-greeter.service system/cosmic-greeter-daemon.service" # From https://github.com/pop-os/cosmic-greeter/tree/master/debian
 _dconf_sources="user/dconf.service"
+_dnsmasq_sources="sysusers.d/dnsmasq.conf"  # From: https://src.fedoraproject.org/rpms/dnsmasq/blob/rawhide/f/dnsmasq-systemd-sysusers.conf
 _docker_engine_sources="system/docker.service system/docker.socket"  # From https://github.com/moby/moby/blob/master/contrib/init/systemd
 _eg25_manager_sources="system/eg25-manager.service" # From https://gitlab.com/mobian1/eg25-manager/-/blob/master/data/eg25-manager.service.in
 _evolution_data_server_sources="
@@ -190,7 +192,12 @@ _msm_modem_sources="system/msm-modem-uim-selection.service"
 _msm_modem_wwan_port_sources="system/msm-modem-wwan-port.service"
 _nftables_sources="system/nftables.service"
 _nginx_sources="system/nginx.service" # Based on arch's service: https://gitlab.archlinux.org/archlinux/packaging/packages/nginx/-/blob/main/nginx.service
-_openssh_server_pam_sources="system/sshd.service system/sshd@.service system/sshdgenkeys.service"
+_openssh_server_pam_sources="
+	system/sshd.service
+	system/sshd@.service
+	system/sshdgenkeys.service
+	sysusers.d/sshd.conf
+"
 _pd_mapper_sources="system/pd-mapper.service"
 _plasma_mobile_sources="system/plasma-mobile.service"
 _polkit_kde_agent_1_sources="user/plasma-polkit-agent.service" # From https://invent.kde.org/plasma/polkit-kde-agent-1/-/blob/master/plasma-polkit-agent.service.in
@@ -262,6 +269,7 @@ source="$(flatpath \
 	$_containerd_sources \
 	$_cosmic_greeter_sources \
 	$_dconf_sources \
+	$_dnsmasq_sources \
 	$_docker_engine_sources \
 	$_eg25_manager_sources \
 	$_evolution_data_server_sources \
@@ -397,6 +405,7 @@ b7cc164dc0520652df9b2bf6f9708b7230bc6a3274d02ce222ba507f94bf31e3125532cf806af7ca
 4c64d433da3999c4f778c379e67779b30370b3a06ee09f22eaa594ce68f948afe2d3827c254ddf4b53341b394718eb5e29d242d2db5209e87084502cb581cac8  system-cosmic-greeter.service
 0da725086569f336593f52de6e61fa34482522bd83cd477c3a8de610813c9a96278d94b59d84e2ce9fc3605f893a4e2708f2cf9452aae6c4cfe2ffca54c91e2c  system-cosmic-greeter-daemon.service
 e4de73d12abd046c8683e3be6e3aab40a5db3f5d6246cedbb3ff099bcc8037a167b23ac957d30f1118db571b69cb10c042272ac2b54dacf83fa6a3e9dad13a87  user-dconf.service
+97887423ad5b8344786912899553cd2f2033da6a79104a9ad59ebda813505ee05bef19c9e6f46af5ecee62dd0d436773a9a0d10bad759cd92aad3f53b95e62a2  sysusers.d-dnsmasq.conf
 1189ada8b126b2e574aea2e9b3ad9b0a86282d82be4f4ad4c58b1d968ce15ff45e8c60108f5e128ee946aa7e6e57f9fbb0b5d31d8371e79a2f0b3f3456bbd65f  system-docker.service
 c2d1f2a55bd7eed5a296e14b3250baa2f568dbdbce4444bae4635c1ce4bd6d3f1036462926d8c32d62d6609f5fcfb58933bf7eeb1924aefd814e864bc77bb7c7  system-docker.socket
 780912dbfdc7e9a350e934d46022b043edda86a393a7c107d0c855e9580240e4bce791428fdadef0a45adc6cfa24fb5d58981b6ccd80e3dad99da3e5fa3dc7b8  system-eg25-manager.service
@@ -450,6 +459,7 @@ cf85311596958ebbd0b9744e0323a69b06375d72d355274fda190d9465f5511344304112d542e139
 fa445c4a53214524baed4e9c52a5463592a074f88a5a286eacb60d0907c0545f725afde23abd68cf611067add80c2ccb289a381fc5ff6a5f654ea49c81f02fe8  system-sshd.service
 6f1db26dbbcf96a5e14996cc468f1911c51a46fc3f70552af3591c0dfaaa043135d137d435818a2a2cce656f09fa305337c3c86121a5109dc20f0326a2e0ec15  system-sshd@.service
 c0badea3905c1d53d213fbfe11d25b556a2e484fe77eb50e9f4d42e25b67b56a0804e7d8e1b7731cd280cbb3525b4c60311817609381e2308d9f2dfb7c0d7072  system-sshdgenkeys.service
+4a6d716a907a730675505bfc4ac38598f9c4e7d962fa9cdeea51dbbaa6afec80d1b82b98627c37c164dc5cdcc7f68118104e3adb73d985f32a24f1941766c5af  sysusers.d-sshd.conf
 0bed9a8a719661609ad84d1c6fcdf2fe9213e741682b7ddebad82d9744f137c593788ed522868f10b95b599d81743d07ec3212630a7e99d333261dfa1bf1cc11  system-pd-mapper.service
 e12d8e98e28a795f879aebcceb32a991ee4abcb3bc5ec458aa5378bb52ff86cf39be04bc4a196925f532d623304b3005f561fa5e55d1c87944d718058ec4c0e6  system-plasma-mobile.service
 ebd194aad645a836ba2b51bfcebd7f78a8ec703e62dd7a7e85343df4f7b60e99abfebd6de12e540e4be24e9079aee0b8ea450e5169ce9ee97e44d0b370013a07  user-plasma-polkit-agent.service
