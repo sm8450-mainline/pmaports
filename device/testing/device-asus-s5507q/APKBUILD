@@ -1,7 +1,7 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-asus-s5507q
 pkgdesc="ASUS Vivobook S 15"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -12,7 +12,6 @@ depends="
 	postmarketos-base
 	systemd-boot
 	firmware-asus-s5507q-dpu
-	firmware-asus-s5507q-wifi
 	firmware-asus-s5507q-audio
 	dtbloader
 "
@@ -36,5 +35,5 @@ package() {
 
 sha512sums="
 d8fbfda725a96166646f4d804dd6f35ffa1e45f072ba68829a27051ce13bcfddefaef1b3ce622cbdefeb284ca9893f9d6c6d4e3d0c17acaaed457c5784bad3d0  deviceinfo
-bf450e5aa2878f06824090cac9b51a751e58d8fdff32793a3e87f47cf9c567c53ec9127761eba7a49b25c2b8cf6386910f208d5801fc585c71c68d0745ac3170  modules-initfs
+67ee789a0c6bb0daacc5795abc5cad87a17d51194234bf58b7e26b6a733b0fcf501a8fa78695d02067aa233f58733228e09558cd6f001095d2122011ccee7357  modules-initfs
 "
