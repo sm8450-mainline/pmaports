@@ -4,7 +4,7 @@
 
 pkgname=device-qcom-rbx
 pkgdesc="Generic device package for Qualcomm development boards"
-pkgver=1
+pkgver=2
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -44,5 +44,5 @@ package() {
 
 sha512sums="
 49f09697a42adfbd516d9b312313992074c9991ae3bceb1d76b561ca9db132fe1960369b8872f7ce3804a9b1545b7a9ab9a7c1589d3f42de0675bbfad0c923ae  deviceinfo
-777c51bcd468e160a8970f23973b2c3b07e855bb28c08270be123a401dbcf6f736aabf73c5abdb41cb8c7b381e47e94cb2e1ba59f8926126d66db9cb37d5bb9e  modules-initfs
+c48cf25a8d95dbd077fa159daa7bee312921b47aa2e1ac628fea92a74520b039736ce6b82509954ba1c4f4b99ed32fd26d1b2602b900308dee87581fa87c7129  modules-initfs
 "
