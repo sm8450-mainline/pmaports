@@ -9,7 +9,7 @@
 pkgname=systemd
 pkgver=257.7
 _pkgver="musl-v${pkgver//_/-}-split-usr"
-pkgrel=5
+pkgrel=6
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 # ppc64le and s390x blocked by pmboostrap not supporting
@@ -42,6 +42,7 @@ makedepends="
 	cmake
 	coreutils
 	cryptsetup-dev
+	curl-dev
 	elfutils
 	glib-dev
 	gperf
@@ -185,6 +186,7 @@ build() {
 		-Dutmp=false \
 		-Dldconfig=false \
 		-Duserdb=false \
+		-Dimportd=enabled \
 		-Dhomed=disabled \
 		-Dnss-myhostname=false \
 		-Dnss-mymachines=disabled \
