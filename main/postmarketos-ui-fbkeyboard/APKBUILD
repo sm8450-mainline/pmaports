@@ -2,7 +2,7 @@
 # Maintainer: Ferenc Bakonyi <bakonyi.ferenc@gmail.com>
 pkgname=postmarketos-ui-fbkeyboard
 pkgver=5
-pkgrel=2
+pkgrel=3
 pkgdesc="Plain framebuffer console with touchscreen keyboard support"
 url="https://github.com/bakonyiferenc/fbkeyboard"
 arch="all"

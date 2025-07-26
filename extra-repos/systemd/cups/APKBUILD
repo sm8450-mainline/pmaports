@@ -4,7 +4,7 @@ maintainer="Jane Rachinger <jane400+pmaports@postmarketos.org>"
 pkgname=cups
 _pkgver=2.4.12
 pkgver=9999$_pkgver
-pkgrel=0
+pkgrel=1
 pkgdesc="The CUPS Printing System"
 url="https://github.com/OpenPrinting/cups/"
 # armhf: pmb#2618

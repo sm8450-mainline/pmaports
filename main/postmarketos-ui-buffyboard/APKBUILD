@@ -2,7 +2,7 @@
 # Maintainer: exkc <exkc@exkc.moe>
 pkgname=postmarketos-ui-buffyboard
 pkgver=2
-pkgrel=0
+pkgrel=1
 pkgdesc="Plain framebuffer console with modern touchscreen keyboard support"
 url="https://gitlab.postmarketos.org/postmarketOS/buffybox"
 arch="all"

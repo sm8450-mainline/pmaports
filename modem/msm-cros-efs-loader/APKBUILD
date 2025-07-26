@@ -1,7 +1,7 @@
 # Maintainer: WeirdTreeThing <bradyn127@protonmail.com>
 pkgname=msm-cros-efs-loader
 pkgver=1.2
-pkgrel=0
+pkgrel=1
 pkgdesc="EFS loader for Qualcomm-based Chrome OS devices"
 url="https://gitlab.postmarketos.org/postmarketOS/msm-cros-efs-loader"
 arch="aarch64"

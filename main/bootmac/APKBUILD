@@ -1,7 +1,7 @@
 # Maintainer: Dylan Van Assche <me@dylanvanassche.be>
 pkgname=bootmac
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Configure MAC addresses at boot"
 url="https://gitlab.postmarketos.org/postmarketOS/bootmac"
 arch="all"

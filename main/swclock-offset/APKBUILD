@@ -1,7 +1,7 @@
 # Maintainer: Jakko <jahau@rocketmail.com>
 pkgname=swclock-offset
 pkgver=0.2.6
-pkgrel=0
+pkgrel=1
 pkgdesc="Keep system time at an offset to a non-writable RTC"
 url="https://gitlab.postmarketos.org/postmarketOS/swclock-offset"
 arch="noarch"

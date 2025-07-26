@@ -4,7 +4,7 @@
 pkgname=gnome-keyring
 pkgver=99948.0
 _pkgver=48.0
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME keyring"
 url="https://wiki.gnome.org//Projects/GnomeKeyring"
 # armhf: pmb#2618

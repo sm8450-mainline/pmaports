@@ -1,6 +1,6 @@
 pkgname=hexagonfs-firmware-loader
 pkgver=1.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Prepare the HexagonFS directory from msm-firmware-loader mounts"
 url="https://postmarketos.org/"
 subpackages="$pkgname-openrc $pkgname-systemd"

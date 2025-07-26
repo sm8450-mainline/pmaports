@@ -1,7 +1,7 @@
 # Maintainer: Casey Connolly <kcxt@postmarketos.org>
 pkgname=postmarketos-bootsplash
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="pmOS integration components for pbsplash"
 url="https://postmarketos.org"
 arch="all"

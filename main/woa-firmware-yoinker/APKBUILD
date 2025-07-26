@@ -1,7 +1,7 @@
 # Maintainer: Casey Connolly <kcxt@postmarketos.org>
 pkgname=woa-firmware-yoinker
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically pull firmware from Windows on X1 Elite devices"
 url="https://github.com/CadmiumLinux/woa-firmware-yoinker"
 arch="aarch64"

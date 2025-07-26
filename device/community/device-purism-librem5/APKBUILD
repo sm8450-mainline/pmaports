@@ -4,7 +4,7 @@
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 pkgname=device-purism-librem5
 pkgver=9
-pkgrel=0
+pkgrel=1
 _confver=69
 _purismrel=2
 # <librem5-base ver>.<purism release>

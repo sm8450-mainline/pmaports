@@ -3,7 +3,7 @@
 pkgname=gnome-settings-daemon-mobile
 pkgver=99948.0
 _pkgver=48.0
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME settings daemon"
 url="https://gitlab.gnome.org/verdre/gnome-settings-daemon-mobile"
 # armhf: pmb#2618

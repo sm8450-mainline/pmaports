@@ -3,7 +3,7 @@
 pkgname=gdm
 pkgver=99948.0
 _pkgver=48.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GNOME display manager"
 url="https://wiki.gnome.org/Projects/GDM"
 # blocked by gnome-shell

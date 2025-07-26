@@ -1,7 +1,7 @@
 # Maintainer: Antoine Martin (ayakael) <dev@ayakael.net>
 pkgname=pinenote-dbus-service
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Dbus daemon for controlling driver aspects on Pine64 Pinenote"
 url="https://github.com/m-weigand/pinenote_dbus_service"
 arch="aarch64"

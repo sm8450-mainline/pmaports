@@ -2,7 +2,7 @@
 pkgname=cros-keyboard-map
 pkgdesc="Keyboard mapping for Chrome OS devices"
 pkgver=0_git20240313
-pkgrel=1
+pkgrel=2
 url="https://github.com/WeirdTreeThing/cros-keyboard-map"
 license="BSD-3-Clause"
 arch="aarch64 armv7 x86_64" # there are no cros devices of other arches

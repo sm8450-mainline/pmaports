@@ -3,7 +3,7 @@
 pkgname=plasma-workspace
 pkgver=99996.4.2
 _pkgver=6.4.2
-pkgrel=0
+pkgrel=1
 pkgdesc="KDE Plasma Workspace"
 # armhf blocked by qt6-qtdeclarative
 # armv7 blocked by pmb#2618
