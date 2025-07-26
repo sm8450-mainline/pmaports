@@ -1,6 +1,6 @@
 pkgname=gnome-settings-daemon-mobile
 pkgver=48.0
-pkgrel=0
+pkgrel=1
 pkgdesc="GNOME settings daemon"
 url="https://gitlab.gnome.org/verdre/gnome-settings-daemon-mobile"
 arch="all"
