@@ -1,7 +1,7 @@
 # Maintainer: WeirdTreeThing <bradyn127@protonmail.com>
 pkgname=linux-postmarketos-mediatek-mt81
 pkgver=6.12.36
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline kernel for mediatek mt8183/mt8192/mt8195/mt8186"
 arch="aarch64"
 _flavor="${pkgname#linux-}"
@@ -58,6 +58,10 @@ source="
 	STOPSHIP-arm64-dts-mediatek-asurada-Enable-HDMI-audio.patch
 	mt8186-enable-dpi.patch
 	mt8186-add-extcon-to-dp-bridge.patch
+	mt8186-ASoC-hdmi-codec-Add-event-handler-for-hdmi-TX.patch
+	mt8186-SoC-mediatek-mt8186-correct-the-HDMI-widgets.patch
+	mt8186-drm-bridge-it6505-Add-audio-support.patch
+	mt8186-ASoC-mediatek-mt8186-make-FE-nonatomic-and-no_pcm.patch
 	mt8195-adsp.patch
 	mt8195-dvfsrc.patch
 	config-$_flavor.aarch64
@@ -113,4 +117,8 @@ e4eaff9d3ec1a56ae2503dd353ad57bf072219e68c26ba8b894feb90d6ccb01bd131cdde8d238451
 7582a86506ec1ff0a08ae52d249fa465f436439b01b592fe01f7aaa2fbdb3b2ae989473cd5cd9d39e6e9dac60d847063fa66ef36b808be695aa62b512d722d2b  mt8195-adsp.patch
 c61890785079aa67a4b92a30955cc7b2b1e1f8460255f2391b3d11f76c0e9568fe7dc9710e542392d42bf0a4426e1d47d7287621166e0cc9aa0333382ebd2cd2  mt8195-dvfsrc.patch
 9990a6ba76a641cd9724e8b4369c1792a9650fbdf44142ca69dec83eff0bf56cac200fa3a0ec6e47380949e29988518dcf73c1aa96572a0387367ba3d19eccec  config-postmarketos-mediatek-mt81.aarch64
+994f51fe70b49e324325b2d3d27b994c25af23210b579852424cc1c772f2189811cd51def49ab1be8f35b77e8bd1e387993f621238cc07dad4b805dab9e2f86b  mt8186-ASoC-mediatek-mt8186-make-FE-nonatomic-and-no_pcm.patch
+e09b8fc578742b0efcfb7e4419b30de39feecf3303def62576110c98e3a7101c68c78d1276f885e585ee21536df1f2474df5816f0dffa8f99ea1df1c787fe2c6  mt8186-drm-bridge-it6505-Add-audio-support.patch
+2c282b7cd4f72c998d65e4160b9d1f9122676a6392ef45f734dbd5428754eccc06404a057ea19ea097bf6237e27b3483c271c1ed15b20e359419ab9fb61b8d83  mt8186-ASoC-hdmi-codec-Add-event-handler-for-hdmi-TX.patch
+b2dcf3e3b9f80d185f587972ab6fc1f07e8ec7c7dbe3aa75c53ff6d3c7380ff4c3e6f394792976589d5e786923939a0860c70b486ae78925d0f122a5bf2516e0  mt8186-SoC-mediatek-mt8186-correct-the-HDMI-widgets.patch
 "
