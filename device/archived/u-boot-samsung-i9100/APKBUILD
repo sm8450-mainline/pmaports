@@ -1,5 +1,6 @@
 # Reference: <https://postmarketos.org/devicepkg>
 # Contributor: Paul Cercueil <paul@crapouillou.net>
+# Archived: Not used and does not support "modern" features like extlinux
 pkgname=u-boot-samsung-i9100
 pkgver=2012.04_rc1
 pkgrel=0
