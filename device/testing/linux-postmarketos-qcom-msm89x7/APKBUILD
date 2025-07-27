@@ -2,7 +2,7 @@
 _flavor="postmarketos-qcom-msm89x7"
 pkgname=linux-postmarketos-qcom-msm89x7
 pkgver=6.15.7
-pkgrel=0
+pkgrel=1
 pkgdesc="Mainline kernel fork for Qualcomm QM215/MSM8917/MSM8937/MSM8940/SDM429/SDM439 devices"
 arch="aarch64"
 _carch="arm64"
@@ -24,7 +24,7 @@ makedepends="
 	postmarketos-installkernel
 	python3
 	"
-_tag="$pkgver-r0"
+_tag="$pkgver-r1"
 _config="config-$_flavor.$arch"
 source="
 	$pkgname-v$_tag.tar.gz::$url/archive/v$_tag.tar.gz
@@ -57,6 +57,6 @@ package() {
 		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
 }
 sha512sums="
-605b5e1a39d4600de20bde944c8f4e9282b6f08edafd7192379fb881342aa57a833be6f98026d40e5f0ae73d1b6a16f3bef05507077c33d13f75664232cd947d  linux-postmarketos-qcom-msm89x7-v6.15.7-r0.tar.gz
-0d6ff3a453a8dc39113faf2e8c8c26cb5710a126b701db160c8482ac0bf417bc186a73437b1ad4817f5971b9fca3dc7a3ea1b42445f524061356b1bad013d32f  config-postmarketos-qcom-msm89x7.aarch64
+e087a9aa8ed0b9c49c9010463a41fc8fe63e52f39785f8b6fb5b014d8e3129cd1913e43c027ab24faedefadfa8ccb18e0c432cf70642d587c317c460040c9ca5  linux-postmarketos-qcom-msm89x7-v6.15.7-r1.tar.gz
+756456aa8d448183c4b9e3b2107037a2a2ee99d97cbe407ea3209a3e218f014d244cd99b084a50ec598b4a21142d00c7703df3661c597ebb4eb26f361fbad0b4  config-postmarketos-qcom-msm89x7.aarch64
 "
