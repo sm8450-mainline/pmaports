@@ -5,7 +5,7 @@ maintainer="Jane Rachinger <jane400+pmaports@postmarketos.org>"
 pkgname=networkmanager
 pkgver=9991.52.1
 _pkgver=1.52.1
-pkgrel=1
+pkgrel=0
 pkgdesc="Network Management daemon"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 # armhf: pmb#2618
