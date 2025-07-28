@@ -3,7 +3,7 @@
 pkgname=gnome-settings-daemon
 pkgver=99948.1
 _pkgver=48.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME settings daemon"
 url="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
 # armhf: pmb#2618
@@ -40,6 +40,7 @@ makedepends="
 	gtk+3.0-dev
 	libxml2-utils
 	meson
+	systemd-dev
 	"
 # checkdepends="
 # 	gnome-session
