@@ -5,8 +5,8 @@ pkgver=99996.4.2
 _pkgver=6.4.2
 pkgrel=0
 pkgdesc="Library and components for secure lock screen architecture"
-# armhf blocked by qt6-qtdeclarative -> ki18n and pmb#2618
-arch="all !armhf !armv7"
+# armhf blocked by qt6-qtdeclarative -> ki18n
+arch="all !armhf"
 url="https://kde.org/plasma-desktop/"
 license="GPL-2.0-or-later AND (GPL-2.0-only OR GPL-3.0-only)"
 depends="linux-pam"
