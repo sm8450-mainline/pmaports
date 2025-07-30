@@ -3,7 +3,7 @@
 pkgname=gdm
 pkgver=99948.0
 _pkgver=48.0
-pkgrel=3
+pkgrel=4
 pkgdesc="GNOME display manager"
 url="https://wiki.gnome.org/Projects/GDM"
 # blocked by gnome-shell
@@ -46,6 +46,7 @@ source="https://download.gnome.org/sources/gdm/${_pkgver%%.*}/gdm-$_pkgver.tar.x
 	0003-DOWNSTREAM-pam-rename-common-to-base.patch
 	Xsession
 	gcc15.patch
+	gdm.sysusers
 	"
 install="gdm.pre-install gdm.post-deinstall"
 builddir="$srcdir/gdm-$_pkgver"
@@ -75,6 +76,13 @@ package() {
 	#sed -i "s/pam_systemd\.so/pam_elogind.so/" "$pkgdir"/etc/pam.d/*
 
 	install -m755 -D "$srcdir/Xsession" "$pkgdir"/etc/gdm
+
+	install -Dm644 "$srcdir/gdm.sysusers" "$pkgdir"/usr/lib/sysusers.d/gdm.conf
+}
+
+systemd() {
+	amove usr/lib/sysusers.d/gdm.conf
+	default_systemd
 }
 
 sha512sums="
@@ -83,4 +91,5 @@ aa302c33c9b31e823ab98ca80c330c3f7eaa10d05c402cf111d78a35fbec82ce90bff34c19b713b6
 66611d49fc4c9578415a7e554834edcb9de99396bd0ca511dcfd4fb256e8a1cd1fd5f10464f4668ffe04799d919bc22ddb58e8bf272017edba69a7951522e63d  0003-DOWNSTREAM-pam-rename-common-to-base.patch
 f836cf0acdf148f2ae09ac28251b5126ce597f08254c43b1ec77596f75e1a3229926116c13f98554625be763e8d28415b27bd679b0a5de9f86bdca7857054c82  Xsession
 9b6b1aba510267bfa366666dd1f2d3b22b0a8875313d72dbdbd568d79255e59b705a052889acff3b052a3dae38b87b3bc770a70604f64670f77a16c045c9d29c  gcc15.patch
+499cee7844d3ffb355ed8771c1cf0726e1f4c57ecbd1e0d6b25c1a3f6e6c95ad3dd45e878498a818e6db8086dab90912210d96bc024da6734ab5c53cd907ca55  gdm.sysusers
 "
