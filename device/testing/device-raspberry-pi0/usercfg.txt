@@ -11,26 +11,7 @@ dtoverlay=vc4-kms-v3d
 # load dwc2 USB driver
 dtoverlay=dwc2
 
-# have a properly sized image
-disable_overscan=1
-
-# for sound over HDMI
-hdmi_drive=2
-
-# rotate the HDMI display
-# 0 => no rotation
-# 1 => 90 degrees clockwise
-# 2 => 180 degrees clockwise
-# 3 => 270 degrees clockwise
-#display_hdmi_rotate=0
-
 # Uncomment some or all of these to enable the optional hardware interfaces
 #dtparam=i2c_arm=on
 #dtparam=i2s=on
 #dtparam=spi=on
-
-# custom CVT mode for HDMI
-# see https://www.raspberrypi.org/documentation/configuration/config-txt/video.md
-#hdmi_group=2
-#hdmi_mode=87
-#hdmi_cvt 800 480 60 6 0 0 0
