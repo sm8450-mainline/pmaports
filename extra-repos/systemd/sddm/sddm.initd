@@ -6,11 +6,15 @@ description="SDDM Display Manager"
 command=/usr/bin/sddm
 command_args="$sddm_opts"
 
-depends() {
+depend() {
 	provide display-manager
-	needs localmount
+	need dbus localmount
 }
 
 start_pre() {
 	checkpath -d -o sddm:video -m755 /var/lib/sddm
+}
+
+start_post() {
+	ewaitfile 2 /run/user/$(id -u sddm)
 }
