@@ -7,8 +7,8 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=80
-pkgrel=1
+pkgver=81
+pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
 # armhf: pmb#2618
@@ -82,6 +82,7 @@ subpackages="
 	rmtfs-systemd:_service
 	rtkit-systemd:_service
 	sensorfw-systemd:_service
+	siglo-systemd:_service
 	sleep-inhibitor-systemd:_service
 	syncthing-systemd:_service
 	tailscale-systemd:_service
@@ -201,6 +202,7 @@ _qcom_diag_sources="system/diag-router.service"
 _rmtfs_sources="system/rmtfs.service"
 _rtkit_sources="system/rtkit-daemon.service"
 _sensorfw_sources="system/sensorfwd.service"
+_siglo_sources="user/siglo.service"  # From https://github.com/theironrobin/siglo/blob/main/data/siglo.service
 _sleep_inhibitor_sources="system/sleep-inhibitor.service"
 _syncthing_sources="user/syncthing.service"  # From https://github.com/syncthing/syncthing/blob/main/etc/linux-systemd/user/syncthing.service
 _tailscale_sources="system/tailscaled.service etc/default/tailscaled"
@@ -307,6 +309,7 @@ source="$(flatpath \
 	$_rmtfs_sources \
 	$_rtkit_sources \
 	$_sensorfw_sources \
+	$_siglo_sources \
 	$_sleep_inhibitor_sources \
 	$_syncthing_sources \
 	$_tailscale_sources \
@@ -458,6 +461,7 @@ ebd194aad645a836ba2b51bfcebd7f78a8ec703e62dd7a7e85343df4f7b60e99abfebd6de12e540e
 d937995f9f859b6c93e73b979d6e2c272c1c2835805ffcec6e0881283f01766ec976a59e13b92d8708536a88198e8fa8ca9248f4fc9f07f7709a5e283d24695c  system-rmtfs.service
 1a0958e4fe232967946e9f2b17a13434b137236ba5d18442175d648b084d82df3a9fc5723c1621be899ee290b99777ac3c0ee6ad733e72d8e70f63b37ad00036  system-rtkit-daemon.service
 d5bf5f01c0feafab4edfc39b75eded608dc3efcd3b918739e3ed2ab11340c9cc9b6fb97c0706ddd3d49b726c5f62e8cdb0048aefafd916f3ad9defc6ff9783bc  system-sensorfwd.service
+631a5647c93c103853cf27c69951f44f50b9d44a6ac7773258093b6b632ad466dd0275d9ce7d9b1018b083d3a582c80be011d80f6b9579e78b00113fe3e90951  user-siglo.service
 be9df5e3fd9c88ec1a8db4aa2d9e8075d74ee3d2670aa3cfc611df3cff4d4041ac888a0338c9d5f134bbc69aa32eb52ac40eb3e0981813afa18389cba14d3818  system-sleep-inhibitor.service
 399cd971b02e4b8bdfe60808ab1beac111b8618358f89a4482cafde1d19fe0a943d2ef6c20f5ad853581a85ab2297065187ade83eac7a664bd47412d0df7b2b6  user-syncthing.service
 41547eb369937348378e898e0dda7151552056107f4daab5a8a137a1b846560afa923cd345037b4f96bc9cdf2a7f66211a346b77229cc07ce2d0b634ff40dfe7  system-tailscaled.service

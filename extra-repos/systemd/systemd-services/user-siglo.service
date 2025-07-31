@@ -1,0 +1,7 @@
+[Unit]
+Description=siglo service
+
+[Service]
+ExecStart=siglo --start
+ExecStop=siglo --stop
+Environment=PYTHONUNBUFFERED=1
