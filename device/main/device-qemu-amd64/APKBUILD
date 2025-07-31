@@ -2,7 +2,7 @@
 # Maintainer: Minecrell <minecrell@minecrell.net>
 # Co-Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=device-qemu-amd64
-pkgver=10
+pkgver=11
 pkgrel=0
 pkgdesc="Simulated device in QEMU (x86_64)"
 url="https://postmarketos.org"
@@ -61,6 +61,6 @@ kernel_stable() {
 }
 
 sha512sums="
-b267d0c7b1ede6d0a2fd655da7163f05575d183b02afd6799e82950bb2adf247eedc1e83aa415c3c4108374327766c466d5db16f47305753617b423bafb8e66f  deviceinfo
+c0f57d66a16cfbe8654e73f83a3b07cdfbd10506cf2a79363e742f5b2bbe87344841dbb897acd9816ca3c481706288626bdf7bde1b31bfd957d075e3ed6e984a  deviceinfo
 29766094e64a7ce881c8e96433203ea538057b8fd1d577fc69b9add6bc1217af04ddf60cbcf82333811c627897eda7537b0b1f862899e1fdfd93403b3f6425d7  modules-initfs
 "

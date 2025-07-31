@@ -2,7 +2,7 @@
 # Maintainer: Minecrell <minecrell@minecrell.net>
 # Co-Maintainer: Oliver Smith <ollieparanoid@postmarketos.org>
 pkgname=device-qemu-aarch64
-pkgver=9
+pkgver=10
 pkgrel=0
 pkgdesc="Simulated device in QEMU (aarch64)"
 url="https://postmarketos.org"
@@ -74,6 +74,6 @@ kernel_stable() {
 }
 
 sha512sums="
-a0d9518266611534f4024b6e44dfb5a1640ee5dd12bd5ebe271f431e5054a94e10a24ab385e8d930eca83b8e4b4f48318f94a51d94a50a6135717597f116e33e  deviceinfo
+5cb563f6774a9a3422146205b7df341e159fe8e2af28ad62f4c580d41bd9a888639fb120ad0c1b3c4ba8640efe0e223e8a9cb38d7085dd6dfdf17f9d45264fd3  deviceinfo
 8129439ec53e76e714b2d3dac97bbe702822d6f6642ea6b631aa26001fec85ca310fbe9eeb04c2bd849145a1137b7934c21b704524f3a98b96b7c6f71c2ca992  modules-initfs
 "
