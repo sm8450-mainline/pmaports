@@ -2,7 +2,7 @@
 
 _flavor="postmarketos-qcom-sm6350"
 pkgname=linux-$_flavor
-pkgver=6.15.0
+pkgver=6.16.0
 pkgrel=0
 pkgdesc="Mainline Kernel fork for SM6350/SM7225 devices"
 arch="aarch64"
@@ -54,6 +54,6 @@ package() {
 }
 
 sha512sums="
-6cfeb5c3f8e54afade09bdcb550a1a334b4c04beea8a60792cd71d1bcc6841308ff7327d9fabf2af3fd3aee8f477cf398a6058325704bc88af9b5fb6f1b0cb1a  linux-v6.15.0-sm6350.tar.gz
-1a27c9b8729c795dbb81049a587275248ca76aa0a673b55a3c02d81ba54a2415e6d7758e77deb1756bc0d54d825532a6610bbe72261950c4e0d54c8bd61e48ce  config-postmarketos-qcom-sm6350.aarch64
+11b9983e4f444d55b10be07c2c36eb4288cb6be8371a5f823666c8c14e0c85b5c32c4157d0922f1c07c18b519ce6738ce388b7366974efe389398784fe3baac8  linux-v6.16.0-sm6350.tar.gz
+65012c8edab0b9e938fb41ac3218303dabe7877b5418c1e029e1dff7e7cb3a50b8477715f8a8d566e7744f4f850e581fdb4110300dd73958b28b62dabaf05f6d  config-postmarketos-qcom-sm6350.aarch64
 "
