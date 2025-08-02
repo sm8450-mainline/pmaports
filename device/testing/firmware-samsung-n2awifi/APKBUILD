@@ -1,7 +1,7 @@
 pkgname=firmware-samsung-n2awifi
 pkgdesc="Firmware for Samsung Galaxy Note Pro 10.1"
 pkgver=1
-pkgrel=1
+pkgrel=2
 url="https://github.com/exynos5420/android_vendor_samsung_n2a-common"
 arch="armv7"
 license="proprietary"
@@ -9,6 +9,10 @@ options="!check !strip !archcheck !spdx !tracedeps pmb:cross-native"
 subpackages="
 	$pkgname-downstream:downstream
 	$pkgname-mainline:mainline
+"
+source="
+	maxtouch.cfg
+	30-touchscreen-firmware.files
 "
 
 # Source
@@ -61,9 +65,17 @@ mainline() {
 	# Wifi
 	install -Dm644 "$srcdir/$pkgname-$_n2awifi_commit"-nvram_net.txt \
 		"$subpkgdir"/lib/firmware/postmarketos/brcm/brcmfmac4339-sdio.samsung,n2awifi.txt
+
+	# Touchscreen
+	install -Dm644 "$srcdir"/maxtouch.cfg \
+		"$subpkgdir"/lib/firmware/postmarketos/maxtouch.cfg
+	install -Dm644 "$srcdir"/30-touchscreen-firmware.files \
+		"$subpkgdir"/usr/share/mkinitfs/files/30-touchscreen-firmware.files
 }
 
 sha512sums="
+9644a57849ed208037acd65e7f2341aeef8a1298b69d63e631c381d1cf33b19f78bfefa29b3a6110ba9d55468701224605acdce4ac9ba2d36f2fe545f03a608d  maxtouch.cfg
+d92d73d06d88371d8842cca02b9a396414d6f9e879c74afd8fd540c76a97edbd8655d903815a2aed508785b3fe96fa5798fbd1ceb918098b8b788555ba4267cf  30-touchscreen-firmware.files
 a96731cb93938dbf9c3e9deed3725140f4b814f2eb719701076b5b4ef097f20e044a447afe84b4c14ed2fb263f92d08a856a92b9816440fa309c9407af0d2761  firmware-samsung-n2awifi-81dc97e9d3798e1975c9dfa518f9dc573d9e101b-bcmdhd_apsta.bin
 1885041ec2ec2c593537fffa13a678bf79df1ecaa50be06dda53acc0196e565e30917a01301898153bbcd81cbaf26770f39bb00e0e4e0d9a6a792585dce328a3  firmware-samsung-n2awifi-81dc97e9d3798e1975c9dfa518f9dc573d9e101b-bcmdhd_ibss.bin
 107cfdbef9b35f2bb31cd526dd6b8eedcb4fa0c6702766f7a352a761444ec87e6db31c1e1e761c1a2333dac83d4ee38e24070d19d7f5ccc2c87497b61b3f7b0a  firmware-samsung-n2awifi-81dc97e9d3798e1975c9dfa518f9dc573d9e101b-bcmdhd_mfg.bin
