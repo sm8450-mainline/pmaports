@@ -2,7 +2,7 @@
 pkgname=firmware-samsung-v1awifi
 pkgdesc="Firmware for Samsung Galaxy Tab Pro 12.2"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://github.com/exynos5420/android_vendor_samsung_v1a-common"
 arch="armv7"
 license="proprietary"
@@ -18,6 +18,8 @@ _commit_universal="8f5241f7637477d3ecae65c67b9315d343257fad"
 source="
 	$pkgname-v1a-$pkgver.tar.gz::https://github.com/exynos5420/android_vendor_samsung_v1a-common/archive/$_commit_v1a.tar.gz
 	$pkgname-universal-$pkgver.tar.gz::https://github.com/exynos5420/android_vendor_samsung_universal5420-common/archive/$_commit_universal.tar.gz
+	maxtouch.cfg
+	30-touchscreen-firmware.files
 "
 # All the files are picked from proprietary/etc/wifi, so put this path instead of the root directory
 builddir="$srcdir/android_vendor_samsung_v1a-common-$_commit_v1a/proprietary/etc/wifi"
@@ -61,9 +63,17 @@ mainline() {
 	# Wifi
 	install -Dm644 "$builddir"/nvram_net.txt_4354_a0 \
 		"$subpkgdir"/lib/firmware/postmarketos/brcm/brcmfmac4354-sdio.samsung,v1a-wifi.txt
+
+	# Touchscreen
+	install -Dm644 "$srcdir"/maxtouch.cfg \
+		"$subpkgdir"/lib/firmware/postmarketos/maxtouch.cfg
+	install -Dm644 "$srcdir"/30-touchscreen-firmware.files \
+		"$subpkgdir"/usr/share/mkinitfs/files/30-touchscreen-firmware.files
 }
 
 sha512sums="
 f95569da626e30755866e131d485b8c1882164883289cd2ed3ed1cad172b8d7da03b2a760bc2e4c138e419215b37c7fcbe6921c8c3d0bf97fcad6afb913410d2  firmware-samsung-v1awifi-v1a-2.tar.gz
 42360515f27f0e74d55ba60ea9713d5584da4c5b831deb9f5ee9443eb08156f0fcb7af3d2cb13ae6549c76f7e85ba3d0064ab395ed079b7ad9576ddb31c65c08  firmware-samsung-v1awifi-universal-2.tar.gz
+769fff7ed8ceb8c140a13f8d7d422a17b663060fefe5e90d503c654cd6301a8ceb36c8560bd6684ff1070aa9debe4dd366cd9f5802b16de0d96eed1cadd04f1a  maxtouch.cfg
+d92d73d06d88371d8842cca02b9a396414d6f9e879c74afd8fd540c76a97edbd8655d903815a2aed508785b3fe96fa5798fbd1ceb918098b8b788555ba4267cf  30-touchscreen-firmware.files
 "
