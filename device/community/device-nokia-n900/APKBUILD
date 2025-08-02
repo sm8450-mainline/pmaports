@@ -2,8 +2,8 @@
 # Maintainer: Sicelo <absicsz@gmail.com>
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-nokia-n900
-pkgver=46
-pkgrel=1
+pkgver=47
+pkgrel=0
 pkgdesc="Nokia N900"
 url="https://postmarketos.org"
 arch="armv7"
@@ -81,7 +81,7 @@ source="
 	udev/15-bq27k.rules
 	udev/90-touchscreen-dev.rules
 	upower.conf
-	x11-keymap
+	xkb-keymap
 	xorg.conf
 	xresources
 "
@@ -178,8 +178,8 @@ x11() {
 xkeyboard_config() {
 	install_if="$pkgname=$pkgver-r$pkgrel xkeyboard-config"
 	replaces="xkeyboard-config"
-	install -D -m644 "$srcdir"/x11-keymap \
-		"$subpkgdir"/usr/share/X11/xkb/symbols/nokia_vndr/rx-51
+	install -D -m644 "$srcdir"/xkb-keymap \
+		"$subpkgdir"/usr/share/xkeyboard-config-2/symbols/nokia_vndr/nokiarx51
 }
 
 i3wm() {
@@ -284,7 +284,7 @@ e440ed7a3070c17e003b86b72dbe6d8194d01b577ca8dd56dd066f216b6dda32bb965c780950f178
 1acc441b9f83dc91fd65fa3f89b8205bfd72a465286bc181b4e7e92dd4b8c0bc5c20a18dab46ff3ee8ae70940efd7d767b3dfb920edb4c74377bd418b838693d  15-bq27k.rules
 c6012aef28b096141b924fced226ec99fb93eb53b69c064a8887d8fecdf8dc08a3ba3db399e18d88374c6ef4c59013a30699c7e4d76e5cb771040582573a0527  90-touchscreen-dev.rules
 9b99feee42dd6bdd122769994c786d3127c41e0aa3321f19c82a9d3845cf07b522908621a31cbddd9599fe18c5c37127d9b4be4255cd7fa8e0e8983bf73eb41b  upower.conf
-c7837e6688f09c7d650ac7479b8881d4bad709480a71a1dea8b5bba4f4215d6b48a3aebd3f58923bbd48813559478d4ef137dcc9838d321722e141f0aa6a6085  x11-keymap
+4de54d007bd354461fe4d6d455fe3f29694c132a3996c79b68070d606b5ca1839f9027202ebb731035f0bf6504b42fbd5ab15c7b47b7f308ce768a84d45024c4  xkb-keymap
 a91f98daa60efa2beb2ff6b405097f92edca5f1bbb9e7675499139be52ca2570712f8f06f9032ef29f636f99c8f8da8b992f746eab6424aac04260c16158bcc2  xorg.conf
 183dfdd545ba05e216209b1abe45e4af4e0ee16b2e73cff0e7ea7b9524ee35a1cf85213a77f32a1a94287aee6546885dbd71c6de1f4f1a1e2961e638ff27cdf6  xresources
 "

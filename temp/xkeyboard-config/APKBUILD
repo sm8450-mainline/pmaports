@@ -1,8 +1,9 @@
 # Maintainer: Sicelo A. Mhlongo <absicsz@gmail.com>
 pkgname=xkeyboard-config
 pkgver=9999
-_pkgver=2.41
-pkgrel=0
+_pkgver=2.45
+_commit="23fec5367a042639ed93f7cf3878fbe9ddb84115"
+pkgrel=1
 pkgdesc="X keyboard configuration files"
 url="https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config"
 arch="armv7"
@@ -11,9 +12,11 @@ subpackages="$pkgname-dev $pkgname-doc $pkgname-lang"
 depends_dev="$pkgname"
 makedepends="gettext meson perl libxslt"
 checkdepends="gawk"
-source="https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config/-/archive/xkeyboard-config-$_pkgver/xkeyboard-config-xkeyboard-config-$_pkgver.tar.gz
+source="
+	https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config/-/archive/$_commit/xkeyboard-config-$_commit.tar.gz
+	re-nokia.patch
 	"
-builddir="$srcdir"/xkeyboard-config-xkeyboard-config-$_pkgver
+builddir="$srcdir/xkeyboard-config-$_commit"
 
 build() {
 	abuild-meson . output
@@ -29,5 +32,6 @@ package() {
 }
 
 sha512sums="
-bae6ce7441154b8582cb431256899d748f8f45e24a28898e767e212d1233ea55d52de608ff760f37bb9930e47f1d0d840d085fd4129927e4a1ad3ab446f5b908  xkeyboard-config-xkeyboard-config-2.41.tar.gz
+b40f1be143495cbf20b18016643cef5ff123f4b9eb236bbd789a300d220bd9476f858ee5bfb1bd4191aa6e3ece4b65510892c1982926b49ac8d2daa5dfbe258a  xkeyboard-config-23fec5367a042639ed93f7cf3878fbe9ddb84115.tar.gz
+88c44ba723dc97fdaba04076fc49ff09c01384b689e93c9b1ab2b7c4547ea88cb64fbd2f203094abe149d4c1ff6efe38529ddf37f97fbbc3a22a714966289775  re-nokia.patch
 "

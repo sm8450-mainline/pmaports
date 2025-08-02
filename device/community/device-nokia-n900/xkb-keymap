@@ -1,7 +1,7 @@
 default partial alphanumeric_keys
 xkb_symbols "common" {
-    include "nokia_vndr/rx-51(common_keys)"
-    include "nokia_vndr/rx-51(modifiers)"
+    include "nokia_vndr/nokiarx51(common_keys)"
+    include "nokia_vndr/nokiarx51(modifiers)"
 
 	key <BKSP>	{ [	BackSpace,	Delete,		Escape, 	F12	] };
 	
@@ -17,7 +17,7 @@ xkb_symbols "common" {
 
     // Notice the similarity:
     //   "pc+us+cz(qwerty):2+grp:XYZ" vs.
-    //   "nokia_vndr/rx-51(common)+nokia_vndr/rx-51(us)+nokia_vndr/rx-51(cz_qwerty):2+grp:XYZ"
+    //   "nokia_vndr/nokiarx51(common)+nokia_vndr/nokiarx51(us)+nokia_vndr/nokiarx51(cz_qwerty):2+grp:XYZ"
     // where XYZ is one of xkb_symbols section usually located in file symbols/group.
 
     // Bear in mind that option XYZ could replace current keys configuration!!!
@@ -53,8 +53,8 @@ xkb_symbols "common" {
 
 partial alphanumeric_keys
 xkb_symbols "us" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_4btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_4btns)"
 
     name[Group1] = "U.S. English";
 };
@@ -63,8 +63,8 @@ xkb_symbols "us" {
 
 partial alphanumeric_keys
 xkb_symbols "pl" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_4btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_4btns)"
 
     name[Group1] = "Polish";
 };
@@ -73,8 +73,8 @@ xkb_symbols "pl" {
 
 partial alphanumeric_keys
 xkb_symbols "fise" {
-    include "nokia_vndr/rx-51(nordic_base)"
-    include "nokia_vndr/rx-51(arrows_2btns)"
+    include "nokia_vndr/nokiarx51(nordic_base)"
+    include "nokia_vndr/nokiarx51(arrows_2btns)"
 
     name[Group1] = "Finnish/Swedish";
 
@@ -87,8 +87,8 @@ xkb_symbols "fise" {
 
 partial alphanumeric_keys
 xkb_symbols "dano" {
-    include "nokia_vndr/rx-51(nordic_base)"
-    include "nokia_vndr/rx-51(arrows_2btns)"
+    include "nokia_vndr/nokiarx51(nordic_base)"
+    include "nokia_vndr/nokiarx51(arrows_2btns)"
 
     name[Group1] = "Danish/Norwegian";
 
@@ -101,8 +101,8 @@ xkb_symbols "dano" {
 
 partial alphanumeric_keys
 xkb_symbols "nordic" {
-    include "nokia_vndr/rx-51(nordic_base)"
-    include "nokia_vndr/rx-51(arrows_2btns)"
+    include "nokia_vndr/nokiarx51(nordic_base)"
+    include "nokia_vndr/nokiarx51(arrows_2btns)"
 
     name[Group1] = "Danish/Finnish/Norwegian/Swedish";
 
@@ -117,8 +117,8 @@ xkb_symbols "nordic" {
 
 partial alphanumeric_keys
 xkb_symbols "ptes" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_2btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_2btns)"
 
     name[Group1] = "Portuguese/Spanish";
 
@@ -150,8 +150,8 @@ xkb_symbols "ptes" {
 
 partial alphanumeric_keys
 xkb_symbols "fr" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_2btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_2btns)"
 
     name[Group1] = "French";
 
@@ -186,8 +186,8 @@ xkb_symbols "fr" {
 
 partial alphanumeric_keys
 xkb_symbols "de" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_2btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_2btns)"
 
     name[Group1] = "German";
 
@@ -211,8 +211,8 @@ xkb_symbols "de" {
 
 partial alphanumeric_keys
 xkb_symbols "ch" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_2btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_2btns)"
 
     name[Group1] = "Swiss";
 
@@ -250,8 +250,8 @@ xkb_symbols "ch" {
 // Levels 5-8 are Russian, levels 1-4 US English, for shortcut reasons.
 partial alphanumeric_keys
 xkb_symbols "ru" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_2btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_2btns)"
 
     name[Group1] = "Russian";
 
@@ -298,8 +298,8 @@ xkb_symbols "ru" {
 
 partial alphanumeric_keys
 xkb_symbols "it" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_2btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_2btns)"
 
     name[Group1] = "Italian";
 
@@ -325,8 +325,8 @@ xkb_symbols "it" {
 
 partial alphanumeric_keys
 xkb_symbols "cz" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_2btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_2btns)"
 
     name[Group1] = "Czech";
 
@@ -353,7 +353,7 @@ xkb_symbols "cz" {
 
 partial alphanumeric_keys
 xkb_symbols "cz_qwerty" {
-    include "nokia_vndr/rx-51(cz)"
+    include "nokia_vndr/nokiarx51(cz)"
 
     name[Group1] = "Czech - qwerty";
 
@@ -374,7 +374,7 @@ xkb_symbols "cz_qwerty" {
 
 partial hidden alphanumeric_keys
 xkb_symbols "nordic_base" {
-    include "nokia_vndr/rx-51(english_base)"
+    include "nokia_vndr/nokiarx51(english_base)"
 
     // 1. row
     key <AB08>	{ [	aring,		Aring,		equal,		equal		] };
@@ -508,8 +508,8 @@ xkb_symbols "arrows_4btns" {
 
 // author: Roman Moravcik
 xkb_symbols "sk" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_2btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_2btns)"
 
     name[Group1] = "Slovak QWERTZ (CZ HW)";
 
@@ -535,7 +535,7 @@ xkb_symbols "sk" {
 };
 
 xkb_symbols "sk_qwerty" {
-    include "nokia_vndr/rx-51(sk)"
+    include "nokia_vndr/nokiarx51(sk)"
 
     name[Group1] = "Slovak QWERTY (CZ hw)";
 
@@ -549,8 +549,8 @@ xkb_symbols "sk_qwerty" {
 // author: Roman Moravcik
 partial alphanumeric_keys
 xkb_symbols "aren" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_4btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_4btns)"
 
     name[Group1] = "U.S. English";
     name[Group2] = "Arabic";
@@ -597,8 +597,8 @@ xkb_symbols "aren" {
 // author: Hessam Farhang
 partial alphanumeric_keys
 xkb_symbols "faen" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_4btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_4btns)"
 
     name[Group1] = "U.S. English";
     name[Group2] = "Persian";
@@ -644,8 +644,8 @@ xkb_symbols "faen" {
 
 // author: Jaroslav Poriz
 xkb_symbols "dv" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_4btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_4btns)"
 
     name[Group1] = "Dvorak";
 
@@ -690,8 +690,8 @@ xkb_symbols "dv" {
 // author: Faidon Liambotis
 partial alphanumeric_keys
 xkb_symbols "gr" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_4btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_4btns)"
 
     name[Group1] = "U.S. English";
     name[Group2] = "Greek";
@@ -740,8 +740,8 @@ xkb_symbols "gr" {
 // author: Roman Moravcik
 partial alphanumeric_keys
 xkb_symbols "bg_phonetic" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_4btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_4btns)"
 
     name[Group1] = "U.S. English";
     name[Group2] = "Bulgarian - Phonetic";
@@ -792,8 +792,8 @@ xkb_symbols "bg_phonetic" {
 // author: Nikola Kovachevski
 partial alphanumeric_keys
 xkb_symbols "mk" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_4btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_4btns)"
 
     name[Group1] = "U.S. English";
     name[Group2] = "Macedonian";
@@ -844,8 +844,8 @@ xkb_symbols "mk" {
 // author: Roman Moravcik
 partial alphanumeric_keys
 xkb_symbols "ru_phonetic" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_2btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_2btns)"
 
     name[Group1] = "Russian - Phonetic";
     name[Group2] = "U.S. English";
@@ -927,8 +927,8 @@ xkb_symbols "ru_phonetic" {
 // author: Roman Moravcik
 partial alphanumeric_keys
 xkb_symbols "he_phonetic" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_4btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_4btns)"
 
     name[Group1] = "U.S. English";
     name[Group2] = "Hebrew - Phonetic";
@@ -975,8 +975,8 @@ xkb_symbols "he_phonetic" {
 // author: Roman Moravcik
 partial alphanumeric_keys
 xkb_symbols "he" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_4btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_4btns)"
 
     name[Group1] = "U.S. English";
     name[Group2] = "Hebrew";
@@ -1023,8 +1023,8 @@ xkb_symbols "he" {
 // author: David Gegechkori
 partial alphanumeric_keys
 xkb_symbols "ge" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_4btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_4btns)"
 
     name[Group1] = "U.S. English";
     name[Group2] = "Georgian - Latin";
@@ -1071,8 +1071,8 @@ xkb_symbols "ge" {
 // author: Eriks Jansons
 partial alphanumeric_keys
 xkb_symbols "lv" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_4btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_4btns)"
 
     name[Group1] = "U.S. English";
     name[Group2] = "Latvian";
@@ -1120,8 +1120,8 @@ xkb_symbols "lv" {
 // author: Aleksandar Urosevic
 partial alphanumeric_keys
 xkb_symbols "sr_cyrillic" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_4btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_4btns)"
 
     name[Group1] = "U.S. English";
     name[Group2] = "Serbian - Cyrillic";
@@ -1173,8 +1173,8 @@ xkb_symbols "sr_cyrillic" {
 // author: Tarick
 partial alphanumeric_keys
 xkb_symbols "ua_phonetic" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_2btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_2btns)"
 
     name[Group1] = "U.S. English";
     name[Group2] = "Ukrainian - Phonetic";
@@ -1258,8 +1258,8 @@ xkb_symbols "ua_phonetic" {
 // author: Tarick
 partial alphanumeric_keys
 xkb_symbols "ua" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_2btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_2btns)"
 
     name[Group1] = "U.S. English";
     name[Group2] = "Ukrainian";
@@ -1341,7 +1341,7 @@ xkb_symbols "ua" {
 // created on 2010-10-31
 partial alphanumeric_keys
 xkb_symbols "ro" {
-    include "nokia_vndr/rx-51(english_base)"
+    include "nokia_vndr/nokiarx51(english_base)"
 
     name[Group1] = "Romanian";
 
@@ -1356,8 +1356,8 @@ xkb_symbols "ro" {
 // author: Thanawit Lertruengpanya
 partial alphanumeric_keys
 xkb_symbols "th" {
-    include "nokia_vndr/rx-51(english_base)"
-    include "nokia_vndr/rx-51(arrows_4btns)"
+    include "nokia_vndr/nokiarx51(english_base)"
+    include "nokia_vndr/nokiarx51(arrows_4btns)"
 
     name[Group1] = "U.S. English";
     name[Group2] = "Thai Kedmanee";
