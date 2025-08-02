@@ -3,7 +3,7 @@
 pkgname=device-google-sargo
 pkgdesc="Google Pixel 3a"
 pkgver=13
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -60,9 +60,6 @@ package() {
 	# via non-free firmware.
 	install -Dm644 "$srcdir"/q6voiced.conf "$pkgdir"/etc/conf.d/q6voiced
 
-	install -Dm755 "$srcdir"/modem-gnss.initd \
-		"$pkgdir"/etc/init.d/modem-gnss
-
 	install -Dm755 "$srcdir"/modem-gnss.service \
 		-t "$pkgdir"/usr/lib/systemd/system
 }
@@ -77,6 +74,9 @@ openrc() {
 	# The FastRPC service is only enabled when non-free firmware is installed.
 	install -Dm755 "$srcdir"/no-hexagonrpcd-on-suspend.sh \
 		"$subpkgdir"/etc/elogind/system-sleep/no-hexagonrpcd-on-suspend.sh
+
+	install -Dm755 "$srcdir"/modem-gnss.initd \
+		"$pkgdir"/etc/init.d/modem-gnss
 }
 
 plasma_camera() {
