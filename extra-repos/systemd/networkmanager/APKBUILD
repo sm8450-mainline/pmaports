@@ -3,8 +3,8 @@
 
 maintainer="Jane Rachinger <jane400+pmaports@postmarketos.org>"
 pkgname=networkmanager
-pkgver=9991.52.1
-_pkgver=1.52.1
+pkgver=9991.54.0
+_pkgver=1.54.0
 pkgrel=0
 pkgdesc="Network Management daemon"
 url="https://wiki.gnome.org/Projects/NetworkManager"
@@ -24,6 +24,7 @@ makedepends="
 	libgudev-dev
 	libndp-dev
 	libnl3-dev
+	libnvme-dev
 	libpsl-dev
 	libxslt
 	linux-headers
@@ -75,8 +76,6 @@ subpackages="
 	$pkgname-bash-completion
 	$pkgname-dnsmasq
 	"
-# download.gnome.org switched to a new publish model and networkmanager hasnt switch yet
-#source="https://download.gnome.org/sources/NetworkManager/${_pkgver:0:4}/NetworkManager-$_pkgver.tar.xz
 source="$pkgname-$_pkgver.tar.gz::https://github.com/NetworkManager/NetworkManager/archive/refs/tags/$_pkgver.tar.gz
 	$pkgname.conf
 	$pkgname.rules
@@ -235,7 +234,7 @@ _default_plugin() {
 }
 
 sha512sums="
-ecbc4675d8c3972836920a76ba8e0ef14982785b72fd5de8213841490800c352c5ecf22091bbb5d3dfc1f93549c18564578149fccb4afbf6da59983d0d40c45f  networkmanager-1.52.1.tar.gz
+09d4f674271a9297b4484297ca76473ae07ada8765a2ce7c6aae18e7e782429bac26aae4bc0718adad39814c46febcc1c3dbd0503ca6ef7eae9be7ea1372e23d  networkmanager-1.54.0.tar.gz
 0f79016bf717dea43830962f524deae8d1cedc274376e40bd912ebe63208c5b1c3b7a5aa14379da19020c587dbd5588df2f0066ca1540070a226983a43e4159b  networkmanager.conf
 9820ed2ead0af689644842de57657bb10330a1eaff0e85b21ae9913f55e399e47d8b41b0a12956f30de80272b4424c6e55f33acbc88e156879003a260bf576f6  networkmanager.rules
 e321f6f072901c4076543a6d1c4c46cf4a16b24be5fea6167c878bfeb9eced801fae94925ff208132f22a69a34d0f036b30f7b9253dea1757b98b40cbe3a896d  0001-hack-wifi-Disable-WPA-PSK-SHA256-for-brcmfmac-in-AP-.patch
