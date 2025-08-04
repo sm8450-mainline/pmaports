@@ -2,7 +2,7 @@
 # Maintainer: Bart Ribbers <bribbers@disroot.org>
 pkgname=postmarketos-ui-plasma-mobile
 pkgver=5
-pkgrel=8
+pkgrel=9
 pkgdesc="(Wayland) Mobile variant of KDE Plasma (does not run without hardware acceleration)"
 url="https://wiki.postmarketos.org/wiki/Plasma_Mobile"
 arch="noarch !armhf !x86" # armhf: pmaports#75, x86: aports#11807
@@ -35,7 +35,7 @@ source="
 	org.kde.plasma.mobile.homescreen.folio.js
 	"
 subpackages="$pkgname-extras $pkgname-openrc"
-replaces="plasma-mobile"
+replaces="plasma-mobile plasma-mobile-meta"
 options="!check pmb:drm pmb:systemd"
 
 package() {
