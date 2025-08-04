@@ -3,7 +3,7 @@
 pkgname=device-google-sargo
 pkgdesc="Google Pixel 3a"
 pkgver=13
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -76,7 +76,7 @@ openrc() {
 		"$subpkgdir"/etc/elogind/system-sleep/no-hexagonrpcd-on-suspend.sh
 
 	install -Dm755 "$srcdir"/modem-gnss.initd \
-		"$pkgdir"/etc/init.d/modem-gnss
+		"$subpkgdir"/etc/init.d/modem-gnss
 }
 
 plasma_camera() {
