@@ -10,7 +10,7 @@ if [ "$deviceinfo_no_framebuffer" = "true" ]; then
 	return;
 fi
 
-# Do not show splash if PMOS_SPLASH is set
+# Do not show splash if PMOS_NOSPLASH is set
 if grep -q PMOS_NOSPLASH /proc/cmdline; then
 	return;
 fi
