@@ -1,7 +1,7 @@
-From fd07e34ae290cb020bf35d72b469511ed1adc1c3 Mon Sep 17 00:00:00 2001
+From 2aab71882694932e75ac56e99a1489dd6a6bfd1f Mon Sep 17 00:00:00 2001
 From: Petr Vorel <petr.vorel@gmail.com>
 Date: Thu, 27 Jan 2022 00:26:54 +0100
-Subject: [PATCH 3/3] arm64: dts: qcom: msm8994-huawei-angler: Add regulators
+Subject: [PATCH] arm64: dts: qcom: msm8994-huawei-angler: Add regulators
 
 Signed-off-by: Petr Vorel <petr.vorel@gmail.com>
 Link: https://lore.kernel.org/linux-arm-msm/20230203122118.15219-1-pvorel@suse.cz/
@@ -10,10 +10,10 @@ Link: https://lore.kernel.org/linux-arm-msm/20230203122118.15219-1-pvorel@suse.c
  1 file changed, 267 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/qcom/msm8994-huawei-angler-rev-101.dts b/arch/arm64/boot/dts/qcom/msm8994-huawei-angler-rev-101.dts
-index 29e79ae0849d..cdd6f58efdf0 100644
+index 1aca11daf83c..178b1c88f2f6 100644
 --- a/arch/arm64/boot/dts/qcom/msm8994-huawei-angler-rev-101.dts
 +++ b/arch/arm64/boot/dts/qcom/msm8994-huawei-angler-rev-101.dts
-@@ -59,6 +59,273 @@ &tlmm {
+@@ -78,6 +78,273 @@ &tlmm {
  	gpio-reserved-ranges = <85 4>;
  };
  
@@ -288,5 +288,5 @@ index 29e79ae0849d..cdd6f58efdf0 100644
  	status = "okay";
  	mmc-hs400-1_8v;
 -- 
-2.39.2
+2.50.1
 
