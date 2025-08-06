@@ -3,7 +3,7 @@ pkgname=xkeyboard-config
 pkgver=9999
 _pkgver=2.45
 _commit="23fec5367a042639ed93f7cf3878fbe9ddb84115"
-pkgrel=1
+pkgrel=2
 pkgdesc="X keyboard configuration files"
 url="https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config"
 arch="armv7"
@@ -29,6 +29,10 @@ check() {
 
 package() {
 	DESTDIR="$pkgdir" meson install --no-rebuild -C output
+	# apk-tools unable to handle symlink correctly for the time being
+	rm "$pkgdir"/usr/share/X11/xkb/
+	mv "$pkgdir"/usr/share/xkeyboard-config-2/ "$pkgdir"/usr/share/X11/xkb/
+	ln -s X11/xkb "$pkgdir"/usr/share/xkeyboard-config-2
 }
 
 sha512sums="
