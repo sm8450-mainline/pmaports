@@ -1,7 +1,7 @@
-From 723fa18fb91b2f82ab0b29cab0e076470530f611 Mon Sep 17 00:00:00 2001
+From 7e049a3ac0d03a69bfbaeb6508e8223f6cef4bb9 Mon Sep 17 00:00:00 2001
 From: Robert Mader <robert.mader@collabora.com>
 Date: Fri, 11 Oct 2024 20:13:24 +0200
-Subject: [PATCH 06/13] pipeline: simple: Consider output sizes when choosing
+Subject: [PATCH 05/12] pipeline: simple: Consider output sizes when choosing
  pipe config
 
 In order to avoid having to adjust the size further down below which
@@ -31,5 +31,5 @@ index c19ce17d4..09310dc02 100644
  				pipeConfig_ = pipeConfig;
  		}
 -- 
-2.49.0
+2.50.1
 

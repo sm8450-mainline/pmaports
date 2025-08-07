@@ -1,7 +1,7 @@
-From 8dd00d27c62b43076534c2876db60e3ebc982320 Mon Sep 17 00:00:00 2001
+From c7a3900faac43a42678fe84f5d5683e93bbb7dc8 Mon Sep 17 00:00:00 2001
 From: Robert Mader <robert.mader@collabora.com>
 Date: Thu, 9 May 2024 21:07:07 +0200
-Subject: [PATCH 03/13] libcamera: simple: Force-disable softwareISP for
+Subject: [PATCH 02/12] libcamera: simple: Force-disable softwareISP for
  millipixels
 
 As the later uses libcamera and requires raw-streams to get passed
@@ -39,5 +39,5 @@ index 74e0683f4..eb405e52c 100644
  	std::vector<MediaEntity *> sensors = locateSensors(media);
  	if (sensors.empty()) {
 -- 
-2.49.0
+2.50.1
 

@@ -1,7 +1,7 @@
-From ef5523fc96a3ee2fde54a78fcb11dfa805b01d17 Mon Sep 17 00:00:00 2001
+From 56d422798dea67bdffc96d2e6ab5cb44f84f88cf Mon Sep 17 00:00:00 2001
 From: Robert Mader <robert.mader@collabora.com>
 Date: Sun, 24 Nov 2024 18:20:37 +0100
-Subject: [PATCH 10/13] ipa/simple: Add tuning file for s5k3l6xx
+Subject: [PATCH 09/12] ipa/simple: Add tuning file for s5k3l6xx
 
 Used by the Librem5
 ---
@@ -40,5 +40,5 @@ index 000000000..f7d01b738
 +  - Agc:
 +...
 -- 
-2.49.0
+2.50.1
 

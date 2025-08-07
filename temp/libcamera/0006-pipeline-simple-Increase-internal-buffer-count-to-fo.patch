@@ -1,7 +1,7 @@
-From ca75d1b7545d475714021d976b89102654580bbc Mon Sep 17 00:00:00 2001
+From df46e9a8e797a7e4fedfecf921f809c3b8a154bd Mon Sep 17 00:00:00 2001
 From: Robert Mader <robert.mader@collabora.com>
 Date: Sun, 13 Oct 2024 14:13:44 +0200
-Subject: [PATCH 07/13] pipeline: simple: Increase internal buffer count to
+Subject: [PATCH 06/12] pipeline: simple: Increase internal buffer count to
  four aswell
 
 Signed-off-by: Robert Mader <robert.mader@collabora.com>
@@ -23,5 +23,5 @@ index 09310dc02..58e70993f 100644
  	struct EntityData {
  		std::unique_ptr<V4L2VideoDevice> video;
 -- 
-2.49.0
+2.50.1
 

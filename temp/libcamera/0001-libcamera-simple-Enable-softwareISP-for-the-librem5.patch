@@ -1,7 +1,7 @@
-From 3ba0384186117f1b64676f530a23d70f8784af7a Mon Sep 17 00:00:00 2001
+From d5d0b31dfb7e71d0d9e1439d0985345148090708 Mon Sep 17 00:00:00 2001
 From: Robert Mader <robert.mader@collabora.com>
 Date: Mon, 22 Apr 2024 23:30:31 +0200
-Subject: [PATCH 02/13] libcamera: simple: Enable softwareISP for the librem5
+Subject: [PATCH 01/12] libcamera: simple: Enable softwareISP for the librem5
 
 And - in theory - on similar devices.
 ---
@@ -22,5 +22,5 @@ index 4323472e1..74e0683f4 100644
  	{ "j721e-csi2rx", {}, true },
  	{ "mtk-seninf", { { "mtk-mdp", 3 } }, false },
 -- 
-2.49.0
+2.50.1
 

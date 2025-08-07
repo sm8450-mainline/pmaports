@@ -1,20 +1,20 @@
-From 8f0dc983b47e303fb4cf16b63b4cd3f52e53fc9f Mon Sep 17 00:00:00 2001
+From 6b2f8091a02503ee699c952876402c7ed027ddf3 Mon Sep 17 00:00:00 2001
 From: Robert Mader <robert.mader@collabora.com>
-Date: Sat, 8 Mar 2025 10:39:44 +0100
-Subject: [PATCH 13/13] ipa/simple: Add tuning file for IMX376
+Date: Sat, 8 Mar 2025 10:38:06 +0100
+Subject: [PATCH 11/12] ipa/simple: Add tuning file for IMX371
 
 The value is guessed from similar IMX sensors.
 ---
- src/ipa/simple/data/imx376.yaml | 11 +++++++++++
+ src/ipa/simple/data/imx371.yaml | 11 +++++++++++
  src/ipa/simple/data/meson.build |  1 +
  2 files changed, 12 insertions(+)
- create mode 100644 src/ipa/simple/data/imx376.yaml
+ create mode 100644 src/ipa/simple/data/imx371.yaml
 
-diff --git a/src/ipa/simple/data/imx376.yaml b/src/ipa/simple/data/imx376.yaml
+diff --git a/src/ipa/simple/data/imx371.yaml b/src/ipa/simple/data/imx371.yaml
 new file mode 100644
 index 000000000..f7d01b738
 --- /dev/null
-+++ b/src/ipa/simple/data/imx376.yaml
++++ b/src/ipa/simple/data/imx371.yaml
 @@ -0,0 +1,11 @@
 +# SPDX-License-Identifier: CC0-1.0
 +%YAML 1.1
@@ -28,17 +28,17 @@ index 000000000..f7d01b738
 +  - Agc:
 +...
 diff --git a/src/ipa/simple/data/meson.build b/src/ipa/simple/data/meson.build
-index 19f90c976..e0c8e443a 100644
+index cae83a3d5..19f90c976 100644
 --- a/src/ipa/simple/data/meson.build
 +++ b/src/ipa/simple/data/meson.build
-@@ -5,6 +5,7 @@ conf_files = files([
+@@ -4,6 +4,7 @@ conf_files = files([
+     'hi846.yaml',
      'imx355.yaml',
      'imx363.yaml',
-     'imx371.yaml',
-+    'imx376.yaml',
++    'imx371.yaml',
      's5k3l6xx.yaml',
      'uncalibrated.yaml',
  ])
 -- 
-2.49.0
+2.50.1
 

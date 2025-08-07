@@ -1,7 +1,7 @@
-From 21410150b394022ca188c16caa084a6d1c0e9b05 Mon Sep 17 00:00:00 2001
+From 971cb7daf88e13fe0a27d041225d5fe775454d03 Mon Sep 17 00:00:00 2001
 From: Robert Mader <robert.mader@collabora.com>
 Date: Mon, 6 May 2024 21:21:57 +0200
-Subject: [PATCH 05/13] libcamera: simple: Skip hwISP formats if swISP is
+Subject: [PATCH 04/12] libcamera: simple: Skip hwISP formats if swISP is
  active
 
 On devices like the Pinephone libcamera will advertise support for
@@ -29,5 +29,5 @@ index f4b49b1ab..c19ce17d4 100644
  		} else {
  			config.outputFormats = { pixelFormat };
 -- 
-2.49.0
+2.50.1
 
