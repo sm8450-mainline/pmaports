@@ -1,0 +1,13 @@
+[Unit]
+Description=Cellbroadcast Daemon
+After=ModemManager.service
+ConditionUser=!@system
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.cbd
+ExecStart=/usr/libexec/cellbroadcastd
+
+[Install]
+WantedBy=default.target
+Alias=dbus-org.freedesktop.cbd.service
