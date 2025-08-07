@@ -4,14 +4,13 @@
 
 _flavor="postmarketos-apple-16k"
 pkgname=linux-$_flavor
-pkgver=6.16.0_rc1
+pkgver=6.16.0
 pkgrel=0
 pkgdesc="Mainline kernel fork for Apple iPhone and iPad devices (16K)"
 arch="aarch64"
 _carch="arm64"
 url="https://kernel.org"
 license="GPL-2.0-only"
-# pmb:cross-native
 options="!strip !check !tracedeps pmb:cross-native"
 makedepends="
 	bash
@@ -26,13 +25,13 @@ makedepends="
 
 # Source
 _repository="HoolockLinux/linux"
-_commit="70522526e0fd3f32d752ac96d87220fe4e829820"
+_tag="hoolock-${pkgver%.*}"
 _config="config-$_flavor.$arch"
 source="
-	http://github.com/$_repository/archive/$_commit.tar.gz
+	http://github.com/$_repository/archive/refs/tags/$_tag.tar.gz
 	$_config
 "
-builddir="$srcdir/linux-$_commit"
+builddir="$srcdir/linux-$_tag"
 
 prepare() {
 	default_prepare
@@ -65,6 +64,6 @@ package() {
 }
 
 sha512sums="
-bfaeca452372b576a52fb8c9a3fa2a65115063dba19a80e0a8c15e0a9cf542042581b3c634b71ea0c98566bbc49309dd2d6cb7f56299452a49fc5ad315d2f995  70522526e0fd3f32d752ac96d87220fe4e829820.tar.gz
+7f9a60a57ad165d820f821425614de77b57bd8fc71380f5bf2df9d048b9570f17a4246ead44fbc42a8a597aeea80bd85d5212e5942eed9360ebcb5cfe1f91640  hoolock-6.16.tar.gz
 b510775eab5abe79591c51d093b1155513dcb7107369eb5df4532d34ce6d89630ee83d8dfc980496fc295699218833979f08b6feeb0db900a28357f0cad7e678  config-postmarketos-apple-16k.aarch64
 "
