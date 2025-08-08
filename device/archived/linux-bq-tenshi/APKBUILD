@@ -1,3 +1,5 @@
+# Archived: Kernel doesn't build anymore
+#
 # Maintainer: fossdd <fossdd@pwned.life>
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on: arch/arm/configs/lineage_tenshi_defconfig
