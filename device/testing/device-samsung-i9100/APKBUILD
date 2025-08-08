@@ -1,6 +1,6 @@
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-samsung-i9100
-pkgver=10
+pkgver=11
 pkgrel=0
 pkgdesc="Samsung Galaxy SII"
 url="https://postmarketos.org"
@@ -42,6 +42,6 @@ openrc() {
 }
 
 sha512sums="
-533913cc0198444a96aa0771ba0bf7482b01def9be32c22c9f29523a421fd715aa9c61b395b18df65180f47de25bea2d950d31aebb083af2ac22d9dce4cbd58c  deviceinfo
+44d28e6456ca7ace2e0a67f242bf29e6c0459d38e12eda64185530ad8084afff2ef4d0b5e864dce69fbf4f4ae724a9c7223c6d75488877e39280403a5731c546  deviceinfo
 d3f06476be583f095189557e5269866cfc9346ddbf8d78267d7562fad7f5eca6b09b81fd08cd9690ecf88105bafe8f3ebd9136b68ab5cdaa8bfff740a8bdf3d2  media-pipeline.initd
 "
