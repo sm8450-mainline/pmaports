@@ -1,0 +1,28 @@
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-lenovo-manning
+pkgdesc="Lenovo K8 Note"
+pkgver=1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	linux-lenovo-manning
+	mkbootimg
+	postmarketos-base
+"
+makedepends="devicepkg-dev"
+source="deviceinfo"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+2529d26f9901421d36f6cf4ca4cde4c0fce6151237a023b26f7441b97f6d054ba6bcfda35d59d322cafdbd16e5d1a3f97e15339f9dd29102c9edc78cdf0c9559  deviceinfo
+"
