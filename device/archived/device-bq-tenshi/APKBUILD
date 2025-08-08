@@ -1,6 +1,6 @@
 # Archived: Kernel doesn't build anymore
 #
-# Maintainer: fossdd <fossdd@pwned.life>
+# Maintainer: Achill Gilgenast <achill@achill.org>
 # Reference: <https://postmarketos.org/devicepkg>
 pkgname=device-bq-tenshi
 pkgdesc="BQ Aquaris U Plus"

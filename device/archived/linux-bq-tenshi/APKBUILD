@@ -1,6 +1,6 @@
 # Archived: Kernel doesn't build anymore
 #
-# Maintainer: fossdd <fossdd@pwned.life>
+# Maintainer: Achill Gilgenast <achill@achill.org>
 # Reference: <https://postmarketos.org/vendorkernel>
 # Kernel config based on: arch/arm/configs/lineage_tenshi_defconfig
 pkgname=linux-bq-tenshi

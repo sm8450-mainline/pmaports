@@ -1,8 +1,7 @@
-# Contributor: fossdd <fossdd@pwned.life>
-# Maintainer: fossdd <fossdd@pwned.life>
+# Maintainer: Achill Gilgenast <achill@achill.org>
 pkgname=gnome-logs
 pkgver=45.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Log viewer for the systemd journal"
 url="https://apps.gnome.org/Logs"
 # armhf: pmb#2618

@@ -1,9 +1,9 @@
 # Forked from Alpine for systemd split func
-maintainer="fossdd <fossdd@pwned.life>"
+# Maintainer: Achill Gilgenast <achill@achill.org>
 pkgname=phosh
 _pkgver=0.48.0
 pkgver=9999$_pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland shell for GNOME on mobile devices"
 # armhf: blocked by gnome-shell-schemas and pmb#2618
 arch="all !armhf"

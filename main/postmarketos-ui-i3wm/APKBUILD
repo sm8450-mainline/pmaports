@@ -1,8 +1,8 @@
 # Reference: https://postmarketos.org/uipkg
-# Maintainer: fossdd <fossdd@pwned.life>
+# Maintainer: Achill Gilgenast <achill@achill.org>
 pkgname=postmarketos-ui-i3wm
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="(X11) Tiling WM (keyboard required)"
 url="https://i3wm.org"
 # riscv64 has very unstable builders

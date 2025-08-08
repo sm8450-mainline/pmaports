@@ -1,9 +1,9 @@
 # Reference: <https://postmarketos.org/devicepkg>
-# Maintainer: fossdd <fossdd@pwned.life>
+# Maintainer: Achill Gilgenast <achill@achill.org>
 pkgname=device-raspberry-pi3
 pkgdesc="Raspberry Pi 3B/3B+"
 pkgver=4
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"

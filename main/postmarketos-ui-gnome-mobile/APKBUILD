@@ -1,7 +1,7 @@
 # Reference: https://postmarketos.org/uipkg
 # Maintainer: Newbyte <newbyte@postmarketos.org>
 # Co-Maintainer: Pablo Correa Gomez <pabloyoyoista@postmarketos.org>
-# Co-Maintainer: fossdd <fossdd@pwned.life>
+# Co-Maintainer: Achill Gilgenast <achill@achill.org>
 pkgname=postmarketos-ui-gnome-mobile
 pkgver=4
 pkgrel=2
