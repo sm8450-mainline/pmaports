@@ -2,7 +2,7 @@
 pkgname=device-xiaomi-perseus
 pkgdesc="Xiaomi Mi Mix 3"
 pkgver=1
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -13,6 +13,7 @@ depends="
 	mkbootimg
 	alsa-ucm-conf-sdm845
 	soc-qcom
+	soc-qcom-pd-mapper
 	unl0kr-fbforcerefresh
 "
 makedepends="devicepkg-dev"

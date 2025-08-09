@@ -3,7 +3,7 @@
 pkgname=device-xiaomi-pyxis
 pkgdesc="Xiaomi Mi 9 Lite"
 pkgver=0
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -20,6 +20,7 @@ depends="
 	postmarketos-base
 	soc-qcom
 	soc-qcom-modem
+	soc-qcom-pd-mapper
 	soc-qcom-qbootctl
 	unl0kr-fbforcerefresh
 "

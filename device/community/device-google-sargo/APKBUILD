@@ -3,7 +3,7 @@
 pkgname=device-google-sargo
 pkgdesc="Google Pixel 3a"
 pkgver=13
-pkgrel=2
+pkgrel=3
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -21,6 +21,7 @@ depends="
 	postmarketos-base
 	soc-qcom
 	soc-qcom-modem
+	soc-qcom-pd-mapper
 	soc-qcom-qbootctl
 	unl0kr-fbforcerefresh
 "

@@ -4,7 +4,7 @@
 pkgname=device-qualcomm-sdm845
 pkgdesc="Generic device package for Qualcomm SDM845 devices"
 pkgver=3
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -19,6 +19,7 @@ depends="
 	alsa-ucm-conf-sdm845
 	soc-qcom
 	soc-qcom-modem
+	soc-qcom-pd-mapper
 	soc-qcom-qbootctl
 	systemd-boot
 	unl0kr-fbforcerefresh

@@ -5,7 +5,7 @@
 pkgname=device-shift-axolotl
 pkgdesc="SHIFT6mq"
 pkgver=16
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -17,6 +17,7 @@ depends="
 	postmarketos-base
 	alsa-ucm-conf-sdm845
 	soc-qcom
+	soc-qcom-pd-mapper
 	soc-qcom-qbootctl
 	fwupd>=1.8.6
 "

@@ -4,7 +4,7 @@
 pkgname=device-oneplus-fajita
 pkgdesc="OnePlus 6T"
 pkgver=17
-pkgrel=1
+pkgrel=2
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
@@ -15,6 +15,7 @@ depends="
 	postmarketos-base
 	alsa-ucm-conf-sdm845
 	soc-qcom
+	soc-qcom-pd-mapper
 	soc-qcom-qbootctl
 	unl0kr-fbforcerefresh
 "
