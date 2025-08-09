@@ -2,7 +2,7 @@
 # Maintainer: Sicelo <absicsz@gmail.com>
 # Co-Maintainer: Danct12 <danct12@disroot.org>
 pkgname=device-nokia-n900
-pkgver=49
+pkgver=50
 pkgrel=0
 pkgdesc="Nokia N900"
 url="https://postmarketos.org"
@@ -36,6 +36,7 @@ subpackages="
 	$pkgname-openrc
 	$pkgname-upower
 	$pkgname-sway
+	$pkgname-wayland
 	$pkgname-x11
 	$pkgname-xkeyboard-config:xkeyboard_config
 "
@@ -51,6 +52,7 @@ source="
 	bq27k-monitor.sh
 	device-nokia-n900.start
 	deviceinfo
+	etc-profile.d-25wlr-pixman.sh
 	modules-initfs
 	i3blocks/i3blocks.conf
 	i3blocks/scripts/battery-bq27200
@@ -72,7 +74,6 @@ source="
 	modules.blocklist
 	pointercal
 	sway/etc-sway-config.d-nokia-n900.conf
-	sway/etc-profile.d-25wlr-pixman.sh
 	sway/etc-xdg-foot-foot.ini
 	sway/usr-bin-sway-bar-hack.sh
 	sway/usr-bin-sway-saver.sh
@@ -213,8 +214,6 @@ sway() {
 	install_if="$pkgname=$pkgver-r$pkgrel postmarketos-ui-sway"
 	install -D -m644 "$srcdir"/etc-sway-config.d-nokia-n900.conf \
 		"$subpkgdir"/etc/sway/config.d/nokia-n900.conf
-	install -D -m644 "$srcdir"/etc-profile.d-25wlr-pixman.sh \
-		"$subpkgdir"/etc/profile.d/25wlr-pixman.sh
 	install -D -m755 "$srcdir"/usr-bin-sway-saver.sh \
 		"$subpkgdir"/usr/bin/sway-saver.sh
 	install -D -m755 "$srcdir"/usr-bin-sway-bar-hack.sh \
@@ -242,6 +241,14 @@ i3blocks() {
 		"$subpkgdir"/usr/share/i3blocks/wifi
 }
 
+wayland() {
+	# This is only useful on wlroots, but it has too many verions in Alpine
+	# at the moment to come up with a sane install_if
+	install_if="$pkgname=$pkgver-r$pkgrel wayland-libs-server"
+	install -D -m644 "$srcdir"/etc-profile.d-25wlr-pixman.sh \
+		"$subpkgdir"/etc/profile.d/25wlr-pixman.sh
+}
+
 sha512sums="
 4887bc1f9a3559614bf3092511114be4a824a4e94bec6dfda31f52b877f92b38164568c8223cab22234a1edf818f9e3b4af0d7f7244c9880bc3399fa4cb0ce37  10-initfs-input.files
 4656d3b3ced0a86e2d6315c89322899f646a689e9cb64609aa8ad5a676b23d93706d8a37f3be6f6b12c6b1e8501b7d26ecafecf27322333850513a6805c61910  10-initfs-keymap.sh
@@ -254,7 +261,8 @@ b2c2033f8a77a18dc0c5192e0304f60e3c2a2a7d132c2072ab0dd6ee1a5b2a8c7e63961654115344
 c5b8e03ca9f720a794f2593a3e938640cbd91ac44dd761079bbf4614a0d288a9d7b72de8ed2493c062dc9f37be580bea529f454d2335f55b7a9f4d14024b42a9  bq27k-monitor.sh
 e6bbac8de1a198ba716f44ade76606e1e0adcc574156b855ac41be5eb5308389d3277fd89cc34b119fbc33d9801ab9f79a6ff213392596bff40bc17e931c05ef  device-nokia-n900.start
 bf62c043e2e095ff0adf02f438cc083977a5f475421327916d52aa621fb197e0f375bb338cf21911e547d79297e7bb145da5d23a0975711eee07c44862ff2f61  deviceinfo
-87c18554d307161876cfe6133f7e1b2b34a0dccd6d4eb36c3f549551f1fa3587430f203911fa29023cc5c048054dbcf629f8665e88fdec9ebf48f4790a16fcf9  modules-initfs
+1c7499eb84948eb5b73d58474b1b71a5f2f63116a2a3e1f9a4238064dcf6c152ccefa108bd4ab1074712a2319111c8fdd4bfcf0dbe4d26b5a319404def1b11d2  etc-profile.d-25wlr-pixman.sh
+4efca73b4053e00b2a24ef3e79ead3da43b0e6db4f3447721fa9084b1c280e65f1ddaadd390d6073e26b6c635bb14f804fcf3c54d8ebf9df73eff80deff59d80  modules-initfs
 a8152e94262629e11abdd8809d187c3b7ed1866a6128fb1f435e17e72120536ac8114262e66df6decb2627743027f2b923ddbe8a94e3e844099b6fad02ec252b  i3blocks.conf
 6c6a70667f37807089adbb343c09d1f62d47b8e6c9c0a54f44790b822f8bff3dccae73341ef736b799fd6740bbd6e1f48e6e122c2e08520f71f6ad7434a47d2c  battery-bq27200
 d9ef88c714e9fce8822f63b7a9d7fc3e1ed472c8c876b44ba524d44efea322839f13ddd2fa652420608427ecf7279bfaac302c9b67667f32796ca21da332164d  calendar
@@ -275,7 +283,6 @@ e440ed7a3070c17e003b86b72dbe6d8194d01b577ca8dd56dd066f216b6dda32bb965c780950f178
 862ebc7cd2d7a1b3d41b10701b8418308c89eb0732eb99c42ec1091d48e08db9421727f67a3272b7309549798d59afb1b8d7d2fa48d1447b208fcb2329472d4d  modules.blocklist
 143c21f0b18a016d37cb44178e9daea09f128a90769b48353c03c3f245cb9b1f7e773b9ccee084973fc78ddd7a18c2642e54888a85bda7c7daecddc9a8c62eff  pointercal
 0342c1518b832e8db65c349147c478905e2bf3319abc36a1031c17b1513f969dd4e0423d98b99b64d51f1f7871e21d8764b5af54018c7e09a03cb44717459f47  etc-sway-config.d-nokia-n900.conf
-1c7499eb84948eb5b73d58474b1b71a5f2f63116a2a3e1f9a4238064dcf6c152ccefa108bd4ab1074712a2319111c8fdd4bfcf0dbe4d26b5a319404def1b11d2  etc-profile.d-25wlr-pixman.sh
 45da074b597a47825146ae1f3712538210e2ebe1c459f98a8189ccfc7c16ed54d221999b5890785c92aa750c6295dee7e920ef7f97d415d4212f8c0fea29169f  etc-xdg-foot-foot.ini
 49db3826d42a57951bdfe7d651de6d20277edcda094fd98aeaf0a859b4a88ff9df340915d77b32dc8481fc6ea23f02a2ed4b70c28a3c93cbac4a8182ebbc4ca1  usr-bin-sway-bar-hack.sh
 8ca33e8e8bb5da1c4de562db3a96ff3481d42344d9cabe532730665231cce491c777526ed35a4872bee768f48e5573f35bc034757740f8b57a570d409004b241  usr-bin-sway-saver.sh
