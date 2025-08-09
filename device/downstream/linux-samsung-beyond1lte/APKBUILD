@@ -2,8 +2,8 @@
 # Kernel config based on: arch/arm64/configs/exynos9820-beyond1lte_defconfig
 
 pkgname=linux-samsung-beyond1lte
-pkgver=4.14.253
-pkgrel=1
+pkgver=4.14.316
+pkgrel=0
 pkgdesc="Samsung Galaxy S10 kernel fork"
 arch="aarch64"
 _carch="arm64"
@@ -15,19 +15,26 @@ makedepends="
 	bash
 	bc
 	bison
+	clang
 	devicepkg-dev
+	findutils
 	flex
 	openssl-dev
 	perl
 "
 
+export CC="clang"
+export HOSTCC="clang"
+
 # Source
 _repository="android_kernel_samsung_exynos9820"
-_commit="f7194c1d15eded1c2a1a4dc63825b26103435cc0"
+_commit="7d08ec364a0659edcf90a8dae4453b21e4542311"
 _config="config-$_flavor.$arch"
 source="
-	$pkgname-$_commit.tar.gz::https://github.com/Linux4/$_repository/archive/$_commit.tar.gz
+	$pkgname-$_commit.tar.gz::https://github.com/LineageOS/$_repository/archive/$_commit.tar.gz
 	$_config
+	remove-header-lkc.patch
+	fix-check-lxdialog.patch
 	selinux_include_generated_headers.patch
 "
 builddir="$srcdir/$_repository-$_commit"
@@ -49,7 +56,9 @@ package() {
 }
 
 sha512sums="
-8255fe212429de8cc8c99421ed2b8b369e849885cc8758eae1d280fdb8dbb00a7c99027015b7be37691a045a1b9a0ae787ed2f5a9c0d534af8d09189f555ab5c  linux-samsung-beyond1lte-f7194c1d15eded1c2a1a4dc63825b26103435cc0.tar.gz
-f011d20f9e1a6d202de9b9405e3aac78db301cd8d793e62035d8b44a165be0f1cf3672cd0806425f36cb0a616294dd2fa9e151451456f88cc4032e64f85c691a  config-samsung-beyond1lte.aarch64
+8ac222f644a534204fd5ea5e657991214bfc069042b48620b956ce0c249af6639b9a18c20892481c8514d2cdd3c3bd967062a4d16ba53504fd76d1227a365d44  linux-samsung-beyond1lte-7d08ec364a0659edcf90a8dae4453b21e4542311.tar.gz
+a4a99dd42d0f687e5f0a46fc0f7dd61ffa5deb06459153befe109bed87cb282ab3d1454836865b78f7ac8e67225df98a79ff22aa52ce517e82c5ebd6c011f39f  config-samsung-beyond1lte.aarch64
+1872a4d9963f128965ab46b329d448e6b776d373cf99f2b8e11d025aa3e10a0308da19beb715c6bdced0b2c6ef44c47a5c013554a19787a64f8ac58d34bc912f  remove-header-lkc.patch
+182be3c596b9cc267ac108d7cf03fc8c328ccc6b36770800e4dcedea8d1bb65e3f5eacf590c2948f58b1418cc60a1670ba77dde8c259e428d158c31b6e1dbaf5  fix-check-lxdialog.patch
 6ab9db01d35f7f5cc2c19ebe5f65a7dc479a1c68de587300cdde9a6c759d34610666c72f0f321cd450cf56c13df3b54a774e0f7ebdbf0f8608fbfd66b49d04e7  selinux_include_generated_headers.patch
 "
