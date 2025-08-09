@@ -22,7 +22,7 @@ deviceinfo_gpu_accelerated="true"
 
 # Bootloader related
 deviceinfo_flash_method="fastboot"
-deviceinfo_kernel_cmdline="pd_ignore_unused,clk_ignore_unused,console=ttyMSM0,115200"
+deviceinfo_kernel_cmdline="console=ttyMSM0,115200"
 deviceinfo_generate_bootimg="true"
 deviceinfo_bootimg_qcdt="false"
 deviceinfo_bootimg_dtb_second="false"
