@@ -4,8 +4,8 @@
 # Co-Maintainer: Robert Eckelmann <longnoserob@postmarketos.org>
 
 pkgname=linux-postmarketos-grate
-pkgver=6.12.5
-pkgrel=1
+pkgver=6.16.0
+pkgrel=0
 pkgdesc="Linux kernel with experimental patches for Tegra"
 arch="armv7"
 url="https://gitlab.com/grate-driver/linux"
@@ -16,7 +16,7 @@ makedepends="bash bison findutils flex postmarketos-installkernel openssl-dev
 
 # Source
 _flavor="${pkgname#linux-}"
-_tag="v${pkgver//_/-}-lts"
+_tag="v${pkgver//_/-}-stable"
 _carch="arm"
 _config="config-$_flavor.$arch"
 source="$pkgname-$_tag.tar.bz2::$url/-/archive/$_tag/linux-$_tag.tar.bz2
@@ -49,6 +49,6 @@ package() {
 }
 
 sha512sums="
-21a1ccd77d3745c70361ed15828616308f43b2f4630b9e17c8191de78fef979e866e8cb12e9f5eaf3c91ad034b89a1796e850c69a56a2d6a967ae5df43a34255  linux-postmarketos-grate-v6.12.5-lts.tar.bz2
-6545b7c9fde2050e6437adad3f80f3ec920903a7cda904f15629562611d2202d2ed2152685828331f34282c898d31ca2818fd6427e5ccca1bf9431c033ac6ec2  config-postmarketos-grate.armv7
+f82b6736a1a4832bf12939a6d39ef11a4c1248491b77d031acd7712cd3e43016218a1e0b1944357e0c530db61d77b6d3404ca54da1a594b5fbddbf12cca2f449  linux-postmarketos-grate-v6.16.0-stable.tar.bz2
+158e226e99e19cade127ecd090ba18730262a863bb4c72a6775ff74c8ae4dbf6ebbe964c574a6fbe189a481234c51ba3ad528357a4499eed9baccdd355f904e0  config-postmarketos-grate.armv7
 "
