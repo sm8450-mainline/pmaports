@@ -1,8 +1,8 @@
 # Maintainer: Casey Connolly <kcxt@postmarketos.org>
 pkgname=soc-qcom
 pkgdesc="Common package for Qualcomm devices"
-pkgver=3
-pkgrel=1
+pkgver=4
+pkgrel=0
 url="https://postmarketos.org"
 license="BSD-3-Clause"
 arch="aarch64"
@@ -10,7 +10,6 @@ options="!check !archcheck !tracedeps"
 depends="
 	bootmac
 	msm-modem
-	pd-mapper
 	swclock-offset
 	tqftpserv
 "
@@ -25,6 +24,8 @@ subpackages="
 	$pkgname-modem
 	$pkgname-modem-openrc:modem_openrc
 	$pkgname-openrc
+	$pkgname-pd-mapper:pd_mapper
+	$pkgname-pd-mapper-openrc:pd_mapper_openrc
 	$pkgname-pulseaudio
 	$pkgname-pulseaudio-openrc:pulseaudio_openrc
 	$pkgname-pulseaudio-systemd:pulseaudio_systemd
@@ -97,10 +98,24 @@ openrc() {
 	install_if="$pkgname=$pkgver-r$pkgrel openrc"
 	depends="
 		openrc
-		pd-mapper-openrc
 		tqftpserv-openrc
 	"
 	install="$subpkgname.post-install $subpkgname.post-upgrade"
+
+	mkdir "$subpkgdir"
+}
+
+pd_mapper() {
+	pkgdesc="Enable Qualcomm PD mapper service"
+	depends="pd-mapper"
+
+	mkdir "$subpkgdir"
+}
+
+pd_mapper_openrc() {
+	install_if="$pkgname-pd-mapper=$pkgver-r$pkgrel openrc"
+	install="$subpkgname.post-install $subpkgname.post-upgrade"
+	depends="openrc"
 
 	mkdir "$subpkgdir"
 }
