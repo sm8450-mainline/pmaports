@@ -1,8 +1,9 @@
 # Reference: <https://postmarketos.org/devicepkg>
+# Maintainer: Petr Vorel <petr.vorel@gmail.com>
 pkgname=device-lg-bullhead
 pkgdesc="Google Nexus 5X"
 pkgver=4
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="aarch64"
