@@ -3,7 +3,7 @@
 # Co-Maintainer: Jan Jasper de Kroon <jajadekroon@gmail.com>
 pkgname=device-pine64-pinephone
 pkgver=9
-pkgrel=0
+pkgrel=1
 pkgdesc="PINE64 PinePhone"
 url="https://postmarketos.org"
 license="MIT"
@@ -201,7 +201,7 @@ shelli() {
 
 	# Alsa default audio must be stereo
 	install -Dm644 "$srcdir"/00_alsa_pinephone_dshare.conf \
-		"$subpkgdir"/etc/alsa/conf.d/00_alsa_pinephone_dshare.conf
+		"$subpkgdir"/usr/share/alsa/alsa.conf.d/00_alsa_pinephone_dshare.conf
 }
 
 vccq_mod() {
