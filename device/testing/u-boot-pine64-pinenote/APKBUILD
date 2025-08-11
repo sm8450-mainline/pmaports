@@ -1,7 +1,9 @@
 # Maintainer: Antoine Martin (ayakael) <dev@ayakael.net>
 pkgname=u-boot-pine64-pinenote
 pkgver=2025.07
-pkgrel=0
+pkgrel=1
+_ddr_ver=1.20
+_trust_ver=2.17
 pkgdesc="u-boot bootloader for the Pinenote (rk3566)"
 url="https://gitlab.com/a-wai/u-boot-pinenote"
 arch="aarch64"
@@ -27,16 +29,16 @@ _rkbin_commit="fd73dcf27702e1efc2065055215320adeaadee84"
 builddir="$srcdir"/u-boot-$pkgver
 source="
 	https://ftp.denx.de/pub/u-boot/u-boot-${pkgver//_/-}.tar.bz2
-	https://github.com/m-weigand/rkbin/raw/$_rkbin_commit/bin/rk35/rk3566_ddr_1056MHz_ultra_v1.20.bin
-	https://github.com/m-weigand/rkbin/raw/$_rkbin_commit/bin/rk35/rk3568_bl31_ultra_v2.17.elf
+	https://github.com/rockchip-linux/rkbin/raw/$_rkbin_commit/bin/rk35/rk3566_ddr_1056MHz_ultra_v$_ddr_ver.bin
+	https://github.com/rockchip-linux/rkbin/raw/$_rkbin_commit/bin/rk35/rk3568_bl31_ultra_v$_trust_ver.elf
 	https://github.com/PNDeb/pinenote-debian-image/releases/download/v20250101_01/rk356x_spl_loader_v1.12.112.bin
 	0001-board-rockchip-add-pine64-pinenote.patch
 	update-u-boot
 "
 
 build() {
-	export ROCKCHIP_TPL="$srcdir"/rk3566_ddr_1056MHz_ultra_v1.20.bin
-	export BL31="$srcdir"/rk3568_bl31_ultra_v2.17.elf
+	export ROCKCHIP_TPL="$srcdir"/rk3566_ddr_1056MHz_ultra_v$_ddr_ver.bin
+	export BL31="$srcdir"/rk3568_bl31_ultra_v$_trust_ver.elf
 
 	make pinenote-rk3566_defconfig
 	make
