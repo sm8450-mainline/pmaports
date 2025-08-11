@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=85
+pkgver=86
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -239,7 +239,10 @@ _xdg_desktop_portal_sources="
 	user/xdg-permission-store.service
 "
 _xdg_desktop_portal_gtk_sources="user/xdg-desktop-portal-gtk.service"
-_xdg_desktop_portal_phosh_sources="user/xdg-desktop-portal-phosh.service"
+_xdg_desktop_portal_phosh_sources="
+	user/xdg-desktop-portal-phosh.service
+	user/xdg-desktop-portal-phrosh.service
+	" # https://gitlab.gnome.org/guidog/xdg-desktop-portal-phosh/-/tree/main/data
 _xdg_desktop_portal_gnome_sources="user/xdg-desktop-portal-gnome.service"
 _xdg_desktop_portal_kde_sources="user/plasma-xdg-desktop-portal-kde.service" # From https://invent.kde.org/plasma/xdg-desktop-portal-kde/-/blob/master/data/plasma-xdg-desktop-portal-kde.service.in
 _xdg_desktop_portal_wlr_sources="user/xdg-desktop-portal-wlr.service"
@@ -505,6 +508,7 @@ ff5e1481d00d870b39fa8f11545b1a3bff7ac0278440d329f600d4493de8628c120b95268494e6b8
 eb01dd32fc598e49cbae31847aee4c3e28ee5014df052d65ad02c9a943a9e3399a4a119aa136630efef1157e31f6adc2d8420f8e72dc9da4c0b72645e4c84faa  user-xdg-desktop-portal-gtk.service
 8b7992b88fbccd4be77b7b8094349a27bde66a19585b97c40c441858a70d033b1a8fa146dd85bef5a08eed0ab08bd868ec9512ca72dbaea29ffa7038cf915605  user-plasma-xdg-desktop-portal-kde.service
 59da92e930a3bfff65d7373a8b30d060757560bc0a97633c1779038a9516c1efd3fe2e9537381e5e9380cde9b4a5539788a497d231e403dd822c8a3c019d01ce  user-xdg-desktop-portal-phosh.service
+179369df47a62b8781abe410e0d6c53b280033675fc110780fe832d43f6fe2c9475996f1adb8bc19492eea26252957e73bdbb45b3bc9a5cf4fb7fd5c43d2ce76  user-xdg-desktop-portal-phrosh.service
 9a3620d3df53540a91efa48df322288d96ec887415f538877a979be40eb5239b95917b9ac57fda2c699fe3f1c6500f7de09a4ce6625b0818f5786e125713552f  user-xdg-desktop-portal.service
 e09a3c76f3be961dce9f564bb654ea84d1d7fb59907a2168c0569bf6c17a5ebe9fbe4d1f94f1d014433757bb721bc443d5962deb540cacbd5547b1dd47717f92  user-xdg-desktop-portal-rewrite-launchers.service
 9dd95f10dcdb6234697b012c6f428cfca0cfbde24a8951e96cb4c463f55a22d40096a94ca0018f9dbe4ebb2c80eb39faeaa9222f6fb419831520a138f88f0321  user-xdg-document-portal.service

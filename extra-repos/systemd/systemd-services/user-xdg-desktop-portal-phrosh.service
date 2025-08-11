@@ -1,0 +1,10 @@
+[Unit]
+Description=Phosh portal service in Rust.
+PartOf=graphical-session.target
+After=graphical-session.target
+ConditionEnvironment=WAYLAND_DISPLAY
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.impl.portal.desktop.phrosh
+ExecStart=/usr/libexec/xdg-desktop-portal-phrosh
