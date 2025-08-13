@@ -9,7 +9,7 @@
 pkgname=systemd
 pkgver=257.7
 _pkgver="musl-v${pkgver//_/-}-split-usr"
-pkgrel=8
+pkgrel=9
 pkgdesc="System and service manager"
 url="https://github.com/systemd/systemd"
 # ppc64le and s390x blocked by pmboostrap not supporting
@@ -262,10 +262,6 @@ package() {
 	# initramfs hardcodes /sbin/init
 	mkdir -p "$pkgdir"/sbin
 	ln -sf "../usr/lib/systemd/systemd" "$pkgdir"/sbin/init
-
-	# clear out /usr/share/factory, because it collides/conflicts with immutable
-	# image config
-	rm -r "$pkgdir"/usr/share/factory
 }
 
 udevd() {
