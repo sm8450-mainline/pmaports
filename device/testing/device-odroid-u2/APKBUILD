@@ -3,7 +3,7 @@
 
 pkgname=device-odroid-u2
 pkgdesc="ODROID U2/U3"
-pkgver=3
+pkgver=4
 pkgrel=0
 url="https://postmarketos.org"
 license="MIT"
@@ -12,12 +12,12 @@ options="!check !archcheck"
 depends="
 	 postmarketos-base>=25-r1
 	 u-boot-odroid>=2023.04-r1
+	 firmware-odroid-u2
 "
 makedepends="devicepkg-dev"
 subpackages="
 	$pkgname-kernel-lts:kernel_lts
 	$pkgname-kernel-exynos4:kernel_exynos4
-	$pkgname-nonfree-firmware:nonfree_firmware
 "
 source="deviceinfo modules-initfs.exynos4 modules-initfs.lts"
 
@@ -41,14 +41,8 @@ kernel_exynos4() {
 	devicepkg_subpackage_kernel $startdir $pkgname $subpkgname
 }
 
-nonfree_firmware() {
-	pkgdesc="Early bootloaders and trustzone firmware (required for a bootable system)"
-	depends="firmware-odroid-u2"
-	mkdir "$subpkgdir"
-}
-
 sha512sums="
-54671a7042510bc43d0eedec92d320545b7871af679792bcf6d59ea079865a1586bf41fb0d101a28dd116b0b6b33b7922c4ff8a346d1084a3aff18f296e1a9a3  deviceinfo
+fde35ca9799b44b6deddef33e16e37a43c14ff7b3b461b0adaf295092efbd0389068d47301a8bcc21b925a310690b43d0b5cba539a033f3ed295a1421763d57b  deviceinfo
 bc0c4f7eb77cc3393ac83114fe982b7d2d74725a7a390074ce29bb67b235895487018a407b8ce3593c1fa7e9dbd526199515f7932938c6169a440549eb73dfd3  modules-initfs.exynos4
 ba1229a573d863e783a0f945eb825fb77cfd10662d2eacf74c2e20d1e4d118a4fa68200305cd10e1606b489fc8c86e4da7f3305ac6973d3787420eec2bed91b2  modules-initfs.lts
 "
