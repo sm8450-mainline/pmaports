@@ -4,17 +4,18 @@
 pkgname=device-odroid-xu4
 pkgdesc="ODROID XU4"
 pkgver=2
-pkgrel=0
+pkgrel=1
 url="https://postmarketos.org"
 license="MIT"
 arch="armv7"
 options="!check !archcheck"
-depends="linux-postmarketos-exynos5
-	 postmarketos-base>=25-r1
-	 u-boot-odroid
+depends="
+	linux-postmarketos-exynos5
+	postmarketos-base>=25-r1
+	u-boot-odroid
+	firmware-odroid-xu4
 	"
 makedepends="devicepkg-dev"
-subpackages="$pkgname-nonfree-firmware:nonfree_firmware"
 source="deviceinfo modules-initfs"
 
 build() {
@@ -23,12 +24,6 @@ build() {
 
 package() {
 	devicepkg_package $startdir $pkgname
-}
-
-nonfree_firmware() {
-	pkgdesc="Early bootloaders and trustzone firmware (required for a bootable system) and Realtek firmware"
-	depends="firmware-odroid-xu4 linux-firmware-rtl_nic"
-	mkdir "$subpkgdir"
 }
 
 sha512sums="
