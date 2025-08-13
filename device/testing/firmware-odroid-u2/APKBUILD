@@ -2,7 +2,7 @@
 
 pkgname=firmware-odroid-u2
 pkgver=2015.10
-pkgrel=0
+pkgrel=1
 pkgdesc="Firmware for Odroid X/U2/U3"
 url="https://github.com/hardkernel/u-boot"
 arch="armv7"
@@ -12,6 +12,7 @@ source="u2-bl1.HardKernel::https://github.com/hardkernel/u-boot/raw/odroid-v$pkg
 	u2-bl2.HardKernel::https://github.com/hardkernel/u-boot/raw/odroid-v$pkgver/sd_fuse/bl2.HardKernel
 	u2-tzsw.HardKernel::https://github.com/hardkernel/u-boot/raw/odroid-v$pkgver/sd_fuse/tzsw.HardKernel
 	"
+_pmb_recommends="linux-firmware-s5p-mfc"
 
 package() {
 	# Install firmware
