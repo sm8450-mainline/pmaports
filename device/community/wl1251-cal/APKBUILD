@@ -1,16 +1,17 @@
 # Maintainer: Dang Huynh <danct12@disroot.org>
 pkgname=wl1251-cal
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Retrieve wl1251 calibration data from a CAL partition and feed it to the driver"
 url="https://github.com/maemo-leste/wl1251-cal"
 arch="armv7"
 license="LGPL-2.1-only"
 makedepends="linux-headers"
-subpackages="$pkgname-openrc"
+subpackages="$pkgname-openrc $pkgname-systemd"
 source="$pkgname-$pkgver.tar.gz::https://github.com/maemo-leste/wl1251-cal/archive/refs/tags/$pkgver.tar.gz
-	wl1251-cal.initd
 	wl1251-blacklist
+	wl1251-cal.initd
+	wl1251-cal.service
 	calibrate-wl1251"
 options="!check" # No tests
 
@@ -22,6 +23,7 @@ package() {
 	make install DESTDIR="$pkgdir"
 	install -Dm755 "$srcdir/calibrate-wl1251" "$pkgdir/usr/bin/calibrate-wl1251"
 	install -Dm644 "$srcdir/wl1251-blacklist" "$pkgdir/etc/modprobe.d/wl1251.conf"
+	install -Dm644 "$srcdir/wl1251-cal.service" "$pkgdir/usr/lib/systemd/system/wl1251-cal.service"
 }
 
 openrc() {
@@ -32,7 +34,8 @@ openrc() {
 
 sha512sums="
 1a402553fc98fa8f2d81d34a548f96be91d13bdcb77ec8e9d8373732b27a6e908895f6044aef8e88dbcd9fa6fa04f0a3d62bed877be91ba6207f68440c3ce758  wl1251-cal-1.2.tar.gz
-39fec86cb13d34a605ad1a76eb3a6ae6e242a01427f477008a3ff066e0b59fb804f0d8379909f81d015aa053ccf9850505dbe3124062ed707a663ae5e2ccd9f1  wl1251-cal.initd
 d14fd2816a8d55592907f1cf1f702d86095c8d2581b336460eb7d5bfc6ab8cece37a53c0a181b9f75ef5050bc612ce7443992158d36fc03939b39010cd33de4c  wl1251-blacklist
+39fec86cb13d34a605ad1a76eb3a6ae6e242a01427f477008a3ff066e0b59fb804f0d8379909f81d015aa053ccf9850505dbe3124062ed707a663ae5e2ccd9f1  wl1251-cal.initd
+0c266dbb0c5a5313177e1cc7b08368c546c69aa365eb4fa375e720729eff36c9939e366114499971bba6ea456e3e56465ce589af78e36a2bf76b383b6c0ea9de  wl1251-cal.service
 b6ee8ab642d2c70444851c6c57c4460f9712a423c8b655ea960563a143ea5609dc9f2bc2af5549b35c4a34ecae5597a382d0d6e4a829b72f0e76b77ab51edaf6  calibrate-wl1251
 "
