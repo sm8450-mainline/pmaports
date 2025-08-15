@@ -7,7 +7,7 @@
 # How to add a new service file (5 steps):
 pkgname=systemd-services
 # 1. bump pkgver
-pkgver=87
+pkgver=88
 pkgrel=0
 pkgdesc="Systemd service files"
 url="https://postmarketos.org"
@@ -99,6 +99,7 @@ subpackages="
 	udiskie-systemd:_service
 	usb-moded-systemd:_service
 	vvmd-systemd:_service
+	watchdog-kick-systemd:_service
 	waydroid-sensors-systemd:_service
 	waydroid-systemd:_service
 	wireguard-tools-wg-quick-systemd:_service
@@ -228,6 +229,7 @@ _udisks2_sources="system/udisks2.service" # From https://github.com/storaged-pro
 _udiskie_sources="user/udiskie.service"  # created, no unit file upstream
 _usb_moded_sources="system/usb_moded.service" # From usb_moded upstream
 _vvmd_sources="user/vvmd.service"  # From https://salsa.debian.org/DebianOnMobile-team/vvmd/-/blob/debian/latest/debian/vvmd.user.service
+_watchdog_kick_sources="system/watchdog-kick.service"
 _waydroid_sources="system/waydroid-container.service"
 _waydroid_sensors_sources="system/waydroid-sensors.service"
 _wireguard_tools_wg_quick_sources="system/wg-quick@.service" # From https://git.zx2c4.com/wireguard-tools/tree/src/systemd/wg-quick@.service
@@ -342,6 +344,7 @@ source="$(flatpath \
 	$_udiskie_sources \
 	$_usb_moded_sources \
 	$_vvmd_sources \
+	$_watchdog_kick_sources \
 	$_waydroid_sensors_sources \
 	$_waydroid_sources \
 	$_wireguard_tools_wg_quick_sources \
@@ -521,4 +524,5 @@ e0014662e4ec2c52d3beabe3247ede7c6b12c1d22b7c62d6b04ff82a668f492c09060243acf92090
 f4042114ed0f36e51bc32f6df184843d6d7e58b7cece8a845796910d80e1f26c9d0be9415ed90f7a91211bd669d8bb002b24a5a79657f8b699f952299ddfb5d2  system-sing-box@.service
 e67997cfad302af405e1bee78f79ea9caaa8fec0b765003ff08901f43a2ea07209726d0a20f2640b796bc6775606e34143da362d1e0471ce32b919747004d53c  tmpfiles.d-sing-box.conf
 014eff9e21ddaa64260f3915655e0a1fa771b356c0c56b3a5d868830237a561ba3e5cc06085bf70dde9dbf809807c301addd0a968a005436c067b6ce0a52672d  sysusers.d-sing-box.conf
+bef07aeb8d5d31d8f0d34e44e8db06f4a0aa1cb77245ca7e11e8775c935e3a3b3dcd923300192b0145c81e50bca76a97cfbee28e0af1e521ace794d26786eeaf  system-watchdog-kick.service
 "
