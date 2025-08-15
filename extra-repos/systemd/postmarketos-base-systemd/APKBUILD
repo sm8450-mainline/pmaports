@@ -2,7 +2,7 @@
 # Co-maintainer: Clayton Craft <clayton@craftyguy.net>
 # pmbootstrap installs this, if systemd is selected in "pmbootstrap init".
 pkgname=postmarketos-base-systemd
-pkgver=50
+pkgver=51
 pkgrel=0
 pkgdesc="Meta package for running postmarketOS with systemd"
 url="https://postmarketos.org"
@@ -101,7 +101,7 @@ sha512sums="
 2faac294bb632762e247b850f09ff4b544ccff6c462efd8d4faca71ba30bdfa9c460377a0dc88e92c5dbbe251017d164064a56ac0e0410f224b45d4f5f81866c  rootfs-etc-systemd-logind.conf
 15423bfda57c90ab62fe69865ca4072a0aeb83bf77d9c278257e346f4da81843d010b41003c91ae9f3fcb1c67447645e7c19078eea2bf11312051e6ad7523ad1  rootfs-usr-share-mkinitfs-files-extra-01-initramfs-base-systemd.files
 94063e3a3f983b7613d9de6bfc067096f79b12688f45667faf968f9a9bae194c4c8e554311f2ab5614edcc4d4499f6d30aa965a67b7417c26ce4d07edc847178  rootfs-usr-lib-NetworkManager-conf.d-50-dns.conf
-da97af7b5e2713d85d8db1a022a87ed0fc03309e218bd10dc004a05ac3c2a4b0d5afd507b348b4459a3d0a8600db6e22e19dd4cb5a27327d6b7e21596b4954b2  rootfs-usr-lib-systemd-system-preset-90-base.preset
+5cde069bb04a4241341ea3d7f3ff1d61baefb45770d6f4f8945d34cc37e004fcc6e7c7baff9dcc6b08aaf7c82909ae0adfa25ff7f6165784ba11115cc424171d  rootfs-usr-lib-systemd-system-preset-90-base.preset
 1458d526e3d68c052126f648a33c3f22af10e3a4d479dded824c2b18b2022b43232ea6f8c2061f051927b2d612750017a2ecf7e1a19680b71ca2dc112d5bd3f6  rootfs-usr-lib-systemd-system-system.slice.d-10-oomd-defaults.conf
 eec660310e5dd9782aaedeb0895844b2815a61169526f8ff6a21265f8167ef279004a973971308c2f0af8824e734f8556bd78cfabb908d742aaf7798e60e761e  rootfs-usr-lib-systemd-user-preset-90-base.preset
 1458d526e3d68c052126f648a33c3f22af10e3a4d479dded824c2b18b2022b43232ea6f8c2061f051927b2d612750017a2ecf7e1a19680b71ca2dc112d5bd3f6  rootfs-usr-lib-systemd-user-slice.d-10-oomd-defaults.conf
