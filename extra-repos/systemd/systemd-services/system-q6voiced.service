@@ -1,6 +1,7 @@
 [Unit]
 Description=q6voice call audio routing
 Requires=dbus.service
+ConditionPathExists=/etc/conf.d/q6voiced
 
 [Service]
 EnvironmentFile=/etc/conf.d/q6voiced
