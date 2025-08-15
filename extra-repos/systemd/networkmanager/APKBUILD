@@ -90,9 +90,15 @@ options="!check"
 _plugindir="usr/lib/NetworkManager/$_pkgver"
 
 build() {
+	# pma#3866: disable lto for armv7 as it fails otherwise
+	local _lto=true
+	if [ "$CARCH" = "armv7" ]; then
+		_lto=false
+	fi
+
 	msg 'Building with systemd'
 	abuild-meson \
-		-Db_lto=true \
+		-Db_lto=$_lto \
 		-Dconfig_dhcp_default=internal \
 		-Dconfig_plugins_default=ifupdown \
 		-Dcrypto=nss \
