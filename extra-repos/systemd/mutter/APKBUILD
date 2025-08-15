@@ -3,7 +3,7 @@
 pkgname=mutter
 pkgver=99948.4
 _pkgver=48.4
-pkgrel=0
+pkgrel=1
 pkgdesc="clutter-based window manager and compositor"
 url="https://wiki.gnome.org/Projects/Mutter/"
 # armhf: pmb#2618
