@@ -1,7 +1,7 @@
 # Maintainer: Alexey Minnekhanov <alexeymin@postmarketos.org>
 pkgname=lk2nd
-pkgver=20.0
-pkgrel=3
+pkgver=21.0
+pkgrel=0
 pkgdesc="Secondary little kernel (lk) bootloader for several Qualcomm devices"
 arch="armv7 aarch64"
 url="https://github.com/msm8916-mainline/lk2nd"
@@ -76,8 +76,9 @@ build() {
 	_build lk2nd-msm8952
 
 	if [ "$CARCH" = "aarch64" ]; then
-		_build lk2nd-msm8953
-		_build lk2nd-msm8953 BOOTLOADER_OUT=msm8953-signed SIGN_BOOTIMG=1
+		# Ignore devices with QCDTB it fixes regression on other devices
+		_build lk2nd-msm8953 LK2ND_QCDTBS=""
+		_build lk2nd-msm8953 BOOTLOADER_OUT=msm8953-signed LK2ND_QCDTBS="" SIGN_BOOTIMG=1
 		_build lk2nd-msm8996
 	fi
 
@@ -146,5 +147,5 @@ msm8226_htc_memul() {
 }
 
 sha512sums="
-50b949f7ebacfe17919dc2d3538f5fbbc1b9055adadf4cdecdaee59f64be137dedb69b04dd9604bdd956ad8d12aebe913cc2c3981b9214a02a5036de3c7c1df3  lk2nd-20.0.tar.gz
+a5f1522c713cfe3f5b1ae3b31005327f5eea7c9e14031dec51e5c581fec97708984fcc1f7cdd3596faaa6f04bf2c4dfb2b5eab0ed36ceb2af5bb0551c7153d2d  lk2nd-21.0.tar.gz
 "
