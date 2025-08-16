@@ -4,7 +4,7 @@
 # Co-Maintainer: Achill Gilgenast <achill@achill.org>
 pkgname=postmarketos-ui-phosh
 pkgver=25
-pkgrel=1
+pkgrel=2
 pkgdesc="(Wayland) Mobile UI initially developed for the Librem 5"
 url="https://phosh.mobi"
 arch="noarch !armhf"
@@ -15,6 +15,7 @@ depends="
 	!gnome-shell-mobile-schemas
 	!mutter-mobile
 	!mutter-mobile-schemas
+	cellbroadcastd
 	bluez
 	phosh
 	postmarketos-base-ui-gnome-mobile
