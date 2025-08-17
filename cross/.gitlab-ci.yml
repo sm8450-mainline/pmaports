@@ -1,5 +1,6 @@
 cross-gcc-tests:
   extends: .package-test
+  tags: [qemu]
   before_script:
     - wget "https://gitlab.postmarketos.org/postmarketOS/ci-common/-/raw/master/install_pmbootstrap.sh"
     - sh ./install_pmbootstrap.sh
